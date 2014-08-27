@@ -21,13 +21,6 @@ public class BbkDatabaseConnector
          + "CharSet = utf8; port = 3306";
     public final static String URL_LOCAL = "";
     */
-	
-    public final static String COLUMN_NAME = "part_name";
-    public final static String COLUMN_TYPE = "part_type";
-    public final static String COLUMN_AUTHOR = "part_author";
-    public final static String COLUMN_ENTERDATE = "part_entered";
-    public final static String COLUMN_SHORTDESC = "part_short_desc";
-    public final static String COLUMN_URL = "part_url";
 
     Connection connection;
 
