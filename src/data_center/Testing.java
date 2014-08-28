@@ -5,7 +5,8 @@ public class Testing
 {
 	public static void main(String[] args)
 	{	
-		System.out.println("Hello world~!");
-		
+		BbkDatabaseConnector conncetor = new BbkDatabaseConnector();
+		BbkOutline bbkOutline = conncetor.getOutlineByName("BBa_B0014");
+		bbkOutline.display();
 	}
 }

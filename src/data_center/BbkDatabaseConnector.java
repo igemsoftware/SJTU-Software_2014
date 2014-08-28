@@ -9,6 +9,15 @@ public class BbkDatabaseConnector
 	public String password = "123456";
 	public final static String URL_SERVER_CW = "jdbc:mysql://192.168.191.1/mydb";
 	
+	public final static String TABLE_MAIN = "main";
+	public final static String TABLE_CATEGORIES = "categories";
+	public final static String TABLE_DEEP_SUBPARTS = "deep_subparts";
+	public final static String TABLE_FEATURES = "features";
+	public final static String TABLE_PARAMETERS = "parameters";
+	public final static String TABLE_SPECIFIED_SUBPARTS = "specified_subparts";
+	public final static String TABLE_SPECIFIED_SUBSCARS = "specified_subscars";
+	public final static String TABLE_TWINS = "twins";
+	
 	/*
 	// used for C#
     public final static String URL_SERVER_CWJ =
@@ -57,17 +66,16 @@ public class BbkDatabaseConnector
 
     public BbkOutline getOutlineByName(String name)
     {
-        String cmdStr =
-            "select * from main where part_name = " + "'" + name + "'";
+        String cmdStr = "select * from " + TABLE_MAIN + 
+        		" where " + TableHeader.NAME + " = " + "'" + name + "'";
         BbkOutline bbkOutline = null;
         try 
-		{
-        	Statement statement = connection.createStatement();
+		{	Statement statement = connection.createStatement();
 			ResultSet resultSet = statement.executeQuery(cmdStr);
 			resultSet.next();
 			bbkOutline = new BbkOutline(resultSet);
 			resultSet.close();
-		} catch (SQLException e) {}
+		} catch (SQLException e) {e.printStackTrace();}
 
         return bbkOutline;
     }

@@ -29,15 +29,15 @@ public class BbkDetail extends BbkOutline
 	public ArrayList<DeepSubpart> deepSubparts;
 	public ArrayList<Feature> features;
 	public ArrayList<Parameter> parameters;
-	public ArrayList<Scar> scars;
+	public ArrayList<SpecifiedScar> specifiedScars;
 	public ArrayList<SpecifiedSubpart> specifiedSubparts;
 	public ArrayList<Twin> twins;
 	
 	
 	public BbkDetail()
     {
+        super();
         // fix me
-		super();
     }
 
 	
@@ -80,7 +80,7 @@ public class BbkDetail extends BbkOutline
 		public String userName;
 	}
 	
-	public static class Scar
+	public static class SpecifiedScar
 	{	
 		public String ID;
 		public String standard;

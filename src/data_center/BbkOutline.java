@@ -98,6 +98,6 @@ public class BbkOutline
                             "Author: " + author + "\n" + 
                             "EnterDate: " + enterDate + "\n" + 
                             "ShortDescription: " + shortDesc + "\n" +
-                            "url" + url + "\n");
+                            "Url: " + url + "\n");
     }
 }
