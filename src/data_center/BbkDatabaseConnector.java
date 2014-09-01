@@ -8,28 +8,6 @@ public class BbkDatabaseConnector
 	public String user = "root";
 	public String password = "123456";
 	public final static String URL_SERVER_CW = "jdbc:mysql://192.168.191.1/mydb";
-	
-	public final static String TABLE_MAIN = "main";
-	public final static String TABLE_CATEGORIES = "categories";
-	public final static String TABLE_DEEP_SUBPARTS = "deep_subparts";
-	public final static String TABLE_FEATURES = "features";
-	public final static String TABLE_PARAMETERS = "parameters";
-	public final static String TABLE_SPECIFIED_SUBPARTS = "specified_subparts";
-	public final static String TABLE_SPECIFIED_SUBSCARS = "specified_subscars";
-	public final static String TABLE_TWINS = "twins";
-	
-	/*
-	// used for C#
-    public final static String URL_SERVER_CWJ =
-        "Database = mydb; Data Source = 192.168.137.1; "
-         + "User Id = root; Password = root; pooling = false; "
-         + "CharSet = utf8; port=3306";
-    public final static String URL_SERVER_CW =
-        "Database = mydb; Data Source = 192.168.191.1; "
-         + "User Id = root; Password = 123456; pooling = false; "
-         + "CharSet = utf8; port = 3306";
-    public final static String URL_LOCAL = "";
-    */
 
     Connection connection;
 
@@ -54,7 +32,9 @@ public class BbkDatabaseConnector
 			ResultSet resultSet = statement.executeQuery(cmdStr);
 
 	        while (resultSet.next())
-	        {	BbkOutline bbkOutline = new BbkOutline(resultSet);
+	        {	
+	        	// fix me
+	        	BbkOutline bbkOutline = new BbkOutline(resultSet);
 	            bbkOutline.display();
 	        }
 	        resultSet.close(); 
@@ -66,14 +46,13 @@ public class BbkDatabaseConnector
 
     public BbkOutline getOutlineByName(String name)
     {
-        String cmdStr = "select * from " + TABLE_MAIN + 
-        		" where " + TableHeader.NAME + " = " + "'" + name + "'";
-        BbkOutline bbkOutline = null;
+        String cmdStr = "select * from " + BbkDB.TABLE_MAIN + 
+        		" where " + BbkDB.Header.Main.NAME + " = " + "'" + name + "'";
+        BbkOutline bbkOutline = new BbkOutline();
         try 
 		{	Statement statement = connection.createStatement();
 			ResultSet resultSet = statement.executeQuery(cmdStr);
-			resultSet.next();
-			bbkOutline = new BbkOutline(resultSet);
+			bbkOutline.fillData_main(resultSet);	// resultSet.next() in this function
 			resultSet.close();
 		} catch (SQLException e) {e.printStackTrace();}
 
@@ -82,10 +61,41 @@ public class BbkDatabaseConnector
 
     public BbkDetail getDetailByName(String name)
     {
-        // fix me
-		BbkDetail detail = new BbkDetail();
+        BbkDetail bbkDetail = new BbkDetail();
+        
+        try 
+		{	Statement statement = connection.createStatement();
+			ResultSet resultSet;
+			
+			resultSet = statement.executeQuery("select * from " + BbkDB.TABLE_MAIN + 
+        		" where " + BbkDB.Header.Main.NAME + " = " + "'" + name + "'");
+			bbkDetail.fillData_main(resultSet);
+			resultSet = statement.executeQuery("select * from " + BbkDB.TABLE_CATEGORIES + 
+	        		" where " + BbkDB.Header.Main.NAME + " = " + "'" + name + "'");
+			bbkDetail.fillData_categories(resultSet);
+			resultSet = statement.executeQuery("select * from " + BbkDB.TABLE_DEEP_SUBPARTS + 
+	        		" where " + BbkDB.Header.Main.NAME + " = " + "'" + name + "'");
+			bbkDetail.fillData_deepSubparts(resultSet);
+			resultSet = statement.executeQuery("select * from " + BbkDB.TABLE_FEATURES + 
+	        		" where " + BbkDB.Header.Main.NAME + " = " + "'" + name + "'");
+			bbkDetail.fillData_features(resultSet);
+			resultSet = statement.executeQuery("select * from " + BbkDB.TABLE_PARAMETERS + 
+	        		" where " + BbkDB.Header.Main.NAME + " = " + "'" + name + "'");
+			bbkDetail.fillData_parameters(resultSet);
+			resultSet = statement.executeQuery("select * from " + BbkDB.TABLE_SPECIFIED_SUBSCARS + 
+	        		" where " + BbkDB.Header.Main.NAME + " = " + "'" + name + "'");
+			bbkDetail.fillData_specifiedSubscars(resultSet);
+			resultSet = statement.executeQuery("select * from " + BbkDB.TABLE_SPECIFIED_SUBPARTS + 
+	        		" where " + BbkDB.Header.Main.NAME + " = " + "'" + name + "'");
+			bbkDetail.fillData_specifiedSubparts(resultSet);
+			resultSet = statement.executeQuery("select * from " + BbkDB.TABLE_TWINS + 
+	        		" where " + BbkDB.Header.Main.NAME + " = " + "'" + name + "'");
+			bbkDetail.fillData_twins(resultSet);
+			
+			resultSet.close();
+		} catch (SQLException e) {e.printStackTrace();}
 
-        return detail;
+        return bbkDetail;
     }
 
 

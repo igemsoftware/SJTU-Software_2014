@@ -28,12 +28,18 @@ public class BbkOutline
     
     public BbkOutline(ResultSet resultSet) throws SQLException
     {	
-    	name = resultSet.getString(TableHeader.NAME);
-	    type = resultSet.getString(TableHeader.TYPE);
-	    author = resultSet.getString(TableHeader.AUTHOR);
-	    enterDate = resultSet.getString(TableHeader.ENTER_DATE);
-	    shortDesc = resultSet.getString(TableHeader.SHORT_DESC);
-	    url = resultSet.getString(TableHeader.URL);
+    	this.fillData_main(resultSet);
+    }
+    
+    public void fillData_main(ResultSet resultSet) throws SQLException
+    {	
+    	resultSet.next();
+    	name = resultSet.getString(BbkDB.Header.Main.NAME);
+	    type = resultSet.getString(BbkDB.Header.Main.TYPE);
+	    author = resultSet.getString(BbkDB.Header.Main.AUTHOR);
+	    enterDate = resultSet.getString(BbkDB.Header.Main.ENTER_DATE);
+	    shortDesc = resultSet.getString(BbkDB.Header.Main.SHORT_DESC);
+	    url = resultSet.getString(BbkDB.Header.Main.URL);
     }
 
 	public boolean isTypeOf(int typeNo)
