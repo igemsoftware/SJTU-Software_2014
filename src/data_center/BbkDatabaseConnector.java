@@ -100,15 +100,18 @@ public class BbkDatabaseConnector
     }
 
 
+    //Search for a keyword without any limitation
     public SearchResultList search(String keyword)
     {
-        // fix me
         SearchResultList result = new SearchResultList();
         try 
 		{	
         	Statement statement = connection.createStatement();
         	ResultSet resultSet;
 			
+        	//Actually, I try to realize FULLTEXT INDEX search.
+        	//But it can only search word like 'apple', or slice like 'pple' will failed.
+        	//So, I realize the simple 'like' matching, you can add any other condition by using 'OR...'
 			resultSet = statement.executeQuery("select * from " + BbkDB.TABLE_MAIN + 
         		" where " + BbkDB.Header.Main.NAME + " like " + "'%" + keyword + "%'" +
 				" OR " + BbkDB.Header.Main.SHORT_DESC + " like " + "'%" + keyword + "%'" +

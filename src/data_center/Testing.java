@@ -10,6 +10,7 @@ public class Testing extends JFrame
     public Testing()
     {
     	BbkDatabaseConnector conncetor = new BbkDatabaseConnector();
+    	//SearchResultList resultList = conncetor.search("B0034");
     	SearchResultList resultList = conncetor.search("jcbraff","part_author");
     	rows = resultList.showSearchResult();
     	JPanel jp=(JPanel)this.getContentPane();
