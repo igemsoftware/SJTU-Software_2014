@@ -7,6 +7,26 @@ public class SearchResultList extends ArrayList<BbkOutline>
 {
 	public SearchResultList()
 	{	super(50);	}
+	
+	public String[][] showSearchResult()
+	{
+		String[][] rows=null;
+		int rowsize = this.size();
+		System.out.println(rowsize);
+		rows = new String[rowsize][6];
+		int rowcount=0;
+		for (int i=0;i<rowsize;i++)
+		{
+			rows[rowcount][0]=this.get(i).name;
+			rows[rowcount][1]=this.get(i).type;
+			rows[rowcount][2]=this.get(i).author;
+			rows[rowcount][3]=this.get(i).enterDate;
+			rows[rowcount][4]=this.get(i).shortDesc;
+			rows[rowcount][5]=this.get(i).url;
+			rowcount++;
+	    }
+		return rows;
+	}
 
 	public SearchResultList Filter(ArrayList<Integer> typeList, int[] enterYear)
 	{

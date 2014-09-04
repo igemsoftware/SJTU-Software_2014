@@ -41,7 +41,8 @@ public class BbkOutline
 	    shortDesc = resultSet.getString(BbkDB.Header.Main.SHORT_DESC);
 	    url = resultSet.getString(BbkDB.Header.Main.URL);
     }
-
+    
+    //返回值是boolean? 有待讨论
 	public boolean isTypeOf(int typeNo)
 	{
 		switch (typeNo)

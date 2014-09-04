@@ -6,8 +6,9 @@ public class BbkDatabaseConnector
 {
 	public final static String DRIVER = "com.mysql.jdbc.Driver";
 	public String user = "root";
-	public String password = "123456";
+	public String password = "root";
 	public final static String URL_SERVER_CW = "jdbc:mysql://192.168.191.1/mydb";
+	public final static String URL_SERVER_LOCAL = "jdbc:mysql://localhost:3306/mydb";
 
     Connection connection;
 
@@ -17,7 +18,7 @@ public class BbkDatabaseConnector
     	{	Class.forName(DRIVER);}
     	catch (ClassNotFoundException e) {}
         try 
-        {	connection = DriverManager.getConnection(URL_SERVER_CW,user,password);}
+        {	connection = DriverManager.getConnection(URL_SERVER_LOCAL,user,password);}
         catch (SQLException e) {}
     }
 
@@ -103,10 +104,37 @@ public class BbkDatabaseConnector
     {
         // fix me
         SearchResultList result = new SearchResultList();
+        try 
+		{	
+        	Statement statement = connection.createStatement();
+        	ResultSet resultSet;
+			
+			resultSet = statement.executeQuery("select * from " + BbkDB.TABLE_MAIN + 
+        		" where " + BbkDB.Header.Main.NAME + " like " + "'%" + keyword + "%'" +
+				" OR " + BbkDB.Header.Main.SHORT_DESC + " like " + "'%" + keyword + "%'" +
+				" OR " + BbkDB.Header.Main.ID + " like " + "'%" + keyword + "%'");
+			while (resultSet.next())
+				result.add(new BbkOutline(resultSet));
+		} catch (SQLException e) {e.printStackTrace();}
         return result;
     }
 
-    
+    public SearchResultList search(String keyword, String type)
+    {
+        // fix me
+        SearchResultList result = new SearchResultList();
+        try 
+		{	
+        	Statement statement = connection.createStatement();
+        	ResultSet resultSet;
+			
+			resultSet = statement.executeQuery("select * from " + BbkDB.TABLE_MAIN + 
+        		" where " + type + " like " + "'%" + keyword + "%'");
+			while (resultSet.next())
+				result.add(new BbkOutline(resultSet));
+		} catch (SQLException e) {e.printStackTrace();}
+        return result;
+    }
 
 }
 

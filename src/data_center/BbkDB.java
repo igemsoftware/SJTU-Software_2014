@@ -2,7 +2,7 @@ package data_center;
 
 public class BbkDB
 {
-	public final static String TABLE_MAIN = "main";
+	public final static String TABLE_MAIN = "main_new";
 	public final static String TABLE_CATEGORIES = "categories";
 	public final static String TABLE_DEEP_SUBPARTS = "deep_subparts";
 	public final static String TABLE_FEATURES = "features";
@@ -112,5 +112,4 @@ public class BbkDB
 	    
 	    
 	}
-
 }
