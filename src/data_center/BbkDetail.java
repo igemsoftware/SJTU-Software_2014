@@ -6,26 +6,7 @@ import java.util.ArrayList;
 
 public class BbkDetail extends BbkOutline
 {
-    // from main
-	public String ID;
-	public String shortName;
-	public String releaseStatus;
-	public String sampleStatus;
-	public String results;
-	public String nickname;
-	public String rating;
-	public String sequence;
-	public String samples;
-	public String references;
-	public String groups;
-	public String DNA_status;
-	public String groupFavorite;
-	
-	public String delete_this_part;
-	public String tot_confirmed;
-	public String detail_not_confirmed;
-	public String average_stars;
-	public String tot_commets;
+    
 	
 	public ArrayList<Category> categories = new ArrayList<Category>();
 	public ArrayList<DeepSubpart> deepSubparts = new ArrayList<DeepSubpart>();
@@ -38,33 +19,6 @@ public class BbkDetail extends BbkOutline
 	
 	public BbkDetail()
     { }
-
-	
-	
-	public void fillData_main(ResultSet resultSet) throws SQLException
-	{	
-		super.fillData_main(resultSet);	// resultSet.next() in this function
-		
-		ID = resultSet.getString(BbkDB.Header.Main.ID);
-		shortName = resultSet.getString(BbkDB.Header.Main.SHORT_NAME);
-		releaseStatus = resultSet.getString(BbkDB.Header.Main.RELEASE_STATUS);
-		sampleStatus = resultSet.getString(BbkDB.Header.Main.SAMPLE_STATUS);
-		results = resultSet.getString(BbkDB.Header.Main.RESULTS);
-		nickname = resultSet.getString(BbkDB.Header.Main.NICKNAME);
-		rating = resultSet.getString(BbkDB.Header.Main.RATING);
-		sequence = resultSet.getString(BbkDB.Header.Main.SEQUENCE);
-		samples = resultSet.getString(BbkDB.Header.Main.SAMPLES);
-		references = resultSet.getString(BbkDB.Header.Main.REFERENCES);
-		groups = resultSet.getString(BbkDB.Header.Main.GROUPS);
-		DNA_status = resultSet.getString(BbkDB.Header.Main.DNA_STATUS);
-		groupFavorite = resultSet.getString(BbkDB.Header.Main.GROUP_FAVOURITE);
-		
-		delete_this_part = resultSet.getString(BbkDB.Header.Main.DELETE_THIS_PART);
-		tot_confirmed = resultSet.getString(BbkDB.Header.Main.TOT_CONFIRMED);
-		detail_not_confirmed = resultSet.getString(BbkDB.Header.Main.DETAIL_NOT_CONFIRMED);
-		average_stars = resultSet.getString(BbkDB.Header.Main.AVERAGE_STARS);
-		tot_commets = resultSet.getString(BbkDB.Header.Main.TOT_COMMENTS);
-	}
 	
 	public void fillData_categories(ResultSet resultSet) throws SQLException
 	{	

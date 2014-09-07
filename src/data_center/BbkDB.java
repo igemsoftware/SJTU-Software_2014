@@ -2,7 +2,7 @@ package data_center;
 
 public class BbkDB
 {
-	public final static String TABLE_MAIN = "main_new";
+	public final static String TABLE_MAIN = "main";
 	public final static String TABLE_CATEGORIES = "categories";
 	public final static String TABLE_DEEP_SUBPARTS = "deep_subparts";
 	public final static String TABLE_FEATURES = "features";
@@ -10,6 +10,33 @@ public class BbkDB
 	public final static String TABLE_SPECIFIED_SUBPARTS = "specified_subparts";
 	public final static String TABLE_SPECIFIED_SUBSCARS = "specified_subscars";
 	public final static String TABLE_TWINS = "twins";
+	
+	
+	/**
+	 * Has a copy in BbkDB.Header.Main, the String here is used as a shortcut
+	 * The final double here is default weight and total points(TP)
+	 */
+	public static class Rating
+	{
+		// table headers
+		public final static String RATING = "rating";	// rate by EasyBbk
+	    public final static String STATUS = "status";
+	    public final static String QUALITY = "quality";
+	    public final static String FEEDBACKS = "feedbacks";
+	    public final static String PUBLICATION = "publication";
+	    
+	    // default weight
+	    public final static double STATUS_DEFAULT_WEIGHT = 1;
+	    public final static double QUALITY_DEFAULT_WEIGHT = 1;
+	    public final static double FEEDBACKS_DEFAULT_WEIGHT = 1;
+	    public final static double PUBLICATION_DEFAULT_WEIGHT = 1;
+	    
+	    // total points
+	    public final static double STATUS_TOTAL_POINTS = 1;
+	    public final static double QUALITY_TOTAL_POINTS = 0.6;
+	    public final static double FEEDBACKS_TOTAL_POINTS = 2.4;
+	    public final static double PUBLICATION_TOTAL_POINTS = 1;
+	}
 	
 	
 	public static class Header
@@ -23,13 +50,20 @@ public class BbkDB
 		    public final static String SHORT_DESC = "part_short_desc";
 		    public final static String URL = "part_url";
 		    
+		    // about rating
+			public final static String RATING = "rating";	// rate by EasyBbk
+		    public final static String STATUS = "status";
+		    public final static String QUALITY = "quality";
+		    public final static String FEEDBACKS = "feedbacks";
+		    public final static String PUBLICATION = "publication";
+		    
 		    public final static String ID = "part_id";
 		    public final static String SHORT_NAME = "part_short_name";
 		    public final static String RELEASE_STATUS = "release_status";
 		    public final static String SAMPLE_STATUS = "sample_status";
 		    public final static String RESULTS = "part_results";
 		    public final static String NICKNAME = "part_nickname";
-		    public final static String RATING = "part_rating";
+		    public final static String PART_RATING = "part_rating";	// official rating stars
 		    public final static String SEQUENCE = "sequence";
 		    public final static String SAMPLES = "samples";
 		    public final static String REFERENCES = "references";

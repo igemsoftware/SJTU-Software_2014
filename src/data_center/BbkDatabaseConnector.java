@@ -69,7 +69,7 @@ public class BbkDatabaseConnector
 			ResultSet resultSet;
 			
 			resultSet = statement.executeQuery("select * from " + BbkDB.TABLE_MAIN + 
-        		" where " + BbkDB.Header.Main.NAME + " = " + "'" + name + "'");
+					" where " + BbkDB.Header.Main.NAME + " = " + "'" + name + "'");
 			bbkDetail.fillData_main(resultSet);
 			resultSet = statement.executeQuery("select * from " + BbkDB.TABLE_CATEGORIES + 
 	        		" where " + BbkDB.Header.Main.NAME + " = " + "'" + name + "'");

@@ -70,6 +70,13 @@ public class BbkType
 			public final static int CIRCULAR = 2;	
 		}
 		
+		public static class Relation
+		{	
+			public final static int PROMOTE = 1;
+			public final static int SUPPRESS = 2;
+			public final static int OTHER = 0;
+		}
+		
 		public static class Vector
 		{	
 			public final static int PLASMID = 0;

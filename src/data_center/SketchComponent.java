@@ -32,18 +32,16 @@ public class SketchComponent
 		// attributes
 		public String text;
 		public Point center;
-		public int size;
 		public Font font;
 		public Color color;
 		
 		// primaryType already known in the class
 		public Label(int theID, String text, Point pos, 
-				int size, Font font, Color color)
+				Font font, Color color)
 		{
 			super(theID, BbkType.Sketch.LABEL);
 			this.text = text;
 			this.center = pos;
-			this.size = size;
 			this.font = font;
 			this.color = color;
 		}
@@ -113,7 +111,7 @@ public class SketchComponent
 	
 	}
 
-	public class BackBone extends Component
+	public static class BackBone extends Component
 	{
 		// attributes
 		public Point leftPoint;
@@ -134,7 +132,7 @@ public class SketchComponent
 		}
 	}
 
-	public class Relation extends Component
+	public static class Relation extends Component
 	{
 		public final static int PROMOTE = 1;
 		public final static int SUPPRESS = 2;
@@ -168,7 +166,7 @@ public class SketchComponent
 		}
 	}
 
-	public class Vector extends Component
+	public static class Vector extends Component
 	{
 		// attributes
 		public int secondaryType;
