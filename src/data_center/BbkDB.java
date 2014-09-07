@@ -32,6 +32,7 @@ public class BbkDB
 	    public final static double PUBLICATION_DEFAULT_WEIGHT = 1;
 	    
 	    // total points
+	    //total points 值有问题，导致Score越界
 	    public final static double STATUS_TOTAL_POINTS = 1;
 	    public final static double QUALITY_TOTAL_POINTS = 0.6;
 	    public final static double FEEDBACKS_TOTAL_POINTS = 2.4;
@@ -69,7 +70,7 @@ public class BbkDB
 		    public final static String REFERENCES = "references";
 		    public final static String GROUPS = "groups";
 		    public final static String DNA_STATUS = "DNA_status";
-		    public final static String GROUP_FAVOURITE = "Group_favourite";
+		    public final static String GROUP_FAVOURITE = "Group_favorite";
 		    
 		    public final static String DELETE_THIS_PART = "delete_this_part";
 		    public final static String TOT_CONFIRMED = "tot_confirmed";
