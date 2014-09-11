@@ -7,17 +7,14 @@ public class DetailPageCenter
 	private final static int MAX_HISTORY_NUM = 10;
     public ArrayList<BbkDetail> historyList;
 
-    public BbkDatabaseConnector connector;
-
     public DetailPageCenter()
     {
         historyList = new ArrayList<BbkDetail>();
-        connector = new BbkDatabaseConnector();
     }
 
     public BbkDetail inquireDetail(String bbkName)
     {
-        BbkDetail detailInfo = connector.getDetailByName(bbkName);
+        BbkDetail detailInfo = BbkDatabaseConnector.getDetailByName(bbkName);
         if (historyList.size() >= MAX_HISTORY_NUM)
             historyList.remove(0);
         historyList.add(detailInfo);

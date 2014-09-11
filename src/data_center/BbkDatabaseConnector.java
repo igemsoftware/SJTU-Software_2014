@@ -5,24 +5,26 @@ import java.sql.*;
 public class BbkDatabaseConnector
 {
 	public final static String DRIVER = "com.mysql.jdbc.Driver";
-	public String user = "root";
-	public String password = "root";
+	public static String user = "root";
+	public static String password = "root";
 	public final static String URL_SERVER_CW = "jdbc:mysql://192.168.191.1/mydb";
+	public final static String URL_SERVER_YJB = "jdbc:mysql://192.168.191.1/mydb";
 	public final static String URL_SERVER_LOCAL = "jdbc:mysql://localhost:3306/mydb";
-
-    Connection connection;
-
-    public BbkDatabaseConnector()
+	
+    private static Connection connection;
+    
+    public static void connect()
     {
     	try 
     	{	Class.forName(DRIVER);}
-    	catch (ClassNotFoundException e) {}
+    	catch (ClassNotFoundException e) { e.printStackTrace(); }
         try 
-        {	connection = DriverManager.getConnection(URL_SERVER_LOCAL,user,password);}
-        catch (SQLException e) {}
+        {	connection 
+        		= DriverManager.getConnection(URL_SERVER_LOCAL, user, password);}
+        catch (SQLException e) { e.printStackTrace(); }
     }
 
-    public void displayTable(String tableName)
+    public static void displayTable(String tableName)
     {
         String cmdStr = "select * from " + tableName;
         System.out.println(cmdStr);
@@ -45,7 +47,7 @@ public class BbkDatabaseConnector
     }
 
 
-    public BbkOutline getOutlineByName(String name)
+    public static BbkOutline getOutlineByName(String name)
     {
         String cmdStr = "select * from " + BbkDB.TABLE_MAIN + 
         		" where " + BbkDB.Header.Main.NAME + " = " + "'" + name + "'";
@@ -60,7 +62,7 @@ public class BbkDatabaseConnector
         return bbkOutline;
     }
 
-    public BbkDetail getDetailByName(String name)
+    public static BbkDetail getDetailByName(String name)
     {
         BbkDetail bbkDetail = new BbkDetail();
         
@@ -101,7 +103,7 @@ public class BbkDatabaseConnector
 
 
     //Search for a keyword without any limitation
-    public SearchResultList search(String keyword)
+    public static SearchResultList search(String keyword)
     {
         SearchResultList result = new SearchResultList();
         try 
@@ -122,7 +124,7 @@ public class BbkDatabaseConnector
         return result;
     }
 
-    public SearchResultList search(String keyword, String type)
+    public static SearchResultList search(String keyword, String type)
     {
         // fix me
         SearchResultList result = new SearchResultList();

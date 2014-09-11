@@ -14,6 +14,7 @@ public class BbkOutline
     public String url;
     
     public Rating rating = new Rating();
+    public Blasting blasting = null;	// not new here cause not always blasting
     
  	public String ID;
  	public String shortName;
@@ -28,12 +29,6 @@ public class BbkOutline
  	public String groups;
  	public String DNA_status;
  	public String groupFavorite;
- 	
- 	public String delete_this_part;
- 	public String tot_confirmed;
- 	public String detail_not_confirmed;
- 	public String average_stars;
- 	public String tot_commets;
 
     public BbkOutline()
     { }
@@ -68,17 +63,9 @@ public class BbkOutline
 		groups = resultSet.getString(BbkDB.Header.Main.GROUPS);
 		DNA_status = resultSet.getString(BbkDB.Header.Main.DNA_STATUS);
 		groupFavorite = resultSet.getString(BbkDB.Header.Main.GROUP_FAVOURITE);
-		
-		delete_this_part = resultSet.getString(BbkDB.Header.Main.DELETE_THIS_PART);
-		tot_confirmed = resultSet.getString(BbkDB.Header.Main.TOT_CONFIRMED);
-		detail_not_confirmed = resultSet.getString(BbkDB.Header.Main.DETAIL_NOT_CONFIRMED);
-		average_stars = resultSet.getString(BbkDB.Header.Main.AVERAGE_STARS);
-		tot_commets = resultSet.getString(BbkDB.Header.Main.TOT_COMMENTS);
     }
     
-    /**
-     * Score at default weight
-     */
+    /** Score at default weight */
     public int getScore()
     {	
     	return this.rating.getScore();
@@ -150,21 +137,21 @@ public class BbkOutline
 
     public void display()
     {
-        System.out.println( "Name: " + name + "\n" + 
+        System.out.println( "********\n" + 
+				   			"Name: " + name + "\n" + 
                             "Type: " + type + "\n" + 
                             "Author: " + author + "\n" + 
                             "EnterDate: " + enterDate + "\n" + 
                             "ShortDescription: " + shortDesc + "\n" +
-                            "Url: " + url);
+                            "Url: " + url + "\n");
         this.rating.display();
+        System.out.println("********\n");
     }
     
     
     
     
-    /**
-     * The rating by EasyBbk
-     */
+    /** The rating by EasyBbk */
     public static class Rating
     {	
     	public String rating;
@@ -172,6 +159,14 @@ public class BbkOutline
     	public String quality;
     	public String feedbacks;
     	public String publication;
+    	// rating details
+    	public String delete_this_part;
+     	public String tot_confirmed;
+     	public String detail_not_confirmed;
+     	public String average_stars;
+     	public String tot_commets;
+     	public String google_items;
+     	public String first_url;
     	
     	public void fillData_Rating(ResultSet resultSet) throws SQLException
     	{	
@@ -180,6 +175,14 @@ public class BbkOutline
     		quality = resultSet.getString(BbkDB.Header.Main.QUALITY);
     		feedbacks = resultSet.getString(BbkDB.Header.Main.FEEDBACKS);
     		publication = resultSet.getString(BbkDB.Header.Main.PUBLICATION);
+    		// rating details
+    		delete_this_part = resultSet.getString(BbkDB.Header.Main.DELETE_THIS_PART);
+    		tot_confirmed = resultSet.getString(BbkDB.Header.Main.TOT_CONFIRMED);
+    		detail_not_confirmed = resultSet.getString(BbkDB.Header.Main.DETAIL_NOT_CONFIRMED);
+    		average_stars = resultSet.getString(BbkDB.Header.Main.AVERAGE_STARS);
+    		tot_commets = resultSet.getString(BbkDB.Header.Main.TOT_COMMENTS);
+    		google_items = resultSet.getString(BbkDB.Header.Main.GOOGLE_ITEMS);
+    		first_url = resultSet.getString(BbkDB.Header.Main.FIRST_URL);
     	}
     	
     	public int getScore()
@@ -193,27 +196,33 @@ public class BbkOutline
     	public int getScore(double status_weight, double quality_weight, 
     						double feedbacks_weight, double publication_weight)
     	{	
-    		double totalPoints = BbkDB.Rating.STATUS_TOTAL_POINTS * status_weight
-    						   + BbkDB.Rating.QUALITY_TOTAL_POINTS * quality_weight
-    						   + BbkDB.Rating.FEEDBACKS_TOTAL_POINTS * feedbacks_weight
-    						   + BbkDB.Rating.PUBLICATION_TOTAL_POINTS * publication_weight;
-    		double points = Double.parseDouble(status) * status_weight
-    					  + Double.parseDouble(quality) * quality_weight
-    					  + Double.parseDouble(feedbacks) * feedbacks_weight
-    					  + Double.parseDouble(publication) * publication_weight;
+    		//double totalPoints = BbkDB.Rating.STATUS_TOTAL_POINTS * status_weight
+    			//			   + BbkDB.Rating.QUALITY_TOTAL_POINTS * quality_weight
+    				//		   + BbkDB.Rating.FEEDBACKS_TOTAL_POINTS * feedbacks_weight
+    					//	   + BbkDB.Rating.PUBLICATION_TOTAL_POINTS * publication_weight;
+    		double totalPoints = BbkDB.Rating.TOTAL_POINTS;
+    		double points = Double.parseDouble(status) / BbkDB.Rating.STATUS_DEFAULT_WEIGHT * status_weight
+    					  + Double.parseDouble(quality) / BbkDB.Rating.QUALITY_DEFAULT_WEIGHT * quality_weight
+    					  + Double.parseDouble(feedbacks) / BbkDB.Rating.FEEDBACKS_DEFAULT_WEIGHT * feedbacks_weight
+    					  + Double.parseDouble(publication) / BbkDB.Rating.PUBLICATION_DEFAULT_WEIGHT * publication_weight;
     		int score = (int)(points / totalPoints * 100);
     		return score;
     	}
     	
     	public void display()
     	{	
-    		System.out.println("********\n" + 
-    						   "Rating: "+ rating + "\n" + 
+    		System.out.println("Rating: "+ rating + "\n" + 
     						   "Status: " + status + "\n" + 
     						   "Quality: " + quality + "\n" + 
     						   "Feedbacks: " + feedbacks + "\n" +
-    						   "Publication: " + publication + "\n" + 
-    						   "********\n");
+    						   "Publication: " + publication);
     	}
+    }
+    
+    public static class Blasting
+    {	
+    	// null to represent that the blast has not proceeded yet
+    	int score;
+    	double eValue;
     }
 }

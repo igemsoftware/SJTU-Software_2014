@@ -6,8 +6,6 @@ import java.util.ArrayList;
 
 public class BbkDetail extends BbkOutline
 {
-    
-	
 	public ArrayList<Category> categories = new ArrayList<Category>();
 	public ArrayList<DeepSubpart> deepSubparts = new ArrayList<DeepSubpart>();
 	public ArrayList<Feature> features = new ArrayList<Feature>();

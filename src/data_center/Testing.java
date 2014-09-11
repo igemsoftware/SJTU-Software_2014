@@ -3,6 +3,10 @@ package data_center;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Point;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.util.ArrayList;
 
 import javax.swing.*;
@@ -11,7 +15,7 @@ import data_center.SketchComponent.*;
 
 public class Testing  extends JFrame
 {	
-	
+	/*
 	JTable tableList =null;
 	String[] cols={"name","type","author","enterDate","shortDesc","url"};
     String[][] rows=null;
@@ -30,20 +34,19 @@ public class Testing  extends JFrame
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
-    
+    */
 	public static void main(String[] args)
 	{	
 		//Test for Search
 		//new Testing();
 		
+		//SearchResultList list
+			//= BbkBlaster.blast_local(BbkBlaster.DEFAULT_INFILE, BbkBlaster.MODE_INPUT_FILE_PATH);
+		//for (int i = 0; i < 100; ++i)
+			//list.get(i).display();
 		
-		//Test for BBkDetail
-		BbkDatabaseConnector conncetor = new BbkDatabaseConnector();
-		BbkOutline bbkOutline = conncetor.getOutlineByName("BBa_B0034");
-		bbkOutline.display();
-		System.out.println(bbkOutline.getScore());		
-		//total points的值设置有问题，导致Score越界
 		
+		BbkDatabaseConnector connector = new BbkDatabaseConnector();
 		
 		//Test for ...
 		

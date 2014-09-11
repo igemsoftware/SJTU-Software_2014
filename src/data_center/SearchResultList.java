@@ -61,4 +61,11 @@ public class SearchResultList extends ArrayList<BbkOutline>
 		}
 		return filteredList;
 	}
+	
+	public void display()
+	{	
+		for (BbkOutline bbk : this)
+			bbk.display();
+	}
+	
 }
