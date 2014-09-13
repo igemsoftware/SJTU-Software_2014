@@ -78,63 +78,6 @@ public class BbkOutline
     								feedbacks_weight, publication_weight);
     }
     
-    
-    //返回值是boolean? 有待讨论
-	public boolean isTypeOf(int typeNo)
-	{
-		switch (typeNo)
-		{
-			case BbkType.PROMOTER:
-				return type.equals(BbkType.strOf_PROMOTER);
-			case BbkType.RBS:
-				return type.equals(BbkType.strOf_RBS);
-			case BbkType.PROTEIN_DOMAIN:
-				return type.equals(BbkType.strOf_PROTEIN_DOMAIN);
-			case BbkType.PROTEIN_CODING_SEQUENCE:
-				return type.equals(BbkType.strOf_PROTEIN_CODING_SEQUENCE);
-			case BbkType.TRANSLATIONAL_UNIT:
-				return type.equals(BbkType.strOf_TRANSLATIONAL_UNIT);
-			case BbkType.TERMINATOR:
-				return type.equals(BbkType.strOf_TERMINATOR);
-			case BbkType.DNA:
-				return type.equals(BbkType.strOf_DNA);
-			case BbkType.PLASMID_BACKBONE:
-				return type.equals(BbkType.strOf_PLASMID_BACKBONE);
-			case BbkType.PLASMID:
-				return type.equals(BbkType.strOf_PLASMID);
-			case BbkType.PRIMER:
-				return type.equals(BbkType.strOf_PRIMER);
-			case BbkType.COMPOSITE:
-				return type.equals(BbkType.strOf_COMPOSITE);
-			case BbkType.PROTEIN_GENERATOR:
-				return type.equals(BbkType.strOf_PROTEIN_GENERATOR);
-			case BbkType.REPORTER:
-				return type.equals(BbkType.strOf_REPORTER);
-			case BbkType.INVERTER:
-				return type.equals(BbkType.strOf_INVERTER);
-			case BbkType.SIGNALLING:
-				return type.equals(BbkType.strOf_SIGNALLING);
-			case BbkType.MEASUREMENT:
-				return type.equals(BbkType.strOf_MEASUREMENT);
-			case BbkType.OTHER:
-				// if code reaches here, it must be an other
-				return true;
-			default:
-				return false; 
-		}
-	}
-
-	public boolean isEnteredBetween(int[] enterYear)
-	{
-		if (enterYear.length != 2)
-		{	System.out.println("Invalid enter year filter... ");
-			return false;
-		}
-		// else
-		int theYear = Integer.parseInt(enterDate.substring(0, 4));
-		return (enterYear[0] <= theYear) && (enterYear[1] >= theYear);
-	}
-
     public void display()
     {
         System.out.println( "********\n" + 
@@ -196,10 +139,6 @@ public class BbkOutline
     	public int getScore(double status_weight, double quality_weight, 
     						double feedbacks_weight, double publication_weight)
     	{	
-    		//double totalPoints = BbkDB.Rating.STATUS_TOTAL_POINTS * status_weight
-    			//			   + BbkDB.Rating.QUALITY_TOTAL_POINTS * quality_weight
-    				//		   + BbkDB.Rating.FEEDBACKS_TOTAL_POINTS * feedbacks_weight
-    					//	   + BbkDB.Rating.PUBLICATION_TOTAL_POINTS * publication_weight;
     		double totalPoints = BbkDB.Rating.TOTAL_POINTS;
     		double points = Double.parseDouble(status) / BbkDB.Rating.STATUS_DEFAULT_WEIGHT * status_weight
     					  + Double.parseDouble(quality) / BbkDB.Rating.QUALITY_DEFAULT_WEIGHT * quality_weight
@@ -221,8 +160,68 @@ public class BbkOutline
     
     public static class Blasting
     {	
-    	// null to represent that the blast has not proceeded yet
     	int score;
     	double eValue;
     }
 }
+
+/*
+// 返回值是boolean? 有待讨论	-cwj
+// 于是我又想了一下，直接在filter函数里面判断好了，这里的就不要了,
+ 	// 如果你觉得ok的话就把它们删掉好了~	-chyb
+public boolean isTypeOf(int typeNo)
+{
+	switch (typeNo)
+	{
+		case BbkType.PROMOTER:
+			return type.equals(BbkType.strOf_PROMOTER);
+		case BbkType.RBS:
+			return type.equals(BbkType.strOf_RBS);
+		case BbkType.PROTEIN_DOMAIN:
+			return type.equals(BbkType.strOf_PROTEIN_DOMAIN);
+		case BbkType.PROTEIN_CODING_SEQUENCE:
+			return type.equals(BbkType.strOf_PROTEIN_CODING_SEQUENCE);
+		case BbkType.TRANSLATIONAL_UNIT:
+			return type.equals(BbkType.strOf_TRANSLATIONAL_UNIT);
+		case BbkType.TERMINATOR:
+			return type.equals(BbkType.strOf_TERMINATOR);
+		case BbkType.DNA:
+			return type.equals(BbkType.strOf_DNA);
+		case BbkType.PLASMID_BACKBONE:
+			return type.equals(BbkType.strOf_PLASMID_BACKBONE);
+		case BbkType.PLASMID:
+			return type.equals(BbkType.strOf_PLASMID);
+		case BbkType.PRIMER:
+			return type.equals(BbkType.strOf_PRIMER);
+		case BbkType.COMPOSITE:
+			return type.equals(BbkType.strOf_COMPOSITE);
+		case BbkType.PROTEIN_GENERATOR:
+			return type.equals(BbkType.strOf_PROTEIN_GENERATOR);
+		case BbkType.REPORTER:
+			return type.equals(BbkType.strOf_REPORTER);
+		case BbkType.INVERTER:
+			return type.equals(BbkType.strOf_INVERTER);
+		case BbkType.SIGNALLING:
+			return type.equals(BbkType.strOf_SIGNALLING);
+		case BbkType.MEASUREMENT:
+			return type.equals(BbkType.strOf_MEASUREMENT);
+		case BbkType.OTHER:
+			// if code reaches here, it must be an other
+			return true;
+		default:
+			return false; 
+	}
+}
+
+public boolean isEnteredBetween(int[] enterYear)
+{
+	if (enterYear.length != 2)
+	{	System.out.println("Invalid enter year filter... ");
+		return false;
+	}
+	// else
+	int theYear = Integer.parseInt(enterDate.substring(0, 4));
+	return (enterYear[0] <= theYear) && (enterYear[1] >= theYear);
+}
+*/
+

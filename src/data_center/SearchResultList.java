@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class SearchResultList extends ArrayList<BbkOutline>
 {
 	public SearchResultList()
-	{	super(50);	}
+	{	super(100);	}
 	
 	public String[][] showSearchResult()
 	{
@@ -28,38 +28,60 @@ public class SearchResultList extends ArrayList<BbkOutline>
 		return rows;
 	}
 
-	public SearchResultList Filter(ArrayList<Integer> typeList, int[] enterYear)
-	{
+	/** Use like "listToShow = rawList.filterByType().filterByEnterYear()...;" */
+	public SearchResultList filterByType(ArrayList<String> typeList)
+	{	
+		if (typeList == null)	// don't filter
+			return (SearchResultList) this.clone();
+		// else
 		SearchResultList filteredList = new SearchResultList();
-
-		if (typeList != null && enterYear != null)	// filter by two conditions
-		{
-			for (BbkOutline bbk : this)
-				for (int type : typeList)
-					// if is not the type, won't check the enterYear
-					if (bbk.isTypeOf(type)
-						&& bbk.isEnteredBetween(enterYear))
-						filteredList.add(bbk);
-		}
-		else if (typeList != null && enterYear == null)	// filter by type
-		{
-			for (BbkOutline bbk : this)
-				for (int type : typeList)
-					if (bbk.isTypeOf(type))
-						filteredList.add(bbk);
-		}
-		else if (typeList == null && enterYear != null)	// filter by year
-		{
-			for (BbkOutline bbk : this)
-				if (bbk.isEnteredBetween(enterYear))
+		for (BbkOutline bbk : this)
+			for (String type : typeList)
+				if (bbk.type.equals(type))
 					filteredList.add(bbk);
+		return filteredList;
+	}
+	
+	public SearchResultList filterByEnterYear(int[] enterYear)
+	{
+		if (enterYear == null)	// don't filter
+			return (SearchResultList) this.clone();
+		if (enterYear.length != 2)
+		{	System.out.println("Invalid filter enterYear... ");
+			return (SearchResultList) this.clone();
 		}
-		else	// don't filter
-		{
-			for (BbkOutline bbk : this)
-				filteredList.add(bbk);
+		// else
+		SearchResultList filteredList = new SearchResultList();
+		for (BbkOutline bbk : this)
+		{	int theYear = Integer.parseInt(bbk.enterDate.substring(0, 4));
+			if ((enterYear[0] <= theYear) && (enterYear[1] >= theYear))
+				filteredList.add(bbk);;
 		}
 		return filteredList;
+	}
+	
+	public SearchResultList filterBySthInRating1()
+	{
+		// fix me
+		return null;
+	}
+	
+	public SearchResultList filterBySthInRating2()
+	{
+		// fix me
+		return null;
+	}
+	
+	public SearchResultList filterBySthInRating3()
+	{
+		// fix me
+		return null;
+	}
+	
+	public SearchResultList filterBySthInRating4()
+	{
+		// fix me
+		return null;
 	}
 	
 	public void display()

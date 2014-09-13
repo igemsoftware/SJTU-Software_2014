@@ -140,6 +140,19 @@ public class BbkDatabaseConnector
 		} catch (SQLException e) {e.printStackTrace();}
         return result;
     }
+    
+    /** Upload a new bbk and get the odd num used to modify it later */
+    public static String upload(BbkUpload bbkUpload)
+    {	
+    	// fix me
+    	return null;
+    }
+    
+    public static BbkUpload getUploadedBbkByOddNum(String oddNum)
+    {	
+    	// fix me
+    	return null;
+    }
 
 }
 
