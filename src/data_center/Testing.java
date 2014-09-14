@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import javax.swing.*;
 
 import data_center.SketchComponent.*;
-
+//I just have a try
 public class Testing  extends JFrame
 {	
 	/*
