@@ -16,6 +16,7 @@ import data_center.SketchComponent.*;
 public class Testing  extends JFrame
 {	
 	/*
+	adadadada
 	JTable tableList =null;
 	String[] cols={"name","type","author","enterDate","shortDesc","url"};
     String[][] rows=null;
