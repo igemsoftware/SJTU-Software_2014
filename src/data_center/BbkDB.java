@@ -1,5 +1,8 @@
 package data_center;
 
+/** 
+ * Store all the constant in the Database, 
+ * including headers and default score weights */
 public class BbkDB
 {
 	public final static String TABLE_MAIN = "main";
@@ -12,31 +15,22 @@ public class BbkDB
 	public final static String TABLE_TWINS = "twins";
 	
 	
-	/**
-	 * Has a copy in BbkDB.Header.Main, the String here is used as a shortcut
-	 * The final double here is default weight and total points(TP)
-	 */
+	/** Store the total score and default weight set in database */
 	public static class Rating
 	{
-		// table headers
-		public final static String RATING = "rating";	// rate by EasyBbk
-	    public final static String STATUS = "status";
-	    public final static String QUALITY = "quality";
-	    public final static String FEEDBACKS = "feedbacks";
-	    public final static String PUBLICATION = "publication";
-	    
 	    // default weight
-	    public final static double STATUS_DEFAULT_WEIGHT = 1;
-	    public final static double QUALITY_DEFAULT_WEIGHT = 1;
-	    public final static double FEEDBACKS_DEFAULT_WEIGHT = 1;
-	    public final static double PUBLICATION_DEFAULT_WEIGHT = 1;
+	    public final static double STATUS_DEFAULT_WEIGHT = 0.2;
+	    public final static double QUALITY_DEFAULT_WEIGHT = 0.12;
+	    public final static double FEEDBACKS_DEFAULT_WEIGHT = 0.48;
+	    public final static double PUBLICATION_DEFAULT_WEIGHT = 0.2;
 	    
 	    // total points
-	    //total points 值有问题，导致Score越界
 	    public final static double STATUS_TOTAL_POINTS = 1;
 	    public final static double QUALITY_TOTAL_POINTS = 0.6;
 	    public final static double FEEDBACKS_TOTAL_POINTS = 2.4;
 	    public final static double PUBLICATION_TOTAL_POINTS = 1;
+	    
+	    public final static double TOTAL_POINTS = 5;
 	}
 	
 	
@@ -50,13 +44,6 @@ public class BbkDB
 		    public final static String ENTER_DATE = "part_entered";
 		    public final static String SHORT_DESC = "part_short_desc";
 		    public final static String URL = "part_url";
-		    
-		    // about rating
-			public final static String RATING = "rating";	// rate by EasyBbk
-		    public final static String STATUS = "status";
-		    public final static String QUALITY = "quality";
-		    public final static String FEEDBACKS = "feedbacks";
-		    public final static String PUBLICATION = "publication";
 		    
 		    public final static String ID = "part_id";
 		    public final static String SHORT_NAME = "part_short_name";
@@ -72,11 +59,22 @@ public class BbkDB
 		    public final static String DNA_STATUS = "DNA_status";
 		    public final static String GROUP_FAVOURITE = "Group_favorite";
 		    
+		    // about EasyBbk rating
 		    public final static String DELETE_THIS_PART = "delete_this_part";
 		    public final static String TOT_CONFIRMED = "tot_confirmed";
 		    public final static String DETAIL_NOT_CONFIRMED = "detail_not_confirmed";
 		    public final static String AVERAGE_STARS = "average_stars";
 		    public final static String TOT_COMMENTS = "tot_comments";
+		    public final static String GOOGLE_ITEMS = "google_items";
+		    public final static String FIRST_URL = "first_url";
+		    
+		    public final static String STATUS = "status";
+ 		    public final static String QUALITY = "quality";
+ 		    public final static String FEEDBACKS = "feedbacks";
+ 		    public final static String PUBLICATION = "publication";
+ 		    public final static String RATING = "rating";	// rate by EasyBbk
+		    	    
+		 		    
 		}
 		
 	    public static class Category
@@ -84,9 +82,7 @@ public class BbkDB
 			public final static String CATEGORY = "category";
 		}
 		
-	    /**
-	     * DeepSubpart.ID != ID
-	     */
+	    /** DeepSubpart.ID != ID */
 		public static class DeepSub	// deep_subpart
 		{	
 			public final static String ID = "subpart_id";
