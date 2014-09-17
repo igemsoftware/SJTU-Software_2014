@@ -5,13 +5,11 @@ import java.sql.*;
 public class BbkDatabaseConnector
 {
 	public final static String DRIVER = "com.mysql.jdbc.Driver";
-	public static String user = "root";
-	public static String password = "root";
-	public final static String URL_SERVER_CW = "jdbc:mysql://192.168.191.1/mydb";
-	public final static String URL_SERVER_YJB = "jdbc:mysql://192.168.191.1/mydb";
-	public final static String URL_SERVER_LOCAL = "jdbc:mysql://localhost:3306/mydb";
+	public final static String URL_SERVER = "jdbc:mysql://202.120.45.101:3306/igem14";
+	public final static String USER_NAME = "igem14";
+	public final static String PASSWORD = "bio34204348;";
 	
-    private static Connection connection;
+    private static Connection connection = null;
     
     public static void connect()
     {
@@ -20,13 +18,23 @@ public class BbkDatabaseConnector
     	catch (ClassNotFoundException e) { e.printStackTrace(); }
         try 
         {	connection 
-        		= DriverManager.getConnection(URL_SERVER_LOCAL, user, password);}
+        		= DriverManager.getConnection(URL_SERVER, USER_NAME, PASSWORD);}
         catch (SQLException e) { e.printStackTrace(); }
+    }
+    
+    public static void checkConnection()
+    {	
+    	try
+    	{	if (connection == null || connection.isClosed())
+				connect();
+		} catch (SQLException e) {e.printStackTrace();}
     }
 
     public static void displayTable(String tableName)
     {
-        String cmdStr = "select * from " + tableName;
+        checkConnection();
+    	
+    	String cmdStr = "select * from " + tableName;
         System.out.println(cmdStr);
         
         Statement statement;
@@ -49,7 +57,9 @@ public class BbkDatabaseConnector
 
     public static BbkOutline getOutlineByName(String name)
     {
-        String cmdStr = "select * from " + BbkDB.TABLE_MAIN + 
+    	checkConnection();
+    	
+    	String cmdStr = "select * from " + BbkDB.TABLE_MAIN + 
         		" where " + BbkDB.Header.Main.NAME + " = " + "'" + name + "'";
         BbkOutline bbkOutline = new BbkOutline();
         try 
@@ -64,8 +74,9 @@ public class BbkDatabaseConnector
 
     public static BbkDetail getDetailByName(String name)
     {
-        BbkDetail bbkDetail = new BbkDetail();
-        
+    	checkConnection();
+    	
+    	BbkDetail bbkDetail = new BbkDetail();
         try 
 		{	Statement statement = connection.createStatement();
 			ResultSet resultSet;
@@ -105,7 +116,9 @@ public class BbkDatabaseConnector
     //Search for a keyword without any limitation
     public static SearchResultList search(String keyword)
     {
-        SearchResultList result = new SearchResultList();
+    	checkConnection();
+    	
+    	SearchResultList result = new SearchResultList();
         try 
 		{	
         	Statement statement = connection.createStatement();
@@ -123,10 +136,12 @@ public class BbkDatabaseConnector
 		} catch (SQLException e) {e.printStackTrace();}
         return result;
     }
-
+    
+    /*
     public static SearchResultList search(String keyword, String type)
     {
-        // fix me
+        checkConnection();
+        
         SearchResultList result = new SearchResultList();
         try 
 		{	
@@ -140,6 +155,7 @@ public class BbkDatabaseConnector
 		} catch (SQLException e) {e.printStackTrace();}
         return result;
     }
+    */
     
     /** Upload a new bbk and get the odd num used to modify it later */
     public static String upload(BbkUpload bbkUpload)
