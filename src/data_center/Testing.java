@@ -1,50 +1,44 @@
 package data_center;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import ch.ethz.ssh2.Connection;
+import ch.ethz.ssh2.Session;
+import ch.ethz.ssh2.StreamGobbler;
 
-import javax.swing.*;
-
-import data_center.SketchComponent.*;
-
-@SuppressWarnings("serial")
-public class Testing  extends JFrame
+public class Testing
 {	
-	public static void main(String[] args)
+	public static void main(String[] args) throws IOException, Exception
 	{	
-		ArrayList<Component> componentList = new ArrayList<Component>();
-		componentList.add(new Label(0, null, null, null, null));
-		componentList.add(new BioBrick(0, 0, null, null));
+		/*
+		Connection conn = new Connection(BbkBlaster.SERVER_ADDRESS);
+		conn.connect();
 		
-		Component component = new Label(0, null, null, null, null);
-		System.out.println(component.getClass() == Label.class);
+		conn.authenticateWithPassword(BbkBlaster.USER_NAME, BbkBlaster.PASS_WORD);
 		
-		ArrayList<Integer> list = new ArrayList<Integer>();
-		list.add(1);list.add(2);list.add(3);
-		sort(list, false);
+		Session sess = conn.openSession();
+		//sess.execCommand("rm db_linux/InputOutput/input");
+		//sess.execCommand("scp -P 22 input igem14@202.120.45.101:/home/igem14/db_linux/");
+		sess.execCommand("ls db_linux/InputOutput");
 		
-		try
-		{	Integer.parseInt("NULL");
-		} catch (Exception e){System.out.println("ei?");}
+		BufferedReader br = new BufferedReader(new InputStreamReader(new StreamGobbler(sess.getStdout())));
+		BufferedReader brErr = new BufferedReader(new InputStreamReader(new StreamGobbler(sess.getStderr())));
+		String str;
+		while ((str = br.readLine()) != null)
+			System.out.println(str);
+		while ((str = brErr.readLine()) != null)
+			System.out.println(str);
+		br.close();
+		brErr.close();
+		System.out.println("Exit status: " + sess.getExitStatus());
+		conn.close();
+		*/
 		
+		SearchResultList list = BbkBlaster.blast("input", BbkBlaster.MODE_INPUT_FILE_PATH);
+		list.display();
+		System.out.println(list.size());
+		//BbkBlaster.deleteLocalCacheFiles();
 		
-	}
-	
-	public static void sort(ArrayList<Integer> list, final boolean DESC)
-	{	
-		Comparator<Integer> comparator = new Comparator<Integer>()
-		{
-			@Override
-			public int compare(Integer x1, Integer x2)
-			{
-				if (DESC)
-					return x2 - x1;
-				
-				else
-					return x1 - x2;
-			}
-		};
-		Collections.sort(list, comparator);
 	}
 }

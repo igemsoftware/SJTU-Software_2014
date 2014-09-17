@@ -265,6 +265,47 @@ public class SearchResultList extends ArrayList<BbkOutline>
 		Collections.sort(this, comparator);
 	}
 	
+	/** Change the list in situ, DESC means ½µÐò  */
+	public void sortByTotalScore(final boolean DESC)
+	{	
+		Comparator<BbkOutline> comparator = new Comparator<BbkOutline>()
+		{
+			@Override
+			public int compare(BbkOutline bbk1, BbkOutline bbk2)
+			{
+				int score1 = bbk1.getScore(), score2 = bbk2.getScore();
+				if (DESC)
+					return score2 - score1;
+				else
+					return score1 - score2;
+			}
+		};
+		Collections.sort(this, comparator);
+	}
+	
+	/** Change the list in situ, DESC means ½µÐò  */
+	public void sortByTotalScore(final boolean DESC, 
+			final double status_weight, final double quality_weight, 
+			final double feedbacks_weight, final double publication_weight)
+	{	
+		Comparator<BbkOutline> comparator = new Comparator<BbkOutline>()
+		{
+			@Override
+			public int compare(BbkOutline bbk1, BbkOutline bbk2)
+			{
+				int score1 = bbk1.getScore(status_weight, quality_weight, 
+						feedbacks_weight, publication_weight);
+				int	score2 = bbk2.getScore(status_weight, quality_weight, 
+						feedbacks_weight, publication_weight);
+				if (DESC)
+					return score2 - score1;
+				else
+					return score1 - score2;
+			}
+		};
+		Collections.sort(this, comparator);
+	}
+	
 	public void display()
 	{	
 		for (BbkOutline bbk : this)
