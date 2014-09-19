@@ -1,6 +1,7 @@
 package data_center;
 
 import java.awt.Color;
+import data_center.SketchComponent.*;
 import java.awt.Font;
 import java.awt.Point;
 import java.io.BufferedReader;
