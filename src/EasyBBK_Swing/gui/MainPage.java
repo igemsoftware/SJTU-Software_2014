@@ -3,6 +3,7 @@ package EasyBBK_Swing.gui;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Graphics2D;
@@ -30,9 +31,22 @@ import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 
+import java.util.*;
+
 public class MainPage{
 
-	private JFrame frame;
+	public JFrame frame;
+	public JPanel Mainpanel;
+	public JLabel Search;
+	public JLabel Design;
+	public JLabel Upload;
+	public JLabel GreenBar;
+	public boolean Search_flag;
+	public boolean Design_flag;
+	public boolean Upload_flag;
+	public MainPage mainpage;
+	public JLabel Home;
+	public Child_Main child_main;
 	/**
 	 * Launch the application.
 	 */
@@ -53,6 +67,7 @@ public class MainPage{
 	 * Create the application.
 	 */
 	public MainPage() {
+		mainpage = this;
 		initialize();
 	}
 
@@ -70,29 +85,25 @@ public class MainPage{
 		frame.setBounds(scrInsets.left,scrInsets.top,scrSize.width-scrInsets.left-scrInsets.right,scrSize.height-scrInsets.top-scrInsets.bottom);
 		frame.setUndecorated(true);
 		
-		JDesktopPane desk = new JDesktopPane();
-		Container MainPanel = frame.getContentPane();
-		desk.setBounds(0, 58, 1366, 670);
-		desk.setLayout(new BorderLayout());
-		//desk.setBackground(Color.black);
-		MainPanel.add(desk);
-		Child_Main child_main = new Child_Main();
-		desk.add(child_main.frame, "Center");;
-		
-		JLabel GreenBar = new JLabel(" ");
+		GreenBar = new JLabel(" ");
 		GreenBar.setOpaque(true);
 		GreenBar.setBounds(0, 0, 1366, 58);
 		Color green = new Color(40, 159, 57);
 		GreenBar.setBackground(green);
 		frame.getContentPane().add(GreenBar);
 		
-		JLabel Home = new JLabel();
+		Home = new JLabel();
 		Home.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/home.png")));
 		Home.setBounds(174, 13, 44, 42);
 		Home.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				
+				Search.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Search1.png")));
+				Design.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Design1.png")));
+				Upload.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Upload1.png")));
+				Mainpanel.removeAll();
+				Mainpanel.add(child_main);
+				Mainpanel.updateUI();
 			}
 			@Override
 			public void mouseEntered(MouseEvent arg0) {
@@ -143,60 +154,107 @@ public class MainPage{
 		});
 		GreenBar.add(Min);
 		
-		JLabel Search = new JLabel();
+		Search = new JLabel();
+		Search_flag = false;
 		Search.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Search1.png")));
 		Search.setBounds(522, 17, 100, 40);
 		Search.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				
+				Search_flag = true;
+				Design_flag = false;
+				Upload_flag = false;
+				Search.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Search_click1.png")));
+				Design.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Design1.png")));
+				Upload.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Upload1.png")));
+				Child_Search_Main child_search_main = new Child_Search_Main(mainpage);
+				Mainpanel.removeAll();
+				Mainpanel.add(child_search_main);
+				Mainpanel.updateUI();
 			}
 			@Override
 			public void mouseEntered(MouseEvent e) {
+				Search.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 				Search.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Search_click1.png")));
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
+				if(Search_flag == false)
 				Search.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Search1.png")));
 			}
 		});
 		GreenBar.add(Search);
 		
-		JLabel Design = new JLabel();
+		Design = new JLabel();
 		Design.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Design1.png")));
 		Design.setBounds(638, 17, 100, 40);
 		Design.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				
+				Design_flag = true;
+				Search_flag = false;
+				Upload_flag = false;
+				Design.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Design_click1.png")));
+				Search.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Search1.png")));
+				Upload.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Upload1.png")));
+				Child_Design child_design = new Child_Design(mainpage);
+				Mainpanel.removeAll();
+				Mainpanel.add(child_design);
+				Mainpanel.updateUI();
 			}
 			@Override
 			public void mouseEntered(MouseEvent e) {
+				Design.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 				Design.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Design_click1.png")));
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
+				if(Design_flag == false)
 				Design.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Design1.png")));
 			}
 		});
 		GreenBar.add(Design);
 		
-		JLabel Upload = new JLabel();
+		Upload = new JLabel();
 		Upload.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Upload1.png")));
 		Upload.setBounds(754, 17, 100, 40);
 		Upload.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				Upload_flag = true;
+				Search_flag = false;
+				Design_flag = false;
+				Upload.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Upload_click1.png")));
+				Search.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Search1.png")));
+				Design.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Design1.png")));
+				Child_Upload child_upload = new Child_Upload(mainpage);
+				Mainpanel.removeAll();
+				Mainpanel.add(child_upload);
+				Mainpanel.updateUI();
 			}
 			@Override
 			public void mouseEntered(MouseEvent e) {
+				Upload.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 				Upload.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Upload_click1.png")));
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
+				if(Upload_flag == false)
 				Upload.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Upload1.png")));
 			}
 		});
 		GreenBar.add(Upload);
+		
+		Mainpanel = new JPanel();
+		Mainpanel.setBounds(0, 59, 1366, 670);
+		Mainpanel.setVisible(true);
+		Mainpanel.setLayout(null);
+		frame.getContentPane().add(Mainpanel);
+		
+		child_main = new Child_Main(this);
+		Mainpanel.add(child_main);
+		Mainpanel.updateUI();
+
+		
 	}
 }

@@ -1,45 +1,27 @@
 package EasyBBK_Swing.gui;
 
-import java.awt.EventQueue;
+import java.awt.Color;
 
-import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JLabel;
+import java.awt.Font;
 
-public class Child_Design {
-
-	private JFrame frame;
-
+public class Child_Design extends JPanel {
+	public MainPage mainpage;
 	/**
-	 * Launch the application.
+	 * Create the panel.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Child_Design window = new Child_Design();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+	public Child_Design(MainPage mainpage1) {
+		mainpage = mainpage1;
+		setBounds(0, 0, 1366, 670);
+		setBackground(new Color(255, 255, 255));
+		setLayout(null);
+		
+		JLabel lblDesign = new JLabel("Design");
+		lblDesign.setFont(new Font("Times New Roman", Font.PLAIN, 36));
+		lblDesign.setBounds(226, 117, 149, 109);
+		add(lblDesign);
+		
+		setVisible(true);
 	}
-
-	/**
-	 * Create the application.
-	 */
-	public Child_Design() {
-		initialize();
-	}
-
-	/**
-	 * Initialize the contents of the frame.
-	 */
-	private void initialize() {
-		frame = new JFrame();
-		frame.setResizable(false);
-		frame.setBounds(0, 0, 1366, 670);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setUndecorated(true);
-	}
-
 }
