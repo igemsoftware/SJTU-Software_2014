@@ -7,9 +7,8 @@ import java.util.ArrayList;
 
 public class SketchComponent
 {
-	public static class Component
+	public abstract static class Component
 	{
-		// attributes
 		public int ID;
 		public int primaryType;
 
@@ -18,7 +17,31 @@ public class SketchComponent
 			ID = theID;
 			primaryType = theType;
 		}
-
+		
+		/** 
+		 * This function is used to be inherited to convert Component
+		 * object into its subclasses, but failed...
+		 */
+		public abstract Component toSubclass();
+		
+		public Label toLabel()
+		{	return (Label) this;	}
+		
+		public BioBrick toBioBrick()
+		{	return (BioBrick) this;	}
+		
+		public Protein toProtein()
+		{	return (Protein) this;	}
+		
+		public BackBone toBackBone()
+		{	return (BackBone) this;	}
+		
+		public Relation toRelation()
+		{	return (Relation) this;	}
+		
+		public BioVector toBioVictor()
+		{	return (BioVector) this;	}
+		
 		public void display()
 		{
 			System.out.println("ID: " + ID);
@@ -29,7 +52,6 @@ public class SketchComponent
 
 	public static class Label extends Component
 	{
-		// attributes
 		public String text;
 		public Point center;
 		public Font font;
@@ -45,7 +67,13 @@ public class SketchComponent
 			this.font = font;
 			this.color = color;
 		}
-
+		
+		@Override
+		public Label toSubclass()
+		{	
+			return this;
+		}
+		
 		public void display()
 		{
 			super.display();
@@ -56,11 +84,10 @@ public class SketchComponent
 
     public static class BioBrick extends Component
     {
-		// attributes
 		public int secondaryType;
 		public Point center;
 		public Color color;
-        public BbkOutline info = null;
+        public String bbkName = null;
 
 		// primary type already known in the class
         public BioBrick(int theID, int secondaryType, Point center, Color color)
@@ -71,14 +98,20 @@ public class SketchComponent
 			this.color = color;
         }
 
+        @Override
+		public BioBrick toSubclass()
+		{	
+			return this;
+		}
+        
         public void display()
         {
 			super.display();
 			System.out.println("SecondaryType: " + secondaryType);
 			System.out.println(center.toString());
 			System.out.println("Color: " + color);
-			if (info != null)
-                info.display();
+			if (bbkName != null)
+				System.out.println("BbkName: " + bbkName);
         }
 
 
@@ -86,7 +119,6 @@ public class SketchComponent
 
 	public static class Protein extends Component
 	{
-		// attributes
 		public int secondaryType;
 		public Point center;
 		public Color color;
@@ -101,6 +133,12 @@ public class SketchComponent
 			this.color = color;
 		}
 
+		@Override
+		public Protein toSubclass()
+		{	
+			return this;
+		}
+		
 		public void display()
 		{
 			super.display();
@@ -113,7 +151,6 @@ public class SketchComponent
 
 	public static class BackBone extends Component
 	{
-		// attributes
 		public Point leftPoint;
 		public Point rightPoint;
 
@@ -124,6 +161,12 @@ public class SketchComponent
 			this.rightPoint = right;
 		}
 
+		@Override
+		public BackBone toSubclass()
+		{	
+			return this;
+		}
+		
 		public void display()
 		{
 			super.display();
@@ -134,11 +177,6 @@ public class SketchComponent
 
 	public static class Relation extends Component
 	{
-		public final static int PROMOTE = 1;
-		public final static int SUPPRESS = 2;
-		public final static int OTHER = 0;
-
-		// attributes
 		public int secondaryType;
 		public ArrayList<Point> posList;
 		public Color color;
@@ -155,6 +193,12 @@ public class SketchComponent
 			this.thickness = thickness;
 		}
 
+		@Override
+		public Relation toSubclass()
+		{	
+			return this;
+		}
+		
 		public void display()
 		{
 			super.display();
@@ -166,14 +210,13 @@ public class SketchComponent
 		}
 	}
 
-	public static class Vector extends Component
+	public static class BioVector extends Component
 	{
-		// attributes
 		public int secondaryType;
 		public Point center;
 		public double scale;
 		
-		public Vector(int theID, int secondaryType, Point center, int scale)
+		public BioVector(int theID, int secondaryType, Point center, double scale)
 		{
 			super(theID, BbkType.Sketch.VECTOR);
 			this.secondaryType = secondaryType;
@@ -181,6 +224,12 @@ public class SketchComponent
 			this.scale = scale;
 		}
 
+		@Override
+		public BioVector toSubclass()
+		{	
+			return this;
+		}
+		
 		public void display()
 		{
 			super.display();

@@ -11,9 +11,6 @@ import java.awt.Point;
 import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
-import java.util.Iterator;
-
-
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.OutputKeys;
@@ -28,7 +25,6 @@ import javax.xml.transform.stream.StreamResult;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
-import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.w3c.dom.Text;
 
@@ -362,7 +358,7 @@ public class SketchProject
     
     }
 
-    public ArrayList LoadFromFile (String filePath)throws Exception
+    public ArrayList<Component> LoadFromFile (String filePath)throws Exception
     {   
     	ArrayList<Component> List = new ArrayList<Component>(); //用来储存所有的node节点
     	DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
@@ -445,26 +441,12 @@ public class SketchProject
     		Point p = new Point();
     		p.x = Integer.parseInt(ss.getElementsByTagName("centerx").item(0).getFirstChild().getNodeValue());
     		p.y = Integer.parseInt(ss.getElementsByTagName("centery").item(0).getFirstChild().getNodeValue());
-    		//Component temp = new BioVector (Integer.parseInt(ss.getElementsByTagName("ID").item(0).getFirstChild().getNodeValue()),Integer.parseInt(ss.getElementsByTagName("secondaryType").item(0).getFirstChild().getNodeValue()),p,Double.valueOf(ss.getElementsByTagName("scale").item(0).getFirstChild().getNodeValue()));
-    		//List.add(temp);
+    		Component temp = new BioVector (Integer.parseInt(ss.getElementsByTagName("ID").item(0).getFirstChild().getNodeValue()),Integer.parseInt(ss.getElementsByTagName("secondaryType").item(0).getFirstChild().getNodeValue()),p,Double.valueOf(ss.getElementsByTagName("scale").item(0).getFirstChild().getNodeValue()));
+    		List.add(temp);
     	}
     	}
     	return List;
     }
-    
-    public static void main(String args[]) {
-      ArrayList<Component> List2 = null;
-  	  String str = "saved graph.xml";
-  	  SketchProject t = new SketchProject();
-  	  try {
-  		List2 = t.LoadFromFile(str);
-  	   }
-  	   catch (Exception e) {
-  	   e.printStackTrace();
-  	  }
-  	  String outfile = "韩建华的XML.xml";
-  	  t.SaveIntoFile(outfile,List2);
-  	 }
 
     public void ExportIntoPicture(int exportFormat)
     {   
