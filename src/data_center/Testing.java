@@ -1,14 +1,21 @@
 package data_center;
 
 public class Testing
-{	/*
+{	
 	public static void main(String[] args)
 	{	
-		SearchResultList list = BbkBlaster.blast("input", BbkBlaster.MODE_INPUT_FILE_PATH);
-		list.display();
-		System.out.println(list.size());
-		//BbkBlaster.deleteLocalCacheFiles();
-		
+		/*
+		ArrayList<Component> List2 = null;
+		String str = "saved graph.xml";
+		SketchProject t = new SketchProject();
+		try {
+			List2 = t.LoadFromFile(str);
+		} catch (Exception e) {
+		e.printStackTrace();
+		}
+		String outfile = "º«½¨»ªµÄXML.xml";
+		t.SaveIntoFile(outfile,List2);
+	`*/
 	}
-	*/
+	
 }
