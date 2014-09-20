@@ -216,7 +216,7 @@ public class SketchComponent
 		public Point center;
 		public double scale;
 		
-		public BioVector(int theID, int secondaryType, Point center, int scale)
+		public BioVector(int theID, int secondaryType, Point center, double scale)
 		{
 			super(theID, BbkType.Sketch.VECTOR);
 			this.secondaryType = secondaryType;
