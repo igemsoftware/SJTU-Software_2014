@@ -65,10 +65,32 @@ public class Child_Main extends JPanel {
 				mainpage.Search.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Search_click1.png")));
 				mainpage.Design.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Design1.png")));
 				mainpage.Upload.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Upload1.png")));
-				Child_Search_Main child_search_main = new Child_Search_Main(mainpage);
-				mainpage.Mainpanel.removeAll();
-				mainpage.Mainpanel.add(child_search_main);
-				mainpage.Mainpanel.updateUI();
+				
+				if(mainpage.child_search_main_current == null){
+					Child_Search_Main child_search_main = new Child_Search_Main(mainpage);
+					mainpage.Mainpanel.removeAll();
+					mainpage.Mainpanel.add(child_search_main);
+					mainpage.Mainpanel.updateUI();
+					mainpage.CurrentPage = 1;
+					String s = ""+ mainpage.CurrentPage;
+					mainpage.test.setText(s);
+				}
+				else if(mainpage.child_search_main_current != null && mainpage.child_search_current == null){
+					mainpage.Mainpanel.removeAll();
+					mainpage.Mainpanel.add(mainpage.child_search_main_current);
+					mainpage.Mainpanel.updateUI();
+					mainpage.CurrentPage = 1;
+					String s = ""+ mainpage.CurrentPage;
+					mainpage.test.setText(s);
+				}
+				else if(mainpage.child_search_current != null){
+					mainpage.Mainpanel.removeAll();
+					mainpage.Mainpanel.add(mainpage.child_search_current);
+					mainpage.Mainpanel.updateUI();
+					mainpage.CurrentPage = 11;
+					String s = ""+ mainpage.CurrentPage;
+					mainpage.test.setText(s);
+				}
 			}
 		});
 		SearchDrawingBox.setBounds(192, 397, 290, 220);
@@ -93,10 +115,24 @@ public class Child_Main extends JPanel {
 				mainpage.Search.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Search1.png")));
 				mainpage.Design.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Design_click1.png")));
 				mainpage.Upload.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Upload1.png")));
-				Child_Design child_design = new Child_Design(mainpage);
-				mainpage.Mainpanel.removeAll();
-				mainpage.Mainpanel.add(child_design);
-				mainpage.Mainpanel.updateUI();
+
+				if(mainpage.child_design_current == null){
+					Child_Design child_design = new Child_Design(mainpage);
+					mainpage.Mainpanel.removeAll();
+					mainpage.Mainpanel.add(child_design);
+					mainpage.Mainpanel.updateUI();
+					mainpage.CurrentPage = 2;
+					String s = ""+ mainpage.CurrentPage;
+					mainpage.test.setText(s);
+				}
+				else if(mainpage.child_design_current != null){
+					mainpage.Mainpanel.removeAll();
+					mainpage.Mainpanel.add(mainpage.child_design_current);
+					mainpage.Mainpanel.updateUI();
+					mainpage.CurrentPage = 2;
+					String s = ""+ mainpage.CurrentPage;
+					mainpage.test.setText(s);
+				}
 			}
 		});
 		DesignDrawingBox.setBounds(539, 397, 290, 220);
@@ -121,10 +157,24 @@ public class Child_Main extends JPanel {
 				mainpage.Search.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Search1.png")));
 				mainpage.Design.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Design1.png")));
 				mainpage.Upload.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Upload_click1.png")));
-				Child_Upload child_upload = new Child_Upload(mainpage);
-				mainpage.Mainpanel.removeAll();
-				mainpage.Mainpanel.add(child_upload);
-				mainpage.Mainpanel.updateUI();
+
+				if(mainpage.child_upload_current == null){
+					Child_Upload child_upload = new Child_Upload(mainpage);
+					mainpage.Mainpanel.removeAll();
+					mainpage.Mainpanel.add(child_upload);
+					mainpage.Mainpanel.updateUI();
+					mainpage.CurrentPage = 3;
+					String s = ""+ mainpage.CurrentPage;
+					mainpage.test.setText(s);
+				}
+				else if(mainpage.child_upload_current != null){
+					mainpage.Mainpanel.removeAll();
+					mainpage.Mainpanel.add(mainpage.child_upload_current);
+					mainpage.Mainpanel.updateUI();
+					mainpage.CurrentPage = 3;
+					String s = ""+ mainpage.CurrentPage;
+					mainpage.test.setText(s);
+				}
 			}
 		});
 		UploadDrawingBox.setBounds(887, 397, 290, 220);

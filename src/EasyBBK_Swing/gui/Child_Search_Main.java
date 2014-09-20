@@ -1,6 +1,7 @@
 package EasyBBK_Swing.gui;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Font;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
@@ -99,11 +100,16 @@ public class Child_Search_Main extends JPanel {
 			@Override
 			public void keyPressed(KeyEvent arg0) {
 				if(arg0.getKeyChar() == arg0.VK_ENTER){
-					Child_Search child_search = new Child_Search();
+					Component component = mainpage.Mainpanel.getComponent(0);
+					if(component instanceof Child_Search_Main){
+						mainpage.child_search_main_current = (Child_Search_Main) component;
+					}
+					Child_Search child_search = new Child_Search(mainpage);
 					mainpage.Mainpanel.removeAll();
 					mainpage.Mainpanel.add(child_search);
 					child_search.textField.setText(SearchText.getText());
 					mainpage.Mainpanel.updateUI();
+					mainpage.CurrentPage = 11;
 				}
 			}
 		});
@@ -123,12 +129,19 @@ public class Child_Search_Main extends JPanel {
 		goBox.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				Child_Search child_search = new Child_Search();
+				Component component = mainpage.Mainpanel.getComponent(0);
+				if(component instanceof Child_Search_Main){
+					mainpage.child_search_main_current = (Child_Search_Main) component;
+				}
+				Child_Search child_search = new Child_Search(mainpage);
 				mainpage.Mainpanel.removeAll();
 				mainpage.Mainpanel.add(child_search);
 				child_search.textField.setText(SearchText.getText());
 				mainpage.Mainpanel.updateUI();
-				SearchResultList searchresultlist = BbkDatabaseConnector.search(SearchText.getText());
+				mainpage.CurrentPage = 11;
+				String s = ""+ mainpage.CurrentPage;
+				mainpage.test.setText(s);
+				//SearchResultList searchresultlist = BbkDatabaseConnector.search(SearchText.getText());
 				//BbkBlaster.MODE_INPUT_FILE_PATH
 				//BbkBlaster.blast(input, mode);
 			}

@@ -1,6 +1,7 @@
 package EasyBBK_Swing.gui;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.EventQueue;
 
 import javax.swing.BorderFactory;
@@ -22,6 +23,7 @@ import javax.swing.JSeparator;
 import javax.swing.JCheckBox;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
+
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
@@ -37,10 +39,13 @@ public class Child_Search extends JPanel {
 	public JCheckBox chckbxNotDeleted;
 	public JCheckBox chckbxDeleted;
 	public JTextField textField;
+	public JLabel Search;
+	public MainPage mainpage;
 	/**
 	 * Create the panel.
 	 */
-	public Child_Search() {
+	public Child_Search(MainPage mainpage1) {
+		mainpage = mainpage1;
 		setBounds(0, 0, 1366, 670);
 		setBackground(new Color(255, 255, 255));
 		setLayout(null);
@@ -95,12 +100,26 @@ public class Child_Search extends JPanel {
 		Text_BackGround.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Text.png")));
 		Result.add(Text_BackGround);
 		
-		JLabel Search = new JLabel();
+		Search = new JLabel();
 		Search.setBounds(530, 42, 100, 50);
 		Search.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/SearchBox_searchButton.png")));
 		Search.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
+				if(textField.getText() == null || textField.getText().trim().equals("")){
+					Component component = mainpage.Mainpanel.getComponent(0);
+					if(component instanceof Child_Search){
+						mainpage.child_search_current = (Child_Search) component;
+						Child_Search_Main child_search_main = new Child_Search_Main(mainpage);
+						mainpage.Mainpanel.removeAll();
+						mainpage.Mainpanel.add(child_search_main);
+						mainpage.Mainpanel.updateUI();
+						mainpage.CurrentPage = 1;
+						String s = ""+ mainpage.CurrentPage;
+						mainpage.test.setText(s);
+					}
+					return;
+				}
 				Choicepanel.setVisible(false);
 			}
 			@Override
