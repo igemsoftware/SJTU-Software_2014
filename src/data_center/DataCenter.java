@@ -2,14 +2,14 @@ package data_center;
 
 public class DataCenter
 {
-	public SearchPageCenter SPC;
+	public SearchCenter searchCenter;
     public DetailPageCenter DPC;
-    public SketchProject paintingProject;
+    public SketchCenter sketchCenter;
 
     public DataCenter()
     {
-        SPC = new SearchPageCenter();
+    	searchCenter = new SearchCenter();
         DPC = new DetailPageCenter();
-        paintingProject = new SketchProject();
+        sketchCenter = new SketchCenter();
     }
 }

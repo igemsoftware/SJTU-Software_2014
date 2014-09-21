@@ -1,5 +1,9 @@
 package data_center;
 
+import java.awt.Color;
+import java.awt.Font;
+
+import data_center.SketchComponent.*;
 
 public class Testing
 {	
@@ -17,5 +21,13 @@ public class Testing
 		String outfile = "º«½¨»ªµÄXML.xml";
 		t.SaveIntoFile(outfile,List2);
 	`*/
+		
+		Component component = null;//new Label(0, null, null, null, null);
+		
+		Font font = new Font(null, 0, 0);
+		Color color = new Color(23, 43, 109);
+		color = new Color(-15258771);
+		System.out.println(color.getRGB());
+		
 	}
 }
