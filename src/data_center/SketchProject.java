@@ -13,6 +13,7 @@ import java.io.OutputStreamWriter;
 import java.io.Writer;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Result;
 import javax.xml.transform.Source;
@@ -32,55 +33,97 @@ public class SketchProject
 {
 	public class Operation
 	{
+		/** Add component, not bbkName or sth like that */
 		public final static int ADD = 1;
+		/** Remove component, not bbkName or sth like that */
 		public final static int REMOVE = 2;
-		public final static int REPLACE = 3;
+		public final static int MODIFY = 3;
 
-		// attributes
-		public Component previous = null;
-		public int operationType;
-		public Component following = null;
+		// no TYPE_SECONDART_TYPE and TYPE_CURVE cause they can't be modified
+		public final static int TYPE_COMPONENT = 0;
+		public final static int TYPE_STRING = 1;
+		public final static int TYPE_CENTER = 2;
+		public final static int TYPE_FONT = 3;
+		public final static int TYPE_COLOR = 4;
+		public final static int TYPE_SIZE = 5;
+		public final static int TYPE_NULL = -1;
 		
-		public Operation(Component pre, Component fol)
+		// attributes
+		public int ID;
+		public int operationType;
+		public int attributeType;
+		public Object previous = null;
+		public Object following = null;
+		
+		public Operation(int ID, int opeType, int attType, Object pre, Object fol)
 		{
-			previous = pre;
-			following = fol;
-			if (pre == null && fol == null)
-				System.out.println("Meaningless operation... ");
-			else if (pre == null)
-				operationType = Operation.ADD;
-			else if (fol == null)
-				operationType = Operation.REMOVE;
-			else // pre, fol != null
-				operationType = Operation.REPLACE;
+			this.ID = ID;
+			this.operationType = opeType;
+			this.attributeType = attType;
+			this.previous = pre;
+			this.following = fol;
 		}
 
 		public Operation generateReversedOp()
 		{
-			return new Operation(this.following, this.previous);
+			switch (operationType)
+			{	case ADD:
+					return new Operation(ID, REMOVE, attributeType, following, previous);
+				case REMOVE:
+					return new Operation(ID, ADD, attributeType, following, previous);
+				case MODIFY:
+					return new Operation(ID, MODIFY, attributeType, following, previous);
+				default:
+					return null;	
+			}
+		}
+		
+		@SuppressWarnings("unused")
+		private int checkAttributeType(int opeType, Object pre, Object fol)
+		{	
+			if (pre == null && fol == null)
+				return TYPE_NULL;
+			if (pre != null && fol != null && pre.getClass() != fol.getClass())
+				return TYPE_NULL;
+			if (opeType == ADD || opeType == REMOVE)
+				return TYPE_COMPONENT;
+			
+			Object obj = (pre != null ? pre : fol);
+			switch (obj.getClass().getSimpleName())
+			{	case "String":
+					return TYPE_STRING;
+				case "Point":
+					return TYPE_CENTER;
+				case "Integer":
+				case "Double":
+					return TYPE_SIZE;
+				case "Font":
+					return TYPE_FONT;
+				case "Color":
+					return TYPE_COLOR;
+				default:
+					return TYPE_NULL;
+			}
 		}
 	}
 
 	
-	public final static int EXPORT_JPG = 0;
-    public final static int EXPORT_BMP = 1;
-    public final static int EXPORT_PNG = 2;
-    public final static int EXPORT_GIF = 3;
-
 	// attributes
-	public ArrayList<Component> componentList;
-	public HistoryList<Operation> operationHistory;
+	public String name;
+	
+	public ArrayList<Component> componentList = new ArrayList<Component>();
+	public HistoryList<Operation> operationHistory = new HistoryList<Operation>();
 
 	public boolean modified = false;
 	
 
-    public SketchProject()
+    public SketchProject(String name)
     {
-		componentList = new ArrayList<Component>();
-		operationHistory = new HistoryList<Operation>();
+		this.name = name;
     }
+    
 
-	public Component FindComponentByID(int ID)
+	public Component findComponentByID(int ID)
 	{
 		for (Component comp : componentList)
 			if (comp.ID == ID)
@@ -89,64 +132,335 @@ public class SketchProject
 		return null;
 	}
 
-	public void AddComponent(Component component)
+	public void addComponent(Component component)
 	{
 		if (component != null)
-		{
-			componentList.add(component);
-			operationHistory.putInItem(new Operation(null, component));
+		{	Operation operation = new Operation
+				(component.ID, Operation.ADD, Operation.TYPE_COMPONENT, null, component);
+			operationHistory.putInItem(operation);
+			exeOperation(operation);
 			modified = true;
 		}
 	}
 
-	public void DelComponent(Component component)
+	public void delComponent(Component component)
 	{
 		if (component != null)
-		{
-			componentList.remove(component);
-			operationHistory.putInItem(new Operation(component, null));
+		{	Operation operation = new Operation
+				(component.ID, Operation.REMOVE, Operation.TYPE_COMPONENT, component, null);
+			operationHistory.putInItem(operation);
+			exeOperation(operation);
 			modified = true;
 		}
 	}
 
-	public void ModifyComponent(Component pre, Component fol)
+	/**
+	 *  attributeType should be picked from Operation.TYPE_
+	 *  folAttribute is the attribute changed into, such as Point, Color */
+	public void modifyComponent(int theID, int attributeType, Object folAttribute)
 	{
-		if (pre != null && fol != null)
-		{
-			componentList.remove(pre);
-			componentList.add(fol);
-			operationHistory.putInItem(new Operation(pre, fol));
-			modified = true;
+		Component component = findComponentByID(theID);
+		if (component == null)
+			return;
+		// operation.previous is null to be parsed in switch(){}
+		Operation operation = new Operation
+				(component.ID, Operation.MODIFY, attributeType, null, folAttribute);
+		switch (attributeType)
+		{	case Operation.TYPE_STRING:
+				operation.previous = component.getString();	break;
+			case Operation.TYPE_CENTER:
+				operation.previous = component.getCenter();	break;
+			case Operation.TYPE_SIZE:
+				operation.previous = component.getSize();	break;
+			case Operation.TYPE_FONT:
+				operation.previous = component.getFont();	break;
+			case Operation.TYPE_COLOR:
+				operation.previous = component.getColor();	break;
+			default:
+				return;
+		}
+		operationHistory.putInItem(operation);
+		exeOperation(operation);
+		modified = true;
+	}
+	
+	public Operation ctrlZ()
+	{
+		Operation originalOp = operationHistory.rollBack();
+		if (originalOp == null)
+			return null;
+		// else... 
+		Operation reversedOp = originalOp.generateReversedOp();
+		exeOperation(reversedOp);
+		modified = true;
+		return reversedOp;
+	}
+
+	public Operation ctrlY()
+	{
+		Operation originalOp = operationHistory.goForward();
+		if (originalOp == null)
+			return null;
+		// else... 
+		exeOperation(originalOp);
+		modified = true;
+		return originalOp;
+	}
+	
+	/** Change the componentList without change the historyList 
+	 * because it is set to act under an operation, not to generate one */
+	private void exeOperation(Operation operation)
+	{	
+		switch (operation.operationType)
+		{	case Operation.ADD:
+				componentList.add((Component) operation.following);	break;
+			case Operation.REMOVE:
+				componentList.remove((Component) operation.previous);	break;
+			case Operation.MODIFY:
+				Component component = findComponentByID(operation.ID);
+				Object object = operation.following;
+				switch (operation.attributeType)
+				{	case Operation.TYPE_STRING:
+						component.setString((String) object);	break;
+					case Operation.TYPE_CENTER:
+						component.setCenter((Point) object);	break;
+					case Operation.TYPE_SIZE:
+						component.setSize((Double) object);	break;
+					case Operation.TYPE_FONT:
+						component.setFont((Font) object);	break;
+					case Operation.TYPE_COLOR:
+						component.setColor((Color) object);	break;
+					default:
+						return;
+				}
 		}
 	}
-
-	public Operation CtrlZ()
+	
+	
+	
+	
+	public void saveIntoFile(String filePath)
 	{
-		Operation originalOperation = operationHistory.rollBack();
-		if (originalOperation == null)
-			return null;
-
-		// else... 
-		componentList.add(originalOperation.following);
-		// previous can be null, if is, nothing to be done
-		componentList.remove(originalOperation.previous);
-		modified = true;
-		return originalOperation.generateReversedOp();
+		Document doc = null;
+  	  	try {
+  		  doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
+  	  	} catch (ParserConfigurationException e) {e.printStackTrace();}
+  	  	Element root = doc.createElement("GraphDesign");
+	  	doc.appendChild(root); // 将根元素添加到文档上
+	  	
+	  	// 获取节点信息
+  	  	for (Component component : componentList)
+  	  	{	Element componentNode = createComponentNode(doc, component);
+  	  		root.appendChild(componentNode);
+  	  	}
+  	  		
+  	  	try
+  	  	{	FileOutputStream fos = new FileOutputStream(filePath);
+  	  		OutputStreamWriter outwriter = new OutputStreamWriter(fos);
+  	  		
+  	  		Source source = new DOMSource(doc);
+  	  		Result result = new StreamResult(outwriter);
+  	  		Transformer xformer = TransformerFactory.newInstance().newTransformer();
+  	  		xformer.setOutputProperty(OutputKeys.ENCODING, "gb2312");
+  	  		xformer.transform(source, result);
+  	  		
+  	  		outwriter.close();
+	  		fos.close();
+  	  	} catch(Exception e) {e.printStackTrace();}
+  	  	
+  	  	name = getFileName(filePath);
+  	  	modified = false;
 	}
-
-	public Operation CtrlY()
+	
+	public void loadFromFile(String filePath)
+	{	
+        Document doc = null;
+  	  	try {
+  		  doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(filePath);
+  	  	} catch (Exception e) {e.printStackTrace();}
+        
+  	  	// 下面开始读取
+    	Element root = doc.getDocumentElement(); // 获取根元素
+    	NodeList nodes = root.getElementsByTagName("Component");
+    	
+    	componentList.clear();
+    	for (int i = 0; i < nodes.getLength(); i++)
+    	{	// 依次取得每一个节点
+	    	Element componentNode = (Element) nodes.item(i);
+	    	Component component = parseComponentNode(componentNode);
+	    	componentList.add(component);
+	    }
+	    
+    	name = getFileName(filePath);
+    	modified = false;
+	}
+	
+	
+	
+	
+	
+	
+	private String getFileName(String filePath)
+	{	
+		String[] token;
+		token = filePath.split("\\");
+		token = token[token.length - 1].split("/");
+		String fileNameWithSuffix = token[token.length - 1];
+		int index = fileNameWithSuffix.lastIndexOf(".");
+		return fileNameWithSuffix.substring(0, index);
+	}
+	
+	
+	private Element createComponentNode(Document doc, Component component)
 	{
-		Operation originalOperation = operationHistory.goForward();
-		if (originalOperation == null)
-			return null;
-
-		// else... 
-		componentList.add(originalOperation.previous);
-		// previous can be null, if is, nothing to be done
-		componentList.remove(originalOperation.following);
-		modified = true;
-		return originalOperation;
+		Element componentNode = doc.createElement("Component");
+  		componentNode.setAttribute("ID", Integer.toString(component.ID));
+  		componentNode.setAttribute("primaryType", component.primaryType);
+  		
+  		// about secondaryType
+  		Element eleSecType = doc.createElement("secondaryType");
+  		Integer secondaryType = component.getSecondaryType();
+  		Text txtSecType = doc.createTextNode(
+  				secondaryType != null ? secondaryType.toString() : "null");
+  		componentNode.appendChild(eleSecType.appendChild(txtSecType));
+  		
+  		// about string (text, bbkName)
+  		Element eleString = doc.createElement("string");
+  		String string = component.getString();
+  		Text txtString = doc.createTextNode(
+  				string != null ? string : "null");
+  		componentNode.appendChild(eleString.appendChild(txtString));
+  		
+  		// about center
+  		Element eleCenter = doc.createElement("center");
+  		Point center = component.getCenter();
+  		Text txtCenter = doc.createTextNode(
+  				center != null ? center.x + " " + center.y : "null");
+  		componentNode.appendChild(eleCenter.appendChild(txtCenter));
+  		
+  		// about curve (relation.points)
+  		Element eleCurve = doc.createElement("curve");
+  		ArrayList<Point> curve = component.getCurve();
+  		String curveStr = "";
+  		if (curve != null)
+  			for (Point point : curve)
+  				curveStr += point.x + " " + point.y + ",";
+  		else
+  			curveStr = "null";
+  		Text txtCurve = doc.createTextNode(curveStr);
+  		componentNode.appendChild(eleCurve.appendChild(txtCurve));
+  		
+  		// about size (length, thickness, scale)
+  		Element eleSize = doc.createElement("size");
+  		Double size = component.getSize();
+  		Text txtSize = doc.createTextNode(
+  				size != null ? size.toString() : "null");
+  		componentNode.appendChild(eleSize.appendChild(txtSize));
+  		
+  		// about font
+  		Element eleFont = doc.createElement("font");
+  		Font font = component.getFont();
+  		Text txtFont = doc.createTextNode(font != null ? 
+  				font.getName() + "," + font.getStyle() + "," + font.getSize() : "null");
+  		componentNode.appendChild(eleFont.appendChild(txtFont));
+  		
+  		// about color
+  		Element eleColor = doc.createElement("color");
+  		Color color = component.getColor();
+  		Text txtColor = doc.createTextNode(
+  				color != null ? Integer.toString(color.getRGB()) : "null");
+  		componentNode.appendChild(eleColor.appendChild(txtColor));
+  		
+  		return componentNode;
 	}
+	
+	private Component parseComponentNode(Element componentNode)
+	{	
+		int ID = Integer.parseInt(componentNode.getAttribute("ID"));
+		String primaryType = componentNode.getAttribute("primaryType");
+		
+		// about secondaryType
+		Element eleSecType = 
+				(Element) componentNode.getElementsByTagName("secondaryType").item(0);
+		String secTypeStr = eleSecType.getFirstChild().getNodeValue();
+		Integer secondaryType = null;
+		if ( !secTypeStr.equals("null") )
+			secondaryType = Integer.parseInt(secTypeStr);
+		
+		// about string (text, bbkName)
+		Element eleString = (Element) componentNode.getElementsByTagName("string").item(0);
+		String string = eleString.getFirstChild().getNodeValue();
+		if (string.equals("null"))
+			string = null;
+		
+		// about center
+		Element eleCenter = (Element) componentNode.getElementsByTagName("center").item(0);
+		String centerStr = eleCenter.getFirstChild().getNodeValue();
+		Point center = null;
+		if ( !centerStr.equals("null") )
+		{	String[] xy = centerStr.split(" ");
+			center = new Point(Integer.parseInt(xy[0]), Integer.parseInt(xy[1]));
+		}
+		
+		// about curve
+		Element eleCurve = (Element) componentNode.getElementsByTagName("curve").item(0);
+		String curveStr = eleCurve.getFirstChild().getNodeValue();
+		ArrayList<Point> curve = null;
+		if ( !curveStr.equals("null") )
+		{	curve = new ArrayList<Point>();
+			String[] pointListStr = curveStr.split(",");
+			for (String pointStr : pointListStr)
+				if ( !pointStr.equals("") )	// there WILL be an "" in each list
+				{	String[] xy = centerStr.split(" ");
+					curve.add(new Point(Integer.parseInt(xy[0]), Integer.parseInt(xy[1])));
+				}
+		}
+		
+		// about size
+		Element eleSize = (Element) componentNode.getElementsByTagName("size").item(0);
+		String sizeStr = eleSize.getFirstChild().getNodeValue();
+		Double size = null;
+		if ( !sizeStr.equals("null") )
+			size = Double.parseDouble(sizeStr);
+		
+		// about font
+		Element eleFont = (Element) componentNode.getElementsByTagName("font").item(0);
+		String fontStr = eleFont.getFirstChild().getNodeValue();
+		Font font = null;
+		if ( !fontStr.equals("null") )
+		{	String[] tokens = fontStr.split(",");
+			font = new Font
+				(tokens[0], Integer.parseInt(tokens[1]), Integer.parseInt(tokens[2]));
+		}
+		
+		// about color
+		Element eleColor = (Element) componentNode.getElementsByTagName("color").item(0);
+		String colorStr = eleColor.getFirstChild().getNodeValue();
+		Color color = null;
+		if ( !colorStr.equals("null") )
+			color = new Color(Integer.parseInt(colorStr));
+		
+		Component component = null;
+		if (primaryType.equals(Label.class.getSimpleName()))
+			component = new Label(ID, string, center, font, color);
+		else if (primaryType.equals(BioBrick.class.getSimpleName()))
+			component = new BioBrick(ID, string, secondaryType, center, color);
+		else if (primaryType.equals(Protein.class.getSimpleName()))
+			component = new Protein(ID, secondaryType, center, color);
+		else if (primaryType.equals(BackBone.class.getSimpleName()))
+			component = new BackBone(ID, center, (int)size.doubleValue());
+		else if (primaryType.equals(Relation.class.getSimpleName()))
+			component = new Relation(ID, secondaryType, curve, color, (int)size.doubleValue());
+		else if (primaryType.equals(BioVector.class.getSimpleName()))
+			component = new BioVector(ID, secondaryType, center, size);
+		
+		return component;
+	}
+	
+	
+	
+	
+	
 	
 	public static void callWriteXmlFile(Document doc, Writer w, String encoding) {
 		  try {
@@ -180,7 +494,7 @@ public class SketchProject
   	  	Component it= List3.get(i);
   	    System.out.println(it.getClass().getSimpleName());
   	  	if (it.getClass().getSimpleName().equals("Label")){
-  		   
+  		   Label l = it.toLabel();
   		   // 创建一个节点
   		   Element nod = doc.createElement("Component");
   		   nod.setAttribute("name", "Label");
@@ -188,43 +502,43 @@ public class SketchProject
   		   // 创建文本姓名节点
   		   Element h1 = doc.createElement("text");
   		   nod.appendChild(h1);
-  		   Text th1 = doc.createTextNode("it.text");
+  		   Text th1 = doc.createTextNode(l.text);
   		   h1.appendChild(th1);
   		   Element h2 = doc.createElement("centerx");
   		   nod.appendChild(h2); 
-  		   Text th2 = doc.createTextNode("it.center.x");
+  		   Text th2 = doc.createTextNode(Integer.toString(l.center.x));
   		   h2.appendChild(th2);
   		   Element h3 = doc.createElement("centery");
 		   nod.appendChild(h3); 
-		   Text th3 = doc.createTextNode("it.center.y");
+		   Text th3 = doc.createTextNode(Integer.toString(l.center.y));
 		   h3.appendChild(th3);
 		   Element h4 = doc.createElement("fonta");
   		   nod.appendChild(h4); 
-  		   Text th4 = doc.createTextNode("123");
+  		   Text th4 = doc.createTextNode(l.font.getName());
   		   h4.appendChild(th4);
   		   Element h5 = doc.createElement("fontb");
 		   nod.appendChild(h5); 
-		   Text th5 = doc.createTextNode("123");
+		   Text th5 = doc.createTextNode(Integer.toString(l.font.getStyle()));
 		   h5.appendChild(th5);
 		   Element h6 = doc.createElement("fontc");
   		   nod.appendChild(h6); 
-  		   Text th6 = doc.createTextNode("123");
+  		   Text th6 = doc.createTextNode(Integer.toString(l.font.getSize()));
   		   h6.appendChild(th6);
   		   Element h7 = doc.createElement("colorx");
 		   nod.appendChild(h7); 
-		   Text th7 = doc.createTextNode("it.blue");
+		   Text th7 = doc.createTextNode(Integer.toString(l.color.getRed()));
 		   h7.appendChild(th7);
 		   Element h8 = doc.createElement("colory");
 		   nod.appendChild(h8); 
-		   Text th8 = doc.createTextNode("it.green");
+		   Text th8 = doc.createTextNode(Integer.toString(l.color.getGreen()));
 		   h8.appendChild(th8);
 		   Element h9 = doc.createElement("colorz");
 		   nod.appendChild(h9); 
-		   Text th9 = doc.createTextNode("it.red");
+		   Text th9 = doc.createTextNode(Integer.toString(l.color.getBlue()));
 		   h9.appendChild(th9);
   		  }
   	  if (it.getClass().getSimpleName().equals("BioBrick")){
- 		   
+ 		   BioBrick b = it.toBioBrick();
  		   // 创建一个节点
  		   Element nod = doc.createElement("Component");
  		   nod.setAttribute("name", "BioBrick");
@@ -232,36 +546,54 @@ public class SketchProject
  		   // 创建文本姓名节点
  		   Element h1 = doc.createElement("secondaryType");
  		   nod.appendChild(h1);
- 		   Text th1 = doc.createTextNode("it.secondaryType");
+ 		   Text th1 = doc.createTextNode(Integer.toString(b.secondaryType));
  		   h1.appendChild(th1);
  		   Element h2 = doc.createElement("centerx");
  		   nod.appendChild(h2); 
- 		   Text th2 = doc.createTextNode("it.center.x");
+ 		   Text th2 = doc.createTextNode(Integer.toString(b.center.x));
  		   h2.appendChild(th2);
  		   Element h3 = doc.createElement("centery");
 		   nod.appendChild(h3); 
-		   Text th3 = doc.createTextNode("it.center.y");
+		   Text th3 = doc.createTextNode(Integer.toString(b.center.y));
 		   h3.appendChild(th3);
  		   Element h4 = doc.createElement("colorx");
 		   nod.appendChild(h4); 
-		   Text th4 = doc.createTextNode("it.blue");
+		   Text th4 = doc.createTextNode(Integer.toString(b.color.getRed()));
 		   h4.appendChild(th4);
 		   Element h5 = doc.createElement("colory");
 		   nod.appendChild(h5); 
-		   Text th5 = doc.createTextNode("it.green");
+		   Text th5 = doc.createTextNode(Integer.toString(b.color.getGreen()));
 		   h5.appendChild(th5);
 		   Element h6 = doc.createElement("colorz");
 		   nod.appendChild(h6); 
-		   Text th6 = doc.createTextNode("it.red");
+		   Text th6 = doc.createTextNode(Integer.toString(b.color.getBlue()));
 		   h6.appendChild(th6);
+		   Element h7 = doc.createElement("bbkName");
+		   nod.appendChild(h7); 
+		   Text th7 = doc.createTextNode(b.bbkName);
+		   h7.appendChild(th7);
  		  }
   	if (it.getClass().getSimpleName().equals("BackBone")){
-		   
+		   BackBone b = it.toBackBone();
 		   // 创建一个节点
 		   Element nod = doc.createElement("Component");
 		   nod.setAttribute("name", "BackBone");
 		   root.appendChild(nod);// 添加属性   
 		   // 创建文本姓名节点
+		   // modified by chyb due to the change in BackBone
+		   Element h1 = doc.createElement("centerx");
+		   nod.appendChild(h1);
+		   Text th1 = doc.createTextNode(Integer.toString(b.center.x));
+		   h1.appendChild(th1);
+		   Element h2 = doc.createElement("centery");
+		   nod.appendChild(h2); 
+		   Text th2 = doc.createTextNode(Integer.toString(b.center.y));
+		   h2.appendChild(th2);
+		   Element h3 = doc.createElement("length");
+		   nod.appendChild(h3);
+		   Text th3 = doc.createTextNode(Integer.toString(b.length));
+		   h3.appendChild(th3);
+		   /*
 		   Element h1 = doc.createElement("leftPointx");
 		   nod.appendChild(h1);
 		   Text th1 = doc.createTextNode("it.leftPoint.x");
@@ -278,10 +610,10 @@ public class SketchProject
 		   nod.appendChild(h4); 
 		   Text th4 = doc.createTextNode("it.rightPoint.y");
 		   h4.appendChild(th4);
-		  
+			*/
 		  }
   	if (it.getClass().getSimpleName().equals("BioVector")){
-		   
+		   BioVector b = it.toBioVictor();
 		   // 创建一个节点
 		   Element nod = doc.createElement("Component");
 		   nod.setAttribute("name", "BioVector");
@@ -289,24 +621,24 @@ public class SketchProject
 		   // 创建文本姓名节点
 		   Element h1 = doc.createElement("secondaryType");
  		   nod.appendChild(h1);
- 		   Text th1 = doc.createTextNode("it.secondaryType");
+ 		   Text th1 = doc.createTextNode(Integer.toString(b.secondaryType));
  		   h1.appendChild(th1);
  		   Element h2 = doc.createElement("centerx");
  		   nod.appendChild(h2); 
- 		   Text th2 = doc.createTextNode("it.center.x");
+ 		   Text th2 = doc.createTextNode(Integer.toString(b.center.x));
  		   h2.appendChild(th2);
  		   Element h3 = doc.createElement("centery");
 		   nod.appendChild(h3); 
-		   Text th3 = doc.createTextNode("it.center.y");
+		   Text th3 = doc.createTextNode(Integer.toString(b.center.y));
 		   h3.appendChild(th3);
 		   Element h4 = doc.createElement("scale");
 		   nod.appendChild(h4); 
-		   Text th4 = doc.createTextNode("it.scale");
+		   Text th4 = doc.createTextNode(Double.toString(b.scale));
 		   h4.appendChild(th4);
 		  
 		  }
   	if (it.getClass().getSimpleName().equals("Relation")){
-		   
+		   Relation r = it.toRelation();
 		   // 创建一个节点
 		   Element nod = doc.createElement("Component");
 		   nod.setAttribute("name", "Relation");
@@ -314,7 +646,7 @@ public class SketchProject
 		   // 创建文本姓名节点
 		   Element h1 = doc.createElement("secondaryType");
 		   nod.appendChild(h1);
-		   Text th1 = doc.createTextNode("it.secondaryType");
+		   Text th1 = doc.createTextNode(Integer.toString(r.secondaryType));
 		   h1.appendChild(th1);
 		   Element h2 = doc.createElement("posListx");
 		   nod.appendChild(h2); 
@@ -326,19 +658,19 @@ public class SketchProject
 		   h3.appendChild(th3);
 		   Element h4 = doc.createElement("colorx");
 		   nod.appendChild(h4); 
-		   Text th4 = doc.createTextNode("it.blue");
+		   Text th4 = doc.createTextNode(Integer.toString(r.color.getRed()));
 		   h4.appendChild(th4);
 		   Element h5 = doc.createElement("colory");
 		   nod.appendChild(h5); 
-		   Text th5 = doc.createTextNode("it.green");
+		   Text th5 = doc.createTextNode(Integer.toString(r.color.getGreen()));
 		   h5.appendChild(th5);
 		   Element h6 = doc.createElement("colorz");
 		   nod.appendChild(h6); 
-		   Text th6 = doc.createTextNode("it.red");
+		   Text th6 = doc.createTextNode(Integer.toString(r.color.getBlue()));
 		   h6.appendChild(th6);
 		   Element h7 = doc.createElement("thickness");
 		   nod.appendChild(h7); 
-		   Text th7 = doc.createTextNode("it.thickness");
+		   Text th7 = doc.createTextNode(Integer.toString(r.thickness));
 		   h7.appendChild(th7);
 		  
 		  }
@@ -393,7 +725,7 @@ public class SketchProject
     		p.x = Integer.parseInt(ss.getElementsByTagName("centerx").item(0).getFirstChild().getNodeValue());
     		p.y = Integer.parseInt(ss.getElementsByTagName("centery").item(0).getFirstChild().getNodeValue());
     		Color c = new Color(Integer.parseInt(ss.getElementsByTagName("colorx").item(0).getFirstChild().getNodeValue()),Integer.parseInt(ss.getElementsByTagName("colory").item(0).getFirstChild().getNodeValue()),Integer.parseInt(ss.getElementsByTagName("colorz").item(0).getFirstChild().getNodeValue()));//红绿蓝
-    		Component temp = new BioBrick(Integer.parseInt(ss.getElementsByTagName("ID").item(0).getFirstChild().getNodeValue()),Integer.parseInt(ss.getElementsByTagName("secondaryType").item(0).getFirstChild().getNodeValue()),p,c);
+    		Component temp = new BioBrick(Integer.parseInt(ss.getElementsByTagName("ID").item(0).getFirstChild().getNodeValue()),ss.getElementsByTagName("bbkName").item(0).getFirstChild().getNodeValue(), Integer.parseInt(ss.getElementsByTagName("secondaryType").item(0).getFirstChild().getNodeValue()),p,c);
     		List.add(temp);
     	}
     	else if (ss.getAttribute("name").equals("Protein"))
@@ -408,12 +740,13 @@ public class SketchProject
     	else if (ss.getAttribute("name").equals("BackBone"))
     	{
     		Point p1 = new Point();
-    		Point p2 = new Point();
-    		p1.x = Integer.parseInt(ss.getElementsByTagName("leftPointx").item(0).getFirstChild().getNodeValue());
-    		p1.y = Integer.parseInt(ss.getElementsByTagName("leftPointy").item(0).getFirstChild().getNodeValue());
-    		p2.x = Integer.parseInt(ss.getElementsByTagName("rightPointx").item(0).getFirstChild().getNodeValue());
-    		p2.y = Integer.parseInt(ss.getElementsByTagName("rightPointy").item(0).getFirstChild().getNodeValue());
-    		Component temp = new BackBone(Integer.parseInt(ss.getElementsByTagName("ID").item(0).getFirstChild().getNodeValue()),p1,p2);
+    		//Point p2 = new Point();
+    		p1.x = Integer.parseInt(ss.getElementsByTagName("centerx").item(0).getFirstChild().getNodeValue());
+    		p1.y = Integer.parseInt(ss.getElementsByTagName("centery").item(0).getFirstChild().getNodeValue());
+    		int length = Integer.parseInt(ss.getElementsByTagName("length").item(0).getFirstChild().getNodeValue());
+    		//p2.x = Integer.parseInt(ss.getElementsByTagName("rightPointx").item(0).getFirstChild().getNodeValue());
+    		//p2.y = Integer.parseInt(ss.getElementsByTagName("rightPointy").item(0).getFirstChild().getNodeValue());
+    		Component temp = new BackBone(Integer.parseInt(ss.getElementsByTagName("ID").item(0).getFirstChild().getNodeValue()),p1,length);
     		List.add(temp);
     	}
     	else if (ss.getAttribute("name").equals("Relation"))
@@ -447,23 +780,5 @@ public class SketchProject
     	}
     	return List;
     }
-
-    public void ExportIntoPicture(int exportFormat)
-    {   
-        // fix me
-		switch (exportFormat)
-        {   case EXPORT_JPG:
-
-                break;
-            case EXPORT_BMP:
-
-                break;
-            case EXPORT_PNG:
-
-                break;
-            case EXPORT_GIF:
-
-                break;
-        }
-    }
+    
 }
