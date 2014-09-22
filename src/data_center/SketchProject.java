@@ -3,11 +3,11 @@ package data_center;
 import java.util.ArrayList;
 
 import data_center.SketchComponent.*;
-import data_center.SketchComponent.Component;
 
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Point;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
@@ -207,6 +207,15 @@ public class SketchProject
 		return originalOp;
 	}
 	
+	public void displayComponents()
+	{	
+		for (Component component : componentList)
+			component.display();
+	}
+	
+	
+	
+	
 	/** Change the componentList without change the historyList 
 	 * because it is set to act under an operation, not to generate one */
 	private void exeOperation(Operation operation)
@@ -302,10 +311,7 @@ public class SketchProject
 	
 	private String getFileName(String filePath)
 	{	
-		String[] token;
-		token = filePath.split("\\");
-		token = token[token.length - 1].split("/");
-		String fileNameWithSuffix = token[token.length - 1];
+		String fileNameWithSuffix = new File( filePath.trim()).getName();
 		int index = fileNameWithSuffix.lastIndexOf(".");
 		return fileNameWithSuffix.substring(0, index);
 	}
@@ -322,54 +328,61 @@ public class SketchProject
   		Integer secondaryType = component.getSecondaryType();
   		Text txtSecType = doc.createTextNode(
   				secondaryType != null ? secondaryType.toString() : "null");
-  		componentNode.appendChild(eleSecType.appendChild(txtSecType));
+  		eleSecType.appendChild(txtSecType);
+  		componentNode.appendChild(eleSecType);
   		
   		// about string (text, bbkName)
   		Element eleString = doc.createElement("string");
   		String string = component.getString();
   		Text txtString = doc.createTextNode(
   				string != null ? string : "null");
-  		componentNode.appendChild(eleString.appendChild(txtString));
+  		eleString.appendChild(txtString);
+  		componentNode.appendChild(eleString);
   		
   		// about center
   		Element eleCenter = doc.createElement("center");
   		Point center = component.getCenter();
   		Text txtCenter = doc.createTextNode(
   				center != null ? center.x + " " + center.y : "null");
-  		componentNode.appendChild(eleCenter.appendChild(txtCenter));
+  		eleCenter.appendChild(txtCenter);
+  		componentNode.appendChild(eleCenter);
   		
   		// about curve (relation.points)
   		Element eleCurve = doc.createElement("curve");
   		ArrayList<Point> curve = component.getCurve();
   		String curveStr = "";
-  		if (curve != null)
+  		if (curve != null && curve.size() != 0)	// a list of [] become <curve/> in file
   			for (Point point : curve)
-  				curveStr += point.x + " " + point.y + ",";
+  				curveStr = curveStr + (point.x + " " + point.y + ",");
   		else
   			curveStr = "null";
   		Text txtCurve = doc.createTextNode(curveStr);
-  		componentNode.appendChild(eleCurve.appendChild(txtCurve));
+  		eleCurve.appendChild(txtCurve);
+  		componentNode.appendChild(eleCurve);
   		
   		// about size (length, thickness, scale)
   		Element eleSize = doc.createElement("size");
   		Double size = component.getSize();
   		Text txtSize = doc.createTextNode(
   				size != null ? size.toString() : "null");
-  		componentNode.appendChild(eleSize.appendChild(txtSize));
+  		eleSize.appendChild(txtSize);
+  		componentNode.appendChild(eleSize);
   		
   		// about font
   		Element eleFont = doc.createElement("font");
   		Font font = component.getFont();
   		Text txtFont = doc.createTextNode(font != null ? 
   				font.getName() + "," + font.getStyle() + "," + font.getSize() : "null");
-  		componentNode.appendChild(eleFont.appendChild(txtFont));
+  		eleFont.appendChild(txtFont);
+  		componentNode.appendChild(eleFont);
   		
   		// about color
   		Element eleColor = doc.createElement("color");
   		Color color = component.getColor();
   		Text txtColor = doc.createTextNode(
   				color != null ? Integer.toString(color.getRGB()) : "null");
-  		componentNode.appendChild(eleColor.appendChild(txtColor));
+  		eleColor.appendChild(txtColor);
+  		componentNode.appendChild(eleColor);
   		
   		return componentNode;
 	}
@@ -408,10 +421,10 @@ public class SketchProject
 		ArrayList<Point> curve = null;
 		if ( !curveStr.equals("null") )
 		{	curve = new ArrayList<Point>();
-			String[] pointListStr = curveStr.split(",");
-			for (String pointStr : pointListStr)
+			String[] pointStrList = curveStr.split(",");
+			for (String pointStr : pointStrList)
 				if ( !pointStr.equals("") )	// there WILL be an "" in each list
-				{	String[] xy = centerStr.split(" ");
+				{	String[] xy = pointStr.split(" ");
 					curve.add(new Point(Integer.parseInt(xy[0]), Integer.parseInt(xy[1])));
 				}
 		}
