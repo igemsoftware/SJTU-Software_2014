@@ -87,6 +87,7 @@ public class SketchComponent
 		
 		public void display()
 		{
+			System.out.println("\n\n********");
 			System.out.println("ID: " + ID);
 			System.out.println("Type: " + primaryType);
 		}
@@ -151,7 +152,7 @@ public class SketchComponent
 		{
 			super.display();
 			System.out.println("Text: " + text);
-			System.out.println(center.toString());
+			System.out.println("Center: " + center.toString());
 		}
 	}
 
@@ -212,11 +213,10 @@ public class SketchComponent
         public void display()
         {
 			super.display();
+			System.out.println("BbkName: " + bbkName);
 			System.out.println("SecondaryType: " + secondaryType);
-			System.out.println(center.toString());
+			System.out.println("Center: " + center.toString());
 			System.out.println("Color: " + color);
-			if (bbkName != null)
-				System.out.println("BbkName: " + bbkName);
         }
 
 
@@ -270,7 +270,7 @@ public class SketchComponent
 		{
 			super.display();
 			System.out.println("SecondaryType :" + secondaryType);
-			System.out.println(center.toString());
+			System.out.println("Center: " + center.toString());
 			System.out.println("Color: " + color);
 		}
 	
@@ -311,7 +311,7 @@ public class SketchComponent
 		public void display()
 		{
 			super.display();
-			System.out.println(center.toString());
+			System.out.println("Center: " + center.toString());
 			System.out.println("Length: " + length);
 		}
 	}
@@ -373,8 +373,9 @@ public class SketchComponent
 		{
 			super.display();
 			System.out.println("SecondaryType: " + secondaryType);
+			System.out.println("Curve: ");
 			for (Point point : posList)
-				System.out.println(point.toString());
+				System.out.println("\t" + point.toString());
 			System.out.println("Color: " + color);
 			System.out.println("Thickness: " + thickness);
 		}
@@ -426,7 +427,7 @@ public class SketchComponent
 		{
 			super.display();
 			System.out.println("SecondaryType: " + secondaryType);
-			System.out.println(center.toString());
+			System.out.println("Center: " + center.toString());
 			System.out.println("Scale: " + scale);
 		}
 	}
