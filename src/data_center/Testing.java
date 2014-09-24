@@ -3,15 +3,18 @@ package data_center;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Point;
+import java.io.IOException;
 import java.util.ArrayList;
+
+import org.apache.http.client.ClientProtocolException;
 
 import data_center.SketchComponent.*;
 
 public class Testing
 {	
-	public static void main(String[] args)
+	public static void main(String[] args) throws Exception
 	{	
-		
+		/*
 		ArrayList<Point> curve = new ArrayList<Point>();
 		curve.add(new Point(11, 11));	curve.add(new Point(22, 22));
 		curve.add(new Point(33, 33));	curve.add(new Point(44, 44));
@@ -35,6 +38,9 @@ public class Testing
 		
 		project.loadFromFile("testXML.xml");
 		project.displayComponents();
+		*/
+		
+		BbkDatabaseConnector.getDetailByName("BBa_B0012").display();
 		
 	}
 }

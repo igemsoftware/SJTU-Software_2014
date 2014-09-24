@@ -77,4 +77,10 @@ public class HistoryList<T>
 			return null;
 		}
 	}
+	
+	public void clear()
+	{	
+		currentItemNo = -1;
+		dataList.clear();
+	}
 }
