@@ -1,10 +1,10 @@
 package data_center;
 
-public class SearchPageCenter
+public class SearchCenter
 {
 	public HistoryList<SearchResultList> historyList;
     
-    public SearchPageCenter()
+    public SearchCenter()
     {
 		historyList = new HistoryList<SearchResultList>();
     }
@@ -31,6 +31,18 @@ public class SearchPageCenter
         SearchResultList currentList = BbkDatabaseConnector.search(keyword);
 		historyList.putInItem(currentList);
         return historyList.getCurrentItem();
+    }
+    
+    public SearchResultList blast(String input, int mode)
+    {	
+    	SearchResultList currentList = BbkBlaster.blast(input, mode);
+    	historyList.putInItem(currentList);
+    	return historyList.getCurrentItem();
+    }
+    
+    public BbkDetail getDetail(String bbkName)
+    {	
+    	return BbkDatabaseConnector.getDetailByName(bbkName);
     }
 
 	public SearchResultList rollBack()
