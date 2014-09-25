@@ -283,7 +283,10 @@ public class SketchProject
 	
 	public void loadFromFile(String filePath)
 	{	
-        Document doc = null;
+		componentList.clear();
+    	operationHistory.clear();
+    	
+    	Document doc = null;
   	  	try {
   		  doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(filePath);
   	  	} catch (Exception e) {e.printStackTrace();}
@@ -292,7 +295,6 @@ public class SketchProject
     	Element root = doc.getDocumentElement(); // 获取根元素
     	NodeList nodes = root.getElementsByTagName("Component");
     	
-    	componentList.clear();
     	for (int i = 0; i < nodes.getLength(); i++)
     	{	// 依次取得每一个节点
 	    	Element componentNode = (Element) nodes.item(i);
@@ -353,7 +355,7 @@ public class SketchProject
   		String curveStr = "";
   		if (curve != null && curve.size() != 0)	// a list of [] become <curve/> in file
   			for (Point point : curve)
-  				curveStr = curveStr + (point.x + " " + point.y + ",");
+  				curveStr += point.x + " " + point.y + ",";
   		else
   			curveStr = "null";
   		Text txtCurve = doc.createTextNode(curveStr);

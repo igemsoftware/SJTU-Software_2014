@@ -40,7 +40,6 @@ public class BbkOutline
     
     public void fillData_main(ResultSet resultSet) throws SQLException
     {	
-    	resultSet.next();
     	name = resultSet.getString(BbkDB.Header.Main.NAME);
 	    type = resultSet.getString(BbkDB.Header.Main.TYPE);
 	    author = resultSet.getString(BbkDB.Header.Main.AUTHOR);
