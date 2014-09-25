@@ -40,7 +40,8 @@ public class Testing
 		project.displayComponents();
 		*/
 		
-		BbkDatabaseConnector.getDetailByName("BBa_B0012").display();
-		
+		//BbkDatabaseConnector.getDetailByName("BBa_B0012").display();
+		String x = null;
+		System.out.println(x);
 	}
 }
