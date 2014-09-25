@@ -6,8 +6,6 @@ import java.awt.Point;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import org.apache.http.client.ClientProtocolException;
-
 import data_center.SketchComponent.*;
 
 public class Testing
