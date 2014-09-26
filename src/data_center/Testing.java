@@ -12,11 +12,45 @@ import java.util.List;
 
 import data_center.SketchComponent.*;
 
+@SuppressWarnings("unused")
 public class Testing
 {	
+	static DataCenter dataCenter = new DataCenter();
+	
 	public static void main(String[] args) throws Exception
 	{	
-		/*
+		//searchKeyword();
+		compareAssignDetail();
+		
+	}
+	
+	
+	
+	
+	private static void searchKeyword()
+	{	
+		SearchResultList list = dataCenter.searchCenter.search("BBa_B");
+		list.display();
+		System.out.println("List size: " + list.size());
+	}
+	
+	private static void searchFilterAndSort()
+	{	
+		// fix me
+	}
+	
+	private static void searchHistory()
+	{	
+		// fix me
+	}
+	
+	private static void compareAssignDetail()
+	{	
+		dataCenter.compareCenter.assignDetail("BBa_B1005", 2).display();
+	}
+	
+	private static void sketchXMLReadWrite()
+	{	
 		ArrayList<Point> curve = new ArrayList<Point>();
 		curve.add(new Point(11, 11));	curve.add(new Point(22, 22));
 		curve.add(new Point(33, 33));	curve.add(new Point(44, 44));
@@ -34,19 +68,16 @@ public class Testing
 		componentList.add(new BioVector(5, BbkType.Sketch.Vector.BACTERIA, 
 				new Point(300, 300), 3));
 		
-		SketchProject project = new SketchProject("SketchProject1");
+		SketchProject project = dataCenter.sketchCenter.newProject();
+		System.out.println("Auto generated project name: " + project.name);
 		project.componentList = componentList;
+		
 		project.saveIntoFile("testXML.xml");
-		
 		project.loadFromFile("testXML.xml");
+		
 		project.displayComponents();
-		*/
-		
-		DataCenter dataCenter = new DataCenter();
-		SearchResultList list = dataCenter.searchCenter.search("GFP");
-		list.display();
-		System.out.println(list.size());
-		//dataCenter.compareCenter.assignDetail("BBa_B0014", 2).display();
-		
 	}
+	
+	
+	
 }

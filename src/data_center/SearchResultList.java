@@ -30,6 +30,14 @@ public class SearchResultList extends ArrayList<BbkOutline>
 		return rows;
 	}
 
+	public boolean has(String bbkName)
+	{	
+		for (BbkOutline bbkOutline : this)
+			if (bbkOutline.name.equals(bbkName))
+				return true;
+		return false;
+	}
+	
 	/** 
 	 * Use like "listToShow = rawList.filterByType().filterByEnterYear()...;" 
 	 * Please use the String in the SearchResultList.Filter
