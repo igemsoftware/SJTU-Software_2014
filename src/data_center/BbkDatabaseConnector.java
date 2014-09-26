@@ -5,57 +5,56 @@ import java.sql.*;
 public class BbkDatabaseConnector
 {
 	public final static String DRIVER = "com.mysql.jdbc.Driver";
-	public static String user = "root";
-	public static String password = "root";
-	public final static String URL_SERVER_CW = "jdbc:mysql://192.168.191.1/mydb";
-	public final static String URL_SERVER_YJB = "jdbc:mysql://192.168.191.1/mydb";
-	public final static String URL_SERVER_LOCAL = "jdbc:mysql://localhost:3306/mydb";
+	public final static String URL_SERVER = "jdbc:mysql://202.120.45.101:3306/igem14";
+	public final static String USER_NAME = "igem14";
+	public final static String PASSWORD = "bio34204348;";
 	
-    private static Connection connection;
+    private static Connection connection = null;
     
     public static void connect()
     {
     	try 
-    	{	Class.forName(DRIVER);}
-    	catch (ClassNotFoundException e) { e.printStackTrace(); }
-        try 
         {	connection 
-        		= DriverManager.getConnection(URL_SERVER_LOCAL, user, password);}
+        		= DriverManager.getConnection(URL_SERVER, USER_NAME, PASSWORD);}
         catch (SQLException e) { e.printStackTrace(); }
+    }
+    
+    public static void checkConnection()
+    {	
+    	try
+    	{	if (connection == null || connection.isClosed())
+				connect();
+		} catch (SQLException e) {e.printStackTrace();}
     }
 
     public static void displayTable(String tableName)
     {
-        String cmdStr = "select * from " + tableName;
+        checkConnection();
+    	
+    	String cmdStr = "select * from " + tableName;
         System.out.println(cmdStr);
-        
-        Statement statement;
-		try 
-		{	statement = connection.createStatement();
+        try 
+		{	Statement statement = connection.createStatement();
 			ResultSet resultSet = statement.executeQuery(cmdStr);
-
 	        while (resultSet.next())
-	        {	
-	        	// fix me
-	        	BbkOutline bbkOutline = new BbkOutline(resultSet);
-	            bbkOutline.display();
-	        }
+	        	System.out.println(resultSet.getString(0) + "\t" + resultSet.getString(1));
 	        resultSet.close(); 
 		} catch (SQLException e) {e.printStackTrace();}
-
-        System.out.println(cmdStr);
     }
 
 
     public static BbkOutline getOutlineByName(String name)
     {
-        String cmdStr = "select * from " + BbkDB.TABLE_MAIN + 
+    	checkConnection();
+    	
+    	String cmdStr = "select * from " + BbkDB.TABLE_MAIN + 
         		" where " + BbkDB.Header.Main.NAME + " = " + "'" + name + "'";
-        BbkOutline bbkOutline = new BbkOutline();
+        BbkOutline bbkOutline = null;
         try 
 		{	Statement statement = connection.createStatement();
 			ResultSet resultSet = statement.executeQuery(cmdStr);
-			bbkOutline.fillData_main(resultSet);	// resultSet.next() in this function
+			if (resultSet.next())
+				bbkOutline = new BbkOutline(resultSet);
 			resultSet.close();
 		} catch (SQLException e) {e.printStackTrace();}
 
@@ -64,36 +63,54 @@ public class BbkDatabaseConnector
 
     public static BbkDetail getDetailByName(String name)
     {
-        BbkDetail bbkDetail = new BbkDetail();
-        
+    	checkConnection();
+    	
+    	BbkDetail bbkDetail = new BbkDetail();
         try 
 		{	Statement statement = connection.createStatement();
 			ResultSet resultSet;
-			
+			// main
 			resultSet = statement.executeQuery("select * from " + BbkDB.TABLE_MAIN + 
 					" where " + BbkDB.Header.Main.NAME + " = " + "'" + name + "'");
-			bbkDetail.fillData_main(resultSet);
+			if (resultSet.next())
+				bbkDetail.fillData_main(resultSet);
+			else
+				return null;	// if don't have it in main, make it a null
+			// category
 			resultSet = statement.executeQuery("select * from " + BbkDB.TABLE_CATEGORIES + 
 	        		" where " + BbkDB.Header.Main.NAME + " = " + "'" + name + "'");
-			bbkDetail.fillData_categories(resultSet);
+			if (resultSet.next())
+				bbkDetail.fillData_categories(resultSet);
+			// deep_subparts
 			resultSet = statement.executeQuery("select * from " + BbkDB.TABLE_DEEP_SUBPARTS + 
 	        		" where " + BbkDB.Header.Main.NAME + " = " + "'" + name + "'");
-			bbkDetail.fillData_deepSubparts(resultSet);
+			if (resultSet.next())
+				bbkDetail.fillData_deepSubparts(resultSet);
+			// features
 			resultSet = statement.executeQuery("select * from " + BbkDB.TABLE_FEATURES + 
 	        		" where " + BbkDB.Header.Main.NAME + " = " + "'" + name + "'");
-			bbkDetail.fillData_features(resultSet);
+			if (resultSet.next())
+				bbkDetail.fillData_features(resultSet);
+			// parameters
 			resultSet = statement.executeQuery("select * from " + BbkDB.TABLE_PARAMETERS + 
 	        		" where " + BbkDB.Header.Main.NAME + " = " + "'" + name + "'");
-			bbkDetail.fillData_parameters(resultSet);
+			if (resultSet.next())
+				bbkDetail.fillData_parameters(resultSet);
+			// specified_subparts
 			resultSet = statement.executeQuery("select * from " + BbkDB.TABLE_SPECIFIED_SUBSCARS + 
 	        		" where " + BbkDB.Header.Main.NAME + " = " + "'" + name + "'");
-			bbkDetail.fillData_specifiedSubscars(resultSet);
+			if (resultSet.next())
+				bbkDetail.fillData_specifiedSubscars(resultSet);
+			// specified_subscars
 			resultSet = statement.executeQuery("select * from " + BbkDB.TABLE_SPECIFIED_SUBPARTS + 
 	        		" where " + BbkDB.Header.Main.NAME + " = " + "'" + name + "'");
-			bbkDetail.fillData_specifiedSubparts(resultSet);
+			if (resultSet.next())
+				bbkDetail.fillData_specifiedSubparts(resultSet);
+			// twins
 			resultSet = statement.executeQuery("select * from " + BbkDB.TABLE_TWINS + 
 	        		" where " + BbkDB.Header.Main.NAME + " = " + "'" + name + "'");
-			bbkDetail.fillData_twins(resultSet);
+			if (resultSet.next())
+				bbkDetail.fillData_twins(resultSet);
 			
 			resultSet.close();
 		} catch (SQLException e) {e.printStackTrace();}
@@ -105,38 +122,26 @@ public class BbkDatabaseConnector
     //Search for a keyword without any limitation
     public static SearchResultList search(String keyword)
     {
-        SearchResultList result = new SearchResultList();
+    	checkConnection();
+    	
+    	String[] tokens = keyword.split(" ");
+    	SearchResultList result = new SearchResultList();
         try 
-		{	
-        	Statement statement = connection.createStatement();
+		{	Statement statement = connection.createStatement();
         	ResultSet resultSet;
 			
-        	//Actually, I try to realize FULLTEXT INDEX search.
-        	//But it can only search word like 'apple', or slice like 'pple' will failed.
-        	//So, I realize the simple 'like' matching, you can add any other condition by using 'OR...'
-			resultSet = statement.executeQuery("select * from " + BbkDB.TABLE_MAIN + 
-        		" where " + BbkDB.Header.Main.NAME + " like " + "'%" + keyword + "%'" +
-				" OR " + BbkDB.Header.Main.SHORT_DESC + " like " + "'%" + keyword + "%'" +
-				" OR " + BbkDB.Header.Main.ID + " like " + "'%" + keyword + "%'");
-			while (resultSet.next())
-				result.add(new BbkOutline(resultSet));
-		} catch (SQLException e) {e.printStackTrace();}
-        return result;
-    }
-
-    public static SearchResultList search(String keyword, String type)
-    {
-        // fix me
-        SearchResultList result = new SearchResultList();
-        try 
-		{	
-        	Statement statement = connection.createStatement();
-        	ResultSet resultSet;
-			
-			resultSet = statement.executeQuery("select * from " + BbkDB.TABLE_MAIN + 
-        		" where " + type + " like " + "'%" + keyword + "%'");
-			while (resultSet.next())
-				result.add(new BbkOutline(resultSet));
+        	for (String token : tokens)
+        	{	if (token.equals(""))
+        			continue;	// skip the ""s
+	        	resultSet = statement.executeQuery(
+	        		"select * from " + BbkDB.TABLE_MAIN + " where "
+	        			   + BbkDB.Header.Main.NAME + " like " + "'%" + token + "%'" +
+					" OR " + BbkDB.Header.Main.SHORT_DESC + " like " + "'%" + token + "%'" + 
+					" OR " + BbkDB.Header.Main.AUTHOR + " like " + "'%" + token + "%'" + 
+					" OR " + BbkDB.Header.Main.NICKNAME + " like " + "'%" + token + "%'");
+				while (resultSet.next())
+					result.add(new BbkOutline(resultSet));
+        	}
 		} catch (SQLException e) {e.printStackTrace();}
         return result;
     }
