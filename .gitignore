@@ -1,3 +1,4 @@
 *.class
 *.classpath
-*.classpath
+/bin/data_center/
+/bin/EasyBbk_Swing/

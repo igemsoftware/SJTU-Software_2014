@@ -5,6 +5,10 @@ import java.awt.Font;
 import java.awt.Point;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 import data_center.SketchComponent.*;
 
@@ -38,8 +42,11 @@ public class Testing
 		project.displayComponents();
 		*/
 		
-		//BbkDatabaseConnector.getDetailByName("BBa_B0012").display();
-		String x = null;
-		System.out.println(x);
+		DataCenter dataCenter = new DataCenter();
+		SearchResultList list = dataCenter.searchCenter.search("GFP");
+		list.display();
+		System.out.println(list.size());
+		//dataCenter.compareCenter.assignDetail("BBa_B0014", 2).display();
+		
 	}
 }
