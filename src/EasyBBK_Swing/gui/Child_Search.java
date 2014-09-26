@@ -26,6 +26,8 @@ import javax.swing.SpinnerNumberModel;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import javax.swing.JTabbedPane;
+import javax.swing.SwingConstants;
 
 public class Child_Search extends JPanel {
 	
@@ -39,7 +41,20 @@ public class Child_Search extends JPanel {
 	public JCheckBox chckbxNotDeleted;
 	public JCheckBox chckbxDeleted;
 	public JTextField textField;
+	public JPanel Result;
 	public JLabel Search;
+	public JLabel previouspage;
+	public JLabel page1;
+	public JLabel page2;
+	public JLabel page3;
+	public JLabel page4;
+	public JLabel page5;
+	public JLabel page6;
+	public JLabel page7;
+	public JLabel page8;
+	public JLabel page9;
+	public JLabel page10;
+	public JLabel nextpage;
 	public MainPage mainpage;
 	/**
 	 * Create the panel.
@@ -51,7 +66,7 @@ public class Child_Search extends JPanel {
 		setLayout(null);
 		setVisible(true);
 		
-		JPanel Result = new JPanel();
+		Result = new JPanel();
 		Result.setBounds(0, 0, 683, 670);
 		Result.setBackground(new Color(255, 255, 255));
 		Result.setBorder(BorderFactory.createLineBorder(Color.black));
@@ -121,6 +136,7 @@ public class Child_Search extends JPanel {
 					return;
 				}
 				Choicepanel.setVisible(false);
+				searchingresultpage.setVisible(true);
 			}
 			@Override
 			public void mouseEntered(MouseEvent arg0) {
@@ -138,7 +154,20 @@ public class Child_Search extends JPanel {
 			@Override
 			public void keyPressed(KeyEvent e) {
 				if(e.getKeyChar() == e.VK_ENTER){
-					
+					if(textField.getText() == null || textField.getText().trim().equals("")){
+						Component component = mainpage.Mainpanel.getComponent(0);
+						if(component instanceof Child_Search){
+							mainpage.child_search_current = (Child_Search) component;
+							Child_Search_Main child_search_main = new Child_Search_Main(mainpage);
+							mainpage.Mainpanel.removeAll();
+							mainpage.Mainpanel.add(child_search_main);
+							mainpage.Mainpanel.updateUI();
+							mainpage.CurrentPage = 1;
+							String s = ""+ mainpage.CurrentPage;
+							mainpage.test.setText(s);
+						}
+						return;
+					}
 				}
 			}
 		});
@@ -149,6 +178,7 @@ public class Child_Search extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				Choicepanel.setVisible(true);
+				searchingresultpage.setVisible(false);
 			}
 		});
 		Text_BackGround.add(textField);
@@ -326,6 +356,201 @@ public class Child_Search extends JPanel {
 		spinner_3.setModel(new SpinnerNumberModel(0, 0, 100, 1));
 		spinner_3.setBounds(488, 171, 41, 27);
 		Choicepanel.add(spinner_3);
+		
+		
+		
+		previouspage = new JLabel("<previous page");
+		previouspage.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+			}
+		});
+		previouspage.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		previouspage.setBounds(95, 627, 95, 25);
+		Result.add(previouspage);
+		
+		page1 = new JLabel("1", JLabel.CENTER);
+		page1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+			}
+		});
+		page1.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		page1.setBounds(196, 627, 25, 25);
+		Result.add(page1);
+		
+		page2 = new JLabel("2", JLabel.CENTER);
+		page2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+			}
+		});
+		page2.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		page2.setBounds(227, 627, 25, 25);
+		Result.add(page2);
+		
+		page3 = new JLabel("3", SwingConstants.CENTER);
+		page3.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+			}
+		});
+		page3.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		page3.setBounds(258, 627, 25, 25);
+		Result.add(page3);
+		
+		page4 = new JLabel("4", SwingConstants.CENTER);
+		page4.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+			}
+		});
+		page4.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		page4.setBounds(289, 627, 25, 25);
+		Result.add(page4);
+		
+		page5 = new JLabel("5", SwingConstants.CENTER);
+		page5.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+			}
+		});
+		page5.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		page5.setBounds(320, 627, 25, 25);
+		Result.add(page5);
+		
+		page6 = new JLabel("6", SwingConstants.CENTER);
+		page6.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+			}
+		});
+		page6.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		page6.setBounds(351, 627, 25, 25);
+		Result.add(page6);
+		
+		page7 = new JLabel("7", SwingConstants.CENTER);
+		page7.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+			}
+		});
+		page7.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		page7.setBounds(382, 627, 25, 25);
+		Result.add(page7);
+		
+		page8 = new JLabel("8", SwingConstants.CENTER);
+		page8.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+			}
+		});
+		page8.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		page8.setBounds(413, 627, 25, 25);
+		Result.add(page8);
+		
+		page9 = new JLabel("9", SwingConstants.CENTER);
+		page9.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+			}
+		});
+		page9.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		page9.setBounds(444, 627, 25, 25);
+		Result.add(page9);
+		
+		page10 = new JLabel("10", SwingConstants.CENTER);
+		page10.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+			}
+		});
+		page10.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		page10.setBounds(475, 627, 25, 25);
+		Result.add(page10);
+		
+		nextpage = new JLabel("next page>");
+		nextpage.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+			}
+		});
+		nextpage.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		nextpage.setBounds(506, 627, 75, 25);
+		Result.add(nextpage);
 		
 		JPanel Details = new JPanel();
 		Details.setBounds(684, 0, 683, 670);
