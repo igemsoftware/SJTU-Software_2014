@@ -21,8 +21,6 @@ public class BbkUpload extends BbkOutline
 
 	
 	
-	
-	
 	public static class Category
 	{	
 		public String category;

@@ -2,6 +2,7 @@ package EasyBBK_Swing.gui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Container;
 import java.awt.Cursor;
 import java.awt.Dimension;
@@ -22,6 +23,7 @@ import javax.swing.JButton;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
+import javax.swing.JLayeredPane;
 import javax.swing.LayoutStyle;
 
 import java.awt.event.MouseAdapter;
@@ -32,9 +34,9 @@ import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 
 import java.util.*;
+import java.awt.Font;
 
 public class MainPage{
-
 	public JFrame frame;
 	public JPanel Mainpanel;
 	public JLabel Search;
@@ -44,9 +46,15 @@ public class MainPage{
 	public boolean Search_flag;
 	public boolean Design_flag;
 	public boolean Upload_flag;
-	public MainPage mainpage;
+	public static MainPage mainpage;
 	public JLabel Home;
-	public Child_Main child_main;
+	public static Child_Main child_main = null;
+	public static Child_Search_Main child_search_main_current = null;
+	public static Child_Search child_search_current = null;
+	public static Child_Design child_design_current = null;
+	public static Child_Upload child_upload_current = null;
+	public static int CurrentPage = 0;
+	public JLabel test;
 	/**
 	 * Launch the application.
 	 */
@@ -98,12 +106,43 @@ public class MainPage{
 		Home.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
+				if(CurrentPage == 0) return;
+				
 				Search.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Search1.png")));
 				Design.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Design1.png")));
 				Upload.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Upload1.png")));
+
+				if(CurrentPage == 1){
+					Component component = Mainpanel.getComponent(0);
+					if(component instanceof Child_Search_Main){
+						child_search_main_current = (Child_Search_Main) component;
+					}
+				}
+				if(CurrentPage == 11){
+					Component component = Mainpanel.getComponent(0);
+					if(component instanceof Child_Search){
+						child_search_current = (Child_Search) component;
+					}
+				}
+				if(CurrentPage == 2){
+					Component component = Mainpanel.getComponent(0);
+					if(component instanceof Child_Design){
+						child_design_current = (Child_Design) component;
+					}
+				}
+				if(CurrentPage == 3){
+					Component component = Mainpanel.getComponent(0);
+					if(component instanceof Child_Upload){
+						child_upload_current = (Child_Upload) component;
+					}
+				}
+				
 				Mainpanel.removeAll();
 				Mainpanel.add(child_main);
 				Mainpanel.updateUI();
+				CurrentPage = 0;
+				String s = ""+ CurrentPage;
+				test.setText(s);
 			}
 			@Override
 			public void mouseEntered(MouseEvent arg0) {
@@ -161,16 +200,54 @@ public class MainPage{
 		Search.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				if(CurrentPage == 1 || CurrentPage == 11) return;
+				
 				Search_flag = true;
 				Design_flag = false;
 				Upload_flag = false;
 				Search.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Search_click1.png")));
 				Design.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Design1.png")));
 				Upload.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Upload1.png")));
-				Child_Search_Main child_search_main = new Child_Search_Main(mainpage);
-				Mainpanel.removeAll();
-				Mainpanel.add(child_search_main);
-				Mainpanel.updateUI();
+				
+				if(CurrentPage == 2){
+					Component component = Mainpanel.getComponent(0);
+					if(component instanceof Child_Design){
+						child_design_current = (Child_Design) component;
+					}
+				}
+				if(CurrentPage == 3){
+					Component component = Mainpanel.getComponent(0);
+					if(component instanceof Child_Upload){
+						child_upload_current = (Child_Upload) component;
+					}
+				}
+				{
+					if(child_search_main_current == null){
+						Child_Search_Main child_search_main = new Child_Search_Main(mainpage);
+						Mainpanel.removeAll();
+						Mainpanel.add(child_search_main);
+						Mainpanel.updateUI();
+						CurrentPage = 1;
+						String s = ""+ CurrentPage;
+						test.setText(s);
+					}
+					else if(child_search_main_current != null && child_search_current == null){
+						Mainpanel.removeAll();
+						Mainpanel.add(child_search_main_current);
+						Mainpanel.updateUI();
+						CurrentPage = 1;
+						String s = ""+ CurrentPage;
+						test.setText(s);
+					}
+					else if(child_search_current != null){
+						Mainpanel.removeAll();
+						Mainpanel.add(child_search_current);
+						Mainpanel.updateUI();
+						CurrentPage = 11;
+						String s = ""+ CurrentPage;
+						test.setText(s);
+					}
+				}
 			}
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -191,16 +268,54 @@ public class MainPage{
 		Design.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				if(CurrentPage == 2) return;
+				
 				Design_flag = true;
 				Search_flag = false;
 				Upload_flag = false;
 				Design.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Design_click1.png")));
 				Search.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Search1.png")));
 				Upload.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Upload1.png")));
-				Child_Design child_design = new Child_Design(mainpage);
-				Mainpanel.removeAll();
-				Mainpanel.add(child_design);
-				Mainpanel.updateUI();
+				
+				if(CurrentPage == 1){
+					Component component = Mainpanel.getComponent(0);
+					if(component instanceof Child_Search_Main){
+						child_search_main_current = (Child_Search_Main) component;
+					}
+				}
+				
+				if(CurrentPage == 11){
+					Component component = Mainpanel.getComponent(0);
+					if(component instanceof Child_Search){
+						child_search_current = (Child_Search) component;
+					}
+				}
+				
+				if(CurrentPage == 3){
+					Component component = Mainpanel.getComponent(0);
+					if(component instanceof Child_Upload){
+						child_upload_current = (Child_Upload) component;
+					}
+				}
+				{
+					if(child_design_current == null){
+						Child_Design child_design = new Child_Design(mainpage);
+						Mainpanel.removeAll();
+						Mainpanel.add(child_design);
+						Mainpanel.updateUI();
+						CurrentPage = 2;
+						String s = ""+ CurrentPage;
+						test.setText(s);
+					}
+					else if(child_design_current != null){
+						Mainpanel.removeAll();
+						Mainpanel.add(child_design_current);
+						Mainpanel.updateUI();
+						CurrentPage = 2;
+						String s = ""+ CurrentPage;
+						test.setText(s);
+					}
+				}
 			}
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -221,16 +336,53 @@ public class MainPage{
 		Upload.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				if(CurrentPage == 3) return;
+				
 				Upload_flag = true;
 				Search_flag = false;
 				Design_flag = false;
 				Upload.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Upload_click1.png")));
 				Search.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Search1.png")));
 				Design.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Design1.png")));
-				Child_Upload child_upload = new Child_Upload(mainpage);
-				Mainpanel.removeAll();
-				Mainpanel.add(child_upload);
-				Mainpanel.updateUI();
+				
+				if(CurrentPage == 1){
+					Component component = Mainpanel.getComponent(0);
+					if(component instanceof Child_Search_Main){
+						child_search_main_current = (Child_Search_Main) component;
+					}
+				}
+				
+				if(CurrentPage == 11){
+					Component component = Mainpanel.getComponent(0);
+					if(component instanceof Child_Search){
+						child_search_current = (Child_Search) component;
+					}
+				}
+				
+				if(CurrentPage == 2){
+					Component component = Mainpanel.getComponent(0);
+					if(component instanceof Child_Design){
+						child_design_current = (Child_Design) component;
+					}
+				}
+				
+				if(child_upload_current == null){
+					Child_Upload child_upload = new Child_Upload(mainpage);
+					Mainpanel.removeAll();
+					Mainpanel.add(child_upload);
+					Mainpanel.updateUI();
+					CurrentPage = 3;
+					String s = ""+ CurrentPage;
+					test.setText(s);
+				}
+				else if(child_upload_current != null){
+					Mainpanel.removeAll();
+					Mainpanel.add(child_upload_current);
+					Mainpanel.updateUI();
+					CurrentPage = 3;
+					String s = ""+ CurrentPage;
+					test.setText(s);
+				}
 			}
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -245,6 +397,13 @@ public class MainPage{
 		});
 		GreenBar.add(Upload);
 		
+		test = new JLabel("");
+		test.setFont(new Font("Times New Roman", Font.BOLD, 30));
+		String s = ""+ CurrentPage;
+		test.setText(s);
+		test.setBounds(10, 10, 30, 30);
+		GreenBar.add(test);
+		
 		Mainpanel = new JPanel();
 		Mainpanel.setBounds(0, 59, 1366, 670);
 		Mainpanel.setVisible(true);
@@ -254,7 +413,5 @@ public class MainPage{
 		child_main = new Child_Main(this);
 		Mainpanel.add(child_main);
 		Mainpanel.updateUI();
-
-		
 	}
 }

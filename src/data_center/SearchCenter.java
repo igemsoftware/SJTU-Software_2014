@@ -39,6 +39,11 @@ public class SearchCenter
     	historyList.putInItem(currentList);
     	return historyList.getCurrentItem();
     }
+    
+    public BbkDetail getDetail(String bbkName)
+    {	
+    	return BbkDatabaseConnector.getDetailByName(bbkName);
+    }
 
 	public SearchResultList rollBack()
     {
