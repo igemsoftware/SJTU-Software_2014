@@ -9,16 +9,13 @@ public class HistoryList<T>
 
 	public void putInItem(T item)
 	{
-		if (dataList.size() == 0)	// namely currentPageNo == -1
-		{
-			dataList.add(item);
-			currentItemNo = 0;
-		}
-
-		// else... 
-		for (int i = dataList.size() - 1; i >= currentItemNo; ++i)
-			dataList.remove(i);
-		dataList.add(item);		// currentPageNo not changed when adding
+		// also suitable for currentItemNo == -1 case
+		if (currentItemNo < dataList.size() - 1) // not appending, sth to delete
+			for (int i = dataList.size() - 1; i > currentItemNo; --i)
+				dataList.remove(i);
+		// adding the new item into the list
+		++currentItemNo;
+		dataList.add(item);
 	}
 
 	public T getCurrentItem()
@@ -37,15 +34,6 @@ public class HistoryList<T>
 	public boolean canGoForward()
 	{	
 		return currentItemNo < dataList.size();
-	}
-
-
-	public T getCurrentRawSearchResult()
-	{
-		if (dataList.size() == 0)
-			return null;
-		else
-			return dataList.get(currentItemNo);
 	}
 
 	public T rollBack()
@@ -76,5 +64,11 @@ public class HistoryList<T>
 				("Already in the tail of the list, can't go forward... ");
 			return null;
 		}
+	}
+	
+	public void clear()
+	{	
+		currentItemNo = -1;
+		dataList.clear();
 	}
 }

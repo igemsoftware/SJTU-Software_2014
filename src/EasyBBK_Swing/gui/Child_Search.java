@@ -73,7 +73,7 @@ public class Child_Search extends JPanel {
 		add(Result);
 		Result.setLayout(null);
 		
-		JLabel Back = new JLabel();
+		final JLabel Back = new JLabel();
 		Back.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
@@ -91,7 +91,7 @@ public class Child_Search extends JPanel {
 		Back.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/SearchBox_backward.png")));
 		Result.add(Back);
 		
-		JLabel Forward = new JLabel();
+		final JLabel Forward = new JLabel();
 		Forward.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
@@ -115,7 +115,9 @@ public class Child_Search extends JPanel {
 		Text_BackGround.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Text.png")));
 		Result.add(Text_BackGround);
 		
+
 		Search = new JLabel();
+
 		Search.setBounds(530, 42, 100, 50);
 		Search.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/SearchBox_searchButton.png")));
 		Search.addMouseListener(new MouseAdapter() {

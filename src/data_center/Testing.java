@@ -1,43 +1,52 @@
 package data_center;
 
-import java.io.BufferedReader;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Point;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import ch.ethz.ssh2.Connection;
-import ch.ethz.ssh2.Session;
-import ch.ethz.ssh2.StreamGobbler;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
+import data_center.SketchComponent.*;
 
 public class Testing
 {	
-	/*public static void main(String[] args) throws IOException, Exception
+	public static void main(String[] args) throws Exception
 	{	
 		/*
-		Connection conn = new Connection(BbkBlaster.SERVER_ADDRESS);
-		conn.connect();
+		ArrayList<Point> curve = new ArrayList<Point>();
+		curve.add(new Point(11, 11));	curve.add(new Point(22, 22));
+		curve.add(new Point(33, 33));	curve.add(new Point(44, 44));
 		
-		conn.authenticateWithPassword(BbkBlaster.USER_NAME, BbkBlaster.PASS_WORD);
+		ArrayList<Component> componentList = new ArrayList<Component>();
+		componentList.add(new Label(0, "Lable text", 
+				new Point(5, 5), new Font("Times Roman", 10, 3), new Color(0, 0, 0)));
+		componentList.add(new BioBrick(1, "Bba_B0034", BbkType.Sketch.BioBrick.PROMOTER, 
+				new Point(10, 10), null));
+		componentList.add(new Protein(2, BbkType.Sketch.Protein.FACTOR, 
+				new Point(20, 20), Color.BLUE));
+		componentList.add(new BackBone(3, new Point(50, 50), 50));
+		componentList.add(new Relation(4, BbkType.Sketch.Relation.SUPPRESS, 
+				curve, new Color(50, 50, 50), 10));
+		componentList.add(new BioVector(5, BbkType.Sketch.Vector.BACTERIA, 
+				new Point(300, 300), 3));
 		
-		Session sess = conn.openSession();
-		//sess.execCommand("rm db_linux/InputOutput/input");
-		//sess.execCommand("scp -P 22 input igem14@202.120.45.101:/home/igem14/db_linux/");
-		sess.execCommand("ls db_linux/InputOutput");
+		SketchProject project = new SketchProject("SketchProject1");
+		project.componentList = componentList;
+		project.saveIntoFile("testXML.xml");
 		
-		BufferedReader br = new BufferedReader(new InputStreamReader(new StreamGobbler(sess.getStdout())));
-		BufferedReader brErr = new BufferedReader(new InputStreamReader(new StreamGobbler(sess.getStderr())));
-		String str;
-		while ((str = br.readLine()) != null)
-			System.out.println(str);
-		while ((str = brErr.readLine()) != null)
-			System.out.println(str);
-		br.close();
-		brErr.close();
-		System.out.println("Exit status: " + sess.getExitStatus());
-		conn.close();
+		project.loadFromFile("testXML.xml");
+		project.displayComponents();
+		*/
 		
-		SearchResultList list = BbkBlaster.blast("input", BbkBlaster.MODE_INPUT_FILE_PATH);
+		DataCenter dataCenter = new DataCenter();
+		SearchResultList list = dataCenter.searchCenter.search("GFP");
 		list.display();
 		System.out.println(list.size());
-		//BbkBlaster.deleteLocalCacheFiles();
+		//dataCenter.compareCenter.assignDetail("BBa_B0014", 2).display();
 		
-	}*/
+	}
 }
