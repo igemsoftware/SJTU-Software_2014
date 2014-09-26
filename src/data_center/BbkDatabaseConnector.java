@@ -19,7 +19,7 @@ public class BbkDatabaseConnector
         catch (SQLException e) { e.printStackTrace(); }
     }
     
-    public static void checkConnection()
+    private static void checkConnection()
     {	
     	try
     	{	if (connection == null || connection.isClosed())
@@ -125,11 +125,13 @@ public class BbkDatabaseConnector
     	checkConnection();
     	
     	String[] tokens = keyword.split(" ");
-    	SearchResultList result = new SearchResultList();
+    	SearchResultList resultList = new SearchResultList(), 
+    					 tempList = new SearchResultList();
         try 
 		{	Statement statement = connection.createStatement();
         	ResultSet resultSet;
 			
+        	boolean firstToken = true;	// "" doesn't count as firstToken
         	for (String token : tokens)
         	{	if (token.equals(""))
         			continue;	// skip the ""s
@@ -140,10 +142,20 @@ public class BbkDatabaseConnector
 					" OR " + BbkDB.Header.Main.AUTHOR + " like " + "'%" + token + "%'" + 
 					" OR " + BbkDB.Header.Main.NICKNAME + " like " + "'%" + token + "%'");
 				while (resultSet.next())
-					result.add(new BbkOutline(resultSet));
+				{	BbkOutline bbkOutline = new BbkOutline(resultSet);
+					if (firstToken)	// 第一个关键词，只需将outline都加进列表即可
+						tempList.add(bbkOutline);
+					else	// 过滤，只留下前面关键词中搜到过的outline以实现关键词间的AND关系
+						if (resultList.has(bbkOutline.name))
+							tempList.add(bbkOutline);
+				}
+				resultList = tempList;
+				tempList = new SearchResultList();
+				firstToken = false;
+				//System.out.println(resultList.size());
         	}
 		} catch (SQLException e) {e.printStackTrace();}
-        return result;
+        return resultList;
     }
     
     /** Upload a new bbk and get the odd num used to modify it later */
