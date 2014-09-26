@@ -116,7 +116,7 @@ public class MainPage{
 		});
 		GreenBar.add(Home);
 		
-		JLabel Close = new JLabel();
+		final JLabel Close = new JLabel();
 		Close.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Close1.png")));
 		Close.setBounds(1324, 13, 30, 30);
 		Close.addMouseListener(new MouseAdapter() {
@@ -135,7 +135,7 @@ public class MainPage{
 		});
 		GreenBar.add(Close);
 		
-		JLabel Min = new JLabel();
+		final JLabel Min = new JLabel();
 		Min.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Min1.png")));
 		Min.setBounds(1288, 13, 30, 30);
 		Min.addMouseListener(new MouseAdapter() {
