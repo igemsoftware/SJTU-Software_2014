@@ -1,29 +1,32 @@
 package EasyBBK_Swing.gui;
 
 import java.awt.Color;
+import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
 public class SearchingResultPage extends JPanel {
-	
+	public ArrayList<SearchingResult> searchingresult;
+	public int num = 10;
 	/**
 	 * Create the panel.
 	 */
 	public SearchingResultPage() {
 		setBackground(new Color(255, 255, 255));
-		setBounds(62, 117, 558, 500);
+		setBounds(0, 0, 558, 250*num);
 		setBorder(BorderFactory.createLineBorder(Color.black));
 		setVisible(true);
 		setLayout(null);
 		
-		SearchingResult searchingresult1 = new SearchingResult();
-		add(searchingresult1);
-		searchingresult1.setBounds(0, 0, 558, 250);
+		searchingresult = new ArrayList<SearchingResult>();
 		
-		SearchingResult searchingresult2 = new SearchingResult();
-		add(searchingresult2);
-		searchingresult2.setBounds(0, 250, 558, 250);
+		for(int i = 0; i < num; i++){
+			SearchingResult single = new SearchingResult();
+			searchingresult.add(single);
+			add(single);
+			single.setBounds(0, 250*i, 558, 250);
+		}
 	}
 
 }

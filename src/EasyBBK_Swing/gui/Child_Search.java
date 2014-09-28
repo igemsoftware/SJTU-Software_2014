@@ -2,6 +2,8 @@ package EasyBBK_Swing.gui;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Cursor;
+import java.awt.Dimension;
 import java.awt.EventQueue;
 
 import javax.swing.BorderFactory;
@@ -9,6 +11,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.swing.JScrollBar;
 import javax.swing.JTextField;
 
 import java.awt.Font;
@@ -24,25 +27,27 @@ import javax.swing.JCheckBox;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 
+import java.awt.event.AdjustmentEvent;
+import java.awt.event.AdjustmentListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+
 import javax.swing.JTabbedPane;
 import javax.swing.SwingConstants;
+import javax.swing.JScrollPane;
+import javax.swing.ScrollPaneConstants;
+
+import data_center.BbkOutline;
+import data_center.SearchResultList;
 
 public class Child_Search extends JPanel {
-	
-	public JPanel Choicepanel;
-	public JCheckBox chckbxReleased;
-	public JCheckBox chckbxNewCheckBox;
-	public JCheckBox chckbxNotReleased;
-	public JCheckBox chckbxAvailable;
-	public JCheckBox chckbxPlanning;
-	public JCheckBox chckbxInformational;
-	public JCheckBox chckbxNotDeleted;
-	public JCheckBox chckbxDeleted;
 	public JTextField textField;
 	public JPanel Result;
 	public JLabel Search;
+	public MainPage mainpage;
+	public JScrollPane scrollPane;
+	private JLabel Blast;
+	public JPanel Details;
 	public JLabel previouspage;
 	public JLabel page1;
 	public JLabel page2;
@@ -55,11 +60,11 @@ public class Child_Search extends JPanel {
 	public JLabel page9;
 	public JLabel page10;
 	public JLabel nextpage;
-	public MainPage mainpage;
+	public static int currentpage = 1;
 	/**
 	 * Create the panel.
 	 */
-	public Child_Search(MainPage mainpage1) {
+	public Child_Search(MainPage mainpage1, SearchResultList searchresultlist) {
 		mainpage = mainpage1;
 		setBounds(0, 0, 1366, 670);
 		setBackground(new Color(255, 255, 255));
@@ -87,7 +92,7 @@ public class Child_Search extends JPanel {
 				Back.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/SearchBox_backward.png")));
 			}
 		});
-		Back.setBounds(51, 42, 50, 50);
+		Back.setBounds(30, 30, 50, 50);
 		Back.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/SearchBox_backward.png")));
 		Result.add(Back);
 		
@@ -106,19 +111,19 @@ public class Child_Search extends JPanel {
 				Forward.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/SearchBox_forward.png")));
 			}
 		});
-		Forward.setBounds(107, 42, 70, 50);
+		Forward.setBounds(86, 30, 70, 50);
 		Forward.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/SearchBox_forward.png")));
 		Result.add(Forward);
 		
 		JLabel Text_BackGround = new JLabel();
-		Text_BackGround.setBounds(207, 42, 300, 50);
+		Text_BackGround.setBounds(169, 30, 300, 50);
 		Text_BackGround.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Text.png")));
 		Result.add(Text_BackGround);
 		
 
 		Search = new JLabel();
 
-		Search.setBounds(530, 42, 100, 50);
+		Search.setBounds(481, 30, 100, 50);
 		Search.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/SearchBox_searchButton.png")));
 		Search.addMouseListener(new MouseAdapter() {
 			@Override
@@ -137,8 +142,6 @@ public class Child_Search extends JPanel {
 					}
 					return;
 				}
-				Choicepanel.setVisible(false);
-				searchingresultpage.setVisible(true);
 			}
 			@Override
 			public void mouseEntered(MouseEvent arg0) {
@@ -163,6 +166,7 @@ public class Child_Search extends JPanel {
 							Child_Search_Main child_search_main = new Child_Search_Main(mainpage);
 							mainpage.Mainpanel.removeAll();
 							mainpage.Mainpanel.add(child_search_main);
+							child_search_main.SearchText.requestFocus();
 							mainpage.Mainpanel.updateUI();
 							mainpage.CurrentPage = 1;
 							String s = ""+ mainpage.CurrentPage;
@@ -179,386 +183,301 @@ public class Child_Search extends JPanel {
 		textField.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				Choicepanel.setVisible(true);
-				searchingresultpage.setVisible(false);
+				
 			}
 		});
 		Text_BackGround.add(textField);
 		textField.setColumns(20);
 		
-		Choicepanel = new JPanel();
-		Choicepanel.setBackground(new Color(255, 255, 255));
-		Choicepanel.setBounds(62, 117, 558, 211);
-		Choicepanel.setBorder(BorderFactory.createLineBorder(Color.black));
-		Choicepanel.setVisible(false);
-		Result.add(Choicepanel);
-		Choicepanel.setLayout(null);
-		
-		JLabel lblNewLabel = new JLabel("Filters:");
-		lblNewLabel.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		lblNewLabel.setBounds(10, 10, 68, 28);
-		Choicepanel.add(lblNewLabel);
-		
-		JLabel lblNewLabel_1 = new JLabel("Release status:");
-		lblNewLabel_1.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		lblNewLabel_1.setBounds(39, 48, 90, 17);
-		Choicepanel.add(lblNewLabel_1);
-		
-		ItemListener itemListener1 = new ItemListener() {
-            JCheckBox jCheckBox;
- 
-            public void itemStateChanged(ItemEvent e) {
-                jCheckBox = (JCheckBox) e.getSource();
- 
-                if (jCheckBox.isSelected()) {
-                    if(jCheckBox == chckbxReleased){
-                    	chckbxNewCheckBox.setSelected(false);
-                    	chckbxNotReleased.setSelected(false);
-                    }
-                    else if(jCheckBox == chckbxNewCheckBox){
-                    	chckbxReleased.setSelected(false);
-                    	chckbxNotReleased.setSelected(false);
-                    }
-                    else if(jCheckBox == chckbxNotReleased){
-                    	chckbxReleased.setSelected(false);
-                    	chckbxNewCheckBox.setSelected(false);
-                    }
-                } else {
-                    
-                }
- 
-            }
-        };
-        
-        chckbxReleased = new JCheckBox("Released");
-        //chckbxReleased.addItemListener(itemListener1);
-		chckbxReleased.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		chckbxReleased.setBounds(131, 46, 103, 23);
-		chckbxReleased.setBackground(new Color(255, 255, 255));
-		Choicepanel.add(chckbxReleased);
-		
-		chckbxNewCheckBox = new JCheckBox("Deleted");
-		//chckbxNewCheckBox.addItemListener(itemListener1);
-		chckbxNewCheckBox.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		chckbxNewCheckBox.setBounds(235, 46, 103, 23);
-		chckbxNewCheckBox.setBackground(new Color(255, 255, 255));
-		Choicepanel.add(chckbxNewCheckBox);
-		
-		chckbxNotReleased = new JCheckBox("Not Released");
-		//chckbxNotReleased.addItemListener(itemListener1);
-		chckbxNotReleased.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		chckbxNotReleased.setBounds(340, 46, 121, 23);
-		chckbxNotReleased.setBackground(new Color(255, 255, 255));
-		Choicepanel.add(chckbxNotReleased);
-		
-		JLabel lblDnaStatus = new JLabel("DNA status:");
-		lblDnaStatus.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		lblDnaStatus.setBounds(39, 75, 90, 15);
-		Choicepanel.add(lblDnaStatus);
-		
-		chckbxAvailable = new JCheckBox("Available");
-		chckbxAvailable.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		chckbxAvailable.setBounds(131, 72, 103, 23);
-		chckbxAvailable.setBackground(new Color(255, 255, 255));
-		Choicepanel.add(chckbxAvailable);
-		
-		chckbxPlanning = new JCheckBox("Planning");
-		chckbxPlanning.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		chckbxPlanning.setBounds(235, 71, 103, 23);
-		chckbxPlanning.setBackground(new Color(255, 255, 255));
-		Choicepanel.add(chckbxPlanning);
-		
-		chckbxInformational = new JCheckBox("Informational");
-		chckbxInformational.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		chckbxInformational.setBounds(340, 72, 121, 23);
-		chckbxInformational.setBackground(new Color(255, 255, 255));
-		Choicepanel.add(chckbxInformational);
-		
-		JLabel lblNewLabel_2 = new JLabel("Whether or not deleted:");
-		lblNewLabel_2.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		lblNewLabel_2.setBounds(39, 101, 151, 15);
-		Choicepanel.add(lblNewLabel_2);
-		
-		chckbxNotDeleted = new JCheckBox("Not Deleted");
-		chckbxNotDeleted.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		chckbxNotDeleted.setBounds(196, 98, 103, 23);
-		chckbxNotDeleted.setBackground(new Color(255, 255, 255));
-		Choicepanel.add(chckbxNotDeleted);
-		
-		chckbxDeleted = new JCheckBox("Deleted");
-		chckbxDeleted.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		chckbxDeleted.setBounds(311, 98, 103, 23);
-		chckbxDeleted.setBackground(new Color(255, 255, 255));
-		Choicepanel.add(chckbxDeleted);
-		
-		JLabel lblAverageStarsGiven = new JLabel("Average stars Given by previous teams:");
-		lblAverageStarsGiven.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		lblAverageStarsGiven.setBounds(39, 126, 238, 15);
-		Choicepanel.add(lblAverageStarsGiven);
-		
-		JCheckBox checkBox = new JCheckBox(">=4");
-		checkBox.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		checkBox.setBounds(283, 123, 55, 23);
-		checkBox.setBackground(new Color(255, 255, 255));
-		Choicepanel.add(checkBox);
-		
-		JCheckBox chckbxNewCheckBox_1 = new JCheckBox("2-4");
-		chckbxNewCheckBox_1.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		chckbxNewCheckBox_1.setBounds(359, 122, 55, 23);
-		chckbxNewCheckBox_1.setBackground(new Color(255, 255, 255));
-		Choicepanel.add(chckbxNewCheckBox_1);
-		
-		JCheckBox checkBox_1 = new JCheckBox("<=2");
-		checkBox_1.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		checkBox_1.setBounds(432, 122, 55, 23);
-		checkBox_1.setBackground(new Color(255, 255, 255));
-		Choicepanel.add(checkBox_1);
-		
-		JLabel lblNewLabel_3 = new JLabel("Preferences:");
-		lblNewLabel_3.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		lblNewLabel_3.setBounds(10, 151, 99, 15);
-		Choicepanel.add(lblNewLabel_3);
-		
-		JLabel lblStatus = new JLabel("Status:");
-		lblStatus.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		lblStatus.setBounds(39, 176, 47, 15);
-		Choicepanel.add(lblStatus);
-		
-		JSpinner spinner = new JSpinner();
-		spinner.setModel(new SpinnerNumberModel(0, 0, 100, 1));
-		spinner.setBounds(88, 171, 41, 27);
-		Choicepanel.add(spinner);
-		
-		JLabel lblQuality = new JLabel("Quality:");
-		lblQuality.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		lblQuality.setBounds(147, 177, 54, 15);
-		Choicepanel.add(lblQuality);
-		
-		JSpinner spinner_1 = new JSpinner();
-		spinner_1.setModel(new SpinnerNumberModel(0, 0, 100, 1));
-		spinner_1.setBounds(213, 171, 41, 27);
-		Choicepanel.add(spinner_1);
-		
-		JLabel lblFeedbacks = new JLabel("Feedbacks:");
-		lblFeedbacks.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		lblFeedbacks.setBounds(264, 177, 74, 15);
-		Choicepanel.add(lblFeedbacks);
-		
-		JSpinner spinner_2 = new JSpinner();
-		spinner_2.setModel(new SpinnerNumberModel(0, 0, 100, 1));
-		spinner_2.setBounds(353, 171, 41, 27);
-		Choicepanel.add(spinner_2);
-		
-		JLabel lblPublication = new JLabel("Publication:");
-		lblPublication.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		lblPublication.setBounds(404, 177, 74, 15);
-		Choicepanel.add(lblPublication);
-		
-		JSpinner spinner_3 = new JSpinner();
-		spinner_3.setModel(new SpinnerNumberModel(0, 0, 100, 1));
-		spinner_3.setBounds(488, 171, 41, 27);
-		Choicepanel.add(spinner_3);
-		
-		
-		
-		previouspage = new JLabel("<previous page");
+		previouspage = new JLabel("<previous page", SwingConstants.CENTER);
+		previouspage.setForeground(Color.blue);
 		previouspage.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent arg0) {
-			}
-			@Override
 			public void mouseEntered(MouseEvent e) {
-				
+				previouspage.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+				previouspage.setBorder(BorderFactory.createLineBorder(Color.blue));
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
+				previouspage.setBorder(null);
 			}
 		});
 		previouspage.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		previouspage.setBounds(95, 627, 95, 25);
+		previouspage.setBounds(156, 635, 95, 25);
 		Result.add(previouspage);
 		
-		page1 = new JLabel("1", JLabel.CENTER);
+		page1 = new JLabel("1", SwingConstants.CENTER);
+		page1.setForeground(Color.blue);
 		page1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 			}
 			@Override
 			public void mouseEntered(MouseEvent e) {
+				page1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+				page1.setBorder(BorderFactory.createLineBorder(Color.blue));
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
+				page1.setBorder(null);
 			}
 		});
 		page1.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		page1.setBounds(196, 627, 25, 25);
+		page1.setBounds(261, 635, 25, 25);
 		Result.add(page1);
 		
-		page2 = new JLabel("2", JLabel.CENTER);
+		page2 = new JLabel("2", SwingConstants.CENTER);
+		page2.setForeground(Color.blue);
 		page2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 			}
 			@Override
 			public void mouseEntered(MouseEvent e) {
+				page2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+				page2.setBorder(BorderFactory.createLineBorder(Color.blue));
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
+				page2.setBorder(null);
 			}
 		});
 		page2.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		page2.setBounds(227, 627, 25, 25);
+		page2.setBounds(296, 635, 25, 25);
 		Result.add(page2);
 		
 		page3 = new JLabel("3", SwingConstants.CENTER);
+		page3.setForeground(Color.blue);
 		page3.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 			}
 			@Override
 			public void mouseEntered(MouseEvent e) {
+				page3.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+				page3.setBorder(BorderFactory.createLineBorder(Color.blue));
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
+				page3.setBorder(null);
 			}
 		});
 		page3.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		page3.setBounds(258, 627, 25, 25);
+		page3.setBounds(331, 635, 25, 25);
 		Result.add(page3);
 		
 		page4 = new JLabel("4", SwingConstants.CENTER);
+		page4.setForeground(Color.blue);
 		page4.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 			}
 			@Override
 			public void mouseEntered(MouseEvent e) {
+				page4.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+				page4.setBorder(BorderFactory.createLineBorder(Color.blue));
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
+				page4.setBorder(null);
 			}
 		});
 		page4.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		page4.setBounds(289, 627, 25, 25);
+		page4.setBounds(366, 635, 25, 25);
 		Result.add(page4);
 		
 		page5 = new JLabel("5", SwingConstants.CENTER);
+		page5.setForeground(Color.blue);
 		page5.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 			}
 			@Override
 			public void mouseEntered(MouseEvent e) {
+				page5.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+				page5.setBorder(BorderFactory.createLineBorder(Color.blue));
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
+				page5.setBorder(null);
 			}
 		});
 		page5.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		page5.setBounds(320, 627, 25, 25);
+		page5.setBounds(401, 635, 25, 25);
 		Result.add(page5);
 		
-		page6 = new JLabel("6", SwingConstants.CENTER);
-		page6.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-			}
-			@Override
-			public void mouseEntered(MouseEvent e) {
-			}
-			@Override
-			public void mouseExited(MouseEvent e) {
-			}
-		});
-		page6.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		page6.setBounds(351, 627, 25, 25);
-		Result.add(page6);
-		
-		page7 = new JLabel("7", SwingConstants.CENTER);
-		page7.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-			}
-			@Override
-			public void mouseEntered(MouseEvent e) {
-			}
-			@Override
-			public void mouseExited(MouseEvent e) {
-			}
-		});
-		page7.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		page7.setBounds(382, 627, 25, 25);
-		Result.add(page7);
-		
-		page8 = new JLabel("8", SwingConstants.CENTER);
-		page8.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-			}
-			@Override
-			public void mouseEntered(MouseEvent e) {
-			}
-			@Override
-			public void mouseExited(MouseEvent e) {
-			}
-		});
-		page8.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		page8.setBounds(413, 627, 25, 25);
-		Result.add(page8);
-		
-		page9 = new JLabel("9", SwingConstants.CENTER);
-		page9.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-			}
-			@Override
-			public void mouseEntered(MouseEvent e) {
-			}
-			@Override
-			public void mouseExited(MouseEvent e) {
-			}
-		});
-		page9.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		page9.setBounds(444, 627, 25, 25);
-		Result.add(page9);
-		
-		page10 = new JLabel("10", SwingConstants.CENTER);
-		page10.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-			}
-			@Override
-			public void mouseEntered(MouseEvent e) {
-			}
-			@Override
-			public void mouseExited(MouseEvent e) {
-			}
-		});
-		page10.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		page10.setBounds(475, 627, 25, 25);
-		Result.add(page10);
-		
-		nextpage = new JLabel("next page>");
+		nextpage = new JLabel("next page>", SwingConstants.CENTER);
+		nextpage.setForeground(Color.blue);
 		nextpage.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 			}
 			@Override
 			public void mouseEntered(MouseEvent e) {
+				nextpage.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+				nextpage.setBorder(BorderFactory.createLineBorder(Color.blue));
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
+				nextpage.setBorder(null);
 			}
 		});
 		nextpage.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		nextpage.setBounds(506, 627, 75, 25);
+		nextpage.setBounds(436, 635, 75, 25);
 		Result.add(nextpage);
 		
-		JPanel Details = new JPanel();
+		
+		SearchingResultPage searchingresultpage = new SearchingResultPage();
+		searchingresultpage.setPreferredSize(new Dimension(558,2500));
+		
+		initializeresultpage(searchingresultpage, searchresultlist);
+		
+		
+		scrollPane = new JScrollPane(searchingresultpage);
+		JScrollBar scrollbar = new JScrollBar();
+		scrollbar.setUnitIncrement(150);
+		scrollPane.setVerticalScrollBar(scrollbar);
+		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		scrollPane.setBounds(51, 105, 576, 520);
+		scrollPane.validate();
+		Result.add(scrollPane);
+		
+		Blast = new JLabel("");
+		Blast.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				Blast.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/blast1_enter.png")));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				Blast.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/blast1.png")));
+			}
+		});
+		Blast.setBounds(591, 39, 82, 32);
+		Blast.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/blast1.png")));
+		Result.add(Blast);
+		
+		Details = new JPanel();
 		Details.setBounds(684, 0, 683, 670);
 		Details.setBackground(new Color(255, 255, 255));
 		Details.setBorder(BorderFactory.createLineBorder(Color.black));
 		add(Details);
 		Details.setLayout(null);
+	}
+	
+	public void initializeresultpage(SearchingResultPage searchingresultpage, SearchResultList searchresultlist){
+		int numberofresults = searchresultlist.size();
+		int num = numberofresults/10;
+		
+		if(numberofresults <= 10){
+			for(int i = 0; i < numberofresults; i++){
+				showresult(searchingresultpage, searchresultlist, i);
+			}
+			previouspage.setVisible(false);
+			page1.setForeground(Color.black);
+			page2.setVisible(false);
+			page3.setVisible(false);
+			page4.setVisible(false);
+			page5.setVisible(false);
+			nextpage.setVisible(false);
+		}
+		
+		if(numberofresults > 10 && numberofresults <= 20){
+			for(int i = 0; i < 10; i++){
+				showresult(searchingresultpage, searchresultlist, i);
+			}
+			previouspage.setVisible(false);
+			page1.setForeground(Color.black);
+			page3.setVisible(false);
+			page4.setVisible(false);
+			page5.setVisible(false);
+			
+			previouspage.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent arg0) {
+					if(currentpage == 2){
+						for(int i = 0; i < 10; i++){
+							showresult(searchingresultpage, searchresultlist, i);
+						}
+						page1.setForeground(Color.black);
+						page2.setForeground(Color.blue);
+						previouspage.setVisible(false);
+						nextpage.setVisible(true);
+						currentpage = 1;
+					}
+				}
+			});
+			
+			nextpage.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent arg0) {
+					if(currentpage == 1){
+						for(int i = 10; i < numberofresults; i++){
+							showresult(searchingresultpage, searchresultlist, i);
+						}
+						page1.setForeground(Color.blue);
+						page2.setForeground(Color.black);
+						nextpage.setVisible(false);
+						previouspage.setVisible(true);
+						currentpage = 2;
+					}
+				}
+			});
+			
+			page1.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent arg0) {
+					if(currentpage == 1) return;
+					else{
+						for(int i = 0; i < 10; i++){
+							showresult(searchingresultpage, searchresultlist, i);
+						}
+						page1.setForeground(Color.black);
+						page2.setForeground(Color.blue);
+						previouspage.setVisible(false);
+						nextpage.setVisible(true);
+						currentpage = 1;
+					}
+				}
+			});
+			
+			
+		}
+	}
+	
+	public void showresult(SearchingResultPage searchingresultpage, SearchResultList searchresultlist, int i){
+		
+		BbkOutline bbkoutline = searchresultlist.get(i);
+		searchingresultpage.searchingresult.get(i).ID_Content.setText(bbkoutline.name);
+		searchingresultpage.searchingresult.get(i).Type_Content.setText(bbkoutline.type);
+		searchingresultpage.searchingresult.get(i).Author_Content.setText(bbkoutline.author);
+		searchingresultpage.searchingresult.get(i).EnteredDate_Content.setText(bbkoutline.enterDate);
+		searchingresultpage.searchingresult.get(i).URL_Content.setText(bbkoutline.url);
+		searchingresultpage.searchingresult.get(i).ReleasedStatus_Content.setText(bbkoutline.releaseStatus);
+		if(bbkoutline.rating.average_stars.equals("No Stars")){
+			searchingresultpage.searchingresult.get(i).AverageStar_Content.setText(bbkoutline.rating.average_stars);
+		}
+		else if(bbkoutline.rating.average_stars.length() == 1){
+			searchingresultpage.searchingresult.get(i).AverageStar_Content.setText(bbkoutline.rating.average_stars);
+		}
+		else if(bbkoutline.rating.average_stars.length() >= 3){
+			searchingresultpage.searchingresult.get(i).AverageStar_Content.setText(bbkoutline.rating.average_stars.substring(0,3));
+		}
+		searchingresultpage.searchingresult.get(i).ResultsInGoogle_Content.setText(bbkoutline.rating.google_items);
+		
+		String shortdescription = bbkoutline.shortDesc;
+		if(shortdescription.length()<=29){
+			searchingresultpage.searchingresult.get(i).Description1.setText(shortdescription);
+		}
+		else{
+			searchingresultpage.searchingresult.get(i).Description1.setText(shortdescription.substring(0, 29));
+			searchingresultpage.searchingresult.get(i).Description2.setText(shortdescription.substring(29));
+		}
+		
+		String score = "" + bbkoutline.getScore();
+		searchingresultpage.searchingresult.get(i).Score.setText(score);
 	}
 }

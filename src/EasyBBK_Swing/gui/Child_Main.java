@@ -70,6 +70,7 @@ public class Child_Main extends JPanel {
 					Child_Search_Main child_search_main = new Child_Search_Main(mainpage);
 					mainpage.Mainpanel.removeAll();
 					mainpage.Mainpanel.add(child_search_main);
+					child_search_main.SearchText.requestFocus();
 					mainpage.Mainpanel.updateUI();
 					mainpage.CurrentPage = 1;
 					String s = ""+ mainpage.CurrentPage;

@@ -226,6 +226,7 @@ public class MainPage{
 						Child_Search_Main child_search_main = new Child_Search_Main(mainpage);
 						Mainpanel.removeAll();
 						Mainpanel.add(child_search_main);
+						child_search_main.SearchText.requestFocus();
 						Mainpanel.updateUI();
 						CurrentPage = 1;
 						String s = ""+ CurrentPage;
@@ -234,6 +235,16 @@ public class MainPage{
 					else if(child_search_main_current != null && child_search_current == null){
 						Mainpanel.removeAll();
 						Mainpanel.add(child_search_main_current);
+						Mainpanel.updateUI();
+						CurrentPage = 1;
+						String s = ""+ CurrentPage;
+						test.setText(s);
+					}
+					else if(child_search_current.textField.getText()== null || child_search_current.textField.getText().trim().equals("")){
+						Child_Search_Main child_search_main = new Child_Search_Main(mainpage);
+						Mainpanel.removeAll();
+						Mainpanel.add(child_search_main);
+						child_search_main.SearchText.requestFocus();
 						Mainpanel.updateUI();
 						CurrentPage = 1;
 						String s = ""+ CurrentPage;
