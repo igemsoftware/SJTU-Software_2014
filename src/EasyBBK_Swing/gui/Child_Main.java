@@ -70,26 +70,21 @@ public class Child_Main extends JPanel {
 					Child_Search_Main child_search_main = new Child_Search_Main(mainpage);
 					mainpage.Mainpanel.removeAll();
 					mainpage.Mainpanel.add(child_search_main);
+					child_search_main.SearchText.requestFocus();
 					mainpage.Mainpanel.updateUI();
 					mainpage.CurrentPage = 1;
-					String s = ""+ mainpage.CurrentPage;
-					mainpage.test.setText(s);
 				}
 				else if(mainpage.child_search_main_current != null && mainpage.child_search_current == null){
 					mainpage.Mainpanel.removeAll();
 					mainpage.Mainpanel.add(mainpage.child_search_main_current);
 					mainpage.Mainpanel.updateUI();
 					mainpage.CurrentPage = 1;
-					String s = ""+ mainpage.CurrentPage;
-					mainpage.test.setText(s);
 				}
 				else if(mainpage.child_search_current != null){
 					mainpage.Mainpanel.removeAll();
 					mainpage.Mainpanel.add(mainpage.child_search_current);
 					mainpage.Mainpanel.updateUI();
 					mainpage.CurrentPage = 11;
-					String s = ""+ mainpage.CurrentPage;
-					mainpage.test.setText(s);
 				}
 			}
 		});
@@ -122,16 +117,12 @@ public class Child_Main extends JPanel {
 					mainpage.Mainpanel.add(child_design);
 					mainpage.Mainpanel.updateUI();
 					mainpage.CurrentPage = 2;
-					String s = ""+ mainpage.CurrentPage;
-					mainpage.test.setText(s);
 				}
 				else if(mainpage.child_design_current != null){
 					mainpage.Mainpanel.removeAll();
 					mainpage.Mainpanel.add(mainpage.child_design_current);
 					mainpage.Mainpanel.updateUI();
 					mainpage.CurrentPage = 2;
-					String s = ""+ mainpage.CurrentPage;
-					mainpage.test.setText(s);
 				}
 			}
 		});
@@ -164,16 +155,12 @@ public class Child_Main extends JPanel {
 					mainpage.Mainpanel.add(child_upload);
 					mainpage.Mainpanel.updateUI();
 					mainpage.CurrentPage = 3;
-					String s = ""+ mainpage.CurrentPage;
-					mainpage.test.setText(s);
 				}
 				else if(mainpage.child_upload_current != null){
 					mainpage.Mainpanel.removeAll();
 					mainpage.Mainpanel.add(mainpage.child_upload_current);
 					mainpage.Mainpanel.updateUI();
 					mainpage.CurrentPage = 3;
-					String s = ""+ mainpage.CurrentPage;
-					mainpage.test.setText(s);
 				}
 			}
 		});

@@ -2,6 +2,8 @@ package EasyBBK_Swing.gui;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Cursor;
+import java.awt.Dimension;
 import java.awt.EventQueue;
 
 import javax.swing.BorderFactory;
@@ -9,6 +11,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.swing.JScrollBar;
 import javax.swing.JTextField;
 
 import java.awt.Font;
@@ -24,34 +27,49 @@ import javax.swing.JCheckBox;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 
+import java.awt.event.AdjustmentEvent;
+import java.awt.event.AdjustmentListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
+import javax.swing.JTabbedPane;
+import javax.swing.SwingConstants;
+import javax.swing.JScrollPane;
+import javax.swing.ScrollPaneConstants;
+
+import data_center.*;
+
 public class Child_Search extends JPanel {
-	
-	public JPanel Choicepanel;
-	public JCheckBox chckbxReleased;
-	public JCheckBox chckbxNewCheckBox;
-	public JCheckBox chckbxNotReleased;
-	public JCheckBox chckbxAvailable;
-	public JCheckBox chckbxPlanning;
-	public JCheckBox chckbxInformational;
-	public JCheckBox chckbxNotDeleted;
-	public JCheckBox chckbxDeleted;
 	public JTextField textField;
+	public JPanel Result;
 	public JLabel Search;
 	public MainPage mainpage;
+	public JScrollPane scrollPane;
+	private JLabel Blast;
+	public JPanel Details;
+	public JLabel previouspage;
+	public JLabel showpagenum;
+	public JLabel page6;
+	public JLabel page7;
+	public JLabel page8;
+	public JLabel page9;
+	public JLabel page10;
+	public JLabel nextpage;
+	public int currentpage = 1;
+	public SearchingResultPage searchingresultpage;
+	public SearchResultList searchresultlist;
+	public JScrollBar scrollbar;
 	/**
 	 * Create the panel.
 	 */
-	public Child_Search(MainPage mainpage1) {
+	public Child_Search(MainPage mainpage1, String searchcontent) {
 		mainpage = mainpage1;
 		setBounds(0, 0, 1366, 670);
 		setBackground(new Color(255, 255, 255));
 		setLayout(null);
 		setVisible(true);
 		
-		JPanel Result = new JPanel();
+		Result = new JPanel();
 		Result.setBounds(0, 0, 683, 670);
 		Result.setBackground(new Color(255, 255, 255));
 		Result.setBorder(BorderFactory.createLineBorder(Color.black));
@@ -72,7 +90,7 @@ public class Child_Search extends JPanel {
 				Back.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/SearchBox_backward.png")));
 			}
 		});
-		Back.setBounds(51, 42, 50, 50);
+		Back.setBounds(30, 30, 50, 50);
 		Back.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/SearchBox_backward.png")));
 		Result.add(Back);
 		
@@ -91,19 +109,19 @@ public class Child_Search extends JPanel {
 				Forward.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/SearchBox_forward.png")));
 			}
 		});
-		Forward.setBounds(107, 42, 70, 50);
+		Forward.setBounds(86, 30, 70, 50);
 		Forward.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/SearchBox_forward.png")));
 		Result.add(Forward);
 		
 		JLabel Text_BackGround = new JLabel();
-		Text_BackGround.setBounds(207, 42, 300, 50);
+		Text_BackGround.setBounds(169, 30, 300, 50);
 		Text_BackGround.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Text.png")));
 		Result.add(Text_BackGround);
 		
 
 		Search = new JLabel();
 
-		Search.setBounds(530, 42, 100, 50);
+		Search.setBounds(481, 30, 100, 50);
 		Search.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/SearchBox_searchButton.png")));
 		Search.addMouseListener(new MouseAdapter() {
 			@Override
@@ -117,12 +135,17 @@ public class Child_Search extends JPanel {
 						mainpage.Mainpanel.add(child_search_main);
 						mainpage.Mainpanel.updateUI();
 						mainpage.CurrentPage = 1;
-						String s = ""+ mainpage.CurrentPage;
-						mainpage.test.setText(s);
 					}
 					return;
 				}
-				Choicepanel.setVisible(false);
+				else{
+					searchresultlist = BbkDatabaseConnector.search(textField.getText());
+					currentpage = 1;
+					String s;
+					s = "" + currentpage;
+					showpagenum.setText(s);
+					initializeresultpage();
+				}
 			}
 			@Override
 			public void mouseEntered(MouseEvent arg0) {
@@ -140,7 +163,27 @@ public class Child_Search extends JPanel {
 			@Override
 			public void keyPressed(KeyEvent e) {
 				if(e.getKeyChar() == e.VK_ENTER){
-					
+					if(textField.getText() == null || textField.getText().trim().equals("")){
+						Component component = mainpage.Mainpanel.getComponent(0);
+						if(component instanceof Child_Search){
+							mainpage.child_search_current = (Child_Search) component;
+							Child_Search_Main child_search_main = new Child_Search_Main(mainpage);
+							mainpage.Mainpanel.removeAll();
+							mainpage.Mainpanel.add(child_search_main);
+							child_search_main.SearchText.requestFocus();
+							mainpage.Mainpanel.updateUI();
+							mainpage.CurrentPage = 1;
+						}
+						return;
+					}
+					else{
+						searchresultlist = BbkDatabaseConnector.search(textField.getText());
+						currentpage = 1;
+						String s;
+						s = "" + currentpage;
+						showpagenum.setText(s);
+						initializeresultpage();
+					}
 				}
 			}
 		});
@@ -150,190 +193,267 @@ public class Child_Search extends JPanel {
 		textField.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				Choicepanel.setVisible(true);
+				
 			}
 		});
 		Text_BackGround.add(textField);
 		textField.setColumns(20);
 		
-		Choicepanel = new JPanel();
-		Choicepanel.setBackground(new Color(255, 255, 255));
-		Choicepanel.setBounds(62, 117, 558, 211);
-		Choicepanel.setBorder(BorderFactory.createLineBorder(Color.black));
-		Choicepanel.setVisible(false);
-		Result.add(Choicepanel);
-		Choicepanel.setLayout(null);
+		previouspage = new JLabel("<previous page", SwingConstants.CENTER);
+		previouspage.setForeground(Color.blue);
+		previouspage.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				previouspage.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+				previouspage.setBorder(BorderFactory.createLineBorder(Color.blue));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				previouspage.setBorder(null);
+			}
+		});
+		previouspage.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		previouspage.setBounds(156, 635, 95, 25);
+		Result.add(previouspage);
 		
-		JLabel lblNewLabel = new JLabel("Filters:");
-		lblNewLabel.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		lblNewLabel.setBounds(10, 10, 68, 28);
-		Choicepanel.add(lblNewLabel);
+		showpagenum = new JLabel("1", SwingConstants.CENTER);
+		showpagenum.setForeground(Color.blue);
+		showpagenum.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				showpagenum.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+				showpagenum.setBorder(BorderFactory.createLineBorder(Color.blue));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				showpagenum.setBorder(null);
+			}
+		});
+		showpagenum.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		showpagenum.setBounds(331, 635, 25, 25);
+		Result.add(showpagenum);
 		
-		JLabel lblNewLabel_1 = new JLabel("Release status:");
-		lblNewLabel_1.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		lblNewLabel_1.setBounds(39, 48, 90, 17);
-		Choicepanel.add(lblNewLabel_1);
+		nextpage = new JLabel("next page>", SwingConstants.CENTER);
+		nextpage.setForeground(Color.blue);
+		nextpage.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				nextpage.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+				nextpage.setBorder(BorderFactory.createLineBorder(Color.blue));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				nextpage.setBorder(null);
+			}
+		});
+		nextpage.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		nextpage.setBounds(436, 635, 75, 25);
+		Result.add(nextpage);
 		
-		ItemListener itemListener1 = new ItemListener() {
-            JCheckBox jCheckBox;
- 
-            public void itemStateChanged(ItemEvent e) {
-                jCheckBox = (JCheckBox) e.getSource();
- 
-                if (jCheckBox.isSelected()) {
-                    if(jCheckBox == chckbxReleased){
-                    	chckbxNewCheckBox.setSelected(false);
-                    	chckbxNotReleased.setSelected(false);
-                    }
-                    else if(jCheckBox == chckbxNewCheckBox){
-                    	chckbxReleased.setSelected(false);
-                    	chckbxNotReleased.setSelected(false);
-                    }
-                    else if(jCheckBox == chckbxNotReleased){
-                    	chckbxReleased.setSelected(false);
-                    	chckbxNewCheckBox.setSelected(false);
-                    }
-                } else {
-                    
-                }
- 
-            }
-        };
-        
-        chckbxReleased = new JCheckBox("Released");
-        //chckbxReleased.addItemListener(itemListener1);
-		chckbxReleased.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		chckbxReleased.setBounds(131, 46, 103, 23);
-		chckbxReleased.setBackground(new Color(255, 255, 255));
-		Choicepanel.add(chckbxReleased);
+		//searchresultlist = BbkDatabaseConnector.search(searchcontent);
+		SearchCenter searchcenter = new SearchCenter();
+		searchresultlist = searchcenter.search(searchcontent);
+		BbkDetail bbkdetail = new BbkDetail();
+		initializeresultpage();
 		
-		chckbxNewCheckBox = new JCheckBox("Deleted");
-		//chckbxNewCheckBox.addItemListener(itemListener1);
-		chckbxNewCheckBox.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		chckbxNewCheckBox.setBounds(235, 46, 103, 23);
-		chckbxNewCheckBox.setBackground(new Color(255, 255, 255));
-		Choicepanel.add(chckbxNewCheckBox);
 		
-		chckbxNotReleased = new JCheckBox("Not Released");
-		//chckbxNotReleased.addItemListener(itemListener1);
-		chckbxNotReleased.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		chckbxNotReleased.setBounds(340, 46, 121, 23);
-		chckbxNotReleased.setBackground(new Color(255, 255, 255));
-		Choicepanel.add(chckbxNotReleased);
+		Blast = new JLabel("");
+		Blast.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				Blast.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/blast1_enter.png")));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				Blast.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/blast1.png")));
+			}
+		});
+		Blast.setBounds(591, 39, 82, 32);
+		Blast.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/blast1.png")));
+		Result.add(Blast);
 		
-		JLabel lblDnaStatus = new JLabel("DNA status:");
-		lblDnaStatus.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		lblDnaStatus.setBounds(39, 75, 90, 15);
-		Choicepanel.add(lblDnaStatus);
-		
-		chckbxAvailable = new JCheckBox("Available");
-		chckbxAvailable.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		chckbxAvailable.setBounds(131, 72, 103, 23);
-		chckbxAvailable.setBackground(new Color(255, 255, 255));
-		Choicepanel.add(chckbxAvailable);
-		
-		chckbxPlanning = new JCheckBox("Planning");
-		chckbxPlanning.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		chckbxPlanning.setBounds(235, 71, 103, 23);
-		chckbxPlanning.setBackground(new Color(255, 255, 255));
-		Choicepanel.add(chckbxPlanning);
-		
-		chckbxInformational = new JCheckBox("Informational");
-		chckbxInformational.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		chckbxInformational.setBounds(340, 72, 121, 23);
-		chckbxInformational.setBackground(new Color(255, 255, 255));
-		Choicepanel.add(chckbxInformational);
-		
-		JLabel lblNewLabel_2 = new JLabel("Whether or not deleted:");
-		lblNewLabel_2.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		lblNewLabel_2.setBounds(39, 101, 151, 15);
-		Choicepanel.add(lblNewLabel_2);
-		
-		chckbxNotDeleted = new JCheckBox("Not Deleted");
-		chckbxNotDeleted.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		chckbxNotDeleted.setBounds(196, 98, 103, 23);
-		chckbxNotDeleted.setBackground(new Color(255, 255, 255));
-		Choicepanel.add(chckbxNotDeleted);
-		
-		chckbxDeleted = new JCheckBox("Deleted");
-		chckbxDeleted.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		chckbxDeleted.setBounds(311, 98, 103, 23);
-		chckbxDeleted.setBackground(new Color(255, 255, 255));
-		Choicepanel.add(chckbxDeleted);
-		
-		JLabel lblAverageStarsGiven = new JLabel("Average stars Given by previous teams:");
-		lblAverageStarsGiven.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		lblAverageStarsGiven.setBounds(39, 126, 238, 15);
-		Choicepanel.add(lblAverageStarsGiven);
-		
-		JCheckBox checkBox = new JCheckBox(">=4");
-		checkBox.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		checkBox.setBounds(283, 123, 55, 23);
-		checkBox.setBackground(new Color(255, 255, 255));
-		Choicepanel.add(checkBox);
-		
-		JCheckBox chckbxNewCheckBox_1 = new JCheckBox("2-4");
-		chckbxNewCheckBox_1.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		chckbxNewCheckBox_1.setBounds(359, 122, 55, 23);
-		chckbxNewCheckBox_1.setBackground(new Color(255, 255, 255));
-		Choicepanel.add(chckbxNewCheckBox_1);
-		
-		JCheckBox checkBox_1 = new JCheckBox("<=2");
-		checkBox_1.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		checkBox_1.setBounds(432, 122, 55, 23);
-		checkBox_1.setBackground(new Color(255, 255, 255));
-		Choicepanel.add(checkBox_1);
-		
-		JLabel lblNewLabel_3 = new JLabel("Preferences:");
-		lblNewLabel_3.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		lblNewLabel_3.setBounds(10, 151, 99, 15);
-		Choicepanel.add(lblNewLabel_3);
-		
-		JLabel lblStatus = new JLabel("Status:");
-		lblStatus.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		lblStatus.setBounds(39, 176, 47, 15);
-		Choicepanel.add(lblStatus);
-		
-		JSpinner spinner = new JSpinner();
-		spinner.setModel(new SpinnerNumberModel(0, 0, 100, 1));
-		spinner.setBounds(88, 171, 41, 27);
-		Choicepanel.add(spinner);
-		
-		JLabel lblQuality = new JLabel("Quality:");
-		lblQuality.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		lblQuality.setBounds(147, 177, 54, 15);
-		Choicepanel.add(lblQuality);
-		
-		JSpinner spinner_1 = new JSpinner();
-		spinner_1.setModel(new SpinnerNumberModel(0, 0, 100, 1));
-		spinner_1.setBounds(213, 171, 41, 27);
-		Choicepanel.add(spinner_1);
-		
-		JLabel lblFeedbacks = new JLabel("Feedbacks:");
-		lblFeedbacks.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		lblFeedbacks.setBounds(264, 177, 74, 15);
-		Choicepanel.add(lblFeedbacks);
-		
-		JSpinner spinner_2 = new JSpinner();
-		spinner_2.setModel(new SpinnerNumberModel(0, 0, 100, 1));
-		spinner_2.setBounds(353, 171, 41, 27);
-		Choicepanel.add(spinner_2);
-		
-		JLabel lblPublication = new JLabel("Publication:");
-		lblPublication.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		lblPublication.setBounds(404, 177, 74, 15);
-		Choicepanel.add(lblPublication);
-		
-		JSpinner spinner_3 = new JSpinner();
-		spinner_3.setModel(new SpinnerNumberModel(0, 0, 100, 1));
-		spinner_3.setBounds(488, 171, 41, 27);
-		Choicepanel.add(spinner_3);
-		
-		JPanel Details = new JPanel();
+		Details = new JPanel();
 		Details.setBounds(684, 0, 683, 670);
 		Details.setBackground(new Color(255, 255, 255));
 		Details.setBorder(BorderFactory.createLineBorder(Color.black));
 		add(Details);
 		Details.setLayout(null);
+	}
+	
+	public void initializeresultpage(){
+		searchingresultpage = new SearchingResultPage();
+		
+		scrollPane = new JScrollPane(searchingresultpage);
+		scrollbar = new JScrollBar();
+		scrollbar.setUnitIncrement(150);
+		scrollPane.setVerticalScrollBar(scrollbar);
+		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		scrollPane.setBounds(51, 105, 576, 520);
+		scrollPane.validate();
+		Result.add(scrollPane);
+		
+		int numberofresults = searchresultlist.size();
+		
+		if(numberofresults <= 10){
+			searchingresultpage = new SearchingResultPage(numberofresults);
+			searchingresultpage.setPreferredSize(new Dimension(558,250*numberofresults));
+			for(int i = 0; i < numberofresults; i++){
+				showresult(i);
+			}
+			previouspage.setVisible(false);
+			nextpage.setVisible(false);
+		}
+		
+		
+		if(numberofresults > 10){
+			int num = (int) numberofresults / 10;
+			int leftnum = numberofresults % 10;
+			currentpage = 1;
+			
+			searchingresultpage.setPreferredSize(new Dimension(558,2500));
+			for(int i = 0; i < 10; i++){
+				showresult(i);
+			}
+			previouspage.setVisible(false);
+			
+			previouspage.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent arg0) {
+					String s;
+					scrollbar.setValue(scrollbar.getMinimum());
+					if(currentpage > 2){
+						searchingresultpage.setPreferredSize(new Dimension(558,2500));
+						for(int i = 10 * (currentpage - 2); i < 10 * (currentpage - 1); i++){
+							showresult(i);
+						}
+						nextpage.setVisible(true);
+						currentpage--;
+						s = "" + currentpage;
+						showpagenum.setText(s);
+						return;
+					}
+					else if(currentpage == 2){
+						searchingresultpage.setPreferredSize(new Dimension(558,2500));
+						for(int i = 0; i < 10; i++){
+							showresult(i);
+						}
+						nextpage.setVisible(true);
+						previouspage.setVisible(false);
+						currentpage--;
+						s = "" + currentpage;
+						showpagenum.setText(s);
+						return;
+					}
+				}
+			});
+			
+			nextpage.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent arg0) {
+					scrollbar.setValue(scrollbar.getMinimum());
+					String s;
+					if(currentpage < num){
+						searchingresultpage.setPreferredSize(new Dimension(558,2500));
+						for(int i = 10 * currentpage; i < 10 * (currentpage + 1); i++){
+							showresult(i);
+						}
+						previouspage.setVisible(true);
+						currentpage++;
+						s = "" + currentpage;
+						showpagenum.setText(s);
+						return;
+					}
+					else if(currentpage == num){
+						searchingresultpage.setPreferredSize(new Dimension(558,250 * leftnum));
+						for(int i = 10 * currentpage; i < numberofresults; i++){
+							showresult(i);
+						}
+						previouspage.setVisible(true);
+						nextpage.setVisible(false);
+						currentpage++;
+						s = "" + currentpage;
+						showpagenum.setText(s);
+						return;
+					}
+				}
+			});
+			
+		}
+	}
+	
+	public void showresult(int j){
+		
+		BbkOutline bbkoutline = searchresultlist.get(j);
+		int i = j % 10;
+		searchingresultpage.searchingresult.get(i).ID_Content.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				DetailsofResults detailsofresults = new DetailsofResults();
+				detailsofresults.ID_Content.setText(bbkoutline.name);
+				detailsofresults.Type_Content.setText(bbkoutline.type);
+				detailsofresults.Author_Content.setText(bbkoutline.author);
+				detailsofresults.EnteredDate_Content.setText(bbkoutline.enterDate);
+				detailsofresults.URL_Content.setText(bbkoutline.url);
+				detailsofresults.ReleasedStatus_Content.setText(bbkoutline.releaseStatus);
+				if(bbkoutline.rating.average_stars.equals("No Stars")){
+					detailsofresults.AverageStar_Content.setText(bbkoutline.rating.average_stars);
+				}
+				else if(bbkoutline.rating.average_stars.length() == 1){
+					detailsofresults.AverageStar_Content.setText(bbkoutline.rating.average_stars);
+				}
+				else if(bbkoutline.rating.average_stars.length() >= 3){
+					detailsofresults.AverageStar_Content.setText(bbkoutline.rating.average_stars.substring(0,3));
+				}
+				detailsofresults.ResultsInGoogle_Content.setText(bbkoutline.rating.google_items);
+				detailsofresults.Description.setText(bbkoutline.shortDesc);
+				String score = "" + bbkoutline.getScore();
+				//detailsofresults.Score.setText(score);
+				
+				Details.removeAll();
+				Details.add(detailsofresults);
+				Details.updateUI();
+			}
+		});
+		searchingresultpage.searchingresult.get(i).ID_Content.setText(bbkoutline.name);
+		searchingresultpage.searchingresult.get(i).Type_Content.setText(bbkoutline.type);
+		searchingresultpage.searchingresult.get(i).Author_Content.setText(bbkoutline.author);
+		searchingresultpage.searchingresult.get(i).EnteredDate_Content.setText(bbkoutline.enterDate);
+		searchingresultpage.searchingresult.get(i).URL_Content.setText(bbkoutline.url);
+		searchingresultpage.searchingresult.get(i).ReleasedStatus_Content.setText(bbkoutline.releaseStatus);
+		if(bbkoutline.rating.average_stars.equals("No Stars")){
+			searchingresultpage.searchingresult.get(i).AverageStar_Content.setText(bbkoutline.rating.average_stars);
+		}
+		else if(bbkoutline.rating.average_stars.length() == 1){
+			searchingresultpage.searchingresult.get(i).AverageStar_Content.setText(bbkoutline.rating.average_stars);
+		}
+		else if(bbkoutline.rating.average_stars.length() >= 3){
+			searchingresultpage.searchingresult.get(i).AverageStar_Content.setText(bbkoutline.rating.average_stars.substring(0,3));
+		}
+		searchingresultpage.searchingresult.get(i).ResultsInGoogle_Content.setText(bbkoutline.rating.google_items);
+		
+		String shortdescription = bbkoutline.shortDesc;
+		if(shortdescription.length()<=29){
+			searchingresultpage.searchingresult.get(i).Description1.setText(shortdescription);
+		}
+		else{
+			searchingresultpage.searchingresult.get(i).Description1.setText(shortdescription.substring(0, 29));
+			searchingresultpage.searchingresult.get(i).Description2.setText(shortdescription.substring(29));
+		}
+		
+		String score = "" + bbkoutline.getScore();
+		searchingresultpage.searchingresult.get(i).Score.setText(score);
+	}
+	
+	public void showdetails(){
+		
 	}
 }
