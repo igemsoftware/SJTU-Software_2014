@@ -37,8 +37,7 @@ import javax.swing.SwingConstants;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 
-import data_center.BbkOutline;
-import data_center.SearchResultList;
+import data_center.*;
 
 public class Child_Search extends JPanel {
 	public JTextField textField;
@@ -49,22 +48,21 @@ public class Child_Search extends JPanel {
 	private JLabel Blast;
 	public JPanel Details;
 	public JLabel previouspage;
-	public JLabel page1;
-	public JLabel page2;
-	public JLabel page3;
-	public JLabel page4;
-	public JLabel page5;
+	public JLabel showpagenum;
 	public JLabel page6;
 	public JLabel page7;
 	public JLabel page8;
 	public JLabel page9;
 	public JLabel page10;
 	public JLabel nextpage;
-	public static int currentpage = 1;
+	public int currentpage = 1;
+	public SearchingResultPage searchingresultpage;
+	public SearchResultList searchresultlist;
+	public JScrollBar scrollbar;
 	/**
 	 * Create the panel.
 	 */
-	public Child_Search(MainPage mainpage1, SearchResultList searchresultlist) {
+	public Child_Search(MainPage mainpage1, String searchcontent) {
 		mainpage = mainpage1;
 		setBounds(0, 0, 1366, 670);
 		setBackground(new Color(255, 255, 255));
@@ -137,10 +135,16 @@ public class Child_Search extends JPanel {
 						mainpage.Mainpanel.add(child_search_main);
 						mainpage.Mainpanel.updateUI();
 						mainpage.CurrentPage = 1;
-						String s = ""+ mainpage.CurrentPage;
-						mainpage.test.setText(s);
 					}
 					return;
+				}
+				else{
+					searchresultlist = BbkDatabaseConnector.search(textField.getText());
+					currentpage = 1;
+					String s;
+					s = "" + currentpage;
+					showpagenum.setText(s);
+					initializeresultpage();
 				}
 			}
 			@Override
@@ -169,10 +173,16 @@ public class Child_Search extends JPanel {
 							child_search_main.SearchText.requestFocus();
 							mainpage.Mainpanel.updateUI();
 							mainpage.CurrentPage = 1;
-							String s = ""+ mainpage.CurrentPage;
-							mainpage.test.setText(s);
 						}
 						return;
+					}
+					else{
+						searchresultlist = BbkDatabaseConnector.search(textField.getText());
+						currentpage = 1;
+						String s;
+						s = "" + currentpage;
+						showpagenum.setText(s);
+						initializeresultpage();
 					}
 				}
 			}
@@ -206,105 +216,25 @@ public class Child_Search extends JPanel {
 		previouspage.setBounds(156, 635, 95, 25);
 		Result.add(previouspage);
 		
-		page1 = new JLabel("1", SwingConstants.CENTER);
-		page1.setForeground(Color.blue);
-		page1.addMouseListener(new MouseAdapter() {
+		showpagenum = new JLabel("1", SwingConstants.CENTER);
+		showpagenum.setForeground(Color.blue);
+		showpagenum.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 			}
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				page1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-				page1.setBorder(BorderFactory.createLineBorder(Color.blue));
+				showpagenum.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+				showpagenum.setBorder(BorderFactory.createLineBorder(Color.blue));
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
-				page1.setBorder(null);
+				showpagenum.setBorder(null);
 			}
 		});
-		page1.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		page1.setBounds(261, 635, 25, 25);
-		Result.add(page1);
-		
-		page2 = new JLabel("2", SwingConstants.CENTER);
-		page2.setForeground(Color.blue);
-		page2.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-			}
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				page2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-				page2.setBorder(BorderFactory.createLineBorder(Color.blue));
-			}
-			@Override
-			public void mouseExited(MouseEvent e) {
-				page2.setBorder(null);
-			}
-		});
-		page2.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		page2.setBounds(296, 635, 25, 25);
-		Result.add(page2);
-		
-		page3 = new JLabel("3", SwingConstants.CENTER);
-		page3.setForeground(Color.blue);
-		page3.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-			}
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				page3.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-				page3.setBorder(BorderFactory.createLineBorder(Color.blue));
-			}
-			@Override
-			public void mouseExited(MouseEvent e) {
-				page3.setBorder(null);
-			}
-		});
-		page3.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		page3.setBounds(331, 635, 25, 25);
-		Result.add(page3);
-		
-		page4 = new JLabel("4", SwingConstants.CENTER);
-		page4.setForeground(Color.blue);
-		page4.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-			}
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				page4.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-				page4.setBorder(BorderFactory.createLineBorder(Color.blue));
-			}
-			@Override
-			public void mouseExited(MouseEvent e) {
-				page4.setBorder(null);
-			}
-		});
-		page4.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		page4.setBounds(366, 635, 25, 25);
-		Result.add(page4);
-		
-		page5 = new JLabel("5", SwingConstants.CENTER);
-		page5.setForeground(Color.blue);
-		page5.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-			}
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				page5.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-				page5.setBorder(BorderFactory.createLineBorder(Color.blue));
-			}
-			@Override
-			public void mouseExited(MouseEvent e) {
-				page5.setBorder(null);
-			}
-		});
-		page5.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		page5.setBounds(401, 635, 25, 25);
-		Result.add(page5);
+		showpagenum.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		showpagenum.setBounds(331, 635, 25, 25);
+		Result.add(showpagenum);
 		
 		nextpage = new JLabel("next page>", SwingConstants.CENTER);
 		nextpage.setForeground(Color.blue);
@@ -326,21 +256,12 @@ public class Child_Search extends JPanel {
 		nextpage.setBounds(436, 635, 75, 25);
 		Result.add(nextpage);
 		
+		//searchresultlist = BbkDatabaseConnector.search(searchcontent);
+		SearchCenter searchcenter = new SearchCenter();
+		searchresultlist = searchcenter.search(searchcontent);
+		BbkDetail bbkdetail = new BbkDetail();
+		initializeresultpage();
 		
-		SearchingResultPage searchingresultpage = new SearchingResultPage();
-		searchingresultpage.setPreferredSize(new Dimension(558,2500));
-		
-		initializeresultpage(searchingresultpage, searchresultlist);
-		
-		
-		scrollPane = new JScrollPane(searchingresultpage);
-		JScrollBar scrollbar = new JScrollBar();
-		scrollbar.setUnitIncrement(150);
-		scrollPane.setVerticalScrollBar(scrollbar);
-		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-		scrollPane.setBounds(51, 105, 576, 520);
-		scrollPane.validate();
-		Result.add(scrollPane);
 		
 		Blast = new JLabel("");
 		Blast.addMouseListener(new MouseAdapter() {
@@ -368,45 +289,69 @@ public class Child_Search extends JPanel {
 		Details.setLayout(null);
 	}
 	
-	public void initializeresultpage(SearchingResultPage searchingresultpage, SearchResultList searchresultlist){
+	public void initializeresultpage(){
+		searchingresultpage = new SearchingResultPage();
+		
+		scrollPane = new JScrollPane(searchingresultpage);
+		scrollbar = new JScrollBar();
+		scrollbar.setUnitIncrement(150);
+		scrollPane.setVerticalScrollBar(scrollbar);
+		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		scrollPane.setBounds(51, 105, 576, 520);
+		scrollPane.validate();
+		Result.add(scrollPane);
+		
 		int numberofresults = searchresultlist.size();
-		int num = numberofresults/10;
 		
 		if(numberofresults <= 10){
+			searchingresultpage = new SearchingResultPage(numberofresults);
+			searchingresultpage.setPreferredSize(new Dimension(558,250*numberofresults));
 			for(int i = 0; i < numberofresults; i++){
-				showresult(searchingresultpage, searchresultlist, i);
+				showresult(i);
 			}
 			previouspage.setVisible(false);
-			page1.setForeground(Color.black);
-			page2.setVisible(false);
-			page3.setVisible(false);
-			page4.setVisible(false);
-			page5.setVisible(false);
 			nextpage.setVisible(false);
 		}
 		
-		if(numberofresults > 10 && numberofresults <= 20){
+		
+		if(numberofresults > 10){
+			int num = (int) numberofresults / 10;
+			int leftnum = numberofresults % 10;
+			currentpage = 1;
+			
+			searchingresultpage.setPreferredSize(new Dimension(558,2500));
 			for(int i = 0; i < 10; i++){
-				showresult(searchingresultpage, searchresultlist, i);
+				showresult(i);
 			}
 			previouspage.setVisible(false);
-			page1.setForeground(Color.black);
-			page3.setVisible(false);
-			page4.setVisible(false);
-			page5.setVisible(false);
 			
 			previouspage.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent arg0) {
-					if(currentpage == 2){
-						for(int i = 0; i < 10; i++){
-							showresult(searchingresultpage, searchresultlist, i);
+					String s;
+					scrollbar.setValue(scrollbar.getMinimum());
+					if(currentpage > 2){
+						searchingresultpage.setPreferredSize(new Dimension(558,2500));
+						for(int i = 10 * (currentpage - 2); i < 10 * (currentpage - 1); i++){
+							showresult(i);
 						}
-						page1.setForeground(Color.black);
-						page2.setForeground(Color.blue);
-						previouspage.setVisible(false);
 						nextpage.setVisible(true);
-						currentpage = 1;
+						currentpage--;
+						s = "" + currentpage;
+						showpagenum.setText(s);
+						return;
+					}
+					else if(currentpage == 2){
+						searchingresultpage.setPreferredSize(new Dimension(558,2500));
+						for(int i = 0; i < 10; i++){
+							showresult(i);
+						}
+						nextpage.setVisible(true);
+						previouspage.setVisible(false);
+						currentpage--;
+						s = "" + currentpage;
+						showpagenum.setText(s);
+						return;
 					}
 				}
 			});
@@ -414,43 +359,70 @@ public class Child_Search extends JPanel {
 			nextpage.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent arg0) {
-					if(currentpage == 1){
-						for(int i = 10; i < numberofresults; i++){
-							showresult(searchingresultpage, searchresultlist, i);
+					scrollbar.setValue(scrollbar.getMinimum());
+					String s;
+					if(currentpage < num){
+						searchingresultpage.setPreferredSize(new Dimension(558,2500));
+						for(int i = 10 * currentpage; i < 10 * (currentpage + 1); i++){
+							showresult(i);
 						}
-						page1.setForeground(Color.blue);
-						page2.setForeground(Color.black);
-						nextpage.setVisible(false);
 						previouspage.setVisible(true);
-						currentpage = 2;
+						currentpage++;
+						s = "" + currentpage;
+						showpagenum.setText(s);
+						return;
 					}
-				}
-			});
-			
-			page1.addMouseListener(new MouseAdapter() {
-				@Override
-				public void mouseClicked(MouseEvent arg0) {
-					if(currentpage == 1) return;
-					else{
-						for(int i = 0; i < 10; i++){
-							showresult(searchingresultpage, searchresultlist, i);
+					else if(currentpage == num){
+						searchingresultpage.setPreferredSize(new Dimension(558,250 * leftnum));
+						for(int i = 10 * currentpage; i < numberofresults; i++){
+							showresult(i);
 						}
-						page1.setForeground(Color.black);
-						page2.setForeground(Color.blue);
-						previouspage.setVisible(false);
-						nextpage.setVisible(true);
-						currentpage = 1;
+						previouspage.setVisible(true);
+						nextpage.setVisible(false);
+						currentpage++;
+						s = "" + currentpage;
+						showpagenum.setText(s);
+						return;
 					}
 				}
 			});
-			
 			
 		}
 	}
 	
-	public void showresult(SearchingResultPage searchingresultpage, SearchResultList searchresultlist, int i){
+	public void showresult(int j){
 		
-		BbkOutline bbkoutline = searchresultlist.get(i);
+		BbkOutline bbkoutline = searchresultlist.get(j);
+		int i = j % 10;
+		searchingresultpage.searchingresult.get(i).ID_Content.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				DetailsofResults detailsofresults = new DetailsofResults();
+				detailsofresults.ID_Content.setText(bbkoutline.name);
+				detailsofresults.Type_Content.setText(bbkoutline.type);
+				detailsofresults.Author_Content.setText(bbkoutline.author);
+				detailsofresults.EnteredDate_Content.setText(bbkoutline.enterDate);
+				detailsofresults.URL_Content.setText(bbkoutline.url);
+				detailsofresults.ReleasedStatus_Content.setText(bbkoutline.releaseStatus);
+				if(bbkoutline.rating.average_stars.equals("No Stars")){
+					detailsofresults.AverageStar_Content.setText(bbkoutline.rating.average_stars);
+				}
+				else if(bbkoutline.rating.average_stars.length() == 1){
+					detailsofresults.AverageStar_Content.setText(bbkoutline.rating.average_stars);
+				}
+				else if(bbkoutline.rating.average_stars.length() >= 3){
+					detailsofresults.AverageStar_Content.setText(bbkoutline.rating.average_stars.substring(0,3));
+				}
+				detailsofresults.ResultsInGoogle_Content.setText(bbkoutline.rating.google_items);
+				detailsofresults.Description.setText(bbkoutline.shortDesc);
+				String score = "" + bbkoutline.getScore();
+				//detailsofresults.Score.setText(score);
+				
+				Details.removeAll();
+				Details.add(detailsofresults);
+				Details.updateUI();
+			}
+		});
 		searchingresultpage.searchingresult.get(i).ID_Content.setText(bbkoutline.name);
 		searchingresultpage.searchingresult.get(i).Type_Content.setText(bbkoutline.type);
 		searchingresultpage.searchingresult.get(i).Author_Content.setText(bbkoutline.author);
@@ -479,5 +451,9 @@ public class Child_Search extends JPanel {
 		
 		String score = "" + bbkoutline.getScore();
 		searchingresultpage.searchingresult.get(i).Score.setText(score);
+	}
+	
+	public void showdetails(){
+		
 	}
 }

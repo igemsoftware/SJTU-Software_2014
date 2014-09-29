@@ -8,7 +8,6 @@ import java.awt.event.ItemListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JCheckBox;
 import javax.swing.JPanel;
@@ -98,8 +97,7 @@ public class Child_Search_Main extends JPanel {
 					if(component instanceof Child_Search_Main){
 						mainpage.child_search_main_current = (Child_Search_Main) component;
 					}
-					SearchResultList searchresultlist = BbkDatabaseConnector.search(SearchText.getText());
-					Child_Search child_search = new Child_Search(mainpage,searchresultlist);
+					Child_Search child_search = new Child_Search(mainpage, SearchText.getText());
 					
 					mainpage.Mainpanel.removeAll();
 					mainpage.Mainpanel.add(child_search);
@@ -133,16 +131,13 @@ public class Child_Search_Main extends JPanel {
 					mainpage.child_search_main_current = (Child_Search_Main) component;
 				}
 				
-				SearchResultList searchresultlist = BbkDatabaseConnector.search(SearchText.getText());
-				Child_Search child_search = new Child_Search(mainpage,searchresultlist);
+				Child_Search child_search = new Child_Search(mainpage, SearchText.getText());
 				
 				mainpage.Mainpanel.removeAll();
 				mainpage.Mainpanel.add(child_search);
 				child_search.textField.setText(SearchText.getText());
 				mainpage.Mainpanel.updateUI();
 				mainpage.CurrentPage = 11;
-				String s = ""+ mainpage.CurrentPage;
-				mainpage.test.setText(s);
 			}
 			@Override
 			public void mouseEntered(MouseEvent arg0) {
