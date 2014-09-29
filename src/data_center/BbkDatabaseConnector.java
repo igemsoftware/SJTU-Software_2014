@@ -1,6 +1,7 @@
 package data_center;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 public class BbkDatabaseConnector
 {
@@ -27,7 +28,8 @@ public class BbkDatabaseConnector
 		} catch (SQLException e) {e.printStackTrace();}
     }
 
-    public static void displayTable(String tableName)
+    /** Display the first column(min index is 1) and the column interested(the colNum) */
+    public static void displayTable(String tableName, int colNum)
     {
         checkConnection();
     	
@@ -37,7 +39,7 @@ public class BbkDatabaseConnector
 		{	Statement statement = connection.createStatement();
 			ResultSet resultSet = statement.executeQuery(cmdStr);
 	        while (resultSet.next())
-	        	System.out.println(resultSet.getString(0) + "\t" + resultSet.getString(1));
+	        	System.out.println(resultSet.getString(1) + "\t" + resultSet.getString(colNum));
 	        resultSet.close(); 
 		} catch (SQLException e) {e.printStackTrace();}
     }
@@ -117,9 +119,43 @@ public class BbkDatabaseConnector
 
         return bbkDetail;
     }
+    
+    public static BbkUpload.SpecifiedSubscar getScarByName(String name)
+    {	
+    	checkConnection();
+    	
+    	BbkUpload.SpecifiedSubscar subscar = null;
+        try 
+		{	Statement statement = connection.createStatement();
+			ResultSet resultSet;
+			resultSet = statement.executeQuery("select * from " + BbkDB.TABLE_SPECIFIED_SUBSCARS + 
+					" where " + BbkDB.Header.SpecScar.NAME + " = " + "'" + name + "'");
+			if (resultSet.next())
+				subscar = new BbkUpload.SpecifiedSubscar(resultSet);
+		} catch (SQLException e) {e.printStackTrace();}
+        
+        return subscar;
+    }
+    
+    public static ArrayList<BbkUpload.Twin> findTwinsBySequence(String sequence)
+    {	
+    	checkConnection();
+    	
+    	ArrayList<BbkUpload.Twin> twins = new ArrayList<BbkUpload.Twin>();
+    	try
+    	{	Statement statement = connection.createStatement();
+			ResultSet resultSet;
+			resultSet = statement.executeQuery("select * from " + BbkDB.TABLE_MAIN + 
+				" where " + BbkDB.Header.Main.SEQUENCE + " = " + "'" + sequence + "'");
+    		while (resultSet.next())
+    			twins.add(new BbkUpload.Twin(resultSet));
+    	} catch (SQLException e) {e.printStackTrace();}
+    	
+    	return twins;
+    }
 
 
-    //Search for a keyword without any limitation
+    /** Search for a keyword without any limitation */
     public static SearchResultList search(String keyword)
     {
     	checkConnection();

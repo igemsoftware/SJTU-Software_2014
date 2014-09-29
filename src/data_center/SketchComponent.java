@@ -85,6 +85,12 @@ public class SketchComponent
 		
 		public void setCurve(ArrayList<Point> curve) {}
 		
+		/** bbkChildren in backBone, the IDs */
+		public ArrayList<Integer> getChildren()
+		{	return null;	}
+		
+		public void setChildren(ArrayList<Integer> children) {}
+		
 		public void display()
 		{
 			System.out.println("\n\n********");
@@ -280,12 +286,22 @@ public class SketchComponent
 	{
 		public Point center;
 		public int length;
-
+		public ArrayList<Integer> bbkChildren;
+		
 		public BackBone(int theID, Point pos, int length)
+		{	
+			super(theID, BackBone.class.getSimpleName());
+			this.center = pos;
+			this.length = length;
+			this.bbkChildren = new ArrayList<Integer>();
+		}
+
+		public BackBone(int theID, Point pos, int length, ArrayList<Integer> childIDList)
 		{
 			super(theID, BackBone.class.getSimpleName());
 			this.center = pos;
 			this.length = length;
+			this.bbkChildren = childIDList;
 		}
 
 		@Override
@@ -308,11 +324,22 @@ public class SketchComponent
 		public void setSize(double length)
 		{	this.length = (int) length;	}
 		
+		@Override
+		public ArrayList<Integer> getChildren()
+		{	return bbkChildren;	}
+		
+		@Override
+		public void setChildren(ArrayList<Integer> children)
+		{	this.bbkChildren = children;	}
+		
 		public void display()
 		{
 			super.display();
 			System.out.println("Center: " + center.toString());
 			System.out.println("Length: " + length);
+			System.out.println("BbkChildren: ");
+			for (Integer bbkID : bbkChildren)
+				System.out.println("\tChild with ID: " + bbkID);
 		}
 	}
 

@@ -8,7 +8,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Calendar;
 
 import ch.ethz.ssh2.Connection;
 import ch.ethz.ssh2.SCPClient;
@@ -45,7 +44,7 @@ public class BbkBlaster
 		
 		// else
 		checkLocalIODir();
-		String tag = generateTag();
+		String tag = TimeTagGenerator.generateTimeTag();
 		String infilePath = IO_DIR_LOCAL + INFILE_NAME + tag,
 			   outfilePath = IO_DIR_LOCAL + OUTFILE_NAME + tag, 
 			   RemoteInfilePath = IO_DIR_SERVER + INFILE_NAME + tag,
@@ -107,22 +106,6 @@ public class BbkBlaster
 		File file = new File(IO_DIR_LOCAL);
 		if (!file.exists())
 			file.mkdirs();
-	}
-	
-	/** Use current time as the tag */
-	private static String generateTag()
-	{	
-		Calendar calendar = Calendar.getInstance();
-		 
-		int year = calendar.get(Calendar.YEAR);
-		int month = calendar.get(Calendar.MONTH) + 1;
-		int date = calendar.get(Calendar.DATE);
-		int hour = calendar.get(Calendar.HOUR_OF_DAY);
-		int min = calendar.get(Calendar.MINUTE);
-		int sec = calendar.get(Calendar.SECOND);
-		int mSec = calendar.get(Calendar.MILLISECOND);
-		
-		return ("" + year + month + date + hour + min + sec + mSec);
 	}
 	
 	private static void monitorRemoteExecResult(Session session) throws IOException
