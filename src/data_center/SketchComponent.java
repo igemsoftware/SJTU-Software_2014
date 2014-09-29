@@ -287,6 +287,14 @@ public class SketchComponent
 		public Point center;
 		public int length;
 		public ArrayList<Integer> bbkChildren;
+		
+		public BackBone(int theID, Point pos, int length)
+		{	
+			super(theID, BackBone.class.getSimpleName());
+			this.center = pos;
+			this.length = length;
+			this.bbkChildren = new ArrayList<Integer>();
+		}
 
 		public BackBone(int theID, Point pos, int length, ArrayList<Integer> childIDList)
 		{
