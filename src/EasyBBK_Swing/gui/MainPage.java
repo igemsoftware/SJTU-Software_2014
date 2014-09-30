@@ -46,15 +46,14 @@ public class MainPage{
 	public boolean Search_flag;
 	public boolean Design_flag;
 	public boolean Upload_flag;
-	public static MainPage mainpage;
+	public MainPage mainpage;
 	public JLabel Home;
-	public static Child_Main child_main = null;
-	public static Child_Search_Main child_search_main_current = null;
-	public static Child_Search child_search_current = null;
-	public static Child_Design child_design_current = null;
-	public static Child_Upload child_upload_current = null;
-	public static int CurrentPage = 0;
-	public JLabel test;
+	public Child_Main child_main = null;
+	public Child_Search_Main child_search_main_current = null;
+	public Child_Search child_search_current = null;
+	public Child_Design child_design_current = null;
+	public Child_Upload child_upload_current = null;
+	public int CurrentPage = 0;
 	/**
 	 * Launch the application.
 	 */
@@ -141,8 +140,6 @@ public class MainPage{
 				Mainpanel.add(child_main);
 				Mainpanel.updateUI();
 				CurrentPage = 0;
-				String s = ""+ CurrentPage;
-				test.setText(s);
 			}
 			@Override
 			public void mouseEntered(MouseEvent arg0) {
@@ -155,7 +152,7 @@ public class MainPage{
 		});
 		GreenBar.add(Home);
 		
-		JLabel Close = new JLabel();
+		final JLabel Close = new JLabel();
 		Close.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Close1.png")));
 		Close.setBounds(1324, 13, 30, 30);
 		Close.addMouseListener(new MouseAdapter() {
@@ -174,7 +171,7 @@ public class MainPage{
 		});
 		GreenBar.add(Close);
 		
-		JLabel Min = new JLabel();
+		final JLabel Min = new JLabel();
 		Min.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Min1.png")));
 		Min.setBounds(1288, 13, 30, 30);
 		Min.addMouseListener(new MouseAdapter() {
@@ -226,26 +223,29 @@ public class MainPage{
 						Child_Search_Main child_search_main = new Child_Search_Main(mainpage);
 						Mainpanel.removeAll();
 						Mainpanel.add(child_search_main);
+						child_search_main.SearchText.requestFocus();
 						Mainpanel.updateUI();
 						CurrentPage = 1;
-						String s = ""+ CurrentPage;
-						test.setText(s);
 					}
 					else if(child_search_main_current != null && child_search_current == null){
 						Mainpanel.removeAll();
 						Mainpanel.add(child_search_main_current);
 						Mainpanel.updateUI();
 						CurrentPage = 1;
-						String s = ""+ CurrentPage;
-						test.setText(s);
+					}
+					else if(child_search_current.textField.getText()== null || child_search_current.textField.getText().trim().equals("")){
+						Child_Search_Main child_search_main = new Child_Search_Main(mainpage);
+						Mainpanel.removeAll();
+						Mainpanel.add(child_search_main);
+						child_search_main.SearchText.requestFocus();
+						Mainpanel.updateUI();
+						CurrentPage = 1;
 					}
 					else if(child_search_current != null){
 						Mainpanel.removeAll();
 						Mainpanel.add(child_search_current);
 						Mainpanel.updateUI();
 						CurrentPage = 11;
-						String s = ""+ CurrentPage;
-						test.setText(s);
 					}
 				}
 			}
@@ -304,16 +304,12 @@ public class MainPage{
 						Mainpanel.add(child_design);
 						Mainpanel.updateUI();
 						CurrentPage = 2;
-						String s = ""+ CurrentPage;
-						test.setText(s);
 					}
 					else if(child_design_current != null){
 						Mainpanel.removeAll();
 						Mainpanel.add(child_design_current);
 						Mainpanel.updateUI();
 						CurrentPage = 2;
-						String s = ""+ CurrentPage;
-						test.setText(s);
 					}
 				}
 			}
@@ -372,16 +368,12 @@ public class MainPage{
 					Mainpanel.add(child_upload);
 					Mainpanel.updateUI();
 					CurrentPage = 3;
-					String s = ""+ CurrentPage;
-					test.setText(s);
 				}
 				else if(child_upload_current != null){
 					Mainpanel.removeAll();
 					Mainpanel.add(child_upload_current);
 					Mainpanel.updateUI();
 					CurrentPage = 3;
-					String s = ""+ CurrentPage;
-					test.setText(s);
 				}
 			}
 			@Override
@@ -396,13 +388,6 @@ public class MainPage{
 			}
 		});
 		GreenBar.add(Upload);
-		
-		test = new JLabel("");
-		test.setFont(new Font("Times New Roman", Font.BOLD, 30));
-		String s = ""+ CurrentPage;
-		test.setText(s);
-		test.setBounds(10, 10, 30, 30);
-		GreenBar.add(test);
 		
 		Mainpanel = new JPanel();
 		Mainpanel.setBounds(0, 59, 1366, 670);
