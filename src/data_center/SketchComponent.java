@@ -164,18 +164,29 @@ public class SketchComponent
 
     public static class BioBrick extends Component
     {
-		public String bbkName;
+		public BbkOutline bbkOutline = null;
 		public int secondaryType;
 		public Point center;
 		public Color color;
         
 		// primary type already known in the class
+		public BioBrick(int theID, int secondaryType, 
+        		Point center, Color color)
+        {
+        	super(theID, BioBrick.class.getSimpleName());
+        	this.secondaryType = secondaryType;
+        	this.bbkOutline = null;
+			this.center = center;
+			this.color = color;
+        }
+		
+		/** bbkOutline should be set by setString(bbkName) */
         public BioBrick(int theID, String bbkName, int secondaryType, 
         		Point center, Color color)
         {
         	super(theID, BioBrick.class.getSimpleName());
         	this.secondaryType = secondaryType;
-        	this.bbkName = bbkName;
+        	this.bbkOutline = BbkDatabaseConnector.getOutlineByName(bbkName);
 			this.center = center;
 			this.color = color;
         }
@@ -194,11 +205,13 @@ public class SketchComponent
         
         @Override
 		public String getString()
-		{	return bbkName;	}
+		{	return bbkOutline != null ? bbkOutline.name : null;	}
 		
+        /** Set bbkOutline by bbkName in the function, if there's no such 
+         * bbkName in the database, bbkOutline will be a null */
 		@Override
 		public void setString(String bbkName)
-		{	this.bbkName = bbkName;	}
+		{	bbkOutline = BbkDatabaseConnector.getOutlineByName(bbkName);	}
         
 		@Override
 		public Point getCenter()
@@ -219,7 +232,7 @@ public class SketchComponent
         public void display()
         {
 			super.display();
-			System.out.println("BbkName: " + bbkName);
+			System.out.println("BbkName: " + bbkOutline.name);
 			System.out.println("SecondaryType: " + secondaryType);
 			System.out.println("Center: " + center.toString());
 			System.out.println("Color: " + color);

@@ -3,6 +3,8 @@ package data_center;
 import java.sql.*;
 import java.util.ArrayList;
 
+import data_center.BbkUpload.Twin;
+
 public class BbkDatabaseConnector
 {
 	public final static String DRIVER = "com.mysql.jdbc.Driver";
@@ -148,7 +150,10 @@ public class BbkDatabaseConnector
 			resultSet = statement.executeQuery("select * from " + BbkDB.TABLE_MAIN + 
 				" where " + BbkDB.Header.Main.SEQUENCE + " = " + "'" + sequence + "'");
     		while (resultSet.next())
-    			twins.add(new BbkUpload.Twin(resultSet));
+    		{	BbkUpload.Twin twin = new Twin();
+    			twin.twin = resultSet.getString(BbkDB.Header.Twin.TWIN);
+    			twins.add(twin);
+    		}
     	} catch (SQLException e) {e.printStackTrace();}
     	
     	return twins;
@@ -194,17 +199,75 @@ public class BbkDatabaseConnector
         return resultList;
     }
     
-    /** Upload a new bbk and get the odd num used to modify it later */
+    /** Upload a new bbk and get the odd num used to modify it later. 
+     * The oddNum is stored in the ID of an bbk */
     public static String upload(BbkUpload bbkUpload)
     {	
     	// fix me
     	return null;
     }
     
-    public static BbkUpload getUploadedBbkByOddNum(String oddNum)
+    /** The oddNum is stored in the ID of an bbk */
+    public static BbkUpload getBbkUploadByNameAndOddNum(String name, String oddNum)
     {	
-    	// fix me
-    	return null;
+    	// prevent getting the bbk not uploaded by EasyBbk
+    	if ( !name.endsWith("_EasyBbk") )
+    		return null;
+    	
+    	checkConnection();
+    	
+    	BbkUpload bbkUpload = new BbkUpload();
+        try 
+		{	Statement statement = connection.createStatement();
+			ResultSet resultSet;
+			// main
+			resultSet = statement.executeQuery("select * from " + BbkDB.TABLE_MAIN + 
+					" where " + BbkDB.Header.Main.NAME + " = " + "'" + name + "'" + 
+					" AND " + BbkDB.Header.Main.ID + " = " + "'" + oddNum + "'");
+			if (resultSet.next())
+				bbkUpload.fillData_main(resultSet);
+			else
+				return null;	// if don't have it in main, make it a null
+			// category
+			resultSet = statement.executeQuery("select * from " + BbkDB.TABLE_CATEGORIES + 
+	        		" where " + BbkDB.Header.Main.NAME + " = " + "'" + name + "'");
+			if (resultSet.next())
+				bbkUpload.fillData_categories(resultSet);
+			// deep_subparts
+			resultSet = statement.executeQuery("select * from " + BbkDB.TABLE_DEEP_SUBPARTS + 
+	        		" where " + BbkDB.Header.Main.NAME + " = " + "'" + name + "'");
+			if (resultSet.next())
+				bbkUpload.fillData_deepSubparts(resultSet);
+			// features
+			resultSet = statement.executeQuery("select * from " + BbkDB.TABLE_FEATURES + 
+	        		" where " + BbkDB.Header.Main.NAME + " = " + "'" + name + "'");
+			if (resultSet.next())
+				bbkUpload.fillData_features(resultSet);
+			// parameters
+			resultSet = statement.executeQuery("select * from " + BbkDB.TABLE_PARAMETERS + 
+	        		" where " + BbkDB.Header.Main.NAME + " = " + "'" + name + "'");
+			if (resultSet.next())
+				bbkUpload.fillData_parameters(resultSet);
+			// specified_subparts
+			resultSet = statement.executeQuery("select * from " + BbkDB.TABLE_SPECIFIED_SUBSCARS + 
+	        		" where " + BbkDB.Header.Main.NAME + " = " + "'" + name + "'");
+			if (resultSet.next())
+				bbkUpload.fillData_specifiedSubscars(resultSet);
+			// specified_subscars
+			resultSet = statement.executeQuery("select * from " + BbkDB.TABLE_SPECIFIED_SUBPARTS + 
+	        		" where " + BbkDB.Header.Main.NAME + " = " + "'" + name + "'");
+			if (resultSet.next())
+				bbkUpload.fillData_specifiedSubparts(resultSet);
+			// twins
+			resultSet = statement.executeQuery("select * from " + BbkDB.TABLE_TWINS + 
+	        		" where " + BbkDB.Header.Main.NAME + " = " + "'" + name + "'");
+			if (resultSet.next())
+				bbkUpload.fillData_twins(resultSet);
+			
+			resultSet.close();
+		} catch (SQLException e) {e.printStackTrace();}
+    	
+    	return bbkUpload;
     }
 
 }
