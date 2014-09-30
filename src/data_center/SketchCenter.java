@@ -2,6 +2,9 @@ package data_center;
 
 import java.util.ArrayList;
 
+import data_center.SketchComponent.BackBone;
+import data_center.SketchComponent.BioBrick;
+
 public class SketchCenter
 {
 	public SketchProject currentProject = null;
@@ -53,6 +56,29 @@ public class SketchCenter
 		for (int i = 0; i < projectList.size(); ++i)
 			names[i] = projectList.get(i).name;
 		return names;
+	}
+	
+	public BbkOutline assignBbkOutlineToBioBrick(String bbkName, BioBrick biobrick)
+	{	
+		biobrick.setString(bbkName); 	// BbkDatabase connected in the function
+		return biobrick.bbkOutline;
+	}
+	
+	public BbkUpload generateBbkUploadFromBackBone(BackBone backbone)
+	{	
+		BbkUpload bbkUpload = new BbkUpload();
+		ArrayList<Object> sequenceTokens = new ArrayList<Object>();
+		for (Integer componentID : backbone.bbkChildren)
+		{	BioBrick bbk = (BioBrick) currentProject.findComponentByID(componentID);
+			if (bbk == null)
+				continue;
+			// else... 
+			BbkDetail bbkDetail = 
+					BbkDatabaseConnector.getDetailByName(bbk.bbkOutline.name);	
+			sequenceTokens.add(bbkDetail);
+		}
+		bbkUpload.setSequence(sequenceTokens, true);
+		return bbkUpload;
 	}
 	
 	

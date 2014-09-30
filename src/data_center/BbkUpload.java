@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class BbkUpload
 {
-	// those init with null can't be set twice
+	// those init with null can't change its value once set
 	private String name = null;
     private String enterDate = null;
     private String ID = null;
@@ -68,12 +68,17 @@ public class BbkUpload
 	{	return sequence;	}
 
 	/** Also set the subscar, subpart, deepsubpart and twins at the same time 
-	 * Please call uploadCenter.checkUploadSequance() first. 
+	 * Please call uploadCenter.isSequanceValid() first. 
 	 * useDefaultScar means use RFC[10] to fill all unspecified scars 
 	 * between bio-bricks */
 	public void setSequence(ArrayList<Object> sequenceTokens, boolean useDefaultScar)
 	{
 		sequence = "";
+		deepSubparts = new ArrayList<BbkUpload.DeepSubpart>();
+		specifiedSubscars = new ArrayList<BbkUpload.SpecifiedSubscar>();
+		specifiedSubparts = new ArrayList<BbkUpload.SpecifiedSubpart>();
+		twins = null;
+		
 		Object preToken = new Object();
 		for (Object token : sequenceTokens)
 		{	if (token.getClass().equals(BbkDetail.class))	// subpart
@@ -107,6 +112,77 @@ public class BbkUpload
 	
 	
 	
+	/** Fill data from database, don't need url, rating parts etc..., cause
+	 * they are initialized when newed, and are constants */
+	public void fillData_main(ResultSet resultSet) throws SQLException
+    {	
+		name = resultSet.getString(BbkDB.Header.Main.NAME);
+	    type = resultSet.getString(BbkDB.Header.Main.TYPE);
+	    author = resultSet.getString(BbkDB.Header.Main.AUTHOR);
+	    enterDate = resultSet.getString(BbkDB.Header.Main.ENTER_DATE);
+	    shortDesc = resultSet.getString(BbkDB.Header.Main.SHORT_DESC);
+	    
+	    ID = resultSet.getString(BbkDB.Header.Main.ID);
+		shortName = resultSet.getString(BbkDB.Header.Main.SHORT_NAME);
+		nickname = resultSet.getString(BbkDB.Header.Main.NICKNAME);
+		sequence = resultSet.getString(BbkDB.Header.Main.SEQUENCE);
+		groupFavorite = resultSet.getString(BbkDB.Header.Main.GROUP_FAVOURITE);
+		delete_this_part = resultSet.getString(BbkDB.Header.Main.DELETE_THIS_PART);
+    }
+	
+	// resultSet WILL have an result if enters these functions, checked outside
+	public void fillData_categories(ResultSet resultSet) throws SQLException
+	{	
+		do
+			categories.add(new Category(resultSet));
+		while (resultSet.next());
+	}
+	
+	public void fillData_deepSubparts(ResultSet resultSet) throws SQLException
+	{	
+		do
+			deepSubparts.add(new DeepSubpart(resultSet));
+		while (resultSet.next());
+	}
+	
+	public void fillData_features(ResultSet resultSet) throws SQLException
+	{	
+		do
+			features.add(new Feature(resultSet));
+		while (resultSet.next());
+	}
+	
+	public void fillData_parameters(ResultSet resultSet) throws SQLException
+	{	
+		do
+			parameters.add(new Parameter(resultSet));
+		while (resultSet.next());
+	}
+	
+	public void fillData_specifiedSubparts(ResultSet resultSet) throws SQLException
+	{	
+		do
+			specifiedSubparts.add(new SpecifiedSubpart(resultSet));
+		while (resultSet.next());
+	}
+	
+	public void fillData_specifiedSubscars(ResultSet resultSet) throws SQLException
+	{	
+		do
+			specifiedSubscars.add(new SpecifiedSubscar(resultSet));
+		while (resultSet.next());
+	}
+	
+	public void fillData_twins(ResultSet resultSet) throws SQLException
+	{	
+		do
+			twins.add(new Twin(resultSet));
+		while (resultSet.next());
+	}
+	
+	
+	
+	
 	
 	public static class Category
 	{	
@@ -115,6 +191,12 @@ public class BbkUpload
 		public Category(String category)
 		{	
 			this.category = category;
+		}
+		
+		/** Used to fill data from database when modify uploaded bbk */
+		public Category(ResultSet resultSet) throws SQLException
+		{
+			category = resultSet.getString(BbkDB.Header.Category.CATEGORY);
 		}
 	}
 	
@@ -136,6 +218,17 @@ public class BbkUpload
 			this.direction = direction;
 			this.startPos = startPos;
 			this.endPos = endPos;
+		}
+		
+		/** Used to fill data from database when modify uploaded bbk */
+		public Feature(ResultSet resultSet) throws SQLException
+		{	
+			ID = resultSet.getString(BbkDB.Header.Feature.ID);
+			title = resultSet.getString(BbkDB.Header.Feature.TITLE);
+			type = resultSet.getString(BbkDB.Header.Feature.TYPE);
+			direction = resultSet.getString(BbkDB.Header.Feature.DIRECTION);
+			startPos = resultSet.getString(BbkDB.Header.Feature.START_POS);
+			endPos = resultSet.getString(BbkDB.Header.Feature.END_POS);
 		}
 	}
 	
@@ -163,6 +256,19 @@ public class BbkUpload
 			this.userID = "";
 			this.userName = "";
 		}
+		
+		/** Used to fill data from database when modify uploaded bbk */
+		public Parameter(ResultSet resultSet) throws SQLException
+		{	
+			name = resultSet.getString(BbkDB.Header.Parameter.NAME);
+			value = resultSet.getString(BbkDB.Header.Parameter.VALUE);
+			units = resultSet.getString(BbkDB.Header.Parameter.UNITS);
+			url = resultSet.getString(BbkDB.Header.Parameter.URL);
+			ID = resultSet.getString(BbkDB.Header.Parameter.ID);
+			m_date = resultSet.getString(BbkDB.Header.Parameter.M_DATE);
+			userID = resultSet.getString(BbkDB.Header.Parameter.USER_ID);
+			userName = resultSet.getString(BbkDB.Header.Parameter.USER_NAME);
+		}
 	}
 
 	public static class DeepSubpart
@@ -180,6 +286,16 @@ public class BbkUpload
 			shortDesc = subpart.shortDesc;
 			type = subpart.type;
 			nickname = subpart.nickname;
+		}
+		
+		/** Used to fill data from database when modify uploaded bbk */
+		public DeepSubpart(ResultSet resultSet) throws SQLException
+		{	
+			ID = resultSet.getString(BbkDB.Header.DeepSub.ID);
+			name = resultSet.getString(BbkDB.Header.DeepSub.NAME);
+			shortDesc = resultSet.getString(BbkDB.Header.DeepSub.SHORT_DESC);
+			type = resultSet.getString(BbkDB.Header.DeepSub.TYPE);
+			nickname = resultSet.getString(BbkDB.Header.DeepSub.NICKNAME);
 		}
 	}
 	
@@ -199,6 +315,15 @@ public class BbkUpload
 			shortDesc = bbkDetail.shortDesc;
 			type = bbkDetail.type;
 			nickname = bbkDetail.nickname;
+		}
+		
+		public SpecifiedSubpart(ResultSet resultSet) throws SQLException
+		{	
+			ID = resultSet.getString(BbkDB.Header.SpecSub.ID);
+			name = resultSet.getString(BbkDB.Header.SpecSub.NAME);
+			shortDesc = resultSet.getString(BbkDB.Header.SpecSub.SHORT_DESC);
+			type = resultSet.getString(BbkDB.Header.SpecSub.TYPE);
+			nickname = resultSet.getString(BbkDB.Header.SpecSub.NICKNAME);
 		}
 	}
 	
@@ -224,6 +349,8 @@ public class BbkUpload
 			sequence = "tactagag";
 		}
 		
+		/** Used to create a specified subscar instance. 
+		 * Can also fill data from database when modify uploaded bbk. */
 		public SpecifiedSubscar(ResultSet resultSet) throws SQLException
 		{	
 			ID = resultSet.getString(BbkDB.Header.SpecScar.ID);
@@ -240,10 +367,14 @@ public class BbkUpload
 	{	
 		public String twin;
 		
-		/** Get twin by sequence from main */
+		/** Used when new a twin to fill in BbkDatabaseConnector.findTwinsBySequence. 
+		 * Avoiding conflict from the filling when modify uploaded bbk */
+		public Twin() {}
+		
+		/** Used to fill data from database when modify uploaded bbk */
 		public Twin(ResultSet resultSet) throws SQLException
 		{	
-			twin = resultSet.getString(BbkDB.Header.Main.NAME);
+			twin = resultSet.getString(BbkDB.Header.Twin.TWIN);
 		}
 	}
 	

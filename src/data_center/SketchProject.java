@@ -671,7 +671,7 @@ public class SketchProject
 		   h6.appendChild(th6);
 		   Element h7 = doc.createElement("bbkName");
 		   nod.appendChild(h7); 
-		   Text th7 = doc.createTextNode(b.bbkName);
+		   Text th7 = doc.createTextNode(b.bbkOutline.name);
 		   h7.appendChild(th7);
  		  }
   	if (it.getClass().getSimpleName().equals("BackBone")){
