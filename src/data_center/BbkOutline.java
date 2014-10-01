@@ -113,10 +113,13 @@ public class BbkOutline
     						double feedbacks_weight, double publication_weight)
     	{	
     		double totalPoints = DBConsts.Rating.TOTAL_POINTS;
-    		double points = Double.parseDouble(status) / DBConsts.Rating.STATUS_DEFAULT_WEIGHT * status_weight
-    					  + Double.parseDouble(quality) / DBConsts.Rating.QUALITY_DEFAULT_WEIGHT * quality_weight
-    					  + Double.parseDouble(feedbacks) / DBConsts.Rating.FEEDBACKS_DEFAULT_WEIGHT * feedbacks_weight
-    					  + Double.parseDouble(publication) / DBConsts.Rating.PUBLICATION_DEFAULT_WEIGHT * publication_weight;
+    		double points = 0;
+    		try
+    		{	points = Double.parseDouble(status) / DBConsts.Rating.STATUS_DEFAULT_WEIGHT * status_weight
+    				   + Double.parseDouble(quality) / DBConsts.Rating.QUALITY_DEFAULT_WEIGHT * quality_weight
+    				   + Double.parseDouble(feedbacks) / DBConsts.Rating.FEEDBACKS_DEFAULT_WEIGHT * feedbacks_weight
+    				   + Double.parseDouble(publication) / DBConsts.Rating.PUBLICATION_DEFAULT_WEIGHT * publication_weight;
+    		} catch (Exception e) {points = 0;}
     		int score = (int)(points / totalPoints * 100);
     		return score;
     	}

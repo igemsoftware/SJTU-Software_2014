@@ -19,10 +19,17 @@ public class Testing
 	
 	public static void main(String[] args) throws Exception
 	{	
-		searchKeywordAndGetDetail();
+		//201410115566901
+		
+		//searchKeywordAndGetDetail();
 		//compareAssignDetail();
 		//sketchXMLReadWrite();
-		//BbkDatabaseConnector.displayTable(BbkDB.TABLE_TWINS, 2);
+		//DatabaseConnector.displayTable(DBConsts.Table.MAIN_UPLOAD, 2);
+		//BbkUpload bbkUpload = new BbkUpload();
+		//bbkUpload.setName("K1479001");
+		//bbkUpload.setID();
+		//DatabaseConnector.upload(bbkUpload);
+		DatabaseConnector.getBbkUploadByNameAndOddNum("BBa_K1479001_EasyBbk", "201410115566901").display();
 	}
 	
 	

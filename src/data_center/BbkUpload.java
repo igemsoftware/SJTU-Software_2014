@@ -54,7 +54,7 @@ public class BbkUpload
 	public String getID() 
 	{	return ID;	}
 
-	public void setID(String ID)
+	public void setID()
 	{
 		if (ID == null)
 			ID = TimeTagGenerator.generateTimeTag();
@@ -158,7 +158,7 @@ public class BbkUpload
 	public static class Parameter extends BbkProperties.Parameter
 	{	
 		public Parameter(String name, String value, String units, String url, 
-				String ID)
+				String ID, String userName)
 		{	
 			this.name = name;
 			this.value = value;
@@ -168,7 +168,7 @@ public class BbkUpload
 			this.m_date = TimeTagGenerator.generateYearMonthDateStr() + " " 
 						+ TimeTagGenerator.generateHourMinStr();
 			this.userID = "";
-			this.userName = "";
+			this.userName = userName;
 		}
 		
 		/** Used to fill data from database when modify uploaded bbk */
@@ -257,31 +257,29 @@ public class BbkUpload
 	
 	
 	
-	// BbkUpload 小黑屋，与outline相比没有但是还是要填进main表的项目在这里：
-	String url = "";
-	String releaseStatus = "";
-	String sampleStatus = "";
-	String results = "";
-	String part_rating = "";
-	String references = "";
-	String groups = "";
-	String DNA_status = "";
-	String samples = "";
-	// About rating
-	String rating = "-1";
-	String status = "-1";
-	String quality = "-1";
-	String feedbacks = "-1";
-	String publication = "-1";
-	// rating details
-	String tot_confirmed = "-1";
-	String detail_not_confirmed = "-1";
-	String average_stars = "-1";
-	String tot_commets = "-1";
-	String google_items = "-1";
-	String first_url = "";
-
-	
+	// BbkUpload 小黑屋，与outline相比没有的东西在这里：
+	/*
+	url = "";
+	releaseStatus = "";
+	sampleStatus = "";
+	results = "";
+	part_rating = "";
+	references = "";
+	groups = "";
+	DNA_status = "";
+	samples = "";
+	rating = "-1";
+	status = "-1";
+	quality = "-1";
+	feedbacks = "-1";
+	publication = "-1";
+	tot_confirmed = "-1";
+	detail_not_confirmed = "-1";
+	average_stars = "-1";
+	tot_commets = "-1";
+	google_items = "-1";
+	first_url = "";
+	*/
 	
 	
 }
