@@ -18,46 +18,54 @@ public class BbkDetail extends BbkOutline
 	public BbkDetail()
     { }
 	
+	// resultSet WILL have an result if enters these functions, checked outside
 	public void fillData_categories(ResultSet resultSet) throws SQLException
 	{	
-		while (resultSet.next())
+		do
 			categories.add(new Category(resultSet));
+		while (resultSet.next());
 	}
 	
 	public void fillData_deepSubparts(ResultSet resultSet) throws SQLException
 	{	
-		while (resultSet.next())
+		do
 			deepSubparts.add(new DeepSubpart(resultSet));
+		while (resultSet.next());
 	}
 	
 	public void fillData_features(ResultSet resultSet) throws SQLException
 	{	
-		while (resultSet.next())
+		do
 			features.add(new Feature(resultSet));
+		while (resultSet.next());
 	}
 	
 	public void fillData_parameters(ResultSet resultSet) throws SQLException
 	{	
-		while (resultSet.next())
+		do
 			parameters.add(new Parameter(resultSet));
+		while (resultSet.next());
 	}
 	
 	public void fillData_specifiedSubparts(ResultSet resultSet) throws SQLException
 	{	
-		while (resultSet.next())
+		do
 			specifiedSubparts.add(new SpecifiedSubpart(resultSet));
+		while (resultSet.next());
 	}
 	
 	public void fillData_specifiedSubscars(ResultSet resultSet) throws SQLException
 	{	
-		while (resultSet.next())
+		do
 			specifiedSubscars.add(new SpecifiedSubscar(resultSet));
+		while (resultSet.next());
 	}
 	
 	public void fillData_twins(ResultSet resultSet) throws SQLException
 	{	
-		while (resultSet.next())
+		do
 			twins.add(new Twin(resultSet));
+		while (resultSet.next());
 	}
 	
 	

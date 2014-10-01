@@ -40,7 +40,6 @@ public class BbkOutline
     
     public void fillData_main(ResultSet resultSet) throws SQLException
     {	
-    	resultSet.next();
     	name = resultSet.getString(BbkDB.Header.Main.NAME);
 	    type = resultSet.getString(BbkDB.Header.Main.TYPE);
 	    author = resultSet.getString(BbkDB.Header.Main.AUTHOR);
@@ -154,7 +153,8 @@ public class BbkOutline
     						   "Status: " + status + "\n" + 
     						   "Quality: " + quality + "\n" + 
     						   "Feedbacks: " + feedbacks + "\n" +
-    						   "Publication: " + publication);
+    						   "Publication: " + publication + "\n" +
+    						   "Total Score: " + getScore());
     	}
     }
     
@@ -164,64 +164,3 @@ public class BbkOutline
     	double eValue;
     }
 }
-
-/*
-// 返回值是boolean? 有待讨论	-cwj
-// 于是我又想了一下，直接在filter函数里面判断好了，这里的就不要了,
- 	// 如果你觉得ok的话就把它们删掉好了~	-chyb
-public boolean isTypeOf(int typeNo)
-{
-	switch (typeNo)
-	{
-		case BbkType.PROMOTER:
-			return type.equals(BbkType.strOf_PROMOTER);
-		case BbkType.RBS:
-			return type.equals(BbkType.strOf_RBS);
-		case BbkType.PROTEIN_DOMAIN:
-			return type.equals(BbkType.strOf_PROTEIN_DOMAIN);
-		case BbkType.PROTEIN_CODING_SEQUENCE:
-			return type.equals(BbkType.strOf_PROTEIN_CODING_SEQUENCE);
-		case BbkType.TRANSLATIONAL_UNIT:
-			return type.equals(BbkType.strOf_TRANSLATIONAL_UNIT);
-		case BbkType.TERMINATOR:
-			return type.equals(BbkType.strOf_TERMINATOR);
-		case BbkType.DNA:
-			return type.equals(BbkType.strOf_DNA);
-		case BbkType.PLASMID_BACKBONE:
-			return type.equals(BbkType.strOf_PLASMID_BACKBONE);
-		case BbkType.PLASMID:
-			return type.equals(BbkType.strOf_PLASMID);
-		case BbkType.PRIMER:
-			return type.equals(BbkType.strOf_PRIMER);
-		case BbkType.COMPOSITE:
-			return type.equals(BbkType.strOf_COMPOSITE);
-		case BbkType.PROTEIN_GENERATOR:
-			return type.equals(BbkType.strOf_PROTEIN_GENERATOR);
-		case BbkType.REPORTER:
-			return type.equals(BbkType.strOf_REPORTER);
-		case BbkType.INVERTER:
-			return type.equals(BbkType.strOf_INVERTER);
-		case BbkType.SIGNALLING:
-			return type.equals(BbkType.strOf_SIGNALLING);
-		case BbkType.MEASUREMENT:
-			return type.equals(BbkType.strOf_MEASUREMENT);
-		case BbkType.OTHER:
-			// if code reaches here, it must be an other
-			return true;
-		default:
-			return false; 
-	}
-}
-
-public boolean isEnteredBetween(int[] enterYear)
-{
-	if (enterYear.length != 2)
-	{	System.out.println("Invalid enter year filter... ");
-		return false;
-	}
-	// else
-	int theYear = Integer.parseInt(enterDate.substring(0, 4));
-	return (enterYear[0] <= theYear) && (enterYear[1] >= theYear);
-}
-*/
-
