@@ -14,7 +14,7 @@ import ch.ethz.ssh2.SCPClient;
 import ch.ethz.ssh2.Session;
 import ch.ethz.ssh2.StreamGobbler;
 
-public class BbkBlaster
+public class BlastingSearcher
 {
 	// about server
 	public static final String SERVER_ADDRESS = "202.120.45.101";
@@ -184,7 +184,7 @@ public class BbkBlaster
 			   scoreStr = results.get(results.size() - 2), 	// the second last token
 			   eValueStr = results.get(results.size() - 1);	// the last token
 
-		BbkOutline outline = BbkDatabaseConnector.getOutlineByName(bbkName);
+		BbkOutline outline = DatabaseConnector.getOutlineByName(bbkName);
 		outline.blasting = new BbkOutline.Blasting();
 		outline.blasting.score = Integer.parseInt(scoreStr);
 		outline.blasting.eValue = Double.parseDouble(eValueStr);

@@ -19,20 +19,31 @@ public class Testing
 	
 	public static void main(String[] args) throws Exception
 	{	
-		//searchKeyword();
-		//compareAssignDetail();
-		sketchXMLReadWrite();
+		//201410115566901
 		
+		//searchKeywordAndGetDetail();
+		//compareAssignDetail();
+		//sketchXMLReadWrite();
+		//DatabaseConnector.displayTable(DBConsts.Table.MAIN_UPLOAD, 2);
+		//BbkUpload bbkUpload = new BbkUpload();
+		//bbkUpload.setName("K1479001");
+		//bbkUpload.setID();
+		//DatabaseConnector.upload(bbkUpload);
+		DatabaseConnector.getBbkUploadByNameAndOddNum("BBa_K1479001_EasyBbk", "201410115566901").display();
 	}
 	
 	
 	
 	
-	private static void searchKeyword()
+	private static void searchKeywordAndGetDetail()
 	{	
-		SearchResultList list = dataCenter.searchCenter.search("BBa_B");
+		SearchResultList list = dataCenter.searchCenter.search("GFP");
 		list.display();
 		System.out.println("List size: " + list.size());
+		for (int i = 0; i < list.size(); i += 10)
+		{	BbkDetail detail = dataCenter.searchCenter.getDetail(list.get(i).name);
+			detail.display();
+		}
 	}
 	
 	private static void searchFilterAndSort()

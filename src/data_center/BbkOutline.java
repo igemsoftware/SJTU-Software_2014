@@ -13,7 +13,7 @@ public class BbkOutline
     public String shortDesc;   // short description
     public String url;
     
-    public Rating rating = new Rating();
+    public Rating rating = null;
     public Blasting blasting = null;	// not new here cause not always blasting
     
  	public String ID;
@@ -35,33 +35,7 @@ public class BbkOutline
     
     public BbkOutline(ResultSet resultSet) throws SQLException
     {	
-    	this.fillData_main(resultSet);
-    }
-    
-    public void fillData_main(ResultSet resultSet) throws SQLException
-    {	
-    	name = resultSet.getString(BbkDB.Header.Main.NAME);
-	    type = resultSet.getString(BbkDB.Header.Main.TYPE);
-	    author = resultSet.getString(BbkDB.Header.Main.AUTHOR);
-	    enterDate = resultSet.getString(BbkDB.Header.Main.ENTER_DATE);
-	    shortDesc = resultSet.getString(BbkDB.Header.Main.SHORT_DESC);
-	    url = resultSet.getString(BbkDB.Header.Main.URL);
-	    
-	    rating.fillData_Rating(resultSet);
-	    
-	    ID = resultSet.getString(BbkDB.Header.Main.ID);
-		shortName = resultSet.getString(BbkDB.Header.Main.SHORT_NAME);
-		releaseStatus = resultSet.getString(BbkDB.Header.Main.RELEASE_STATUS);
-		sampleStatus = resultSet.getString(BbkDB.Header.Main.SAMPLE_STATUS);
-		results = resultSet.getString(BbkDB.Header.Main.RESULTS);
-		nickname = resultSet.getString(BbkDB.Header.Main.NICKNAME);
-		part_rating = resultSet.getString(BbkDB.Header.Main.PART_RATING);
-		sequence = resultSet.getString(BbkDB.Header.Main.SEQUENCE);
-		samples = resultSet.getString(BbkDB.Header.Main.SAMPLES);
-		references = resultSet.getString(BbkDB.Header.Main.REFERENCES);
-		groups = resultSet.getString(BbkDB.Header.Main.GROUPS);
-		DNA_status = resultSet.getString(BbkDB.Header.Main.DNA_STATUS);
-		groupFavorite = resultSet.getString(BbkDB.Header.Main.GROUP_FAVOURITE);
+    	DBDataFiller.dbIntoMain(resultSet, this);
     }
     
     /** Score at default weight */
@@ -110,39 +84,42 @@ public class BbkOutline
      	public String google_items;
      	public String first_url;
     	
-    	public void fillData_Rating(ResultSet resultSet) throws SQLException
+    	public Rating(ResultSet resultSet) throws SQLException
     	{	
-    		rating = resultSet.getString(BbkDB.Header.Main.RATING);
-    		status = resultSet.getString(BbkDB.Header.Main.STATUS);
-    		quality = resultSet.getString(BbkDB.Header.Main.QUALITY);
-    		feedbacks = resultSet.getString(BbkDB.Header.Main.FEEDBACKS);
-    		publication = resultSet.getString(BbkDB.Header.Main.PUBLICATION);
+    		rating = resultSet.getString(DBConsts.Header.Main.RATING);
+    		status = resultSet.getString(DBConsts.Header.Main.STATUS);
+    		quality = resultSet.getString(DBConsts.Header.Main.QUALITY);
+    		feedbacks = resultSet.getString(DBConsts.Header.Main.FEEDBACKS);
+    		publication = resultSet.getString(DBConsts.Header.Main.PUBLICATION);
     		// rating details
-    		delete_this_part = resultSet.getString(BbkDB.Header.Main.DELETE_THIS_PART);
-    		tot_confirmed = resultSet.getString(BbkDB.Header.Main.TOT_CONFIRMED);
-    		detail_not_confirmed = resultSet.getString(BbkDB.Header.Main.DETAIL_NOT_CONFIRMED);
-    		average_stars = resultSet.getString(BbkDB.Header.Main.AVERAGE_STARS);
-    		tot_commets = resultSet.getString(BbkDB.Header.Main.TOT_COMMENTS);
-    		google_items = resultSet.getString(BbkDB.Header.Main.GOOGLE_ITEMS);
-    		first_url = resultSet.getString(BbkDB.Header.Main.FIRST_URL);
+    		delete_this_part = resultSet.getString(DBConsts.Header.Main.DELETE_THIS_PART);
+    		tot_confirmed = resultSet.getString(DBConsts.Header.Main.TOT_CONFIRMED);
+    		detail_not_confirmed = resultSet.getString(DBConsts.Header.Main.DETAIL_NOT_CONFIRMED);
+    		average_stars = resultSet.getString(DBConsts.Header.Main.AVERAGE_STARS);
+    		tot_commets = resultSet.getString(DBConsts.Header.Main.TOT_COMMENTS);
+    		google_items = resultSet.getString(DBConsts.Header.Main.GOOGLE_ITEMS);
+    		first_url = resultSet.getString(DBConsts.Header.Main.FIRST_URL);
     	}
     	
     	public int getScore()
     	{
-    		return getScore(BbkDB.Rating.STATUS_DEFAULT_WEIGHT, 
-    						BbkDB.Rating.QUALITY_DEFAULT_WEIGHT,
-    						BbkDB.Rating.FEEDBACKS_DEFAULT_WEIGHT,
-    						BbkDB.Rating.PUBLICATION_DEFAULT_WEIGHT);
+    		return getScore(DBConsts.Rating.STATUS_DEFAULT_WEIGHT, 
+    						DBConsts.Rating.QUALITY_DEFAULT_WEIGHT,
+    						DBConsts.Rating.FEEDBACKS_DEFAULT_WEIGHT,
+    						DBConsts.Rating.PUBLICATION_DEFAULT_WEIGHT);
     	}
     	
     	public int getScore(double status_weight, double quality_weight, 
     						double feedbacks_weight, double publication_weight)
     	{	
-    		double totalPoints = BbkDB.Rating.TOTAL_POINTS;
-    		double points = Double.parseDouble(status) / BbkDB.Rating.STATUS_DEFAULT_WEIGHT * status_weight
-    					  + Double.parseDouble(quality) / BbkDB.Rating.QUALITY_DEFAULT_WEIGHT * quality_weight
-    					  + Double.parseDouble(feedbacks) / BbkDB.Rating.FEEDBACKS_DEFAULT_WEIGHT * feedbacks_weight
-    					  + Double.parseDouble(publication) / BbkDB.Rating.PUBLICATION_DEFAULT_WEIGHT * publication_weight;
+    		double totalPoints = DBConsts.Rating.TOTAL_POINTS;
+    		double points = 0;
+    		try
+    		{	points = Double.parseDouble(status) / DBConsts.Rating.STATUS_DEFAULT_WEIGHT * status_weight
+    				   + Double.parseDouble(quality) / DBConsts.Rating.QUALITY_DEFAULT_WEIGHT * quality_weight
+    				   + Double.parseDouble(feedbacks) / DBConsts.Rating.FEEDBACKS_DEFAULT_WEIGHT * feedbacks_weight
+    				   + Double.parseDouble(publication) / DBConsts.Rating.PUBLICATION_DEFAULT_WEIGHT * publication_weight;
+    		} catch (Exception e) {points = 0;}
     		int score = (int)(points / totalPoints * 100);
     		return score;
     	}

@@ -14,7 +14,7 @@ public class DetailPageCenter
 
     public BbkDetail inquireDetail(String bbkName)
     {
-        BbkDetail detailInfo = BbkDatabaseConnector.getDetailByName(bbkName);
+        BbkDetail detailInfo = DatabaseConnector.getDetailByName(bbkName);
         if (historyList.size() >= MAX_HISTORY_NUM)
             historyList.remove(0);
         historyList.add(detailInfo);

@@ -3,16 +3,29 @@ package data_center;
 /** 
  * Store all the constant in the Database, 
  * including headers and default score weights */
-public class BbkDB
+public final class DBConsts
 {
-	public final static String TABLE_MAIN = "main";
-	public final static String TABLE_CATEGORIES = "categories";
-	public final static String TABLE_DEEP_SUBPARTS = "deep_subparts";
-	public final static String TABLE_FEATURES = "features";
-	public final static String TABLE_PARAMETERS = "parameters";
-	public final static String TABLE_SPECIFIED_SUBPARTS = "specified_subparts";
-	public final static String TABLE_SPECIFIED_SUBSCARS = "specified_subscars";
-	public final static String TABLE_TWINS = "twins";
+	/** The table names in the database */
+	public static class Table
+	{	
+		public final static String MAIN = "main";
+		public final static String CATEGORIES = "categories";
+		public final static String DEEP_SUBPARTS = "deep_subparts";
+		public final static String FEATURES = "features";
+		public final static String PARAMETERS = "parameters";
+		public final static String SPECIFIED_SUBPARTS = "specified_subparts";
+		public final static String SPECIFIED_SUBSCARS = "specified_subscars";
+		public final static String TWINS = "twins";
+		
+		public final static String MAIN_UPLOAD = "main_upload";
+		public final static String CATEGORIES_UPLOAD = "categories_upload";
+		public final static String DEEP_SUBPARTS_UPLOAD = "deep_subparts_upload";
+		public final static String FEATURES_UPLOAD = "features_upload";
+		public final static String PARAMETERS_UPLOAD = "parameters_upload";
+		public final static String SPECIFIED_SUBPARTS_UPLOAD = "specified_subparts_upload";
+		public final static String SPECIFIED_SUBSCARS_UPLOAD = "specified_subscars_upload";
+		public final static String TWINS_UPLOAD = "twins_upload";
+	}
 	
 	
 	/** Store the total score and default weight set in database */

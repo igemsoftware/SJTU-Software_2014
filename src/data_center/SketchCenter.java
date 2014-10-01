@@ -74,7 +74,7 @@ public class SketchCenter
 				continue;
 			// else... 
 			BbkDetail bbkDetail = 
-					BbkDatabaseConnector.getDetailByName(bbk.bbkOutline.name);	
+					DatabaseConnector.getDetailByName(bbk.bbkOutline.name);	
 			sequenceTokens.add(bbkDetail);
 		}
 		bbkUpload.setSequence(sequenceTokens, true);
