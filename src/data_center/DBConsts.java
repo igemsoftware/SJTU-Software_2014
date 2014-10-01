@@ -3,7 +3,7 @@ package data_center;
 /** 
  * Store all the constant in the Database, 
  * including headers and default score weights */
-public class BbkDB
+public class DBConsts
 {
 	public final static String TABLE_MAIN = "main";
 	public final static String TABLE_CATEGORIES = "categories";

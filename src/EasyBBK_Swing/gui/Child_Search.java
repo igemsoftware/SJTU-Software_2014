@@ -139,7 +139,7 @@ public class Child_Search extends JPanel {
 					return;
 				}
 				else{
-					searchresultlist = BbkDatabaseConnector.search(textField.getText());
+					searchresultlist = DatabaseConnector.search(textField.getText());
 					currentpage = 1;
 					String s;
 					s = "" + currentpage;
@@ -177,7 +177,7 @@ public class Child_Search extends JPanel {
 						return;
 					}
 					else{
-						searchresultlist = BbkDatabaseConnector.search(textField.getText());
+						searchresultlist = DatabaseConnector.search(textField.getText());
 						currentpage = 1;
 						String s;
 						s = "" + currentpage;

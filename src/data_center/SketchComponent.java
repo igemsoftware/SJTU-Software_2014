@@ -186,7 +186,7 @@ public class SketchComponent
         {
         	super(theID, BioBrick.class.getSimpleName());
         	this.secondaryType = secondaryType;
-        	this.bbkOutline = BbkDatabaseConnector.getOutlineByName(bbkName);
+        	this.bbkOutline = DatabaseConnector.getOutlineByName(bbkName);
 			this.center = center;
 			this.color = color;
         }
@@ -211,7 +211,7 @@ public class SketchComponent
          * bbkName in the database, bbkOutline will be a null */
 		@Override
 		public void setString(String bbkName)
-		{	bbkOutline = BbkDatabaseConnector.getOutlineByName(bbkName);	}
+		{	bbkOutline = DatabaseConnector.getOutlineByName(bbkName);	}
         
 		@Override
 		public Point getCenter()

@@ -9,18 +9,18 @@ public class UploadCenter
 	{	
 		String nameByIgemOrg = "BBa_" + rawName;
 		String nameByEasyBbk = "BBa_" + rawName + "_EasyBbk";
-		return  BbkDatabaseConnector.getOutlineByName(nameByIgemOrg) == null && 
-				BbkDatabaseConnector.getOutlineByName(nameByEasyBbk) == null;
+		return  DatabaseConnector.getOutlineByName(nameByIgemOrg) == null && 
+				DatabaseConnector.getOutlineByName(nameByEasyBbk) == null;
 	}
 	
 	public String uploadAndGetOddNum(BbkUpload bbkUpload)
 	{	
-		return BbkDatabaseConnector.upload(bbkUpload);
+		return DatabaseConnector.upload(bbkUpload);
 	}
 	
 	public BbkUpload getBbkUploadByNameAndOddNum(String name, String oddNum)
 	{	
-		return BbkDatabaseConnector.getBbkUploadByNameAndOddNum(name, oddNum);
+		return DatabaseConnector.getBbkUploadByNameAndOddNum(name, oddNum);
 	}
 	
 	public boolean isSequanceValid(String sequenceToken)
@@ -36,12 +36,12 @@ public class UploadCenter
 	
 	public BbkDetail getSubpartForSequenceToken(String bbkName)
 	{	
-		return BbkDatabaseConnector.getDetailByName(bbkName);
+		return DatabaseConnector.getDetailByName(bbkName);
 	}
 	
 	public BbkUpload.SpecifiedSubscar getSubscarForSequenceToken(String scarName)
 	{	
-		return BbkDatabaseConnector.getScarByName(scarName);
+		return DatabaseConnector.getScarByName(scarName);
 	}
 	
 	

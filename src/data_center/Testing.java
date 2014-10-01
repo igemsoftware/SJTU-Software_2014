@@ -19,20 +19,24 @@ public class Testing
 	
 	public static void main(String[] args) throws Exception
 	{	
-		//searchKeyword();
+		searchKeywordAndGetDetail();
 		//compareAssignDetail();
-		sketchXMLReadWrite();
-		
+		//sketchXMLReadWrite();
+		//BbkDatabaseConnector.displayTable(BbkDB.TABLE_TWINS, 2);
 	}
 	
 	
 	
 	
-	private static void searchKeyword()
+	private static void searchKeywordAndGetDetail()
 	{	
-		SearchResultList list = dataCenter.searchCenter.search("BBa_B");
+		SearchResultList list = dataCenter.searchCenter.search("GFP");
 		list.display();
 		System.out.println("List size: " + list.size());
+		for (int i = 0; i < list.size(); i += 10)
+		{	BbkDetail detail = dataCenter.searchCenter.getDetail(list.get(i).name);
+			detail.display();
+		}
 	}
 	
 	private static void searchFilterAndSort()
