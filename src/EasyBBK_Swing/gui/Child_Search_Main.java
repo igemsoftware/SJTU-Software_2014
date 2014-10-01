@@ -2,6 +2,8 @@ package EasyBBK_Swing.gui;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Cursor;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
@@ -12,8 +14,11 @@ import javax.swing.ImageIcon;
 import javax.swing.JCheckBox;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.swing.JScrollBar;
+import javax.swing.JScrollPane;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
+import javax.swing.ScrollPaneConstants;
 import javax.swing.SpinnerNumberModel;
 
 import data_center.*;
@@ -28,9 +33,11 @@ public class Child_Search_Main extends JPanel {
 	public JLabel TextBox;
 	public JTextField SearchText;
 	public JLabel goBox;
-	public Choicepanel choicepanel;
 	public MainPage mainpage;
 	public JLabel Blast;
+	public JScrollPane scrollpane;
+	public JScrollBar scrollbar;
+	public Choicepanel choicepanel;
 	/**
 	 * Create the panel.
 	 */
@@ -100,8 +107,8 @@ public class Child_Search_Main extends JPanel {
 					Child_Search child_search = new Child_Search(mainpage, SearchText.getText());
 					
 					mainpage.Mainpanel.removeAll();
-					mainpage.Mainpanel.add(child_search);
 					child_search.textField.setText(SearchText.getText());
+					mainpage.Mainpanel.add(child_search);
 					mainpage.Mainpanel.updateUI();
 					mainpage.CurrentPage = 11;
 				}
@@ -111,7 +118,7 @@ public class Child_Search_Main extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				if(arg0.getClickCount()==2){
-					choicepanel.setVisible(true);
+					scrollpane.setVisible(true);
 				}
 			}
 		});
@@ -153,8 +160,18 @@ public class Child_Search_Main extends JPanel {
 		add(goBox);
 		
 		choicepanel = new Choicepanel();
-		choicepanel.setBounds(408, 402, 558, 211);
-		add(choicepanel);
+		choicepanel.setPreferredSize(new Dimension(563, 430));
+		
+		scrollpane = new JScrollPane(choicepanel);
+		scrollbar = new JScrollBar();
+		scrollbar.setUnitIncrement(50);
+		scrollpane.setVerticalScrollBar(scrollbar);
+		scrollpane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		scrollpane.setBounds(385, 409, 581, 240);
+		scrollpane.validate();
+		scrollpane.setVisible(false);
+		add(scrollpane);
+		
 		
 		Blast = new JLabel("");
 		Blast.addMouseListener(new MouseAdapter() {
@@ -173,5 +190,20 @@ public class Child_Search_Main extends JPanel {
 		Blast.setBounds(1034, 307, 125, 50);
 		Blast.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/blast.png")));
 		add(Blast);
+		
+		JLabel AddvancedSearch = new JLabel("Addvanced Search");
+		AddvancedSearch.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				scrollpane.setVisible(true);
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				AddvancedSearch.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+			}
+		});
+		AddvancedSearch.setFont(new Font("Times New Roman", Font.BOLD, 20));
+		AddvancedSearch.setBounds(385, 374, 156, 25);
+		add(AddvancedSearch);
 	}
 }
