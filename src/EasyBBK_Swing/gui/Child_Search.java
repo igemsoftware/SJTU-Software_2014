@@ -45,6 +45,7 @@ public class Child_Search extends JPanel {
 	public JLabel Search;
 	public MainPage mainpage;
 	public JScrollPane scrollPane;
+	public JScrollPane scrollPane1;
 	private JLabel Blast;
 	public JPanel Details;
 	public JLabel previouspage;
@@ -59,6 +60,8 @@ public class Child_Search extends JPanel {
 	public SearchingResultPage searchingresultpage;
 	public SearchResultList searchresultlist;
 	public JScrollBar scrollbar;
+	public JScrollBar scrollbar1;
+	public SearchCenter searchcenter;
 	/**
 	 * Create the panel.
 	 */
@@ -257,11 +260,22 @@ public class Child_Search extends JPanel {
 		Result.add(nextpage);
 		
 		//searchresultlist = BbkDatabaseConnector.search(searchcontent);
-		SearchCenter searchcenter = new SearchCenter();
+		searchcenter = new SearchCenter();
 		searchresultlist = searchcenter.search(searchcontent);
-		BbkDetail bbkdetail = new BbkDetail();
-		initializeresultpage();
+		//BbkDetail bbkdetail = new BbkDetail();
 		
+		searchingresultpage = new SearchingResultPage();
+		
+		scrollPane = new JScrollPane(searchingresultpage);
+		scrollbar = new JScrollBar();
+		scrollbar.setUnitIncrement(150);
+		scrollPane.setVerticalScrollBar(scrollbar);
+		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		scrollPane.setBounds(51, 105, 576, 520);
+		scrollPane.validate();
+		Result.add(scrollPane);
+		
+		initializeresultpage();
 		
 		Blast = new JLabel("");
 		Blast.addMouseListener(new MouseAdapter() {
@@ -290,16 +304,6 @@ public class Child_Search extends JPanel {
 	}
 	
 	public void initializeresultpage(){
-		searchingresultpage = new SearchingResultPage();
-		
-		scrollPane = new JScrollPane(searchingresultpage);
-		scrollbar = new JScrollBar();
-		scrollbar.setUnitIncrement(150);
-		scrollPane.setVerticalScrollBar(scrollbar);
-		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-		scrollPane.setBounds(51, 105, 576, 520);
-		scrollPane.validate();
-		Result.add(scrollPane);
 		
 		int numberofresults = searchresultlist.size();
 		
@@ -391,13 +395,40 @@ public class Child_Search extends JPanel {
 	}
 	
 	public void showresult(int j){
-		
 		BbkOutline bbkoutline = searchresultlist.get(j);
+		//BbkDetail bbkdetail = searchcenter.getDetail(bbkoutline.name);
 		int i = j % 10;
 		searchingresultpage.searchingresult.get(i).ID_Content.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				/*DetailsofResults detailsofresults = new DetailsofResults();
+				
+				detailsofresults.ID_Content.setText(bbkdetail.name);
+				detailsofresults.Type_Content.setText(bbkdetail.type);
+				detailsofresults.Author_Content.setText(bbkdetail.author);
+				detailsofresults.EnteredDate_Content.setText(bbkdetail.enterDate);
+				detailsofresults.URL_Content.setText(bbkdetail.url);
+				detailsofresults.ReleasedStatus_Content.setText(bbkdetail.releaseStatus);
+				if(bbkdetail.rating.average_stars.equals("No Stars")){
+					detailsofresults.AverageStar_Content.setText(bbkdetail.rating.average_stars);
+				}
+				else if(bbkdetail.rating.average_stars.length() == 1){
+					detailsofresults.AverageStar_Content.setText(bbkdetail.rating.average_stars);
+				}
+				else if(bbkdetail.rating.average_stars.length() >= 3){
+					detailsofresults.AverageStar_Content.setText(bbkdetail.rating.average_stars.substring(0,3));
+				}
+				detailsofresults.ResultsInGoogle_Content.setText(bbkdetail.rating.google_items);
+				detailsofresults.Description.setText(bbkdetail.shortDesc);
+				String score = "" + bbkdetail.getScore();
+				detailsofresults.Score.setText(score);
+				
+				Details.removeAll();;
+				Details.add(detailsofresults);
+				Details.updateUI();*/
+				
 				DetailsofResults detailsofresults = new DetailsofResults();
+				
 				detailsofresults.ID_Content.setText(bbkoutline.name);
 				detailsofresults.Type_Content.setText(bbkoutline.type);
 				detailsofresults.Author_Content.setText(bbkoutline.author);
@@ -413,13 +444,26 @@ public class Child_Search extends JPanel {
 				else if(bbkoutline.rating.average_stars.length() >= 3){
 					detailsofresults.AverageStar_Content.setText(bbkoutline.rating.average_stars.substring(0,3));
 				}
-				detailsofresults.ResultsInGoogle_Content.setText(bbkoutline.rating.google_items);
-				detailsofresults.Description.setText(bbkoutline.shortDesc);
-				String score = "" + bbkoutline.getScore();
-				//detailsofresults.Score.setText(score);
+				searchingresultpage.searchingresult.get(i).ResultsInGoogle_Content.setText(bbkoutline.rating.google_items);
 				
-				Details.removeAll();
-				Details.add(detailsofresults);
+				String shortdescription = bbkoutline.shortDesc;
+				detailsofresults.Description.setText(shortdescription);
+				detailsofresults.ResultsInGoogle_Content.setText(bbkoutline.rating.google_items);
+				
+				String score = "" + bbkoutline.getScore();
+				detailsofresults.Score.setText(score);
+				
+				detailsofresults.setPreferredSize(new Dimension(665, 1500));
+				scrollPane1 = new JScrollPane(detailsofresults);
+				scrollbar1 = new JScrollBar();
+				scrollbar1.setUnitIncrement(100);
+				scrollPane1.setVerticalScrollBar(scrollbar1);
+				scrollPane1.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+				scrollPane1.setBounds(0, 0, 683, 670);
+				scrollPane1.validate();
+				
+				Details.removeAll();;
+				Details.add(scrollPane1);
 				Details.updateUI();
 			}
 		});
@@ -451,9 +495,5 @@ public class Child_Search extends JPanel {
 		
 		String score = "" + bbkoutline.getScore();
 		searchingresultpage.searchingresult.get(i).Score.setText(score);
-	}
-	
-	public void showdetails(){
-		
 	}
 }

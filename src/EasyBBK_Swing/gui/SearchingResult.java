@@ -46,7 +46,7 @@ public class SearchingResult extends JPanel{
 				ID_Content.setForeground(Color.black);
 			}
 		});
-		ID_Content.setFont(new Font("Times New Roman", Font.PLAIN, 24));
+		ID_Content.setFont(new Font("Times New Roman", Font.BOLD, 24));
 		ID_Content.setBounds(10, 10, 159, 24);
 		add(ID_Content);
 		
@@ -137,7 +137,7 @@ public class SearchingResult extends JPanel{
 				URL_Content.setForeground(Color.black);
 			}
 		});
-		URL_Content.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		URL_Content.setFont(new Font("Times New Roman", Font.ITALIC, 20));
 		URL_Content.setBounds(60, 147, 374, 24);
 		add(URL_Content);
 		
