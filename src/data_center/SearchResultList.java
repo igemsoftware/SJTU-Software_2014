@@ -7,8 +7,16 @@ import java.util.Comparator;
 @SuppressWarnings("serial")
 public class SearchResultList extends ArrayList<BbkOutline>
 {
+	public String keyword = null;
+	
 	public SearchResultList()
 	{	super(100);	}
+	
+	public SearchResultList(String keyword)
+	{	
+		super(100);
+		this.keyword = keyword;
+	}
 	
 	public String[][] showSearchResult()
 	{
@@ -30,6 +38,14 @@ public class SearchResultList extends ArrayList<BbkOutline>
 		return rows;
 	}
 
+	public boolean has(String bbkName)
+	{	
+		for (BbkOutline bbkOutline : this)
+			if (bbkOutline.name.equals(bbkName))
+				return true;
+		return false;
+	}
+	
 	/** 
 	 * Use like "listToShow = rawList.filterByType().filterByEnterYear()...;" 
 	 * Please use the String in the SearchResultList.Filter
@@ -39,7 +55,7 @@ public class SearchResultList extends ArrayList<BbkOutline>
 		if (typeList == null)	// don't filter
 			return (SearchResultList) this.clone();
 		// else
-		SearchResultList filteredList = new SearchResultList();
+		SearchResultList filteredList = new SearchResultList(this.keyword);
 		for (BbkOutline bbk : this)
 			for (String type : typeList)
 				if (bbk.type.equals(type))
@@ -56,7 +72,7 @@ public class SearchResultList extends ArrayList<BbkOutline>
 			return (SearchResultList) this.clone();
 		}
 		// else
-		SearchResultList filteredList = new SearchResultList();
+		SearchResultList filteredList = new SearchResultList(this.keyword);
 		for (BbkOutline bbk : this)
 		{	int theYear = Integer.parseInt(bbk.enterDate.substring(0, 4));
 			if ((enterYear[0] <= theYear) && (enterYear[1] >= theYear))
@@ -75,7 +91,7 @@ public class SearchResultList extends ArrayList<BbkOutline>
 			return (SearchResultList) this.clone();
 		}
 		// else
-		SearchResultList filteredList = new SearchResultList();
+		SearchResultList filteredList = new SearchResultList(this.keyword);
 		for (BbkOutline bbk : this)
 			if (bbk.releaseStatus.equals(status))
 				filteredList.add(bbk);
@@ -94,7 +110,7 @@ public class SearchResultList extends ArrayList<BbkOutline>
 			return (SearchResultList) this.clone();
 		}
 		// else
-		SearchResultList filteredList = new SearchResultList();
+		SearchResultList filteredList = new SearchResultList(this.keyword);
 		for (BbkOutline bbk : this)
 			if (bbk.DNA_status.equals(status))
 				filteredList.add(bbk);
@@ -103,7 +119,7 @@ public class SearchResultList extends ArrayList<BbkOutline>
 	
 	public SearchResultList filterByDeletedOrNot(boolean deleted)
 	{
-		SearchResultList filteredList = new SearchResultList();
+		SearchResultList filteredList = new SearchResultList(this.keyword);
 		for (BbkOutline bbk : this)
 			if ( (bbk.rating.delete_this_part.equals(Filter.DeletedOrNot.DELETED)) == deleted)
 				filteredList.add(bbk);
@@ -113,7 +129,7 @@ public class SearchResultList extends ArrayList<BbkOutline>
 	/** 4 in starNumList means star number is [4, 5) */
 	public SearchResultList filterByStarNum(ArrayList<Integer> starNumList)
 	{
-		SearchResultList filteredList = new SearchResultList();
+		SearchResultList filteredList = new SearchResultList(this.keyword);
 		for (BbkOutline bbk : this)
 			for (Integer starNum : starNumList)
 				if ( bbk.rating.average_stars.startsWith(starNum.toString()) )

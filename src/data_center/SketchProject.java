@@ -2,6 +2,7 @@ package data_center;
 
 import java.util.ArrayList;
 
+import data_center.SketchComponent.BackBone;
 import data_center.SketchComponent.*;
 
 import java.awt.Color;
@@ -11,6 +12,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
+
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -112,6 +114,7 @@ public class SketchProject
 	public String name;
 	
 	public ArrayList<Component> componentList = new ArrayList<Component>();
+	public ArrayList<BackBone> backBoneList = new ArrayList<BackBone>();
 	public HistoryList<Operation> operationHistory = new HistoryList<Operation>();
 
 	public boolean modified = false;
@@ -128,6 +131,15 @@ public class SketchProject
 		for (Component comp : componentList)
 			if (comp.ID == ID)
 				return comp;
+		// not found
+		return null;
+	}
+	
+	public BackBone findBackBoneInBackBoneListByID(int ID)
+	{	
+		for (BackBone backBone : backBoneList)
+			if (backBone.ID == ID)
+				return backBone;
 		// not found
 		return null;
 	}
@@ -184,6 +196,27 @@ public class SketchProject
 		modified = true;
 	}
 	
+	public void onAbsorb(int backBoneID, int bbkID)
+	{	
+		Component comp = findComponentByID(backBoneID);
+		if (comp == null || !comp.primaryType.equals(BackBone.class.getSimpleName()))
+			return;
+		// else
+		comp.toBackBone().bbkChildren.add(bbkID);
+	}
+	
+	public void onDesorb(int backBoneID, int bbkID)
+	{	
+		Component comp = findComponentByID(backBoneID);
+		if (comp == null || !comp.primaryType.equals(BackBone.class.getSimpleName()))
+			return;
+		// else
+		BackBone backBone = comp.toBackBone();
+		for (Integer IDInList : backBone.bbkChildren)
+			if (IDInList == bbkID)
+				backBone.bbkChildren.remove(IDInList);
+	}
+	
 	public Operation ctrlZ()
 	{
 		Operation originalOp = operationHistory.rollBack();
@@ -222,9 +255,17 @@ public class SketchProject
 	{	
 		switch (operation.operationType)
 		{	case Operation.ADD:
-				componentList.add((Component) operation.following);	break;
+				Component compToAdd = (Component) operation.following;
+				componentList.add(compToAdd);
+				if (compToAdd.primaryType.equals(BackBone.class.getSimpleName()))
+					backBoneList.add(compToAdd.toBackBone());
+				break;
 			case Operation.REMOVE:
-				componentList.remove((Component) operation.previous);	break;
+				Component compToRemove = (Component) operation.previous;
+				componentList.remove(compToRemove);
+				if (compToRemove.primaryType.equals(BackBone.class.getSimpleName()))
+					backBoneList.remove(compToRemove.toBackBone());
+				break;
 			case Operation.MODIFY:
 				Component component = findComponentByID(operation.ID);
 				Object object = operation.following;
@@ -232,7 +273,10 @@ public class SketchProject
 				{	case Operation.TYPE_STRING:
 						component.setString((String) object);	break;
 					case Operation.TYPE_CENTER:
-						component.setCenter((Point) object);	break;
+						component.setCenter((Point) object);
+						if (component.primaryType.equals(BackBone.class.getSimpleName()))
+							onLinkage(component.toBackBone(), (Point)operation.previous, (Point)operation.following);
+						break;
 					case Operation.TYPE_SIZE:
 						component.setSize((Double) object);	break;
 					case Operation.TYPE_FONT:
@@ -245,9 +289,26 @@ public class SketchProject
 		}
 	}
 	
+	private void onLinkage(BackBone backBone, Point previous, Point following)
+	{
+		int dx = following.x - previous.x,
+			dy = following.y - previous.y;
+		for (Integer bbkID : backBone.bbkChildren)
+		{	Component comp = findComponentByID(bbkID);
+			if (comp == null || !comp.primaryType.equals(BioBrick.class.getSimpleName()))
+				continue;
+			// else...
+			Point preCenterOfBbk = comp.getCenter();
+			Point folCenterOfBbk = new Point(preCenterOfBbk.x + dx, preCenterOfBbk.y + dy);
+			comp.setCenter(folCenterOfBbk);
+		}
+		
+	}
 	
 	
 	
+
+
 	public void saveIntoFile(String filePath)
 	{
 		Document doc = null;
@@ -386,6 +447,19 @@ public class SketchProject
   		eleColor.appendChild(txtColor);
   		componentNode.appendChild(eleColor);
   		
+  		// about children
+  		Element eleChildren = doc.createElement("children");
+  		ArrayList<Integer> children = component.getChildren();
+  		String childrenStr = "";
+  		if (children != null && children.size() != 0)
+  			for (Integer bbkID : children)
+  				childrenStr += bbkID + " ";
+  		else
+  			childrenStr = "null";
+  		Text txtChildren = doc.createTextNode(childrenStr);
+  		eleChildren.appendChild(txtChildren);
+  		componentNode.appendChild(eleChildren);
+  		
   		return componentNode;
 	}
 	
@@ -455,6 +529,18 @@ public class SketchProject
 		if ( !colorStr.equals("null") )
 			color = new Color(Integer.parseInt(colorStr));
 		
+		// about children
+		Element eleChildren = (Element) componentNode.getElementsByTagName("children").item(0);
+		String childrenStr = eleChildren.getFirstChild().getNodeValue();
+		ArrayList<Integer> children = null;
+		if ( !childrenStr.equals("null") )
+		{	children = new ArrayList<Integer>();
+			String[] childStrList = childrenStr.split(" ");
+			for (String childStr : childStrList)
+				if ( !childStr.equals("") )	// there WILL be an "" in each list
+					children.add(Integer.parseInt(childStr));
+		}
+		
 		Component component = null;
 		if (primaryType.equals(Label.class.getSimpleName()))
 			component = new Label(ID, string, center, font, color);
@@ -463,7 +549,7 @@ public class SketchProject
 		else if (primaryType.equals(Protein.class.getSimpleName()))
 			component = new Protein(ID, secondaryType, center, color);
 		else if (primaryType.equals(BackBone.class.getSimpleName()))
-			component = new BackBone(ID, center, (int)size.doubleValue());
+			component = new BackBone(ID, center, (int)size.doubleValue(), children);
 		else if (primaryType.equals(Relation.class.getSimpleName()))
 			component = new Relation(ID, secondaryType, curve, color, (int)size.doubleValue());
 		else if (primaryType.equals(BioVector.class.getSimpleName()))
@@ -585,7 +671,7 @@ public class SketchProject
 		   h6.appendChild(th6);
 		   Element h7 = doc.createElement("bbkName");
 		   nod.appendChild(h7); 
-		   Text th7 = doc.createTextNode(b.bbkName);
+		   Text th7 = doc.createTextNode(b.bbkOutline.name);
 		   h7.appendChild(th7);
  		  }
   	if (it.getClass().getSimpleName().equals("BackBone")){
@@ -761,7 +847,7 @@ public class SketchProject
     		int length = Integer.parseInt(ss.getElementsByTagName("length").item(0).getFirstChild().getNodeValue());
     		//p2.x = Integer.parseInt(ss.getElementsByTagName("rightPointx").item(0).getFirstChild().getNodeValue());
     		//p2.y = Integer.parseInt(ss.getElementsByTagName("rightPointy").item(0).getFirstChild().getNodeValue());
-    		Component temp = new BackBone(Integer.parseInt(ss.getElementsByTagName("ID").item(0).getFirstChild().getNodeValue()),p1,length);
+    		Component temp = new BackBone(Integer.parseInt(ss.getElementsByTagName("ID").item(0).getFirstChild().getNodeValue()),p1,length, null);
     		List.add(temp);
     	}
     	else if (ss.getAttribute("name").equals("Relation"))

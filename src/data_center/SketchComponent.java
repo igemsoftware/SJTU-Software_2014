@@ -85,6 +85,12 @@ public class SketchComponent
 		
 		public void setCurve(ArrayList<Point> curve) {}
 		
+		/** bbkChildren in backBone, the IDs */
+		public ArrayList<Integer> getChildren()
+		{	return null;	}
+		
+		public void setChildren(ArrayList<Integer> children) {}
+		
 		public void display()
 		{
 			System.out.println("\n\n********");
@@ -158,18 +164,29 @@ public class SketchComponent
 
     public static class BioBrick extends Component
     {
-		public String bbkName;
+		public BbkOutline bbkOutline = null;
 		public int secondaryType;
 		public Point center;
 		public Color color;
         
 		// primary type already known in the class
+		public BioBrick(int theID, int secondaryType, 
+        		Point center, Color color)
+        {
+        	super(theID, BioBrick.class.getSimpleName());
+        	this.secondaryType = secondaryType;
+        	this.bbkOutline = null;
+			this.center = center;
+			this.color = color;
+        }
+		
+		/** bbkOutline should be set by setString(bbkName) */
         public BioBrick(int theID, String bbkName, int secondaryType, 
         		Point center, Color color)
         {
         	super(theID, BioBrick.class.getSimpleName());
         	this.secondaryType = secondaryType;
-        	this.bbkName = bbkName;
+        	this.bbkOutline = DatabaseConnector.getOutlineByName(bbkName);
 			this.center = center;
 			this.color = color;
         }
@@ -188,11 +205,13 @@ public class SketchComponent
         
         @Override
 		public String getString()
-		{	return bbkName;	}
+		{	return bbkOutline != null ? bbkOutline.name : null;	}
 		
+        /** Set bbkOutline by bbkName in the function, if there's no such 
+         * bbkName in the database, bbkOutline will be a null */
 		@Override
 		public void setString(String bbkName)
-		{	this.bbkName = bbkName;	}
+		{	bbkOutline = DatabaseConnector.getOutlineByName(bbkName);	}
         
 		@Override
 		public Point getCenter()
@@ -213,7 +232,7 @@ public class SketchComponent
         public void display()
         {
 			super.display();
-			System.out.println("BbkName: " + bbkName);
+			System.out.println("BbkName: " + bbkOutline.name);
 			System.out.println("SecondaryType: " + secondaryType);
 			System.out.println("Center: " + center.toString());
 			System.out.println("Color: " + color);
@@ -280,12 +299,22 @@ public class SketchComponent
 	{
 		public Point center;
 		public int length;
-
+		public ArrayList<Integer> bbkChildren;
+		
 		public BackBone(int theID, Point pos, int length)
+		{	
+			super(theID, BackBone.class.getSimpleName());
+			this.center = pos;
+			this.length = length;
+			this.bbkChildren = new ArrayList<Integer>();
+		}
+
+		public BackBone(int theID, Point pos, int length, ArrayList<Integer> childIDList)
 		{
 			super(theID, BackBone.class.getSimpleName());
 			this.center = pos;
 			this.length = length;
+			this.bbkChildren = childIDList;
 		}
 
 		@Override
@@ -308,11 +337,22 @@ public class SketchComponent
 		public void setSize(double length)
 		{	this.length = (int) length;	}
 		
+		@Override
+		public ArrayList<Integer> getChildren()
+		{	return bbkChildren;	}
+		
+		@Override
+		public void setChildren(ArrayList<Integer> children)
+		{	this.bbkChildren = children;	}
+		
 		public void display()
 		{
 			super.display();
 			System.out.println("Center: " + center.toString());
 			System.out.println("Length: " + length);
+			System.out.println("BbkChildren: ");
+			for (Integer bbkID : bbkChildren)
+				System.out.println("\tChild with ID: " + bbkID);
 		}
 	}
 

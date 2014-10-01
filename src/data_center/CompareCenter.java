@@ -15,7 +15,7 @@ public class CompareCenter
 			return null;
 		}
 		// else... 
-		BbkDetail bbkDetail = BbkDatabaseConnector.getDetailByName(bbkName);
+		BbkDetail bbkDetail = DatabaseConnector.getDetailByName(bbkName);
 		compareList[pos] = bbkDetail;
 		return bbkDetail;
 	}

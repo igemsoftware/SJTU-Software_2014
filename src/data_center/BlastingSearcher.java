@@ -8,14 +8,13 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Calendar;
 
 import ch.ethz.ssh2.Connection;
 import ch.ethz.ssh2.SCPClient;
 import ch.ethz.ssh2.Session;
 import ch.ethz.ssh2.StreamGobbler;
 
-public class BbkBlaster
+public class BlastingSearcher
 {
 	// about server
 	public static final String SERVER_ADDRESS = "202.120.45.101";
@@ -45,7 +44,7 @@ public class BbkBlaster
 		
 		// else
 		checkLocalIODir();
-		String tag = generateTag();
+		String tag = TimeTagGenerator.generateTimeTag();
 		String infilePath = IO_DIR_LOCAL + INFILE_NAME + tag,
 			   outfilePath = IO_DIR_LOCAL + OUTFILE_NAME + tag, 
 			   RemoteInfilePath = IO_DIR_SERVER + INFILE_NAME + tag,
@@ -107,22 +106,6 @@ public class BbkBlaster
 		File file = new File(IO_DIR_LOCAL);
 		if (!file.exists())
 			file.mkdirs();
-	}
-	
-	/** Use current time as the tag */
-	private static String generateTag()
-	{	
-		Calendar calendar = Calendar.getInstance();
-		 
-		int year = calendar.get(Calendar.YEAR);
-		int month = calendar.get(Calendar.MONTH) + 1;
-		int date = calendar.get(Calendar.DATE);
-		int hour = calendar.get(Calendar.HOUR_OF_DAY);
-		int min = calendar.get(Calendar.MINUTE);
-		int sec = calendar.get(Calendar.SECOND);
-		int mSec = calendar.get(Calendar.MILLISECOND);
-		
-		return ("" + year + month + date + hour + min + sec + mSec);
 	}
 	
 	private static void monitorRemoteExecResult(Session session) throws IOException
@@ -201,7 +184,7 @@ public class BbkBlaster
 			   scoreStr = results.get(results.size() - 2), 	// the second last token
 			   eValueStr = results.get(results.size() - 1);	// the last token
 
-		BbkOutline outline = BbkDatabaseConnector.getOutlineByName(bbkName);
+		BbkOutline outline = DatabaseConnector.getOutlineByName(bbkName);
 		outline.blasting = new BbkOutline.Blasting();
 		outline.blasting.score = Integer.parseInt(scoreStr);
 		outline.blasting.eValue = Double.parseDouble(eValueStr);
