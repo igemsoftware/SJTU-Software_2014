@@ -73,7 +73,7 @@ public class BlastingSearcher
 			disconnect();
 		} catch (IOException e) {e.printStackTrace();}
 		
-		return readOutfile(outfilePath);
+		return readOutfile(outfilePath, input);
 	}
 	
 	public static void deleteLocalCacheFiles()
@@ -147,9 +147,9 @@ public class BlastingSearcher
 		}
 	}
 	
-	private static SearchResultList readOutfile(String outfilePath)
+	private static SearchResultList readOutfile(String outfilePath, String inputStr)
 	{
-		SearchResultList list = new SearchResultList();
+		SearchResultList list = new SearchResultList(inputStr);
 		try
 		{	BufferedReader reader 
 				= new BufferedReader(new FileReader(outfilePath));
