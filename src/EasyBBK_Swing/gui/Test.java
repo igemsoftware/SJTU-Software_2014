@@ -69,7 +69,7 @@ public class Test {
 				BbkOutline bbkoutline1 = searchresultlist1.get(0);
 				lblNewLabel_1.setText(bbkoutline.name);
 				//BbkDetail bbkdetail = searchcenter.getDetail(bbkoutline.name);
-				
+				searchresultlist = searchcenter.blast(null, BlastingSearcher.MODE_INPUT_SEQUENCE);
 				lblNewLabel.setText(bbkoutline1.name);
 			}
 		});

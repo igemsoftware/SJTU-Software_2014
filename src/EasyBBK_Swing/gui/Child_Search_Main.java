@@ -38,6 +38,8 @@ public class Child_Search_Main extends JPanel {
 	public JScrollPane scrollpane;
 	public JScrollBar scrollbar;
 	public Choicepanel choicepanel;
+	public Information information;
+	public boolean flag = false;
 	/**
 	 * Create the panel.
 	 */
@@ -104,7 +106,7 @@ public class Child_Search_Main extends JPanel {
 					if(component instanceof Child_Search_Main){
 						mainpage.child_search_main_current = (Child_Search_Main) component;
 					}
-					Child_Search child_search = new Child_Search(mainpage, SearchText.getText());
+					Child_Search child_search = new Child_Search(mainpage, SearchText.getText(), choicepanel.information, 1);
 					
 					mainpage.Mainpanel.removeAll();
 					child_search.textField.setText(SearchText.getText());
@@ -138,7 +140,7 @@ public class Child_Search_Main extends JPanel {
 					mainpage.child_search_main_current = (Child_Search_Main) component;
 				}
 				
-				Child_Search child_search = new Child_Search(mainpage, SearchText.getText());
+				Child_Search child_search = new Child_Search(mainpage, SearchText.getText(), choicepanel.information , 1);
 				
 				mainpage.Mainpanel.removeAll();
 				mainpage.Mainpanel.add(child_search);
@@ -160,18 +162,17 @@ public class Child_Search_Main extends JPanel {
 		add(goBox);
 		
 		choicepanel = new Choicepanel();
-		choicepanel.setPreferredSize(new Dimension(563, 430));
+		choicepanel.setPreferredSize(new Dimension(623, 489));
 		
 		scrollpane = new JScrollPane(choicepanel);
 		scrollbar = new JScrollBar();
 		scrollbar.setUnitIncrement(50);
 		scrollpane.setVerticalScrollBar(scrollbar);
 		scrollpane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-		scrollpane.setBounds(385, 409, 581, 240);
+		scrollpane.setBounds(358, 409, 641, 240);
 		scrollpane.validate();
 		scrollpane.setVisible(false);
 		add(scrollpane);
-		
 		
 		Blast = new JLabel("");
 		Blast.addMouseListener(new MouseAdapter() {
@@ -195,7 +196,14 @@ public class Child_Search_Main extends JPanel {
 		AddvancedSearch.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				scrollpane.setVisible(true);
+				if(flag == false){
+					scrollpane.setVisible(true);
+					flag = true;
+				}
+				else if(flag == true){
+					scrollpane.setVisible(false);
+					flag = false;
+				}
 			}
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -203,7 +211,7 @@ public class Child_Search_Main extends JPanel {
 			}
 		});
 		AddvancedSearch.setFont(new Font("Times New Roman", Font.BOLD, 20));
-		AddvancedSearch.setBounds(385, 374, 156, 25);
+		AddvancedSearch.setBounds(358, 374, 174, 25);
 		add(AddvancedSearch);
 	}
 }

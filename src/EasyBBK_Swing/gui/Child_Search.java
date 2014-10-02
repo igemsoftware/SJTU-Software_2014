@@ -62,10 +62,14 @@ public class Child_Search extends JPanel {
 	public JScrollBar scrollbar;
 	public JScrollBar scrollbar1;
 	public SearchCenter searchcenter;
+	public Information information;
+	public int blast;
 	/**
 	 * Create the panel.
 	 */
-	public Child_Search(MainPage mainpage1, String searchcontent) {
+	public Child_Search(MainPage mainpage1, String searchcontent, Information information1, int blast1) {
+		blast = blast1;
+		information = information1;
 		mainpage = mainpage1;
 		setBounds(0, 0, 1366, 670);
 		setBackground(new Color(255, 255, 255));
@@ -261,7 +265,15 @@ public class Child_Search extends JPanel {
 		
 		//searchresultlist = BbkDatabaseConnector.search(searchcontent);
 		searchcenter = new SearchCenter();
-		searchresultlist = searchcenter.search(searchcontent);
+		if(blast == 1){
+			searchresultlist = searchcenter.search(searchcontent);
+		}
+		else if(blast == 2){
+			searchresultlist = searchcenter.blast(searchcontent, BlastingSearcher.MODE_INPUT_SEQUENCE);
+		}
+		else if(blast == 3){
+			
+		}
 		//BbkDetail bbkdetail = new BbkDetail();
 		
 		searchingresultpage = new SearchingResultPage();

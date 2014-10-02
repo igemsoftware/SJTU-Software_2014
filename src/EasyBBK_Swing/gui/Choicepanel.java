@@ -12,6 +12,11 @@ import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.JComboBox;
+import javax.swing.JButton;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
+import java.util.*;
 
 public class Choicepanel extends JPanel {
 	public JCheckBox Released;
@@ -50,353 +55,560 @@ public class Choicepanel extends JPanel {
 	public JSpinner PercentofStatus;
 	public JSpinner PercentofQuality;
 	public JSpinner PercentofFeedbacks;
-	public JSpinner spinner_3;
+	public JSpinner PercentofPublication;
 	public JCheckBox high;
 	public JCheckBox middle;
 	public JCheckBox low;
+	public JButton Confirmed;
+	public Information information;
 	/**
 	 * Create the panel.
 	 */
 	public Choicepanel() {
 		setBackground(new Color(255, 255, 255));
-		setBounds(0, 0, 563, 430);
+		setBounds(0, 0, 623, 489);
 		setBorder(BorderFactory.createLineBorder(Color.black));
 		setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Filters:");
 		lblNewLabel.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		lblNewLabel.setBounds(10, 81, 68, 28);
+		lblNewLabel.setBounds(10, 81, 76, 28);
 		add(lblNewLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("Release Status:");
-		lblNewLabel_1.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		lblNewLabel_1.setBounds(39, 264, 99, 17);
-		add(lblNewLabel_1);
+		JLabel ReleaseStatus = new JLabel("Release Status:");
+		ReleaseStatus.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		ReleaseStatus.setBounds(39, 265, 112, 17);
+		add(ReleaseStatus);
+        
+        Released = new JCheckBox("Released");
+		Released.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		Released.setBounds(156, 262, 103, 23);
+		Released.setBackground(new Color(255, 255, 255));
+		add(Released);
 		
-		/*ItemListener itemListener1 = new ItemListener() {
+		Deleted = new JCheckBox("Deleted");
+		Deleted.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		Deleted.setBounds(261, 262, 103, 23);
+		Deleted.setBackground(new Color(255, 255, 255));
+		add(Deleted);
+		
+		NotReleased = new JCheckBox("Not Released");
+		NotReleased.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		NotReleased.setBounds(366, 262, 121, 23);
+		NotReleased.setBackground(new Color(255, 255, 255));
+		add(NotReleased);
+		
+		JLabel DNAStatus = new JLabel("DNA Status:");
+		DNAStatus.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		DNAStatus.setBounds(39, 291, 99, 15);
+		add(DNAStatus);
+		
+		Available = new JCheckBox("Available");
+		Available.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		Available.setBounds(157, 289, 103, 23);
+		Available.setBackground(new Color(255, 255, 255));
+		add(Available);
+		
+		Planning = new JCheckBox("Planning");
+		Planning.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		Planning.setBounds(261, 288, 103, 23);
+		Planning.setBackground(new Color(255, 255, 255));
+		add(Planning);
+		
+		Informational = new JCheckBox("Informational");
+		Informational.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		Informational.setBounds(366, 289, 121, 23);
+		Informational.setBackground(new Color(255, 255, 255));
+		add(Informational);
+		
+		JLabel Whetherornot = new JLabel("Whether or not Deleted:");
+		Whetherornot.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		Whetherornot.setBounds(39, 321, 173, 15);
+		add(Whetherornot);
+		
+		ItemListener itemListener_deleted = new ItemListener() {
             JCheckBox jCheckBox;
  
             public void itemStateChanged(ItemEvent e) {
                 jCheckBox = (JCheckBox) e.getSource();
  
                 if (jCheckBox.isSelected()) {
-                    if(jCheckBox == chckbxReleased){
-                    	chckbxNewCheckBox.setSelected(false);
-                    	chckbxNotReleased.setSelected(false);
+                    if(jCheckBox == NotDeleted){
+                    	Deleted1.setSelected(false);
                     }
-                    else if(jCheckBox == chckbxNewCheckBox){
-                    	chckbxReleased.setSelected(false);
-                    	chckbxNotReleased.setSelected(false);
-                    }
-                    else if(jCheckBox == chckbxNotReleased){
-                    	chckbxReleased.setSelected(false);
-                    	chckbxNewCheckBox.setSelected(false);
+                    else if(jCheckBox == Deleted1){
+                    	NotDeleted.setSelected(false);
                     }
                 } else {
                     
                 }
  
             }
-        };*/
-        
-        Released = new JCheckBox("Released");
-        //chckbxReleased.addItemListener(itemListener1);
-		Released.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		Released.setBounds(131, 263, 103, 23);
-		Released.setBackground(new Color(255, 255, 255));
-		add(Released);
-		
-		Deleted = new JCheckBox("Deleted");
-		//chckbxNewCheckBox.addItemListener(itemListener1);
-		Deleted.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		Deleted.setBounds(235, 263, 103, 23);
-		Deleted.setBackground(new Color(255, 255, 255));
-		add(Deleted);
-		
-		NotReleased = new JCheckBox("Not Released");
-		//chckbxNotReleased.addItemListener(itemListener1);
-		NotReleased.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		NotReleased.setBounds(340, 263, 121, 23);
-		NotReleased.setBackground(new Color(255, 255, 255));
-		add(NotReleased);
-		
-		JLabel lblDnaStatus = new JLabel("DNA Status:");
-		lblDnaStatus.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		lblDnaStatus.setBounds(39, 291, 90, 15);
-		add(lblDnaStatus);
-		
-		Available = new JCheckBox("Available");
-		Available.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		Available.setBounds(131, 288, 103, 23);
-		Available.setBackground(new Color(255, 255, 255));
-		add(Available);
-		
-		Planning = new JCheckBox("Planning");
-		Planning.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		Planning.setBounds(235, 287, 103, 23);
-		Planning.setBackground(new Color(255, 255, 255));
-		add(Planning);
-		
-		Informational = new JCheckBox("Informational");
-		Informational.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		Informational.setBounds(340, 288, 121, 23);
-		Informational.setBackground(new Color(255, 255, 255));
-		add(Informational);
-		
-		JLabel lblNewLabel_2 = new JLabel("Whether or not Deleted:");
-		lblNewLabel_2.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		lblNewLabel_2.setBounds(39, 317, 151, 15);
-		add(lblNewLabel_2);
+        };
 		
 		NotDeleted = new JCheckBox("Not Deleted");
+		NotDeleted.addItemListener(itemListener_deleted);
 		NotDeleted.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		NotDeleted.setBounds(196, 314, 103, 23);
+		NotDeleted.setBounds(235, 317, 121, 23);
 		NotDeleted.setBackground(new Color(255, 255, 255));
 		add(NotDeleted);
 		
 		Deleted1 = new JCheckBox("Deleted");
+		Deleted1.addItemListener(itemListener_deleted);
 		Deleted1.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		Deleted1.setBounds(311, 314, 103, 23);
+		Deleted1.setBounds(366, 317, 103, 23);
 		Deleted1.setBackground(new Color(255, 255, 255));
 		add(Deleted1);
 		
-		JLabel lblAverageStarsGiven = new JLabel("Average Stars Given by Previous Teams:");
-		lblAverageStarsGiven.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		lblAverageStarsGiven.setBounds(39, 342, 247, 15);
-		add(lblAverageStarsGiven);
+		JLabel AverageStar = new JLabel("Average Stars Given by Previous Teams:");
+		AverageStar.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		AverageStar.setBounds(39, 347, 284, 15);
+		add(AverageStar);
 		
 		high = new JCheckBox(">=4");
 		high.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		high.setBounds(292, 340, 55, 23);
+		high.setBounds(326, 343, 68, 23);
 		high.setBackground(new Color(255, 255, 255));
 		add(high);
 		
 		middle = new JCheckBox("2-4");
 		middle.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		middle.setBounds(368, 339, 55, 23);
+		middle.setBounds(396, 343, 65, 23);
 		middle.setBackground(new Color(255, 255, 255));
 		add(middle);
 		
 		low = new JCheckBox("<=2");
 		low.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		low.setBounds(441, 339, 55, 23);
+		low.setBounds(478, 343, 65, 23);
 		low.setBackground(new Color(255, 255, 255));
 		add(low);
 		
-		JLabel lblNewLabel_3 = new JLabel("Preferences:");
-		lblNewLabel_3.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		lblNewLabel_3.setBounds(10, 367, 99, 15);
-		add(lblNewLabel_3);
+		JLabel Preference = new JLabel("Preferences:");
+		Preference.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		Preference.setBounds(10, 367, 121, 29);
+		add(Preference);
 		
-		JLabel lblStatus = new JLabel("Status:");
-		lblStatus.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		lblStatus.setBounds(39, 398, 47, 15);
-		add(lblStatus);
+		JLabel Status = new JLabel("Status(%):");
+		Status.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		Status.setBounds(39, 411, 65, 15);
+		add(Status);
 		
 		PercentofStatus = new JSpinner();
 		PercentofStatus.setModel(new SpinnerNumberModel(0, 0, 100, 1));
-		PercentofStatus.setBounds(88, 393, 41, 27);
+		PercentofStatus.setBounds(110, 406, 41, 27);
 		add(PercentofStatus);
 		
-		JLabel lblQuality = new JLabel("Quality:");
-		lblQuality.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		lblQuality.setBounds(147, 399, 54, 15);
-		add(lblQuality);
+		JLabel Quality = new JLabel("Quality(%):");
+		Quality.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		Quality.setBounds(156, 411, 78, 15);
+		add(Quality);
 		
 		PercentofQuality = new JSpinner();
 		PercentofQuality.setModel(new SpinnerNumberModel(0, 0, 100, 1));
-		PercentofQuality.setBounds(213, 393, 41, 27);
+		PercentofQuality.setBounds(235, 406, 41, 27);
 		add(PercentofQuality);
 		
-		JLabel lblFeedbacks = new JLabel("Feedbacks:");
-		lblFeedbacks.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		lblFeedbacks.setBounds(264, 399, 74, 15);
-		add(lblFeedbacks);
+		JLabel Feedbacks = new JLabel("Feedbacks(%):");
+		Feedbacks.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		Feedbacks.setBounds(286, 411, 99, 15);
+		add(Feedbacks);
 		
 		PercentofFeedbacks = new JSpinner();
 		PercentofFeedbacks.setModel(new SpinnerNumberModel(0, 0, 100, 1));
-		PercentofFeedbacks.setBounds(353, 393, 41, 27);
+		PercentofFeedbacks.setBounds(395, 406, 41, 27);
 		add(PercentofFeedbacks);
 		
-		JLabel lblPublication = new JLabel("Publication:");
-		lblPublication.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		lblPublication.setBounds(404, 399, 74, 15);
-		add(lblPublication);
+		JLabel Publication = new JLabel("Publication(%):");
+		Publication.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		Publication.setBounds(446, 411, 97, 15);
+		add(Publication);
 		
-		JSpinner PercentofPublication = new JSpinner();
+		PercentofPublication = new JSpinner();
 		PercentofPublication.setModel(new SpinnerNumberModel(0, 0, 100, 1));
-		PercentofPublication.setBounds(488, 393, 41, 27);
+		PercentofPublication.setBounds(559, 406, 41, 27);
 		add(PercentofPublication);
 		
 		JLabel EnteredYear = new JLabel("Entered Year:");
 		EnteredYear.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		EnteredYear.setBounds(39, 237, 90, 17);
+		EnteredYear.setBounds(39, 229, 99, 17);
 		add(EnteredYear);
 		
 		JLabel From = new JLabel("from");
 		From.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		From.setBounds(131, 237, 35, 17);
+		From.setBounds(147, 229, 43, 17);
 		add(From);
 		
-		Year1 = new JComboBox();
-		Year1.setBounds(176, 236, 58, 21);
+		String year[] = {"2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014"};
+		Year1 = new JComboBox(year);
+		Year1.setSelectedIndex(0);
+		Year1.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {
+				if(e.getStateChange() == ItemEvent.SELECTED){
+					String s = (String)Year1.getSelectedItem();
+					information.enteredyear[0] = Integer.parseInt(s);
+				}
+			}
+		});
+		Year1.setBounds(200, 228, 58, 21);
 		add(Year1);
 		
 		JLabel To = new JLabel("to");
 		To.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		To.setBounds(251, 237, 18, 17);
+		To.setBounds(277, 229, 28, 20);
 		add(To);
 		
-		Year2 = new JComboBox();
-		Year2.setBounds(280, 236, 58, 21);
+		Year2 = new JComboBox(year);
+		Year2.setSelectedIndex(11);
+		Year2.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {
+				if(e.getStateChange() == ItemEvent.SELECTED){
+					String s = (String)Year2.getSelectedItem();
+					information.enteredyear[1] = Integer.parseInt(s);
+				}
+			}
+		});
+		Year2.setBounds(315, 228, 58, 21);
 		add(Year2);
 		
 		JLabel Type = new JLabel("Type:");
 		Type.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		Type.setBounds(39, 118, 41, 17);
+		Type.setBounds(39, 118, 45, 17);
 		add(Type);
 		
 		Promoter = new JCheckBox("Promoter");
 		Promoter.setFont(new Font("Times New Roman", Font.PLAIN, 16));
 		Promoter.setBackground(Color.WHITE);
-		Promoter.setBounds(84, 115, 82, 23);
+		Promoter.setBounds(84, 115, 86, 23);
 		add(Promoter);
 		
 		RBS = new JCheckBox("RBS");
 		RBS.setFont(new Font("Times New Roman", Font.PLAIN, 16));
 		RBS.setBackground(Color.WHITE);
-		RBS.setBounds(172, 115, 55, 23);
+		RBS.setBounds(179, 115, 55, 23);
 		add(RBS);
 		
 		Protein_Domain = new JCheckBox("Protein_Domain");
 		Protein_Domain.setFont(new Font("Times New Roman", Font.PLAIN, 16));
 		Protein_Domain.setBackground(Color.WHITE);
-		Protein_Domain.setBounds(231, 115, 123, 23);
+		Protein_Domain.setBounds(264, 115, 135, 23);
 		add(Protein_Domain);
 		
 		Protein_Coding_Sequence = new JCheckBox("Protein_Coding_Sequence");
 		Protein_Coding_Sequence.setFont(new Font("Times New Roman", Font.PLAIN, 16));
 		Protein_Coding_Sequence.setBackground(Color.WHITE);
-		Protein_Coding_Sequence.setBounds(368, 115, 189, 23);
+		Protein_Coding_Sequence.setBounds(414, 115, 203, 23);
 		add(Protein_Coding_Sequence);
 		
 		Translation_Unit = new JCheckBox("Translation_Unit");
 		Translation_Unit.setFont(new Font("Times New Roman", Font.PLAIN, 16));
 		Translation_Unit.setBackground(Color.WHITE);
-		Translation_Unit.setBounds(84, 141, 125, 23);
+		Translation_Unit.setBounds(84, 141, 150, 23);
 		add(Translation_Unit);
 		
 		Terminator = new JCheckBox("Terminator");
 		Terminator.setFont(new Font("Times New Roman", Font.PLAIN, 16));
 		Terminator.setBackground(Color.WHITE);
-		Terminator.setBounds(213, 141, 99, 23);
+		Terminator.setBounds(235, 140, 103, 23);
 		add(Terminator);
 		
 		DNA = new JCheckBox("DNA");
 		DNA.setFont(new Font("Times New Roman", Font.PLAIN, 16));
 		DNA.setBackground(Color.WHITE);
-		DNA.setBounds(311, 141, 68, 23);
+		DNA.setBounds(346, 140, 68, 23);
 		add(DNA);
 		
 		Plasmid_Backbone = new JCheckBox("Plasmid_Backbone");
 		Plasmid_Backbone.setFont(new Font("Times New Roman", Font.PLAIN, 16));
 		Plasmid_Backbone.setBackground(Color.WHITE);
-		Plasmid_Backbone.setBounds(386, 140, 143, 23);
+		Plasmid_Backbone.setBounds(435, 141, 165, 23);
 		add(Plasmid_Backbone);
 		
 		Plasmid = new JCheckBox("Plasmid");
 		Plasmid.setFont(new Font("Times New Roman", Font.PLAIN, 16));
 		Plasmid.setBackground(Color.WHITE);
-		Plasmid.setBounds(84, 170, 74, 23);
+		Plasmid.setBounds(84, 170, 86, 23);
 		add(Plasmid);
 		
 		Primer = new JCheckBox("Primer");
 		Primer.setFont(new Font("Times New Roman", Font.PLAIN, 16));
 		Primer.setBackground(Color.WHITE);
-		Primer.setBounds(160, 170, 68, 23);
+		Primer.setBounds(213, 170, 86, 23);
 		add(Primer);
 		
 		Composite = new JCheckBox("Composite");
 		Composite.setFont(new Font("Times New Roman", Font.PLAIN, 16));
 		Composite.setBackground(Color.WHITE);
-		Composite.setBounds(238, 170, 100, 23);
+		Composite.setBounds(324, 170, 109, 23);
 		add(Composite);
 		
 		Protein_Generator = new JCheckBox("Protein_Generator");
 		Protein_Generator.setFont(new Font("Times New Roman", Font.PLAIN, 16));
 		Protein_Generator.setBackground(Color.WHITE);
-		Protein_Generator.setBounds(338, 170, 140, 23);
+		Protein_Generator.setBounds(443, 170, 157, 23);
 		add(Protein_Generator);
 		
 		Reporter = new JCheckBox("Reporter");
 		Reporter.setFont(new Font("Times New Roman", Font.PLAIN, 16));
 		Reporter.setBackground(Color.WHITE);
-		Reporter.setBounds(84, 199, 82, 23);
+		Reporter.setBounds(84, 199, 90, 23);
 		add(Reporter);
 		
 		Inventer = new JCheckBox("Inventer");
 		Inventer.setFont(new Font("Times New Roman", Font.PLAIN, 16));
 		Inventer.setBackground(Color.WHITE);
-		Inventer.setBounds(172, 199, 74, 23);
+		Inventer.setBounds(176, 199, 82, 23);
 		add(Inventer);
 		
 		Signalling = new JCheckBox("Signalling");
 		Signalling.setFont(new Font("Times New Roman", Font.PLAIN, 16));
 		Signalling.setBackground(Color.WHITE);
-		Signalling.setBounds(256, 199, 82, 23);
+		Signalling.setBounds(264, 199, 99, 23);
 		add(Signalling);
 		
 		Measurement = new JCheckBox("Measurement");
 		Measurement.setFont(new Font("Times New Roman", Font.PLAIN, 16));
 		Measurement.setBackground(Color.WHITE);
-		Measurement.setBounds(348, 199, 113, 23);
+		Measurement.setBounds(365, 199, 131, 23);
 		add(Measurement);
 		
 		Other = new JCheckBox("Other");
 		Other.setFont(new Font("Times New Roman", Font.PLAIN, 16));
 		Other.setBackground(Color.WHITE);
-		Other.setBounds(467, 199, 68, 23);
+		Other.setBounds(500, 199, 68, 23);
 		add(Other);
 		
 		JLabel Sort = new JLabel("Sort by:");
 		Sort.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		Sort.setBounds(10, 10, 68, 28);
+		Sort.setBounds(10, 10, 76, 28);
 		add(Sort);
 		
+		ItemListener itemListener_sort = new ItemListener() {
+            JCheckBox jCheckBox;
+ 
+            public void itemStateChanged(ItemEvent e) {
+                jCheckBox = (JCheckBox) e.getSource();
+ 
+                if (jCheckBox.isSelected()) {
+                    if(jCheckBox == EnteredDate){
+                    	ConfirmedTimes.setSelected(false);
+                    	GoogleQouteNumber.setSelected(false);
+                    	AverageStars.setSelected(false);
+                    	BlastResult.setSelected(false);
+                    	TotalScore.setSelected(false);
+                    }
+                    else if(jCheckBox == ConfirmedTimes){
+                    	EnteredDate.setSelected(false);
+                    	GoogleQouteNumber.setSelected(false);
+                    	AverageStars.setSelected(false);
+                    	BlastResult.setSelected(false);
+                    	TotalScore.setSelected(false);
+                    }
+                    else if(jCheckBox == GoogleQouteNumber){
+                    	EnteredDate.setSelected(false);
+                    	ConfirmedTimes.setSelected(false);
+                    	AverageStars.setSelected(false);
+                    	BlastResult.setSelected(false);
+                    	TotalScore.setSelected(false);
+                    }
+                    else if(jCheckBox == AverageStars){
+                    	EnteredDate.setSelected(false);
+                    	ConfirmedTimes.setSelected(false);
+                    	GoogleQouteNumber.setSelected(false);
+                    	BlastResult.setSelected(false);
+                    	TotalScore.setSelected(false);
+                    }
+                    else if(jCheckBox == BlastResult){
+                    	EnteredDate.setSelected(false);
+                    	ConfirmedTimes.setSelected(false);
+                    	GoogleQouteNumber.setSelected(false);
+                    	AverageStars.setSelected(false);
+                    	TotalScore.setSelected(false);
+                    }
+                    else if(jCheckBox == TotalScore){
+                    	EnteredDate.setSelected(false);
+                    	ConfirmedTimes.setSelected(false);
+                    	GoogleQouteNumber.setSelected(false);
+                    	AverageStars.setSelected(false);
+                    	BlastResult.setSelected(false);
+                    }
+                }else{
+                    
+                }
+            }
+        };
+		
 		EnteredDate = new JCheckBox("Entered Date");
+		EnteredDate.addItemListener(itemListener_sort);
 		EnteredDate.setFont(new Font("Times New Roman", Font.PLAIN, 16));
 		EnteredDate.setBackground(Color.WHITE);
-		EnteredDate.setBounds(88, 35, 105, 23);
+		EnteredDate.setBounds(88, 35, 113, 23);
 		add(EnteredDate);
 		
 		ConfirmedTimes = new JCheckBox("Confirmed Times");
+		ConfirmedTimes.addItemListener(itemListener_sort);
 		ConfirmedTimes.setFont(new Font("Times New Roman", Font.PLAIN, 16));
 		ConfirmedTimes.setBackground(Color.WHITE);
-		ConfirmedTimes.setBounds(88, 58, 130, 23);
+		ConfirmedTimes.setBounds(88, 58, 146, 23);
 		add(ConfirmedTimes);
 		
 		GoogleQouteNumber = new JCheckBox("Google Qoute Number");
+		GoogleQouteNumber.addItemListener(itemListener_sort);
 		GoogleQouteNumber.setFont(new Font("Times New Roman", Font.PLAIN, 16));
 		GoogleQouteNumber.setBackground(Color.WHITE);
-		GoogleQouteNumber.setBounds(223, 35, 171, 23);
+		GoogleQouteNumber.setBounds(243, 35, 180, 23);
 		add(GoogleQouteNumber);
 		
 		AverageStars = new JCheckBox("Average Stars");
+		AverageStars.addItemListener(itemListener_sort);
 		AverageStars.setFont(new Font("Times New Roman", Font.PLAIN, 16));
 		AverageStars.setBackground(Color.WHITE);
-		AverageStars.setBounds(404, 35, 121, 23);
+		AverageStars.setBounds(436, 35, 121, 23);
 		add(AverageStars);
 		
-		BlastResult = new JCheckBox("BlastResult");
+		BlastResult = new JCheckBox("Blast Result");
+		BlastResult.addItemListener(itemListener_sort);
 		BlastResult.setFont(new Font("Times New Roman", Font.PLAIN, 16));
 		BlastResult.setBackground(Color.WHITE);
-		BlastResult.setBounds(223, 58, 105, 23);
+		BlastResult.setBounds(242, 58, 112, 23);
 		add(BlastResult);
 		
 		TotalScore = new JCheckBox("Total Score");
+		TotalScore.addItemListener(itemListener_sort);
 		TotalScore.setFont(new Font("Times New Roman", Font.PLAIN, 16));
 		TotalScore.setBackground(Color.WHITE);
-		TotalScore.setBounds(340, 58, 113, 23);
+		TotalScore.setBounds(383, 58, 123, 23);
 		add(TotalScore);
+		
+		information = new Information();
+		
+		Confirmed = new JButton("Confirmed");
+		Confirmed.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				{
+					if(EnteredDate.isSelected()){
+						information.sortby = "Entered Date";
+					}
+					else if(GoogleQouteNumber.isSelected()){
+						information.sortby = "Google Qoute Number";
+					}
+					else if(AverageStars.isSelected()){
+						information.sortby = "Average Stars";
+					}
+					else if(ConfirmedTimes.isSelected()){
+						information.sortby = "Confirmed Times";
+					}
+					else if(BlastResult.isSelected()){
+						information.sortby = "Blast Result";
+					}
+					else if(TotalScore.isSelected()){
+						information.sortby = "Total Score";
+					}
+				}
+				
+				{
+					if(Promoter.isSelected()){
+						information.type.add("Promoter");
+					}
+					if(RBS.isSelected()){
+						information.type.add("RBS");
+					}
+					if(Protein_Domain.isSelected()){
+						information.type.add("Protein_Domain");
+					}
+					if(Protein_Coding_Sequence.isSelected()){
+						information.type.add("Protein_Coding_Sequence");
+					}
+					if(Translation_Unit.isSelected()){
+						information.type.add("Translation_Unit");
+					}
+					if(Terminator.isSelected()){
+						information.type.add("Terminator");
+					}
+					if(DNA.isSelected()){
+						information.type.add("DNA");
+					}
+					if(Plasmid_Backbone.isSelected()){
+						information.type.add("Plasmid_Backbone");
+					}
+					if(Plasmid.isSelected()){
+						information.type.add("Plasmid");
+					}
+					if(Primer.isSelected()){
+						information.type.add("Primer");
+					}
+					if(Composite.isSelected()){
+						information.type.add("Composite");
+					}
+					if(Protein_Generator.isSelected()){
+						information.type.add("Protein_Generator");
+					}
+					if(Reporter.isSelected()){
+						information.type.add("Reporter");
+					}
+					if(Inventer.isSelected()){
+						information.type.add("Inventer");
+					}
+					if(Signalling.isSelected()){
+						information.type.add("Signalling");
+					}
+					if(Other.isSelected()){
+						information.type.add("Other");
+					}
+				}
+				
+				{
+					if(Released.isSelected()){
+						information.releasestatus.released = true;
+					}
+					if(Deleted.isSelected()){
+						information.releasestatus.deleted = true;
+					}
+					if(NotReleased.isSelected()){
+						information.releasestatus.notreleased = true;
+					}
+				}
+				
+				{
+					if(Available.isSelected()){
+						information.dnastatus.available = true;
+					}
+					if(Planning.isSelected()){
+						information.dnastatus.planning = true;
+					}
+					if(Informational.isSelected()){
+						information.dnastatus.informational = true;
+					}
+				}
+				
+				{
+					if(NotDeleted.isSelected()){
+						information.whetherornot = false;
+					}
+					if(Deleted1.isSelected()){
+						information.whetherornot = true;
+					}
+				}
+				{
+					if(high.isSelected()){
+						information.averagestars.high = true;
+					}
+					if(middle.isSelected()){
+						information.averagestars.middle = true;
+					}
+					if(low.isSelected()){
+						information.averagestars.low = true;
+					}
+				}
+				information.preferences.status = (int)PercentofStatus.getValue();
+				information.preferences.quality = (int)PercentofQuality.getValue();
+				information.preferences.publication = (int)PercentofPublication.getValue();
+				information.preferences.feedbacks = (int)PercentofFeedbacks.getValue();
+			}
+		});
+		Confirmed.setFont(new Font("Times New Roman", Font.BOLD, 16));
+		Confirmed.setBounds(243, 451, 121, 28);
+		add(Confirmed);
 	}
 }
