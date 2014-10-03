@@ -1,22 +1,20 @@
 package EasyBBK_Swing.gui;
 
-import java.awt.Component;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
-
 import javax.swing.JLabel;
 
 /**
  * Draw line in this panel
  */
+
 class Pen extends JLabel
 {
 	public boolean inUse = false;
+	public String type = null;
 	
 	public Pen()
 	{
 		super();
+		this.setName("pen");
 	}
 	
 	public void inUse()
@@ -28,11 +26,22 @@ class Pen extends JLabel
 	public void noUse()
 	{
 		this.setEnabled(true);
+		System.out.println("MB");	
 		inUse = false;
 	}
 	
 	public boolean ifUse()
 	{
 		return inUse;
+	}
+	
+	public void setType(String type)
+	{
+		this.type=type;
+	}
+	
+	public String getType()
+	{
+		return type;
 	}
 }
