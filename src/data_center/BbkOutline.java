@@ -137,7 +137,7 @@ public class BbkOutline
     
     public static class Blasting
     {	
-    	int score;
-    	double eValue;
+    	public int score;
+    	public double eValue;
     }
 }
