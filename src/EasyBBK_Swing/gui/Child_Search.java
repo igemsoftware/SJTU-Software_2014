@@ -646,6 +646,6 @@ public class Child_Search extends JPanel {
 		String score = "" + bbkoutline.getScore();
 		searchingresultpage.searchingresult.get(i).Score.setText(score);
 		
-		BbkOutline.Blasting blasting = bbkoutline.blasting;
+	    //bbkoutline.blasting.
 	}
 }
