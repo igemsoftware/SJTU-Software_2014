@@ -63,14 +63,15 @@ public class Test {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				SearchCenter searchcenter = new SearchCenter();
-				SearchResultList searchresultlist = searchcenter.search("BBa_B0000");
+				SearchResultList searchresultlist = searchcenter.blast("gcaaaccgcctc" , BlastingSearcher.MODE_INPUT_SEQUENCE);
 				SearchResultList searchresultlist1 = (SearchResultList)searchresultlist.clone();
+				
 				BbkOutline bbkoutline = searchresultlist.get(0);
 				BbkOutline bbkoutline1 = searchresultlist1.get(0);
 				lblNewLabel_1.setText(bbkoutline.name);
 				//BbkDetail bbkdetail = searchcenter.getDetail(bbkoutline.name);
 				searchresultlist = searchcenter.blast(null, BlastingSearcher.MODE_INPUT_SEQUENCE);
-				lblNewLabel.setText(bbkoutline1.name);
+				
 			}
 		});
 		btnNewButton.setBounds(87, 46, 93, 23);

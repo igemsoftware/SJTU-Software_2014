@@ -31,7 +31,6 @@ public class Choicepanel extends JPanel {
 	public JCheckBox GoogleQouteNumber;
 	public JCheckBox AverageStars;
 	public JCheckBox ConfirmedTimes;
-	public JCheckBox BlastResult;
 	public JCheckBox TotalScore;
 	public JCheckBox Promoter;
 	public JCheckBox RBS;
@@ -61,6 +60,7 @@ public class Choicepanel extends JPanel {
 	public JCheckBox low;
 	public JButton Confirmed;
 	public Information information;
+	public boolean confirmed_clicked = false;
 	/**
 	 * Create the panel.
 	 */
@@ -393,35 +393,24 @@ public class Choicepanel extends JPanel {
                     	ConfirmedTimes.setSelected(false);
                     	GoogleQouteNumber.setSelected(false);
                     	AverageStars.setSelected(false);
-                    	BlastResult.setSelected(false);
                     	TotalScore.setSelected(false);
                     }
                     else if(jCheckBox == ConfirmedTimes){
                     	EnteredDate.setSelected(false);
                     	GoogleQouteNumber.setSelected(false);
                     	AverageStars.setSelected(false);
-                    	BlastResult.setSelected(false);
                     	TotalScore.setSelected(false);
                     }
                     else if(jCheckBox == GoogleQouteNumber){
                     	EnteredDate.setSelected(false);
                     	ConfirmedTimes.setSelected(false);
                     	AverageStars.setSelected(false);
-                    	BlastResult.setSelected(false);
                     	TotalScore.setSelected(false);
                     }
                     else if(jCheckBox == AverageStars){
                     	EnteredDate.setSelected(false);
                     	ConfirmedTimes.setSelected(false);
                     	GoogleQouteNumber.setSelected(false);
-                    	BlastResult.setSelected(false);
-                    	TotalScore.setSelected(false);
-                    }
-                    else if(jCheckBox == BlastResult){
-                    	EnteredDate.setSelected(false);
-                    	ConfirmedTimes.setSelected(false);
-                    	GoogleQouteNumber.setSelected(false);
-                    	AverageStars.setSelected(false);
                     	TotalScore.setSelected(false);
                     }
                     else if(jCheckBox == TotalScore){
@@ -429,7 +418,6 @@ public class Choicepanel extends JPanel {
                     	ConfirmedTimes.setSelected(false);
                     	GoogleQouteNumber.setSelected(false);
                     	AverageStars.setSelected(false);
-                    	BlastResult.setSelected(false);
                     }
                 }else{
                     
@@ -465,18 +453,11 @@ public class Choicepanel extends JPanel {
 		AverageStars.setBounds(436, 35, 121, 23);
 		add(AverageStars);
 		
-		BlastResult = new JCheckBox("Blast Result");
-		BlastResult.addItemListener(itemListener_sort);
-		BlastResult.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		BlastResult.setBackground(Color.WHITE);
-		BlastResult.setBounds(242, 58, 112, 23);
-		add(BlastResult);
-		
 		TotalScore = new JCheckBox("Total Score");
 		TotalScore.addItemListener(itemListener_sort);
 		TotalScore.setFont(new Font("Times New Roman", Font.PLAIN, 16));
 		TotalScore.setBackground(Color.WHITE);
-		TotalScore.setBounds(383, 58, 123, 23);
+		TotalScore.setBounds(243, 58, 123, 23);
 		add(TotalScore);
 		
 		information = new Information();
@@ -498,9 +479,6 @@ public class Choicepanel extends JPanel {
 					}
 					else if(ConfirmedTimes.isSelected()){
 						information.sortby = "Confirmed Times";
-					}
-					else if(BlastResult.isSelected()){
-						information.sortby = "Blast Result";
 					}
 					else if(TotalScore.isSelected()){
 						information.sortby = "Total Score";
@@ -605,6 +583,8 @@ public class Choicepanel extends JPanel {
 				information.preferences.quality = (int)PercentofQuality.getValue();
 				information.preferences.publication = (int)PercentofPublication.getValue();
 				information.preferences.feedbacks = (int)PercentofFeedbacks.getValue();
+				
+				confirmed_clicked = true;
 			}
 		});
 		Confirmed.setFont(new Font("Times New Roman", Font.BOLD, 16));
