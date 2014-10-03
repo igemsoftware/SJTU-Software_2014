@@ -93,6 +93,14 @@ public class Child_Search extends JPanel {
 		Back.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
+				SearchResultList previousList = searchcenter.rollBack();
+				if(previousList == null) return;
+				else{
+					textField.setText(previousList.keyword);
+					resultpanel.removeAll();
+					initializeresultpage(previousList);
+					resultpanel.updateUI();
+				}
 			}
 			@Override
 			public void mouseEntered(MouseEvent arg0) {
@@ -111,7 +119,14 @@ public class Child_Search extends JPanel {
 		Forward.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				
+				SearchResultList forwardList = searchcenter.goForward();
+				if(forwardList == null) return;
+				else{
+					textField.setText(forwardList.keyword);
+					resultpanel.removeAll();
+					initializeresultpage(forwardList);
+					resultpanel.updateUI();
+				}
 			}
 			@Override
 			public void mouseEntered(MouseEvent arg0) {
@@ -154,8 +169,10 @@ public class Child_Search extends JPanel {
 				else{
 					searchresultlist = searchcenter.search(textField.getText());
 					currentpage = 1;
+					blast = 1;
 					resultpanel.removeAll();
-					initializeresultpage();
+					initializeresultpage(searchresultlist);
+					resultpanel.updateUI();
 				}
 			}
 			@Override
@@ -190,8 +207,9 @@ public class Child_Search extends JPanel {
 					else{
 						searchresultlist = searchcenter.search(textField.getText());
 						currentpage = 1;
+						blast = 1;
 						resultpanel.removeAll();
-						initializeresultpage();
+						initializeresultpage(searchresultlist);
 						resultpanel.updateUI();
 					}
 				}
@@ -235,9 +253,10 @@ public class Child_Search extends JPanel {
 				else{
 					searchresultlist = searchcenter.blast(textField.getText(), BlastingSearcher.MODE_INPUT_SEQUENCE);
 					currentpage = 1;
+					blast = 2;
 					resultpanel.removeAll();
-					initializeresultpage();
-					
+					initializeresultpage(searchresultlist);
+					resultpanel.updateUI();
 				}
 			}
 			@Override
@@ -272,11 +291,11 @@ public class Child_Search extends JPanel {
 			searchresultlist = searchcenter.blast(searchcontent, BlastingSearcher.MODE_INPUT_FILE_PATH);
 		}
 		
-		initializeresultpage();
+		initializeresultpage(searchresultlist);
 	}
 	
-	public void initializeresultpage(){
-		filteredlist = searchresultlist;
+	public void initializeresultpage(SearchResultList searchresultlist1){
+		filteredlist = searchresultlist1;
 		if(blast == 2){
 			filteredlist.sortByBlastResult(true);
 		}
@@ -646,6 +665,13 @@ public class Child_Search extends JPanel {
 		String score = "" + bbkoutline.getScore();
 		searchingresultpage.searchingresult.get(i).Score.setText(score);
 		
-	    //bbkoutline.blasting.
+		if(blast == 1){
+			searchingresultpage.searchingresult.get(i).Evalue.setVisible(false);
+		}
+		else if(blast == 2){
+			searchingresultpage.searchingresult.get(i).Evalue.setVisible(true);
+			String s = "" + bbkoutline.blasting.eValue;
+			searchingresultpage.searchingresult.get(i).Evalue_Content.setText(s);
+		}
 	}
 }

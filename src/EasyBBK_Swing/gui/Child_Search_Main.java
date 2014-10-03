@@ -28,8 +28,6 @@ import java.awt.event.KeyEvent;
 
 public class Child_Search_Main extends JPanel {
 	public JLabel LogoBox;
-	public JLabel BackBox;
-	public JLabel ForwardBox;
 	public JLabel TextBox;
 	public JTextField SearchText;
 	public JLabel goBox;
@@ -54,42 +52,6 @@ public class Child_Search_Main extends JPanel {
 		LogoBox.setBounds(504, 48, 357, 187);
 		LogoBox.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Logo.png")));
 		add(LogoBox);
-		
-		BackBox = new JLabel("");
-		BackBox.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-			}
-			@Override
-			public void mouseEntered(MouseEvent arg0) {
-				BackBox.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/SearchBox_backward_Hock.png")));
-			}
-			@Override
-			public void mouseExited(MouseEvent arg0) {
-				BackBox.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/SearchBox_backward.png")));
-			}
-		});
-		BackBox.setBounds(316, 307, 50, 50);
-		BackBox.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/SearchBox_backward.png")));
-		add(BackBox);
-		
-		ForwardBox = new JLabel("");
-		ForwardBox.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-			}
-			@Override
-			public void mouseEntered(MouseEvent arg0) {
-				ForwardBox.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/SearchBox_forward_Hock.png")));
-			}
-			@Override
-			public void mouseExited(MouseEvent arg0) {
-				ForwardBox.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/SearchBox_forward.png")));
-			}
-		});
-		ForwardBox.setBounds(372, 307, 70, 50);
-		ForwardBox.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/SearchBox_forward.png")));
-		add(ForwardBox);
 		
 	    TextBox = new JLabel("");
 		TextBox.setBounds(463, 307, 426, 50);
