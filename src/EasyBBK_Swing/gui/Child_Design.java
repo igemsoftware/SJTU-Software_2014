@@ -32,6 +32,10 @@ import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
 
+import data_center.SketchCenter;
+import data_center.SketchComponent;
+import data_center.SketchProject;
+
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.MouseEvent;
@@ -48,6 +52,8 @@ public class Child_Design extends JPanel {
 	private Pen text = new Pen();
 	private LinePanel linePanel = new LinePanel(pen);
 	private TextLabel textLabel = null;
+	
+	SketchCenter sketchCenter = new SketchCenter();
 	
 	/**
 	 * Create the panel.
@@ -360,6 +366,8 @@ public class Child_Design extends JPanel {
 	    	{	
 	    		if (((Component)source).getName() == "backbone")
 	    		{
+	    			SketchProject project = sketchCenter.currentProject;
+	    			
 	    			point =  e.getPoint();
 		    		BackBone newBackBone = new BackBone(panel,Tpanel);
 		    		newBackBone.setIcon(((BackBone)source).getIcon());
@@ -371,10 +379,12 @@ public class Child_Design extends JPanel {
 		    		newBackBone.activate();
 					panel.add(newBackBone,-1);
 					
-					DragCompListener listener = new DragCompListener(panel,Tpanel);
+					DragCompListener listener = new DragCompListener(panel,Tpanel,sketchCenter);
 					newBackBone.addMouseListener(listener);
 					newBackBone.addMouseMotionListener(listener);
-
+					
+					project.addComponent
+						(new SketchComponent.BackBone(5, (Point)point.clone(), ((BackBone)source).getWidth()));
 	    		}
 	    		else
 	    		{
@@ -388,7 +398,7 @@ public class Child_Design extends JPanel {
 		    		newLabel.setName(((JLabelWithID)source).getName());
 					panel.add(newLabel);
 					
-					DragCompListener listener = new DragCompListener(panel,Tpanel);
+					DragCompListener listener = new DragCompListener(panel,Tpanel,sketchCenter);
 					newLabel.addMouseListener(listener);
 					newLabel.addMouseMotionListener(listener);
 	    		}

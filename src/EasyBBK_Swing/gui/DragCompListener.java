@@ -14,6 +14,9 @@ import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import javax.swing.event.MouseInputListener;
 
+import data_center.SketchCenter;
+import data_center.SketchProject;
+
 /**
  * Imply movement in board
  */
@@ -31,17 +34,20 @@ class DragCompListener implements MouseInputListener
 	JLayeredPane panel;
 	TPanel Tpanel;
 	
+	SketchCenter sketchCenter;
+	
 	public DragCompListener()
 	{
 		super();
 	}
 	
-	public DragCompListener(JLayeredPane panel, TPanel Tpanel)
+	public DragCompListener(JLayeredPane panel, TPanel Tpanel,SketchCenter sketchCenter)
 	{
 		super();
 		//get panel
 		this.panel = panel;
 		this.Tpanel = Tpanel;
+		this.sketchCenter = sketchCenter;
 	}
 	
 	public void mousePressed(MouseEvent e)
@@ -49,6 +55,9 @@ class DragCompListener implements MouseInputListener
 		if ((e.getComponent()).getName() != "TPanel" & (e.getComponent()).getName() != "LinePanel"
 				& (e.getComponent()).getName() != "text")
 		{
+			SketchProject project = sketchCenter.currentProject;
+			project.modifyComponent(10, SketchProject.Operation.TYPE_CENTER, point);
+			
 			//get the location
 			if ((e.getComponent()).getName()=="backbone")
 			{
