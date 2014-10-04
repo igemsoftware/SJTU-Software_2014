@@ -2,6 +2,7 @@ package data_center;
 
 import java.util.ArrayList;
 
+import data_center.SketchComponent.BackBone;
 import data_center.SketchComponent.*;
 
 import java.awt.Color;
@@ -11,6 +12,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
+
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -29,6 +31,8 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.w3c.dom.Text;
 
+/** This class provides project operations include add, remove, modify components, 
+ * ctrlZ, ctrlY function and save & load.  */
 public class SketchProject
 {
 	public class Operation
@@ -112,6 +116,7 @@ public class SketchProject
 	public String name;
 	
 	public ArrayList<Component> componentList = new ArrayList<Component>();
+	public ArrayList<BackBone> backBoneList = new ArrayList<BackBone>();
 	public HistoryList<Operation> operationHistory = new HistoryList<Operation>();
 
 	public boolean modified = false;
@@ -131,7 +136,18 @@ public class SketchProject
 		// not found
 		return null;
 	}
+	
+	public BackBone findBackBoneInBackBoneListByID(int ID)
+	{	
+		for (BackBone backBone : backBoneList)
+			if (backBone.ID == ID)
+				return backBone;
+		// not found
+		return null;
+	}
 
+	/** Registration function, receive the user operation and remember it in the 
+	 * backstage.  */
 	public void addComponent(Component component)
 	{
 		if (component != null)
@@ -143,6 +159,8 @@ public class SketchProject
 		}
 	}
 
+	/** Registration function, receive the user operation and remember it in the 
+	 * backstage.  */
 	public void delComponent(Component component)
 	{
 		if (component != null)
@@ -154,8 +172,8 @@ public class SketchProject
 		}
 	}
 
-	/**
-	 *  attributeType should be picked from Operation.TYPE_
+	/** Registration function, receive the user operation and remember it in the 
+	 * backstage. The attributeType should be picked from Operation.TYPE_XXX. The
 	 *  folAttribute is the attribute changed into, such as Point, Color */
 	public void modifyComponent(int theID, int attributeType, Object folAttribute)
 	{
@@ -184,6 +202,33 @@ public class SketchProject
 		modified = true;
 	}
 	
+	/** Registration function, receive the user operation and remember it in the 
+	 * backstage.  */
+	public void onAbsorb(int backBoneID, int bbkID, int index)
+	{	
+		Component comp = findComponentByID(backBoneID);
+		if (comp == null || !comp.primaryType.equals(BackBone.class.getSimpleName()))
+			return;
+		// else
+		comp.toBackBone().bbkChildren.add(index, bbkID);
+	}
+	
+	/** Registration function, receive the user operation and remember it in the 
+	 * backstage.  */
+	public void onDesorb(int backBoneID, int bbkID)
+	{	
+		Component comp = findComponentByID(backBoneID);
+		if (comp == null || !comp.primaryType.equals(BackBone.class.getSimpleName()))
+			return;
+		// else
+		BackBone backBone = comp.toBackBone();
+		for (Integer IDInList : backBone.bbkChildren)
+			if (IDInList == bbkID)
+				backBone.bbkChildren.remove(IDInList);
+	}
+	
+	/** Guidance function, guide the GUI the operation from the history list. 
+	 * No registration is needed since the operation is not read from the user.  */
 	public Operation ctrlZ()
 	{
 		Operation originalOp = operationHistory.rollBack();
@@ -196,6 +241,8 @@ public class SketchProject
 		return reversedOp;
 	}
 
+	/** Guidance function, guide the GUI the operation from the history list. 
+	 * No registration is needed since the operation is not read from the user.  */
 	public Operation ctrlY()
 	{
 		Operation originalOp = operationHistory.goForward();
@@ -217,14 +264,22 @@ public class SketchProject
 	
 	
 	/** Change the componentList without change the historyList 
-	 * because it is set to act under an operation, not to generate one */
+	 * because it is set to act under an operation, not to generate one.  */
 	private void exeOperation(Operation operation)
 	{	
 		switch (operation.operationType)
 		{	case Operation.ADD:
-				componentList.add((Component) operation.following);	break;
+				Component compToAdd = (Component) operation.following;
+				componentList.add(compToAdd);
+				if (compToAdd.primaryType.equals(BackBone.class.getSimpleName()))
+					backBoneList.add(compToAdd.toBackBone());
+				break;
 			case Operation.REMOVE:
-				componentList.remove((Component) operation.previous);	break;
+				Component compToRemove = (Component) operation.previous;
+				componentList.remove(compToRemove);
+				if (compToRemove.primaryType.equals(BackBone.class.getSimpleName()))
+					backBoneList.remove(compToRemove.toBackBone());
+				break;
 			case Operation.MODIFY:
 				Component component = findComponentByID(operation.ID);
 				Object object = operation.following;
@@ -232,7 +287,10 @@ public class SketchProject
 				{	case Operation.TYPE_STRING:
 						component.setString((String) object);	break;
 					case Operation.TYPE_CENTER:
-						component.setCenter((Point) object);	break;
+						component.setCenter((Point) object);
+						if (component.primaryType.equals(BackBone.class.getSimpleName()))
+							onLinkage(component.toBackBone(), (Point)operation.previous, (Point)operation.following);
+						break;
 					case Operation.TYPE_SIZE:
 						component.setSize((Double) object);	break;
 					case Operation.TYPE_FONT:
@@ -245,9 +303,29 @@ public class SketchProject
 		}
 	}
 	
+	/** Áª¶¯ in Chinese, move the biobricks on the same backbone together if the 
+	 * backbone is moved.  */
+	private void onLinkage(BackBone backBone, Point previous, Point following)
+	{
+		int dx = following.x - previous.x,
+			dy = following.y - previous.y;
+		for (Integer bbkID : backBone.bbkChildren)
+		{	Component comp = findComponentByID(bbkID);
+			if (comp == null || !comp.primaryType.equals(BioBrick.class.getSimpleName()))
+				continue;
+			// else...
+			Point preCenterOfBbk = comp.getCenter();
+			Point folCenterOfBbk = new Point(preCenterOfBbk.x + dx, preCenterOfBbk.y + dy);
+			comp.setCenter(folCenterOfBbk);
+		}
+		
+	}
 	
 	
 	
+
+	/** Save the project graph into XML file, note that the project.name will be 
+	 * specified after the file name.  */
 	public void saveIntoFile(String filePath)
 	{
 		Document doc = null;
@@ -281,6 +359,8 @@ public class SketchProject
   	  	modified = false;
 	}
 	
+	/** Load the project graph from XML file, note that the project.name will be 
+	 * specified after the file name.  */
 	public void loadFromFile(String filePath)
 	{	
 		componentList.clear();
@@ -310,7 +390,7 @@ public class SketchProject
 	
 	
 	
-	
+	/** Utility function to cut the file name off from the file path.  */
 	private String getFileName(String filePath)
 	{	
 		String fileNameWithSuffix = new File( filePath.trim()).getName();
@@ -386,6 +466,19 @@ public class SketchProject
   		eleColor.appendChild(txtColor);
   		componentNode.appendChild(eleColor);
   		
+  		// about children
+  		Element eleChildren = doc.createElement("children");
+  		ArrayList<Integer> children = component.getChildren();
+  		String childrenStr = "";
+  		if (children != null && children.size() != 0)
+  			for (Integer bbkID : children)
+  				childrenStr += bbkID + " ";
+  		else
+  			childrenStr = "null";
+  		Text txtChildren = doc.createTextNode(childrenStr);
+  		eleChildren.appendChild(txtChildren);
+  		componentNode.appendChild(eleChildren);
+  		
   		return componentNode;
 	}
 	
@@ -455,6 +548,18 @@ public class SketchProject
 		if ( !colorStr.equals("null") )
 			color = new Color(Integer.parseInt(colorStr));
 		
+		// about children
+		Element eleChildren = (Element) componentNode.getElementsByTagName("children").item(0);
+		String childrenStr = eleChildren.getFirstChild().getNodeValue();
+		ArrayList<Integer> children = null;
+		if ( !childrenStr.equals("null") )
+		{	children = new ArrayList<Integer>();
+			String[] childStrList = childrenStr.split(" ");
+			for (String childStr : childStrList)
+				if ( !childStr.equals("") )	// there WILL be an "" in each list
+					children.add(Integer.parseInt(childStr));
+		}
+		
 		Component component = null;
 		if (primaryType.equals(Label.class.getSimpleName()))
 			component = new Label(ID, string, center, font, color);
@@ -463,7 +568,7 @@ public class SketchProject
 		else if (primaryType.equals(Protein.class.getSimpleName()))
 			component = new Protein(ID, secondaryType, center, color);
 		else if (primaryType.equals(BackBone.class.getSimpleName()))
-			component = new BackBone(ID, center, (int)size.doubleValue());
+			component = new BackBone(ID, center, (int)size.doubleValue(), children);
 		else if (primaryType.equals(Relation.class.getSimpleName()))
 			component = new Relation(ID, secondaryType, curve, color, (int)size.doubleValue());
 		else if (primaryType.equals(BioVector.class.getSimpleName()))
@@ -585,7 +690,7 @@ public class SketchProject
 		   h6.appendChild(th6);
 		   Element h7 = doc.createElement("bbkName");
 		   nod.appendChild(h7); 
-		   Text th7 = doc.createTextNode(b.bbkName);
+		   Text th7 = doc.createTextNode(b.bbkOutline.name);
 		   h7.appendChild(th7);
  		  }
   	if (it.getClass().getSimpleName().equals("BackBone")){
@@ -761,7 +866,7 @@ public class SketchProject
     		int length = Integer.parseInt(ss.getElementsByTagName("length").item(0).getFirstChild().getNodeValue());
     		//p2.x = Integer.parseInt(ss.getElementsByTagName("rightPointx").item(0).getFirstChild().getNodeValue());
     		//p2.y = Integer.parseInt(ss.getElementsByTagName("rightPointy").item(0).getFirstChild().getNodeValue());
-    		Component temp = new BackBone(Integer.parseInt(ss.getElementsByTagName("ID").item(0).getFirstChild().getNodeValue()),p1,length);
+    		Component temp = new BackBone(Integer.parseInt(ss.getElementsByTagName("ID").item(0).getFirstChild().getNodeValue()),p1,length, null);
     		List.add(temp);
     	}
     	else if (ss.getAttribute("name").equals("Relation"))

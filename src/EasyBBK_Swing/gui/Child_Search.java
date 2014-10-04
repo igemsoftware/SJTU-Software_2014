@@ -2,6 +2,8 @@ package EasyBBK_Swing.gui;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Cursor;
+import java.awt.Dimension;
 import java.awt.EventQueue;
 
 import javax.swing.BorderFactory;
@@ -9,6 +11,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.swing.JScrollBar;
 import javax.swing.JTextField;
 
 import java.awt.Font;
@@ -24,34 +27,62 @@ import javax.swing.JCheckBox;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 
+import java.awt.event.AdjustmentEvent;
+import java.awt.event.AdjustmentListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
+
+import javax.swing.JTabbedPane;
+import javax.swing.SwingConstants;
+import javax.swing.JScrollPane;
+import javax.swing.ScrollPaneConstants;
+
+import data_center.*;
 
 public class Child_Search extends JPanel {
-	
-	public JPanel Choicepanel;
-	public JCheckBox chckbxReleased;
-	public JCheckBox chckbxNewCheckBox;
-	public JCheckBox chckbxNotReleased;
-	public JCheckBox chckbxAvailable;
-	public JCheckBox chckbxPlanning;
-	public JCheckBox chckbxInformational;
-	public JCheckBox chckbxNotDeleted;
-	public JCheckBox chckbxDeleted;
 	public JTextField textField;
+	public JPanel Result;
 	public JLabel Search;
 	public MainPage mainpage;
+	public JScrollPane scrollPane;
+	public JScrollPane scrollPane1;
+	private JLabel Blast;
+	public JPanel Details;
+	public JLabel page6;
+	public JLabel page7;
+	public JLabel page8;
+	public JLabel page9;
+	public JLabel page10;
+	public int currentpage = 1;
+	public SearchingResultPage searchingresultpage;
+	public SearchResultList searchresultlist;
+	public JScrollBar scrollbar;
+	public JScrollBar scrollbar1;
+	public SearchCenter searchcenter;
+	public Information information;
+	public int blast;
+	public JPanel resultpanel;
+	public JLabel previouspage;
+	public JLabel nextpage;
+	public JLabel showpagenum;
+	public SearchResultList filteredlist;
+	public boolean confirmed_clicked;
 	/**
 	 * Create the panel.
 	 */
-	public Child_Search(MainPage mainpage1) {
+	public Child_Search(MainPage mainpage1, String searchcontent, Information information1, int blast1, boolean confirmed_clicked1) {
+		confirmed_clicked = confirmed_clicked1;
+		searchcenter = new SearchCenter();
+		blast = blast1;
+		information = information1;
 		mainpage = mainpage1;
 		setBounds(0, 0, 1366, 670);
 		setBackground(new Color(255, 255, 255));
 		setLayout(null);
 		setVisible(true);
 		
-		JPanel Result = new JPanel();
+		Result = new JPanel();
 		Result.setBounds(0, 0, 683, 670);
 		Result.setBackground(new Color(255, 255, 255));
 		Result.setBorder(BorderFactory.createLineBorder(Color.black));
@@ -62,6 +93,14 @@ public class Child_Search extends JPanel {
 		Back.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
+				SearchResultList previousList = searchcenter.rollBack();
+				if(previousList == null) return;
+				else{
+					textField.setText(previousList.keyword);
+					resultpanel.removeAll();
+					initializeresultpage(previousList);
+					resultpanel.updateUI();
+				}
 			}
 			@Override
 			public void mouseEntered(MouseEvent arg0) {
@@ -72,7 +111,7 @@ public class Child_Search extends JPanel {
 				Back.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/SearchBox_backward.png")));
 			}
 		});
-		Back.setBounds(51, 42, 50, 50);
+		Back.setBounds(30, 30, 50, 50);
 		Back.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/SearchBox_backward.png")));
 		Result.add(Back);
 		
@@ -80,7 +119,14 @@ public class Child_Search extends JPanel {
 		Forward.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				
+				SearchResultList forwardList = searchcenter.goForward();
+				if(forwardList == null) return;
+				else{
+					textField.setText(forwardList.keyword);
+					resultpanel.removeAll();
+					initializeresultpage(forwardList);
+					resultpanel.updateUI();
+				}
 			}
 			@Override
 			public void mouseEntered(MouseEvent arg0) {
@@ -91,19 +137,19 @@ public class Child_Search extends JPanel {
 				Forward.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/SearchBox_forward.png")));
 			}
 		});
-		Forward.setBounds(107, 42, 70, 50);
+		Forward.setBounds(86, 30, 70, 50);
 		Forward.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/SearchBox_forward.png")));
 		Result.add(Forward);
 		
 		JLabel Text_BackGround = new JLabel();
-		Text_BackGround.setBounds(207, 42, 300, 50);
+		Text_BackGround.setBounds(169, 30, 300, 50);
 		Text_BackGround.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Text.png")));
 		Result.add(Text_BackGround);
 		
 
 		Search = new JLabel();
 
-		Search.setBounds(530, 42, 100, 50);
+		Search.setBounds(481, 30, 100, 50);
 		Search.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/SearchBox_searchButton.png")));
 		Search.addMouseListener(new MouseAdapter() {
 			@Override
@@ -117,15 +163,21 @@ public class Child_Search extends JPanel {
 						mainpage.Mainpanel.add(child_search_main);
 						mainpage.Mainpanel.updateUI();
 						mainpage.CurrentPage = 1;
-						String s = ""+ mainpage.CurrentPage;
-						mainpage.test.setText(s);
 					}
 					return;
 				}
-				Choicepanel.setVisible(false);
+				else{
+					searchresultlist = searchcenter.search(textField.getText());
+					currentpage = 1;
+					blast = 1;
+					resultpanel.removeAll();
+					initializeresultpage(searchresultlist);
+					resultpanel.updateUI();
+				}
 			}
 			@Override
 			public void mouseEntered(MouseEvent arg0) {
+				Search.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 				Search.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/SearchBox_searchButton_Hock.png")));
 			}
 			@Override
@@ -140,200 +192,490 @@ public class Child_Search extends JPanel {
 			@Override
 			public void keyPressed(KeyEvent e) {
 				if(e.getKeyChar() == e.VK_ENTER){
-					
+					if(textField.getText() == null || textField.getText().trim().equals("")){
+						Component component = mainpage.Mainpanel.getComponent(0);
+						if(component instanceof Child_Search){
+							mainpage.child_search_current = (Child_Search) component;
+							Child_Search_Main child_search_main = new Child_Search_Main(mainpage);
+							mainpage.Mainpanel.removeAll();
+							mainpage.Mainpanel.add(child_search_main);
+							child_search_main.SearchText.requestFocus();
+							mainpage.Mainpanel.updateUI();
+							mainpage.CurrentPage = 1;
+						}
+						return;
+					}
+					else{
+						searchresultlist = searchcenter.search(textField.getText());
+						currentpage = 1;
+						blast = 1;
+						resultpanel.removeAll();
+						initializeresultpage(searchresultlist);
+						resultpanel.updateUI();
+					}
 				}
 			}
 		});
 		textField.setFont(new Font("Times New Roman", Font.PLAIN, 24));
 		textField.setVisible(true);
 		textField.setBounds(10, 5, 283, 32);
-		textField.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				Choicepanel.setVisible(true);
-			}
-		});
 		Text_BackGround.add(textField);
 		textField.setColumns(20);
 		
-		Choicepanel = new JPanel();
-		Choicepanel.setBackground(new Color(255, 255, 255));
-		Choicepanel.setBounds(62, 117, 558, 211);
-		Choicepanel.setBorder(BorderFactory.createLineBorder(Color.black));
-		Choicepanel.setVisible(false);
-		Result.add(Choicepanel);
-		Choicepanel.setLayout(null);
+		resultpanel = new JPanel();
+		resultpanel.setBackground(new Color(255, 255, 255));
+		resultpanel.setBounds(51, 105, 576, 565);
+		Result.add(resultpanel);
+		resultpanel.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Filters:");
-		lblNewLabel.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		lblNewLabel.setBounds(10, 10, 68, 28);
-		Choicepanel.add(lblNewLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("Release status:");
-		lblNewLabel_1.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		lblNewLabel_1.setBounds(39, 48, 90, 17);
-		Choicepanel.add(lblNewLabel_1);
+		Blast = new JLabel("");
+		Blast.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(textField.getText() == null || textField.getText().trim().equals("")){
+					Component component = mainpage.Mainpanel.getComponent(0);
+					if(component instanceof Child_Search){
+						mainpage.child_search_current = (Child_Search) component;
+						Child_Search_Main child_search_main = new Child_Search_Main(mainpage);
+						mainpage.Mainpanel.removeAll();
+						mainpage.Mainpanel.add(child_search_main);
+						mainpage.Mainpanel.updateUI();
+						mainpage.CurrentPage = 1;
+					}
+					return;
+				}
+				else{
+					searchresultlist = searchcenter.blast(textField.getText(), BlastingSearcher.MODE_INPUT_SEQUENCE);
+					currentpage = 1;
+					blast = 2;
+					resultpanel.removeAll();
+					initializeresultpage(searchresultlist);
+					resultpanel.updateUI();
+				}
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				Blast.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+				Blast.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/blast1_enter.png")));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				Blast.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/blast1.png")));
+			}
+		});
+		Blast.setBounds(591, 39, 82, 32);
+		Blast.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/blast1.png")));
+		Result.add(Blast);
 		
-		ItemListener itemListener1 = new ItemListener() {
-            JCheckBox jCheckBox;
- 
-            public void itemStateChanged(ItemEvent e) {
-                jCheckBox = (JCheckBox) e.getSource();
- 
-                if (jCheckBox.isSelected()) {
-                    if(jCheckBox == chckbxReleased){
-                    	chckbxNewCheckBox.setSelected(false);
-                    	chckbxNotReleased.setSelected(false);
-                    }
-                    else if(jCheckBox == chckbxNewCheckBox){
-                    	chckbxReleased.setSelected(false);
-                    	chckbxNotReleased.setSelected(false);
-                    }
-                    else if(jCheckBox == chckbxNotReleased){
-                    	chckbxReleased.setSelected(false);
-                    	chckbxNewCheckBox.setSelected(false);
-                    }
-                } else {
-                    
-                }
- 
-            }
-        };
-        
-        chckbxReleased = new JCheckBox("Released");
-        //chckbxReleased.addItemListener(itemListener1);
-		chckbxReleased.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		chckbxReleased.setBounds(131, 46, 103, 23);
-		chckbxReleased.setBackground(new Color(255, 255, 255));
-		Choicepanel.add(chckbxReleased);
 		
-		chckbxNewCheckBox = new JCheckBox("Deleted");
-		//chckbxNewCheckBox.addItemListener(itemListener1);
-		chckbxNewCheckBox.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		chckbxNewCheckBox.setBounds(235, 46, 103, 23);
-		chckbxNewCheckBox.setBackground(new Color(255, 255, 255));
-		Choicepanel.add(chckbxNewCheckBox);
 		
-		chckbxNotReleased = new JCheckBox("Not Released");
-		//chckbxNotReleased.addItemListener(itemListener1);
-		chckbxNotReleased.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		chckbxNotReleased.setBounds(340, 46, 121, 23);
-		chckbxNotReleased.setBackground(new Color(255, 255, 255));
-		Choicepanel.add(chckbxNotReleased);
-		
-		JLabel lblDnaStatus = new JLabel("DNA status:");
-		lblDnaStatus.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		lblDnaStatus.setBounds(39, 75, 90, 15);
-		Choicepanel.add(lblDnaStatus);
-		
-		chckbxAvailable = new JCheckBox("Available");
-		chckbxAvailable.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		chckbxAvailable.setBounds(131, 72, 103, 23);
-		chckbxAvailable.setBackground(new Color(255, 255, 255));
-		Choicepanel.add(chckbxAvailable);
-		
-		chckbxPlanning = new JCheckBox("Planning");
-		chckbxPlanning.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		chckbxPlanning.setBounds(235, 71, 103, 23);
-		chckbxPlanning.setBackground(new Color(255, 255, 255));
-		Choicepanel.add(chckbxPlanning);
-		
-		chckbxInformational = new JCheckBox("Informational");
-		chckbxInformational.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		chckbxInformational.setBounds(340, 72, 121, 23);
-		chckbxInformational.setBackground(new Color(255, 255, 255));
-		Choicepanel.add(chckbxInformational);
-		
-		JLabel lblNewLabel_2 = new JLabel("Whether or not deleted:");
-		lblNewLabel_2.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		lblNewLabel_2.setBounds(39, 101, 151, 15);
-		Choicepanel.add(lblNewLabel_2);
-		
-		chckbxNotDeleted = new JCheckBox("Not Deleted");
-		chckbxNotDeleted.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		chckbxNotDeleted.setBounds(196, 98, 103, 23);
-		chckbxNotDeleted.setBackground(new Color(255, 255, 255));
-		Choicepanel.add(chckbxNotDeleted);
-		
-		chckbxDeleted = new JCheckBox("Deleted");
-		chckbxDeleted.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		chckbxDeleted.setBounds(311, 98, 103, 23);
-		chckbxDeleted.setBackground(new Color(255, 255, 255));
-		Choicepanel.add(chckbxDeleted);
-		
-		JLabel lblAverageStarsGiven = new JLabel("Average stars Given by previous teams:");
-		lblAverageStarsGiven.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		lblAverageStarsGiven.setBounds(39, 126, 238, 15);
-		Choicepanel.add(lblAverageStarsGiven);
-		
-		JCheckBox checkBox = new JCheckBox(">=4");
-		checkBox.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		checkBox.setBounds(283, 123, 55, 23);
-		checkBox.setBackground(new Color(255, 255, 255));
-		Choicepanel.add(checkBox);
-		
-		JCheckBox chckbxNewCheckBox_1 = new JCheckBox("2-4");
-		chckbxNewCheckBox_1.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		chckbxNewCheckBox_1.setBounds(359, 122, 55, 23);
-		chckbxNewCheckBox_1.setBackground(new Color(255, 255, 255));
-		Choicepanel.add(chckbxNewCheckBox_1);
-		
-		JCheckBox checkBox_1 = new JCheckBox("<=2");
-		checkBox_1.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		checkBox_1.setBounds(432, 122, 55, 23);
-		checkBox_1.setBackground(new Color(255, 255, 255));
-		Choicepanel.add(checkBox_1);
-		
-		JLabel lblNewLabel_3 = new JLabel("Preferences:");
-		lblNewLabel_3.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		lblNewLabel_3.setBounds(10, 151, 99, 15);
-		Choicepanel.add(lblNewLabel_3);
-		
-		JLabel lblStatus = new JLabel("Status:");
-		lblStatus.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		lblStatus.setBounds(39, 176, 47, 15);
-		Choicepanel.add(lblStatus);
-		
-		JSpinner spinner = new JSpinner();
-		spinner.setModel(new SpinnerNumberModel(0, 0, 100, 1));
-		spinner.setBounds(88, 171, 41, 27);
-		Choicepanel.add(spinner);
-		
-		JLabel lblQuality = new JLabel("Quality:");
-		lblQuality.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		lblQuality.setBounds(147, 177, 54, 15);
-		Choicepanel.add(lblQuality);
-		
-		JSpinner spinner_1 = new JSpinner();
-		spinner_1.setModel(new SpinnerNumberModel(0, 0, 100, 1));
-		spinner_1.setBounds(213, 171, 41, 27);
-		Choicepanel.add(spinner_1);
-		
-		JLabel lblFeedbacks = new JLabel("Feedbacks:");
-		lblFeedbacks.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		lblFeedbacks.setBounds(264, 177, 74, 15);
-		Choicepanel.add(lblFeedbacks);
-		
-		JSpinner spinner_2 = new JSpinner();
-		spinner_2.setModel(new SpinnerNumberModel(0, 0, 100, 1));
-		spinner_2.setBounds(353, 171, 41, 27);
-		Choicepanel.add(spinner_2);
-		
-		JLabel lblPublication = new JLabel("Publication:");
-		lblPublication.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		lblPublication.setBounds(404, 177, 74, 15);
-		Choicepanel.add(lblPublication);
-		
-		JSpinner spinner_3 = new JSpinner();
-		spinner_3.setModel(new SpinnerNumberModel(0, 0, 100, 1));
-		spinner_3.setBounds(488, 171, 41, 27);
-		Choicepanel.add(spinner_3);
-		
-		JPanel Details = new JPanel();
+		Details = new JPanel();
 		Details.setBounds(684, 0, 683, 670);
 		Details.setBackground(new Color(255, 255, 255));
 		Details.setBorder(BorderFactory.createLineBorder(Color.black));
 		add(Details);
 		Details.setLayout(null);
+		
+		if(blast == 1){
+			searchresultlist = searchcenter.search(searchcontent);
+		}
+		else if(blast == 2){
+			searchresultlist = searchcenter.blast(searchcontent, BlastingSearcher.MODE_INPUT_SEQUENCE);
+		}
+		else if(blast == 3){
+			searchresultlist = searchcenter.blast(searchcontent, BlastingSearcher.MODE_INPUT_FILE_PATH);
+		}
+		
+		initializeresultpage(searchresultlist);
+	}
+	
+	public void initializeresultpage(SearchResultList searchresultlist1){
+		filteredlist = searchresultlist1;
+		int numberofresults = filteredlist.size();
+		
+		if(numberofresults == 0){
+			JLabel noresults = new JLabel("Sorry, no results found.");
+			noresults.setFont(new Font("Times New Roman", Font.BOLD, 30));
+			noresults.setBounds(0, 0, 300, 50);
+			resultpanel.add(noresults);
+		}
+		
+		if(blast == 2){
+			filteredlist.sortByBlastResult(true);
+		}
+		else if(blast == 1){
+			if(confirmed_clicked == false){
+				filteredlist.sortByTotalScore(true);
+			}
+			else if(confirmed_clicked == true){
+				if(information.sortby == "" || information.sortby.trim().equals("")){
+					filteredlist.sortByTotalScore(true);
+				}
+				else if(information.sortby == "Entered Date"){
+					filteredlist.sortByEnterDate(true);
+				}
+				else if(information.sortby == "Google Qoute Number"){
+					filteredlist.sortByGoogleQuoteNum(true);
+				}
+				else if(information.sortby == "Average Stars"){
+					filteredlist.sortByAverageStars(true);
+				}
+				else if(information.sortby == "Confirmed Times"){
+					filteredlist.sortByConfrimedTimes(true);
+				}
+				else if(information.sortby == "Total Score"){
+					filteredlist.sortByTotalScore(true);
+				}
+				
+				filteredlist.filterByType(information.type);
+				filteredlist.filterByEnterYear(information.enteredyear);
+				
+				if(information.releasestatus.released == true){
+					filteredlist.filterByRelaseStatus(SearchResultList.Filter.ReleaseStatus.RELEASED);
+				}
+				if(information.releasestatus.deleted == true){
+					filteredlist.filterByRelaseStatus(SearchResultList.Filter.ReleaseStatus.DELETED);
+				}
+				if(information.releasestatus.notreleased == true){
+					filteredlist.filterByRelaseStatus(SearchResultList.Filter.ReleaseStatus.NOT_RELEASED);
+				}
+				
+				if(information.dnastatus.available == true){
+					filteredlist.filterByDNAStatus(SearchResultList.Filter.DNAStatus.AVAILABLE);
+				}
+				if(information.dnastatus.planning == true){
+					filteredlist.filterByDNAStatus(SearchResultList.Filter.DNAStatus.PLANNING);
+				}
+				if(information.dnastatus.informational == true){
+					filteredlist.filterByDNAStatus(SearchResultList.Filter.DNAStatus.INFORMATIONAL);
+				}
+				
+				if(information.whetherornot == false){
+					filteredlist.filterByDeletedOrNot(false);
+				}
+				if(information.whetherornot == true){
+					filteredlist.filterByDeletedOrNot(true);
+				}
+				
+				if(information.averagestars.high == true){
+					ArrayList<Integer> starNumList = new ArrayList();
+					starNumList.add(4);
+					starNumList.add(5);
+					filteredlist.filterByStarNum(starNumList);
+				}
+				if(information.averagestars.middle == true){
+					ArrayList<Integer> starNumList = new ArrayList();
+					starNumList.add(2);
+					starNumList.add(3);
+					filteredlist.filterByStarNum(starNumList);
+				}
+				if(information.averagestars.low == true){
+					ArrayList<Integer> starNumList = new ArrayList();
+					starNumList.add(0);
+					starNumList.add(1);
+					filteredlist.filterByStarNum(starNumList);
+				}
+				
+				filteredlist.sortByTotalScore(true, information.preferences.status, information.preferences.quality, information.preferences.feedbacks, information.preferences.publication);
+			}
+		}
+		
+		if(numberofresults <= 10 && numberofresults > 0){
+			searchingresultpage = new SearchingResultPage(numberofresults);
+			searchingresultpage.setPreferredSize(new Dimension(558,250*numberofresults));
+			for(int i = 0; i < numberofresults; i++){
+				showresult(i);
+			}
+			
+			scrollPane = new JScrollPane(searchingresultpage);
+			scrollbar = new JScrollBar();
+			scrollbar.setUnitIncrement(150);
+			scrollPane.setVerticalScrollBar(scrollbar);
+			scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+			scrollPane.setBounds(0, 0, 576, 520);
+			scrollPane.validate();
+			resultpanel.add(scrollPane);
+			
+			showpagenum = new JLabel("1", SwingConstants.CENTER);
+			showpagenum.setForeground(Color.blue);
+			showpagenum.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseEntered(MouseEvent e) {
+					showpagenum.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+					showpagenum.setBorder(BorderFactory.createLineBorder(Color.blue));
+				}
+				@Override
+				public void mouseExited(MouseEvent e) {
+					showpagenum.setBorder(null);
+				}
+			});
+			showpagenum.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+			showpagenum.setBounds(281, 530, 25, 25);
+			resultpanel.add(showpagenum);
+		}
+		
+		if(numberofresults > 10){
+			int num = (int) numberofresults / 10;
+			int leftnum = numberofresults % 10;
+			currentpage = 1;
+			
+			searchingresultpage = new SearchingResultPage();
+			searchingresultpage.setPreferredSize(new Dimension(558,2500));
+			for(int i = 0; i < 10; i++){
+				showresult(i);
+			}
+			
+			previouspage = new JLabel("<previous page", SwingConstants.CENTER);
+			previouspage.setForeground(Color.blue);
+			previouspage.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseEntered(MouseEvent e) {
+					previouspage.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+					previouspage.setBorder(BorderFactory.createLineBorder(Color.blue));
+				}
+				@Override
+				public void mouseExited(MouseEvent e) {
+					previouspage.setBorder(null);
+				}
+			});
+			previouspage.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+			previouspage.setBounds(119, 530, 95, 25);
+			previouspage.setVisible(false);
+			
+			previouspage.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent arg0) {
+					String s;
+					scrollbar.setValue(scrollbar.getMinimum());
+					if(currentpage > 2){
+						searchingresultpage.setPreferredSize(new Dimension(558,2500));
+						for(int i = 10 * (currentpage - 2); i < 10 * (currentpage - 1); i++){
+							showresult(i);
+						}
+						nextpage.setVisible(true);
+						currentpage--;
+						s = "" + currentpage;
+						showpagenum.setText(s);
+						return;
+					}
+					else if(currentpage == 2){
+						searchingresultpage.setPreferredSize(new Dimension(558,2500));
+						for(int i = 0; i < 10; i++){
+							showresult(i);
+						}
+						nextpage.setVisible(true);
+						previouspage.setVisible(false);
+						currentpage--;
+						s = "" + currentpage;
+						showpagenum.setText(s);
+						return;
+					}
+				}
+			});
+			
+			nextpage = new JLabel("next page>", SwingConstants.CENTER);
+			nextpage.setForeground(Color.blue);
+			nextpage.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent e) {
+				}
+				@Override
+				public void mouseEntered(MouseEvent e) {
+					nextpage.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+					nextpage.setBorder(BorderFactory.createLineBorder(Color.blue));
+				}
+				@Override
+				public void mouseExited(MouseEvent e) {
+					nextpage.setBorder(null);
+				}
+			});
+			nextpage.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+			nextpage.setBounds(373, 530, 75, 25);
+			
+			nextpage.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent arg0) {
+					scrollbar.setValue(scrollbar.getMinimum());
+					String s;
+					if(currentpage < num){
+						searchingresultpage.setPreferredSize(new Dimension(558,2500));
+						for(int i = 10 * currentpage; i < 10 * (currentpage + 1); i++){
+							showresult(i);
+						}
+						previouspage.setVisible(true);
+						currentpage++;
+						s = "" + currentpage;
+						showpagenum.setText(s);
+						return;
+					}
+					else if(currentpage == num){
+						searchingresultpage.setPreferredSize(new Dimension(558,250 * leftnum));
+						for(int i = 10 * currentpage; i < numberofresults; i++){
+							showresult(i);
+						}
+						previouspage.setVisible(true);
+						nextpage.setVisible(false);
+						currentpage++;
+						s = "" + currentpage;
+						showpagenum.setText(s);
+						return;
+					}
+				}
+			});
+			
+			showpagenum = new JLabel("1", SwingConstants.CENTER);
+			showpagenum.setForeground(Color.blue);
+			showpagenum.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent e) {
+				}
+				@Override
+				public void mouseEntered(MouseEvent e) {
+					showpagenum.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+					showpagenum.setBorder(BorderFactory.createLineBorder(Color.blue));
+				}
+				@Override
+				public void mouseExited(MouseEvent e) {
+					showpagenum.setBorder(null);
+				}
+			});
+			showpagenum.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+			showpagenum.setBounds(281, 530, 25, 25);
+			
+			scrollPane = new JScrollPane(searchingresultpage);
+			scrollbar = new JScrollBar();
+			scrollbar.setUnitIncrement(150);
+			scrollPane.setVerticalScrollBar(scrollbar);
+			scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+			scrollPane.setBounds(0, 0, 576, 520);
+			scrollPane.validate();
+			resultpanel.add(scrollPane);
+			
+			resultpanel.add(previouspage);
+			resultpanel.add(showpagenum);
+			resultpanel.add(nextpage);
+		}
+	}
+	
+	public void showresult(int j){
+		BbkOutline bbkoutline = filteredlist.get(j);
+		//BbkDetail bbkdetail = searchcenter.getDetail(bbkoutline.name);
+		int i = j % 10;
+		searchingresultpage.searchingresult.get(i).ID_Content.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				/*DetailsofResults detailsofresults = new DetailsofResults();
+				
+				detailsofresults.ID_Content.setText(bbkdetail.name);
+				detailsofresults.Type_Content.setText(bbkdetail.type);
+				detailsofresults.Author_Content.setText(bbkdetail.author);
+				detailsofresults.EnteredDate_Content.setText(bbkdetail.enterDate);
+				detailsofresults.URL_Content.setText(bbkdetail.url);
+				detailsofresults.ReleasedStatus_Content.setText(bbkdetail.releaseStatus);
+				if(bbkdetail.rating.average_stars.equals("No Stars")){
+					detailsofresults.AverageStar_Content.setText(bbkdetail.rating.average_stars);
+				}
+				else if(bbkdetail.rating.average_stars.length() == 1){
+					detailsofresults.AverageStar_Content.setText(bbkdetail.rating.average_stars);
+				}
+				else if(bbkdetail.rating.average_stars.length() >= 3){
+					detailsofresults.AverageStar_Content.setText(bbkdetail.rating.average_stars.substring(0,3));
+				}
+				detailsofresults.ResultsInGoogle_Content.setText(bbkdetail.rating.google_items);
+				detailsofresults.Description.setText(bbkdetail.shortDesc);
+				String score = "" + bbkdetail.getScore();
+				detailsofresults.Score.setText(score);
+				
+				Details.removeAll();;
+				Details.add(detailsofresults);
+				Details.updateUI();*/
+				
+				DetailsofResults detailsofresults = new DetailsofResults();
+				
+				detailsofresults.ID_Content.setText(bbkoutline.name);
+				detailsofresults.Type_Content.setText(bbkoutline.type);
+				detailsofresults.Author_Content.setText(bbkoutline.author);
+				detailsofresults.EnteredDate_Content.setText(bbkoutline.enterDate);
+				detailsofresults.URL_Content.setText(bbkoutline.url);
+				detailsofresults.ReleasedStatus_Content.setText(bbkoutline.releaseStatus);
+				if(bbkoutline.rating.average_stars.equals("No Stars")){
+					detailsofresults.AverageStar_Content.setText(bbkoutline.rating.average_stars);
+				}
+				else if(bbkoutline.rating.average_stars.length() == 1){
+					detailsofresults.AverageStar_Content.setText(bbkoutline.rating.average_stars);
+				}
+				else if(bbkoutline.rating.average_stars.length() >= 3){
+					detailsofresults.AverageStar_Content.setText(bbkoutline.rating.average_stars.substring(0,3));
+				}
+				detailsofresults.ResultsInGoogle_Content.setText(bbkoutline.rating.google_items);
+				
+				String shortdescription = bbkoutline.shortDesc;
+				if(shortdescription.length()<=40){
+					detailsofresults.Description1.setText(shortdescription);
+					detailsofresults.Description2.setText(null);
+				}
+				else{
+					detailsofresults.Description1.setText(shortdescription.substring(0, 40));
+					detailsofresults.Description2.setText(shortdescription.substring(40));
+				}
+				
+				detailsofresults.ResultsInGoogle_Content.setText(bbkoutline.rating.google_items);
+				
+				String score = "" + bbkoutline.getScore();
+				detailsofresults.Score.setText(score);
+				
+				detailsofresults.setPreferredSize(new Dimension(665, 1500));
+				scrollPane1 = new JScrollPane(detailsofresults);
+				scrollbar1 = new JScrollBar();
+				scrollbar1.setUnitIncrement(100);
+				scrollPane1.setVerticalScrollBar(scrollbar1);
+				scrollPane1.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+				scrollPane1.setBounds(0, 0, 683, 670);
+				scrollPane1.validate();
+				
+				Details.removeAll();;
+				Details.add(scrollPane1);
+				Details.updateUI();
+			}
+		});
+		searchingresultpage.searchingresult.get(i).ID_Content.setText(bbkoutline.name);
+		searchingresultpage.searchingresult.get(i).Type_Content.setText(bbkoutline.type);
+		searchingresultpage.searchingresult.get(i).Author_Content.setText(bbkoutline.author);
+		searchingresultpage.searchingresult.get(i).EnteredDate_Content.setText(bbkoutline.enterDate);
+		searchingresultpage.searchingresult.get(i).URL_Content.setText(bbkoutline.url);
+		searchingresultpage.searchingresult.get(i).ReleasedStatus_Content.setText(bbkoutline.releaseStatus);
+		if(bbkoutline.rating.average_stars.equals("No Stars")){
+			searchingresultpage.searchingresult.get(i).AverageStar_Content.setText(bbkoutline.rating.average_stars);
+		}
+		else if(bbkoutline.rating.average_stars.length() == 1){
+			searchingresultpage.searchingresult.get(i).AverageStar_Content.setText(bbkoutline.rating.average_stars);
+		}
+		else if(bbkoutline.rating.average_stars.length() >= 3){
+			searchingresultpage.searchingresult.get(i).AverageStar_Content.setText(bbkoutline.rating.average_stars.substring(0,3));
+		}
+		searchingresultpage.searchingresult.get(i).ResultsInGoogle_Content.setText(bbkoutline.rating.google_items);
+		
+		String shortdescription = bbkoutline.shortDesc;
+		if(shortdescription.length()<=29){
+			searchingresultpage.searchingresult.get(i).Description1.setText(shortdescription);
+			searchingresultpage.searchingresult.get(i).Description2.setText(null);
+		}
+		else{
+			searchingresultpage.searchingresult.get(i).Description1.setText(shortdescription.substring(0, 29));
+			searchingresultpage.searchingresult.get(i).Description2.setText(shortdescription.substring(29));
+		}
+		
+		String score = "" + bbkoutline.getScore();
+		searchingresultpage.searchingresult.get(i).Score.setText(score);
+		
+		if(blast == 1){
+			searchingresultpage.searchingresult.get(i).Evalue.setVisible(false);
+		}
+		else if(blast == 2){
+			searchingresultpage.searchingresult.get(i).Evalue.setVisible(true);
+			String s = "" + bbkoutline.blasting.eValue;
+			searchingresultpage.searchingresult.get(i).Evalue_Content.setText(s);
+		}
 	}
 }

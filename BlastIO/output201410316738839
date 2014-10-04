@@ -1,0 +1,3598 @@
+BLASTN 2.2.29+
+
+
+Reference: Stephen F. Altschul, Thomas L. Madden, Alejandro A.
+Schaffer, Jinghui Zhang, Zheng Zhang, Webb Miller, and David J.
+Lipman (1997), "Gapped BLAST and PSI-BLAST: a new generation of
+protein database search programs", Nucleic Acids Res. 25:3389-3402.
+
+
+
+Database: bbk.fasta
+           25,690 sequences; 37,708,246 total letters
+
+
+
+Query= 
+Length=48
+                                                                      Score     E
+Sequences producing significant alignments:                          (Bits)  Value
+
+lcl|pSB1A10  U 6737 Plasmid_Backbone "Screening Plasmid v1.0"         87.8    3e-18
+lcl|BBa_S05179  U 28757 Intermediate "S05173:M0052"                   87.8    3e-18
+lcl|BBa_S05178  U 28756 Intermediate "S05173:M0051"                   87.8    3e-18
+lcl|BBa_S05177  U 28755 Intermediate "S05173:M0050"                   87.8    3e-18
+lcl|BBa_S05176  U 28754 Intermediate "J63006:E1010"                   87.8    3e-18
+lcl|BBa_S05173  A 28749 Intermediate "J04500:E1010"                   87.8    3e-18
+lcl|BBa_S05163  U 28625 Intermediate "S05162:S05152"                  87.8    3e-18
+lcl|BBa_S05162  U 28624 Intermediate "K1051000:K1051704"              87.8    3e-18
+lcl|BBa_S05155  U 28603 Intermediate "J04500:K1051000"                87.8    3e-18
+lcl|BBa_S05120  U 28341 Intermediate "S05108:I13507"                  87.8    3e-18
+lcl|BBa_S05119  U 28340 Intermediate "S05107:I13507"                  87.8    3e-18
+lcl|BBa_S05118  U 28339 Intermediate "S05105:I13507"                  87.8    3e-18
+lcl|BBa_S05117  U 28338 Intermediate "S05104:I13507"                  87.8    3e-18
+lcl|BBa_S05116  U 28337 Intermediate "S05102:I13507"                  87.8    3e-18
+lcl|BBa_S05115  U 28336 Intermediate "S05101:I13507"                  87.8    3e-18
+lcl|BBa_S05085  P 26973 Intermediate "K598002:F1610"                  87.8    3e-18
+lcl|BBa_S05079  U 26791 Intermediate "E0040:E1010"                    87.8    3e-18
+lcl|BBa_S05075  U 26498 Intermediate "K390016:E1010"                  87.8    3e-18
+lcl|BBa_S05059  D 26010 Intermediate "K873003:K117010"                87.8    3e-18
+lcl|BBa_S05054  P 25913 Intermediate "K081024:I13507"                 87.8    3e-18
+lcl|BBa_S05038  U 25463 Intermediate "J04450:K524200"                 87.8    3e-18
+lcl|BBa_S05037  U 25461 Intermediate "K524003:J04450"                 87.8    3e-18
+lcl|BBa_S05036  D 25459 Intermediate "J04450:K524003"                 87.8    3e-18
+lcl|BBa_S04627  A 23637 Intermediate "B0034:E1010"                    87.8    3e-18
+lcl|BBa_S04623  U 23528 Intermediate "K561000:K561002"                87.8    3e-18
+lcl|BBa_S04588  A 22055 Intermediate "S04587:B0015"                   87.8    3e-18
+lcl|BBa_S04587  A 22054 Intermediate "B0034:E1010"                    87.8    3e-18
+lcl|BBa_S04566  A 21703 Intermediate "E1010:B0015"                    87.8    3e-18
+lcl|BBa_S04523  P 20478 Intermediate "I13507:K329015"                 87.8    3e-18
+lcl|BBa_S04522  D 20473 Intermediate "LuxI with RFP reporter"         87.8    3e-18
+lcl|BBa_S04493  U 18634 Intermediate "S04487:K315012"                 87.8    3e-18
+lcl|BBa_S04492  U 18633 Intermediate "S04487:K315004"                 87.8    3e-18
+lcl|BBa_S04491  P 18632 Intermediate "S04445:K315013"                 87.8    3e-18
+lcl|BBa_S04490  U 18631 Intermediate "S04489:K093005"                 87.8    3e-18
+lcl|BBa_S04487  U 18569 Intermediate "S04460:K093005"                 87.8    3e-18
+lcl|BBa_S04486  P 18561 Intermediate "S04471:K315015"                 87.8    3e-18
+lcl|BBa_S04485  P 18560 Intermediate "S04470:K315015"                 87.8    3e-18
+lcl|BBa_S04484  P 18559 Intermediate "S04471:K315014"                 87.8    3e-18
+lcl|BBa_S04483  P 18558 Intermediate "S04470:K315014"                 87.8    3e-18
+lcl|BBa_S04482  P 18557 Intermediate "S04471:J31007"                  87.8    3e-18
+lcl|BBa_S04481  P 18556 Intermediate "S04470:J31007"                  87.8    3e-18
+lcl|BBa_S04480  P 18541 Intermediate "S04445:K315007"                 87.8    3e-18
+lcl|BBa_S04479  P 18540 Intermediate "ptet+LoxP Forward+RBS+RBS+L...  87.8    3e-18
+lcl|BBa_S04477  P 18526 Intermediate "S04447:K315021"                 87.8    3e-18
+lcl|BBa_S04476  P 18525 Intermediate "S04447:K315020"                 87.8    3e-18
+lcl|BBa_S04475  P 18524 Intermediate "S04446:K315021"                 87.8    3e-18
+lcl|BBa_S04474  P 18523 Intermediate "S04446:K315020"                 87.8    3e-18
+lcl|BBa_S04473  P 18515 Intermediate "E5500:K199173"                  87.8    3e-18
+lcl|BBa_S04472  P 18514 Intermediate "S04419:K199175"                 87.8    3e-18
+lcl|BBa_S04471  P 18489 Intermediate "K091225:S04447"                 87.8    3e-18
+lcl|BBa_S04470  P 18488 Intermediate "K091225:S04446"                 87.8    3e-18
+lcl|BBa_S04469  P 18470 Intermediate "pT7-RBS-GFP-TT-pT7-RBS-RFP-...  87.8    3e-18
+lcl|BBa_S04468  P 18469 Intermediate "S04419:J13002"                  87.8    3e-18
+lcl|BBa_S04467  U 18428 Intermediate "K315017:S04419"                 87.8    3e-18
+lcl|BBa_S04466  P 18427 Intermediate "S04447:K315015"                 87.8    3e-18
+lcl|BBa_S04465  P 18426 Intermediate "S04447:K315014"                 87.8    3e-18
+lcl|BBa_S04464  P 18425 Intermediate "S04446:K315015"                 87.8    3e-18
+lcl|BBa_S04463  P 18424 Intermediate "S04446:K315014"                 87.8    3e-18
+lcl|BBa_S04461  P 18420 Intermediate "S04445:S03710"                  87.8    3e-18
+lcl|BBa_S04458  P 18381 Intermediate "S04447:K315015"                 87.8    3e-18
+lcl|BBa_S04457  P 18380 Intermediate "S04447:K315014"                 87.8    3e-18
+lcl|BBa_S04456  P 18379 Intermediate "S04446:K315015"                 87.8    3e-18
+lcl|BBa_S04455  P 18378 Intermediate "S04446:K315014"                 87.8    3e-18
+lcl|BBa_S04453  U 18372 Intermediate "S04445:K315004"                 87.8    3e-18
+lcl|BBa_S04452  U 18371 Intermediate "S04445:K315004"                 87.8    3e-18
+lcl|BBa_S04451  U 18364 Intermediate "S04445:K315010"                 87.8    3e-18
+lcl|BBa_S04450  U 18363 Intermediate "S04445:K315010"                 87.8    3e-18
+lcl|BBa_S04449  P 18360 Intermediate "S04447:J31007"                  87.8    3e-18
+lcl|BBa_S04448  P 18359 Intermediate "S04446:J31007"                  87.8    3e-18
+lcl|BBa_S04447  P 18342 Intermediate "K315008:B0034"                  87.8    3e-18
+lcl|BBa_S04446  P 18337 Intermediate "I715039:B0034"                  87.8    3e-18
+lcl|BBa_S04445  U 18274 Intermediate "S04437:K093005"                 87.8    3e-18
+lcl|BBa_S04443  U 18254 Intermediate "J70575:J70554"                  87.8    3e-18
+lcl|BBa_S04441  U 18231 Intermediate "pT7-RBS-RFP-pTetR-RBS"          87.8    3e-18
+lcl|BBa_S04436  P 18214 Intermediate "K315000:K091220"                87.8    3e-18
+lcl|BBa_S04435  P 18213 Intermediate "I715039:K091220"                87.8    3e-18
+lcl|BBa_S04432  U 17969 Intermediate "J70569:J70575"                  87.8    3e-18
+lcl|BBa_S04431  U 17968 Intermediate "J70575:E0040"                   87.8    3e-18
+lcl|BBa_S04430  U 17961 Intermediate "K199052:K093005"                87.8    3e-18
+lcl|BBa_S04429  U 17957 Intermediate "K199027:B0014"                  87.8    3e-18
+lcl|BBa_S04419  A 17713 Intermediate "B0034:E1010"                    87.8    3e-18
+lcl|BBa_S04402  U 17622 Intermediate "S04401:S04353"                  87.8    3e-18
+lcl|BBa_S04401  U 17621 Intermediate "S04400:E1010"                   87.8    3e-18
+lcl|BBa_S04373  U 17593 Intermediate "S04372:S04353"                  87.8    3e-18
+lcl|BBa_S04372  U 17592 Intermediate "S04370:E1010"                   87.8    3e-18
+lcl|BBa_S04332  U 17539 Intermediate "R0085:I13507"                   87.8    3e-18
+lcl|BBa_S04311  U 16234 Intermediate "I13521:B0040"                   87.8    3e-18
+lcl|BBa_S04310  U 16233 Intermediate "J04450:B0040"                   87.8    3e-18
+lcl|BBa_S04189  U 13671 Intermediate "J04450:I7101"                   87.8    3e-18
+lcl|BBa_S04188  P 13670 Intermediate "J23119:I13507"                  87.8    3e-18
+lcl|BBa_S04187  U 13669 Intermediate "R2000:I13507"                   87.8    3e-18
+lcl|BBa_S04185  U 13667 Intermediate "I7101:J04450"                   87.8    3e-18
+lcl|BBa_S04184  U 13666 Intermediate "I6413:J04450"                   87.8    3e-18
+lcl|BBa_S04183  U 13664 Intermediate "J04450:I6413"                   87.8    3e-18
+lcl|BBa_S04181  A 13662 Intermediate "B0034:I13501"                   87.8    3e-18
+lcl|BBa_S04180  A 13661 Intermediate "B0030:I13501"                   87.8    3e-18
+lcl|BBa_S04120  P 12108 Intermediate "B0030:E1010"                    87.8    3e-18
+lcl|BBa_S04061  P 11637 Intermediate "K137080:K137010"                87.8    3e-18
+lcl|BBa_S04015  A 11364 Intermediate "S04014:B0015"                   87.8    3e-18
+lcl|BBa_S04014  A 11363 Intermediate "B0034:E1010"                    87.8    3e-18
+lcl|BBa_S03907  D 10741 Intermediate "S03756:S03738"                  87.8    3e-18
+lcl|BBa_S03905  D 10739 Intermediate "R0085:S03756"                   87.8    3e-18
+lcl|BBa_S03889  A 10682 Intermediate "R0062:S03873"                   87.8    3e-18
+lcl|BBa_S03888  A 10681 Intermediate "R0084:S03873"                   87.8    3e-18
+lcl|BBa_S03887  A 10680 Intermediate "R0040:S03873"                   87.8    3e-18
+lcl|BBa_S03885  A 10678 Intermediate "R0079:S03873"                   87.8    3e-18
+lcl|BBa_S03881  A 10674 Intermediate "I14016:S03873"                  87.8    3e-18
+lcl|BBa_S03873  A 10663 Intermediate "B0034:E1010"                    87.8    3e-18
+lcl|BBa_S03836  P 10085 Intermediate "I13521:R0040"                   87.8    3e-18
+lcl|BBa_S03826  U 10017 Intermediate "S03824:B0034"                   87.8    3e-18
+lcl|BBa_S03824  P 10015 Intermediate "S03823:R0071"                   87.8    3e-18
+lcl|BBa_S03823  P 10014 Intermediate "I13521:I1466"                   87.8    3e-18
+lcl|BBa_S03819  P 9946 Intermediate "S03818:I13507"                   87.8    3e-18
+lcl|BBa_S03805  A 9652 Intermediate "R0051:I13507"                    87.8    3e-18
+lcl|BBa_S03798  P 9567 Reporter "T7-RBS-RFP1-hixC-RFP2"               87.8    3e-18
+lcl|BBa_S03779  P 9458 Intermediate "pT7-RBS-RFP1"                    87.8    3e-18
+lcl|BBa_S03769  P 9366 Intermediate "RBS-RFP1-hixC-RFP2"              87.8    3e-18
+lcl|BBa_S03767  P 9361 Intermediate "T7Promoter-RBS-RFP1-HixC-GFP...  87.8    3e-18
+lcl|BBa_S03766  P 9357 Intermediate "RBS-Kan-RBS-Tet-RBS-RFP (pSB...  87.8    3e-18
+lcl|BBa_S03763  P 9312 Intermediate "T7Promoter-RBS-RFP1-HixC-GFP...  87.8    3e-18
+lcl|BBa_S03762  P 9311 Intermediate "T7Promoter-RBS-RFP1-HixC-GFP...  87.8    3e-18
+lcl|BBa_S03760  P 9309 Intermediate "RBS-RFP1-HixC-GFP2"              87.8    3e-18
+lcl|BBa_S03756  P 9279 Intermediate "RBS:RFP1"                        87.8    3e-18
+lcl|BBa_S03740  P 9195 Intermediate "pLac-RBS-RFP1"                   87.8    3e-18
+lcl|BBa_S03737  D 9115 Intermediate "pLac-lox-RFP(reverse)-TT-lox...  87.8    3e-18
+lcl|BBa_S03729  U 9073 Intermediate "RFP(reverse)-TT-lox-RBS-Tet"     87.8    3e-18
+lcl|BBa_S03726  U 9030 Intermediate "RFP(reverse)-TT"                 87.8    3e-18
+lcl|BBa_S03723  P 8965 Intermediate "RBS-Kan-RBS-Tet-RBS-RFP (pSB...  87.8    3e-18
+lcl|BBa_S03721  P 8958 Intermediate "RBS-Kan-RBS-RFP-RBS-Tet"         87.8    3e-18
+lcl|BBa_S03720  P 8951 Intermediate "RBS-Tet-RBS-RFP"                 87.8    3e-18
+lcl|BBa_S03717  D 8945 Intermediate "S03716:I13502"                   87.8    3e-18
+lcl|BBa_S03711  P 8917 Intermediate "RBS-Kan-RBS-RFP"                 87.8    3e-18
+lcl|BBa_S03688  U 8710 Intermediate ""(-1,-2) RFP&lt;sub&gt;rev&l...  87.8    3e-18
+lcl|BBa_S03687  U 8709 Intermediate ""(-1,2) RFP&lt;sub&gt;rev&lt...  87.8    3e-18
+lcl|BBa_S03686  U 8708 Intermediate "RFP&lt;sub&gt;rev&lt;/sub&gt...  87.8    3e-18
+lcl|BBa_S03685  U 8707 Intermediate ""(1,-2) RFP&lt;sub&gt;rev&lt...  87.8    3e-18
+lcl|BBa_S03684  U 8706 Intermediate ""(1,2) RFP&lt;sub&gt;rev&lt;...  87.8    3e-18
+lcl|BBa_S03683  U 8705 Intermediate "RFP&lt;sub&gt;rev&lt;/sub&gt...  87.8    3e-18
+lcl|BBa_S03682  D 8704 Intermediate "S03649:J44000"                   87.8    3e-18
+lcl|BBa_S03681  U 8703 Intermediate ""(-2,-1) RFP&lt;sub&gt;rev&l...  87.8    3e-18
+lcl|BBa_S03680  U 8702 Intermediate ""(-2,1) RFP&lt;sub&gt;rev&lt...  87.8    3e-18
+lcl|BBa_S03679  U 8701 Intermediate ""(2,-1) RFP&lt;sub&gt;rev&lt...  87.8    3e-18
+lcl|BBa_S03677  U 8699 Intermediate ""(2,1) RFP&lt;sub&gt;rev&lt;...  87.8    3e-18
+lcl|BBa_S03676  U 8698 Intermediate "RFP&lt;sub&gt;rev&lt;/sub&gt...  87.8    3e-18
+lcl|BBa_S03675  U 8697 Intermediate "RFP&lt;sub&gt;rev&lt;/sub&gt...  87.8    3e-18
+lcl|BBa_S03673  U 8695 Intermediate "(1)-2 RFP&lt;sub&gt;rev&lt;/...  87.8    3e-18
+lcl|BBa_S03649  U 8311 Intermediate "(1)2 RFP&lt;sub&gt;rev&lt;/s...  87.8    3e-18
+lcl|BBa_S03648  U 8124 Intermediate "RFP&lt;sub&gt;rev&lt;/sub&gt...  87.8    3e-18
+lcl|BBa_S03644  P 8107 Intermediate "RFP&lt;sub&gt;rev&lt;/sub&gt...  87.8    3e-18
+lcl|BBa_S03593  A 7390 Intermediate "J22126:E1010"                    87.8    3e-18
+lcl|BBa_S03552  U 7220 Intermediate "S03145:I13507"                   87.8    3e-18
+lcl|BBa_S03473  A 6622 Reporter "Lambda-system Pr promoter with R...  87.8    3e-18
+lcl|BBa_S03472  P 6621 Measurement "Sensing Device with Prm and RFP"  87.8    3e-18
+lcl|BBa_S03338  U 6128 Intermediate "Pr with GFP and Prm+ with RFP"   87.8    3e-18
+lcl|BBa_S03337  P 6127 Reporter "Prm+ with RFP as a reporter"         87.8    3e-18
+lcl|BBa_S03255  A 5170 Intermediate "Intermediate part from assem...  87.8    3e-18
+lcl|BBa_M45102  U 31707 Composite "Cobalt detection Biobrick. RFP...  87.8    3e-18
+lcl|BBa_M30012  A 6366 Measurement "OmpR controlled mRFP"             87.8    3e-18
+lcl|BBa_M30011  A 6365 Measurement "OmpR controlled mRFP"             87.8    3e-18
+lcl|BBa_M30010  U 6342 Measurement " -- No description -- "           87.8    3e-18
+lcl|BBa_M30009  U 6341 Measurement " -- No description -- "           87.8    3e-18
+lcl|BBa_M30008  U 6340 Measurement " -- No description -- "           87.8    3e-18
+lcl|BBa_M30007  U 6339 Measurement " -- No description -- "           87.8    3e-18
+lcl|BBa_M30006  U 6338 Measurement " -- No description -- "           87.8    3e-18
+lcl|BBa_M30005  U 6337 Measurement " -- No description -- "           87.8    3e-18
+lcl|BBa_M30004  U 6314 Generator " -- No description --"              87.8    3e-18
+lcl|BBa_M30003  U 6313 Generator " -- No description --"              87.8    3e-18
+lcl|BBa_M30002  U 6312 Generator " -- No description --"              87.8    3e-18
+lcl|BBa_M30001  U 6311 Generator " -- No description --"              87.8    3e-18
+lcl|BBa_M1987  U 24867 Composite "Composite with rpsT gene"           87.8    3e-18
+lcl|BBa_M1844  D 24899 Composite "RPS Tgene from Methilobacteriun...  87.8    3e-18
+lcl|BBa_M1843  D 24877 Composite "His"                                87.8    3e-18
+lcl|BBa_M1677  U 28366 Composite "a biobrick construct to detect ...  87.8    3e-18
+lcl|BBa_M1676  U 28368 Composite "a construct to detect the prese...  87.8    3e-18
+lcl|BBa_M1211  U 21442 Composite "Kill Gene with RFP alternative"     87.8    3e-18
+lcl|BBa_M12100  U 21285 Reporter ""PLambda : B0034 : RFP in BioSc...  87.8    3e-18
+lcl|BBa_M11552  U 17885 Composite "Cd induced RFP reporter"           87.8    3e-18
+lcl|BBa_M11542  U 17892 Composite "Fe Promoter with RFP"              87.8    3e-18
+lcl|BBa_M11532  U 17895 Composite "Lead promoter with RFP"            87.8    3e-18
+lcl|BBa_M11522  U 17873 Composite "Zinc Promoter (ZntR regulated)...  87.8    3e-18
+lcl|BBa_M11514  U 17922 Composite "Copper Promoter (CueR regulate...  87.8    3e-18
+lcl|BBa_M11502  U 17889 Composite "As induced RFP reporter"           87.8    3e-18
+lcl|BBa_M11208  U 17909 Device "Device containing HXT1/mNarK prom...  87.8    3e-18
+lcl|BBa_M11207  U 17908 Device "Device containing HXT7/mNarK prom...  87.8    3e-18
+lcl|BBa_M11206  U 17907 Device "mNarK promoter + RFP to monitor o...  87.8    3e-18
+lcl|BBa_K993002  U 28470 Translational_Unit "IbpB RNA Thermometer...  87.8    3e-18
+lcl|BBa_K993001  D 28447 Translational_Unit "RFP Generator with R...  87.8    3e-18
+lcl|BBa_K993000  U 28472 Translational_Unit "RFP Generator with R...  87.8    3e-18
+lcl|BBa_K986011  U 28396 Device "BBa_K737023+BBa_S05120"              87.8    3e-18
+lcl|BBa_K986010  U 28395 Device "BBa_K737023+BBa_S05119"              87.8    3e-18
+lcl|BBa_K986009  U 28394 Device "BBa_K737023+S05118"                  87.8    3e-18
+lcl|BBa_K986008  U 28393 Device "BBa_K737023+BBa_S05117"              87.8    3e-18
+lcl|BBa_K986007  U 28392 Device "BBa_K737023+BBa_S05115"              87.8    3e-18
+lcl|BBa_K986006  U 28401 Device "BBa_K737026+BBa_S05120"              87.8    3e-18
+lcl|BBa_K986005  U 28400 Device "BBa_K737026+BBa_S05119"              87.8    3e-18
+lcl|BBa_K986004  U 28399 Device "BBa_K737026+BBa_S05118"              87.8    3e-18
+lcl|BBa_K986003  U 28384 Device "BBa_K737026+S05117"                  87.8    3e-18
+lcl|BBa_K986002  U 28383 Device "BBa_K737026+S05115"                  87.8    3e-18
+lcl|BBa_K944015  U 27471 Composite "Cyanide insensitive terminal ...  87.8    3e-18
+lcl|BBa_K944014  U 27469 Composite "Cyanide Biosensor expression ...  87.8    3e-18
+lcl|BBa_K944007  A 27440 Intermediate "Higly engineered mutant of...  87.8    3e-18
+lcl|BBa_K935005  P 27870 Device "Two E. coli ArsR generators coup...  87.8    3e-18
+lcl|BBa_K935004  P 27869 Device "E. coli ArsR generator coupled t...  87.8    3e-18
+lcl|BBa_K935002  P 27868 Device "E. coli ArsR under the control o...  87.8    3e-18
+lcl|BBa_K931002  P 27737 Composite "A Red Fluorescent Protein - S...  87.8    3e-18
+lcl|BBa_K929301  A 26768 Reporter "Potsdam Standard Backbone"         87.8    3e-18
+lcl|BBa_K929300  D 26766 Plasmid_Backbone "Potsdam Standard Backb...  87.8    3e-18
+lcl|BBa_K917010  P 26799 Composite "Kanamycin resistance+lac prom...  87.8    3e-18
+lcl|BBa_K917002  A 25810 Composite "lac promoter plus RFP and sacB"   87.8    3e-18
+lcl|BBa_K914013  P 28122 Generator "RFP controlled by pRha"           87.8    3e-18
+lcl|BBa_K907005  A 26282 Generator "Dual phase protein generator(...  87.8    3e-18
+lcl|BBa_K907004  A 26281 Generator "Dual phase protein generator(...  87.8    3e-18
+lcl|BBa_K902072  P 27941 Translational_Unit "mgtAp-mgtArb-J04650"     87.8    3e-18
+lcl|BBa_K879811  U 27689 Generator "Red with Tet inducible promoter"  87.8    3e-18
+lcl|BBa_K879711  U 27686 Generator "Red with LacI inducible promo...  87.8    3e-18
+lcl|BBa_K879611  U 27685 Generator "Red with CI inducible promoter"   87.8    3e-18
+lcl|BBa_K879531  U 27690 Generator "Red with promoter 5"              87.8    3e-18
+lcl|BBa_K879431  U 27691 Generator "Red with promoter 4"              87.8    3e-18
+lcl|BBa_K879311  P 27682 Generator "Red with promoter 3"              87.8    3e-18
+lcl|BBa_K879011  U 27505 Coding "RFP"                                 87.8    3e-18
+lcl|BBa_K876072  A 27898 Composite "pLac-TetR-RBS-RFP "               87.8    3e-18
+lcl|BBa_K876071  P 27896 Composite "pLac-TetR-RBS-RFP-pTetR-LacI-...  87.8    3e-18
+lcl|BBa_K876061  P 27830 Composite "Term-Term-pluxR-LasI-RBS-RFP"     87.8    3e-18
+lcl|BBa_K876055  D 27824 Reporter "pluxR-lasI-RBS-RFP"                87.8    3e-18
+lcl|BBa_K876049  P 27818 Signalling "plac-lasI-RBS-RFP"               87.8    3e-18
+lcl|BBa_K876046  A 27815 Reporter "lasI-RBS-RFP"                      87.8    3e-18
+lcl|BBa_K876035  D 27803 Signalling "pLuxR-LasI-RBS-RFP"              87.8    3e-18
+lcl|BBa_K876033  A 27759 Composite "lasI-RBS-RFP"                     87.8    3e-18
+lcl|BBa_K876013  A 27649 Composite "LacI-RFP-ST-pLac-LuxI"            87.8    3e-18
+lcl|BBa_K876012  P 27648 Composite "pLas-LacI-RFP-ST-pLac-LuxI"       87.8    3e-18
+lcl|BBa_K876011  A 27647 Composite "pTet-LasR-DT-pLas-LacI-RFP-ST...  87.8    3e-18
+lcl|BBa_K876006  A 27642 Generator "RFP-LVA"                          87.8    3e-18
+lcl|BBa_K876001  P 27637 Composite "Toggle Mechanism"                 87.8    3e-18
+lcl|BBa_K873013  P 26021 Composite "cujugative transfer death gene"   87.8    3e-18
+lcl|BBa_K873003  P 26009 Conjugation "conjugative transfer of RFG"    87.8    3e-18
+lcl|BBa_K864502  U 27000 Reporter ""RFP Coding Device, constituti...  87.8    3e-18
+lcl|BBa_K864444  A 27247 Composite "RFP-Linker-SYFP2"                 87.8    3e-18
+lcl|BBa_K864121  U 27073 Reporter "pMB1 ori - constitutive RFP"       87.8    3e-18
+lcl|BBa_K864120  P 27078 Reporter "pMB1 ori - RFP cassette"           87.8    3e-18
+lcl|BBa_K861180  D 26524 Generator "Constitutive promoter with RFP"   87.8    3e-18
+lcl|BBa_K861178  P 25620 Device "Pcar efficacy testing device wit...  87.8    3e-18
+lcl|BBa_K861177  P 25610 Generator "K861162+ K861175 "                87.8    3e-18
+lcl|BBa_K861176  P 25609 Reporter "mRFP expressed after Pcar"         87.8    3e-18
+lcl|BBa_K861175  P 25608 Reporter "Efficacy testing RFP generator...  87.8    3e-18
+lcl|BBa_K861174  U 25607 Regulatory "A control device for BBa_K86...  87.8    3e-18
+lcl|BBa_K861173  A 25606 Reporter "mRFP generator controlled by  ...  87.8    3e-18
+lcl|BBa_K861169  U 26522 Device ""Indirect regulatory device, act...  87.8    3e-18
+lcl|BBa_K861062  U 25619 Regulatory "PfadR with FadR overexpressed"   87.8    3e-18
+lcl|BBa_K861061  P 25618 Reporter "Efficacy testing RFP generator...  87.8    3e-18
+lcl|BBa_K823054  P 26634 Plasmid "&lt;b&gt;Sporo&lt;/b&gt;vector"     87.8    3e-18
+lcl|BBa_K821011  P 25899 Composite "PLacI+Orthogonal RBS+RFP+Nati...  87.8    3e-18
+lcl|BBa_K821010  P 25896 Composite "PLacI+Native RBS+RFP+Native R...  87.8    3e-18
+lcl|BBa_K821001  P 25803 Reporter "RFP Reporter with o-RBS"           87.8    3e-18
+lcl|BBa_K817033  P 26793 Reporter "PfadBA-RBS-mRFP"                   87.8    3e-18
+lcl|BBa_K817013  P 26612 Reporter "pCI(OR1-OL1)-mRFP"                 87.8    3e-18
+lcl|BBa_K812054  P 26243 Coding "RFP E1010 with GoldenBrick seque...  87.8    3e-18
+lcl|BBa_K809312  U 26629 Coding "GAL promoter + RFP_SPtom22 + ADH...  87.8    3e-18
+lcl|BBa_K809311  U 26628 Coding "GAL promoter + RFP_SPtom70 + ADH...  87.8    3e-18
+lcl|BBa_K809310  U 26626 Coding "GAL promoter + RFP_SPtim21 + ADH...  87.8    3e-18
+lcl|BBa_K809309  U 26625 Coding "GAL promoter + RFP_SPfer + ADH1 ...  87.8    3e-18
+lcl|BBa_K809308  U 26621 Coding "GAL promoter + RFP_SPzim17 + ADH...  87.8    3e-18
+lcl|BBa_K809306  U 26605 Reporter "RFP + signal peptide of Tom22"     87.8    3e-18
+lcl|BBa_K809305  U 26602 Reporter "RFP + signal peptide of Tom70"     87.8    3e-18
+lcl|BBa_K809304  U 26601 Reporter "RFP + signal peptide of Tom40"     87.8    3e-18
+lcl|BBa_K809303  U 26600 Reporter "RFP + signal peptide of TIM21"     87.8    3e-18
+lcl|BBa_K809302  U 26597 Reporter "RFP + signal peptide of FER"       87.8    3e-18
+lcl|BBa_K809301  U 26595 Reporter "RFP + signal peptide of ZIM17 "    87.8    3e-18
+lcl|BBa_K801100  U 28118 Generator "RFP Coding Device - RFC10 and...  87.8    3e-18
+lcl|BBa_K786010  P 26407 Reporter "Gene expression for sensory rh...  87.8    3e-18
+lcl|BBa_K786005  U 26406 Reporter "Light triggering gene expressi...  87.8    3e-18
+lcl|BBa_K783081  A 28037 Composite "R0040 RFP composite"              87.8    3e-18
+lcl|BBa_K783072  P 28028 Composite "J23115 RFP composite"             87.8    3e-18
+lcl|BBa_K783071  P 28027 Composite "J23112 RFP composite"             87.8    3e-18
+lcl|BBa_K783070  P 28026 Composite "J23111 RFP composite"             87.8    3e-18
+lcl|BBa_K783069  P 28025 Composite "J23103 RFP composite"             87.8    3e-18
+lcl|BBa_K783068  P 28024 Composite "J23103 RFP composite part"        87.8    3e-18
+lcl|BBa_K783067  P 27990 Inverter "pBad-pTetR inverter"               87.8    3e-18
+lcl|BBa_K781006  A 28013 Composite "[R0010][B0034] - RFP-FliC Del...  87.8    3e-18
+lcl|BBa_K781001  P 27832 Composite "[R0010][B0034] - RFP-FliC Ins...  87.8    3e-18
+lcl|BBa_K777133  U 27504 Plasmid_Backbone ""Similar to pSB1C3, wi...  87.8    3e-18
+lcl|BBa_K774103  U 27437 Project "Multi sensor - for calculation ...  87.8    3e-18
+lcl|BBa_K774102  D 27434 Project "Multi sensor - for calculation ...  87.8    3e-18
+lcl|BBa_K774101  U 27432 Composite "Small nitrogen species sensit...  87.8    3e-18
+lcl|BBa_K774007  A 26117 Reporter "Mammalian-Bacterial promoter w...  87.8    3e-18
+lcl|BBa_K774005  P 26112 Reporter "Bacterial-Mammalian promoter w...  87.8    3e-18
+lcl|BBa_K766007  P 26731 Device "Plas and cI hybrid promoter with...  87.8    3e-18
+lcl|BBa_K766004  U 26675 Project "AndNot gate based on AHL"           87.8    3e-18
+lcl|BBa_K766003  P 26536 Reporter "C6HSL sensor and reporter"         87.8    3e-18
+lcl|BBa_K766002  U 26535 Reporter "RFP with RBS and T1 terminator"    87.8    3e-18
+lcl|BBa_K762002  P 26998 Coding "TCC Positive Control"                87.8    3e-18
+lcl|BBa_K762001  P 26966 Coding "TCC Negative control"                87.8    3e-18
+lcl|BBa_K762000  A 27222 Reporter "Translational Coupling Cassette"   87.8    3e-18
+lcl|BBa_K743016  P 26529 Reporter "psb1C3_IntKR recombination pla...  87.8    3e-18
+lcl|BBa_K743010  P 26506 Composite "psb1C3_IntS recombination pla...  87.8    3e-18
+lcl|BBa_K743009  P 26500 Composite "psb1C3_IntKR recombination pl...  87.8    3e-18
+lcl|BBa_K743005  D 26303 Reporter "psb1C3_IntK plasmid with RFP u...  87.8    3e-18
+lcl|BBa_K743004  P 26293 Composite "psb1C3_IntK plasmid with RFP ...  87.8    3e-18
+lcl|BBa_K740003  P 26544 Composite "promoter with loxP sites that...  87.8    3e-18
+lcl|BBa_K740001  P 26542 Composite "K740000 followed by rfp"          87.8    3e-18
+lcl|BBa_K736002  P 25189 Composite "Constitutive Promoter with ML...  87.8    3e-18
+lcl|BBa_K734006  U 27753 Plasmid "pReporter.permaflipped control ...  87.8    3e-18
+lcl|BBa_K734005  U 27751 Plasmid "pReporter for ZombiE.coli"          87.8    3e-18
+lcl|BBa_K727700  U 25192 Plasmid "pSB1K3 with RFP coding device"      87.8    3e-18
+lcl|BBa_K660609  P 22886 Composite "Bluf Promoter + S. RBS + RFP"     87.8    3e-18
+lcl|BBa_K654095  P 23253 Plasmid "RFP Cloning Control pSB1A3_IntC...  87.8    3e-18
+lcl|BBa_K651001  U 23164 Device "RecA promoter with RFP coding de...  87.8    3e-18
+lcl|BBa_K651000  D 23163 Device "RecA promoter with RFP coding de...  87.8    3e-18
+lcl|BBa_K649202  A 22619 Generator "PlacIQ-lox71-rfp-lox66-gfp"       87.8    3e-18
+lcl|BBa_K649201  A 22618 Generator "PlacIQ-lox2272-rfp-lox2272-gfp"   87.8    3e-18
+lcl|BBa_K631040  P 23388 Composite "let-858:RFP:UNC-54"               87.8    3e-18
+lcl|BBa_K614002  U 23983 Composite "Nitrate responsive promoter w...  87.8    3e-18
+lcl|BBa_K614001  U 23981 Composite "Nitrate responsive promoter w...  87.8    3e-18
+lcl|BBa_K614000  P 22974 Composite "PyeaR promoter with RFP repor...  87.8    3e-18
+lcl|BBa_K611084  U 25443 Measurement "LVA&amp;#8710;5&apos;11 (BB...  87.8    3e-18
+lcl|BBa_K611083  U 25442 Measurement "BBa_C0051 Test Construct +1...  87.8    3e-18
+lcl|BBa_K611080  U 25141 Measurement ""LVA tag, Double Stop Codon...  87.8    3e-18
+lcl|BBa_K611079  U 25127 Measurement ""LVA 5&apos; -22bp, Barcode...  87.8    3e-18
+lcl|BBa_K611078  U 25125 Measurement ""LVA 5&apos; -11bp, Barcode...  87.8    3e-18
+lcl|BBa_K611077  U 25123 Measurement ""LVA 5&apos; -22bp, Barcode...  87.8    3e-18
+lcl|BBa_K611076  U 25121 Measurement ""LVA 5&apos; -11bp, Barcode...  87.8    3e-18
+lcl|BBa_K611075  U 25119 Measurement "Barcode 3&apos; -16bp Trunc...  87.8    3e-18
+lcl|BBa_K611074  U 25117 Measurement "Barcode 3&apos; -8bp Trunca...  87.8    3e-18
+lcl|BBa_K611073  U 25115 Measurement "LVA 5&apos; -22bp Truncatio...  87.8    3e-18
+lcl|BBa_K611072  U 25113 Measurement "LVA 5&apos; -11bp Truncatio...  87.8    3e-18
+lcl|BBa_K611071  U 25111 Measurement "Barcode Only test construct"    87.8    3e-18
+lcl|BBa_K611070  U 25109 Measurement "Truncation A test construct"    87.8    3e-18
+lcl|BBa_K611069  U 25107 Measurement "Truncation B test construct"    87.8    3e-18
+lcl|BBa_K611068  U 25105 Measurement "Truncation C test construct"    87.8    3e-18
+lcl|BBa_K611067  U 25103 Measurement "Truncation D test construct"    87.8    3e-18
+lcl|BBa_K611066  U 25095 Measurement "cI Lambda Coding region wit...  87.8    3e-18
+lcl|BBa_K611065  U 25094 Measurement "Truncation E test construct"    87.8    3e-18
+lcl|BBa_K611064  U 25093 Measurement "cI Lambda with TGATAA Mutat...  87.8    3e-18
+lcl|BBa_K611062  U 25091 Measurement "BBa_B0034-BBa_E1010 Test Co...  87.8    3e-18
+lcl|BBa_K611061  U 25090 Measurement "BBa_C0051 test construct"       87.8    3e-18
+lcl|BBa_K608018  P 22320 Measurement "medium promoter and weak RB...  87.8    3e-18
+lcl|BBa_K608017  P 22321 Measurement "medium promoter and medium ...  87.8    3e-18
+lcl|BBa_K608016  P 22318 Measurement "medium promoter and strong ...  87.8    3e-18
+lcl|BBa_K608015  P 22317 Measurement "strong promoter and weak RB...  87.8    3e-18
+lcl|BBa_K608014  P 22316 Measurement "strong promoter and medium ...  87.8    3e-18
+lcl|BBa_K608013  P 22315 Composite "strong Promoter with strong R...  87.8    3e-18
+lcl|BBa_K607004  U 22240 Composite "PlasB_RFP-LVA "                   87.8    3e-18
+lcl|BBa_K606068  U 24186 Coding "pVeg SpoVG cI SpoVG RFP Term for...  87.8    3e-18
+lcl|BBa_K606067  P 24120 Generator "Upstream LacI expression IPTG...  87.8    3e-18
+lcl|BBa_K606065  P 24117 Generator "IPTG inducible tRNA Amber emi...  87.8    3e-18
+lcl|BBa_K606039  P 22536 Generator "pVeg SpoVG T7 SpoVG RFP doubl...  87.8    3e-18
+lcl|BBa_K606030  P 22526 Generator "Pveg SpoVG RFPmCherry B0015"      87.8    3e-18
+lcl|BBa_K606013  A 21707 Translational_Unit "SpoVG RFPmCherry dou...  87.8    3e-18
+lcl|BBa_K606012  D 21704 Coding "RFP mCherry with double terminator"  87.8    3e-18
+lcl|BBa_K604006  A 23800 Composite "LasI and RFP under Promoter t...  87.8    3e-18
+lcl|BBa_K604003  P 23760 Composite "LasI and RFP under Promoter t...  87.8    3e-18
+lcl|BBa_K598025  A 23386 Device "Bistable Switch with TPP Hammerh...  87.8    3e-18
+lcl|BBa_K598024  A 23383 Device "Bistable Switch with TPP Down-re...  87.8    3e-18
+lcl|BBa_K598023  A 23384 Device "Bistable Switch with TPP Up-regu...  87.8    3e-18
+lcl|BBa_K598022  A 23268 Device "Bistable Switch Mutant 42"           87.8    3e-18
+lcl|BBa_K598002  A 23270 Device "Bistable Switch Mutant 68"           87.8    3e-18
+lcl|BBa_K577897  A 22325 Reporter "pTet promoted RFP"                 87.8    3e-18
+lcl|BBa_K577895  A 22323 Reporter "TetR repressed RFP"                87.8    3e-18
+lcl|BBa_K577889  D 22132 Reporter "pBad+RFPc"                         87.8    3e-18
+lcl|BBa_K577882  P 22122 Reporter "pC+AraC+pBad+RFPc"                 87.8    3e-18
+lcl|BBa_K577004  A 22118 Reporter "RFP Coding Device"                 87.8    3e-18
+lcl|BBa_K577001  A 21904 Reporter "RFP Coding Device (Not Repress...  87.8    3e-18
+lcl|BBa_K577000  P 21903 Reporter "RFP Coding Device"                 87.8    3e-18
+lcl|BBa_K575039  A 22950 Composite "RhlR/PAI2 Inducible Promoter ...  87.8    3e-18
+lcl|BBa_K575038  A 22949 Composite "RhlR/PAI2 Inducible Promoter ...  87.8    3e-18
+lcl|BBa_K575035  P 22942 Composite "RhlR/PAI2 Inducible Promoter ...  87.8    3e-18
+lcl|BBa_K575034  U 22941 Composite "RhlR/PAI2 Inducible Promoter ...  87.8    3e-18
+lcl|BBa_K575031  A 22936 Composite ""LasR/PAI1 Inducible Promoter...  87.8    3e-18
+lcl|BBa_K575030  U 22935 Composite ""LasR/PAI1 Inducible Promoter...  87.8    3e-18
+lcl|BBa_K575027  A 22931 Composite ""LasR/PAI1 Inducible Promoter...  87.8    3e-18
+lcl|BBa_K575026  A 22926 Composite ""LasR/PAI1 Inducible Promoter...  87.8    3e-18
+lcl|BBa_K575017  D 21859 Composite ""Continuous expression of RFP...  87.8    3e-18
+lcl|BBa_K575016  D 21858 Composite ""Continuous expression of RFP...  87.8    3e-18
+lcl|BBa_K575015  A 21857 Composite "RhlR/PAI2 Inducible Promoter ...  87.8    3e-18
+lcl|BBa_K575014  A 21856 Composite "RhlR/PAI2 Inducible Promoter ...  87.8    3e-18
+lcl|BBa_K575011  A 21853 Composite "LasR/PAI1 Inducible Promoter ...  87.8    3e-18
+lcl|BBa_K575010  A 21852 Composite "LasR/PAI1 Inducible Promoter ...  87.8    3e-18
+lcl|BBa_K575000  D 21713 Composite "Las/3-0-C12-HSL plus reporter...  87.8    3e-18
+lcl|BBa_K572003  A 22501 Reporter "OmpR Promoter_RFP Generator"       87.8    3e-18
+lcl|BBa_K572002  U 22500 Reporter "T7_RFP Generator"                  87.8    3e-18
+lcl|BBa_K572001  P 22499 Reporter "PcstA_RFP Generator"               87.8    3e-18
+lcl|BBa_K572000  A 22056 Generator "RFP Generator"                    87.8    3e-18
+lcl|BBa_K567018  A 23601 Reporter "PT7-GFP-TAG-RFP"                   87.8    3e-18
+lcl|BBa_K561003  P 23529 Device "PfdhF+RFP+tetR+Pvgb+YFP+tetR+Pte...  87.8    3e-18
+lcl|BBa_K561002  P 23527 Device "PfdhF+RFP+tetR"                      87.8    3e-18
+lcl|BBa_K560000  A 23010 Composite " Blue Light Sensor+PtrpL+mRFP1"   87.8    3e-18
+lcl|BBa_K557010  P 23704 Device "ColicinE7+Toggle-switch+Aptamer-...  87.8    3e-18
+lcl|BBa_K557009  P 23703 Intermediate "Toggle-switch+Aptamer+CheZ...  87.8    3e-18
+lcl|BBa_K557008  P 23702 Composite "Reversed Toggle switch+Aptame...  87.8    3e-18
+lcl|BBa_K557005  P 23698 Intermediate "Reversed Toggle switch+Apt...  87.8    3e-18
+lcl|BBa_K557004  P 23697 Device "Reversed Toggle switch for the c...  87.8    3e-18
+lcl|BBa_K557002  P 23695 Composite "Toggle-switch+Aptamer+CheZ"       87.8    3e-18
+lcl|BBa_K543032  U 23802 Conjugation "assay system of killing by ...  87.8    3e-18
+lcl|BBa_K541800  P 22805 Plasmid "B.subtilis and E.coli Episomal ...  87.8    3e-18
+lcl|BBa_K537014  U 22386 Composite "Promoter-Atrazine riboswitch-...  87.8    3e-18
+lcl|BBa_K537008  P 22160 Generator "Atrazine Riboswitch-mRFP"         87.8    3e-18
+lcl|BBa_K528006  U 22547 Measurement "RBS measurement device J231...  87.8    3e-18
+lcl|BBa_K528005  U 22545 Measurement "RBS measurement device J231...  87.8    3e-18
+lcl|BBa_K528004  U 22544 Measurement "RBS measurement device J231...  87.8    3e-18
+lcl|BBa_K528003  U 22541 Measurement "RBS measurement device J231...  87.8    3e-18
+lcl|BBa_K518012  A 23716 Reporter "RBS + RFP + d.Ter"                 87.8    3e-18
+lcl|BBa_K516999  U 22329 Plasmid_Backbone "pSB1C3 with RBS-RFP-TT...  87.8    3e-18
+lcl|BBa_K516334  U 22052 Measurement "mRFP producer controlled by...  87.8    3e-18
+lcl|BBa_K516332  U 22051 Measurement "mRFP producer controlled by...  87.8    3e-18
+lcl|BBa_K516331  U 22050 Measurement "mRFP producer controlled by...  87.8    3e-18
+lcl|BBa_K516330  U 22049 Measurement "mRFP producer controlled by...  87.8    3e-18
+lcl|BBa_K516232  U 22048 Measurement "PTet mRFP with RBS B0032"       87.8    3e-18
+lcl|BBa_K516231  U 22047 Measurement "PTet mRFP with RBS B0031"       87.8    3e-18
+lcl|BBa_K516230  U 22046 Measurement "PTet mRFP with RBS B0030"       87.8    3e-18
+lcl|BBa_K516132  A 22037 Measurement ""Constitutive promoter [J23...  87.8    3e-18
+lcl|BBa_K516131  P 22036 Measurement ""Constitutive promoter [J23...  87.8    3e-18
+lcl|BBa_K516130  A 22035 Measurement ""Constitutive promoter [J23...  87.8    3e-18
+lcl|BBa_K516032  A 22034 Reporter "mRFP protein generator TERM+ R...  87.8    3e-18
+lcl|BBa_K516031  A 22033 Reporter "mRFP protein generator TERM+ R...  87.8    3e-18
+lcl|BBa_K516030  A 22032 Reporter "mRFP protein generator TERM+ R...  87.8    3e-18
+lcl|BBa_K515106  U 22017 Composite "J23103 promoer - RBS B0034-RF...  87.8    3e-18
+lcl|BBa_K510046  P 24105 Composite "pUC18R6KT-miniTn7BB-Gm-improv...  87.8    3e-18
+lcl|BBa_K510045  P 24104 Composite "pUC18Sfi-miniTn7BB-Gm-improve...  87.8    3e-18
+lcl|BBa_K510044  P 24101 Composite "pUC18R6KT-miniTn7BB-Gm-bistab...  87.8    3e-18
+lcl|BBa_K510043  P 24100 Composite "pUC18Sfi-miniTn7BB-Gm-bistabl...  87.8    3e-18
+lcl|BBa_K510041  P 24098 Composite "pUC18Sfi-miniTn7BB-Gm-RFP"        87.8    3e-18
+lcl|BBa_K510037  P 24094 Composite "pUC18Sfi-miniTn7BB-Gm-RBS+RFP"    87.8    3e-18
+lcl|BBa_K510020  U 22684 Composite "pUC18R6KT-miniTn7BB-Gm-RFP"       87.8    3e-18
+lcl|BBa_K510019  P 22683 Device "Improved Flip Flop (Module I)"       87.8    3e-18
+lcl|BBa_K510015  U 22676 Composite "pUC18R6KT-miniTn7BB-Gm-RBS+RFP"   87.8    3e-18
+lcl|BBa_K412003  P 19994 Composite ""LacI+RFP, PyeaR+RFP""            87.8    3e-18
+lcl|BBa_K412002  P 19993 Composite ""LacI+RFP, PyeaR+GFP""            87.8    3e-18
+lcl|BBa_K412001  P 19574 Composite "PyeaR+RFP"                        87.8    3e-18
+lcl|BBa_K411238  P 19562 Reporter "RFPLVA Reporter (R0010+B0034+R...  87.8    3e-18
+lcl|BBa_K411234  P 19561 Reporter "RFP Reporter (R0010+B0034+RFP+...  87.8    3e-18
+lcl|BBa_K411228  U 20312 Generator "B0034+RFPLVA+B0015"               87.8    3e-18
+lcl|BBa_K411218  P 20311 Intermediate "RFPLVA+B0015"                  87.8    3e-18
+lcl|BBa_K411208  U 20305 Coding "Red Fluorescent Protein with LVA...  87.8    3e-18
+lcl|BBa_K411123  P 19401 Generator "Split RFP-eIF4A_A Generator (...  87.8    3e-18
+lcl|BBa_K411113  U 20291 Intermediate "R0040+ B0034 + split_RFP_A...  87.8    3e-18
+lcl|BBa_K411103  P 19403 Coding "RFP_split_A + Linker + eIF4A_spl...  87.8    3e-18
+lcl|BBa_K407014  P 20612 Device "RFP + Lux Receiver"                  87.8    3e-18
+lcl|BBa_K407007  P 20492 Reporter "RFP reporter + LuxI"               87.8    3e-18
+lcl|BBa_K400000  P 20102 Composite ""composite heavy metal-detect...  87.8    3e-18
+lcl|BBa_K398306  P 19382 Measurement "PalkB_K093005"                  87.8    3e-18
+lcl|BBa_K389423  P 19414 Composite "VirA/G signaling system + sen...  87.8    3e-18
+lcl|BBa_K389422  P 19413 Composite "VirA/G signaling system + sen...  87.8    3e-18
+lcl|BBa_K389421  P 19412 Composite "VirA/G signaling system + sen...  87.8    3e-18
+lcl|BBa_K389413  P 19411 Composite "vir promoter + sensitivity tu...  87.8    3e-18
+lcl|BBa_K389412  P 19410 Composite "vir promoter + sensitivity tu...  87.8    3e-18
+lcl|BBa_K389411  P 19409 Composite "vir promoter + sensitivity tu...  87.8    3e-18
+lcl|BBa_K389403  P 19408 Reporter "Sensitivity tuner + luciferase"    87.8    3e-18
+lcl|BBa_K389402  P 19407 Reporter "Sensitivity tuner + luciferase"    87.8    3e-18
+lcl|BBa_K389401  P 19406 Reporter "Sensitivity tuner + luciferase"    87.8    3e-18
+lcl|BBa_K389052  U 19324 Composite "Tightly regulated lacO + mRFP"    87.8    3e-18
+lcl|BBa_K389016  P 19130 Composite "VirA/G reporter device mRFP"      87.8    3e-18
+lcl|BBa_K389013  P 19015 Composite "VirA reporter system mRFP"        87.8    3e-18
+lcl|BBa_K379001  P 20915 Composite "AHL induced concentration Ban...  87.8    3e-18
+lcl|BBa_K376017  P 21128 Measurement "Lux Promoter Tester"            87.8    3e-18
+lcl|BBa_K376016  P 21127 Measurement "Lux Promoter Tester"            87.8    3e-18
+lcl|BBa_K376015  P 21126 Measurement "Lux Promoter Tester"            87.8    3e-18
+lcl|BBa_K376014  P 21125 Measurement "Lux Promoter Tester"            87.8    3e-18
+lcl|BBa_K376009  P 21119 Generator "Lux Controlled RFP Generator"     87.8    3e-18
+lcl|BBa_K376008  P 21118 Generator "Lux Controlled RFP Generator"     87.8    3e-18
+lcl|BBa_K374013  P 20179 Composite "Lambda N-gene followed by Bio...  87.8    3e-18
+lcl|BBa_K371043  P 21226 Coding "MPF(meta-prefix)+RFP+MSF(meta-su...  87.8    3e-18
+lcl|BBa_K371026  U 21065 Coding "MPF(meta-preffix)RFP[intermediate]"  87.8    3e-18
+lcl|BBa_K371020  U 21097 Coding "RFP[intermediate]"                   87.8    3e-18
+lcl|BBa_K371018  D 19393 Composite "MPF+RFP+MSF"                      87.8    3e-18
+lcl|BBa_K362065  U 20824 Reporter "ahpC promoter - RBS - GFP - T-...  87.8    3e-18
+lcl|BBa_K362052  U 20690 Reporter "ahpC promoter - RBS - RFP - Te...  87.8    3e-18
+lcl|BBa_K362051  U 20687 Reporter "ahpC promoter - RBS - GFP - Te...  87.8    3e-18
+lcl|BBa_K362020  U 20438 Reporter "yaiA promoter - RBS - RFP - Te...  87.8    3e-18
+lcl|BBa_K362019  U 20437 Reporter "sufA promoter - RBS - RFP - Te...  87.8    3e-18
+lcl|BBa_K362018  U 20436 Reporter "sodA promoter - RBS - RFP - Te...  87.8    3e-18
+lcl|BBa_K362017  U 20441 Reporter "oxyR promoter - RBS - RFP - Te...  87.8    3e-18
+lcl|BBa_K362016  U 20434 Reporter "dps promoter - RBS - RFP - Ter...  87.8    3e-18
+lcl|BBa_K362015  U 20433 Reporter "ahpC promoter - RBS - RFP - Te...  87.8    3e-18
+lcl|BBa_K362014  U 20388 Reporter "acrAB promoter - RBS - RFP - T...  87.8    3e-18
+lcl|BBa_K360123  P 20108 Reporter "trpL promoter + RFP protein"       87.8    3e-18
+lcl|BBa_K359201  U 18626 Plasmid_Backbone "pSB3K3-S-rbsRFP-P"         87.8    3e-18
+lcl|BBa_K359009  P 19000 Intermediate "AIP sensor and consequent ...  87.8    3e-18
+lcl|BBa_K359008  P 18999 Intermediate ""AIP generator and sensor,...  87.8    3e-18
+lcl|BBa_K359005  D 18818 Signalling "Senses AIP and has RFP repor...  87.8    3e-18
+lcl|BBa_K359003  P 18814 Reporter "Agr P2 with RFP"                   87.8    3e-18
+lcl|BBa_K359002  U 18817 Signalling ""Agr quroum sensing sensor/g...  87.8    3e-18
+lcl|BBa_K353003  P 20743 Composite "F2620 + RSID2 + B0034 + E1010...  87.8    3e-18
+lcl|BBa_K352017  U 21100 Device "pCooM RBS RFP Double terminator ...  87.8    3e-18
+lcl|BBa_K352016  P 20671 Project "pCooF RBS GFP Double Terminator...  87.8    3e-18
+lcl|BBa_K352011  P 19610 Reporter "pCooM Promoter coupled with RB...  87.8    3e-18
+lcl|BBa_K349003  U 20003 Coding "RFP-BA-BbsI  (for construction o...  87.8    3e-18
+lcl|BBa_K349002  P 20002 Coding "RFP-BA-BsaI (for construction of...  87.8    3e-18
+lcl|BBa_K349001  P 20001 Coding "RFP-AB-BsaI (for construction of...  87.8    3e-18
+lcl|BBa_K339014  A 20760 Reporter "Arabinose Inducible Promoter w...  87.8    3e-18
+lcl|BBa_K339009  P 20750 Composite "CpxR Promoter with RFP Report...  87.8    3e-18
+lcl|BBa_K339008  P 20747 Reporter "degP Promoter With RFP Reporter"   87.8    3e-18
+lcl|BBa_K339007  P 20766 Reporter " CpxR Reporter"                    87.8    3e-18
+lcl|BBa_K336011  U 20976 Composite "p(tetR)+lasR+p(LasR)+mRFP1"       87.8    3e-18
+lcl|BBa_K336007  U 21066 Composite "p(tetR)+cinr+p(cinR)+mRFP1"       87.8    3e-18
+lcl|BBa_K332022  P 20468 Generator "Plux + RBS + mRFP + double te...  87.8    3e-18
+lcl|BBa_K329067  P 20772 Project "Population counter expressing R...  87.8    3e-18
+lcl|BBa_K329066  P 20773 Project "Population counter expressing R...  87.8    3e-18
+lcl|BBa_K329023  P 20498 Project "Population counter expressing R...  87.8    3e-18
+lcl|BBa_K329022  P 20499 Project "Population counter expressing R...  87.8    3e-18
+lcl|BBa_K329019  P 20496 Project "Population counter Tetracycline...  87.8    3e-18
+lcl|BBa_K329009  P 19474 Device "attC - double terminator (B0015)...  87.8    3e-18
+
+
+>lcl|pSB1A10 U 6737 Plasmid_Backbone "Screening Plasmid v1.0"
+Length=5263
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  120  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  167
+
+
+>lcl|BBa_S05179 U 28757 Intermediate "S05173:M0052"
+Length=973
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  227  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  274
+
+
+>lcl|BBa_S05178 U 28756 Intermediate "S05173:M0051"
+Length=979
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  227  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  274
+
+
+>lcl|BBa_S05177 U 28755 Intermediate "S05173:M0050"
+Length=973
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  227  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  274
+
+
+>lcl|BBa_S05176 U 28754 Intermediate "J63006:E1010"
+Length=1261
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  556  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  603
+
+
+>lcl|BBa_S05173 A 28749 Intermediate "J04500:E1010"
+Length=932
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  227  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  274
+
+
+>lcl|BBa_S05163 U 28625 Intermediate "S05162:S05152"
+Length=1533
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1   ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+           ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  1   ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+
+
+>lcl|BBa_S05162 U 28624 Intermediate "K1051000:K1051704"
+Length=763
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1   ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+           ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  1   ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+
+
+>lcl|BBa_S05155 U 28603 Intermediate "J04500:K1051000"
+Length=901
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  227  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  274
+
+
+>lcl|BBa_S05120 U 28341 Intermediate "S05108:I13507"
+Length=1572
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  730  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  777
+
+
+>lcl|BBa_S05119 U 28340 Intermediate "S05107:I13507"
+Length=2040
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1     ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+             ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  1198  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  1245
+
+
+>lcl|BBa_S05118 U 28339 Intermediate "S05105:I13507"
+Length=1572
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  730  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  777
+
+
+>lcl|BBa_S05117 U 28338 Intermediate "S05104:I13507"
+Length=2040
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1     ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+             ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  1198  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  1245
+
+
+>lcl|BBa_S05116 U 28337 Intermediate "S05102:I13507"
+Length=1573
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  731  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  778
+
+
+>lcl|BBa_S05115 U 28336 Intermediate "S05101:I13507"
+Length=2041
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1     ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+             ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  1199  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  1246
+
+
+>lcl|BBa_S05085 P 26973 Intermediate "K598002:F1610"
+Length=3751
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Minus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  681  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  634
+
+
+>lcl|BBa_S05079 U 26791 Intermediate "E0040:E1010"
+Length=1432
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  727  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  774
+
+
+>lcl|BBa_S05075 U 26498 Intermediate "K390016:E1010"
+Length=899
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  194  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  241
+
+
+>lcl|BBa_S05059 D 26010 Intermediate "K873003:K117010"
+Length=1699
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  460  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  507
+
+
+>lcl|BBa_S05054 P 25913 Intermediate "K081024:I13507"
+Length=1828
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1     ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+             ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  986   ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  1033
+
+
+>lcl|BBa_S05038 U 25463 Intermediate "J04450:K524200"
+Length=1712
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  227  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  274
+
+
+>lcl|BBa_S05037 U 25461 Intermediate "K524003:J04450"
+Length=2275
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1     ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+             ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  1433  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  1480
+
+
+>lcl|BBa_S05036 D 25459 Intermediate "J04450:K524003"
+Length=2275
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  227  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  274
+
+
+>lcl|BBa_S04627 A 23637 Intermediate "B0034:E1010"
+Length=724
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1   ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+           ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  19  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  66
+
+
+>lcl|BBa_S04623 U 23528 Intermediate "K561000:K561002"
+Length=3420
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1     ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+             ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  1867  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  1914
+
+
+>lcl|BBa_S04588 A 22055 Intermediate "S04587:B0015"
+Length=861
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1   ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+           ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  19  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  66
+
+
+>lcl|BBa_S04587 A 22054 Intermediate "B0034:E1010"
+Length=724
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1   ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+           ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  19  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  66
+
+
+>lcl|BBa_S04566 A 21703 Intermediate "E1010:B0015"
+Length=843
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1   ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+           ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  1   ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+
+
+>lcl|BBa_S04523 P 20478 Intermediate "I13507:K329015"
+Length=1808
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1   ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+           ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  19  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  66
+
+
+>lcl|BBa_S04522 D 20473 Intermediate "LuxI with RFP reporter"
+Length=1530
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1   ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+           ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  19  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  66
+
+
+>lcl|BBa_S04493 U 18634 Intermediate "S04487:K315012"
+Length=870
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  123  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  170
+
+
+>lcl|BBa_S04492 U 18633 Intermediate "S04487:K315004"
+Length=870
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  123  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  170
+
+
+>lcl|BBa_S04491 P 18632 Intermediate "S04445:K315013"
+Length=870
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  123  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  170
+
+
+>lcl|BBa_S04490 U 18631 Intermediate "S04489:K093005"
+Length=828
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  123  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  170
+
+
+>lcl|BBa_S04487 U 18569 Intermediate "S04460:K093005"
+Length=828
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  123  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  170
+
+
+>lcl|BBa_S04486 P 18561 Intermediate "S04471:K315015"
+Length=4519
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1     ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+             ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  1400  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  1447
+
+
+>lcl|BBa_S04485 P 18560 Intermediate "S04470:K315015"
+Length=4663
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1     ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+             ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  1544  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  1591
+
+
+>lcl|BBa_S04484 P 18559 Intermediate "S04471:K315014"
+Length=4519
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1     ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+             ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  1400  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  1447
+
+
+>lcl|BBa_S04483 P 18558 Intermediate "S04470:K315014"
+Length=4663
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1     ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+             ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  1544  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  1591
+
+
+>lcl|BBa_S04482 P 18557 Intermediate "S04471:J31007"
+Length=4519
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1     ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+             ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  1400  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  1447
+
+
+>lcl|BBa_S04481 P 18556 Intermediate "S04470:J31007"
+Length=4663
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1     ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+             ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  1544  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  1591
+
+
+>lcl|BBa_S04480 P 18541 Intermediate "S04445:K315007"
+Length=870
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  123  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  170
+
+
+>lcl|BBa_S04479 P 18540 Intermediate "ptet+LoxP Forward+RBS+RBS+LoxN Forward"
+Length=870
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  123  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  170
+
+
+>lcl|BBa_S04477 P 18526 Intermediate "S04447:K315021"
+Length=2005
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  83   ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  130
+
+
+>lcl|BBa_S04476 P 18525 Intermediate "S04447:K315020"
+Length=2004
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  83   ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  130
+
+
+>lcl|BBa_S04475 P 18524 Intermediate "S04446:K315021"
+Length=2149
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  227  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  274
+
+
+>lcl|BBa_S04474 P 18523 Intermediate "S04446:K315020"
+Length=2148
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  227  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  274
+
+
+>lcl|BBa_S04473 P 18515 Intermediate "E5500:K199173"
+Length=2625
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  768  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  815
+
+
+>lcl|BBa_S04472 P 18514 Intermediate "S04419:K199175"
+Length=2625
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1   ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+           ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  19  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  66
+
+
+>lcl|BBa_S04471 P 18489 Intermediate "K091225:S04447"
+Length=3322
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1     ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+             ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  1400  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  1447
+
+
+>lcl|BBa_S04470 P 18488 Intermediate "K091225:S04446"
+Length=3466
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1     ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+             ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  1544  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  1591
+
+
+>lcl|BBa_S04469 P 18470 Intermediate "pT7-RBS-GFP-TT-pT7-RBS-RFP-pTetR-RBS"
+Length=1752
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1     ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+             ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  965   ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  1012
+
+
+>lcl|BBa_S04468 P 18469 Intermediate "S04419:J13002"
+Length=806
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1   ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+           ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  19  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  66
+
+
+>lcl|BBa_S04467 U 18428 Intermediate "K315017:S04419"
+Length=828
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  123  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  170
+
+
+>lcl|BBa_S04466 P 18427 Intermediate "S04447:K315015"
+Length=2005
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  83   ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  130
+
+
+>lcl|BBa_S04465 P 18426 Intermediate "S04447:K315014"
+Length=2005
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  83   ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  130
+
+
+>lcl|BBa_S04464 P 18425 Intermediate "S04446:K315015"
+Length=2149
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  227  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  274
+
+
+>lcl|BBa_S04463 P 18424 Intermediate "S04446:K315014"
+Length=2149
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  227  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  274
+
+
+>lcl|BBa_S04461 P 18420 Intermediate "S04445:S03710"
+Length=2045
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  123  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  170
+
+
+>lcl|BBa_S04458 P 18381 Intermediate "S04447:K315015"
+Length=2005
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  83   ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  130
+
+
+>lcl|BBa_S04457 P 18380 Intermediate "S04447:K315014"
+Length=2005
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  83   ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  130
+
+
+>lcl|BBa_S04456 P 18379 Intermediate "S04446:K315015"
+Length=2149
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  227  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  274
+
+
+>lcl|BBa_S04455 P 18378 Intermediate "S04446:K315014"
+Length=2149
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  227  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  274
+
+
+>lcl|BBa_S04453 U 18372 Intermediate "S04445:K315004"
+Length=870
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  123  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  170
+
+
+>lcl|BBa_S04452 U 18371 Intermediate "S04445:K315004"
+Length=870
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  123  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  170
+
+
+>lcl|BBa_S04451 U 18364 Intermediate "S04445:K315010"
+Length=870
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  123  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  170
+
+
+>lcl|BBa_S04450 U 18363 Intermediate "S04445:K315010"
+Length=870
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  123  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  170
+
+
+>lcl|BBa_S04449 P 18360 Intermediate "S04447:J31007"
+Length=2005
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  83   ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  130
+
+
+>lcl|BBa_S04448 P 18359 Intermediate "S04446:J31007"
+Length=2149
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  227  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  274
+
+
+>lcl|BBa_S04447 P 18342 Intermediate "K315008:B0034"
+Length=808
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  83   ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  130
+
+
+>lcl|BBa_S04446 P 18337 Intermediate "I715039:B0034"
+Length=952
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  227  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  274
+
+
+>lcl|BBa_S04445 U 18274 Intermediate "S04437:K093005"
+Length=828
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  123  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  170
+
+
+>lcl|BBa_S04443 U 18254 Intermediate "J70575:J70554"
+Length=1442
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  197  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  244
+
+
+>lcl|BBa_S04441 U 18231 Intermediate "pT7-RBS-RFP-pTetR-RBS"
+Length=837
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1   ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+           ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  50  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  97
+
+
+>lcl|BBa_S04436 P 18214 Intermediate "K315000:K091220"
+Length=2219
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  157  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  204
+
+
+>lcl|BBa_S04435 P 18213 Intermediate "I715039:K091220"
+Length=2289
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  227  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  274
+
+
+>lcl|BBa_S04432 U 17969 Intermediate "J70569:J70575"
+Length=1726
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  874  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  921
+
+
+>lcl|BBa_S04431 U 17968 Intermediate "J70575:E0040"
+Length=1775
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  197  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  244
+
+
+>lcl|BBa_S04430 U 17961 Intermediate "K199052:K093005"
+Length=787
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  82   ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  129
+
+
+>lcl|BBa_S04429 U 17957 Intermediate "K199027:B0014"
+Length=867
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Minus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  678  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  631
+
+
+>lcl|BBa_S04419 A 17713 Intermediate "B0034:E1010"
+Length=724
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1   ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+           ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  19  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  66
+
+
+>lcl|BBa_S04402 U 17622 Intermediate "S04401:S04353"
+Length=3819
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1     ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+             ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  2977  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  3024
+
+
+>lcl|BBa_S04401 U 17621 Intermediate "S04400:E1010"
+Length=3682
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1     ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+             ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  2977  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  3024
+
+
+>lcl|BBa_S04373 U 17593 Intermediate "S04372:S04353"
+Length=3714
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1     ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+             ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  2872  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  2919
+
+
+>lcl|BBa_S04372 U 17592 Intermediate "S04370:E1010"
+Length=3577
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1     ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+             ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  2872  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  2919
+
+
+>lcl|BBa_S04332 U 17539 Intermediate "R0085:I13507"
+Length=892
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1   ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+           ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  50  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  97
+
+
+>lcl|BBa_S04311 U 16234 Intermediate "I13521:B0040"
+Length=1001
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  81   ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  128
+
+
+>lcl|BBa_S04310 U 16233 Intermediate "J04450:B0040"
+Length=1147
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  227  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  274
+
+
+>lcl|BBa_S04189 U 13671 Intermediate "J04450:I7101"
+Length=2015
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  227  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  274
+
+
+>lcl|BBa_S04188 P 13670 Intermediate "J23119:I13507"
+Length=904
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  62   ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  109
+
+
+>lcl|BBa_S04187 U 13669 Intermediate "R2000:I13507"
+Length=914
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  72   ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  119
+
+
+>lcl|BBa_S04185 U 13667 Intermediate "I7101:J04450"
+Length=2015
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1     ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+             ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  1173  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  1220
+
+
+>lcl|BBa_S04184 U 13666 Intermediate "I6413:J04450"
+Length=1664
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  822  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  869
+
+
+>lcl|BBa_S04183 U 13664 Intermediate "J04450:I6413"
+Length=1664
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  227  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  274
+
+
+>lcl|BBa_S04181 A 13662 Intermediate "B0034:I13501"
+Length=861
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1   ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+           ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  19  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  66
+
+
+>lcl|BBa_S04180 A 13661 Intermediate "B0030:I13501"
+Length=864
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1   ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+           ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  22  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  69
+
+
+>lcl|BBa_S04120 P 12108 Intermediate "B0030:E1010"
+Length=727
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1   ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+           ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  22  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  69
+
+
+>lcl|BBa_S04061 P 11637 Intermediate "K137080:K137010"
+Length=904
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Minus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  843  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  796
+
+
+>lcl|BBa_S04015 A 11364 Intermediate "S04014:B0015"
+Length=861
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1   ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+           ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  19  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  66
+
+
+>lcl|BBa_S04014 A 11363 Intermediate "B0034:E1010"
+Length=724
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1   ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+           ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  19  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  66
+
+
+>lcl|BBa_S03907 D 10741 Intermediate "S03756:S03738"
+Length=742
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1   ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+           ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  19  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  66
+
+
+>lcl|BBa_S03905 D 10739 Intermediate "R0085:S03756"
+Length=511
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1   ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+           ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  50  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  97
+
+
+>lcl|BBa_S03889 A 10682 Intermediate "R0062:S03873"
+Length=787
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  82   ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  129
+
+
+>lcl|BBa_S03888 A 10681 Intermediate "R0084:S03873"
+Length=840
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  135  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  182
+
+
+>lcl|BBa_S03887 A 10680 Intermediate "R0040:S03873"
+Length=786
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  81   ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  128
+
+
+>lcl|BBa_S03885 A 10678 Intermediate "R0079:S03873"
+Length=889
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  184  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  231
+
+
+>lcl|BBa_S03881 A 10674 Intermediate "I14016:S03873"
+Length=900
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  195  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  242
+
+
+>lcl|BBa_S03873 A 10663 Intermediate "B0034:E1010"
+Length=724
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1   ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+           ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  19  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  66
+
+
+>lcl|BBa_S03836 P 10085 Intermediate "I13521:R0040"
+Length=985
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  81   ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  128
+
+
+>lcl|BBa_S03826 U 10017 Intermediate "S03824:B0034"
+Length=1896
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  81   ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  128
+
+
+>lcl|BBa_S03824 P 10015 Intermediate "S03823:R0071"
+Length=1876
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  81   ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  128
+
+
+>lcl|BBa_S03823 P 10014 Intermediate "I13521:I1466"
+Length=1815
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  81   ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  128
+
+
+>lcl|BBa_S03819 P 9946 Intermediate "S03818:I13507"
+Length=2861
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1     ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+             ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  2019  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  2066
+
+
+>lcl|BBa_S03805 A 9652 Intermediate "R0051:I13507"
+Length=918
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  76   ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  123
+
+
+>lcl|BBa_S03798 P 9567 Reporter "T7-RBS-RFP1-hixC-RFP2"
+Length=773
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1   ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+           ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  50  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  97
+
+
+>lcl|BBa_S03779 P 9458 Intermediate "pT7-RBS-RFP1"
+Length=511
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1   ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+           ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  50  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  97
+
+
+>lcl|BBa_S03769 P 9366 Intermediate "RBS-RFP1-hixC-RFP2"
+Length=742
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1   ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+           ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  19  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  66
+
+
+>lcl|BBa_S03767 P 9361 Intermediate "T7Promoter-RBS-RFP1-HixC-GFP2 (pSB1A2)"
+Length=803
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1   ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+           ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  50  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  97
+
+
+>lcl|BBa_S03766 P 9357 Intermediate "RBS-Kan-RBS-Tet-RBS-RFP (pSB1A7)"
+Length=2783
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1     ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+             ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  2078  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  2125
+
+
+>lcl|BBa_S03763 P 9312 Intermediate "T7Promoter-RBS-RFP1-HixC-GFP2-RBS-RFP1-HixC-GFP2 
+(pSB3T5)"
+Length=1583
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1   ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+           ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  50  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  97
+
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  830  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  877
+
+
+>lcl|BBa_S03762 P 9311 Intermediate "T7Promoter-RBS-RFP1-HixC-GFP2-RBS-RFP1-HixC-GFP2 
+(pSB1A2)"
+Length=1583
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1   ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+           ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  50  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  97
+
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  830  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  877
+
+
+>lcl|BBa_S03760 P 9309 Intermediate "RBS-RFP1-HixC-GFP2"
+Length=772
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1   ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+           ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  19  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  66
+
+
+>lcl|BBa_S03756 P 9279 Intermediate "RBS:RFP1"
+Length=480
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1   ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+           ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  19  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  66
+
+
+>lcl|BBa_S03740 P 9195 Intermediate "pLac-RBS-RFP1"
+Length=688
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  227  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  274
+
+
+>lcl|BBa_S03737 D 9115 Intermediate "pLac-lox-RFP(reverse)-TT-lox-RBS-Tet (psB1A2)"
+Length=2324
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Minus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  928  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  881
+
+
+>lcl|BBa_S03729 U 9073 Intermediate "RFP(reverse)-TT-lox-RBS-Tet"
+Length=2074
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Minus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  678  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  631
+
+
+>lcl|BBa_S03726 U 9030 Intermediate "RFP(reverse)-TT"
+Length=815
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Minus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  678  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  631
+
+
+>lcl|BBa_S03723 P 8965 Intermediate "RBS-Kan-RBS-Tet-RBS-RFP (pSB1A2)"
+Length=2783
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1     ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+             ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  2078  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  2125
+
+
+>lcl|BBa_S03721 P 8958 Intermediate "RBS-Kan-RBS-RFP-RBS-Tet"
+Length=2783
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  861  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  908
+
+
+>lcl|BBa_S03720 P 8951 Intermediate "RBS-Tet-RBS-RFP"
+Length=1941
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1     ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+             ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  1236  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  1283
+
+
+>lcl|BBa_S03717 D 8945 Intermediate "S03716:I13502"
+Length=1941
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1     ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+             ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  1236  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  1283
+
+
+>lcl|BBa_S03711 P 8917 Intermediate "RBS-Kan-RBS-RFP"
+Length=1566
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  861  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  908
+
+
+>lcl|BBa_S03688 U 8710 Intermediate ""(-1,-2) RFP&lt;sub&gt;rev&lt;/sub&gt;RBS&lt;sub&gt;rev&lt;/sub&gt;-HixC-pLac&lt;sub&gt;rev&lt;/sub&gt;-HixC 
+: TB-RBS&lt;sub&gt;rev&lt;/sub&gt;-HixC""
+Length=2233
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Minus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  678  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  631
+
+
+>lcl|BBa_S03687 U 8709 Intermediate ""(-1,2) RFP&lt;sub&gt;rev&lt;/sub&gt;RBS&lt;sub&gt;rev&lt;/sub&gt;-HixC-pLac&lt;sub&gt;rev&lt;/sub&gt;-HixC 
+: RBS-TetF-HixC""
+Length=2231
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Minus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  678  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  631
+
+
+>lcl|BBa_S03686 U 8708 Intermediate "RFP&lt;sub&gt;rev&lt;/sub&gt;RBS&lt;sub&gt;rev&lt;/sub&gt;-HixC 
+: pLac&lt;sub&gt;rev&lt;/sub&gt;-HixC 
+(dummy part)"
+Length=977
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Minus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  678  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  631
+
+
+>lcl|BBa_S03685 U 8707 Intermediate ""(1,-2) RFP&lt;sub&gt;rev&lt;/sub&gt;-RBS&lt;sub&gt;rev&lt;/sub&gt;-HixC-pLac-HixC 
+: TetB-RBS&lt;sub&gt;rev&lt;/sub&gt;-HixC""
+Length=2233
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Minus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  678  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  631
+
+
+>lcl|BBa_S03684 U 8706 Intermediate ""(1,2) RFP&lt;sub&gt;rev&lt;/sub&gt;-RBS&lt;sub&gt;rev&lt;/sub&gt;-HixC-pLac-HixC 
+: RBS-TetF-HixC""
+Length=2231
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Minus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  678  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  631
+
+
+>lcl|BBa_S03683 U 8705 Intermediate "RFP&lt;sub&gt;rev&lt;/sub&gt;-RBS&lt;sub&gt;rev&lt;/sub&gt;-HixC 
+: pLac-HixC"
+Length=977
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Minus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  678  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  631
+
+
+>lcl|BBa_S03682 D 8704 Intermediate "S03649:J44000"
+Length=2231
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Minus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  678  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  631
+
+
+>lcl|BBa_S03681 U 8703 Intermediate ""(-2,-1) RFP&lt;sub&gt;rev&lt;/sub&gt;-RBS&lt;sub&gt;rev&lt;/sub&gt;-HixC-TB-RBS&lt;sub&gt;rev&lt;/sub&gt;-HixC 
+: pLac&lt;sub&gt;rev&lt;/sub&gt;-HixC""
+Length=2233
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Minus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  678  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  631
+
+
+>lcl|BBa_S03680 U 8702 Intermediate ""(-2,1) RFP&lt;sub&gt;rev&lt;/sub&gt;-RBS&lt;sub&gt;rev&lt;/sub&gt;-HixC-TB-RBS&lt;sub&gt;rev&lt;/sub&gt;-HixC 
+: pLac-HixC""
+Length=2233
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Minus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  678  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  631
+
+
+>lcl|BBa_S03679 U 8701 Intermediate ""(2,-1) RFP&lt;sub&gt;rev&lt;/sub&gt;-RBS&lt;sub&gt;rev&lt;/sub&gt;-HixC-RBS-TetF-HixC 
+: pLac&lt;sub&gt;rev&lt;/sub&gt;-HixC""
+Length=2231
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Minus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  678  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  631
+
+
+>lcl|BBa_S03677 U 8699 Intermediate ""(2,1) RFP&lt;sub&gt;rev&lt;/sub&gt;-RBS&lt;sub&gt;rev&lt;/sub&gt;-HixC-RBS-TetF-HixC 
+: pLac-HixC""
+Length=2231
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Minus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  678  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  631
+
+
+>lcl|BBa_S03676 U 8698 Intermediate "RFP&lt;sub&gt;rev&lt;/sub&gt;-RBS&lt;sub&gt;rev&lt;/sub&gt;-HixC 
+: TetB-RBS&lt;sub&gt;rev&lt;/sub&gt;-HixC"
+Length=1991
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Minus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  678  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  631
+
+
+>lcl|BBa_S03675 U 8697 Intermediate "RFP&lt;sub&gt;rev&lt;/sub&gt;-RBS&lt;sub&gt;rev&lt;/sub&gt;-HixC 
+: RBS-TetF-HixC"
+Length=1989
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Minus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  678  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  631
+
+
+>lcl|BBa_S03673 U 8695 Intermediate "(1)-2 RFP&lt;sub&gt;rev&lt;/sub&gt;-RBS&lt;sub&gt;rev&lt;/sub&gt;-HixC 
+: pLac-HixC-TetB-RBS&lt;sub&gt;rev&lt;/sub&gt;"
+Length=2199
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Minus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  678  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  631
+
+
+>lcl|BBa_S03649 U 8311 Intermediate "(1)2 RFP&lt;sub&gt;rev&lt;/sub&gt;-RBS&lt;sub&gt;rev&lt;/sub&gt;-HixC 
+: pLac-HixC-RBS-TetF"
+Length=2197
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Minus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  678  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  631
+
+
+>lcl|BBa_S03648 U 8124 Intermediate "RFP&lt;sub&gt;rev&lt;/sub&gt;-RBS&lt;sub&gt;rev&lt;/sub&gt; 
+: HixC"
+Length=735
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Minus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  678  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  631
+
+
+>lcl|BBa_S03644 P 8107 Intermediate "RFP&lt;sub&gt;rev&lt;/sub&gt; : RBS&lt;sub&gt;rev&lt;/sub&gt;"
+Length=701
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Minus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  678  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  631
+
+
+>lcl|BBa_S03593 A 7390 Intermediate "J22126:E1010"
+Length=898
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  193  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  240
+
+
+>lcl|BBa_S03552 U 7220 Intermediate "S03145:I13507"
+Length=2331
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1     ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+             ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  1489  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  1536
+
+
+>lcl|BBa_S03473 A 6622 Reporter "Lambda-system Pr promoter with RFP reporter"
+Length=918
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  76   ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  123
+
+
+>lcl|BBa_S03472 P 6621 Measurement "Sensing Device with Prm and RFP"
+Length=2392
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1     ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+             ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  1550  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  1597
+
+
+>lcl|BBa_S03338 U 6128 Intermediate "Pr with GFP and Prm+ with RFP"
+Length=1891
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1     ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+             ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  1049  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  1096
+
+
+>lcl|BBa_S03337 P 6127 Reporter "Prm+ with RFP as a reporter"
+Length=951
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  109  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  156
+
+
+>lcl|BBa_S03255 A 5170 Intermediate "Intermediate part from assembly 317"
+Length=724
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1   ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+           ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  19  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  66
+
+
+>lcl|BBa_M45102 U 31707 Composite "Cobalt detection Biobrick. RFP made in presence 
+of Cobalt. Note the receptor also works in the prese"
+Length=1298
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  456  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  503
+
+
+>lcl|BBa_M30012 A 6366 Measurement "OmpR controlled mRFP"
+Length=977
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  135  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  182
+
+
+>lcl|BBa_M30011 A 6365 Measurement "OmpR controlled mRFP"
+Length=977
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  135  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  182
+
+
+>lcl|BBa_M30010 U 6342 Measurement " -- No description -- "
+Length=1972
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1     ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+             ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  1130  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  1177
+
+
+>lcl|BBa_M30009 U 6341 Measurement " -- No description -- "
+Length=1972
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1     ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+             ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  1130  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  1177
+
+
+>lcl|BBa_M30008 U 6340 Measurement " -- No description -- "
+Length=1914
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1     ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+             ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  1072  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  1119
+
+
+>lcl|BBa_M30007 U 6339 Measurement " -- No description -- "
+Length=1914
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1     ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+             ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  1072  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  1119
+
+
+>lcl|BBa_M30006 U 6338 Measurement " -- No description -- "
+Length=1914
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1     ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+             ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  1072  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  1119
+
+
+>lcl|BBa_M30005 U 6337 Measurement " -- No description -- "
+Length=1914
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1     ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+             ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  1072  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  1119
+
+
+>lcl|BBa_M30004 U 6314 Generator " -- No description --"
+Length=1856
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1     ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+             ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  1014  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  1061
+
+
+>lcl|BBa_M30003 U 6313 Generator " -- No description --"
+Length=1856
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1     ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+             ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  1014  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  1061
+
+
+>lcl|BBa_M30002 U 6312 Generator " -- No description --"
+Length=1798
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1     ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+             ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  956   ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  1003
+
+
+>lcl|BBa_M30001 U 6311 Generator " -- No description --"
+Length=1798
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1     ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+             ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  956   ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  1003
+
+
+>lcl|BBa_M1987 U 24867 Composite "Composite with rpsT gene"
+Length=4006
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1     ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+             ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  1108  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  1155
+
+
+>lcl|BBa_M1844 D 24899 Composite "RPS Tgene from Methilobacteriun chloromeneticum"
+Length=6890
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1     ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+             ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  3855  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  3902
+
+
+>lcl|BBa_M1843 D 24877 Composite "His"
+Length=5712
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1     ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+             ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  2814  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  2861
+
+
+>lcl|BBa_M1677 U 28366 Composite "a biobrick construct to detect the absence 
+of glucose"
+Length=941
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  99   ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  146
+
+
+>lcl|BBa_M1676 U 28368 Composite "a construct to detect the presence/absence 
+of glucose"
+Length=1853
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  99   ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  146
+
+
+>lcl|BBa_M1211 U 21442 Composite "Kill Gene with RFP alternative"
+Length=2599
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  81   ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  128
+
+
+>lcl|BBa_M12100 U 21285 Reporter ""PLambda : B0034 : RFP in BioScaffold Form, 
+a (0,5;7,2] BioScaffold part ""
+Length=896
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  95   ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  142
+
+
+>lcl|BBa_M11552 U 17885 Composite "Cd induced RFP reporter"
+Length=2156
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1     ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+             ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  1314  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  1361
+
+
+>lcl|BBa_M11542 U 17892 Composite "Fe Promoter with RFP"
+Length=1913
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1     ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+             ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  1071  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  1118
+
+
+>lcl|BBa_M11532 U 17895 Composite "Lead promoter with RFP"
+Length=1368
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  526  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  573
+
+
+>lcl|BBa_M11522 U 17873 Composite "Zinc Promoter (ZntR regulated) with RFP Reporter"
+Length=938
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  96   ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  143
+
+
+>lcl|BBa_M11514 U 17922 Composite "Copper Promoter (CueR regulated) with RFP 
+Reporter"
+Length=912
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  70   ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  117
+
+
+>lcl|BBa_M11502 U 17889 Composite "As induced RFP reporter"
+Length=1321
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  479  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  526
+
+
+>lcl|BBa_M11208 U 17909 Device "Device containing HXT1/mNarK promoters and GFP/RFP 
+to monitor glucose/oxygen levels in S. cerevisiae"
+Length=3759
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1     ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+             ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  2821  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  2868
+
+
+>lcl|BBa_M11207 U 17908 Device "Device containing HXT7/mNarK promoters and GFP/RFP 
+to monitor glucose/oxygen levels in S. cerevisiae"
+Length=3759
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1     ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+             ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  2821  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  2868
+
+
+>lcl|BBa_M11206 U 17907 Device "mNarK promoter + RFP to monitor oxygen monitors 
+in S. cerevisiae"
+Length=1060
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  122  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  169
+
+
+>lcl|BBa_K993002 U 28470 Translational_Unit "IbpB RNA Thermometer with RFP"
+Length=917
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  209  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  256
+
+
+>lcl|BBa_K993001 D 28447 Translational_Unit "RFP Generator with ROSE thermometer"
+Length=904
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  195  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  242
+
+
+>lcl|BBa_K993000 U 28472 Translational_Unit "RFP Generator with ROSE thermometer"
+Length=902
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  194  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  241
+
+
+>lcl|BBa_K986011 U 28396 Device "BBa_K737023+BBa_S05120"
+Length=1672
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  830  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  877
+
+
+>lcl|BBa_K986010 U 28395 Device "BBa_K737023+BBa_S05119"
+Length=2140
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1     ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+             ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  1298  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  1345
+
+
+>lcl|BBa_K986009 U 28394 Device "BBa_K737023+S05118"
+Length=1672
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  830  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  877
+
+
+>lcl|BBa_K986008 U 28393 Device "BBa_K737023+BBa_S05117"
+Length=2140
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1     ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+             ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  1298  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  1345
+
+
+>lcl|BBa_K986007 U 28392 Device "BBa_K737023+BBa_S05115"
+Length=2141
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1     ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+             ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  1299  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  1346
+
+
+>lcl|BBa_K986006 U 28401 Device "BBa_K737026+BBa_S05120"
+Length=1784
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  942  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  989
+
+
+>lcl|BBa_K986005 U 28400 Device "BBa_K737026+BBa_S05119"
+Length=2252
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1     ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+             ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  1410  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  1457
+
+
+>lcl|BBa_K986004 U 28399 Device "BBa_K737026+BBa_S05118"
+Length=1784
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  942  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  989
+
+
+>lcl|BBa_K986003 U 28384 Device "BBa_K737026+S05117"
+Length=2252
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1     ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+             ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  1410  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  1457
+
+
+>lcl|BBa_K986002 U 28383 Device "BBa_K737026+S05115"
+Length=2253
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1     ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+             ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  1411  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  1458
+
+
+>lcl|BBa_K944015 U 27471 Composite "Cyanide insensitive terminal oxidase cioAB 
+and cyanide biosensor expression platform"
+Length=6498
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1     ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+             ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  5656  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  5703
+
+
+>lcl|BBa_K944014 U 27469 Composite "Cyanide Biosensor expression platform using 
+a cyanide inducible promoter"
+Length=1139
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  297  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  344
+
+
+>lcl|BBa_K944007 A 27440 Intermediate "Higly engineered mutant of RFP and a double 
+terminator"
+Length=843
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1   ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+           ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  1   ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+
+
+>lcl|BBa_K935005 P 27870 Device "Two E. coli ArsR generators coupled to pArs-ArsR-RFP"
+Length=2713
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1     ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+             ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  1871  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  1918
+
+
+>lcl|BBa_K935004 P 27869 Device "E. coli ArsR generator coupled to pArs-ArsR-RFP"
+Length=2050
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1     ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+             ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  1208  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  1255
+
+
+>lcl|BBa_K935002 P 27868 Device "E. coli ArsR under the control of pArs coupled 
+with pArs + RFP"
+Length=1604
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  762  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  809
+
+
+>lcl|BBa_K931002 P 27737 Composite "A Red Fluorescent Protein - Starch Binding 
+Protein Fusion"
+Length=1274
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  62   ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  109
+
+
+>lcl|BBa_K929301 A 26768 Reporter "Potsdam Standard Backbone"
+Length=828
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  145  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  192
+
+
+>lcl|BBa_K929300 D 26766 Plasmid_Backbone "Potsdam Standard Backbone"
+Length=828
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  145  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  192
+
+
+>lcl|BBa_K917010 P 26799 Composite "Kanamycin resistance+lac promoter+RFP+sacB 
+selection-counterselection cassette"
+Length=3352
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1     ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+             ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  1202  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  1249
+
+
+>lcl|BBa_K917002 A 25810 Composite "lac promoter plus RFP and sacB"
+Length=2377
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  227  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  274
+
+
+>lcl|BBa_K914013 P 28122 Generator "RFP controlled by pRha"
+Length=855
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  150  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  197
+
+
+>lcl|BBa_K907005 A 26282 Generator "Dual phase protein generator(mRFP default). 
+mRFP and GFP"
+Length=1575
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Minus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  681  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  634
+
+
+>lcl|BBa_K907004 A 26281 Generator "Dual phase protein generator(GFP default). 
+mRFP and GFP"
+Length=1575
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Minus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  681  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  634
+
+
+>lcl|BBa_K902072 P 27941 Translational_Unit "mgtAp-mgtArb-J04650"
+Length=1173
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  331  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  378
+
+
+>lcl|BBa_K879811 U 27689 Generator "Red with Tet inducible promoter"
+Length=781
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  101  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  148
+
+
+>lcl|BBa_K879711 U 27686 Generator "Red with LacI inducible promoter"
+Length=781
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  101  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  148
+
+
+>lcl|BBa_K879611 U 27685 Generator "Red with CI inducible promoter"
+Length=781
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  101  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  148
+
+
+>lcl|BBa_K879531 U 27690 Generator "Red with promoter 5"
+Length=784
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  104  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  151
+
+
+>lcl|BBa_K879431 U 27691 Generator "Red with promoter 4"
+Length=784
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  104  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  151
+
+
+>lcl|BBa_K879311 P 27682 Generator "Red with promoter 3"
+Length=781
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  101  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  148
+
+
+>lcl|BBa_K879011 U 27505 Coding "RFP"
+Length=681
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1   ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+           ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  1   ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+
+
+>lcl|BBa_K876072 A 27898 Composite "pLac-TetR-RBS-RFP "
+Length=1623
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  918  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  965
+
+
+>lcl|BBa_K876071 P 27896 Composite "pLac-TetR-RBS-RFP-pTetR-LacI-RBS-GFP-Term"
+Length=3640
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  918  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  965
+
+
+>lcl|BBa_K876061 P 27830 Composite "Term-Term-pluxR-LasI-RBS-RFP"
+Length=1597
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  892  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  939
+
+
+>lcl|BBa_K876055 D 27824 Reporter "pluxR-lasI-RBS-RFP"
+Length=1460
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  755  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  802
+
+
+>lcl|BBa_K876049 P 27818 Signalling "plac-lasI-RBS-RFP"
+Length=1605
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  900  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  947
+
+
+>lcl|BBa_K876046 A 27815 Reporter "lasI-RBS-RFP"
+Length=1399
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  694  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  741
+
+
+>lcl|BBa_K876035 D 27803 Signalling "pLuxR-LasI-RBS-RFP"
+Length=1460
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  755  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  802
+
+
+>lcl|BBa_K876033 A 27759 Composite "lasI-RBS-RFP"
+Length=1399
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  694  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  741
+
+
+>lcl|BBa_K876013 A 27649 Composite "LacI-RFP-ST-pLac-LuxI"
+Length=2792
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1     ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+             ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  1183  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  1230
+
+
+>lcl|BBa_K876012 P 27648 Composite "pLas-LacI-RFP-ST-pLac-LuxI"
+Length=2955
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1     ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+             ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  1346  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  1393
+
+
+>lcl|BBa_K876011 A 27647 Composite "pTet-LasR-DT-pLas-LacI-RFP-ST-pLac-LuxI"
+Length=3941
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1     ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+             ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  2332  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  2379
+
+
+>lcl|BBa_K876006 A 27642 Generator "RFP-LVA"
+Length=774
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1   ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+           ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  22  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  69
+
+
+>lcl|BBa_K876001 P 27637 Composite "Toggle Mechanism"
+Length=3827
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1     ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+             ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  3075  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  3122
+
+
+>lcl|BBa_K873013 P 26021 Composite "cujugative transfer death gene"
+Length=1699
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  460  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  507
+
+
+>lcl|BBa_K873003 P 26009 Conjugation "conjugative transfer of RFG"
+Length=1302
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  460  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  507
+
+
+>lcl|BBa_K864502 U 27000 Reporter ""RFP Coding Device, constitutive""
+Length=928
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  86   ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  133
+
+
+>lcl|BBa_K864444 A 27247 Composite "RFP-Linker-SYFP2"
+Length=1828
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  227  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  274
+
+
+>lcl|BBa_K864121 U 27073 Reporter "pMB1 ori - constitutive RFP"
+Length=1610
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  768  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  815
+
+
+>lcl|BBa_K864120 P 27078 Reporter "pMB1 ori - RFP cassette"
+Length=1751
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  909  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  956
+
+
+>lcl|BBa_K861180 D 26524 Generator "Constitutive promoter with RFP"
+Length=904
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  62   ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  109
+
+
+>lcl|BBa_K861178 P 25620 Device "Pcar efficacy testing device with CRP overexpressed"
+Length=1713
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  871  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  918
+
+
+>lcl|BBa_K861177 P 25610 Generator "K861162+ K861175 "
+Length=1713
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  871  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  918
+
+
+>lcl|BBa_K861176 P 25609 Reporter "mRFP expressed after Pcar"
+Length=905
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  63   ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  110
+
+
+>lcl|BBa_K861175 P 25608 Reporter "Efficacy testing RFP generator of BBa_K861170 
+(PI)"
+Length=905
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  63   ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  110
+
+
+>lcl|BBa_K861174 U 25607 Regulatory "A control device for BBa_K861169"
+Length=1899
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1     ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+             ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  1057  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  1104
+
+
+>lcl|BBa_K861173 A 25606 Reporter "mRFP generator controlled by  PcstA (glucose-repressible 
+promoter)"
+Length=1000
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  158  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  205
+
+
+>lcl|BBa_K861169 U 26522 Device ""Indirect regulatory device, activated at high 
+glucose concentration""
+Length=1961
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1     ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+             ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  1119  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  1166
+
+
+>lcl|BBa_K861062 U 25619 Regulatory "PfadR with FadR overexpressed"
+Length=1840
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  103  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  150
+
+
+>lcl|BBa_K861061 P 25618 Reporter "Efficacy testing RFP generator of BBa_K861060 
+(PfadR)"
+Length=945
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1    ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+            ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  103  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  150
+
+
+>lcl|BBa_K823054 P 26634 Plasmid "&lt;b&gt;Sporo&lt;/b&gt;vector"
+Length=6313
+
+ Score = 87.8 bits (96),  Expect = 3e-18
+ Identities = 48/48 (100%), Gaps = 0/48 (0%)
+ Strand=Plus/Plus
+
+Query  1     ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  48
+             ||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  1192  ATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTT  1239
+
+
+
+Lambda      K        H
+   0.634    0.408    0.912 
+
+Gapped
+Lambda      K        H
+   0.625    0.410    0.780 
+
+Effective search space used: 927934400
+
+
+  Database: bbk.fasta
+    Posted date:  Sep 4, 2014  4:08 PM
+  Number of letters in database: 37,708,246
+  Number of sequences in database:  25,690
+
+
+
+Matrix: blastn matrix 2 -3
+Gap Penalties: Existence: 5, Extension: 2

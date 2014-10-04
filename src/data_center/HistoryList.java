@@ -2,25 +2,29 @@ package data_center;
 
 import java.util.ArrayList;
 
+/** The class implements a history list contains roll back and go forward function.  */
 public class HistoryList<T>
 {
-	public int currentItemNo = -1;
+	private int currentItemNo = -1;
 	private ArrayList<T> dataList = new ArrayList<T>();
 
+	/** Keeps the previous items and flush the following items.  */
 	public void putInItem(T item)
 	{
-		if (dataList.size() == 0)	// namely currentPageNo == -1
-		{
-			dataList.add(item);
-			currentItemNo = 0;
-		}
-
-		// else... 
-		for (int i = dataList.size() - 1; i >= currentItemNo; ++i)
-			dataList.remove(i);
-		dataList.add(item);		// currentPageNo not changed when adding
+		// also suitable for currentItemNo == -1 case
+		if (currentItemNo < dataList.size() - 1) // not appending, sth to delete
+			for (int i = dataList.size() - 1; i > currentItemNo; --i)
+				dataList.remove(i);
+		// adding the new item into the list
+		++currentItemNo;
+		dataList.add(item);
 	}
 
+	public int getCurrentItemNo()
+	{	
+		return currentItemNo;
+	}
+	
 	public T getCurrentItem()
 	{
 		if (dataList.size() == 0)
@@ -37,15 +41,6 @@ public class HistoryList<T>
 	public boolean canGoForward()
 	{	
 		return currentItemNo < dataList.size();
-	}
-
-
-	public T getCurrentRawSearchResult()
-	{
-		if (dataList.size() == 0)
-			return null;
-		else
-			return dataList.get(currentItemNo);
 	}
 
 	public T rollBack()

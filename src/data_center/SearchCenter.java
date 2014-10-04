@@ -1,5 +1,7 @@
 package data_center;
 
+/** Provide functions about searching database by SJTU-software. Can search by keyword, 
+ * blast by sequence, get detail by name.  */
 public class SearchCenter
 {
 	public HistoryList<SearchResultList> historyList;
@@ -28,21 +30,21 @@ public class SearchCenter
 
     public SearchResultList search(String keyword)
     {
-        SearchResultList currentList = BbkDatabaseConnector.search(keyword);
+        SearchResultList currentList = DatabaseConnector.search(keyword);
 		historyList.putInItem(currentList);
         return historyList.getCurrentItem();
     }
     
     public SearchResultList blast(String input, int mode)
     {	
-    	SearchResultList currentList = BbkBlaster.blast(input, mode);
+    	SearchResultList currentList = BlastingSearcher.blast(input, mode);
     	historyList.putInItem(currentList);
     	return historyList.getCurrentItem();
     }
     
     public BbkDetail getDetail(String bbkName)
     {	
-    	return BbkDatabaseConnector.getDetailByName(bbkName);
+    	return DatabaseConnector.getDetailByName(bbkName);
     }
 
 	public SearchResultList rollBack()
