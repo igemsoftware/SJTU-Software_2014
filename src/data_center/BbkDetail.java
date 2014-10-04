@@ -4,6 +4,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+/** The class used to store the data in the detail page. All of the data are fetched 
+ * from EasyBbk database and stored as Strings.  */
 public class BbkDetail extends BbkOutline
 {
 	public ArrayList<Category> categories = new ArrayList<Category>();

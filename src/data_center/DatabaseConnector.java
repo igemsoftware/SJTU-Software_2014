@@ -5,16 +5,20 @@ import java.util.ArrayList;
 
 import data_center.BbkUpload.Twin;
 
+/** The class to connect the EasyBbk and the database by SJTU-software.  */
 public class DatabaseConnector
 {
-	public final static String DRIVER = "com.mysql.jdbc.Driver";
-	public final static String URL_SERVER = "jdbc:mysql://202.120.45.101:3306/igem14";
-	public final static String USER_NAME = "igem14";
-	public final static String PASSWORD = "bio34204348;";
+	@SuppressWarnings("unused")
+	private final static String DRIVER = "com.mysql.jdbc.Driver";
+	private final static String URL_SERVER = "jdbc:mysql://202.120.45.101:3306/igem14";
+	private final static String USER_NAME = "igem14";
+	private final static String PASSWORD = "bio34204348;";
 	
     private static Connection connection = null;
     
-    public static void connect()
+    /** Connect to the database, don't need to be called in under 
+     * normal circumstances.  */
+    static void connect()
     {
     	try 
         {	connection 
@@ -53,7 +57,8 @@ public class DatabaseConnector
 		} catch (SQLException e) {e.printStackTrace();}
     }
 
-
+    /** Specify the part_name as the parameter name, get the outline of a 
+     * unique biobrick.  */
     public static BbkOutline getOutlineByName(String name)
     {
     	checkConnection();
@@ -73,10 +78,12 @@ public class DatabaseConnector
         return bbkOutline;
     }
 
+    /** Specify the part_name as the parameter name, get the detail of a 
+     * unique biobrick.  */
     public static BbkDetail getDetailByName(String name)
     {
     	checkConnection();
-    	
+    	System.out.println("testing: connection");
     	BbkDetail bbkDetail = new BbkDetail();
         try 
 		{	Statement statement = connection.createStatement();
@@ -88,41 +95,49 @@ public class DatabaseConnector
 				DBDataFiller.dbIntoMain(resultSet, bbkDetail);
 			else
 				return null;	// if don't have it in main, make it a null
+			System.out.println("testing: main");
 			// category
 			resultSet = statement.executeQuery("select * from " + DBConsts.Table.CATEGORIES + 
 	        		" where " + DBConsts.Header.Main.NAME + " = " + "'" + name + "'");
-			if (resultSet.next())
-				DBDataFiller.dbIntoCategories(resultSet, bbkDetail);;
+			System.out.println("testing: category" + bbkDetail.categories.size());
+			DBDataFiller.dbIntoCategories(resultSet, bbkDetail);
+			System.out.println("testing: category" + bbkDetail.categories.size());
 			// deep_subparts
 			resultSet = statement.executeQuery("select * from " + DBConsts.Table.DEEP_SUBPARTS + 
 	        		" where " + DBConsts.Header.Main.NAME + " = " + "'" + name + "'");
-			if (resultSet.next())
-				DBDataFiller.dbIntoDeepSubparts(resultSet, bbkDetail);
+			System.out.println("testing: deep" + bbkDetail.deepSubparts.size());
+			DBDataFiller.dbIntoDeepSubparts(resultSet, bbkDetail);
+			System.out.println("testing: deep" + bbkDetail.deepSubparts.size());
 			// features
 			resultSet = statement.executeQuery("select * from " + DBConsts.Table.FEATURES + 
 	        		" where " + DBConsts.Header.Main.NAME + " = " + "'" + name + "'");
-			if (resultSet.next())
-				DBDataFiller.dbIntoFeatures(resultSet, bbkDetail);
+			System.out.println("testing: feature" + bbkDetail.features.size());
+			DBDataFiller.dbIntoFeatures(resultSet, bbkDetail);
+			System.out.println("testing: feature" + bbkDetail.features.size());
 			// parameters
 			resultSet = statement.executeQuery("select * from " + DBConsts.Table.PARAMETERS + 
 	        		" where " + DBConsts.Header.Main.NAME + " = " + "'" + name + "'");
-			if (resultSet.next())
-				DBDataFiller.dbIntoParameters(resultSet, bbkDetail);
+			System.out.println("testing: para" + bbkDetail.parameters.size());
+			DBDataFiller.dbIntoParameters(resultSet, bbkDetail);
+			System.out.println("testing: para" + bbkDetail.parameters.size());
 			// specified_subparts
 			resultSet = statement.executeQuery("select * from " + DBConsts.Table.SPECIFIED_SUBPARTS + 
 	        		" where " + DBConsts.Header.Main.NAME + " = " + "'" + name + "'");
-			if (resultSet.next())
-				DBDataFiller.dbIntoSpecifiedSubparts(resultSet, bbkDetail);
+			System.out.println("testing: subp" + bbkDetail.specifiedSubparts.size());
+			DBDataFiller.dbIntoSpecifiedSubparts(resultSet, bbkDetail);
+			System.out.println("testing: subp" + bbkDetail.specifiedSubparts.size());
 			// specified_subscars
 			resultSet = statement.executeQuery("select * from " + DBConsts.Table.SPECIFIED_SUBSCARS + 
 	        		" where " + DBConsts.Header.Main.NAME + " = " + "'" + name + "'");
-			if (resultSet.next())
-				DBDataFiller.dbIntoSpecifiedSubscars(resultSet, bbkDetail);
+			System.out.println("testing: subs" + bbkDetail.specifiedSubscars.size());
+			DBDataFiller.dbIntoSpecifiedSubscars(resultSet, bbkDetail);
+			System.out.println("testing: subs" + bbkDetail.specifiedSubscars.size());
 			// twins
 			resultSet = statement.executeQuery("select * from " + DBConsts.Table.TWINS + 
 	        		" where " + DBConsts.Header.Main.NAME + " = " + "'" + name + "'");
-			if (resultSet.next())
-				DBDataFiller.dbIntoTwins(resultSet, bbkDetail);
+			System.out.println("testing: twin" + bbkDetail.twins.size());
+			DBDataFiller.dbIntoTwins(resultSet, bbkDetail);
+			System.out.println("testing: twin" + bbkDetail.twins.size());
 			
 			resultSet.close();
 		} catch (SQLException e) {e.printStackTrace();}
@@ -130,6 +145,7 @@ public class DatabaseConnector
         return bbkDetail;
     }
     
+    /** Used when fill the scar in the BbkUpload.  */
     public static BbkUpload.SpecifiedSubscar getScarByName(String name)
     {	
     	checkConnection();
@@ -147,6 +163,8 @@ public class DatabaseConnector
         return subscar;
     }
     
+    /** Used when specifying a sequence to a bbkUpload. Can also used to perform
+     * a sequence matching.  */
     public static ArrayList<BbkUpload.Twin> findTwinsBySequence(String sequence)
     {	
     	checkConnection();
@@ -168,7 +186,9 @@ public class DatabaseConnector
     }
 
 
-    /** Search for a keyword without any limitation */
+    /** Search for a keyword in the database by SJTU-software without any limitation. 
+     * Keyword sensitive in: 
+     * part_name, short_desc, part_type, part_author, part_nickname.  */
     public static SearchResultList search(String keyword)
     {
     	checkConnection();
@@ -209,8 +229,8 @@ public class DatabaseConnector
         return resultList;
     }
     
-    /** Upload a new bbk and get the odd num used to modify it later. 
-     * The oddNum is stored in the ID of an bbk */
+    /** Upload a new biobrick and get the odd number used to modify it later. 
+     * The oddNum is stored in the ID of an biobrick */
     public static String upload(BbkUpload bbkUpload)
     {	
     	// prevent writing the bbk not generated by EasyBbk
@@ -235,7 +255,8 @@ public class DatabaseConnector
     	return bbkUpload.getID();
     }
     
-    /** The oddNum is stored in the ID of an bbk */
+    /** Use the part_name and the oddNum to find a previously uploaded biobrick. 
+     * The oddNum is stored as the ID of an bbk */
     public static BbkUpload getBbkUploadByNameAndOddNum(String name, String oddNum)
     {	
     	// prevent getting the bbk not uploaded by EasyBbk
@@ -261,44 +282,37 @@ public class DatabaseConnector
 			resultSet = statement.executeQuery("select *" + 
 					" from " + DBConsts.Table.CATEGORIES_UPLOAD + 
 	        		" where " + DBConsts.Header.Main.NAME + " = " + "'" + name + "'");
-			if (resultSet.next())
-				DBDataFiller.dbIntoCategories(resultSet, bbkUpload);
+			DBDataFiller.dbIntoCategories(resultSet, bbkUpload);
 			// deep_subparts
 			resultSet = statement.executeQuery("select *" + 
 					" from " + DBConsts.Table.DEEP_SUBPARTS_UPLOAD + 
 	        		" where " + DBConsts.Header.Main.NAME + " = " + "'" + name + "'");
-			if (resultSet.next())
-				DBDataFiller.dbIntoDeepSubparts(resultSet, bbkUpload);
+			DBDataFiller.dbIntoDeepSubparts(resultSet, bbkUpload);
 			// features
 			resultSet = statement.executeQuery("select *" + 
 					" from " + DBConsts.Table.FEATURES_UPLOAD + 
 	        		" where " + DBConsts.Header.Main.NAME + " = " + "'" + name + "'");
-			if (resultSet.next())
-				DBDataFiller.dbIntoFeatures(resultSet, bbkUpload);
+			DBDataFiller.dbIntoFeatures(resultSet, bbkUpload);
 			// parameters
 			resultSet = statement.executeQuery("select *" + 
 					" from " + DBConsts.Table.PARAMETERS_UPLOAD + 
 	        		" where " + DBConsts.Header.Main.NAME + " = " + "'" + name + "'");
-			if (resultSet.next())
-				DBDataFiller.dbIntoParameters(resultSet, bbkUpload);
+			DBDataFiller.dbIntoParameters(resultSet, bbkUpload);
 			// specified_subparts
 			resultSet = statement.executeQuery("select *" + 
 					" from " + DBConsts.Table.SPECIFIED_SUBPARTS_UPLOAD + 
 	        		" where " + DBConsts.Header.Main.NAME + " = " + "'" + name + "'");
-			if (resultSet.next())
-				DBDataFiller.dbIntoSpecifiedSubparts(resultSet, bbkUpload);
+			DBDataFiller.dbIntoSpecifiedSubparts(resultSet, bbkUpload);
 			// specified_subscars
 			resultSet = statement.executeQuery("select *" + 
 					" from " + DBConsts.Table.SPECIFIED_SUBSCARS_UPLOAD + 
 	        		" where " + DBConsts.Header.Main.NAME + " = " + "'" + name + "'");
-			if (resultSet.next())
-				DBDataFiller.dbIntoSpecifiedSubscars(resultSet, bbkUpload);
+			DBDataFiller.dbIntoSpecifiedSubscars(resultSet, bbkUpload);
 			// twins
 			resultSet = statement.executeQuery("select *" + 
 					" from " + DBConsts.Table.TWINS_UPLOAD + 
 	        		" where " + DBConsts.Header.Main.NAME + " = " + "'" + name + "'");
-			if (resultSet.next())
-				DBDataFiller.dbIntoTwins(resultSet, bbkUpload);
+			DBDataFiller.dbIntoTwins(resultSet, bbkUpload);
 			
 			resultSet.close();
 		} catch (SQLException e) {e.printStackTrace();}

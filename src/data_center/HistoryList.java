@@ -2,11 +2,13 @@ package data_center;
 
 import java.util.ArrayList;
 
+/** The class implements a history list contains roll back and go forward function.  */
 public class HistoryList<T>
 {
-	public int currentItemNo = -1;
+	private int currentItemNo = -1;
 	private ArrayList<T> dataList = new ArrayList<T>();
 
+	/** Keeps the previous items and flush the following items.  */
 	public void putInItem(T item)
 	{
 		// also suitable for currentItemNo == -1 case
@@ -18,6 +20,11 @@ public class HistoryList<T>
 		dataList.add(item);
 	}
 
+	public int getCurrentItemNo()
+	{	
+		return currentItemNo;
+	}
+	
 	public T getCurrentItem()
 	{
 		if (dataList.size() == 0)

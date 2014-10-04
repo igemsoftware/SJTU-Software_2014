@@ -31,6 +31,8 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.w3c.dom.Text;
 
+/** This class provides project operations include add, remove, modify components, 
+ * ctrlZ, ctrlY function and save & load.  */
 public class SketchProject
 {
 	public class Operation
@@ -144,6 +146,8 @@ public class SketchProject
 		return null;
 	}
 
+	/** Registration function, receive the user operation and remember it in the 
+	 * backstage.  */
 	public void addComponent(Component component)
 	{
 		if (component != null)
@@ -155,6 +159,8 @@ public class SketchProject
 		}
 	}
 
+	/** Registration function, receive the user operation and remember it in the 
+	 * backstage.  */
 	public void delComponent(Component component)
 	{
 		if (component != null)
@@ -166,8 +172,8 @@ public class SketchProject
 		}
 	}
 
-	/**
-	 *  attributeType should be picked from Operation.TYPE_
+	/** Registration function, receive the user operation and remember it in the 
+	 * backstage. The attributeType should be picked from Operation.TYPE_XXX. The
 	 *  folAttribute is the attribute changed into, such as Point, Color */
 	public void modifyComponent(int theID, int attributeType, Object folAttribute)
 	{
@@ -196,15 +202,19 @@ public class SketchProject
 		modified = true;
 	}
 	
-	public void onAbsorb(int backBoneID, int bbkID)
+	/** Registration function, receive the user operation and remember it in the 
+	 * backstage.  */
+	public void onAbsorb(int backBoneID, int bbkID, int index)
 	{	
 		Component comp = findComponentByID(backBoneID);
 		if (comp == null || !comp.primaryType.equals(BackBone.class.getSimpleName()))
 			return;
 		// else
-		comp.toBackBone().bbkChildren.add(bbkID);
+		comp.toBackBone().bbkChildren.add(index, bbkID);
 	}
 	
+	/** Registration function, receive the user operation and remember it in the 
+	 * backstage.  */
 	public void onDesorb(int backBoneID, int bbkID)
 	{	
 		Component comp = findComponentByID(backBoneID);
@@ -217,6 +227,8 @@ public class SketchProject
 				backBone.bbkChildren.remove(IDInList);
 	}
 	
+	/** Guidance function, guide the GUI the operation from the history list. 
+	 * No registration is needed since the operation is not read from the user.  */
 	public Operation ctrlZ()
 	{
 		Operation originalOp = operationHistory.rollBack();
@@ -229,6 +241,8 @@ public class SketchProject
 		return reversedOp;
 	}
 
+	/** Guidance function, guide the GUI the operation from the history list. 
+	 * No registration is needed since the operation is not read from the user.  */
 	public Operation ctrlY()
 	{
 		Operation originalOp = operationHistory.goForward();
@@ -250,7 +264,7 @@ public class SketchProject
 	
 	
 	/** Change the componentList without change the historyList 
-	 * because it is set to act under an operation, not to generate one */
+	 * because it is set to act under an operation, not to generate one.  */
 	private void exeOperation(Operation operation)
 	{	
 		switch (operation.operationType)
@@ -289,6 +303,8 @@ public class SketchProject
 		}
 	}
 	
+	/** Áª¶¯ in Chinese, move the biobricks on the same backbone together if the 
+	 * backbone is moved.  */
 	private void onLinkage(BackBone backBone, Point previous, Point following)
 	{
 		int dx = following.x - previous.x,
@@ -308,7 +324,8 @@ public class SketchProject
 	
 	
 
-
+	/** Save the project graph into XML file, note that the project.name will be 
+	 * specified after the file name.  */
 	public void saveIntoFile(String filePath)
 	{
 		Document doc = null;
@@ -342,6 +359,8 @@ public class SketchProject
   	  	modified = false;
 	}
 	
+	/** Load the project graph from XML file, note that the project.name will be 
+	 * specified after the file name.  */
 	public void loadFromFile(String filePath)
 	{	
 		componentList.clear();
@@ -371,7 +390,7 @@ public class SketchProject
 	
 	
 	
-	
+	/** Utility function to cut the file name off from the file path.  */
 	private String getFileName(String filePath)
 	{	
 		String fileNameWithSuffix = new File( filePath.trim()).getName();

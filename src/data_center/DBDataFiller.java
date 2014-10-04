@@ -4,9 +4,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-/** Can both fill data into database and into the bbks */
-public class DBDataFiller
+/** The class to fill data between database and local biobrick instances like 
+ * BbkOutline, BbkDetail, BbkUpload. 
+ * Can both fill data into database and into the bbks */
+class DBDataFiller
 {
+	/** The main of bbkOutline or bbkDetail.  */
 	public static void dbIntoMain(ResultSet resultSet, BbkOutline bbkOutline) throws SQLException
     {	
 		bbkOutline.name = resultSet.getString(DBConsts.Header.Main.NAME);
@@ -48,104 +51,105 @@ public class DBDataFiller
 	
 	
 	
-	// resultSet WILL have an result if enters these functions, checked outside
-	public static void dbIntoCategories(ResultSet resultSet, BbkDetail bbkDetail) throws SQLException
+
+	public static void dbIntoCategories(ResultSet resultSet, Object bbk) throws SQLException
 	{	
-		do
-			bbkDetail.categories.add(new BbkDetail.Category(resultSet));
-		while (resultSet.next());
+		if (bbk.getClass().equals(BbkDetail.class))
+		{	BbkDetail bbkDetail = (BbkDetail) bbk;
+			while (resultSet.next())
+				bbkDetail.categories.add(new BbkDetail.Category(resultSet));
+		}
+		else if (bbk.getClass().equals(BbkUpload.class))
+		{	BbkUpload bbkUpload = (BbkUpload) bbk;
+			while (resultSet.next())
+				bbkUpload.categories.add(new BbkUpload.Category(resultSet));
+		}
 	}
 	
-	public static void dbIntoCategories(ResultSet resultSet, BbkUpload bbkUpload) throws SQLException
+	public static void dbIntoDeepSubparts(ResultSet resultSet, Object bbk) throws SQLException
 	{	
-		do
-			bbkUpload.categories.add(new BbkUpload.Category(resultSet));
-		while (resultSet.next());
+		if (bbk.getClass().equals(BbkDetail.class))
+		{	BbkDetail bbkDetail = (BbkDetail) bbk;
+			while (resultSet.next())
+				bbkDetail.deepSubparts.add(new BbkDetail.DeepSubpart(resultSet));
+		}
+		else if (bbk.getClass().equals(BbkUpload.class))
+		{	BbkUpload bbkUpload = (BbkUpload) bbk;
+			while (resultSet.next())
+				bbkUpload.deepSubparts.add(new BbkUpload.DeepSubpart(resultSet));
+		}
 	}
 	
-	public static void dbIntoDeepSubparts(ResultSet resultSet, BbkDetail bbkDetail) throws SQLException
+	public static void dbIntoFeatures(ResultSet resultSet, Object bbk) throws SQLException
 	{	
-		do
-			bbkDetail.deepSubparts.add(new BbkDetail.DeepSubpart(resultSet));
-		while (resultSet.next());
+		if (bbk.getClass().equals(BbkDetail.class))
+		{	BbkDetail bbkDetail = (BbkDetail) bbk;
+			while (resultSet.next())
+				bbkDetail.features.add(new BbkDetail.Feature(resultSet));
+		}
+		else if (bbk.getClass().equals(BbkUpload.class))
+		{	BbkUpload bbkUpload = (BbkUpload) bbk;
+			while (resultSet.next())
+				bbkUpload.features.add(new BbkUpload.Feature(resultSet));
+		}
 	}
 	
-	public static void dbIntoDeepSubparts(ResultSet resultSet, BbkUpload bbkUpload) throws SQLException
+	public static void dbIntoParameters(ResultSet resultSet, Object bbk) throws SQLException
 	{	
-		do
-			bbkUpload.deepSubparts.add(new BbkUpload.DeepSubpart(resultSet));
-		while (resultSet.next());
+		if (bbk.getClass().equals(BbkDetail.class))
+		{	BbkDetail bbkDetail = (BbkDetail) bbk;
+			while (resultSet.next())
+				bbkDetail.parameters.add(new BbkDetail.Parameter(resultSet));
+		}
+		else if (bbk.getClass().equals(BbkUpload.class))
+		{	BbkUpload bbkUpload = (BbkUpload) bbk;
+			while (resultSet.next())
+				bbkUpload.parameters.add(new BbkUpload.Parameter(resultSet));
+		}
 	}
 	
-	public static void dbIntoFeatures(ResultSet resultSet, BbkDetail bbkDetail) throws SQLException
+	public static void dbIntoSpecifiedSubparts(ResultSet resultSet, Object bbk) throws SQLException
 	{	
-		do
-			bbkDetail.features.add(new BbkDetail.Feature(resultSet));
-		while (resultSet.next());
+		if (bbk.getClass().equals(BbkDetail.class))
+		{	BbkDetail bbkDetail = (BbkDetail) bbk;
+			while (resultSet.next())
+				bbkDetail.specifiedSubparts.add(new BbkDetail.SpecifiedSubpart(resultSet));
+		}
+		else if (bbk.getClass().equals(BbkUpload.class))
+		{	BbkUpload bbkUpload = (BbkUpload) bbk;
+			while (resultSet.next())
+				bbkUpload.specifiedSubparts.add(new BbkUpload.SpecifiedSubpart(resultSet));
+		}
 	}
 	
-	public static void dbIntoFeatures(ResultSet resultSet, BbkUpload bbkUpload) throws SQLException
+	public static void dbIntoSpecifiedSubscars(ResultSet resultSet, Object bbk) throws SQLException
 	{	
-		do
-			bbkUpload.features.add(new BbkUpload.Feature(resultSet));
-		while (resultSet.next());
+		if (bbk.getClass().equals(BbkDetail.class))
+		{	BbkDetail bbkDetail = (BbkDetail) bbk;
+			while (resultSet.next())
+				bbkDetail.specifiedSubscars.add(new BbkDetail.SpecifiedSubscar(resultSet));
+		}
+		else if (bbk.getClass().equals(BbkUpload.class))
+		{	BbkUpload bbkUpload = (BbkUpload) bbk;
+			while (resultSet.next())
+				bbkUpload.specifiedSubscars.add(new BbkUpload.SpecifiedSubscar(resultSet));
+		}
 	}
 	
-	public static void dbIntoParameters(ResultSet resultSet, BbkDetail bbkDetail) throws SQLException
+	public static void dbIntoTwins(ResultSet resultSet, Object bbk) throws SQLException
 	{	
-		do
-			bbkDetail.parameters.add(new BbkDetail.Parameter(resultSet));
-		while (resultSet.next());
+		if (bbk.getClass().equals(BbkDetail.class))
+		{	BbkDetail bbkDetail = (BbkDetail) bbk;
+			while (resultSet.next())
+				bbkDetail.twins.add(new BbkDetail.Twin(resultSet));
+		}
+		else if (bbk.getClass().equals(BbkUpload.class))
+		{	BbkUpload bbkUpload = (BbkUpload) bbk;
+			while (resultSet.next())
+				bbkUpload.twins.add(new BbkUpload.Twin(resultSet));
+		}
 	}
 	
-	public static void dbIntoParameters(ResultSet resultSet, BbkUpload bbkUpload) throws SQLException
-	{	
-		do
-			bbkUpload.parameters.add(new BbkUpload.Parameter(resultSet));
-		while (resultSet.next());
-	}
-	
-	public static void dbIntoSpecifiedSubparts(ResultSet resultSet, BbkDetail bbkDetail) throws SQLException
-	{	
-		do
-			bbkDetail.specifiedSubparts.add(new BbkDetail.SpecifiedSubpart(resultSet));
-		while (resultSet.next());
-	}
-	
-	public static void dbIntoSpecifiedSubparts(ResultSet resultSet, BbkUpload bbkUpload) throws SQLException
-	{	
-		do
-			bbkUpload.specifiedSubparts.add(new BbkUpload.SpecifiedSubpart(resultSet));
-		while (resultSet.next());
-	}
-	
-	public static void dbIntoSpecifiedSubscars(ResultSet resultSet, BbkDetail bbkDetail) throws SQLException
-	{	
-		do
-			bbkDetail.specifiedSubscars.add(new BbkDetail.SpecifiedSubscar(resultSet));
-		while (resultSet.next());
-	}
-	
-	public static void dbIntoSpecifiedSubscars(ResultSet resultSet, BbkUpload bbkUpload) throws SQLException
-	{	
-		do
-			bbkUpload.specifiedSubscars.add(new BbkUpload.SpecifiedSubscar(resultSet));
-		while (resultSet.next());
-	}
-	
-	public static void dbIntoTwins(ResultSet resultSet, BbkDetail bbkDetail) throws SQLException
-	{	
-		do
-			bbkDetail.twins.add(new BbkDetail.Twin(resultSet));
-		while (resultSet.next());
-	}
-	
-	public static void dbIntoTwins(ResultSet resultSet, BbkUpload bbkUpload) throws SQLException
-	{	
-		do
-			bbkUpload.twins.add(new BbkUpload.Twin(resultSet));
-		while (resultSet.next());
-	}
 	
 	
 	
