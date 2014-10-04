@@ -1,2 +1,4 @@
-/EasyBBK_Swing/
-/data_center/
+*.class
+*.classpath
+*.classpath
+/src/
