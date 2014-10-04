@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
+/** This class is a list for BbkOutline instance. Extending from ArrayList, the class
+ * also provides filter and sort function, and a field to store the keyword previously
+ * specified.  */
 @SuppressWarnings("serial")
 public class SearchResultList extends ArrayList<BbkOutline>
 {
@@ -18,26 +21,6 @@ public class SearchResultList extends ArrayList<BbkOutline>
 		this.keyword = keyword;
 	}
 	
-	public String[][] showSearchResult()
-	{
-		String[][] rows=null;
-		int rowsize = this.size();
-		System.out.println(rowsize);
-		rows = new String[rowsize][6];
-		int rowcount=0;
-		for (int i=0;i<rowsize;i++)
-		{
-			rows[rowcount][0]=this.get(i).name;
-			rows[rowcount][1]=this.get(i).type;
-			rows[rowcount][2]=this.get(i).author;
-			rows[rowcount][3]=this.get(i).enterDate;
-			rows[rowcount][4]=this.get(i).shortDesc;
-			rows[rowcount][5]=this.get(i).url;
-			rowcount++;
-	    }
-		return rows;
-	}
-
 	public boolean has(String bbkName)
 	{	
 		for (BbkOutline bbkOutline : this)
@@ -46,10 +29,8 @@ public class SearchResultList extends ArrayList<BbkOutline>
 		return false;
 	}
 	
-	/** 
-	 * Use like "listToShow = rawList.filterByType().filterByEnterYear()...;" 
-	 * Please use the String in the SearchResultList.Filter
-	 */
+	/** Able to be use like "listToShow = rawList.filterByType().filterByEnterYear()...;" 
+	 * Please use the String in the SearchResultList.Filter as the filter strings.  */
 	public SearchResultList filterByType(ArrayList<String> typeList)
 	{	
 		if (typeList == null)	// don't filter
@@ -59,10 +40,13 @@ public class SearchResultList extends ArrayList<BbkOutline>
 		for (BbkOutline bbk : this)
 			for (String type : typeList)
 				if (bbk.type.equals(type))
-					filteredList.add(bbk);
+				{	filteredList.add(bbk);	break;	}
 		return filteredList;
 	}
 	
+	/** The parameter enterYear is a int array which has a length of 2. The 2 nums
+	 * specify the earliest and the latest year to be kept in the filtered list. 
+	 * Note that both of the years are judged by "<=" or ">=".  */
 	public SearchResultList filterByEnterYear(int[] enterYear)
 	{
 		if (enterYear == null)	// don't filter
@@ -133,11 +117,12 @@ public class SearchResultList extends ArrayList<BbkOutline>
 		for (BbkOutline bbk : this)
 			for (Integer starNum : starNumList)
 				if ( bbk.rating.average_stars.startsWith(starNum.toString()) )
-					filteredList.add(bbk);
+				{	filteredList.add(bbk);	break;	}
 		return filteredList;
 	}
 	
-	/** Change the list in situ, DESC means ½µÐò  */
+	/** Change the list in situ, DESC means sort descending (½µÐò in Chinese), 
+	 * which put the latest biobrick in the head of the list.  */
 	public void sortByEnterDate(final boolean DESC)
 	{	
 		Comparator<BbkOutline> comparator = new Comparator<BbkOutline>()
@@ -171,7 +156,8 @@ public class SearchResultList extends ArrayList<BbkOutline>
 		Collections.sort(this, comparator);
 	}
 	
-	/** Change the list in situ, DESC means ½µÐò  */
+	/** Change the list in situ, DESC means sort descending (½µÐò in Chinese), 
+	 * which put the most quoted biobrick in the head of the list.  */
 	public void sortByGoogleQuoteNum(final boolean DESC)
 	{	
 		Comparator<BbkOutline> comparator = new Comparator<BbkOutline>()
@@ -195,7 +181,8 @@ public class SearchResultList extends ArrayList<BbkOutline>
 		Collections.sort(this, comparator);
 	}
 	
-	/** Change the list in situ, DESC means ½µÐò  */
+	/** Change the list in situ, DESC means sort descending (½µÐò in Chinese), 
+	 * which put the biobrick with most stars in the head of the list.  */
 	public void sortByAverageStars(final boolean DESC)
 	{	
 		Comparator<BbkOutline> comparator = new Comparator<BbkOutline>()
@@ -225,7 +212,8 @@ public class SearchResultList extends ArrayList<BbkOutline>
 		Collections.sort(this, comparator);
 	}
 	
-	/** Change the list in situ, DESC means ½µÐò  */
+	/** Change the list in situ, DESC means sort descending (½µÐò in Chinese), 
+	 * which put the biobrick with most confirmed times in the head of the list.  */
 	public void sortByConfrimedTimes(final boolean DESC)
 	{	
 		Comparator<BbkOutline> comparator = new Comparator<BbkOutline>()
@@ -249,7 +237,8 @@ public class SearchResultList extends ArrayList<BbkOutline>
 		Collections.sort(this, comparator);
 	}
 	
-	/** Change the list in situ, DESC means ½µÐò  */
+	/** Change the list in situ, DESC means sort descending (½µÐò in Chinese), 
+	 * which put the biobrick with the most similar sequence in the head of the list.  */
 	public void sortByBlastResult(final boolean DESC)
 	{	
 		Comparator<BbkOutline> comparator = new Comparator<BbkOutline>()
@@ -281,7 +270,9 @@ public class SearchResultList extends ArrayList<BbkOutline>
 		Collections.sort(this, comparator);
 	}
 	
-	/** Change the list in situ, DESC means ½µÐò  */
+	/** Change the list in situ, DESC means sort descending (½µÐò in Chinese), 
+	 * which put the biobrick with highest score in the head of the list. 
+	 * The score is under default weight defined by SJTU-software team.  */
 	public void sortByTotalScore(final boolean DESC)
 	{	
 		Comparator<BbkOutline> comparator = new Comparator<BbkOutline>()
@@ -299,7 +290,9 @@ public class SearchResultList extends ArrayList<BbkOutline>
 		Collections.sort(this, comparator);
 	}
 	
-	/** Change the list in situ, DESC means ½µÐò  */
+	/** Change the list in situ, DESC means sort descending (½µÐò in Chinese), 
+	 * which put the biobrick with highest score in the head of the list. 
+	 * The score is under the user defined weight.  */
 	public void sortByTotalScore(final boolean DESC, 
 			final double status_weight, final double quality_weight, 
 			final double feedbacks_weight, final double publication_weight)
@@ -328,8 +321,29 @@ public class SearchResultList extends ArrayList<BbkOutline>
 			bbk.display();
 	}
 	
+	/** Instead of print, providing another way to display the content of the list */
+	public String[][] toTwoDimensionalArray()
+	{
+		String[][] rows = null;
+		int rowsize = this.size();
+		rows = new String[rowsize][6];
+		int rowcount = 0;
+		for (int i = 0; i < rowsize; i++)
+		{
+			rows[rowcount][0] = this.get(i).name;
+			rows[rowcount][1] = this.get(i).type;
+			rows[rowcount][2] = this.get(i).author;
+			rows[rowcount][3] = this.get(i).enterDate;
+			rows[rowcount][4] = this.get(i).shortDesc;
+			rows[rowcount][5] = this.get(i).url;
+			rowcount++;
+	    }
+		return rows;
+	}
 	
 	
+	
+	/** Constants used when filtering.  */
 	public static class Filter
 	{	
 		public static class Type

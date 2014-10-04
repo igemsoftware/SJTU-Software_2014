@@ -4,6 +4,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+/** The data stored locally in the EasyBbk before upload. A filled BbkUpload can be
+ * used to upload a biobrick directly into the database established by SJTU-software.  */
 public class BbkUpload
 {
 	// those init with null can't change its value once set
@@ -33,7 +35,9 @@ public class BbkUpload
 	public String getName()
 	{	return name;	}
 
-	/** rawName is sth without "BBa_", sth like "B0012" */
+	/** rawName is some thing without "BBa_", like "B0012". Suffix "_EasyBbk" will
+	 * be automatically appended to distinguish them from the biobricks fetched 
+	 * from igem.org */
 	public void setName(String rawName)
 	{	
 		if (name == null)

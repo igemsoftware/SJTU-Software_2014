@@ -3,6 +3,9 @@ package data_center;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/** The class used to store the data to be shown in search result. All of the 
+ * data are fetched from EasyBbk database and stored as Strings. Also contains
+ * the getScore() method to get the score evaluated by SJTU-software team.  */
 public class BbkOutline
 {
 	// all from table main
@@ -38,12 +41,13 @@ public class BbkOutline
     	DBDataFiller.dbIntoMain(resultSet, this);
     }
     
-    /** Score at default weight */
+    /** Score at default weight.  */
     public int getScore()
     {	
     	return this.rating.getScore();
     }
     
+    /** Score at custom weight.  */
     public int getScore(double status_weight, double quality_weight, 
 						double feedbacks_weight, double publication_weight)
     {	
@@ -51,6 +55,7 @@ public class BbkOutline
     								feedbacks_weight, publication_weight);
     }
     
+    /** Print main attributes in cmd for testing.  */
     public void display()
     {
         System.out.println( "********\n" + 
@@ -67,7 +72,8 @@ public class BbkOutline
     
     
     
-    /** The rating by EasyBbk */
+    /** The rating by EasyBbk, evaluation criteria from both official web page 
+     * and criteria by SJTU-software.  */
     public static class Rating
     {	
     	public String rating;
@@ -124,6 +130,7 @@ public class BbkOutline
     		return score;
     	}
     	
+    	/** Print main attributes in cmd for testing.  */
     	public void display()
     	{	
     		System.out.println("Rating: "+ rating + "\n" + 
@@ -135,6 +142,7 @@ public class BbkOutline
     	}
     }
     
+    /** The evaluation criteria stored when blasting.  */
     public static class Blasting
     {	
     	public int score;
