@@ -1,0 +1,3761 @@
+BLASTN 2.2.29+
+
+
+Reference: Stephen F. Altschul, Thomas L. Madden, Alejandro A.
+Schaffer, Jinghui Zhang, Zheng Zhang, Webb Miller, and David J.
+Lipman (1997), "Gapped BLAST and PSI-BLAST: a new generation of
+protein database search programs", Nucleic Acids Res. 25:3389-3402.
+
+
+
+Database: bbk.fasta
+           25,690 sequences; 37,708,246 total letters
+
+
+
+Query= 
+Length=20
+                                                                      Score     E
+Sequences producing significant alignments:                          (Bits)  Value
+
+lcl|BBa_Z52935  U 8749 Generator "protein generator for enzyme"       37.4    6e-04
+lcl|BBa_S05134  U 28386 Intermediate "R0051:B0032"                    37.4    6e-04
+lcl|BBa_S05085  P 26973 Intermediate "K598002:F1610"                  37.4    6e-04
+lcl|BBa_S04619  P 23071 Intermediate "K098995:B0034"                  37.4    6e-04
+lcl|BBa_S04617  A 22869 Intermediate "K592006:Q04510"                 37.4    6e-04
+lcl|BBa_S04417  U 17684 Intermediate "S04416:B0015"                   37.4    6e-04
+lcl|BBa_S04416  U 17683 Intermediate "S04415:C0051"                   37.4    6e-04
+lcl|BBa_S04415  U 17682 Intermediate "S04414:B0034"                   37.4    6e-04
+lcl|BBa_S04414  U 17681 Intermediate "S04413:R0040"                   37.4    6e-04
+lcl|BBa_S04413  U 17680 Intermediate "S04412:B0015"                   37.4    6e-04
+lcl|BBa_S04412  U 17679 Intermediate "S04411:C0012"                   37.4    6e-04
+lcl|BBa_S04411  U 17678 Intermediate "S04410:B0034"                   37.4    6e-04
+lcl|BBa_S04410  U 17677 Intermediate "S04409:R0051"                   37.4    6e-04
+lcl|BBa_S04408  U 17675 Intermediate "S04407:R0040"                   37.4    6e-04
+lcl|BBa_S04407  U 17674 Intermediate "S04406:C0012"                   37.4    6e-04
+lcl|BBa_S04406  U 17673 Intermediate "S04405:B0034"                   37.4    6e-04
+lcl|BBa_S04405  U 17672 Intermediate "S04404:R0051"                   37.4    6e-04
+lcl|BBa_S04308  P 15821 Intermediate "S04306:S04307"                  37.4    6e-04
+lcl|BBa_S04306  P 15818 Intermediate "I12007:F1610"                   37.4    6e-04
+lcl|BBa_S04253  U 14547 Intermediate "J01101:I763011"                 37.4    6e-04
+lcl|BBa_S04221  P 14293 Intermediate "R0051:S04214"                   37.4    6e-04
+lcl|BBa_S04217  U 14180 Intermediate "R0051:S03518"                   37.4    6e-04
+lcl|BBa_S04138  P 12698 Intermediate "cI QPI with GFP reporter sy...  37.4    6e-04
+lcl|BBa_S04137  P 12686 Intermediate "heat sensitive cI QPI"          37.4    6e-04
+lcl|BBa_S04136  P 12684 Intermediate "terminator and cI promoter"     37.4    6e-04
+lcl|BBa_S03842  U 10444 Intermediate "I714894:I714889"                37.4    6e-04
+lcl|BBa_S03841  U 10443 Intermediate "I714894:I714889"                37.4    6e-04
+lcl|BBa_S03840  P 10318 Intermediate "S03839:Q04510"                  37.4    6e-04
+lcl|BBa_S03835  U 10074 Intermediate "I714894:I714889"                37.4    6e-04
+lcl|BBa_S03834  U 10073 Intermediate "I714894:I714890"                37.4    6e-04
+lcl|BBa_S03830  D 10027 Intermediate "I722007:S03827"                 37.4    6e-04
+lcl|BBa_S03829  P 10024 Intermediate "I722007:S03827"                 37.4    6e-04
+lcl|BBa_S03828  P 10023 Intermediate "P0412:I722008"                  37.4    6e-04
+lcl|BBa_S03827  A 10021 Intermediate "I722005:A340620"                37.4    6e-04
+lcl|BBa_S03819  P 9946 Intermediate "S03818:I13507"                   37.4    6e-04
+lcl|BBa_S03818  U 9944 Intermediate "S03817:I12007"                   37.4    6e-04
+lcl|BBa_S03817  U 9943 Intermediate "I5010:I6036"                     37.4    6e-04
+lcl|BBa_S03805  A 9652 Intermediate "R0051:I13507"                    37.4    6e-04
+lcl|BBa_S03804  U 9651 Intermediate "R0051:P0440"                     37.4    6e-04
+lcl|BBa_S03791  U 9552 Intermediate "C0012:S03790"                    37.4    6e-04
+lcl|BBa_S03790  U 9551 Intermediate "E0040:S03789"                    37.4    6e-04
+lcl|BBa_S03789  U 9550 Intermediate "C0051:S03788"                    37.4    6e-04
+lcl|BBa_S03788  U 9549 Intermediate "I714888:C0056"                   37.4    6e-04
+lcl|BBa_S03668  P 8497 Intermediate "B0014:R0051"                     37.4    6e-04
+lcl|BBa_S03667  P 8496 Intermediate "B0015:R0051"                     37.4    6e-04
+lcl|BBa_S03666  P 8495 Intermediate "P0351:R0051"                     37.4    6e-04
+lcl|BBa_S03476  A 6625 Reporter "Lambda-system Pr promoter with Y...  37.4    6e-04
+lcl|BBa_S03475  P 6624 Reporter "Lambda-system Pr promoter with C...  37.4    6e-04
+lcl|BBa_S03474  A 6623 Reporter "Lambda-system Pr promoter with Y...  37.4    6e-04
+lcl|BBa_S03473  A 6622 Reporter "Lambda-system Pr promoter with R...  37.4    6e-04
+lcl|BBa_S03472  P 6621 Measurement "Sensing Device with Prm and RFP"  37.4    6e-04
+lcl|BBa_S03471  P 6620 Measurement "Sensing Device with Pr and CFP"   37.4    6e-04
+lcl|BBa_S03470  U 6619 Measurement "Sensing Device with Pr and GFP"   37.4    6e-04
+lcl|BBa_S03467  P 6616 Intermediate "Pr with CFP and Prm+ with YFP"   37.4    6e-04
+lcl|BBa_S03466  U 6615 Reporter "Prm+ with YFP as a reporter"         37.4    6e-04
+lcl|BBa_S03465  P 6614 Reporter "Prm+ with CFP as a reporter"         37.4    6e-04
+lcl|BBa_S03464  P 6613 Reporter "Pr with CFP as a reporter"           37.4    6e-04
+lcl|BBa_S03460  U 6567 Intermediate "--Specify Parts List--"          37.4    6e-04
+lcl|BBa_S03457  U 6558 Intermediate "--Specify Parts List--"          37.4    6e-04
+lcl|BBa_S03369  U 6205 Intermediate ""MotB, GFP output""              37.4    6e-04
+lcl|BBa_S03368  A 6204 Intermediate "output (-CI promoter)"           37.4    6e-04
+lcl|BBa_S03364  U 6200 Intermediate "CI-LacI switch (+LVA&apos;s)"    37.4    6e-04
+lcl|BBa_S03363  U 6199 Intermediate ""CI-LacI switch (+LVA&apos;s...  37.4    6e-04
+lcl|BBa_S03338  U 6128 Intermediate "Pr with GFP and Prm+ with RFP"   37.4    6e-04
+lcl|BBa_S03337  P 6127 Reporter "Prm+ with RFP as a reporter"         37.4    6e-04
+lcl|BBa_S03336  A 6126 Reporter "Prm+ with GFP as a reporter"         37.4    6e-04
+lcl|BBa_S03335  A 6125 Reporter "Pr with GFP as a reporter"           37.4    6e-04
+lcl|BBa_S03330  U 6037 Intermediate "--Specify Parts List--"          37.4    6e-04
+lcl|BBa_S03329  U 6036 Intermediate "--Specify Parts List--"          37.4    6e-04
+lcl|BBa_S03314  U 6017 Intermediate "BI12007.B0030"                   37.4    6e-04
+lcl|BBa_S03312  U 6015 Intermediate "R0051.B0031"                     37.4    6e-04
+lcl|BBa_S03311  U 6014 Intermediate "I12007.B0032"                    37.4    6e-04
+lcl|BBa_S03293  U 5969 Intermediate "--Specify Parts List--"          37.4    6e-04
+lcl|BBa_S03292  P 5966 Intermediate "--Specify Parts List--"          37.4    6e-04
+lcl|BBa_S03286  U 5938 Intermediate "--Specify Parts List--"          37.4    6e-04
+lcl|BBa_S03285  U 5937 Intermediate "--Specify Parts List--"          37.4    6e-04
+lcl|BBa_S03283  U 5918 Intermediate "R0065 B0034 E0030"               37.4    6e-04
+lcl|BBa_S03269  U 5189 Intermediate "Intermediate part from assem...  37.4    6e-04
+lcl|BBa_S03268  U 5188 Intermediate "Intermediate part from assem...  37.4    6e-04
+lcl|BBa_S03267  U 5187 Intermediate "Intermediate part from assem...  37.4    6e-04
+lcl|BBa_S03266  U 5186 Intermediate "Intermediate part from assem...  37.4    6e-04
+lcl|BBa_S03265  U 5185 Intermediate "Intermediate part from assem...  37.4    6e-04
+lcl|BBa_S03258  U 5173 Intermediate "Intermediate part from assem...  37.4    6e-04
+lcl|BBa_S03257  U 5172 Intermediate "Intermediate part from assem...  37.4    6e-04
+lcl|BBa_S03256  U 5171 Intermediate "Intermediate part from assem...  37.4    6e-04
+lcl|BBa_S03183  P 4741 Intermediate "R0065.E0433"                     37.4    6e-04
+lcl|BBa_S03180  U 4736 Intermediate "B0015.R0065.B0034.E0033"         37.4    6e-04
+lcl|BBa_S03169  U 5004 Intermediate "Q04510.I0461"                    37.4    6e-04
+lcl|BBa_S03151  P 4762 Intermediate "Brickalator subassembly"         37.4    6e-04
+lcl|BBa_S03131  D 4634 Intermediate "Intermediate part from assem...  37.4    6e-04
+lcl|BBa_S02107  D 4459 Intermediate "Intermediate part from assem...  37.4    6e-04
+lcl|BBa_S02002  D 4249 Intermediate "Intermediate part from assem...  37.4    6e-04
+lcl|BBa_S02001  D 4247 Intermediate "Intermediate part from assem...  37.4    6e-04
+lcl|BBa_S02000  U 4245 Intermediate "Intermediate part from assem...  37.4    6e-04
+lcl|BBa_S01999  D 4243 Intermediate "Intermediate part from assem...  37.4    6e-04
+lcl|BBa_S01998  D 4241 Intermediate "Intermediate part from assem...  37.4    6e-04
+lcl|BBa_S01996  D 4237 Intermediate "Intermediate part from assem...  37.4    6e-04
+lcl|BBa_S01988  P 4235 Intermediate "--Specify Parts List--"          37.4    6e-04
+lcl|BBa_S01987  P 4233 Intermediate "--Specify Parts List--"          37.4    6e-04
+lcl|BBa_S01986  P 4231 Intermediate "--Specify Parts List--"          37.4    6e-04
+lcl|BBa_S01985  P 4229 Intermediate "--Specify Parts List--"          37.4    6e-04
+lcl|BBa_S01936  D 4105 Intermediate "Intermediate part from assem...  37.4    6e-04
+lcl|BBa_S01935  P 4103 Intermediate "--Specify Parts List--"          37.4    6e-04
+lcl|BBa_S01934  P 4101 Intermediate "--Specify Parts List--"          37.4    6e-04
+lcl|BBa_S01933  P 4099 Intermediate "--Specify Parts List--"          37.4    6e-04
+lcl|BBa_S01931  P 4095 Intermediate "--Specify Parts List--"          37.4    6e-04
+lcl|BBa_S01907  D 3881 Intermediate "Intermediate part from assem...  37.4    6e-04
+lcl|BBa_S01904  U 3875 Intermediate "Intermediate part from assem...  37.4    6e-04
+lcl|BBa_S01902  P 3871 Intermediate "--Specify Parts List--"          37.4    6e-04
+lcl|BBa_S01900  P 3867 Intermediate "--Specify Parts List--"          37.4    6e-04
+lcl|BBa_S01898  U 3863 Intermediate "Intermediate part from assem...  37.4    6e-04
+lcl|BBa_S01895  P 3857 Intermediate "Intermediate part from assem...  37.4    6e-04
+lcl|BBa_S01892  D 3851 Intermediate "Intermediate part from assem...  37.4    6e-04
+lcl|BBa_S01891  D 3849 Intermediate "Intermediate part from assem...  37.4    6e-04
+lcl|BBa_S01851  D 3759 Intermediate "Intermediate part from assem...  37.4    6e-04
+lcl|BBa_S01849  U 3755 Intermediate "Intermediate part from assem...  37.4    6e-04
+lcl|BBa_S01847  P 3751 Intermediate "Intermediate part from assem...  37.4    6e-04
+lcl|BBa_S01845  U 3747 Intermediate "Intermediate part from assem...  37.4    6e-04
+lcl|BBa_S01843  U 3743 Intermediate "Intermediate part from assem...  37.4    6e-04
+lcl|BBa_S01840  U 3737 Intermediate "Intermediate part from assem...  37.4    6e-04
+lcl|BBa_S01830  D 3717 Intermediate "Intermediate part from assem...  37.4    6e-04
+lcl|BBa_S01826  D 3709 Intermediate "Intermediate part from assem...  37.4    6e-04
+lcl|BBa_S01824  D 3705 Intermediate "Intermediate part from assem...  37.4    6e-04
+lcl|BBa_S01821  U 3699 Intermediate "Intermediate part from assem...  37.4    6e-04
+lcl|BBa_S01674  P 5566 Intermediate "R0062.Q04400.Q04121.Q04511"      37.4    6e-04
+lcl|BBa_S01664  P 3377 Intermediate "--Specify Parts List--"          37.4    6e-04
+lcl|BBa_S01663  U 3375 Intermediate "Intermediate part from assem...  37.4    6e-04
+lcl|BBa_S01660  U 3369 Intermediate "Intermediate part from assem...  37.4    6e-04
+lcl|BBa_S01653  U 3347 Intermediate "Intermediate part from assem...  37.4    6e-04
+lcl|BBa_S01650  A 3341 Intermediate "--Specify Parts List--"          37.4    6e-04
+lcl|BBa_S01649  U 3339 Intermediate "Intermediate part from assem...  37.4    6e-04
+lcl|BBa_S01641  P 3323 Intermediate "--Specify Parts List--"          37.4    6e-04
+lcl|BBa_S01536  P 3113 Intermediate "--Specify Parts List--"          37.4    6e-04
+lcl|BBa_S01535  A 3111 Intermediate "Intermediate part from assem...  37.4    6e-04
+lcl|BBa_S01533  P 3107 Intermediate "--Specify Parts List--"          37.4    6e-04
+lcl|BBa_S01455  P 2951 Intermediate "--Specify Parts List--"          37.4    6e-04
+lcl|BBa_S01453  P 2947 Intermediate "--Specify Parts List--"          37.4    6e-04
+lcl|BBa_S01431  U 2892 Intermediate "Intermediate part from assem...  37.4    6e-04
+lcl|BBa_S01430  A 2890 Intermediate "Intermediate part from assem...  37.4    6e-04
+lcl|BBa_S01428  P 2886 Intermediate "Intermediate part from assem...  37.4    6e-04
+lcl|BBa_S01416  P 2862 Intermediate "--Specify Parts List--"          37.4    6e-04
+lcl|BBa_S01383  D 2784 Intermediate "Intermediate part from assem...  37.4    6e-04
+lcl|BBa_S01382  D 2782 Intermediate "Intermediate part from assem...  37.4    6e-04
+lcl|BBa_S01381  D 2780 Intermediate "Intermediate part from assem...  37.4    6e-04
+lcl|BBa_S01380  D 2778 Intermediate "Intermediate part from assem...  37.4    6e-04
+lcl|BBa_S01379  D 2776 Intermediate "Intermediate part from assem...  37.4    6e-04
+lcl|BBa_S01378  D 2774 Intermediate "Intermediate part from assem...  37.4    6e-04
+lcl|BBa_S01377  D 2772 Intermediate "Intermediate part from assem...  37.4    6e-04
+lcl|BBa_S01304  D 2589 Intermediate "Intermediate part from assem...  37.4    6e-04
+lcl|BBa_S01303  D 2587 Intermediate "Intermediate part from assem...  37.4    6e-04
+lcl|BBa_S01302  D 2585 Intermediate "Intermediate part from assem...  37.4    6e-04
+lcl|BBa_S01301  D 2583 Intermediate "Intermediate part from assem...  37.4    6e-04
+lcl|BBa_S01300  D 2581 Intermediate "Intermediate part from assem...  37.4    6e-04
+lcl|BBa_S01299  D 2579 Intermediate "Intermediate part from assem...  37.4    6e-04
+lcl|BBa_S01298  D 2577 Intermediate "Intermediate part from assem...  37.4    6e-04
+lcl|BBa_S01297  D 2575 Intermediate "Intermediate part from assem...  37.4    6e-04
+lcl|BBa_S01023  U 5817 Intermediate "Q04510.Q04520"                   37.4    6e-04
+lcl|BBa_S01021  U 5816 Intermediate "R0052.Q04510"                    37.4    6e-04
+lcl|BBa_S01020  U 5815 Intermediate "Q04121.Q04510"                   37.4    6e-04
+lcl|BBa_S01006  P 5511 Intermediate "Q04510.E0432"                    37.4    6e-04
+lcl|BBa_R0065  A 194 Regulatory "Promoter (lambda cI and luxR reg...  37.4    6e-04
+lcl|BBa_R0051  A 189 Regulatory "promoter (lambda cI regulated)"      37.4    6e-04
+lcl|BBa_Q04811  U 3922 Composite "QPI (B0034.C0081.B0015.R0051)"      37.4    6e-04
+lcl|BBa_Q04511  A 2126 Inverter "QPI (B0034.C0051.B0015.R0065)"       37.4    6e-04
+lcl|BBa_Q04510  A 2125 Inverter "QPI (B0034.C0051.B0015.R0051)"       37.4    6e-04
+lcl|BBa_Q03511  U 2143 Composite "QPI (B0033.C0051.B0015.R0065)"      37.4    6e-04
+lcl|BBa_Q03510  P 2140 Composite "QPI (B0033.C0051.B0015.R0051)"      37.4    6e-04
+lcl|BBa_Q01511  A 2133 Composite "QPI (B0031.C0051.B0015.R0065)"      37.4    6e-04
+lcl|BBa_Q01510  P 2132 Composite "QPI (B0031.C0051.B0015.R0051)"      37.4    6e-04
+lcl|BBa_M30010  U 6342 Measurement " -- No description -- "           37.4    6e-04
+lcl|BBa_M30009  U 6341 Measurement " -- No description -- "           37.4    6e-04
+lcl|BBa_M30004  U 6314 Generator " -- No description --"              37.4    6e-04
+lcl|BBa_M30003  U 6313 Generator " -- No description --"              37.4    6e-04
+lcl|BBa_M1904  U 24880 Temporary " RBS/ BBa_1543 / tc stps"           37.4    6e-04
+lcl|BBa_M12100  U 21285 Reporter ""PLambda : B0034 : RFP in BioSc...  37.4    6e-04
+lcl|BBa_K987000  U 28520 Coding ""This part is a coding part that...  37.4    6e-04
+lcl|BBa_K909016  P 26926 Regulatory ""PR promoter with two operat...  37.4    6e-04
+lcl|BBa_K909013  A 26566 Regulatory ""PR promoter with multiple o...  37.4    6e-04
+lcl|BBa_K909012  A 26562 Regulatory ""PR promoter with multiple o...  37.4    6e-04
+lcl|BBa_K896917  U 25042 Coding "Against aging!!"                     37.4    6e-04
+lcl|BBa_K892999  U 25202 Composite "red light responsive inverter...  37.4    6e-04
+lcl|BBa_K892007  U 25212 Composite "red light sensing promoter dr...  37.4    6e-04
+lcl|BBa_K892006  U 25205 Reporter "express GFP with light"            37.4    6e-04
+lcl|BBa_K892001  U 25200 Reporter "red light responsive reporter ...  37.4    6e-04
+lcl|BBa_K892000  U 25198 Reporter "Red light responsive luciferase"   37.4    6e-04
+lcl|BBa_K888004  A 27185 Composite "Biphasic switch part"             37.4    6e-04
+lcl|BBa_K861174  U 25607 Regulatory "A control device for BBa_K86...  37.4    6e-04
+lcl|BBa_K861169  U 26522 Device ""Indirect regulatory device, act...  37.4    6e-04
+lcl|BBa_K843008  P 27903 Composite "T4 Lysis Device under control...  37.4    6e-04
+lcl|BBa_K843004  P 27420 Device "T4 lysis device regulated by IPTG"   37.4    6e-04
+lcl|BBa_K843002  P 27416 Device "T4 lysis device with PcI"            37.4    6e-04
+lcl|BBa_K831015  P 27314 Composite "Inducible HipA7 toxin under t...  37.4    6e-04
+lcl|BBa_K819001  D 25491 Inverter "Lambda Promoter+LacI"              37.4    6e-04
+lcl|BBa_K817051  D 25895 Regulatory "modified pCI-1 (Design1)"        37.4    6e-04
+lcl|BBa_K784020  U 25777 Other "Phage Lambda fragment 6 - regulat...  37.4    6e-04
+lcl|BBa_K750115  U 26473 Signalling "pBADcIT-PtetcIT-PcIGLT: arab...  37.4    6e-04
+lcl|BBa_K750114  U 26434 Signalling "PtetcIT-PcIGLT: atc-&gt;cI-&...  37.4    6e-04
+lcl|BBa_K750113  U 26432 Signalling "pBADcIT-PcIGLT: Pbad-&gt;cI(...  37.4    6e-04
+lcl|BBa_K750112  D 26428 Signalling "GFP(lva) expression system c...  37.4    6e-04
+lcl|BBa_K750110  D 26426 Signalling "GFP(lva) expression system c...  37.4    6e-04
+lcl|BBa_K750109  U 26423 Signalling "cI-&gt;GFP(lva)&lt;-arabinose"   37.4    6e-04
+lcl|BBa_K750108  U 26420 Signalling "PcIGLT-pBADGLT:GFP(lva) expr...  37.4    6e-04
+lcl|BBa_K750103  A 26411 Signalling "PcIGLT:GFP(lva) repression s...  37.4    6e-04
+lcl|BBa_K741021  P 25748 Composite "plac-RBS-cI-T-pRM-anticro-T"      37.4    6e-04
+lcl|BBa_K741019  P 25476 Composite "pRM-anticro-T-pRM-RBS-lysis-T"    37.4    6e-04
+lcl|BBa_K741018  P 25475 Composite "plac-RBS-cI-T-pRM-anticro-T-p...  37.4    6e-04
+lcl|BBa_K741017  U 25424 Composite "plac-RBS-cI-T-pRM-anticro-T-p...  37.4    6e-04
+lcl|BBa_K741016  P 25423 Composite "pRM-anticro-T"                    37.4    6e-04
+lcl|BBa_K741015  P 25289 Composite "plac-RBS-cI-T-pRM-RBS-lysis-T"    37.4    6e-04
+lcl|BBa_K741014  P 25288 Generator "pRM-RBS-lysis-T"                  37.4    6e-04
+lcl|BBa_K741004  P 25274 Measurement "plac-RBS-cI-T-pRM-RBS-GFP-T"    37.4    6e-04
+lcl|BBa_K741003  A 25273 Generator "pRM-RBS-GFP-T"                    37.4    6e-04
+lcl|BBa_K676015  D 22990 Composite "Extractery 2.0 - Deleted"         37.4    6e-04
+lcl|BBa_K676014  D 22989 Composite "Extractery"                       37.4    6e-04
+lcl|BBa_K676005  U 22484 Composite "Extractery"                       37.4    6e-04
+lcl|BBa_K648132  U 24180 Composite "Pr of Or tester with Cro"         37.4    6e-04
+lcl|BBa_K648131  U 24179 Composite "Pr of Or tester with cI repre...  37.4    6e-04
+lcl|BBa_K648130  U 24178 Composite " Pr of Or tester with cI repr...  37.4    6e-04
+lcl|BBa_K648129  U 24177 Composite "Pr of Or tester with cI repre...  37.4    6e-04
+lcl|BBa_K648128  U 24176 Composite "Or tester with Cro"               37.4    6e-04
+lcl|BBa_K648127  U 24175 Composite "Or tester with cI repressor"      37.4    6e-04
+lcl|BBa_K648126  U 24174 Composite "Or tester with cI repressor w...  37.4    6e-04
+lcl|BBa_K648125  U 24172 Composite "Or tester with cI repressor w...  37.4    6e-04
+lcl|BBa_K648034  U 23346 Measurement "Or tester"                      37.4    6e-04
+lcl|BBa_K648030  U 21782 Composite "Or with RBS B0034 and Mcherry"    37.4    6e-04
+lcl|BBa_K648029  A 21781 Coding ""OR, operating region for Lambda...  37.4    6e-04
+lcl|BBa_K617002  P 23279 Plasmid "pAH57"                              37.4    6e-04
+lcl|BBa_K617001  P 23278 Plasmid "pINT-ts"                            37.4    6e-04
+lcl|BBa_K611017  P 22616 Composite "cI Lambda Repressor and Promo...  37.4    6e-04
+lcl|BBa_K611011  P 22609 Composite "cI lambda Repressor Character...  37.4    6e-04
+lcl|BBa_K611007  D 21873 Composite "R0051+E0240+I13453+B0034+C0051"   37.4    6e-04
+lcl|BBa_K611006  D 21872 Intermediate "R0051+E0240+I13453+B0034"      37.4    6e-04
+lcl|BBa_K608351  A 22237 Composite "(correct) temperature sensiti...  37.4    6e-04
+lcl|BBa_K607038  A 22797 Generator "Prm modified promoter generat...  37.4    6e-04
+lcl|BBa_K607022  P 22578 Composite " Prm_cI_antiPlasB with 1.0RBS "   37.4    6e-04
+lcl|BBa_K607021  P 22577 Composite " Prm_cI_antiPlasB with 0.6RBS "   37.4    6e-04
+lcl|BBa_K607020  P 22576 Composite "Prm_cI_antiPlasB with 0.3RBS "    37.4    6e-04
+lcl|BBa_K607019  P 22574 Composite " Prm_cI_antiPlasB with 0.07RBS "  37.4    6e-04
+lcl|BBa_K607018  P 22573 Composite "Prm_cI-DAS_antiPlasB with 1.0...  37.4    6e-04
+lcl|BBa_K607017  P 22572 Composite "Prm_cI-DAS_antiPlasB with 0.6...  37.4    6e-04
+lcl|BBa_K607016  P 22571 Composite "Prm_cI-DAS_antiPlasB with 0.3...  37.4    6e-04
+lcl|BBa_K607014  U 22570 Composite "Prm_cI-DAS_antiPlasB with 0.0...  37.4    6e-04
+lcl|BBa_K607013  P 22562 Composite "Prm_cI-LVA_antiPlasB with 1.0...  37.4    6e-04
+lcl|BBa_K607012  P 22564 Composite "Prm_cI-LVA_antiPlasB with 0.6...  37.4    6e-04
+lcl|BBa_K607011  P 22560 Composite "Prm_cI-LVA_antiPlasB with 0.3...  37.4    6e-04
+lcl|BBa_K607010  P 22555 Composite "Prm_cI-LVA_antiPlasB with 0.0...  37.4    6e-04
+lcl|BBa_K607009  U 22444 Composite "Prm_GFP-LVA_antiPlasB"            37.4    6e-04
+lcl|BBa_K607007  P 22243 Composite "Prm _crRNA_GFP "                  37.4    6e-04
+lcl|BBa_K607005  P 22241 Composite "Prm_crRNA_LasR-LVA "              37.4    6e-04
+lcl|BBa_K607003  U 22196 Composite "Prm_GFP-LVA "                     37.4    6e-04
+lcl|BBa_K598025  A 23386 Device "Bistable Switch with TPP Hammerh...  37.4    6e-04
+lcl|BBa_K598024  A 23383 Device "Bistable Switch with TPP Down-re...  37.4    6e-04
+lcl|BBa_K598023  A 23384 Device "Bistable Switch with TPP Up-regu...  37.4    6e-04
+lcl|BBa_K598022  A 23268 Device "Bistable Switch Mutant 42"           37.4    6e-04
+lcl|BBa_K598002  A 23270 Device "Bistable Switch Mutant 68"           37.4    6e-04
+lcl|BBa_K592020  A 22821 Reporter "PFixK2-lambda C1-B0034-amilCP ...  37.4    6e-04
+lcl|BBa_K584015  U 21895 Composite "Lambda cI and LuxR regulated ...  37.4    6e-04
+lcl|BBa_K584012  D 21892 Composite "Lambda cI and LuxR regulated ...  37.4    6e-04
+lcl|BBa_K584008  D 21888 Composite "Lambda cI and LuxR regulated ...  37.4    6e-04
+lcl|BBa_K584007  D 21887 Composite "Lambda cI and LuxR regulated ...  37.4    6e-04
+lcl|BBa_K584003  A 21882 Composite "Lambda cI and LuxR regulated ...  37.4    6e-04
+lcl|BBa_K566760  D 22103 Regulatory "pRM from Lambda Phage"           37.4    6e-04
+lcl|BBa_K566042  U 23490 Composite "composite Biphasic switch"        37.4    6e-04
+lcl|BBa_K566041  D 23486 Composite "Second State for Biphasic swi...  37.4    6e-04
+lcl|BBa_K566040  U 23482 Composite "pRM434-RFP with double termin...  37.4    6e-04
+lcl|BBa_K566017  P 23143 Composite "pRM434-RFP"                       37.4    6e-04
+lcl|BBa_K566015  P 23120 Composite "pRM-RBS-cI434"                    37.4    6e-04
+lcl|BBa_K566014  D 23119 Composite "pRM-RBS-cI434"                    37.4    6e-04
+lcl|BBa_K566002  U 23057 Regulatory "Biphasic switch "                37.4    6e-04
+lcl|BBa_K566001  U 23056 Regulatory "pRM promoter from Lambda"        37.4    6e-04
+lcl|BBa_K557010  P 23704 Device "ColicinE7+Toggle-switch+Aptamer-...  37.4    6e-04
+lcl|BBa_K557009  P 23703 Intermediate "Toggle-switch+Aptamer+CheZ...  37.4    6e-04
+lcl|BBa_K557008  P 23702 Composite "Reversed Toggle switch+Aptame...  37.4    6e-04
+lcl|BBa_K557005  P 23698 Intermediate "Reversed Toggle switch+Apt...  37.4    6e-04
+lcl|BBa_K557004  P 23697 Device "Reversed Toggle switch for the c...  37.4    6e-04
+lcl|BBa_K557002  P 23695 Composite "Toggle-switch+Aptamer+CheZ"       37.4    6e-04
+lcl|BBa_K551001  P 22658 Plasmid "plasmid of insertion and deletion"  37.4    6e-04
+lcl|BBa_K539521  P 23221 Generator "heat sensitive cI QPI with hi...  37.4    6e-04
+lcl|BBa_K539281  A 22503 Composite "rbs+crtZ(beta-carotene hydrox...  37.4    6e-04
+lcl|BBa_K518008  P 22668 Device "IPTG-inducible CheZ  repression ...  37.4    6e-04
+lcl|BBa_K516334  U 22052 Measurement "mRFP producer controlled by...  37.4    6e-04
+lcl|BBa_K516332  U 22051 Measurement "mRFP producer controlled by...  37.4    6e-04
+lcl|BBa_K516331  U 22050 Measurement "mRFP producer controlled by...  37.4    6e-04
+lcl|BBa_K516330  U 22049 Measurement "mRFP producer controlled by...  37.4    6e-04
+lcl|BBa_K510046  P 24105 Composite "pUC18R6KT-miniTn7BB-Gm-improv...  37.4    6e-04
+lcl|BBa_K510045  P 24104 Composite "pUC18Sfi-miniTn7BB-Gm-improve...  37.4    6e-04
+lcl|BBa_K510044  P 24101 Composite "pUC18R6KT-miniTn7BB-Gm-bistab...  37.4    6e-04
+lcl|BBa_K510043  P 24100 Composite "pUC18Sfi-miniTn7BB-Gm-bistabl...  37.4    6e-04
+lcl|BBa_K510036  A 22745 Device "Improved Flip Flop (Module II: a...  37.4    6e-04
+lcl|BBa_K510019  P 22683 Device "Improved Flip Flop (Module I)"       37.4    6e-04
+lcl|BBa_K429001  P 20842 Composite "Promoter Testing Construct"       37.4    6e-04
+lcl|BBa_K415152  P 20537 Composite "K415010 + RBS + p8-GR2 fusion"    37.4    6e-04
+lcl|BBa_K415151  P 20524 Composite "K415010 + RBS : p8-GR1"           37.4    6e-04
+lcl|BBa_K415150  P 20540 Composite "K415010 + RBS + p8-BASE fusion"   37.4    6e-04
+lcl|BBa_K415149  P 20539 Composite "K415010 + RBS + p8-ACID fusion"   37.4    6e-04
+lcl|BBa_K415148  P 20538 Composite "K415010 + RBS + p8-Jun fusion"    37.4    6e-04
+lcl|BBa_K415147  P 20523 Composite "K415010 + RBS + p8-Fos fusion"    37.4    6e-04
+lcl|BBa_K415110  U 18348 Composite "PLuxR/cI-OR : RBS : pIII"         37.4    6e-04
+lcl|BBa_K415109  U 18347 Composite "PLuxR/cI-OR : RBS : pVIII "       37.4    6e-04
+lcl|BBa_K415069  P 20965 Composite "pLux-Lac:GFP:Term:Term:PluxR/...  37.4    6e-04
+lcl|BBa_K415023  A 18570 Composite "pLux-Lac:GFP:Term:Term:PluxR/...  37.4    6e-04
+lcl|BBa_K415022  U 18516 Composite "PluxR/cI-OR : RBS : mCherry :...  37.4    6e-04
+lcl|BBa_K415021  P 18476 Composite "Pluxlac RBS-GFP TT PluxCI RBS...  37.4    6e-04
+lcl|BBa_K415020  U 18357 Composite "PluxR/cI-OR : RBS : mCherry: ...  37.4    6e-04
+lcl|BBa_K415019  U 18356 Composite "pLuxR/cI-OR : RBS : LuxI "        37.4    6e-04
+lcl|BBa_K415011  D 18355 Composite "PtetR : RBS : LuxR : Term : P...  37.4    6e-04
+lcl|BBa_K415010  P 18283 Composite "This is part K415006 with an ...  37.4    6e-04
+lcl|BBa_K415009  U 18238 Composite "pLux/cI-OR : RBS-mCherry : Te...  37.4    6e-04
+lcl|BBa_K415008  U 18237 Composite " pLux/cI-OR : RBS-mCherry : T...  37.4    6e-04
+lcl|BBa_K415007  U 18235 Composite "pLux/cI-OR : RBS-mCherry : Te...  37.4    6e-04
+lcl|BBa_K415006  P 18234 Composite "pLux/cI-OR : RBS-mCherry : Te...  37.4    6e-04
+lcl|BBa_K415005  D 18233 Composite "pLux/cI-OR : RBS-mCherry : Te...  37.4    6e-04
+lcl|BBa_K415004  U 18123 Composite "P_const(high) : RBS : LuxR : ...  37.4    6e-04
+lcl|BBa_K415003  U 18122 Composite "P_const(low/med) : RBS : LuxR...  37.4    6e-04
+lcl|BBa_K415002  U 18124 Composite "P_const(high) : LuxR : Term :...  37.4    6e-04
+lcl|BBa_K415001  U 18121 Composite "P_const(low/med) : LuxR : Ter...  37.4    6e-04
+lcl|BBa_K415000  P 18117 Composite "pLux/cI-OR : RBS-mCherry : Te...  37.4    6e-04
+lcl|BBa_K379002  U 20918 Composite "AHL induced concentration Ban...  37.4    6e-04
+lcl|BBa_K379001  P 20915 Composite "AHL induced concentration Ban...  37.4    6e-04
+lcl|BBa_K379000  P 19290 Composite "AHL induced concentration Ban...  37.4    6e-04
+lcl|BBa_K360125  U 20245 Reporter "trpL promoter + cI inverter + ...  37.4    6e-04
+lcl|BBa_K360024  P 20107 Intermediate "RBS + cI  inverter + GFP"      37.4    6e-04
+lcl|BBa_K327017  U 19441 Composite "lux OR delta cI activated &qu...  37.4    6e-04
+lcl|BBa_K327016  D 19440 Composite ""Lux activated, C1lam repress...  37.4    6e-04
+lcl|BBa_K327015  D 19439 Composite ""Lux activated, C1lam repress...  37.4    6e-04
+lcl|BBa_K327012  U 19268 Composite ""cI lam activated RFP, cI lam...  37.4    6e-04
+lcl|BBa_K325906  P 20415 Generator "pbad CDEG plambda AB "            37.4    6e-04
+lcl|BBa_K325905  P 20416 Generator "Bacterial Lux reporter &lt;BR...  37.4    6e-04
+lcl|BBa_K324051  U 20784 Composite "LacI RFP Bistable part GFP"       37.4    6e-04
+lcl|BBa_K318507  P 18552 Composite "Pir + RBS + Lysis Cassette"       37.4    6e-04
+lcl|BBa_K318506  P 18551 Composite "Pir + RBS + RFP + TT"             37.4    6e-04
+lcl|BBa_K283023  P 15516 Device "plux-rbs-CI-terminator-plambda(R...  37.4    6e-04
+lcl|BBa_K258012  U 15479 Project "AI2-dependent KGF synthesis wit...  37.4    6e-04
+lcl|BBa_K235028  U 14814 Project ""[K235024][K235001] (NAND gate ...  37.4    6e-04
+lcl|BBa_K235027  U 14813 Project ""[K235024][K235000] (NAND gate ...  37.4    6e-04
+lcl|BBa_K235026  U 14812 Project ""[K235022][K235001] (NAND gate ...  37.4    6e-04
+lcl|BBa_K235025  U 14811 Project ""[K235022][K235000] (NAND gate,...  37.4    6e-04
+lcl|BBa_K235024  U 14810 Generator ""[K235018][K235021] (mCherry ...  37.4    6e-04
+lcl|BBa_K235023  U 14809 Reporter ""[K235018][K235020] (mCherry g...  37.4    6e-04
+lcl|BBa_K235022  U 14808 Reporter ""[K235018][K235019] (mCherry g...  37.4    6e-04
+lcl|BBa_K235018  P 14804 Generator "[K235015][K235005] pLambda-co...  37.4    6e-04
+lcl|BBa_K235015  P 14801 Intermediate "[R0051][B0034] (pLambda+RBS)"  37.4    6e-04
+lcl|BBa_K233325  U 17381 Project "The complete turing machine con...  37.4    6e-04
+lcl|BBa_K228003  P 14815 Device "Bistable part"                       37.4    6e-04
+lcl|BBa_K208040  P 16954 Composite "Lambda cL Reg. Promoter/RBS/P...  37.4    6e-04
+lcl|BBa_K208037  P 16951 Composite "Lambda cL Reg. Promoter/RBS/G...  37.4    6e-04
+lcl|BBa_K208033  P 16947 Composite "Lambda cL Reg. Promoter /RBS/...  37.4    6e-04
+lcl|BBa_K208012  P 15563 Regulatory "Lambda cL Reg. Promoter (BBa...  37.4    6e-04
+lcl|BBa_K200022  P 15922 Composite "Heat-inducible system with GF...  37.4    6e-04
+lcl|BBa_K200012  A 14754 Regulatory "lambda promoter (cIts respon...  37.4    6e-04
+lcl|BBa_K193001  P 15744 Generator "CI repressible LuxI enzyme ge...  37.4    6e-04
+lcl|BBa_K193000  A 15743 Reporter "GFP reporter regulated by CI."     37.4    6e-04
+lcl|BBa_K185044  P 16065 Composite "Promoter(J23118)+QPI(Q04510)"     37.4    6e-04
+lcl|BBa_K185043  P 16063 Composite "Promoter(J23116)+QPI(Q04510)"     37.4    6e-04
+lcl|BBa_K185042  P 16061 Composite "Promoter(J23110)+QPI(Q04510)"     37.4    6e-04
+lcl|BBa_K185041  P 16059 Composite "Promoter J23118+QPI+RBS B0034"    37.4    6e-04
+lcl|BBa_K185040  P 16058 Composite "Promoter J23118+QPI+RBS B0031"    37.4    6e-04
+lcl|BBa_K185039  P 16057 Composite "Promoter J23118+QPI+RBS B0030"    37.4    6e-04
+lcl|BBa_K185038  P 16055 Composite "Promoter J23116+QPI+RBS B0034"    37.4    6e-04
+lcl|BBa_K185037  P 16054 Composite "Promoter J23116+QPI+RBS B0031"    37.4    6e-04
+lcl|BBa_K185036  P 16052 Device "Promoter110+QPI+RBS34+RelB+Doubl...  37.4    6e-04
+lcl|BBa_K185035  P 16051 Composite "Promoter J23110+QPI(Q04510)+R...  37.4    6e-04
+lcl|BBa_K185034  P 16050 Device "Promoter J23116+Q04510+B0034+Rel...  37.4    6e-04
+lcl|BBa_K185018  P 16034 Device "Promoter118+QPI+RBS30+RelB+Doubl...  37.4    6e-04
+lcl|BBa_K185011  P 16027 Device "Promoter116+QPI+RBS31+RelB+Doubl...  37.4    6e-04
+lcl|BBa_K185006  P 16022 Composite " Promote J23110+QPI(Q04510)+R...  37.4    6e-04
+lcl|BBa_K185005  P 16021 Generator "Tryptophan-Induced RelB-antit...  37.4    6e-04
+lcl|BBa_K182003  U 14348 Intermediate ""Intermediate part consist...  37.4    6e-04
+lcl|BBa_K182002  U 14181 Intermediate ""Intermediate Part consist...  37.4    6e-04
+lcl|BBa_K177038  P 14897 Reporter "Bistable switch 1 testing device"  37.4    6e-04
+lcl|BBa_K177033  U 14672 Reporter "pcI lam RBS.3 LacI pcl lam RBS...  37.4    6e-04
+lcl|BBa_K177012  U 14223 Temporary "operon1_part2"                    37.4    6e-04
+lcl|BBa_K177005  U 13639 Device "Bistable_1"                          37.4    6e-04
+lcl|BBa_K177004  U 13638 Device "bistable_1_R"                        37.4    6e-04
+lcl|BBa_K176249  P 15954 Device "Low input score automatic select...  37.4    6e-04
+lcl|BBa_K176248  P 15962 Device "Low input score automatic select...  37.4    6e-04
+lcl|BBa_K176225  P 15453 Device "PoPS-&gt;AID(week RBS)-&gt;mRFP-...  37.4    6e-04
+lcl|BBa_K176224  P 15452 Signalling "PoPS-&gt;mRFP-&gt;CI Inverte...  37.4    6e-04
+lcl|BBa_K176193  P 15454 Device "PoPS-&gt;AID(week RBS)-&gt;GFP-&...  37.4    6e-04
+lcl|BBa_K176192  P 15451 Signalling "PoPS-&gt;GFP-&gt;CI Inverter...  37.4    6e-04
+lcl|BBa_K176189  P 15447 Signalling "CI Inverter + luxI-LVA: PoPS...  37.4    6e-04
+lcl|BBa_K176114  P 14833 Reporter "CI Inverter + GFP Reporter: VR...  37.4    6e-04
+lcl|BBa_K176113  P 14832 Reporter "CI Inverter + GFP Reporter: VR...  37.4    6e-04
+lcl|BBa_K176112  P 14831 Reporter "CI Inverter + GFP Reporter: VR...  37.4    6e-04
+lcl|BBa_K176111  P 14830 Reporter "CI Inverter + GFP Reporter: VR...  37.4    6e-04
+lcl|BBa_K176110  P 14829 Reporter "CI Inverter + GFP Reporter: VR...  37.4    6e-04
+lcl|BBa_K176109  P 14828 Reporter "CI Inverter + GFP Reporter: VR...  37.4    6e-04
+lcl|BBa_K176108  P 14827 Reporter "CI Inverter + GFP Reporter: VR...  37.4    6e-04
+lcl|BBa_K176107  P 14826 Reporter "CI Inverter + GFP Reporter: Po...  37.4    6e-04
+lcl|BBa_K176017  A 14142 Reporter "pCI(R0051)(lambda CI-)-&gt;RBS...  37.4    6e-04
+lcl|BBa_K175047  P 15535 Regulatory "Plasmid 2 for Transcriptiona...  37.4    6e-04
+lcl|BBa_K175025  P 14425 Regulatory "PLacI+RBS+TetR+TT+PLambda+RB...  37.4    6e-04
+lcl|BBa_K175024  U 14424 Regulatory "PLacI+Key3c+TT+PLambdain+RBS...  37.4    6e-04
+lcl|BBa_K175014  A 14414 Reporter "PLambda in+RBS+GFP+TT"             37.4    6e-04
+lcl|BBa_K145117  U 11181 Other "Lactonase pulse generator"            37.4    6e-04
+lcl|BBa_K145115  U 11180 Other "cI under T7 and PR&lt;sub&gt;R&lt...  37.4    6e-04
+lcl|BBa_K145112  U 11179 Other "cI under T7 and PR&lt;sub&gt;R&lt...  37.4    6e-04
+lcl|BBa_K145107  U 11172 Other "Lactonase pulse generator"            37.4    6e-04
+lcl|BBa_K145106  U 11170 Generator "cI P&lt;sub&gt;RM&lt;/sub&gt;...  37.4    6e-04
+lcl|BBa_K145105  U 11169 Other "cI under T7 and P&lt;sub&gt;R&lt;...  37.4    6e-04
+lcl|BBa_K145007  U 11149 Other "Pulse Generator"                      37.4    6e-04
+lcl|BBa_K145006  U 11148 Generator "Lactonase under P&lt;sub&gt;R...  37.4    6e-04
+lcl|BBa_K145005  U 11147 Other "T7 PoPS + P&lt;sub&gt;R&lt;/sub&g...  37.4    6e-04
+lcl|BBa_K131019  P 12809 Generator "LuxO inducible RFP"               37.4    6e-04
+lcl|BBa_K131018  P 12808 Generator "Intermediate for the Response...  37.4    6e-04
+lcl|BBa_K1300011  P 31848 Composite "cI repressible promoter + GF...  37.4    6e-04
+lcl|BBa_K1300010  P 31847 Composite "cI repressible promoter + tr...  37.4    6e-04
+lcl|BBa_K1253114  P 31885 Composite "This part is used to test fo...  37.4    6e-04
+lcl|BBa_K1232003  P 30633 Composite "Red light inducible sfGFP = ...  37.4    6e-04
+lcl|BBa_K1223010  U 29343 Plasmid "pUC-57-P.A.S.E.1"                  37.4    6e-04
+lcl|BBa_K1223001  P 29159 Project "P.A.S.E. 1 cassette"               37.4    6e-04
+lcl|BBa_K1196017  U 29791 Device "Light Bulb test"                    37.4    6e-04
+lcl|BBa_K1196016  U 29711 Device "Light Bulb"                         37.4    6e-04
+lcl|BBa_K1196008  U 29011 Device "hydrazine reductase and lucifer...  37.4    6e-04
+lcl|BBa_K1196007  A 29009 Device "luciferase "                        37.4    6e-04
+lcl|BBa_K119009  P 11870 Device "cI promoter RcnR op RcnA"            37.4    6e-04
+lcl|BBa_K119007  U 11867 Primer "Upper primer  for RcnA"              37.4    6e-04
+lcl|BBa_K1173501  P 30951 Composite ""CcaS, CcaR, PcpcG2, cI(lamb...  37.4    6e-04
+lcl|BBa_K1157015  P 30005 Composite "pConst-Rhl-pRhl-RhlR-CI-pCI-...  37.4    6e-04
+lcl|BBa_K1157013  P 30000 Composite "pCI-mCherry-pConst-RhlR-pRhl...  37.4    6e-04
+lcl|BBa_K1145005  P 29872 Regulatory "A promoter which can be inh...  37.4    6e-04
+lcl|BBa_K1140004  U 29500 Composite "pLambdaCI + TetR (LVA)"          37.4    6e-04
+lcl|BBa_K1139157  U 31509 Regulatory "rm/lac hybrid promoter V3"      37.4    6e-04
+lcl|BBa_K1139156  U 31512 Measurement "Prm/lac V3-GFP-PlacIq-c1 "     37.4    6e-04
+lcl|BBa_K1139155  U 31508 Regulatory "rm/lac hybrid promoter V2"      37.4    6e-04
+lcl|BBa_K1139154  U 31511 Measurement "Prm/lac V2-GFP-PlacIq-c1"      37.4    6e-04
+lcl|BBa_K1139153  U 31507 Regulatory "rm/lac hybrid promoter V1"      37.4    6e-04
+lcl|BBa_K1139152  U 31510 Measurement "Prm/lac V1-GFP-PlacIq-c1"      37.4    6e-04
+lcl|BBa_K1139151  U 31225 Regulatory "rm/lac hybrid promoter"         37.4    6e-04
+lcl|BBa_K1139150  P 29347 Measurement "Prm/lac-GFP-TT"                37.4    6e-04
+lcl|BBa_K1137011  A 31167 Device "sRNA anti lac"                      37.4    6e-04
+lcl|BBa_K1137010  A 31166 Device "sRNA anti Cm"                       37.4    6e-04
+lcl|BBa_K1137009  A 31168 Device "sRNA anti Kan "                     37.4    6e-04
+lcl|BBa_K1132006  A 30957 Regulatory "R1 riboregulator switch wit...  37.4    6e-04
+lcl|BBa_K1132005  P 30956 Regulatory "R0 riboregulator switch wit...  37.4    6e-04
+lcl|BBa_K1124123  U 31366 Composite "inverse PCR template for cre...  37.4    6e-04
+lcl|BBa_K1124109  U 29941 Composite "pLac-mCherry-GFP-pLambda-sRN...  37.4    6e-04
+lcl|BBa_K1124108  U 29942 Composite ""pLambda-mCherry-pConst-c1 r...  37.4    6e-04
+lcl|BBa_K1124107  U 29943 Composite "pLac-hpaBC-plambda-sRNA(anti...  37.4    6e-04
+lcl|BBa_K1124106  U 29944 Composite "plambda-sRNA(anti-tyrR)-plam...  37.4    6e-04
+lcl|BBa_K1124105  U 29947 Composite "pLac-fhlA363-plambda-sRNA(an...  37.4    6e-04
+lcl|BBa_K1124100  U 29953 Composite ""clock device (plux/tet) (+l...  37.4    6e-04
+lcl|BBa_K112248  P 13017 Plasmid "{pAH57 promoter}{rbs.xis.int!}{...  37.4    6e-04
+lcl|BBa_K112247  P 13016 Plasmid "{pAH57 promoter}{rbs.xis.int!} ...  37.4    6e-04
+lcl|BBa_K112246  P 13013 Plasmid "{pAH57 promoter}{rbs.xis.int!}{...  37.4    6e-04
+lcl|BBa_K112245  P 13010 Plasmid "{pAH57 promoter}{rbs.xis.int!} ...  37.4    6e-04
+lcl|BBa_K112145  P 13546 Plasmid "Phagemid plasmid with xis int"      37.4    6e-04
+lcl|BBa_K112137  P 13543 Composite "Xis Int &amp; TrfA combined e...  37.4    6e-04
+lcl|BBa_K112133  P 13521 Composite "Xis Int temperature sensitive...  37.4    6e-04
+lcl|BBa_K112132  P 13520 Composite "Xis Int controlled by tempera...  37.4    6e-04
+lcl|BBa_K112126  P 13466 Regulatory "pAH57 promoter"                  37.4    6e-04
+lcl|BBa_K1114029  A 29251 Regulatory "The MoClo format of BBa_R00...  37.4    6e-04
+lcl|BBa_K1104965  U 29505 Measurement "lambda cI and luxR regulat...  37.4    6e-04
+lcl|BBa_K1104903  U 31589 Device ""pLux/cI + Kill proteins, LuxI,...  37.4    6e-04
+lcl|BBa_K1093024  U 31186 Other "MinC/Lysis device-based kill swi...  37.4    6e-04
+lcl|BBa_K1093023  U 31185 Other "MinC/Lysis device-based kill swi...  37.4    6e-04
+lcl|BBa_K1075047  P 31150 Generator "pDawn-RBS32-ccdB-TT"             37.4    6e-04
+lcl|BBa_K1075046  P 31149 Generator "pDawn-RBS32-mazF-TT"             37.4    6e-04
+lcl|BBa_K1075045  P 31148 Generator "pDawn-RBS34-mCherry-TT"          37.4    6e-04
+lcl|BBa_K1075044  P 31106 Regulatory "Promoter(const.)-RBS34-YF1-...  37.4    6e-04
+lcl|BBa_K1065311  P 30732 Device "Blue-light photoinducible AmilC...  37.4    6e-04
+lcl|BBa_K1065310  P 28933 Device "Blue light circuit with inverte...  37.4    6e-04
+lcl|BBa_K1065308  U 29987 Composite "J23100+YF1+FixJ+FixK2+inverter"  37.4    6e-04
+lcl|BBa_K1053304  U 29534 Generator "PBAD- TR-HHR(RBS)-GFPuv-DT"      37.4    6e-04
+lcl|BBa_K1053303  U 29460 Composite "PlacO-1-RBS-tetR-DT-PcI-RBS-...  37.4    6e-04
+lcl|BBa_K1053302  P 29446 Composite "&amp;#955;PR-RBS-lacI-DT"        37.4    6e-04
+lcl|BBa_K1040012  P 30606 Composite "toggle switch construction k...  37.4    6e-04
+lcl|BBa_K1040011  P 30605 Composite "toggle switch construction k...  37.4    6e-04
+lcl|BBa_K1040003  U 30440 Composite "toggle switch construction k...  37.4    6e-04
+lcl|BBa_K1022129  P 30982 Composite "pBAD: Agr A : Agr C : pP2 : ...  37.4    6e-04
+lcl|BBa_K1022128  P 30981 Composite "pBAD: Agr A : Agr C : pP2 : ...  37.4    6e-04
+lcl|BBa_K1022127  P 30980 Composite "pBAD: Agr A : Agr C : pP2 : ...  37.4    6e-04
+lcl|BBa_K1022126  P 30979 Composite "pT7:  RBS: His6- SUMO: Magai...  37.4    6e-04
+lcl|BBa_K1022125  P 30978 Composite "pT7: RBS:  His6- SUMO: Signi...  37.4    6e-04
+lcl|BBa_K1022124  P 30977 Composite "pT7:  RBS: His6- SUMO: Maxim...  37.4    6e-04
+lcl|BBa_K1022123  P 30976 Composite "pTet: cI: TT : pcI: Ulp : Ly...  37.4    6e-04
+lcl|BBa_K1022115  P 30943 Composite "pTet: cI: TT : pcI: Ulp"         37.4    6e-04
+lcl|BBa_K1022107  P 29136 DNA "pcI Ulp "                              37.4    6e-04
+lcl|BBa_K101011  U 11409 Composite "Dual-Repressed Promoter for L...  37.4    6e-04
+lcl|BBa_K101008  U 11408 Device "Biological Comparator Inducible ...  37.4    6e-04
+lcl|BBa_K101005  P 11402 Composite ""Construct with LacI/LAMBDAcI...  37.4    6e-04
+lcl|BBa_K101001  U 11397 Regulatory "Dual-Repressed Promoter for ...  37.4    6e-04
+lcl|BBa_K1001755  U 28382 Intermediate ""AraC generator then Lamb...  37.4    6e-04
+lcl|BBa_K1001754  U 28381 Intermediate "Terminator RFP and RBS be...  37.4    6e-04
+lcl|BBa_K1001753  U 28380 Intermediate "RFP and RBS behind Lamda ...  37.4    6e-04
+lcl|BBa_K1001752  D 28379 Intermediate "RFP and RBS behind Lamda ...  37.4    6e-04
+lcl|BBa_K098995  P 12689 Composite "heat sensitive cI QPI with hi...  37.4    6e-04
+lcl|BBa_K098993  P 12690 Composite "heat sensitive cI QPI with lo...  37.4    6e-04
+lcl|BBa_K098991  A 12692 Composite "cI promoter with GFP reporter"    37.4    6e-04
+lcl|BBa_K098988  A 12702 Composite "temperature sensitive cI indu...  37.4    6e-04
+lcl|BBa_K098987  P 12703 Composite "temperature sensitive cI indu...  37.4    6e-04
+lcl|BBa_K094106  P 12053 Device "Plux-rbs-CI-terminator-plambda P...  37.4    6e-04
+lcl|BBa_K094105  P 12049 Measurement "plambda P(O-R12)-rbs-cheZ-r...  37.4    6e-04
+lcl|BBa_K094101  P 12038 Device "plambda P(O-R12)-rbs-cheZ"           37.4    6e-04
+lcl|BBa_K094017  U 11635 Measurement "pluxcIlacZ"                     37.4    6e-04
+lcl|BBa_K094016  U 11634 Project "pluxripluxcIcheZ"                   37.4    6e-04
+lcl|BBa_K094015  P 11633 Project "pluxcIcheZ"                         37.4    6e-04
+lcl|BBa_K094007  U 11133 Project "plaLuxRIpluxCheZGFPLva "            37.4    6e-04
+lcl|BBa_K094006  U 11132 Project "plaLuxRpluxCIpldLacZ "              37.4    6e-04
+lcl|BBa_K094004  U 11130 Project "plaLuxRpluxCIpldCheZGFPLva"         37.4    6e-04
+
+
+>lcl|BBa_Z52935 U 8749 Generator "protein generator for enzyme"
+Length=1081
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Minus
+
+Query  1    TAACACCGTGCGTGTTGACT  20
+            ||||||||||||||||||||
+Sbjct  911  TAACACCGTGCGTGTTGACT  892
+
+
+>lcl|BBa_S05134 U 28386 Intermediate "R0051:B0032"
+Length=70
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  1   TAACACCGTGCGTGTTGACT  20
+
+
+>lcl|BBa_S05085 P 26973 Intermediate "K598002:F1610"
+Length=3751
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  1492  TAACACCGTGCGTGTTGACT  1511
+
+
+>lcl|BBa_S04619 P 23071 Intermediate "K098995:B0034"
+Length=949
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1    TAACACCGTGCGTGTTGACT  20
+            ||||||||||||||||||||
+Sbjct  881  TAACACCGTGCGTGTTGACT  900
+
+
+>lcl|BBa_S04617 A 22869 Intermediate "K592006:Q04510"
+Length=1245
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  1197  TAACACCGTGCGTGTTGACT  1216
+
+
+>lcl|BBa_S04417 U 17684 Intermediate "S04416:B0015"
+Length=3421
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  1057  TAACACCGTGCGTGTTGACT  1076
+
+
+>lcl|BBa_S04416 U 17683 Intermediate "S04415:C0051"
+Length=3284
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  1057  TAACACCGTGCGTGTTGACT  1076
+
+
+>lcl|BBa_S04415 U 17682 Intermediate "S04414:B0034"
+Length=2503
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  1057  TAACACCGTGCGTGTTGACT  1076
+
+
+>lcl|BBa_S04414 U 17681 Intermediate "S04413:R0040"
+Length=2483
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  1057  TAACACCGTGCGTGTTGACT  1076
+
+
+>lcl|BBa_S04413 U 17680 Intermediate "S04412:B0015"
+Length=2421
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  1057  TAACACCGTGCGTGTTGACT  1076
+
+
+>lcl|BBa_S04412 U 17679 Intermediate "S04411:C0012"
+Length=2284
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  1057  TAACACCGTGCGTGTTGACT  1076
+
+
+>lcl|BBa_S04411 U 17678 Intermediate "S04410:B0034"
+Length=1125
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  1057  TAACACCGTGCGTGTTGACT  1076
+
+
+>lcl|BBa_S04410 U 17677 Intermediate "S04409:R0051"
+Length=1105
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  1057  TAACACCGTGCGTGTTGACT  1076
+
+
+>lcl|BBa_S04408 U 17675 Intermediate "S04407:R0040"
+Length=2209
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1    TAACACCGTGCGTGTTGACT  20
+            ||||||||||||||||||||
+Sbjct  920  TAACACCGTGCGTGTTGACT  939
+
+
+>lcl|BBa_S04407 U 17674 Intermediate "S04406:C0012"
+Length=2147
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1    TAACACCGTGCGTGTTGACT  20
+            ||||||||||||||||||||
+Sbjct  920  TAACACCGTGCGTGTTGACT  939
+
+
+>lcl|BBa_S04406 U 17673 Intermediate "S04405:B0034"
+Length=988
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1    TAACACCGTGCGTGTTGACT  20
+            ||||||||||||||||||||
+Sbjct  920  TAACACCGTGCGTGTTGACT  939
+
+
+>lcl|BBa_S04405 U 17672 Intermediate "S04404:R0051"
+Length=968
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1    TAACACCGTGCGTGTTGACT  20
+            ||||||||||||||||||||
+Sbjct  920  TAACACCGTGCGTGTTGACT  939
+
+
+>lcl|BBa_S04308 P 15821 Intermediate "S04306:S04307"
+Length=3053
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Minus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  49  TAACACCGTGCGTGTTGACT  30
+
+
+>lcl|BBa_S04306 P 15818 Intermediate "I12007:F1610"
+Length=888
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Minus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  49  TAACACCGTGCGTGTTGACT  30
+
+
+>lcl|BBa_S04253 U 14547 Intermediate "J01101:I763011"
+Length=1971
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  1001  TAACACCGTGCGTGTTGACT  1020
+
+
+>lcl|BBa_S04221 P 14293 Intermediate "R0051:S04214"
+Length=1274
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  1   TAACACCGTGCGTGTTGACT  20
+
+
+>lcl|BBa_S04217 U 14180 Intermediate "R0051:S03518"
+Length=760
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  1   TAACACCGTGCGTGTTGACT  20
+
+
+>lcl|BBa_S04138 P 12698 Intermediate "cI QPI with GFP reporter system"
+Length=1770
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1    TAACACCGTGCGTGTTGACT  20
+            ||||||||||||||||||||
+Sbjct  838  TAACACCGTGCGTGTTGACT  857
+
+
+>lcl|BBa_S04137 P 12686 Intermediate "heat sensitive cI QPI"
+Length=886
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1    TAACACCGTGCGTGTTGACT  20
+            ||||||||||||||||||||
+Sbjct  838  TAACACCGTGCGTGTTGACT  857
+
+
+>lcl|BBa_S04136 P 12684 Intermediate "terminator and cI promoter"
+Length=152
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1    TAACACCGTGCGTGTTGACT  20
+            ||||||||||||||||||||
+Sbjct  104  TAACACCGTGCGTGTTGACT  123
+
+
+>lcl|BBa_S03842 U 10444 Intermediate "I714894:I714889"
+Length=835
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1    TAACACCGTGCGTGTTGACT  20
+            ||||||||||||||||||||
+Sbjct  787  TAACACCGTGCGTGTTGACT  806
+
+
+>lcl|BBa_S03841 U 10443 Intermediate "I714894:I714889"
+Length=835
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1    TAACACCGTGCGTGTTGACT  20
+            ||||||||||||||||||||
+Sbjct  787  TAACACCGTGCGTGTTGACT  806
+
+
+>lcl|BBa_S03840 P 10318 Intermediate "S03839:Q04510"
+Length=2805
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  2757  TAACACCGTGCGTGTTGACT  2776
+
+
+>lcl|BBa_S03835 U 10074 Intermediate "I714894:I714889"
+Length=835
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1    TAACACCGTGCGTGTTGACT  20
+            ||||||||||||||||||||
+Sbjct  787  TAACACCGTGCGTGTTGACT  806
+
+
+>lcl|BBa_S03834 U 10073 Intermediate "I714894:I714890"
+Length=855
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1    TAACACCGTGCGTGTTGACT  20
+            ||||||||||||||||||||
+Sbjct  807  TAACACCGTGCGTGTTGACT  826
+
+
+>lcl|BBa_S03830 D 10027 Intermediate "I722007:S03827"
+Length=4249
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  3194  TAACACCGTGCGTGTTGACT  3213
+
+
+>lcl|BBa_S03829 P 10024 Intermediate "I722007:S03827"
+Length=4249
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  3194  TAACACCGTGCGTGTTGACT  3213
+
+
+>lcl|BBa_S03828 P 10023 Intermediate "P0412:I722008"
+Length=5073
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  3132  TAACACCGTGCGTGTTGACT  3151
+
+
+>lcl|BBa_S03827 A 10021 Intermediate "I722005:A340620"
+Length=2871
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  1816  TAACACCGTGCGTGTTGACT  1835
+
+
+>lcl|BBa_S03819 P 9946 Intermediate "S03818:I13507"
+Length=2861
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1    TAACACCGTGCGTGTTGACT  20
+            ||||||||||||||||||||
+Sbjct  968  TAACACCGTGCGTGTTGACT  987
+
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Minus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  1959  TAACACCGTGCGTGTTGACT  1940
+
+
+>lcl|BBa_S03818 U 9944 Intermediate "S03817:I12007"
+Length=1992
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1    TAACACCGTGCGTGTTGACT  20
+            ||||||||||||||||||||
+Sbjct  968  TAACACCGTGCGTGTTGACT  987
+
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Minus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  1959  TAACACCGTGCGTGTTGACT  1940
+
+
+>lcl|BBa_S03817 U 9943 Intermediate "I5010:I6036"
+Length=1902
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1    TAACACCGTGCGTGTTGACT  20
+            ||||||||||||||||||||
+Sbjct  968  TAACACCGTGCGTGTTGACT  987
+
+
+>lcl|BBa_S03805 A 9652 Intermediate "R0051:I13507"
+Length=918
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  1   TAACACCGTGCGTGTTGACT  20
+
+
+>lcl|BBa_S03804 U 9651 Intermediate "R0051:P0440"
+Length=897
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  1   TAACACCGTGCGTGTTGACT  20
+
+
+>lcl|BBa_S03791 U 9552 Intermediate "C0012:S03790"
+Length=3411
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Minus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  2717  TAACACCGTGCGTGTTGACT  2698
+
+
+>lcl|BBa_S03790 U 9551 Intermediate "E0040:S03789"
+Length=2252
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Minus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  1558  TAACACCGTGCGTGTTGACT  1539
+
+
+>lcl|BBa_S03789 U 9550 Intermediate "C0051:S03788"
+Length=1526
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Minus
+
+Query  1    TAACACCGTGCGTGTTGACT  20
+            ||||||||||||||||||||
+Sbjct  832  TAACACCGTGCGTGTTGACT  813
+
+
+>lcl|BBa_S03788 U 9549 Intermediate "I714888:C0056"
+Length=743
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Minus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  49  TAACACCGTGCGTGTTGACT  30
+
+
+>lcl|BBa_S03668 P 8497 Intermediate "B0014:R0051"
+Length=152
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1    TAACACCGTGCGTGTTGACT  20
+            ||||||||||||||||||||
+Sbjct  104  TAACACCGTGCGTGTTGACT  123
+
+
+>lcl|BBa_S03667 P 8496 Intermediate "B0015:R0051"
+Length=186
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1    TAACACCGTGCGTGTTGACT  20
+            ||||||||||||||||||||
+Sbjct  138  TAACACCGTGCGTGTTGACT  157
+
+
+>lcl|BBa_S03666 P 8495 Intermediate "P0351:R0051"
+Length=986
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1    TAACACCGTGCGTGTTGACT  20
+            ||||||||||||||||||||
+Sbjct  938  TAACACCGTGCGTGTTGACT  957
+
+
+>lcl|BBa_S03476 A 6625 Reporter "Lambda-system Pr promoter with YFP(no degradation 
+tag) reporter"
+Length=935
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  1   TAACACCGTGCGTGTTGACT  20
+
+
+>lcl|BBa_S03475 P 6624 Reporter "Lambda-system Pr promoter with CFP(no degradation 
+tag) reporter"
+Length=935
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  1   TAACACCGTGCGTGTTGACT  20
+
+
+>lcl|BBa_S03474 A 6623 Reporter "Lambda-system Pr promoter with YFP reporter"
+Length=974
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  1   TAACACCGTGCGTGTTGACT  20
+
+
+>lcl|BBa_S03473 A 6622 Reporter "Lambda-system Pr promoter with RFP reporter"
+Length=918
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  1   TAACACCGTGCGTGTTGACT  20
+
+
+>lcl|BBa_S03472 P 6621 Measurement "Sensing Device with Prm and RFP"
+Length=2392
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Minus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  1490  TAACACCGTGCGTGTTGACT  1471
+
+
+>lcl|BBa_S03471 P 6620 Measurement "Sensing Device with Pr and CFP"
+Length=2415
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  1442  TAACACCGTGCGTGTTGACT  1461
+
+
+>lcl|BBa_S03470 U 6619 Measurement "Sensing Device with Pr and GFP"
+Length=2373
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  1442  TAACACCGTGCGTGTTGACT  1461
+
+
+>lcl|BBa_S03467 P 6616 Intermediate "Pr with CFP and Prm+ with YFP"
+Length=1989
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  1   TAACACCGTGCGTGTTGACT  20
+
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Minus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  1031  TAACACCGTGCGTGTTGACT  1012
+
+
+>lcl|BBa_S03466 U 6615 Reporter "Prm+ with YFP as a reporter"
+Length=1007
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Minus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  49  TAACACCGTGCGTGTTGACT  30
+
+
+>lcl|BBa_S03465 P 6614 Reporter "Prm+ with CFP as a reporter"
+Length=1007
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Minus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  49  TAACACCGTGCGTGTTGACT  30
+
+
+>lcl|BBa_S03464 P 6613 Reporter "Pr with CFP as a reporter"
+Length=974
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  1   TAACACCGTGCGTGTTGACT  20
+
+
+>lcl|BBa_S03460 U 6567 Intermediate "--Specify Parts List--"
+Length=834
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  1   TAACACCGTGCGTGTTGACT  20
+
+
+>lcl|BBa_S03457 U 6558 Intermediate "--Specify Parts List--"
+Length=1747
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  57  TAACACCGTGCGTGTTGACT  76
+
+
+>lcl|BBa_S03369 U 6205 Intermediate ""MotB, GFP output""
+Length=1878
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  1   TAACACCGTGCGTGTTGACT  20
+
+
+>lcl|BBa_S03368 A 6204 Intermediate "output (-CI promoter)"
+Length=49
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  1   TAACACCGTGCGTGTTGACT  20
+
+
+>lcl|BBa_S03364 U 6200 Intermediate "CI-LacI switch (+LVA&apos;s)"
+Length=2513
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  1147  TAACACCGTGCGTGTTGACT  1166
+
+
+>lcl|BBa_S03363 U 6199 Intermediate ""CI-LacI switch (+LVA&apos;s, -LacI promoter)""
+Length=2305
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1    TAACACCGTGCGTGTTGACT  20
+            ||||||||||||||||||||
+Sbjct  939  TAACACCGTGCGTGTTGACT  958
+
+
+>lcl|BBa_S03338 U 6128 Intermediate "Pr with GFP and Prm+ with RFP"
+Length=1891
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  1   TAACACCGTGCGTGTTGACT  20
+
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Minus
+
+Query  1    TAACACCGTGCGTGTTGACT  20
+            ||||||||||||||||||||
+Sbjct  989  TAACACCGTGCGTGTTGACT  970
+
+
+>lcl|BBa_S03337 P 6127 Reporter "Prm+ with RFP as a reporter"
+Length=951
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Minus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  49  TAACACCGTGCGTGTTGACT  30
+
+
+>lcl|BBa_S03336 A 6126 Reporter "Prm+ with GFP as a reporter"
+Length=965
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Minus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  49  TAACACCGTGCGTGTTGACT  30
+
+
+>lcl|BBa_S03335 A 6125 Reporter "Pr with GFP as a reporter"
+Length=932
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  1   TAACACCGTGCGTGTTGACT  20
+
+
+>lcl|BBa_S03330 U 6037 Intermediate "--Specify Parts List--"
+Length=1022
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  57  TAACACCGTGCGTGTTGACT  76
+
+
+>lcl|BBa_S03329 U 6036 Intermediate "--Specify Parts List--"
+Length=2125
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  1160  TAACACCGTGCGTGTTGACT  1179
+
+
+>lcl|BBa_S03314 U 6017 Intermediate "BI12007.B0030"
+Length=105
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Minus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  49  TAACACCGTGCGTGTTGACT  30
+
+
+>lcl|BBa_S03312 U 6015 Intermediate "R0051.B0031"
+Length=71
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  1   TAACACCGTGCGTGTTGACT  20
+
+
+>lcl|BBa_S03311 U 6014 Intermediate "I12007.B0032"
+Length=103
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Minus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  49  TAACACCGTGCGTGTTGACT  30
+
+
+>lcl|BBa_S03293 U 5969 Intermediate "--Specify Parts List--"
+Length=1594
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  57  TAACACCGTGCGTGTTGACT  76
+
+
+>lcl|BBa_S03292 P 5966 Intermediate "--Specify Parts List--"
+Length=855
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  1   TAACACCGTGCGTGTTGACT  20
+
+
+>lcl|BBa_S03286 U 5938 Intermediate "--Specify Parts List--"
+Length=846
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  57  TAACACCGTGCGTGTTGACT  76
+
+
+>lcl|BBa_S03285 U 5937 Intermediate "--Specify Parts List--"
+Length=885
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  57  TAACACCGTGCGTGTTGACT  76
+
+
+>lcl|BBa_S03283 U 5918 Intermediate "R0065 B0034 E0030"
+Length=846
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  57  TAACACCGTGCGTGTTGACT  76
+
+
+>lcl|BBa_S03269 U 5189 Intermediate "Intermediate part from assembly 317"
+Length=5248
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  3291  TAACACCGTGCGTGTTGACT  3310
+
+
+>lcl|BBa_S03268 U 5188 Intermediate "Intermediate part from assembly 317"
+Length=5296
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  3347  TAACACCGTGCGTGTTGACT  3366
+
+
+>lcl|BBa_S03267 U 5187 Intermediate "Intermediate part from assembly 317"
+Length=5290
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  57  TAACACCGTGCGTGTTGACT  76
+
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  3333  TAACACCGTGCGTGTTGACT  3352
+
+
+>lcl|BBa_S03266 U 5186 Intermediate "Intermediate part from assembly 317"
+Length=5338
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  57  TAACACCGTGCGTGTTGACT  76
+
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  3389  TAACACCGTGCGTGTTGACT  3408
+
+
+>lcl|BBa_S03265 U 5185 Intermediate "Intermediate part from assembly 317"
+Length=6620
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  57  TAACACCGTGCGTGTTGACT  76
+
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  3478  TAACACCGTGCGTGTTGACT  3497
+
+
+>lcl|BBa_S03258 U 5173 Intermediate "Intermediate part from assembly 317"
+Length=1946
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  1   TAACACCGTGCGTGTTGACT  20
+
+
+>lcl|BBa_S03257 U 5172 Intermediate "Intermediate part from assembly 317"
+Length=1884
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  1   TAACACCGTGCGTGTTGACT  20
+
+
+>lcl|BBa_S03256 U 5171 Intermediate "Intermediate part from assembly 317"
+Length=1946
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  1898  TAACACCGTGCGTGTTGACT  1917
+
+
+>lcl|BBa_S03183 P 4741 Intermediate "R0065.E0433"
+Length=613
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  57  TAACACCGTGCGTGTTGACT  76
+
+
+>lcl|BBa_S03180 U 4736 Intermediate "B0015.R0065.B0034.E0033"
+Length=613
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1    TAACACCGTGCGTGTTGACT  20
+            ||||||||||||||||||||
+Sbjct  194  TAACACCGTGCGTGTTGACT  213
+
+
+>lcl|BBa_S03169 U 5004 Intermediate "Q04510.I0461"
+Length=1793
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1    TAACACCGTGCGTGTTGACT  20
+            ||||||||||||||||||||
+Sbjct  939  TAACACCGTGCGTGTTGACT  958
+
+
+>lcl|BBa_S03151 P 4762 Intermediate "Brickalator subassembly"
+Length=3338
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  1001  TAACACCGTGCGTGTTGACT  1020
+
+
+>lcl|BBa_S03131 D 4634 Intermediate "Intermediate part from assembly 299"
+Length=234
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1    TAACACCGTGCGTGTTGACT  20
+            ||||||||||||||||||||
+Sbjct  194  TAACACCGTGCGTGTTGACT  213
+
+
+>lcl|BBa_S02107 D 4459 Intermediate "Intermediate part from assembly 240"
+Length=3337
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  1001  TAACACCGTGCGTGTTGACT  1020
+
+
+>lcl|BBa_S02002 D 4249 Intermediate "Intermediate part from assembly 240"
+Length=3337
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  1001  TAACACCGTGCGTGTTGACT  1020
+
+
+>lcl|BBa_S02001 D 4247 Intermediate "Intermediate part from assembly 240"
+Length=5441
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  3492  TAACACCGTGCGTGTTGACT  3511
+
+
+>lcl|BBa_S02000 U 4245 Intermediate "Intermediate part from assembly 317"
+Length=5435
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  57  TAACACCGTGCGTGTTGACT  76
+
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  3478  TAACACCGTGCGTGTTGACT  3497
+
+
+>lcl|BBa_S01999 D 4243 Intermediate "Intermediate part from assembly 240"
+Length=5483
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  57  TAACACCGTGCGTGTTGACT  76
+
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  3534  TAACACCGTGCGTGTTGACT  3553
+
+
+>lcl|BBa_S01998 D 4241 Intermediate "Intermediate part from assembly 240"
+Length=5393
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  3436  TAACACCGTGCGTGTTGACT  3455
+
+
+>lcl|BBa_S01996 D 4237 Intermediate "Intermediate part from assembly 240"
+Length=3337
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  1001  TAACACCGTGCGTGTTGACT  1020
+
+
+>lcl|BBa_S01988 P 4235 Intermediate "--Specify Parts List--"
+Length=4372
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  3347  TAACACCGTGCGTGTTGACT  3366
+
+
+>lcl|BBa_S01987 P 4233 Intermediate "--Specify Parts List--"
+Length=4366
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  57  TAACACCGTGCGTGTTGACT  76
+
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  3333  TAACACCGTGCGTGTTGACT  3352
+
+
+>lcl|BBa_S01986 P 4231 Intermediate "--Specify Parts List--"
+Length=4414
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  57  TAACACCGTGCGTGTTGACT  76
+
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  3389  TAACACCGTGCGTGTTGACT  3408
+
+
+>lcl|BBa_S01985 P 4229 Intermediate "--Specify Parts List--"
+Length=4324
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  3291  TAACACCGTGCGTGTTGACT  3310
+
+
+>lcl|BBa_S01936 D 4105 Intermediate "Intermediate part from assembly 240"
+Length=3337
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  1001  TAACACCGTGCGTGTTGACT  1020
+
+
+>lcl|BBa_S01935 P 4103 Intermediate "--Specify Parts List--"
+Length=4352
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  3347  TAACACCGTGCGTGTTGACT  3366
+
+
+>lcl|BBa_S01934 P 4101 Intermediate "--Specify Parts List--"
+Length=4491
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  57  TAACACCGTGCGTGTTGACT  76
+
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  3478  TAACACCGTGCGTGTTGACT  3497
+
+
+>lcl|BBa_S01933 P 4099 Intermediate "--Specify Parts List--"
+Length=4394
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  57  TAACACCGTGCGTGTTGACT  76
+
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  3389  TAACACCGTGCGTGTTGACT  3408
+
+
+>lcl|BBa_S01931 P 4095 Intermediate "--Specify Parts List--"
+Length=4449
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  3436  TAACACCGTGCGTGTTGACT  3455
+
+
+>lcl|BBa_S01907 D 3881 Intermediate "Intermediate part from assembly 240"
+Length=3337
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  1001  TAACACCGTGCGTGTTGACT  1020
+
+
+>lcl|BBa_S01904 U 3875 Intermediate "Intermediate part from assembly 240"
+Length=4497
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  3492  TAACACCGTGCGTGTTGACT  3511
+
+
+>lcl|BBa_S01902 P 3871 Intermediate "--Specify Parts List--"
+Length=3526
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  57  TAACACCGTGCGTGTTGACT  76
+
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  3478  TAACACCGTGCGTGTTGACT  3497
+
+
+>lcl|BBa_S01900 P 3867 Intermediate "--Specify Parts List--"
+Length=3429
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  57  TAACACCGTGCGTGTTGACT  76
+
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  3389  TAACACCGTGCGTGTTGACT  3408
+
+
+>lcl|BBa_S01898 U 3863 Intermediate "Intermediate part from assembly 240"
+Length=3484
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  3436  TAACACCGTGCGTGTTGACT  3455
+
+
+>lcl|BBa_S01895 P 3857 Intermediate "Intermediate part from assembly 240"
+Length=7111
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  1001  TAACACCGTGCGTGTTGACT  1020
+
+
+>lcl|BBa_S01892 D 3851 Intermediate "Intermediate part from assembly 243"
+Length=4396
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  4356  TAACACCGTGCGTGTTGACT  4375
+
+
+>lcl|BBa_S01891 D 3849 Intermediate "Intermediate part from assembly 243"
+Length=4348
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  4300  TAACACCGTGCGTGTTGACT  4319
+
+
+>lcl|BBa_S01851 D 3759 Intermediate "Intermediate part from assembly 240"
+Length=3337
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  1001  TAACACCGTGCGTGTTGACT  1020
+
+
+>lcl|BBa_S01849 U 3755 Intermediate "Intermediate part from assembly 240"
+Length=5441
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  3492  TAACACCGTGCGTGTTGACT  3511
+
+
+>lcl|BBa_S01847 P 3751 Intermediate "Intermediate part from assembly 240"
+Length=3526
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  57  TAACACCGTGCGTGTTGACT  76
+
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  3478  TAACACCGTGCGTGTTGACT  3497
+
+
+>lcl|BBa_S01845 U 3747 Intermediate "Intermediate part from assembly 240"
+Length=3574
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  57  TAACACCGTGCGTGTTGACT  76
+
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  3534  TAACACCGTGCGTGTTGACT  3553
+
+
+>lcl|BBa_S01843 U 3743 Intermediate "Intermediate part from assembly 240"
+Length=3484
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  3436  TAACACCGTGCGTGTTGACT  3455
+
+
+>lcl|BBa_S01840 U 3737 Intermediate "Intermediate part from assembly 240"
+Length=4795
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  1001  TAACACCGTGCGTGTTGACT  1020
+
+
+>lcl|BBa_S01830 D 3717 Intermediate "Intermediate part from assembly 240"
+Length=3337
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  1001  TAACACCGTGCGTGTTGACT  1020
+
+
+>lcl|BBa_S01826 D 3709 Intermediate "Intermediate part from assembly 240"
+Length=3526
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  57  TAACACCGTGCGTGTTGACT  76
+
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  3478  TAACACCGTGCGTGTTGACT  3497
+
+
+>lcl|BBa_S01824 D 3705 Intermediate "Intermediate part from assembly 240"
+Length=3574
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  57  TAACACCGTGCGTGTTGACT  76
+
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  3534  TAACACCGTGCGTGTTGACT  3553
+
+
+>lcl|BBa_S01821 U 3699 Intermediate "Intermediate part from assembly 240"
+Length=3484
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  3436  TAACACCGTGCGTGTTGACT  3455
+
+
+>lcl|BBa_S01674 P 5566 Intermediate "R0062.Q04400.Q04121.Q04511"
+Length=3387
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  3347  TAACACCGTGCGTGTTGACT  3366
+
+
+>lcl|BBa_S01664 P 3377 Intermediate "--Specify Parts List--"
+Length=2428
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  1001  TAACACCGTGCGTGTTGACT  1020
+
+
+>lcl|BBa_S01663 U 3375 Intermediate "Intermediate part from assembly 240"
+Length=3532
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  3492  TAACACCGTGCGTGTTGACT  3511
+
+
+>lcl|BBa_S01660 U 3369 Intermediate "Intermediate part from assembly 240"
+Length=3484
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  3436  TAACACCGTGCGTGTTGACT  3455
+
+
+>lcl|BBa_S01653 U 3347 Intermediate "Intermediate part from assembly 240"
+Length=3532
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  3492  TAACACCGTGCGTGTTGACT  3511
+
+
+>lcl|BBa_S01650 A 3341 Intermediate "--Specify Parts List--"
+Length=1007
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  57  TAACACCGTGCGTGTTGACT  76
+
+
+>lcl|BBa_S01649 U 3339 Intermediate "Intermediate part from assembly 240"
+Length=3484
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  3436  TAACACCGTGCGTGTTGACT  3455
+
+
+>lcl|BBa_S01641 P 3323 Intermediate "--Specify Parts List--"
+Length=2896
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  1001  TAACACCGTGCGTGTTGACT  1020
+
+
+>lcl|BBa_S01536 P 3113 Intermediate "--Specify Parts List--"
+Length=2414
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  2374  TAACACCGTGCGTGTTGACT  2393
+
+
+>lcl|BBa_S01535 A 3111 Intermediate "Intermediate part from assembly 240"
+Length=1007
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  57  TAACACCGTGCGTGTTGACT  76
+
+
+>lcl|BBa_S01533 P 3107 Intermediate "--Specify Parts List--"
+Length=2511
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  2463  TAACACCGTGCGTGTTGACT  2482
+
+
+>lcl|BBa_S01455 P 2951 Intermediate "--Specify Parts List--"
+Length=2253
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  2213  TAACACCGTGCGTGTTGACT  2232
+
+
+>lcl|BBa_S01453 P 2947 Intermediate "--Specify Parts List--"
+Length=2205
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  2157  TAACACCGTGCGTGTTGACT  2176
+
+
+>lcl|BBa_S01431 U 2892 Intermediate "Intermediate part from assembly 240"
+Length=2559
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  2519  TAACACCGTGCGTGTTGACT  2538
+
+
+>lcl|BBa_S01430 A 2890 Intermediate "Intermediate part from assembly 240"
+Length=1007
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  57  TAACACCGTGCGTGTTGACT  76
+
+
+>lcl|BBa_S01428 P 2886 Intermediate "Intermediate part from assembly 240"
+Length=2511
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  2463  TAACACCGTGCGTGTTGACT  2482
+
+
+>lcl|BBa_S01416 P 2862 Intermediate "--Specify Parts List--"
+Length=1049
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  1001  TAACACCGTGCGTGTTGACT  1020
+
+
+>lcl|BBa_S01383 D 2784 Intermediate "Intermediate part from assembly 239"
+Length=3532
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  3492  TAACACCGTGCGTGTTGACT  3511
+
+
+>lcl|BBa_S01382 D 2782 Intermediate "Intermediate part from assembly 239"
+Length=3526
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  57  TAACACCGTGCGTGTTGACT  76
+
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  3478  TAACACCGTGCGTGTTGACT  3497
+
+
+>lcl|BBa_S01381 D 2780 Intermediate "Intermediate part from assembly 239"
+Length=3574
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  57  TAACACCGTGCGTGTTGACT  76
+
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  3534  TAACACCGTGCGTGTTGACT  3553
+
+
+>lcl|BBa_S01380 D 2778 Intermediate "Intermediate part from assembly 239"
+Length=2559
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  2519  TAACACCGTGCGTGTTGACT  2538
+
+
+>lcl|BBa_S01379 D 2776 Intermediate "Intermediate part from assembly 239"
+Length=1007
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  57  TAACACCGTGCGTGTTGACT  76
+
+
+>lcl|BBa_S01378 D 2774 Intermediate "Intermediate part from assembly 239"
+Length=3484
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  3436  TAACACCGTGCGTGTTGACT  3455
+
+
+>lcl|BBa_S01377 D 2772 Intermediate "Intermediate part from assembly 239"
+Length=2511
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  2463  TAACACCGTGCGTGTTGACT  2482
+
+
+>lcl|BBa_S01304 D 2589 Intermediate "Intermediate part from assembly 236"
+Length=4530
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  1   TAACACCGTGCGTGTTGACT  20
+
+
+>lcl|BBa_S01303 D 2587 Intermediate "Intermediate part from assembly 236"
+Length=4026
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  1   TAACACCGTGCGTGTTGACT  20
+
+
+>lcl|BBa_S01302 D 2585 Intermediate "Intermediate part from assembly 236"
+Length=1066
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  1   TAACACCGTGCGTGTTGACT  20
+
+
+>lcl|BBa_S01301 D 2583 Intermediate "Intermediate part from assembly 236"
+Length=858
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  1   TAACACCGTGCGTGTTGACT  20
+
+
+>lcl|BBa_S01300 D 2581 Intermediate "Intermediate part from assembly 236"
+Length=4074
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  57  TAACACCGTGCGTGTTGACT  76
+
+
+>lcl|BBa_S01299 D 2579 Intermediate "Intermediate part from assembly 236"
+Length=4578
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  57  TAACACCGTGCGTGTTGACT  76
+
+
+>lcl|BBa_S01298 D 2577 Intermediate "Intermediate part from assembly 236"
+Length=1114
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  57  TAACACCGTGCGTGTTGACT  76
+
+
+>lcl|BBa_S01297 D 2575 Intermediate "Intermediate part from assembly 236"
+Length=906
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  57  TAACACCGTGCGTGTTGACT  76
+
+
+>lcl|BBa_S01023 U 5817 Intermediate "Q04510.Q04520"
+Length=1898
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1    TAACACCGTGCGTGTTGACT  20
+            ||||||||||||||||||||
+Sbjct  939  TAACACCGTGCGTGTTGACT  958
+
+
+>lcl|BBa_S01021 U 5816 Intermediate "R0052.Q04510"
+Length=1041
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  993   TAACACCGTGCGTGTTGACT  1012
+
+
+>lcl|BBa_S01020 U 5815 Intermediate "Q04121.Q04510"
+Length=2366
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  2318  TAACACCGTGCGTGTTGACT  2337
+
+
+>lcl|BBa_S01006 P 5511 Intermediate "Q04510.E0432"
+Length=1912
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1    TAACACCGTGCGTGTTGACT  20
+            ||||||||||||||||||||
+Sbjct  939  TAACACCGTGCGTGTTGACT  958
+
+
+>lcl|BBa_R0065 A 194 Regulatory "Promoter (lambda cI and luxR regulated -- hybrid)"
+Length=97
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  57  TAACACCGTGCGTGTTGACT  76
+
+
+>lcl|BBa_R0051 A 189 Regulatory "promoter (lambda cI regulated)"
+Length=49
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  1   TAACACCGTGCGTGTTGACT  20
+
+
+>lcl|BBa_Q04811 U 3922 Composite "QPI (B0034.C0081.B0015.R0051)"
+Length=962
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1    TAACACCGTGCGTGTTGACT  20
+            ||||||||||||||||||||
+Sbjct  914  TAACACCGTGCGTGTTGACT  933
+
+
+>lcl|BBa_Q04511 A 2126 Inverter "QPI (B0034.C0051.B0015.R0065)"
+Length=1035
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  995   TAACACCGTGCGTGTTGACT  1014
+
+
+>lcl|BBa_Q04510 A 2125 Inverter "QPI (B0034.C0051.B0015.R0051)"
+Length=987
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1    TAACACCGTGCGTGTTGACT  20
+            ||||||||||||||||||||
+Sbjct  939  TAACACCGTGCGTGTTGACT  958
+
+
+>lcl|BBa_Q03511 U 2143 Composite "QPI (B0033.C0051.B0015.R0065)"
+Length=1034
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  994   TAACACCGTGCGTGTTGACT  1013
+
+
+>lcl|BBa_Q03510 P 2140 Composite "QPI (B0033.C0051.B0015.R0051)"
+Length=986
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1    TAACACCGTGCGTGTTGACT  20
+            ||||||||||||||||||||
+Sbjct  938  TAACACCGTGCGTGTTGACT  957
+
+
+>lcl|BBa_Q01511 A 2133 Composite "QPI (B0031.C0051.B0015.R0065)"
+Length=1037
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  997   TAACACCGTGCGTGTTGACT  1016
+
+
+>lcl|BBa_Q01510 P 2132 Composite "QPI (B0031.C0051.B0015.R0051)"
+Length=989
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1    TAACACCGTGCGTGTTGACT  20
+            ||||||||||||||||||||
+Sbjct  941  TAACACCGTGCGTGTTGACT  960
+
+
+>lcl|BBa_M30010 U 6342 Measurement " -- No description -- "
+Length=1972
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  1055  TAACACCGTGCGTGTTGACT  1074
+
+
+>lcl|BBa_M30009 U 6341 Measurement " -- No description -- "
+Length=1972
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  1055  TAACACCGTGCGTGTTGACT  1074
+
+
+>lcl|BBa_M30004 U 6314 Generator " -- No description --"
+Length=1856
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1    TAACACCGTGCGTGTTGACT  20
+            ||||||||||||||||||||
+Sbjct  939  TAACACCGTGCGTGTTGACT  958
+
+
+>lcl|BBa_M30003 U 6313 Generator " -- No description --"
+Length=1856
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1    TAACACCGTGCGTGTTGACT  20
+            ||||||||||||||||||||
+Sbjct  939  TAACACCGTGCGTGTTGACT  958
+
+
+>lcl|BBa_M1904 U 24880 Temporary " RBS/ BBa_1543 / tc stps"
+Length=1230
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Minus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  49  TAACACCGTGCGTGTTGACT  30
+
+
+>lcl|BBa_M12100 U 21285 Reporter ""PLambda : B0034 : RFP in BioScaffold Form, 
+a (0,5;7,2] BioScaffold part ""
+Length=896
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  20  TAACACCGTGCGTGTTGACT  39
+
+
+>lcl|BBa_K987000 U 28520 Coding ""This part is a coding part that produces Vip3Ca3, 
+a protein that can deals with different forms of p""
+Length=2568
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  31  TAACACCGTGCGTGTTGACT  50
+
+
+>lcl|BBa_K909016 P 26926 Regulatory ""PR promoter with two operator sites: cI 
+OR1, cI OR2 and and LacI O1/O2""
+Length=83
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  6   TAACACCGTGCGTGTTGACT  25
+
+
+>lcl|BBa_K909013 A 26566 Regulatory ""PR promoter with multiple operator sites: 
+cI OR1, cI OR2 and TetO1""
+Length=73
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  6   TAACACCGTGCGTGTTGACT  25
+
+
+>lcl|BBa_K909012 A 26562 Regulatory ""PR promoter with multiple operator sites: 
+cI OR1, cI  OR2 and and LacI O1""
+Length=71
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  6   TAACACCGTGCGTGTTGACT  25
+
+
+>lcl|BBa_K896917 U 25042 Coding "Against aging!!"
+Length=2089
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1    TAACACCGTGCGTGTTGACT  20
+            ||||||||||||||||||||
+Sbjct  900  TAACACCGTGCGTGTTGACT  919
+
+
+>lcl|BBa_K892999 U 25202 Composite "red light responsive inverter driving luciferase"
+Length=3734
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  1055  TAACACCGTGCGTGTTGACT  1074
+
+
+>lcl|BBa_K892007 U 25212 Composite "red light sensing promoter driving the C1 
+inverter"
+Length=1103
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  1055  TAACACCGTGCGTGTTGACT  1074
+
+
+>lcl|BBa_K892006 U 25205 Reporter "express GFP with light"
+Length=1853
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  1055  TAACACCGTGCGTGTTGACT  1074
+
+
+>lcl|BBa_K892001 U 25200 Reporter "red light responsive reporter driving red light 
+luciferase"
+Length=3734
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  1055  TAACACCGTGCGTGTTGACT  1074
+
+
+>lcl|BBa_K892000 U 25198 Reporter "Red light responsive luciferase"
+Length=3734
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  1055  TAACACCGTGCGTGTTGACT  1074
+
+
+>lcl|BBa_K888004 A 27185 Composite "Biphasic switch part"
+Length=1564
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Minus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  53  TAACACCGTGCGTGTTGACT  34
+
+
+>lcl|BBa_K861174 U 25607 Regulatory "A control device for BBa_K861169"
+Length=1899
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  982   TAACACCGTGCGTGTTGACT  1001
+
+
+>lcl|BBa_K861169 U 26522 Device ""Indirect regulatory device, activated at high 
+glucose concentration""
+Length=1961
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  1044  TAACACCGTGCGTGTTGACT  1063
+
+
+>lcl|BBa_K843008 P 27903 Composite "T4 Lysis Device under control of IPTG"
+Length=2601
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  1   TAACACCGTGCGTGTTGACT  20
+
+
+>lcl|BBa_K843004 P 27420 Device "T4 lysis device regulated by IPTG"
+Length=2871
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  1   TAACACCGTGCGTGTTGACT  20
+
+
+>lcl|BBa_K843002 P 27416 Device "T4 lysis device with PcI"
+Length=1862
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  1   TAACACCGTGCGTGTTGACT  20
+
+
+>lcl|BBa_K831015 P 27314 Composite "Inducible HipA7 toxin under the control of 
+prm promoter"
+Length=1411
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Minus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  49  TAACACCGTGCGTGTTGACT  30
+
+
+>lcl|BBa_K819001 D 25491 Inverter "Lambda Promoter+LacI"
+Length=1365
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  1   TAACACCGTGCGTGTTGACT  20
+
+
+>lcl|BBa_K817051 D 25895 Regulatory "modified pCI-1 (Design1)"
+Length=72
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  22  TAACACCGTGCGTGTTGACT  41
+
+
+>lcl|BBa_K784020 U 25777 Other "Phage Lambda fragment 6 - regulation"
+Length=5721
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  4795  TAACACCGTGCGTGTTGACT  4814
+
+
+>lcl|BBa_K750115 U 26473 Signalling "pBADcIT-PtetcIT-PcIGLT: arabinose or atc-&gt;cI 
+protein-&gt;reduction of gfp(lva)"
+Length=3938
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  2968  TAACACCGTGCGTGTTGACT  2987
+
+
+>lcl|BBa_K750114 U 26434 Signalling "PtetcIT-PcIGLT: atc-&gt;cI-&gt;GFP(lva)"
+Length=2862
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  1892  TAACACCGTGCGTGTTGACT  1911
+
+
+>lcl|BBa_K750113 U 26432 Signalling "pBADcIT-PcIGLT: Pbad-&gt;cI(lva)-&gt;PcI-&gt;GFP(lva)"
+Length=2047
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  1077  TAACACCGTGCGTGTTGACT  1096
+
+
+>lcl|BBa_K750112 D 26428 Signalling "GFP(lva) expression system controlled by 
+cI or atc(RBS strength:1.0)"
+Length=2846
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  1   TAACACCGTGCGTGTTGACT  20
+
+
+>lcl|BBa_K750110 D 26426 Signalling "GFP(lva) expression system controlled by 
+cI and atc(RBS strength:0.3)"
+Length=2847
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  1   TAACACCGTGCGTGTTGACT  20
+
+
+>lcl|BBa_K750109 U 26423 Signalling "cI-&gt;GFP(lva)&lt;-arabinose"
+Length=2969
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1    TAACACCGTGCGTGTTGACT  20
+            ||||||||||||||||||||
+Sbjct  939  TAACACCGTGCGTGTTGACT  958
+
+
+>lcl|BBa_K750108 U 26420 Signalling "PcIGLT-pBADGLT:GFP(lva) expression system 
+controlled by cI protein or arabinose"
+Length=2031
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  1   TAACACCGTGCGTGTTGACT  20
+
+
+>lcl|BBa_K750103 A 26411 Signalling "PcIGLT:GFP(lva) repression system activated 
+by cI protein"
+Length=971
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  1   TAACACCGTGCGTGTTGACT  20
+
+
+>lcl|BBa_K741021 P 25748 Composite "plac-RBS-cI-T-pRM-anticro-T"
+Length=1574
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Minus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  1195  TAACACCGTGCGTGTTGACT  1176
+
+
+>lcl|BBa_K741019 P 25476 Composite "pRM-anticro-T-pRM-RBS-lysis-T"
+Length=825
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Minus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  49  TAACACCGTGCGTGTTGACT  30
+
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Minus
+
+Query  1    TAACACCGTGCGTGTTGACT  20
+            ||||||||||||||||||||
+Sbjct  485  TAACACCGTGCGTGTTGACT  466
+
+
+>lcl|BBa_K741018 P 25475 Composite "plac-RBS-cI-T-pRM-anticro-T-pCon(0.856)-RBS-crogfp-T"
+Length=2713
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Minus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  1195  TAACACCGTGCGTGTTGACT  1176
+
+
+>lcl|BBa_K741017 U 25424 Composite "plac-RBS-cI-T-pRM-anticro-T-pCon(0.244)-RBS-crogfp-T"
+Length=2713
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Minus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  1195  TAACACCGTGCGTGTTGACT  1176
+
+
+>lcl|BBa_K741016 P 25423 Composite "pRM-anticro-T"
+Length=428
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Minus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  49  TAACACCGTGCGTGTTGACT  30
+
+
+>lcl|BBa_K741015 P 25289 Composite "plac-RBS-cI-T-pRM-RBS-lysis-T"
+Length=1535
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Minus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  1195  TAACACCGTGCGTGTTGACT  1176
+
+
+>lcl|BBa_K741014 P 25288 Generator "pRM-RBS-lysis-T"
+Length=389
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Minus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  49  TAACACCGTGCGTGTTGACT  30
+
+
+>lcl|BBa_K741004 P 25274 Measurement "plac-RBS-cI-T-pRM-RBS-GFP-T"
+Length=2111
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Minus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  1195  TAACACCGTGCGTGTTGACT  1176
+
+
+>lcl|BBa_K741003 A 25273 Generator "pRM-RBS-GFP-T"
+Length=965
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Minus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  49  TAACACCGTGCGTGTTGACT  30
+
+
+>lcl|BBa_K676015 D 22990 Composite "Extractery 2.0 - Deleted"
+Length=5424
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  2628  TAACACCGTGCGTGTTGACT  2647
+
+
+>lcl|BBa_K676014 D 22989 Composite "Extractery"
+Length=5404
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  2628  TAACACCGTGCGTGTTGACT  2647
+
+
+>lcl|BBa_K676005 U 22484 Composite "Extractery"
+Length=5406
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1     TAACACCGTGCGTGTTGACT  20
+             ||||||||||||||||||||
+Sbjct  2628  TAACACCGTGCGTGTTGACT  2647
+
+
+>lcl|BBa_K648132 U 24180 Composite "Pr of Or tester with Cro"
+Length=1333
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  34  TAACACCGTGCGTGTTGACT  53
+
+
+>lcl|BBa_K648131 U 24179 Composite "Pr of Or tester with cI repressor"
+Length=1907
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  34  TAACACCGTGCGTGTTGACT  53
+
+
+>lcl|BBa_K648130 U 24178 Composite " Pr of Or tester with cI repressor with very 
+weak RBS "
+Length=1909
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  34  TAACACCGTGCGTGTTGACT  53
+
+
+>lcl|BBa_K648129 U 24177 Composite "Pr of Or tester with cI repressor with slightly 
+weak RBS"
+Length=1910
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  34  TAACACCGTGCGTGTTGACT  53
+
+
+>lcl|BBa_K648128 U 24176 Composite "Or tester with Cro"
+Length=2081
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1    TAACACCGTGCGTGTTGACT  20
+            ||||||||||||||||||||
+Sbjct  782  TAACACCGTGCGTGTTGACT  801
+
+
+>lcl|BBa_K648127 U 24175 Composite "Or tester with cI repressor"
+Length=2655
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1    TAACACCGTGCGTGTTGACT  20
+            ||||||||||||||||||||
+Sbjct  782  TAACACCGTGCGTGTTGACT  801
+
+
+>lcl|BBa_K648126 U 24174 Composite "Or tester with cI repressor with very weak 
+RBS"
+Length=2657
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1    TAACACCGTGCGTGTTGACT  20
+            ||||||||||||||||||||
+Sbjct  782  TAACACCGTGCGTGTTGACT  801
+
+
+>lcl|BBa_K648125 U 24172 Composite "Or tester with cI repressor with slightly 
+weak RBS"
+Length=2658
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1    TAACACCGTGCGTGTTGACT  20
+            ||||||||||||||||||||
+Sbjct  782  TAACACCGTGCGTGTTGACT  801
+
+
+>lcl|BBa_K648034 U 23346 Measurement "Or tester"
+Length=968
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  34  TAACACCGTGCGTGTTGACT  53
+
+
+>lcl|BBa_K648030 U 21782 Composite "Or with RBS B0034 and Mcherry"
+Length=831
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  34  TAACACCGTGCGTGTTGACT  53
+
+
+>lcl|BBa_K648029 A 21781 Coding ""OR, operating region for Lambda switch""
+Length=82
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  34  TAACACCGTGCGTGTTGACT  53
+
+
+>lcl|BBa_K617002 P 23279 Plasmid "pAH57"
+Length=5201
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1    TAACACCGTGCGTGTTGACT  20
+            ||||||||||||||||||||
+Sbjct  809  TAACACCGTGCGTGTTGACT  828
+
+
+>lcl|BBa_K617001 P 23278 Plasmid "pINT-ts"
+Length=5129
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1    TAACACCGTGCGTGTTGACT  20
+            ||||||||||||||||||||
+Sbjct  809  TAACACCGTGCGTGTTGACT  828
+
+
+>lcl|BBa_K611017 P 22616 Composite "cI Lambda Repressor and Promoter Wild Type 
+Control"
+Length=1871
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  1   TAACACCGTGCGTGTTGACT  20
+
+
+>lcl|BBa_K611011 P 22609 Composite "cI lambda Repressor Characterization Construct"
+Length=1090
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  1   TAACACCGTGCGTGTTGACT  20
+
+
+>lcl|BBa_K611007 D 21873 Composite "R0051+E0240+I13453+B0034+C0051"
+Length=1872
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  1   TAACACCGTGCGTGTTGACT  20
+
+
+>lcl|BBa_K611006 D 21872 Intermediate "R0051+E0240+I13453+B0034"
+Length=1091
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  1   TAACACCGTGCGTGTTGACT  20
+
+
+>lcl|BBa_K608351 A 22237 Composite "(correct) temperature sensitive promoter"
+Length=948
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Plus
+
+Query  1    TAACACCGTGCGTGTTGACT  20
+            ||||||||||||||||||||
+Sbjct  900  TAACACCGTGCGTGTTGACT  919
+
+
+>lcl|BBa_K607038 A 22797 Generator "Prm modified promoter generating GFP"
+Length=968
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Minus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  49  TAACACCGTGCGTGTTGACT  30
+
+
+>lcl|BBa_K607022 P 22578 Composite " Prm_cI_antiPlasB with 1.0RBS "
+Length=1202
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Minus
+
+Query  1    TAACACCGTGCGTGTTGACT  20
+            ||||||||||||||||||||
+Sbjct  186  TAACACCGTGCGTGTTGACT  167
+
+
+>lcl|BBa_K607021 P 22577 Composite " Prm_cI_antiPlasB with 0.6RBS "
+Length=1205
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Minus
+
+Query  1    TAACACCGTGCGTGTTGACT  20
+            ||||||||||||||||||||
+Sbjct  186  TAACACCGTGCGTGTTGACT  167
+
+
+>lcl|BBa_K607020 P 22576 Composite "Prm_cI_antiPlasB with 0.3RBS "
+Length=1203
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Minus
+
+Query  1    TAACACCGTGCGTGTTGACT  20
+            ||||||||||||||||||||
+Sbjct  186  TAACACCGTGCGTGTTGACT  167
+
+
+>lcl|BBa_K607019 P 22574 Composite " Prm_cI_antiPlasB with 0.07RBS "
+Length=1204
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Minus
+
+Query  1    TAACACCGTGCGTGTTGACT  20
+            ||||||||||||||||||||
+Sbjct  186  TAACACCGTGCGTGTTGACT  167
+
+
+>lcl|BBa_K607018 P 22573 Composite "Prm_cI-DAS_antiPlasB with 1.0RBS"
+Length=1243
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Minus
+
+Query  1    TAACACCGTGCGTGTTGACT  20
+            ||||||||||||||||||||
+Sbjct  186  TAACACCGTGCGTGTTGACT  167
+
+
+>lcl|BBa_K607017 P 22572 Composite "Prm_cI-DAS_antiPlasB with 0.6RBS"
+Length=1246
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Minus
+
+Query  1    TAACACCGTGCGTGTTGACT  20
+            ||||||||||||||||||||
+Sbjct  186  TAACACCGTGCGTGTTGACT  167
+
+
+>lcl|BBa_K607016 P 22571 Composite "Prm_cI-DAS_antiPlasB with 0.3RBS"
+Length=1244
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Minus
+
+Query  1    TAACACCGTGCGTGTTGACT  20
+            ||||||||||||||||||||
+Sbjct  186  TAACACCGTGCGTGTTGACT  167
+
+
+>lcl|BBa_K607014 U 22570 Composite "Prm_cI-DAS_antiPlasB with 0.07RBS"
+Length=1245
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Minus
+
+Query  1    TAACACCGTGCGTGTTGACT  20
+            ||||||||||||||||||||
+Sbjct  186  TAACACCGTGCGTGTTGACT  167
+
+
+>lcl|BBa_K607013 P 22562 Composite "Prm_cI-LVA_antiPlasB with 1.0RBS"
+Length=1266
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Minus
+
+Query  1    TAACACCGTGCGTGTTGACT  20
+            ||||||||||||||||||||
+Sbjct  186  TAACACCGTGCGTGTTGACT  167
+
+
+>lcl|BBa_K607012 P 22564 Composite "Prm_cI-LVA_antiPlasB with 0.6RBS"
+Length=1269
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Minus
+
+Query  1    TAACACCGTGCGTGTTGACT  20
+            ||||||||||||||||||||
+Sbjct  186  TAACACCGTGCGTGTTGACT  167
+
+
+>lcl|BBa_K607011 P 22560 Composite "Prm_cI-LVA_antiPlasB with 0.3RBS"
+Length=1267
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Minus
+
+Query  1    TAACACCGTGCGTGTTGACT  20
+            ||||||||||||||||||||
+Sbjct  186  TAACACCGTGCGTGTTGACT  167
+
+
+>lcl|BBa_K607010 P 22555 Composite "Prm_cI-LVA_antiPlasB with 0.07RBS"
+Length=1268
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Minus
+
+Query  1    TAACACCGTGCGTGTTGACT  20
+            ||||||||||||||||||||
+Sbjct  186  TAACACCGTGCGTGTTGACT  167
+
+
+>lcl|BBa_K607009 U 22444 Composite "Prm_GFP-LVA_antiPlasB"
+Length=1250
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Minus
+
+Query  1    TAACACCGTGCGTGTTGACT  20
+            ||||||||||||||||||||
+Sbjct  186  TAACACCGTGCGTGTTGACT  167
+
+
+>lcl|BBa_K607007 P 22243 Composite "Prm _crRNA_GFP "
+Length=993
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Minus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  49  TAACACCGTGCGTGTTGACT  30
+
+
+>lcl|BBa_K607005 P 22241 Composite "Prm_crRNA_LasR-LVA "
+Length=1054
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Minus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  49  TAACACCGTGCGTGTTGACT  30
+
+
+>lcl|BBa_K607003 U 22196 Composite "Prm_GFP-LVA "
+Length=1004
+
+ Score = 37.4 bits (40),  Expect = 6e-04
+ Identities = 20/20 (100%), Gaps = 0/20 (0%)
+ Strand=Plus/Minus
+
+Query  1   TAACACCGTGCGTGTTGACT  20
+           ||||||||||||||||||||
+Sbjct  49  TAACACCGTGCGTGTTGACT  30
+
+
+
+Lambda      K        H
+   0.634    0.408    0.912 
+
+Gapped
+Lambda      K        H
+   0.625    0.410    0.780 
+
+Effective search space used: 111814548
+
+
+  Database: bbk.fasta
+    Posted date:  Sep 4, 2014  4:08 PM
+  Number of letters in database: 37,708,246
+  Number of sequences in database:  25,690
+
+
+
+Matrix: blastn matrix 2 -3
+Gap Penalties: Existence: 5, Extension: 2

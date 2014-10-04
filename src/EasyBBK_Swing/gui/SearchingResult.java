@@ -24,6 +24,7 @@ public class SearchingResult extends JPanel{
 	public JLabel AverageStar_Content;
 	public JLabel ResultsInGoogle_Content;
 	public JLabel Score;
+	public JLabel Evalue;
 	/**
 	 * Create the panel.
 	 */
@@ -60,7 +61,7 @@ public class SearchingResult extends JPanel{
 		Type_Content.setBounds(236, 10, 117, 24);
 		add(Type_Content);
 		
-		JLabel Evalue = new JLabel("E-value:");
+		Evalue = new JLabel("E-value:");
 		Evalue.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		Evalue.setBounds(360, 10, 68, 24);
 		add(Evalue);
