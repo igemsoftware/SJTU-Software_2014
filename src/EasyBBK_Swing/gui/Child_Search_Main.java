@@ -28,8 +28,6 @@ import java.awt.event.KeyEvent;
 
 public class Child_Search_Main extends JPanel {
 	public JLabel LogoBox;
-	public JLabel BackBox;
-	public JLabel ForwardBox;
 	public JLabel TextBox;
 	public JTextField SearchText;
 	public JLabel goBox;
@@ -38,6 +36,8 @@ public class Child_Search_Main extends JPanel {
 	public JScrollPane scrollpane;
 	public JScrollBar scrollbar;
 	public Choicepanel choicepanel;
+	public Information information;
+	public boolean flag = false;
 	/**
 	 * Create the panel.
 	 */
@@ -52,42 +52,6 @@ public class Child_Search_Main extends JPanel {
 		LogoBox.setBounds(504, 48, 357, 187);
 		LogoBox.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Logo.png")));
 		add(LogoBox);
-		
-		BackBox = new JLabel("");
-		BackBox.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-			}
-			@Override
-			public void mouseEntered(MouseEvent arg0) {
-				BackBox.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/SearchBox_backward_Hock.png")));
-			}
-			@Override
-			public void mouseExited(MouseEvent arg0) {
-				BackBox.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/SearchBox_backward.png")));
-			}
-		});
-		BackBox.setBounds(316, 307, 50, 50);
-		BackBox.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/SearchBox_backward.png")));
-		add(BackBox);
-		
-		ForwardBox = new JLabel("");
-		ForwardBox.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-			}
-			@Override
-			public void mouseEntered(MouseEvent arg0) {
-				ForwardBox.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/SearchBox_forward_Hock.png")));
-			}
-			@Override
-			public void mouseExited(MouseEvent arg0) {
-				ForwardBox.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/SearchBox_forward.png")));
-			}
-		});
-		ForwardBox.setBounds(372, 307, 70, 50);
-		ForwardBox.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/SearchBox_forward.png")));
-		add(ForwardBox);
 		
 	    TextBox = new JLabel("");
 		TextBox.setBounds(463, 307, 426, 50);
@@ -104,21 +68,13 @@ public class Child_Search_Main extends JPanel {
 					if(component instanceof Child_Search_Main){
 						mainpage.child_search_main_current = (Child_Search_Main) component;
 					}
-					Child_Search child_search = new Child_Search(mainpage, SearchText.getText());
+					Child_Search child_search = new Child_Search(mainpage, SearchText.getText(), choicepanel.information, 1, choicepanel.confirmed_clicked);
 					
 					mainpage.Mainpanel.removeAll();
 					child_search.textField.setText(SearchText.getText());
 					mainpage.Mainpanel.add(child_search);
 					mainpage.Mainpanel.updateUI();
 					mainpage.CurrentPage = 11;
-				}
-			}
-		});
-		SearchText.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				if(arg0.getClickCount()==2){
-					scrollpane.setVisible(true);
 				}
 			}
 		});
@@ -138,7 +94,7 @@ public class Child_Search_Main extends JPanel {
 					mainpage.child_search_main_current = (Child_Search_Main) component;
 				}
 				
-				Child_Search child_search = new Child_Search(mainpage, SearchText.getText());
+				Child_Search child_search = new Child_Search(mainpage, SearchText.getText(), choicepanel.information , 1, choicepanel.confirmed_clicked);
 				
 				mainpage.Mainpanel.removeAll();
 				mainpage.Mainpanel.add(child_search);
@@ -148,6 +104,7 @@ public class Child_Search_Main extends JPanel {
 			}
 			@Override
 			public void mouseEntered(MouseEvent arg0) {
+				goBox.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 				goBox.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/SearchBox_searchButton_Hock.png")));
 			}
 			@Override
@@ -160,26 +117,39 @@ public class Child_Search_Main extends JPanel {
 		add(goBox);
 		
 		choicepanel = new Choicepanel();
-		choicepanel.setPreferredSize(new Dimension(563, 430));
+		choicepanel.setPreferredSize(new Dimension(623, 489));
 		
 		scrollpane = new JScrollPane(choicepanel);
 		scrollbar = new JScrollBar();
 		scrollbar.setUnitIncrement(50);
 		scrollpane.setVerticalScrollBar(scrollbar);
 		scrollpane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-		scrollpane.setBounds(385, 409, 581, 240);
+		scrollpane.setBounds(358, 409, 641, 240);
 		scrollpane.validate();
 		scrollpane.setVisible(false);
 		add(scrollpane);
-		
 		
 		Blast = new JLabel("");
 		Blast.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
+				if(SearchText.getText() == null || SearchText.getText().trim().equals("")) return;
+				Component component = mainpage.Mainpanel.getComponent(0);
+				if(component instanceof Child_Search_Main){
+					mainpage.child_search_main_current = (Child_Search_Main) component;
+				}
+				
+				Child_Search child_search = new Child_Search(mainpage, SearchText.getText(), choicepanel.information , 2, choicepanel.confirmed_clicked);
+				
+				mainpage.Mainpanel.removeAll();
+				mainpage.Mainpanel.add(child_search);
+				child_search.textField.setText(SearchText.getText());
+				mainpage.Mainpanel.updateUI();
+				mainpage.CurrentPage = 11;
 			}
 			@Override
 			public void mouseEntered(MouseEvent e) {
+				Blast.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 				Blast.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/blast_enter.png")));
 			}
 			@Override
@@ -195,7 +165,14 @@ public class Child_Search_Main extends JPanel {
 		AddvancedSearch.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				scrollpane.setVisible(true);
+				if(flag == false){
+					scrollpane.setVisible(true);
+					flag = true;
+				}
+				else if(flag == true){
+					scrollpane.setVisible(false);
+					flag = false;
+				}
 			}
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -203,7 +180,7 @@ public class Child_Search_Main extends JPanel {
 			}
 		});
 		AddvancedSearch.setFont(new Font("Times New Roman", Font.BOLD, 20));
-		AddvancedSearch.setBounds(385, 374, 156, 25);
+		AddvancedSearch.setBounds(358, 374, 174, 25);
 		add(AddvancedSearch);
 	}
 }

@@ -42,10 +42,12 @@ public class MainPage{
 	public JLabel Search;
 	public JLabel Design;
 	public JLabel Upload;
+	public JLabel Compare;
 	public JLabel GreenBar;
 	public boolean Search_flag;
 	public boolean Design_flag;
 	public boolean Upload_flag;
+	public boolean Compare_flag;
 	public MainPage mainpage;
 	public JLabel Home;
 	public Child_Main child_main = null;
@@ -53,6 +55,7 @@ public class MainPage{
 	public Child_Search child_search_current = null;
 	public Child_Design child_design_current = null;
 	public Child_Upload child_upload_current = null;
+	public Child_Compare child_compare_current = null;
 	public int CurrentPage = 0;
 	/**
 	 * Launch the application.
@@ -193,7 +196,7 @@ public class MainPage{
 		Search = new JLabel();
 		Search_flag = false;
 		Search.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Search1.png")));
-		Search.setBounds(522, 17, 100, 40);
+		Search.setBounds(464, 17, 100, 40);
 		Search.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -202,9 +205,11 @@ public class MainPage{
 				Search_flag = true;
 				Design_flag = false;
 				Upload_flag = false;
+				Compare_flag = false;
 				Search.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Search_click1.png")));
 				Design.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Design1.png")));
 				Upload.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Upload1.png")));
+				Compare.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Compare.png")));
 				
 				if(CurrentPage == 2){
 					Component component = Mainpanel.getComponent(0);
@@ -212,41 +217,48 @@ public class MainPage{
 						child_design_current = (Child_Design) component;
 					}
 				}
+				
 				if(CurrentPage == 3){
 					Component component = Mainpanel.getComponent(0);
 					if(component instanceof Child_Upload){
 						child_upload_current = (Child_Upload) component;
 					}
 				}
-				{
-					if(child_search_main_current == null){
-						Child_Search_Main child_search_main = new Child_Search_Main(mainpage);
-						Mainpanel.removeAll();
-						Mainpanel.add(child_search_main);
-						child_search_main.SearchText.requestFocus();
-						Mainpanel.updateUI();
-						CurrentPage = 1;
+				
+				if(CurrentPage == 4){
+					Component component = Mainpanel.getComponent(0);
+					if(component instanceof Child_Compare){
+						child_compare_current = (Child_Compare) component;
 					}
-					else if(child_search_main_current != null && child_search_current == null){
-						Mainpanel.removeAll();
-						Mainpanel.add(child_search_main_current);
-						Mainpanel.updateUI();
-						CurrentPage = 1;
-					}
-					else if(child_search_current.textField.getText()== null || child_search_current.textField.getText().trim().equals("")){
-						Child_Search_Main child_search_main = new Child_Search_Main(mainpage);
-						Mainpanel.removeAll();
-						Mainpanel.add(child_search_main);
-						child_search_main.SearchText.requestFocus();
-						Mainpanel.updateUI();
-						CurrentPage = 1;
-					}
-					else if(child_search_current != null){
-						Mainpanel.removeAll();
-						Mainpanel.add(child_search_current);
-						Mainpanel.updateUI();
-						CurrentPage = 11;
-					}
+				}
+				
+				if(child_search_main_current == null){
+					Child_Search_Main child_search_main = new Child_Search_Main(mainpage);
+					Mainpanel.removeAll();
+					Mainpanel.add(child_search_main);
+					child_search_main.SearchText.requestFocus();
+					Mainpanel.updateUI();
+					CurrentPage = 1;
+				}
+				else if(child_search_main_current != null && child_search_current == null){
+					Mainpanel.removeAll();
+					Mainpanel.add(child_search_main_current);
+					Mainpanel.updateUI();
+					CurrentPage = 1;
+				}
+				else if(child_search_current.textField.getText()== null || child_search_current.textField.getText().trim().equals("")){
+					Child_Search_Main child_search_main = new Child_Search_Main(mainpage);
+					Mainpanel.removeAll();
+					Mainpanel.add(child_search_main);
+					child_search_main.SearchText.requestFocus();
+					Mainpanel.updateUI();
+					CurrentPage = 1;
+				}
+				else if(child_search_current != null){
+					Mainpanel.removeAll();
+					Mainpanel.add(child_search_current);
+					Mainpanel.updateUI();
+					CurrentPage = 11;
 				}
 			}
 			@Override
@@ -264,7 +276,7 @@ public class MainPage{
 		
 		Design = new JLabel();
 		Design.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Design1.png")));
-		Design.setBounds(638, 17, 100, 40);
+		Design.setBounds(580, 17, 100, 40);
 		Design.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -273,9 +285,11 @@ public class MainPage{
 				Design_flag = true;
 				Search_flag = false;
 				Upload_flag = false;
+				Compare_flag = false;
 				Design.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Design_click1.png")));
 				Search.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Search1.png")));
 				Upload.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Upload1.png")));
+				Compare.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Compare.png")));
 				
 				if(CurrentPage == 1){
 					Component component = Mainpanel.getComponent(0);
@@ -297,20 +311,26 @@ public class MainPage{
 						child_upload_current = (Child_Upload) component;
 					}
 				}
-				{
-					if(child_design_current == null){
-						Child_Design child_design = new Child_Design(mainpage);
-						Mainpanel.removeAll();
-						Mainpanel.add(child_design);
-						Mainpanel.updateUI();
-						CurrentPage = 2;
+				
+				if(CurrentPage == 4){
+					Component component = Mainpanel.getComponent(0);
+					if(component instanceof Child_Compare){
+						child_compare_current = (Child_Compare) component;
 					}
-					else if(child_design_current != null){
-						Mainpanel.removeAll();
-						Mainpanel.add(child_design_current);
-						Mainpanel.updateUI();
-						CurrentPage = 2;
-					}
+				}
+				
+				if(child_design_current == null){
+					Child_Design child_design = new Child_Design(mainpage);
+					Mainpanel.removeAll();
+					Mainpanel.add(child_design);
+					Mainpanel.updateUI();
+					CurrentPage = 2;
+				}
+				else if(child_design_current != null){
+					Mainpanel.removeAll();
+					Mainpanel.add(child_design_current);
+					Mainpanel.updateUI();
+					CurrentPage = 2;
 				}
 			}
 			@Override
@@ -328,7 +348,7 @@ public class MainPage{
 		
 		Upload = new JLabel();
 		Upload.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Upload1.png")));
-		Upload.setBounds(754, 17, 100, 40);
+		Upload.setBounds(696, 17, 100, 40);
 		Upload.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -337,9 +357,11 @@ public class MainPage{
 				Upload_flag = true;
 				Search_flag = false;
 				Design_flag = false;
+				Compare_flag = false;
 				Upload.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Upload_click1.png")));
 				Search.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Search1.png")));
 				Design.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Design1.png")));
+				Compare.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Compare.png")));
 				
 				if(CurrentPage == 1){
 					Component component = Mainpanel.getComponent(0);
@@ -359,6 +381,13 @@ public class MainPage{
 					Component component = Mainpanel.getComponent(0);
 					if(component instanceof Child_Design){
 						child_design_current = (Child_Design) component;
+					}
+				}
+				
+				if(CurrentPage == 4){
+					Component component = Mainpanel.getComponent(0);
+					if(component instanceof Child_Compare){
+						child_compare_current = (Child_Compare) component;
 					}
 				}
 				
@@ -397,6 +426,79 @@ public class MainPage{
 		
 		child_main = new Child_Main(this);
 		Mainpanel.add(child_main);
+		
+		Compare = new JLabel();
+		Compare.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(CurrentPage == 4) return;
+				
+				Compare_flag = true;
+				Upload_flag = false;
+				Search_flag = false;
+				Design_flag = false;
+				Compare.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Compare_click.png")));
+				Upload.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Upload1.png")));
+				Search.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Search1.png")));
+				Design.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Design1.png")));
+				
+				if(CurrentPage == 1){
+					Component component = Mainpanel.getComponent(0);
+					if(component instanceof Child_Search_Main){
+						child_search_main_current = (Child_Search_Main) component;
+					}
+				}
+				
+				if(CurrentPage == 11){
+					Component component = Mainpanel.getComponent(0);
+					if(component instanceof Child_Search){
+						child_search_current = (Child_Search) component;
+					}
+				}
+				
+				if(CurrentPage == 2){
+					Component component = Mainpanel.getComponent(0);
+					if(component instanceof Child_Design){
+						child_design_current = (Child_Design) component;
+					}
+				}
+				
+				if(CurrentPage == 3){
+					Component component = Mainpanel.getComponent(0);
+					if(component instanceof Child_Upload){
+						child_upload_current = (Child_Upload) component;
+					}
+				}
+				
+				if(child_compare_current == null){
+					Child_Compare child_compare = new Child_Compare(mainpage);
+					Mainpanel.removeAll();
+					Mainpanel.add(child_compare);
+					Mainpanel.updateUI();
+					CurrentPage = 4;
+				}
+				else if(child_compare_current != null){
+					Mainpanel.removeAll();
+					Mainpanel.add(child_compare_current);
+					Mainpanel.updateUI();
+					CurrentPage = 4;
+				}
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				Compare.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+				Compare.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Compare_click.png")));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				if(Compare_flag == false)
+					Compare.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Compare.png")));
+			}
+		});
+		Compare.setBounds(816, 18, 100, 40);
+		Compare.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Compare.png")));
+		GreenBar.add(Compare);
+		
 		Mainpanel.updateUI();
 	}
 }

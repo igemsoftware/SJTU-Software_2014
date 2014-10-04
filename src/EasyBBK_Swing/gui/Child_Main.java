@@ -19,6 +19,7 @@ public class Child_Main extends JPanel {
 	public JLabel SearchDrawingBox;
 	public JLabel DesignDrawingBox;
 	public JLabel UploadDrawingBox;
+	public JLabel CompareDrawingBox;
 	public MainPage mainpage;
 	/**
 	 * Create the panel.
@@ -53,7 +54,7 @@ public class Child_Main extends JPanel {
 			@Override
 			public void mouseEntered(MouseEvent arg0) {
 				SearchDrawingBox.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-				SearchDrawingBox.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/StartPage_searching_back1.png")));
+				SearchDrawingBox.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/StartPage_searching_back.png")));
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
@@ -88,7 +89,7 @@ public class Child_Main extends JPanel {
 				}
 			}
 		});
-		SearchDrawingBox.setBounds(192, 397, 290, 220);
+		SearchDrawingBox.setBounds(40, 396, 290, 220);
 		SearchDrawingBox.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/StartPage_searching.png")));
 		SearchDrawingBox.setVisible(true);
 		add(SearchDrawingBox);
@@ -126,7 +127,7 @@ public class Child_Main extends JPanel {
 				}
 			}
 		});
-		DesignDrawingBox.setBounds(539, 397, 290, 220);
+		DesignDrawingBox.setBounds(371, 396, 290, 220);
 		DesignDrawingBox.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/StartPage_painting.png")));
 		DesignDrawingBox.setVisible(true);
 		add(DesignDrawingBox);
@@ -136,7 +137,7 @@ public class Child_Main extends JPanel {
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				UploadDrawingBox.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-				UploadDrawingBox.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/StartPage_upload_back1.png")));
+				UploadDrawingBox.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/StartPage_upload_back.png")));
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
@@ -164,9 +165,47 @@ public class Child_Main extends JPanel {
 				}
 			}
 		});
-		UploadDrawingBox.setBounds(887, 397, 290, 220);
+		UploadDrawingBox.setBounds(705, 396, 290, 220);
 		UploadDrawingBox.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/StartPage_upload.png")));
 		UploadDrawingBox.setVisible(true);
 		add(UploadDrawingBox);
+		
+		CompareDrawingBox = new JLabel("");
+		CompareDrawingBox.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				CompareDrawingBox.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/StartPage_upload.png")));
+				mainpage.Search.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Search1.png")));
+				mainpage.Design.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Design1.png")));
+				mainpage.Upload.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Upload_click1.png")));
+
+				if(mainpage.child_compare_current == null){
+					Child_Compare child_compare = new Child_Compare(mainpage);
+					mainpage.Mainpanel.removeAll();
+					mainpage.Mainpanel.add(child_compare);
+					mainpage.Mainpanel.updateUI();
+					mainpage.CurrentPage = 4;
+				}
+				else if(mainpage.child_compare_current != null){
+					mainpage.Mainpanel.removeAll();
+					mainpage.Mainpanel.add(mainpage.child_compare_current);
+					mainpage.Mainpanel.updateUI();
+					mainpage.CurrentPage = 4;
+				}
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				CompareDrawingBox.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+				CompareDrawingBox.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/StartPage_compare_back.png")));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				CompareDrawingBox.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/StartPage_compare.png")));
+			}
+		});
+		CompareDrawingBox.setBounds(1039, 396, 290, 220);
+		CompareDrawingBox.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/StartPage_compare.png")));
+		CompareDrawingBox.setVisible(true);
+		add(CompareDrawingBox);
 	}
 }

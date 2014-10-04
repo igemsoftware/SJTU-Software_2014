@@ -19,12 +19,13 @@ public class DetailsofResults extends JPanel {
 	public JLabel Evalue_Content;
 	public JLabel EnteredDate_Content;
 	public JLabel Author_Content;
-	public JLabel Description;
+	public JLabel Description1;
 	public JLabel URL_Content;
 	public JLabel ReleasedStatus_Content;
 	public JLabel AverageStar_Content;
 	public JLabel ResultsInGoogle_Content;
 	public JLabel Score;
+	public JLabel Description2;
 	/**
 	 * Create the panel.
 	 */
@@ -39,10 +40,10 @@ public class DetailsofResults extends JPanel {
 		ID_Content.setBounds(10, 10, 159, 24);
 		add(ID_Content);
 		
-		JLabel label = new JLabel("Type:");
-		label.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		label.setBounds(10, 44, 51, 24);
-		add(label);
+		JLabel Type = new JLabel("Type:");
+		Type.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		Type.setBounds(10, 44, 51, 24);
+		add(Type);
 		
 		Type_Content = new JLabel("");
 		Type_Content.setFont(new Font("Times New Roman", Font.PLAIN, 20));
@@ -84,14 +85,14 @@ public class DetailsofResults extends JPanel {
 		ShortDescription.setBounds(10, 180, 146, 24);
 		add(ShortDescription);
 		
-		Description = new JLabel("");
-		Description.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		Description.setBounds(161, 180, 494, 24);
-		add(Description);
+		Description1 = new JLabel("");
+		Description1.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		Description1.setBounds(161, 180, 494, 24);
+		add(Description1);
 		
 		JLabel URL = new JLabel("URL:");
 		URL.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		URL.setBounds(10, 214, 48, 24);
+		URL.setBounds(10, 248, 48, 24);
 		add(URL);
 		
 		URL_Content = new JLabel("");
@@ -116,37 +117,37 @@ public class DetailsofResults extends JPanel {
 			}
 		});
 		URL_Content.setFont(new Font("Times New Roman", Font.ITALIC, 20));
-		URL_Content.setBounds(59, 214, 437, 24);
+		URL_Content.setBounds(59, 248, 437, 24);
 		add(URL_Content);
 		
 		JLabel ReleasedStatus = new JLabel("Released Status:");
 		ReleasedStatus.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		ReleasedStatus.setBounds(10, 248, 134, 24);
+		ReleasedStatus.setBounds(10, 282, 134, 24);
 		add(ReleasedStatus);
 		
 		ReleasedStatus_Content = new JLabel("");
 		ReleasedStatus_Content.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		ReleasedStatus_Content.setBounds(143, 248, 290, 24);
+		ReleasedStatus_Content.setBounds(143, 282, 290, 24);
 		add(ReleasedStatus_Content);
 		
 		JLabel AverageStars = new JLabel("Average Stars:");
 		AverageStars.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		AverageStars.setBounds(10, 282, 124, 24);
+		AverageStars.setBounds(10, 316, 124, 24);
 		add(AverageStars);
 		
 		AverageStar_Content = new JLabel("");
 		AverageStar_Content.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		AverageStar_Content.setBounds(132, 282, 107, 24);
+		AverageStar_Content.setBounds(132, 316, 107, 24);
 		add(AverageStar_Content);
 		
 		JLabel ResultsInGoogle = new JLabel("Results in Google Scholar:");
 		ResultsInGoogle.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		ResultsInGoogle.setBounds(10, 316, 216, 24);
+		ResultsInGoogle.setBounds(10, 350, 216, 24);
 		add(ResultsInGoogle);
 		
 		ResultsInGoogle_Content = new JLabel("");
 		ResultsInGoogle_Content.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		ResultsInGoogle_Content.setBounds(229, 316, 51, 24);
+		ResultsInGoogle_Content.setBounds(229, 350, 51, 24);
 		add(ResultsInGoogle_Content);
 		
 		Score = new JLabel("", SwingConstants.CENTER);
@@ -159,5 +160,10 @@ public class DetailsofResults extends JPanel {
 		test.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		test.setBounds(10, 1000, 100, 24);
 		add(test);
+		
+		Description2 = new JLabel("");
+		Description2.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		Description2.setBounds(10, 214, 645, 24);
+		add(Description2);
 	}
 }
