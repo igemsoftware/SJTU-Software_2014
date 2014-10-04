@@ -78,14 +78,6 @@ public class Child_Search_Main extends JPanel {
 				}
 			}
 		});
-		SearchText.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				if(arg0.getClickCount()==2){
-					scrollpane.setVisible(true);
-				}
-			}
-		});
 		SearchText.setFont(new Font("Times New Roman", Font.PLAIN, 24));
 		SearchText.setVisible(true);
 		SearchText.setBounds(12, 5, 403, 32);
@@ -112,6 +104,7 @@ public class Child_Search_Main extends JPanel {
 			}
 			@Override
 			public void mouseEntered(MouseEvent arg0) {
+				goBox.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 				goBox.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/SearchBox_searchButton_Hock.png")));
 			}
 			@Override
@@ -156,6 +149,7 @@ public class Child_Search_Main extends JPanel {
 			}
 			@Override
 			public void mouseEntered(MouseEvent e) {
+				Blast.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 				Blast.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/blast_enter.png")));
 			}
 			@Override

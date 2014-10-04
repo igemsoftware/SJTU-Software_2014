@@ -177,6 +177,7 @@ public class Child_Search extends JPanel {
 			}
 			@Override
 			public void mouseEntered(MouseEvent arg0) {
+				Search.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 				Search.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/SearchBox_searchButton_Hock.png")));
 			}
 			@Override
@@ -218,12 +219,6 @@ public class Child_Search extends JPanel {
 		textField.setFont(new Font("Times New Roman", Font.PLAIN, 24));
 		textField.setVisible(true);
 		textField.setBounds(10, 5, 283, 32);
-		textField.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				
-			}
-		});
 		Text_BackGround.add(textField);
 		textField.setColumns(20);
 		
@@ -261,6 +256,7 @@ public class Child_Search extends JPanel {
 			}
 			@Override
 			public void mouseEntered(MouseEvent e) {
+				Blast.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 				Blast.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/blast1_enter.png")));
 			}
 			@Override
@@ -296,6 +292,15 @@ public class Child_Search extends JPanel {
 	
 	public void initializeresultpage(SearchResultList searchresultlist1){
 		filteredlist = searchresultlist1;
+		int numberofresults = filteredlist.size();
+		
+		if(numberofresults == 0){
+			JLabel noresults = new JLabel("Sorry, no results found.");
+			noresults.setFont(new Font("Times New Roman", Font.BOLD, 30));
+			noresults.setBounds(0, 0, 300, 50);
+			resultpanel.add(noresults);
+		}
+		
 		if(blast == 2){
 			filteredlist.sortByBlastResult(true);
 		}
@@ -376,17 +381,7 @@ public class Child_Search extends JPanel {
 			}
 		}
 		
-		
-		int numberofresults = filteredlist.size();
-		
-		if(numberofresults == 0){
-			JLabel noresults = new JLabel("Sorry, no results found.");
-			noresults.setFont(new Font("Times New Roman", Font.BOLD, 30));
-			noresults.setBounds(0, 0, 300, 50);
-			resultpanel.add(noresults);
-		}
-		
-		else if(numberofresults <= 10 && numberofresults > 0){
+		if(numberofresults <= 10 && numberofresults > 0){
 			searchingresultpage = new SearchingResultPage(numberofresults);
 			searchingresultpage.setPreferredSize(new Dimension(558,250*numberofresults));
 			for(int i = 0; i < numberofresults; i++){
@@ -420,7 +415,7 @@ public class Child_Search extends JPanel {
 			resultpanel.add(showpagenum);
 		}
 		
-		else if(numberofresults > 10){
+		if(numberofresults > 10){
 			int num = (int) numberofresults / 10;
 			int leftnum = numberofresults % 10;
 			currentpage = 1;
@@ -613,10 +608,18 @@ public class Child_Search extends JPanel {
 				else if(bbkoutline.rating.average_stars.length() >= 3){
 					detailsofresults.AverageStar_Content.setText(bbkoutline.rating.average_stars.substring(0,3));
 				}
-				searchingresultpage.searchingresult.get(i).ResultsInGoogle_Content.setText(bbkoutline.rating.google_items);
+				detailsofresults.ResultsInGoogle_Content.setText(bbkoutline.rating.google_items);
 				
 				String shortdescription = bbkoutline.shortDesc;
-				detailsofresults.Description.setText(shortdescription);
+				if(shortdescription.length()<=40){
+					detailsofresults.Description1.setText(shortdescription);
+					detailsofresults.Description2.setText(null);
+				}
+				else{
+					detailsofresults.Description1.setText(shortdescription.substring(0, 40));
+					detailsofresults.Description2.setText(shortdescription.substring(40));
+				}
+				
 				detailsofresults.ResultsInGoogle_Content.setText(bbkoutline.rating.google_items);
 				
 				String score = "" + bbkoutline.getScore();
@@ -656,6 +659,7 @@ public class Child_Search extends JPanel {
 		String shortdescription = bbkoutline.shortDesc;
 		if(shortdescription.length()<=29){
 			searchingresultpage.searchingresult.get(i).Description1.setText(shortdescription);
+			searchingresultpage.searchingresult.get(i).Description2.setText(null);
 		}
 		else{
 			searchingresultpage.searchingresult.get(i).Description1.setText(shortdescription.substring(0, 29));

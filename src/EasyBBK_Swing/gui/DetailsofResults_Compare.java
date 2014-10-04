@@ -2,21 +2,19 @@ package EasyBBK_Swing.gui;
 
 import java.awt.Color;
 import java.awt.Cursor;
-
-import javax.swing.JPanel;
-import javax.swing.JLabel;
-
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import javax.swing.SwingConstants;
 import javax.swing.BorderFactory;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
-public class DetailsofResults extends JPanel {
+public class DetailsofResults_Compare extends JPanel {
 	public JLabel ID_Content;
 	public JLabel Type_Content;
-	public JLabel Evalue_Content;
 	public JLabel EnteredDate_Content;
 	public JLabel Author_Content;
 	public JLabel Description1;
@@ -29,8 +27,9 @@ public class DetailsofResults extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public DetailsofResults() {
-		setBounds(0, 0, 665, 1500);
+	public DetailsofResults_Compare() {
+		setBounds(0, 0, 437, 1500);
+		setPreferredSize(new Dimension(437, 1500));
 		setBackground(new Color(255, 255, 255));
 		setBorder(BorderFactory.createLineBorder(Color.black));
 		setLayout(null);
@@ -50,24 +49,14 @@ public class DetailsofResults extends JPanel {
 		Type_Content.setBounds(59, 44, 148, 24);
 		add(Type_Content);
 		
-		JLabel Evalue = new JLabel("E-value:");
-		Evalue.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		Evalue.setBounds(10, 78, 68, 24);
-		add(Evalue);
-		
-		Evalue_Content = new JLabel("");
-		Evalue_Content.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		Evalue_Content.setBounds(81, 78, 117, 24);
-		add(Evalue_Content);
-		
 		JLabel EnteredDate = new JLabel("Entered Date:");
 		EnteredDate.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		EnteredDate.setBounds(10, 112, 112, 24);
+		EnteredDate.setBounds(10, 78, 112, 24);
 		add(EnteredDate);
 		
 		EnteredDate_Content = new JLabel("");
 		EnteredDate_Content.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		EnteredDate_Content.setBounds(122, 112, 117, 24);
+		EnteredDate_Content.setBounds(122, 78, 117, 24);
 		add(EnteredDate_Content);
 		
 		JLabel Author = new JLabel("Author:");
@@ -77,7 +66,7 @@ public class DetailsofResults extends JPanel {
 		
 		Author_Content = new JLabel("");
 		Author_Content.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		Author_Content.setBounds(74, 146, 581, 24);
+		Author_Content.setBounds(74, 146, 353, 24);
 		add(Author_Content);
 		
 		JLabel ShortDescription = new JLabel("Short Description:");
@@ -87,12 +76,12 @@ public class DetailsofResults extends JPanel {
 		
 		Description1 = new JLabel("");
 		Description1.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		Description1.setBounds(161, 180, 494, 24);
+		Description1.setBounds(161, 180, 266, 24);
 		add(Description1);
 		
 		JLabel URL = new JLabel("URL:");
 		URL.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		URL.setBounds(10, 248, 48, 24);
+		URL.setBounds(10, 247, 48, 24);
 		add(URL);
 		
 		URL_Content = new JLabel("");
@@ -117,43 +106,43 @@ public class DetailsofResults extends JPanel {
 			}
 		});
 		URL_Content.setFont(new Font("Times New Roman", Font.ITALIC, 20));
-		URL_Content.setBounds(59, 248, 437, 24);
+		URL_Content.setBounds(59, 247, 368, 24);
 		add(URL_Content);
 		
 		JLabel ReleasedStatus = new JLabel("Released Status:");
 		ReleasedStatus.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		ReleasedStatus.setBounds(10, 282, 134, 24);
+		ReleasedStatus.setBounds(10, 281, 134, 24);
 		add(ReleasedStatus);
 		
 		ReleasedStatus_Content = new JLabel("");
 		ReleasedStatus_Content.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		ReleasedStatus_Content.setBounds(143, 282, 290, 24);
+		ReleasedStatus_Content.setBounds(143, 281, 284, 24);
 		add(ReleasedStatus_Content);
 		
 		JLabel AverageStars = new JLabel("Average Stars:");
 		AverageStars.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		AverageStars.setBounds(10, 316, 124, 24);
+		AverageStars.setBounds(10, 315, 124, 24);
 		add(AverageStars);
 		
 		AverageStar_Content = new JLabel("");
 		AverageStar_Content.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		AverageStar_Content.setBounds(132, 316, 107, 24);
+		AverageStar_Content.setBounds(132, 315, 107, 24);
 		add(AverageStar_Content);
 		
 		JLabel ResultsInGoogle = new JLabel("Results in Google Scholar:");
 		ResultsInGoogle.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		ResultsInGoogle.setBounds(10, 350, 216, 24);
+		ResultsInGoogle.setBounds(10, 349, 216, 24);
 		add(ResultsInGoogle);
 		
 		ResultsInGoogle_Content = new JLabel("");
 		ResultsInGoogle_Content.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		ResultsInGoogle_Content.setBounds(229, 350, 51, 24);
+		ResultsInGoogle_Content.setBounds(229, 349, 51, 24);
 		add(ResultsInGoogle_Content);
 		
 		Score = new JLabel("", SwingConstants.CENTER);
 		Score.setFont(new Font("Times New Roman", Font.BOLD, 96));
 		Score.setBorder(BorderFactory.createLineBorder(Color.black));
-		Score.setBounds(509, 26, 124, 110);
+		Score.setBounds(303, 10, 124, 110);
 		add(Score);
 		
 		JLabel test = new JLabel("test");
@@ -163,7 +152,8 @@ public class DetailsofResults extends JPanel {
 		
 		Description2 = new JLabel("");
 		Description2.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		Description2.setBounds(10, 214, 645, 24);
+		Description2.setBounds(10, 214, 417, 24);
 		add(Description2);
 	}
+
 }
