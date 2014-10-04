@@ -1,7 +1,6 @@
 package EasyBBK_Swing.gui;
 
 import java.awt.Cursor;
-import java.awt.EventQueue;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;

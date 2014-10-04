@@ -1,7 +1,6 @@
 package EasyBBK_Swing.gui;
 
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.event.KeyAdapter;
@@ -9,7 +8,6 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -73,7 +71,8 @@ public class Child_Compare extends JPanel {
 			public void mouseClicked(MouseEvent e) {
 				if(textField1.getText() == null || textField1.getText().trim().equals("")) return;
 				scrollpanecontainer1.removeAll();
-				initializedetailpage(textField1.getText(), datacenter1, scrollpanecontainer1, scrollpanel1, detailsofresult1, 0);
+				InitializeDetailPage initializedetailpage1 = new InitializeDetailPage(textField1.getText(), datacenter1, scrollpanecontainer1, scrollpanel1, detailsofresult1, 0);
+				initializedetailpage1.start();
 				scrollpanecontainer1.updateUI();
 			}
 			@Override
@@ -99,7 +98,8 @@ public class Child_Compare extends JPanel {
 				if(e.getKeyChar() == e.VK_ENTER){
 					if(textField1.getText() == null || textField1.getText().trim().equals("")) return;
 					scrollpanecontainer1.removeAll();
-					initializedetailpage(textField1.getText(), datacenter1, scrollpanecontainer1, scrollpanel1, detailsofresult1, 0);
+					InitializeDetailPage initializedetailpage1 = new InitializeDetailPage(textField1.getText(), datacenter1, scrollpanecontainer1, scrollpanel1, detailsofresult1, 0);
+					initializedetailpage1.start();
 					scrollpanecontainer1.updateUI();
 				}
 			}
@@ -134,7 +134,8 @@ public class Child_Compare extends JPanel {
 			public void mouseClicked(MouseEvent e) {
 				if(textField2.getText() == null || textField2.getText().trim().equals("")) return;
 				scrollpanecontainer2.removeAll();
-				initializedetailpage(textField2.getText(), datacenter2, scrollpanecontainer2, scrollpanel2, detailsofresult2, 1);
+				InitializeDetailPage initializedetailpage2 = new InitializeDetailPage(textField2.getText(), datacenter2, scrollpanecontainer2, scrollpanel2, detailsofresult2, 1);
+				initializedetailpage2.start();
 				scrollpanecontainer2.updateUI();
 			}
 			@Override
@@ -160,7 +161,8 @@ public class Child_Compare extends JPanel {
 				if(e.getKeyChar() == e.VK_ENTER){
 					if(textField2.getText() == null || textField2.getText().trim().equals("")) return;
 					scrollpanecontainer2.removeAll();
-					initializedetailpage(textField2.getText(), datacenter2, scrollpanecontainer2, scrollpanel2, detailsofresult2, 1);
+					InitializeDetailPage initializedetailpage2 = new InitializeDetailPage(textField2.getText(), datacenter2, scrollpanecontainer2, scrollpanel2, detailsofresult2, 1);
+					initializedetailpage2.start();
 					scrollpanecontainer2.updateUI();
 				}
 			}
@@ -195,7 +197,8 @@ public class Child_Compare extends JPanel {
 			public void mouseClicked(MouseEvent e) {
 				if(textField3.getText() == null || textField3.getText().trim().equals("")) return;
 				scrollpanecontainer3.removeAll();
-				initializedetailpage(textField3.getText(), datacenter3, scrollpanecontainer3, scrollpanel3, detailsofresult3, 2);
+				InitializeDetailPage initializedetailpage3 = new InitializeDetailPage(textField3.getText(), datacenter3, scrollpanecontainer3, scrollpanel3, detailsofresult3, 2);
+				initializedetailpage3.start();
 				scrollpanecontainer3.updateUI();
 			}
 			@Override
@@ -221,7 +224,8 @@ public class Child_Compare extends JPanel {
 				if(e.getKeyChar() == e.VK_ENTER){
 					if(textField3.getText() == null || textField3.getText().trim().equals("")) return;
 					scrollpanecontainer3.removeAll();
-					initializedetailpage(textField3.getText(), datacenter3, scrollpanecontainer3, scrollpanel3, detailsofresult3, 2);
+					InitializeDetailPage initializedetailpage3 = new InitializeDetailPage(textField3.getText(), datacenter3, scrollpanecontainer3, scrollpanel3, detailsofresult3, 2);
+					initializedetailpage3.start();
 					scrollpanecontainer1.updateUI();
 				}
 			}
@@ -239,8 +243,6 @@ public class Child_Compare extends JPanel {
 		scrollpanecontainer3.setLayout(null);
 		
 		setVisible(true);
-		
-		
 	}
 	
 	public void initializedetailpage(String keyword, DataCenter datacenter, JPanel container, JScrollPane scrollpanel, DetailsofResults_Compare detailsofresults, int num){

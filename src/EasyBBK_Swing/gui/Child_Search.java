@@ -4,36 +4,22 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Cursor;
 import java.awt.Dimension;
-import java.awt.EventQueue;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JScrollBar;
 import javax.swing.JTextField;
 
 import java.awt.Font;
-import java.awt.event.FocusAdapter;
-import java.awt.event.FocusEvent;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import javax.swing.JSeparator;
-import javax.swing.JCheckBox;
-import javax.swing.JSpinner;
-import javax.swing.SpinnerNumberModel;
-
-import java.awt.event.AdjustmentEvent;
-import java.awt.event.AdjustmentListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
-import javax.swing.JTabbedPane;
 import javax.swing.SwingConstants;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
@@ -276,6 +262,8 @@ public class Child_Search extends JPanel {
 		Details.setBorder(BorderFactory.createLineBorder(Color.black));
 		add(Details);
 		Details.setLayout(null);
+		
+		updateUI();
 		
 		if(blast == 1){
 			searchresultlist = searchcenter.search(searchcontent);
@@ -560,12 +548,12 @@ public class Child_Search extends JPanel {
 	
 	public void showresult(int j){
 		BbkOutline bbkoutline = filteredlist.get(j);
-		//BbkDetail bbkdetail = searchcenter.getDetail(bbkoutline.name);
 		int i = j % 10;
 		searchingresultpage.searchingresult.get(i).ID_Content.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				/*DetailsofResults detailsofresults = new DetailsofResults();
+				BbkDetail bbkdetail = searchcenter.getDetail(bbkoutline.name);
+				DetailsofResults detailsofresults = new DetailsofResults();
 				
 				detailsofresults.ID_Content.setText(bbkdetail.name);
 				detailsofresults.Type_Content.setText(bbkdetail.type);
@@ -583,34 +571,7 @@ public class Child_Search extends JPanel {
 					detailsofresults.AverageStar_Content.setText(bbkdetail.rating.average_stars.substring(0,3));
 				}
 				detailsofresults.ResultsInGoogle_Content.setText(bbkdetail.rating.google_items);
-				detailsofresults.Description.setText(bbkdetail.shortDesc);
-				String score = "" + bbkdetail.getScore();
-				detailsofresults.Score.setText(score);
-				
-				Details.removeAll();;
-				Details.add(detailsofresults);
-				Details.updateUI();*/
-				
-				DetailsofResults detailsofresults = new DetailsofResults();
-				
-				detailsofresults.ID_Content.setText(bbkoutline.name);
-				detailsofresults.Type_Content.setText(bbkoutline.type);
-				detailsofresults.Author_Content.setText(bbkoutline.author);
-				detailsofresults.EnteredDate_Content.setText(bbkoutline.enterDate);
-				detailsofresults.URL_Content.setText(bbkoutline.url);
-				detailsofresults.ReleasedStatus_Content.setText(bbkoutline.releaseStatus);
-				if(bbkoutline.rating.average_stars.equals("No Stars")){
-					detailsofresults.AverageStar_Content.setText(bbkoutline.rating.average_stars);
-				}
-				else if(bbkoutline.rating.average_stars.length() == 1){
-					detailsofresults.AverageStar_Content.setText(bbkoutline.rating.average_stars);
-				}
-				else if(bbkoutline.rating.average_stars.length() >= 3){
-					detailsofresults.AverageStar_Content.setText(bbkoutline.rating.average_stars.substring(0,3));
-				}
-				detailsofresults.ResultsInGoogle_Content.setText(bbkoutline.rating.google_items);
-				
-				String shortdescription = bbkoutline.shortDesc;
+				String shortdescription = bbkdetail.shortDesc;
 				if(shortdescription.length()<=40){
 					detailsofresults.Description1.setText(shortdescription);
 					detailsofresults.Description2.setText(null);
@@ -619,10 +580,7 @@ public class Child_Search extends JPanel {
 					detailsofresults.Description1.setText(shortdescription.substring(0, 40));
 					detailsofresults.Description2.setText(shortdescription.substring(40));
 				}
-				
-				detailsofresults.ResultsInGoogle_Content.setText(bbkoutline.rating.google_items);
-				
-				String score = "" + bbkoutline.getScore();
+				String score = "" + bbkdetail.getScore();
 				detailsofresults.Score.setText(score);
 				
 				detailsofresults.setPreferredSize(new Dimension(665, 1500));

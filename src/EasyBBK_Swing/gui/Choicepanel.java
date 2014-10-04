@@ -16,8 +16,6 @@ import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import java.util.*;
-
 public class Choicepanel extends JPanel {
 	public JCheckBox Released;
 	public JCheckBox Deleted;
