@@ -9,7 +9,7 @@ import javax.swing.JLabel;
 class Pen extends JLabel
 {
 	public boolean inUse = false;
-	public String type = null;
+	public Integer type = null;
 	
 	public Pen()
 	{
@@ -26,7 +26,6 @@ class Pen extends JLabel
 	public void noUse()
 	{
 		this.setEnabled(true);
-		System.out.println("MB");	
 		inUse = false;
 	}
 	
@@ -35,12 +34,13 @@ class Pen extends JLabel
 		return inUse;
 	}
 	
-	public void setType(String type)
+	// -1=arrow1; 0=arrow2; 1=arrow3; 5=text; 2=eraser;
+	public void setType(int type)
 	{
 		this.type=type;
 	}
 	
-	public String getType()
+	public int getType()
 	{
 		return type;
 	}

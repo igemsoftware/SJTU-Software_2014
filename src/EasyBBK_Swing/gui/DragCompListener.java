@@ -56,7 +56,7 @@ class DragCompListener implements MouseInputListener
 				& (e.getComponent()).getName() != "text")
 		{
 			SketchProject project = sketchCenter.currentProject;
-			project.modifyComponent(10, SketchProject.Operation.TYPE_CENTER, point);
+
 			
 			//get the location
 			if ((e.getComponent()).getName()=="backbone")
