@@ -546,7 +546,7 @@ public class Child_Design extends JPanel {
 
 					// test
 					
-					SketchComponent.Component component;
+					SketchComponent.Component component = null;
 					switch (newLabel.getName())
 					{	
 						case "promoter":
@@ -574,12 +574,23 @@ public class Child_Design extends JPanel {
 							component = new SketchComponent.Protein(newLabel.ID, BbkType.Sketch.Protein.RECEPTER, center, null);
 							break;
 						case "plasmid":
-							component = new SketchComponent.BioVector(newLabel.ID, BbkType.Sketch.Vector.PLASMID, center, null);
-						
+							component = new SketchComponent.BioVector(newLabel.ID, BbkType.Sketch.BioVector.PLASMID, center, 1);
+							break;
+						case "virus":
+							component = new SketchComponent.BioVector(newLabel.ID, BbkType.Sketch.BioVector.VIRUS, center, 1);
+							break;
+						case "bacteria":
+							component = new SketchComponent.BioVector(newLabel.ID, BbkType.Sketch.BioVector.BACTERIA, center, 1);
+							break;
+						case "plant_cell":
+							component = new SketchComponent.BioVector(newLabel.ID, BbkType.Sketch.BioVector.PLANT_CELL, center, 1);
+							break;
+						case "animal_cell":
+							component = new SketchComponent.BioVector(newLabel.ID, BbkType.Sketch.BioVector.ANIMAL_CELL, center, 1);
+							break;
 					}
 					
-					sketchCenter.currentProject.addComponent
-						(new SketchComponent.Protein(newLabel.ID, center, );
+					sketchCenter.currentProject.addComponent(component);
 					
 					DragCompListener listener = new DragCompListener(panel,Tpanel,sketchCenter);
 					newLabel.addMouseListener(listener);
@@ -603,6 +614,11 @@ public class Child_Design extends JPanel {
 				
 	    		ChooseCurrentText chooseTextListener = new ChooseCurrentText();
 	    		newText.addFocusListener(chooseTextListener);
+	    		
+	    		Point center = new Point(point.x + 25, point.y + 15);
+	    		
+	    		sketchCenter.currentProject.addComponent
+	    			(new SketchComponent.Label(newText.ID, null, center, new Font("Time New Roman", Font.PLAIN, 16), Color.BLACK));
 	    		
 	    		DragTextListener dragListener = new DragTextListener();
 	    		newText.addMouseListener(dragListener);
@@ -657,6 +673,20 @@ public class Child_Design extends JPanel {
 								linePanel.getLineBorder()[3]-linePanel.getLineBorder()[2]+20);
 						System.out.println("ok");
 						panel.add(newLine);
+						
+						int lineType = -1;
+						switch (linePanel.lineType)
+						{	
+							case LinePanel.LINE_WITH_EMPTY_ARROW:
+								lineType = BbkType.Sketch.Relation.PROMOTE;	break;
+							case LinePanel.LINE_WIHT_STOP_END:
+								lineType = BbkType.Sketch.Relation.SUPPRESS;	break;
+							case LinePanel.LINE_WITH_FULL_ARROW:
+								lineType = BbkType.Sketch.Relation.OTHER;	break;
+						}
+						
+						
+						sketchCenter.currentProject.addComponent(new SketchComponent.Relation(newLine.ID, lineType, lineList, linePanel.color, (int) linePanel.stroke));
 						
 						//ÒÆ¶¯
 						DragLineListener dragListener = new DragLineListener();

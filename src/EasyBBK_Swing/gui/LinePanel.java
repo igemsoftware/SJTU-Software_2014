@@ -38,8 +38,8 @@ class LinePanel extends JLayeredPane
 	public int height;
 	public Point topLeft = new Point();
 	public Point bottomRight = new Point();
-	private float stroke=5.0f;
-	private Color color = Color.blue;
+	public float stroke=5.0f;
+	public Color color = Color.blue;
 	
 	public LinePanel(Pen p) 
 	{
