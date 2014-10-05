@@ -83,7 +83,6 @@ public class DatabaseConnector
     public static BbkDetail getDetailByName(String name)
     {
     	checkConnection();
-    	System.out.println("testing: connection");
     	BbkDetail bbkDetail = new BbkDetail();
         try 
 		{	Statement statement = connection.createStatement();
@@ -95,49 +94,34 @@ public class DatabaseConnector
 				DBDataFiller.dbIntoMain(resultSet, bbkDetail);
 			else
 				return null;	// if don't have it in main, make it a null
-			System.out.println("testing: main");
 			// category
 			resultSet = statement.executeQuery("select * from " + DBConsts.Table.CATEGORIES + 
 	        		" where " + DBConsts.Header.Main.NAME + " = " + "'" + name + "'");
-			System.out.println("testing: category" + bbkDetail.categories.size());
 			DBDataFiller.dbIntoCategories(resultSet, bbkDetail);
-			System.out.println("testing: category" + bbkDetail.categories.size());
 			// deep_subparts
 			resultSet = statement.executeQuery("select * from " + DBConsts.Table.DEEP_SUBPARTS + 
 	        		" where " + DBConsts.Header.Main.NAME + " = " + "'" + name + "'");
-			System.out.println("testing: deep" + bbkDetail.deepSubparts.size());
 			DBDataFiller.dbIntoDeepSubparts(resultSet, bbkDetail);
-			System.out.println("testing: deep" + bbkDetail.deepSubparts.size());
 			// features
 			resultSet = statement.executeQuery("select * from " + DBConsts.Table.FEATURES + 
 	        		" where " + DBConsts.Header.Main.NAME + " = " + "'" + name + "'");
-			System.out.println("testing: feature" + bbkDetail.features.size());
 			DBDataFiller.dbIntoFeatures(resultSet, bbkDetail);
-			System.out.println("testing: feature" + bbkDetail.features.size());
 			// parameters
 			resultSet = statement.executeQuery("select * from " + DBConsts.Table.PARAMETERS + 
 	        		" where " + DBConsts.Header.Main.NAME + " = " + "'" + name + "'");
-			System.out.println("testing: para" + bbkDetail.parameters.size());
 			DBDataFiller.dbIntoParameters(resultSet, bbkDetail);
-			System.out.println("testing: para" + bbkDetail.parameters.size());
 			// specified_subparts
 			resultSet = statement.executeQuery("select * from " + DBConsts.Table.SPECIFIED_SUBPARTS + 
 	        		" where " + DBConsts.Header.Main.NAME + " = " + "'" + name + "'");
-			System.out.println("testing: subp" + bbkDetail.specifiedSubparts.size());
 			DBDataFiller.dbIntoSpecifiedSubparts(resultSet, bbkDetail);
-			System.out.println("testing: subp" + bbkDetail.specifiedSubparts.size());
 			// specified_subscars
 			resultSet = statement.executeQuery("select * from " + DBConsts.Table.SPECIFIED_SUBSCARS + 
 	        		" where " + DBConsts.Header.Main.NAME + " = " + "'" + name + "'");
-			System.out.println("testing: subs" + bbkDetail.specifiedSubscars.size());
 			DBDataFiller.dbIntoSpecifiedSubscars(resultSet, bbkDetail);
-			System.out.println("testing: subs" + bbkDetail.specifiedSubscars.size());
 			// twins
 			resultSet = statement.executeQuery("select * from " + DBConsts.Table.TWINS + 
 	        		" where " + DBConsts.Header.Main.NAME + " = " + "'" + name + "'");
-			System.out.println("testing: twin" + bbkDetail.twins.size());
 			DBDataFiller.dbIntoTwins(resultSet, bbkDetail);
-			System.out.println("testing: twin" + bbkDetail.twins.size());
 			
 			resultSet.close();
 		} catch (SQLException e) {e.printStackTrace();}

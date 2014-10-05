@@ -20,7 +20,26 @@ public class BbkDetail extends BbkOutline
 	public BbkDetail()
     { }
 	
-	
+	/** Print main attributes in cmd for testing.  */
+	@Override
+    public void display()
+    {
+        System.out.println( "********\n" + 
+				   "Name: " + name + "\n" + 
+                   "Type: " + type + "\n" + 
+                   "Author: " + author + "\n" + 
+                   "EnterDate: " + enterDate + "\n" + 
+                   "ShortDescription: " + shortDesc + "\n" +
+                   "Url: " + url + "\n" + 
+                   "\tCategory item num: " + categories.size() + "\n" + 
+                   "\tDeepSub item num: " + deepSubparts.size() + "\n" + 
+                   "\tFeature item num: " + features.size() + "\n" + 
+                   "\tParameter item num: " + parameters.size() + "\n" + 
+                   "\tSpecSub item num: " + specifiedSubparts.size() + "\n" + 
+                   "\tSpecScar item num: " + specifiedSubscars.size() + "\n" + 
+                   "\tTwin item num: " + twins.size());
+        System.out.println("********\n");
+    }
 	
 	
 	

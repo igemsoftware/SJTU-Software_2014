@@ -24,7 +24,7 @@ public class Testing
 		//201410115566901
 		
 		//searchKeywordAndGetDetail();
-		//compareAssignDetail();
+		compareAssignDetail();
 		//sketchXMLReadWrite();
 		//DatabaseConnector.displayTable(DBConsts.Table.MAIN_UPLOAD, 2);
 		//BbkUpload bbkUpload = new BbkUpload();
@@ -51,7 +51,27 @@ public class Testing
 	
 	private static void searchFilterAndSort()
 	{	
-		// fix me
+		BbkOutline bbkOutline = DatabaseConnector.getOutlineByName("BBa_B0034");
+		bbkOutline.displayFilteringConditions();
+		
+		SearchResultList rawList = dataCenter.searchCenter.search("BBa_B0034");
+		System.out.println("\n\nFilter by the conditions that fits BBa_B0034: ");
+		rawList.filterByDeletedOrNot(false)
+			.filterByDNAStatus(SearchResultList.Filter.DNAStatus.AVAILABLE)
+			.filterByEnterYear(new int[]{2003, 2013})
+			.filterByRelaseStatus(SearchResultList.Filter.ReleaseStatus.RELEASED)
+			.displayFilteringConditions();
+		
+		System.out.println("\n\nSort by enter date: ");
+		rawList.sortByEnterDate(true);	rawList.displaySortingConditions();
+		System.out.println("\n\nSort by google items: ");
+		rawList.sortByGoogleQuoteNum(true);	rawList.displaySortingConditions();
+		System.out.println("\n\nSort by star num: ");
+		rawList.sortByAverageStars(true);	rawList.displaySortingConditions();
+		System.out.println("\n\nSort by confirm: ");
+		rawList.sortByConfrimedTimes(true);	rawList.displaySortingConditions();
+		System.out.println("\n\nSort by total score: ");
+		rawList.sortByTotalScore(true);	rawList.displaySortingConditions();
 	}
 	
 	private static void searchHistory()
