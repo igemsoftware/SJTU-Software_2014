@@ -18,10 +18,8 @@ public class SketchComponent
 			primaryType = theType;
 		}
 		
-		/** 
-		 * This function is used to be inherited to convert Component
-		 * object into its subclasses, but failed...
-		 */
+		/** This function is used to be inherited to convert Component
+		 * object into its subclasses using convariant, but seems failed... */
 		public abstract Component toSubclass();
 		
 		// these functions are used to convert to subclasses in an easier way
@@ -50,6 +48,7 @@ public class SketchComponent
 		public Integer getSecondaryType()
 		{	return null;	}
 		
+		/** Secondary type is defined in BbkType.Sketch */
 		public void setSecondaryType(Integer type) {}
 		
 		/** text for Label, and bbkName for BioBrick */

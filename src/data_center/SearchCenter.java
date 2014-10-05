@@ -1,5 +1,7 @@
 package data_center;
 
+/** Provide functions about searching database by SJTU-software. Can search by keyword, 
+ * blast by sequence, get detail by name.  */
 public class SearchCenter
 {
 	public HistoryList<SearchResultList> historyList;

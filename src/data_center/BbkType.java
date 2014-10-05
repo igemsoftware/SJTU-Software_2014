@@ -1,5 +1,6 @@
 package data_center;
 
+/** The class to store the constants of the types of biobrick.  */
 public class BbkType
 {
 	public final static int PROMOTER = 1;
@@ -38,7 +39,7 @@ public class BbkType
 	public final static String strOf_MEASUREMENT = "Measurement";
 
 	
-	
+	/** The types defined in the sketch function in EasyBbk.  */
 	public static class Sketch
 	{	
 		public final static int LABEL = 1;

@@ -2,9 +2,12 @@ package data_center;
 
 import java.util.Calendar;
 
+/** Used to generate time tag for BlastingSearcher(used to distinguish a blast request
+ * from another) and BbkUpload(used to record the enter date of the part into the database
+ * by SJTU-software) */
 public class TimeTagGenerator
 {
-	/** Year/Month/Date */
+	/** @return Year/Month/Date */
 	public static String generateYearMonthDateStr()
 	{	
 		Calendar calendar = Calendar.getInstance();
@@ -14,7 +17,7 @@ public class TimeTagGenerator
 		return year + "/" + month + "/" + date;
 	}
 	
-	/** Hour:Min */
+	/** @return Hour:Min */
 	public static String generateHourMinStr()
 	{	
 		Calendar calendar = Calendar.getInstance();
@@ -23,7 +26,7 @@ public class TimeTagGenerator
 		return hour + ":" + min;
 	}
 	
-	/** Accurate to ms, no separators */
+	/** @return Time tag accurate to ms, no separators */
 	public static String generateTimeTag()
 	{	
 		Calendar calendar = Calendar.getInstance();

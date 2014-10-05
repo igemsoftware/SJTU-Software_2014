@@ -14,29 +14,41 @@ import ch.ethz.ssh2.SCPClient;
 import ch.ethz.ssh2.Session;
 import ch.ethz.ssh2.StreamGobbler;
 
+/** The class to connect to the remote server set up by SJTU-software to execute 
+ * a blast compare between the sequence provided and the sequence in the current 
+ * biobrick database. The class depends on the class DatabaseConnector to get the
+ * BbkOutline instances.  */
 public class BlastingSearcher
 {
 	// about server
-	public static final String SERVER_ADDRESS = "202.120.45.101";
-	public static final int PORT = 22;
-	public static final String USER_NAME = "igem14";
-	public static final String PASS_WORD = "bio34204348;";
+	private static final String SERVER_ADDRESS = "202.120.45.101";
+	@SuppressWarnings("unused")
+	private static final int PORT = 22;
+	private static final String USER_NAME = "igem14";
+	private static final String PASS_WORD = "bio34204348;";
 	
 	// about the cmd of blasting
-	public static final String PROGRAM_TASK_DATABASE
+	private static final String PROGRAM_TASK_DATABASE
 		= "./db_linux/blastn -task blastn -db db_linux/bbk";
-	public static final String IO_DIR_SERVER = "./db_linux/InputOutput/";
-	public static final String IO_DIR_LOCAL = "./BlastIO/";
-	public static final String INFILE_NAME = "input";
-	public static final String OUTFILE_NAME = "output";
+	private static final String IO_DIR_SERVER = "./db_linux/InputOutput/";
+	private static final String IO_DIR_LOCAL = "./BlastIO/";
+	private static final String INFILE_NAME = "input";
+	private static final String OUTFILE_NAME = "output";
 	
-	public static final String RESULT_LINE_PREFIX = "lcl|";
+	private static final String RESULT_LINE_PREFIX = "lcl|";
+	
 	public static final int MODE_INPUT_SEQUENCE = 0;
 	public static final int MODE_INPUT_FILE_PATH = 1;
 	
 	private static Connection connection = null;
 	
-	/** Mode: the input is sequence or input file path */
+	/** The function to execute blasting compare. Connection automatically established. 
+	 * The function will create cache directory and cache files in the current directory. 
+	 * @param input The input sequence of file path to be blasted online. 
+	 * @param mode Specify the mode MODE_INPUT_SEQUENCE or MODE_INPUT_FILE_PATH, 
+	 * which is define as constants in the class. The input string will be interpreted 
+	 * differently base on this parameter. 
+	 * @return SearchResultList instance just the same as keyword searching.  */
 	public static SearchResultList blast(String input, int mode)
 	{	
 		if (mode != MODE_INPUT_SEQUENCE && mode != MODE_INPUT_FILE_PATH)
@@ -76,6 +88,7 @@ public class BlastingSearcher
 		return readOutfile(outfilePath, input);
 	}
 	
+	/** Used to delete cache files automatically generated when blasting.  */
 	public static void deleteLocalCacheFiles()
 	{	
 		File IODir = new File(IO_DIR_LOCAL);
@@ -88,7 +101,7 @@ public class BlastingSearcher
 	
 	
 	
-	public static void connect() throws IOException
+	static void connect() throws IOException
 	{	
 		connection = new Connection(SERVER_ADDRESS);
 		connection.connect();
@@ -96,7 +109,7 @@ public class BlastingSearcher
 	}
 	
 	/** Disconnect is needed between two cmd to avoid remote error */
-	public static void disconnect()
+	static void disconnect()
 	{	
 		connection.close();
 	}

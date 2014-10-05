@@ -1,11 +1,11 @@
 package data_center;
 
-/** 
- * Store all the constant in the Database, 
+/** Store all the constant in the Database, 
  * including headers and default score weights */
 public final class DBConsts
 {
-	/** The table names in the database */
+	/** The table names in the database. Those with "_upload" is used to contain new
+	 * biobricks uploaded by EasyBbk.  */
 	public static class Table
 	{	
 		public final static String MAIN = "main";

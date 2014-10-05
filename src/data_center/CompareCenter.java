@@ -7,7 +7,9 @@ public class CompareCenter
 	
 	public CompareCenter() {}
 	
-	/** Specify a bbkName to inquire in the database, set it in the list and return */
+	/** Specify a bbkName to inquire in the database, set it in the list and return. 
+	 * @return The BbkDetail instance just assigned, null if the bbkName is not in 
+	 * database or the pos is not 0, 1 or 2.  */
 	public BbkDetail assignDetail(String bbkName, int pos)
 	{	
 		if (pos < 0 || pos > 2)
@@ -20,6 +22,7 @@ public class CompareCenter
 		return bbkDetail;
 	}
 	
+	/** Check the detail stored in the 3 slots in the compareCenter.  */
 	public BbkDetail getDetail(int pos)
 	{	
 		if (pos < 0 || pos > 2)

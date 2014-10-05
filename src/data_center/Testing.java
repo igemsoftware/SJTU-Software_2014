@@ -12,6 +12,8 @@ import java.util.List;
 
 import data_center.SketchComponent.*;
 
+/** The class used to test the data_center. Each private function tests a function in
+ * data_center. You may modify this file directly to perform a customized testing.  */
 @SuppressWarnings("unused")
 public class Testing
 {	
@@ -30,6 +32,7 @@ public class Testing
 		//bbkUpload.setID();
 		//DatabaseConnector.upload(bbkUpload);
 		//DatabaseConnector.getBbkUploadByNameAndOddNum("BBa_K1479001_EasyBbk", "201410115566901").display();
+
 	}
 	
 	
@@ -58,7 +61,7 @@ public class Testing
 	
 	private static void compareAssignDetail()
 	{	
-		dataCenter.compareCenter.assignDetail("BBa_B1005", 2).display();
+		dataCenter.compareCenter.assignDetail("BBa_I13545", 2).display();
 	}
 	
 	private static void sketchXMLReadWrite()

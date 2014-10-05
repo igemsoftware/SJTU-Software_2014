@@ -3,7 +3,8 @@ package data_center;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-/** The propertied in the other 7 tables exclude main */
+/** The properties in the other 7 tables exclude main, used to be extended in 
+ * BbkDetail and BbkUpload to store the details.  */
 public abstract class BbkProperties
 {
 	public static abstract class Category

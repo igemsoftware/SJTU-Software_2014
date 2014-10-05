@@ -2,7 +2,8 @@ package data_center;
 
 import java.util.ArrayList;
 
-public class DetailPageCenter
+/** The class can store a history of bbkDetail for up to 10 items, not used by now.  */
+class DetailPageCenter
 {
 	private final static int MAX_HISTORY_NUM = 10;
     public ArrayList<BbkDetail> historyList;
