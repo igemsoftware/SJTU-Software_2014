@@ -13,6 +13,9 @@ import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
+
+import data_center.SearchResultList;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -183,7 +186,7 @@ public class Choicepanel extends JPanel {
 		
 		JLabel Preference = new JLabel("Preferences:");
 		Preference.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		Preference.setBounds(10, 367, 121, 29);
+		Preference.setBounds(10, 370, 121, 29);
 		add(Preference);
 		
 		JLabel Status = new JLabel("Status(%):");
@@ -485,52 +488,52 @@ public class Choicepanel extends JPanel {
 				
 				{
 					if(Promoter.isSelected()){
-						information.type.add("Promoter");
+						information.type.add(SearchResultList.Filter.Type.PRIMER);
 					}
 					if(RBS.isSelected()){
-						information.type.add("RBS");
+						information.type.add(SearchResultList.Filter.Type.RBS);
 					}
 					if(Protein_Domain.isSelected()){
-						information.type.add("Protein_Domain");
+						information.type.add(SearchResultList.Filter.Type.PROTEIN_DOMAIN);
 					}
 					if(Protein_Coding_Sequence.isSelected()){
-						information.type.add("Protein_Coding_Sequence");
+						information.type.add(SearchResultList.Filter.Type.PROTEIN_CODING_SEQUENCE);
 					}
 					if(Translation_Unit.isSelected()){
-						information.type.add("Translation_Unit");
+						information.type.add(SearchResultList.Filter.Type.TRANSLATIONAL_UNIT);
 					}
 					if(Terminator.isSelected()){
-						information.type.add("Terminator");
+						information.type.add(SearchResultList.Filter.Type.TERMINATOR);
 					}
 					if(DNA.isSelected()){
-						information.type.add("DNA");
+						information.type.add(SearchResultList.Filter.Type.DNA);
 					}
 					if(Plasmid_Backbone.isSelected()){
-						information.type.add("Plasmid_Backbone");
+						information.type.add(SearchResultList.Filter.Type.PLASMID_BACKBONE);
 					}
 					if(Plasmid.isSelected()){
-						information.type.add("Plasmid");
+						information.type.add(SearchResultList.Filter.Type.PLASMID);
 					}
 					if(Primer.isSelected()){
-						information.type.add("Primer");
+						information.type.add(SearchResultList.Filter.Type.PRIMER);
 					}
 					if(Composite.isSelected()){
-						information.type.add("Composite");
+						information.type.add(SearchResultList.Filter.Type.COMPOSITE);
 					}
 					if(Protein_Generator.isSelected()){
-						information.type.add("Protein_Generator");
+						information.type.add(SearchResultList.Filter.Type.PROTEIN_GENERATOR);
 					}
 					if(Reporter.isSelected()){
-						information.type.add("Reporter");
+						information.type.add(SearchResultList.Filter.Type.REPORTER);
 					}
 					if(Inventer.isSelected()){
-						information.type.add("Inventer");
+						information.type.add(SearchResultList.Filter.Type.INVERTER);
 					}
 					if(Signalling.isSelected()){
-						information.type.add("Signalling");
+						information.type.add(SearchResultList.Filter.Type.SIGNALLING);
 					}
 					if(Other.isSelected()){
-						information.type.add("Other");
+						//information.type.add();
 					}
 				}
 				

@@ -31,10 +31,26 @@ public class InitializeDetailPage extends Thread{
 		detailsofresults = new DetailsofResults_Compare();
 		detailsofresults.ID_Content.setText(bbkdetail.name);
 		detailsofresults.Type_Content.setText(bbkdetail.type);
-		detailsofresults.Author_Content.setText(bbkdetail.author);
-		detailsofresults.EnteredDate_Content.setText(bbkdetail.enterDate);
+		String shortdescription = bbkdetail.shortDesc;
+		if(shortdescription.length() <= 10){
+			detailsofresults.Description1.setText(shortdescription);
+			detailsofresults.Description2.setText(null);
+		}
+		else{
+			detailsofresults.Description1.setText(shortdescription.substring(0, 10));
+			detailsofresults.Description2.setText(shortdescription.substring(10));
+		}
 		detailsofresults.URL_Content.setText(bbkdetail.url);
 		detailsofresults.ReleasedStatus_Content.setText(bbkdetail.releaseStatus);
+		detailsofresults.SampleStatus_Content.setText(bbkdetail.sampleStatus);
+		detailsofresults.DNAStatus_Content.setText(bbkdetail.DNA_status);
+		detailsofresults.DeleteThisPart_Content.setText(bbkdetail.rating.delete_this_part);
+		detailsofresults.ConfirmedTimes_Content.setText(bbkdetail.rating.tot_confirmed);
+		//detailsofresults.LengthOfDocumentation_Content.setText();
+		detailsofresults.PartResults_Content.setText(bbkdetail.results);
+		detailsofresults.PartRating_Content.setText(bbkdetail.part_rating);
+		detailsofresults.GroupFavorite_Content.setText(bbkdetail.groupFavorite);
+		//detailsofresults.UsedTimes_Content.setText();
 		if(bbkdetail.rating.average_stars.equals("No Stars")){
 			detailsofresults.AverageStar_Content.setText(bbkdetail.rating.average_stars);
 		}
@@ -44,18 +60,7 @@ public class InitializeDetailPage extends Thread{
 		else if(bbkdetail.rating.average_stars.length() >= 3){
 			detailsofresults.AverageStar_Content.setText(bbkdetail.rating.average_stars.substring(0,3));
 		}
-		detailsofresults.ResultsInGoogle_Content.setText(bbkdetail.rating.google_items);
-		
-		String shortdescription = bbkdetail.shortDesc;
-		if(shortdescription.length()<=40){
-			detailsofresults.Description1.setText(shortdescription);
-			detailsofresults.Description2.setText(null);
-		}
-		else{
-			detailsofresults.Description1.setText(shortdescription.substring(0, 40));
-			detailsofresults.Description2.setText(shortdescription.substring(40));
-		}
-		
+		detailsofresults.TotComments_Content.setText(bbkdetail.rating.tot_commets);
 		detailsofresults.ResultsInGoogle_Content.setText(bbkdetail.rating.google_items);
 		
 		String score = "" + bbkdetail.getScore();
