@@ -59,14 +59,47 @@ public class BbkOutline
     public void display()
     {
         System.out.println( "********\n" + 
-				   			"Name: " + name + "\n" + 
-                            "Type: " + type + "\n" + 
-                            "Author: " + author + "\n" + 
-                            "EnterDate: " + enterDate + "\n" + 
-                            "ShortDescription: " + shortDesc + "\n" +
-                            "Url: " + url + "\n");
-        this.rating.display();
+				   "Name: " + name + "\n" + 
+                   "Type: " + type + "\n" + 
+                   "Author: " + author + "\n" + 
+                   "EnterDate: " + enterDate + "\n" + 
+                   "ShortDescription: " + shortDesc + "\n" +
+                   "Url: " + url);
         System.out.println("********\n");
+    }
+    
+    public void displayFilteringConditions()
+    {	
+    	System.out.println( "********\n" + 
+	   			"Name: " + name + "\n" + 
+                "Type: " + type + "\n" + 
+                "EnterDate: " + enterDate + "\n" + 
+                "DeletedOrNot: " + rating.delete_this_part + "\n" + 
+                "DNAStatus: " + DNA_status + "\n" + 
+                "ReleaseStatus: " + releaseStatus + "\n" + 
+                "AverageStars: " + rating.average_stars);
+    	System.out.println("********\n");
+    }
+    
+    public void displaySortingConditions()
+    {	
+    	System.out.println( "********\n" + 
+	   			"Name: " + name + "\n" + 
+                "EnterDate: " + enterDate + "\n" + 
+                "GoogleItems: " + rating.google_items + "\n" + 
+                "AverageStars: " + rating.average_stars + "\n" + 
+                "ConfirmedTimes: " + rating.tot_confirmed + "\n" + 
+                "BlastingEValue: " + (blasting == null ? blasting : blasting.eValue) + "\n" + 
+                "Total Score: " + getScore());
+    	System.out.println("********\n");
+    }
+    
+    public void displayRating()
+    {	
+    	System.out.println( "********\n" + 
+	   			"Name: " + name);
+    			rating.display();
+    	System.out.println("********\n");
     }
     
     
