@@ -21,6 +21,7 @@ import javax.swing.SwingUtilities;
 @SuppressWarnings("serial")
 class BackBone extends JLabel implements MouseListener, MouseMotionListener
 {
+	public int ID = 0;
 	Point newPoint =new Point(0,0);
 	private Rectangle outer_rect = new Rectangle();
 	private Rectangle inner_rect = new Rectangle();
