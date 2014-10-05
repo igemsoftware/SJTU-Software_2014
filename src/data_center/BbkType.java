@@ -56,6 +56,7 @@ public class BbkType
 			public final static int PROTEIN_CODING_SEQUENCE = 3;
 			public final static int TERMINATOR = 4;
 			public final static int PRIMER = 5;
+			public final static int REPORTER = 6;
 			public final static int OTHER = 0;
 		}
 		
@@ -78,7 +79,7 @@ public class BbkType
 			public final static int OTHER = 0;
 		}
 		
-		public static class Vector
+		public static class BioVector
 		{	
 			public final static int PLASMID = 0;
 			public final static int VIRUS = 1;
