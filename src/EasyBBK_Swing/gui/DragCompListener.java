@@ -3,7 +3,6 @@ package EasyBBK_Swing.gui;
 import EasyBBK_Swing.gui.JLabelWithID;
 
 import java.awt.Component;
-import java.awt.Cursor;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.event.MouseEvent;
@@ -11,10 +10,12 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 import javax.swing.JLayeredPane;
-import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import javax.swing.event.MouseInputListener;
+
+import data_center.SketchCenter;
+import data_center.SketchProject;
 
 /**
  * Imply movement in board
@@ -33,28 +34,30 @@ class DragCompListener implements MouseInputListener
 	JLayeredPane panel;
 	TPanel Tpanel;
 	
-	//test
-	
-	JTextField txtW;
+	SketchCenter sketchCenter;
 	
 	public DragCompListener()
 	{
 		super();
 	}
 	
-	public DragCompListener(JLayeredPane panel,JTextField txtW, TPanel Tpanel)
+	public DragCompListener(JLayeredPane panel, TPanel Tpanel,SketchCenter sketchCenter)
 	{
 		super();
 		//get panel
 		this.panel = panel;
-		this.txtW = txtW;
 		this.Tpanel = Tpanel;
+		this.sketchCenter = sketchCenter;
 	}
 	
 	public void mousePressed(MouseEvent e)
 	{
-		if ((e.getComponent()).getName() != "TPanel" & (e.getComponent()).getName() != "LinePanel")
+		if ((e.getComponent()).getName() != "TPanel" & (e.getComponent()).getName() != "LinePanel"
+				& (e.getComponent()).getName() != "text")
 		{
+			SketchProject project = sketchCenter.currentProject;
+			project.modifyComponent(10, SketchProject.Operation.TYPE_CENTER, point);
+			
 			//get the location
 			if ((e.getComponent()).getName()=="backbone")
 			{
@@ -71,7 +74,8 @@ class DragCompListener implements MouseInputListener
 			int length = (panel.getComponents()).length;
 			for (int i = 0; i<length ; i++)
 			{
-				if (((panel.getComponents())[i]).getName() != "TPanel" & ((panel.getComponents())[i]).getName() != "linePanel")
+				if (((panel.getComponents())[i]).getName() != "TPanel" & ((panel.getComponents())[i]).getName() != "linePanel"
+						& ((panel.getComponents())[i]).getName() != "text")
 				{
 					if (((panel.getComponents())[i]).getName()=="backbone")
 					{
@@ -110,7 +114,8 @@ class DragCompListener implements MouseInputListener
 	public void mouseDragged(MouseEvent e)
 	{
 		//Components movement
-		if ((e.getComponent()).getName() != "TPanel" & (e.getComponent()).getName() != "LinePanel")
+		if ((e.getComponent()).getName() != "TPanel" & (e.getComponent()).getName() != "LinePanel"
+				& (e.getComponent()).getName() != "text")
 		{
 			if ((e.getComponent()).getName() != "backbone")
 			{
@@ -139,13 +144,7 @@ class DragCompListener implements MouseInputListener
 									>(100+((JLabelWithID)e.getSource()).getX())) 
 					//component is close to backbone in Y axis
 					& (Math.abs((((JLabelWithID)e.getSource()).getY()+25)-
-							(((BackBone)backboneList.get(i)).getY()+25))<70))
-							
-					//test
-					//exclude component itself
-					//& ((JLabelWithID)e.getSource() != (JLabelWithID)panel.getComponent(i))
-					//
-							
+							(((BackBone)backboneList.get(i)).getY()+25))<70))							
 					{
 						nearBackbone.add(i);
 					}
@@ -234,7 +233,8 @@ class DragCompListener implements MouseInputListener
 		partList.clear();
 		
 		//Auto align
-		if ((e.getComponent()).getName() != "TPanel" & (e.getComponent()).getName() != "LinePanel")
+		if ((e.getComponent()).getName() != "TPanel" & (e.getComponent()).getName() != "LinePanel"
+				& (e.getComponent()).getName() != "text")
 		{
 			if ((e.getComponent()).getName() != "backbone")
 			{
@@ -252,16 +252,7 @@ class DragCompListener implements MouseInputListener
       
     public void mouseExited(MouseEvent e){}
       
-    public void mouseClicked(MouseEvent e)
-    {
-    	//test
-    	if (e.getClickCount()==2)
-    	{
-    		txtW.setText("get");
-    		((e.getComponent()).getParent()).remove(e.getComponent());
-    		panel.repaint();
-    	}    	
-    }
+    public void mouseClicked(MouseEvent e){}
       
     public void mouseMoved(MouseEvent e){}
 }
