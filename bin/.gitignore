@@ -1,5 +1,1 @@
-*.class
-*.classpath
-/bin/data_center/
-/bin/EasyBbk_Swing/
-/src/
+/EasyBBK_Swing/

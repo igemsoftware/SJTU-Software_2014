@@ -138,6 +138,7 @@ public class Child_Search_Main extends JPanel {
 				mainpage.Mainpanel.add(child_search);
 				child_search.textField.setText(SearchText.getText());
 				mainpage.Mainpanel.updateUI();
+				
 				mainpage.CurrentPage = 11;
 			}
 			@Override
