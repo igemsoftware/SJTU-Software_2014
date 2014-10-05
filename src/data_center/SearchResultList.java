@@ -37,10 +37,19 @@ public class SearchResultList extends ArrayList<BbkOutline>
 			return (SearchResultList) this.clone();
 		// else
 		SearchResultList filteredList = new SearchResultList(this.keyword);
+		boolean pickOutUnmatchedTypes = typeList.contains(Filter.Type.OTHER);
+		boolean addedIntoFilteredList;
 		for (BbkOutline bbk : this)
+		{	addedIntoFilteredList = false;
 			for (String type : typeList)
 				if (bbk.type.equals(type))
-				{	filteredList.add(bbk);	break;	}
+				{	filteredList.add(bbk);
+					addedIntoFilteredList = true;
+					break;
+				}
+			if ( !addedIntoFilteredList && pickOutUnmatchedTypes )
+				filteredList.add(bbk);
+		}
 		return filteredList;
 	}
 	
@@ -68,6 +77,8 @@ public class SearchResultList extends ArrayList<BbkOutline>
 	/** Please use the String in the SearchResultList.Filter */
 	public SearchResultList filterByRelaseStatus(String status)
 	{
+		if (status == null)	// don't filter
+			return (SearchResultList) this.clone();
 		if ( !status.equals(Filter.ReleaseStatus.RELEASED) &&
 			 !status.equals(Filter.ReleaseStatus.NOT_RELEASED) &&
 			 !status.equals(Filter.ReleaseStatus.DELETED))
@@ -85,6 +96,8 @@ public class SearchResultList extends ArrayList<BbkOutline>
 	/** Please use the String in the SearchResultList.Filter */
 	public SearchResultList filterByDNAStatus(String status)
 	{
+		if (status == null)	// don't filter
+			return (SearchResultList) this.clone();
 		if ( !status.equals(Filter.DNAStatus.AVAILABLE) &&
 			 !status.equals(Filter.DNAStatus.DELETED) &&
 			 !status.equals(Filter.DNAStatus.INFORMATIONAL) &&
@@ -101,8 +114,11 @@ public class SearchResultList extends ArrayList<BbkOutline>
 		return filteredList;
 	}
 	
-	public SearchResultList filterByDeletedOrNot(boolean deleted)
+	public SearchResultList filterByDeletedOrNot(Boolean deleted)
 	{
+		if (deleted == null)	// don't filter
+			return (SearchResultList) this.clone();
+		// else
 		SearchResultList filteredList = new SearchResultList(this.keyword);
 		for (BbkOutline bbk : this)
 			if ( (bbk.rating.delete_this_part.equals(Filter.DeletedOrNot.DELETED)) == deleted)
@@ -364,6 +380,7 @@ public class SearchResultList extends ArrayList<BbkOutline>
 			public final static String INVERTER = "Inverter";
 			public final static String SIGNALLING = "Signalling";
 			public final static String MEASUREMENT = "Measurement";
+			public final static String OTHER = "Other";
 		}
 		
 		public static class ReleaseStatus
