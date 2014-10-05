@@ -163,7 +163,7 @@ public class Testing
 		componentList.add(new BackBone(3, new Point(50, 50), 50, backBoneChildren));
 		componentList.add(new Relation(4, BbkType.Sketch.Relation.SUPPRESS, 
 				curve, new Color(50, 50, 50), 10));
-		componentList.add(new BioVector(5, BbkType.Sketch.Vector.BACTERIA, 
+		componentList.add(new BioVector(5, BbkType.Sketch.BioVector.BACTERIA, 
 				new Point(300, 300), 3));
 		
 		SketchProject project = dataCenter.sketchCenter.newProject();
