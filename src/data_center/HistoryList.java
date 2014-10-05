@@ -40,7 +40,7 @@ public class HistoryList<T>
 
 	public boolean canGoForward()
 	{	
-		return currentItemNo < dataList.size();
+		return currentItemNo < dataList.size() - 1;
 	}
 
 	public T rollBack()

@@ -213,6 +213,29 @@ public class DatabaseConnector
         return resultList;
     }
     
+    public static boolean isUploadingBbkNameNotOccupied(String rawName)
+    {	
+    	checkConnection();
+    	
+    	String nameByIgemOrg = "BBa_" + rawName;
+		String nameByEasyBbk = "BBa_" + rawName + "_EasyBbk";
+		boolean occupied = true;
+		try 
+		{	Statement statement = connection.createStatement();
+			ResultSet resultSet_org, resultSet_EasyBbk;
+			// main
+			resultSet_org = statement.executeQuery("select * from " + DBConsts.Table.MAIN + 
+					" where " + DBConsts.Header.Main.NAME + " = " + "'" + nameByIgemOrg + "'");
+			occupied = resultSet_org.next();
+			resultSet_org.close();
+			resultSet_EasyBbk = statement.executeQuery("select * from " + DBConsts.Table.MAIN_UPLOAD + 
+					" where " + DBConsts.Header.Main.NAME + " = " + "'" + nameByEasyBbk + "'");
+			occupied =  (occupied || resultSet_EasyBbk.next());
+			resultSet_EasyBbk.close();
+		} catch (Exception e) {e.printStackTrace();}
+		return !occupied;
+    }
+    
     /** Upload a new biobrick and get the odd number used to modify it later. 
      * The oddNum is stored in the ID of an biobrick */
     public static String upload(BbkUpload bbkUpload)

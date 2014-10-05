@@ -21,17 +21,14 @@ public class Testing
 	
 	public static void main(String[] args) throws Exception
 	{	
-		//201410115566901
-		
 		//searchKeywordAndGetDetail();
-		compareAssignDetail();
+		//searchBlasting();
+		//compareAssignDetail();
 		//sketchXMLReadWrite();
-		//DatabaseConnector.displayTable(DBConsts.Table.MAIN_UPLOAD, 2);
-		//BbkUpload bbkUpload = new BbkUpload();
-		//bbkUpload.setName("K1479001");
-		//bbkUpload.setID();
-		//DatabaseConnector.upload(bbkUpload);
-		//DatabaseConnector.getBbkUploadByNameAndOddNum("BBa_K1479001_EasyBbk", "201410115566901").display();
+		//searchHistory();
+		//sketchProjectOperation();
+		//uploadPartNameSequenceTokenValidationCheck();
+		uploadSubpartSubscarValidationCheck();
 		
 	}
 	
@@ -74,14 +71,76 @@ public class Testing
 		rawList.sortByTotalScore(true);	rawList.displaySortingConditions();
 	}
 	
+	private static void searchBlasting()
+	{	
+		SearchResultList list; 
+		list = dataCenter.searchCenter.blast
+			("blastInput", BlastingSearcher.MODE_INPUT_FILE_PATH);
+		list.sortByBlastResult(true);	list.displaySortingConditions();
+		
+		list = dataCenter.searchCenter.blast
+			("tccaaagcttacgttaaacacccggctgacatcccggactacctgaaactgtccttccc"
+					+ "ggaaggtttcaaatgggaacgtgttatgaacttcgaa", 
+			 BlastingSearcher.MODE_INPUT_SEQUENCE);
+		list.sortByBlastResult(true);	list.displaySortingConditions();
+		BlastingSearcher.deleteLocalCacheFiles();
+	}
+	
 	private static void searchHistory()
 	{	
-		// fix me
+		System.out.println("The search history can roll back: " 
+				+ dataCenter.searchCenter.canRollBack());
+		System.out.println("\t\t can go forward: "
+				+ dataCenter.searchCenter.canGoForward());
+		
+		dataCenter.searchCenter.search("BBa_B0012");
+		dataCenter.searchCenter.search("BBa_B0011");
+		dataCenter.searchCenter.search("GFP BBa_B");
+		System.out.println("Searched 3 times, current list... ");
+		dataCenter.searchCenter.getCurrentRawSearchResultList().display();
+		
+		System.out.println("The search history can roll back: " 
+				+ dataCenter.searchCenter.canRollBack());
+		System.out.println("\t\t can go forward: "
+				+ dataCenter.searchCenter.canGoForward());
+		System.out.println("Roll back... ");
+		dataCenter.searchCenter.rollBack().display();
+		System.out.println("Go forward... ");
+		dataCenter.searchCenter.goForward().display();
+		
+		System.out.println("Search again... ");
+		dataCenter.searchCenter.search("BBa_B0034");
+		dataCenter.searchCenter.getCurrentRawSearchResultList().display();
 	}
 	
 	private static void compareAssignDetail()
 	{	
 		dataCenter.compareCenter.assignDetail("BBa_I13545", 2).display();
+	}
+	
+	private static void sketchProjectOperation()
+	{	
+		dataCenter.sketchCenter.newProject();
+		dataCenter.sketchCenter.newProject();
+		dataCenter.sketchCenter.newProject();
+		dataCenter.sketchCenter.newProject();
+		
+		String[] projectNames = dataCenter.sketchCenter.getAllProjectNames();
+		for (String name : projectNames)
+			System.out.println("Project name: " + name);
+		
+		System.out.println("Current: " + dataCenter.sketchCenter.currentProject.name);
+		
+		System.out.println("Closing project1... ");
+		dataCenter.sketchCenter.closeProject(projectNames[0]);
+		System.out.println("Current: " + dataCenter.sketchCenter.currentProject.name);
+		System.out.println("Closing current... ");
+		dataCenter.sketchCenter.closeProject(null);
+		System.out.println("Current: " + dataCenter.sketchCenter.currentProject.name);
+		System.out.println("Closing current... ");
+		dataCenter.sketchCenter.closeProject(null);
+		System.out.println("Current: " + dataCenter.sketchCenter.currentProject.name);
+		dataCenter.sketchCenter.closeProject(null);
 	}
 	
 	private static void sketchXMLReadWrite()
@@ -117,6 +176,39 @@ public class Testing
 		project.displayComponents();
 	}
 	
+	private static void uploadUploadAndReappearBbkUpload()
+	{	
+		BbkUpload bbkUpload = new BbkUpload();
+		bbkUpload.setName("K1479001");
+		bbkUpload.setID();
+		dataCenter.uploadCenter.uploadAndGetOddNum(bbkUpload);
+		DatabaseConnector.displayTable(DBConsts.Table.MAIN_UPLOAD, 2);
+		dataCenter.uploadCenter.getBbkUploadByNameAndOddNum
+			("BBa_K1479001_EasyBbk", "201410115566901").display();
+	}
 	
+	private static void uploadPartNameSequenceTokenValidationCheck()
+	{	
+		System.out.println("Name validation(K1479001): " + 
+				dataCenter.uploadCenter.isBbkNameNotOccupied("K1479001"));
+		System.out.println("Name validation(K1479010): " + 
+				dataCenter.uploadCenter.isBbkNameNotOccupied("K1479010"));
+		System.out.println("Sequence validation(atctgctagctgafacgt): " + 
+				dataCenter.uploadCenter.isSequanceValid("atctgctagctgafacgt"));
+		System.out.println("Sequence validation(atctgctagctgacacgt): " + 
+				dataCenter.uploadCenter.isSequanceValid("atctgctagctgacacgt"));
+	}
+	
+	private static void uploadSubpartSubscarValidationCheck()
+	{	
+		System.out.println("Subpart validation(BBa_I13545): " + 
+			(dataCenter.uploadCenter.getSubpartForSequenceToken("BBa_I13545") != null));
+		System.out.println("Subpart validation(BBa_K1479010): " + 
+			(dataCenter.uploadCenter.getSubpartForSequenceToken("BBa_K1479010") != null));
+		System.out.println("Subpart validation(RFC[10]): " + 
+			(dataCenter.uploadCenter.getSubscarForSequenceToken("RFC[10]") != null));
+		System.out.println("Subpart validation(RFC[1000]): " + 
+			(dataCenter.uploadCenter.getSubscarForSequenceToken("RFC[1000]") != null));
+	}
 	
 }
