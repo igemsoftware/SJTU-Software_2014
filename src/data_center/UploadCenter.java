@@ -12,10 +12,7 @@ public class UploadCenter
 	 * part_name to be uploaded.  */
 	public boolean isBbkNameNotOccupied(String rawName)
 	{	
-		String nameByIgemOrg = "BBa_" + rawName;
-		String nameByEasyBbk = "BBa_" + rawName + "_EasyBbk";
-		return  DatabaseConnector.getOutlineByName(nameByIgemOrg) == null && 
-				DatabaseConnector.getOutlineByName(nameByEasyBbk) == null;
+		return DatabaseConnector.isUploadingBbkNameNotOccupied(rawName);
 	}
 	
 	/** Upload a new biobrick and get the odd number used to modify it later.
@@ -38,7 +35,7 @@ public class UploadCenter
 		sequenceToken = sequenceToken.toLowerCase();
 		for (int i = 0; i < sequenceToken.length(); ++i)
 		{	char ch = sequenceToken.charAt(i);
-			if (ch != 'a' || ch != 't' || ch != 'c' || ch != 'g')
+			if (ch != 'a' && ch != 't' && ch != 'c' && ch != 'g')
 				return false;
 		}
 		return true;

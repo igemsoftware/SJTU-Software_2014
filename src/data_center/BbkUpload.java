@@ -21,6 +21,7 @@ public class BbkUpload
  	public String nickname;
  	public String groupFavorite;
  	public String delete_this_part;
+ 	public ArrayList<Object> sequenceTokens = new ArrayList<Object>();
 	
 	public ArrayList<Category> categories = new ArrayList<Category>();
 	public ArrayList<Feature> features = new ArrayList<Feature>();
@@ -75,7 +76,7 @@ public class BbkUpload
 	 * Please call uploadCenter.isSequanceValid() first. 
 	 * useDefaultScar means use RFC[10] to fill all unspecified scars 
 	 * between bio-bricks */
-	public void setSequence(ArrayList<Object> sequenceTokens, boolean useDefaultScar)
+	public void setSequence(boolean useDefaultScar)
 	{
 		sequence = "";
 		deepSubparts = new ArrayList<BbkUpload.DeepSubpart>();

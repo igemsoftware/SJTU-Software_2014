@@ -7,6 +7,8 @@ import javax.swing.JLabel;
  */
 class JLabelWithID extends JLabel
 {	
+	public int ID = 0;
+	
 	public JLabelWithID(String s)
 	{
 		super(s);

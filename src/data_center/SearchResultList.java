@@ -337,6 +337,24 @@ public class SearchResultList extends ArrayList<BbkOutline>
 			bbk.display();
 	}
 	
+	public void displayFilteringConditions()
+	{	
+		for (BbkOutline bbk : this)
+			bbk.displayFilteringConditions();
+	}
+	
+	public void displaySortingConditions()
+	{	
+		for (BbkOutline bbk : this)
+			bbk.displaySortingConditions();
+	}
+	
+	public void displayRating()
+	{	
+		for (BbkOutline bbk : this)
+			bbk.displayRating();
+	}
+	
 	/** Instead of print, providing another way to display the content of the list */
 	public String[][] toTwoDimensionalArray()
 	{

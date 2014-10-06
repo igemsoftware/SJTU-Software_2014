@@ -41,6 +41,7 @@ class TextLabel extends JTextPane implements MouseListener, MouseMotionListener
 	private Rectangle rect_move = new Rectangle();
 	
 	private int reType = 0;
+	int ID=0;
 	public boolean resizeable = false;
 	public boolean movable = false;
 	public boolean focus = false;
