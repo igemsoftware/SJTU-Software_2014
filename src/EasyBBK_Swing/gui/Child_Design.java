@@ -50,7 +50,7 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 @SuppressWarnings("serial")
-public class Child_Design extends JPanel {
+public class Child_Design extends JLayeredPane {
 	public MainPage mainpage;
 	private JLayeredPane panel = new JLayeredPane();
 	private TPanel Tpanel = new TPanel();
@@ -59,6 +59,9 @@ public class Child_Design extends JPanel {
 	private Pen pen = null;
 	private LinePanel linePanel = new LinePanel(pen);
 	private TextLabel textLabel = null;
+	
+	private Color lineColor = Color.black;
+	private float lineStroke = 3.0f;
 	
 	private int compCount = 0;
 	
@@ -83,118 +86,161 @@ public class Child_Design extends JPanel {
 	private void initialize() 
 	{	
 		//initialize tool labels
-		JButton textButton = new JButton("");
 		JLabelWithID promoter = new JLabelWithID("");
 		JLabelWithID rbs = new JLabelWithID("");
 		JLabelWithID coding = new JLabelWithID("");
 		JLabelWithID terminator = new JLabelWithID("");
 		JLabelWithID primer = new JLabelWithID("");
 		JLabelWithID reporter = new JLabelWithID("");
+		JLabelWithID factor = new JLabelWithID("");
+		JLabelWithID recepter = new JLabelWithID("");
+		JLabelWithID protein = new JLabelWithID("");
+		JLabelWithID plasmid = new JLabelWithID("");
 		JButton backout = new JButton();
+		JButton fontButton = new JButton();
+		JButton lineButton = new JButton();
 		Pen text = new Pen();
 		Pen eraser = new Pen();
-		Pen line_1 = new Pen();
+		Pen line_inhabit = new Pen();
+		Pen line_enhance = new Pen();
+		Pen line_other = new Pen();
+		JLabel background = new JLabel();
 		
 		sketchCenter.newProject();
 		
 		this.setBounds(0, 0, 1366, 670);
 		this.setLayout(null);
 		
-		backout.setBounds(0,0,100,50);
-		backout.setText("Backout");
+		backout.setBounds(214,113,45,48);
+		ImageIcon image_backout = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Backout.png"));
+		backout.setIcon(image_backout);
         this.add(backout);
 		
-		textButton.setBounds(0,50,100,50);
-		textButton.setText("Font");
-        this.add(textButton);
-		
-		ImageIcon image_promoter = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/dc_iso_promoter_Hover.png"));
-		image_promoter.setImage(image_promoter.getImage().getScaledInstance(100,50,Image.SCALE_DEFAULT));
-		promoter.setIcon(image_promoter);
-		promoter.setBounds(8, 241, 100, 50);
-		promoter.setName("promoter");
-		this.add(promoter);		
-		
-		ImageIcon image_rbs = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/dc_iso_rbs_Hover.png"));
-		image_rbs.setImage(image_rbs.getImage().getScaledInstance(100,50,Image.SCALE_DEFAULT));
-		rbs.setIcon(image_rbs);
-		rbs.setBounds(116, 241, 100, 50);
-		rbs.setName("rbs");
-		this.add(rbs);		
-		
-		ImageIcon image_coding = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/dc_iso_codingsequence_Hover.png"));
-		image_coding.setImage(image_coding.getImage().getScaledInstance(100,50,Image.SCALE_DEFAULT));
-		coding.setIcon(image_coding);
-		coding.setBounds(224, 241, 100, 50);
-		coding.setName("coding");
-		this.add(coding);		
-		
-		ImageIcon image_terminator = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/dc_iso_terminator_Hover.png"));
-		image_terminator.setImage(image_terminator.getImage().getScaledInstance(100,50,Image.SCALE_DEFAULT));
-		terminator.setIcon(image_terminator);
-		terminator.setBounds(8, 297, 100, 50);
-		terminator.setName("terminator");
-		this.add(terminator);				
-		
-		ImageIcon image_primer = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/dc_iso_primer_Hover.png"));
-		image_primer.setImage(image_primer.getImage().getScaledInstance(100,50,Image.SCALE_DEFAULT));
-		primer.setIcon(image_primer);
-		primer.setBounds(116, 297, 100, 50);
-		primer.setName("primer");
-		this.add(primer);		
-		
-		ImageIcon image_reporter = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/dc_iso_reporter_Hover.png"));
-		image_reporter.setImage(image_reporter.getImage().getScaledInstance(100,50,Image.SCALE_DEFAULT));
-		reporter.setIcon(image_reporter);
-		reporter.setBounds(224, 297, 100, 50);
-		reporter.setName("reporter");
-		this.add(reporter);
-		
-		BackBone backbone = new BackBone("");
-		ImageIcon image_backbone = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/dc_backbone_Hover.png"));
-		image_backbone.setImage(image_backbone.getImage().getScaledInstance(210,50,Image.SCALE_DEFAULT));
-		backbone.setIcon(image_backbone);
-		backbone.setBounds(7, 431, 210, 50);
-		backbone.setName("backbone");
-		this.add(backbone);
-		
-		ImageIcon image_line_1 = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/dc_iso_codingsequence_Move.png"));
-		image_line_1.setImage(image_line_1.getImage().getScaledInstance(100,50,Image.SCALE_DEFAULT));
-		line_1.setIcon(image_line_1);
-		line_1.setBounds(8, 498, 100, 50);
-		line_1.setName("line");
-		line_1.setType(0);
-		this.add(line_1);
-		
-		ImageIcon image_text = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/dtext_Hover.png"));
-		image_text.setImage(image_text.getImage().getScaledInstance(100,50,Image.SCALE_DEFAULT));
+        fontButton.setBounds(77,113,45,48);
+		ImageIcon image_font = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Font.png"));
+		fontButton.setIcon(image_font);
+        this.add(fontButton);
+        
+        ImageIcon image_text = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Text_design.png"));
 		text.setIcon(image_text);
-		text.setBounds(119, 125, 100, 50);
+		text.setBounds(12, 113, 45, 48);
 		text.setName("text");
 		text.setType(5);
 		this.add(text);	
 		
-		ImageIcon image_eraser = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/dtext_Hover.png"));
-		image_eraser.setImage(image_text.getImage().getScaledInstance(100,50,Image.SCALE_DEFAULT));
+		ImageIcon image_eraser = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Eraser.png"));
 		eraser.setIcon(image_eraser);
-		eraser.setBounds(226, 125, 100, 50);
+		eraser.setBounds(148, 113, 45, 48);
 		eraser.setName("eraser");
 		eraser.setType(2);
 		this.add(eraser);
+
+		ImageIcon image_promoter = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Promoter.png"));
+		promoter.setIcon(image_promoter);
+		promoter.setBounds(6, 233, 84, 60);
+		promoter.setName("promoter");
+		this.add(promoter);		
+		
+		ImageIcon image_rbs = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/RBS.png"));
+		rbs.setIcon(image_rbs);
+		rbs.setBounds(100, 233, 84, 60);
+		rbs.setName("rbs");
+		this.add(rbs);		
+		
+		ImageIcon image_coding = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Coding.png"));
+		coding.setIcon(image_coding);
+		coding.setBounds(193, 233, 84, 60);
+		coding.setName("coding");
+		this.add(coding);		
+		
+		ImageIcon image_terminator = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Terminator.png"));
+		terminator.setIcon(image_terminator);
+		terminator.setBounds(6, 299, 84, 60);
+		terminator.setName("terminator");
+		this.add(terminator);				
+		
+		ImageIcon image_primer = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Primer.png"));
+		primer.setIcon(image_primer);
+		primer.setBounds(100, 299, 84, 60);
+		primer.setName("primer");
+		this.add(primer);		
+		
+		ImageIcon image_reporter = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Reporter.png"));
+		reporter.setIcon(image_reporter);
+		reporter.setBounds(193, 299, 84, 60);
+		reporter.setName("reporter");
+		this.add(reporter);
+		
+		ImageIcon image_recepter = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Recepter.png"));
+		recepter.setIcon(image_recepter);
+		recepter.setBounds(6, 365, 84, 60);
+		recepter.setName("recepter");
+		this.add(recepter);
+		
+		ImageIcon image_factor = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Factor.png"));
+		factor.setIcon(image_factor);
+		factor.setBounds(100, 365, 84, 60);
+		factor.setName("factor");
+		this.add(factor);
+		
+		ImageIcon image_protein = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Protein.png"));
+		protein.setIcon(image_protein);
+		protein.setBounds(193, 365, 84, 60);
+		protein.setName("protein");
+		this.add(protein);
+		
+		ImageIcon image_plasmid = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Plasmid.png"));
+		plasmid.setIcon(image_plasmid);
+		plasmid.setBounds(6, 433, 84, 60);
+		plasmid.setName("plasmid");
+		this.add(plasmid);
+		
+		BackBone backbone = new BackBone("");
+		ImageIcon image_backbone = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Backbone.png"));
+		backbone.setIcon(image_backbone);
+		backbone.setBounds(6, 596, 224, 40);
+		backbone.setName("backbone");
+		this.add(backbone);
+		
+		lineButton.setBounds(234,596,43,40);
+		ImageIcon image_line = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/LineStyleChooser.png"));
+		lineButton.setIcon(image_line);
+        this.add(lineButton);
+		
+		ImageIcon image_line_inhabit = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/InhabitLine.png"));
+		line_inhabit.setIcon(image_line_inhabit);
+		line_inhabit.setBounds(6, 517, 84, 59);
+		line_inhabit.setName("line");
+		line_inhabit.setType(-1);
+		this.add(line_inhabit);
+		
+		ImageIcon image_line_enhance = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/EnhanceLine.png"));
+		line_enhance.setIcon(image_line_enhance);
+		line_enhance.setBounds(100, 517, 84, 59);
+		line_enhance.setName("line");
+		line_enhance.setType(0);
+		this.add(line_enhance);
+		
+		ImageIcon image_line_other = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/OtherLine.png"));
+		line_other.setIcon(image_line_other);
+		line_other.setBounds(193, 517, 84, 59);
+		line_other.setName("line");
+		line_other.setType(1);
+		this.add(line_other);
 		
 		panel.setLayout(null);
 		panel.setOpaque(true);
 		panel.setBorder(BorderFactory.createEtchedBorder());
 		panel.setBackground(Color.WHITE);		
-		panel.setBounds(346, 0, 1017, 665);
+		panel.setBounds(283, 0, 1083, 665);
 		this.add(panel);
 		
 		Tpanel.setLayout(null);
-		Tpanel.setBounds(0, 0, 1017, 665);
+		Tpanel.setBounds(0, 0, 1083, 665);
 		panel.add(Tpanel,0);
 		
 		linePanel.setLayout(null);
-		linePanel.setBounds(0, 0, 1017, 665);
+		linePanel.setBounds(0, 0, 1083, 665);
 		panel.add(linePanel);
 		
 		//add action to labels
@@ -222,13 +268,37 @@ public class Child_Design extends JPanel {
 		reporter.addMouseListener(listener_reporter);
 		reporter.addMouseMotionListener(listener_reporter);
 		
+		GetCompListener listener_recepter = new GetCompListener();
+		recepter.addMouseListener(listener_recepter);
+		recepter.addMouseMotionListener(listener_recepter);
+		
+		GetCompListener listener_factor = new GetCompListener();
+		factor.addMouseListener(listener_factor);
+		factor.addMouseMotionListener(listener_factor);
+		
+		GetCompListener listener_protein = new GetCompListener();
+		protein.addMouseListener(listener_protein);
+		protein.addMouseMotionListener(listener_protein);
+		
+		GetCompListener listener_plasmid = new GetCompListener();
+		plasmid.addMouseListener(listener_plasmid);
+		plasmid.addMouseMotionListener(listener_plasmid);
+		
 		GetCompListener listener_backbone = new GetCompListener();
 		backbone.addMouseListener(listener_backbone);
 		backbone.addMouseMotionListener(listener_backbone);
 		
-		IfDrawLineListener line_1Listener = new IfDrawLineListener();
-		line_1.addMouseListener(line_1Listener);
-		line_1.addMouseMotionListener(line_1Listener);
+		IfDrawLineListener line_inhabit_Listener = new IfDrawLineListener();
+		line_inhabit.addMouseListener(line_inhabit_Listener);
+		line_inhabit.addMouseMotionListener(line_inhabit_Listener);
+		
+		IfDrawLineListener line_enhance_Listener = new IfDrawLineListener();
+		line_enhance.addMouseListener(line_enhance_Listener);
+		line_enhance.addMouseMotionListener(line_enhance_Listener);
+		
+		IfDrawLineListener line_other_Listener = new IfDrawLineListener();
+		line_other.addMouseListener(line_other_Listener);
+		line_other.addMouseMotionListener(line_other_Listener);
 		
 		IfDrawLineListener eraserListener = new IfDrawLineListener();
 		eraser.addMouseListener(eraserListener);
@@ -247,8 +317,19 @@ public class Child_Design extends JPanel {
 		panel.addMouseMotionListener(drawLineListener);	
 		
 		ShowFontChooser showFont = new ShowFontChooser();
-		textButton.addMouseListener(showFont);
-		textButton.addMouseMotionListener(showFont);
+		fontButton.addMouseListener(showFont);
+		fontButton.addMouseMotionListener(showFont);
+
+		ShowLineStyleChooser showLineStyle = new ShowLineStyleChooser();
+		lineButton.addMouseListener(showLineStyle);
+		lineButton.addMouseMotionListener(showLineStyle);		
+		
+		//background
+		this.add(background);
+		this.setPosition(background, -1);
+		background.setBounds(0, 0, 1366, 670);
+		ImageIcon image_background = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/design_background.png"));
+		background.setIcon(image_background);
 	}
 	
 	/**
@@ -397,11 +478,13 @@ public class Child_Design extends JPanel {
     				}
     			}
 				pen = (Pen)e.getSource();
+				linePanel.setPen(pen);
 				pen.inUse();
 			}						
 			else if (((Pen)e.getSource()) != pen & pen==null)
 			{
 				pen = (Pen)e.getSource();
+				linePanel.setPen(pen);
 				pen.inUse();
 				if (choose)
 				{
@@ -454,6 +537,7 @@ public class Child_Design extends JPanel {
     				}
     			}
 				pen = null;
+				linePanel.setPen(pen);
 				
 			}
 		}
@@ -495,18 +579,19 @@ public class Child_Design extends JPanel {
 	    	{	
 	    		if (((Component)source).getName() == "backbone")
 	    		{
-	    			SketchProject project = sketchCenter.currentProject;
-	    			
 	    			point =  e.getPoint();
 		    		BackBone newBackBone = new BackBone(panel,Tpanel);
-		    		newBackBone.ID=compCount++;		    			    		
-		    		newBackBone.setIcon(((BackBone)source).getIcon());
-		    		point.x = point.x - (((BackBone)source).getWidth())/2;
-		    		point.y = point.y - (((BackBone)source).getHeight())/2;
+		    		newBackBone.ID=compCount++;		
+		    		
+		    		ImageIcon image_newBackBone = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/backbone_move.png"));
+		    		newBackBone.setIcon(image_newBackBone);
+		    		
+		    		point.x = point.x - 41;
+		    		point.y = point.y - 25;
 		    		
 		    		//Location
-		    		newBackBone.setBounds(point.x, point.y, ((BackBone)source).getWidth(), 
-		    				((BackBone)source).getHeight());
+		    		newBackBone.setBounds(point.x, point.y, 83, 
+		    				50);
 		    		newBackBone.setName(((BackBone)source).getName());
 		    		newBackBone.activate();
 					panel.add(newBackBone,-1);
@@ -531,7 +616,10 @@ public class Child_Design extends JPanel {
 					point =  e.getPoint();
 		    		JLabelWithID newLabel = new JLabelWithID();
 		    		newLabel.ID=compCount++;
-		    		newLabel.setIcon(((JLabelWithID)source).getIcon());
+		    		
+		    		ImageIcon image_newLabel = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/"+(((JLabelWithID)source)).getName()+"_move.png"));
+		    		newLabel.setIcon(image_newLabel);		    		
+		    		
 		    		point.x = point.x - (((JLabelWithID)source).getWidth())/2;
 		    		point.y = point.y - (((JLabelWithID)source).getHeight())/2;
 		    		
@@ -546,7 +634,7 @@ public class Child_Design extends JPanel {
 
 					// test
 					
-					SketchComponent.Component component;
+					SketchComponent.Component component = null;
 					switch (newLabel.getName())
 					{	
 						case "promoter":
@@ -574,12 +662,23 @@ public class Child_Design extends JPanel {
 							component = new SketchComponent.Protein(newLabel.ID, BbkType.Sketch.Protein.RECEPTER, center, null);
 							break;
 						case "plasmid":
-							component = new SketchComponent.BioVector(newLabel.ID, BbkType.Sketch.Vector.PLASMID, center, null);
-						
+							component = new SketchComponent.BioVector(newLabel.ID, BbkType.Sketch.BioVector.PLASMID, center, 1);
+							break;
+						case "virus":
+							component = new SketchComponent.BioVector(newLabel.ID, BbkType.Sketch.BioVector.VIRUS, center, 1);
+							break;
+						case "bacteria":
+							component = new SketchComponent.BioVector(newLabel.ID, BbkType.Sketch.BioVector.BACTERIA, center, 1);
+							break;
+						case "plant_cell":
+							component = new SketchComponent.BioVector(newLabel.ID, BbkType.Sketch.BioVector.PLANT_CELL, center, 1);
+							break;
+						case "animal_cell":
+							component = new SketchComponent.BioVector(newLabel.ID, BbkType.Sketch.BioVector.ANIMAL_CELL, center, 1);
+							break;
 					}
 					
-					sketchCenter.currentProject.addComponent
-						(new SketchComponent.Protein(newLabel.ID, center, );
+					sketchCenter.currentProject.addComponent(component);
 					
 					DragCompListener listener = new DragCompListener(panel,Tpanel,sketchCenter);
 					newLabel.addMouseListener(listener);
@@ -603,6 +702,11 @@ public class Child_Design extends JPanel {
 				
 	    		ChooseCurrentText chooseTextListener = new ChooseCurrentText();
 	    		newText.addFocusListener(chooseTextListener);
+	    		
+	    		Point center = new Point(point.x + 25, point.y + 15);
+	    		
+	    		sketchCenter.currentProject.addComponent
+	    			(new SketchComponent.Label(newText.ID, null, center, new Font("Time New Roman", Font.PLAIN, 16), Color.BLACK));
 	    		
 	    		DragTextListener dragListener = new DragTextListener();
 	    		newText.addMouseListener(dragListener);
@@ -657,6 +761,19 @@ public class Child_Design extends JPanel {
 								linePanel.getLineBorder()[3]-linePanel.getLineBorder()[2]+20);
 						System.out.println("ok");
 						panel.add(newLine);
+						
+						int lineType = -1;
+						switch (linePanel.lineType)
+						{	
+							case LinePanel.LINE_WITH_EMPTY_ARROW:
+								lineType = BbkType.Sketch.Relation.PROMOTE;	break;
+							case LinePanel.LINE_WIHT_STOP_END:
+								lineType = BbkType.Sketch.Relation.SUPPRESS;	break;
+							case LinePanel.LINE_WITH_FULL_ARROW:
+								lineType = BbkType.Sketch.Relation.OTHER;	break;
+						}						
+						
+						sketchCenter.currentProject.addComponent(new SketchComponent.Relation(newLine.ID, lineType, lineList, linePanel.color, (int) linePanel.stroke));
 						
 						//ÒÆ¶¯
 						DragLineListener dragListener = new DragLineListener();
@@ -750,6 +867,36 @@ public class Child_Design extends JPanel {
 	        	textLabel.setCharacterAttributes(attrNew, true);
 		        textLabel.setParagraphAttributes(attrNew, true);
 	        }        
+		}
+		
+		public void mousePressed(MouseEvent e) {}
+
+		public void mouseMoved(MouseEvent e) {}
+
+		public void mouseDragged(MouseEvent e) {}
+			
+		public void mouseReleased(MouseEvent e){}
+			
+		public void mouseEntered(MouseEvent e) {}
+
+		public void mouseExited(MouseEvent e) {}
+	}
+	
+	/**
+	 * Show LineStyleChooserChooser
+	 */
+	class ShowLineStyleChooser implements MouseInputListener
+	{
+		public void mouseClicked(MouseEvent e) 
+		{	
+			LineStyleChooser one = new LineStyleChooser((int)lineStroke, lineColor);    
+	        one.showDialog((JFrame)((JButton)(e.getSource())).getRootPane().getParent(),500,200);
+	        
+	        lineStroke = (float)one.getSelectedsize();  
+	        lineColor=one.getSelectedcolor(); 
+	        
+	        linePanel.stroke = lineStroke;
+	        linePanel.color = lineColor;
 		}
 		
 		public void mousePressed(MouseEvent e) {}
@@ -894,7 +1041,7 @@ public class Child_Design extends JPanel {
 	}
 	
 	/**
-	 * Delete components
+	 * Backout
 	 */
 	class BackoutListener implements MouseInputListener
 	{		
