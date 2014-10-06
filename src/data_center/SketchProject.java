@@ -8,20 +8,17 @@ import data_center.SketchComponent.*;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Point;
+import java.awt.Rectangle;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
-import java.io.Writer;
 
-import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Result;
 import javax.xml.transform.Source;
 import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerConfigurationException;
-import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
@@ -46,10 +43,10 @@ public class SketchProject
 		// no TYPE_SECONDART_TYPE and TYPE_CURVE cause they can't be modified
 		public final static int TYPE_COMPONENT = 0;
 		public final static int TYPE_STRING = 1;
-		public final static int TYPE_CENTER = 2;
+		public final static int TYPE_BOUNDS = 2;
 		public final static int TYPE_FONT = 3;
 		public final static int TYPE_COLOR = 4;
-		public final static int TYPE_SIZE = 5;
+		public final static int TYPE_THICKNESS = 5;
 		public final static int TYPE_NULL = -1;
 		
 		// attributes
@@ -96,11 +93,11 @@ public class SketchProject
 			switch (obj.getClass().getSimpleName())
 			{	case "String":
 					return TYPE_STRING;
-				case "Point":
-					return TYPE_CENTER;
+				case "Rectangle":
+					return TYPE_BOUNDS;
 				case "Integer":
 				case "Double":
-					return TYPE_SIZE;
+					return TYPE_THICKNESS;
 				case "Font":
 					return TYPE_FONT;
 				case "Color":
@@ -187,10 +184,10 @@ public class SketchProject
 		switch (attributeType)
 		{	case Operation.TYPE_STRING:
 				operation.previous = component.getString();	break;
-			case Operation.TYPE_CENTER:
-				operation.previous = component.getCenter();	break;
-			case Operation.TYPE_SIZE:
-				operation.previous = component.getSize();	break;
+			case Operation.TYPE_BOUNDS:
+				operation.previous = component.getBounds();	break;
+			case Operation.TYPE_THICKNESS:
+				operation.previous = component.getThickness();	break;
 			case Operation.TYPE_FONT:
 				operation.previous = component.getFont();	break;
 			case Operation.TYPE_COLOR:
@@ -287,13 +284,14 @@ public class SketchProject
 				switch (operation.attributeType)
 				{	case Operation.TYPE_STRING:
 						component.setString((String) object);	break;
-					case Operation.TYPE_CENTER:
-						component.setCenter((Point) object);
-						if (component.primaryType.equals(BackBone.class.getSimpleName()))
-							onLinkage(component.toBackBone(), (Point)operation.previous, (Point)operation.following);
+					case Operation.TYPE_BOUNDS:
+						component.setBounds((Rectangle) object);
+						if (component.primaryType.equals(BackBone.class.getSimpleName())
+							&& isLinkageEvent(operation.previous, operation.following))
+							onLinkage(component.toBackBone(), operation.previous, operation.following);
 						break;
-					case Operation.TYPE_SIZE:
-						component.setSize((Double) object);	break;
+					case Operation.TYPE_THICKNESS:
+						component.setThickness((Double) object);	break;
 					case Operation.TYPE_FONT:
 						component.setFont((Font) object);	break;
 					case Operation.TYPE_COLOR:
@@ -304,22 +302,37 @@ public class SketchProject
 		}
 	}
 	
+	/** Judge if the modify contains a linkage event by the size of the component. 
+	 * If the size has not changed(and the position has changed, namely), 
+	 * it should be a linkage event. Otherwise it is the user dragging the edge 
+	 * of the backbone to extend or shrink it, not contains a linkage event.  */
+	private boolean isLinkageEvent(Object previous, Object following)
+	{	
+		Rectangle preBounds = (Rectangle) previous;
+		Rectangle folBounds = (Rectangle) following;
+		return !(preBounds.width - folBounds.width == 0 && 
+				 preBounds.height - folBounds.height == 0);
+	}
+	
 	/** 联动 in Chinese, move the biobricks on the same backbone together if the 
 	 * backbone is moved.  */
-	private void onLinkage(BackBone backBone, Point previous, Point following)
+	private void onLinkage(BackBone backBone, Object previous, Object following)
 	{
-		int dx = following.x - previous.x,
-			dy = following.y - previous.y;
+		Rectangle preBounds = (Rectangle) previous;
+		Rectangle folBounds = (Rectangle) following;
+		int dx = folBounds.x - preBounds.x,
+			dy = folBounds.y - preBounds.y;
 		for (Integer bbkID : backBone.bbkChildren)
 		{	Component comp = findComponentByID(bbkID);
 			if (comp == null || !comp.primaryType.equals(BioBrick.class.getSimpleName()))
 				continue;
 			// else...
-			Point preCenterOfBbk = comp.getCenter();
-			Point folCenterOfBbk = new Point(preCenterOfBbk.x + dx, preCenterOfBbk.y + dy);
-			comp.setCenter(folCenterOfBbk);
+			Rectangle preBoundsOfBbk = comp.getBounds();
+			Rectangle folBoundsOfBbk = 
+				new Rectangle(preBoundsOfBbk.x + dx, preBoundsOfBbk.y + dy, 
+						preBoundsOfBbk.width, preBoundsOfBbk.height);
+			comp.setBounds(folBoundsOfBbk);
 		}
-		
 	}
 	
 	
@@ -411,82 +424,97 @@ public class SketchProject
 	}
 	
 	
+	
+	private static final String ID = "ID";
+	private static final String PRIMARY_TYPE = "primaryType";
+	private static final String COMPONENT = "Component";
+	private static final String SECONDARY_TYPE = "secondaryType";
+	private static final String STRING = "string";
+	private static final String BOUNDS = "bounds";
+	private static final String CURVE = "curve";
+	private static final String THICKNESS = "thickness";
+	private static final String FONT = "font";
+	private static final String COLOR = "color";
+	private static final String CHILDREN = "children";
+	private static final String NULL = "null";
+	
+	
 	private Element createComponentNode(Document doc, Component component)
 	{
-		Element componentNode = doc.createElement("Component");
-  		componentNode.setAttribute("ID", Integer.toString(component.ID));
-  		componentNode.setAttribute("primaryType", component.primaryType);
+		Element componentNode = doc.createElement(COMPONENT);
+  		componentNode.setAttribute(ID, Integer.toString(component.ID));
+  		componentNode.setAttribute(PRIMARY_TYPE, component.primaryType);
   		
   		// about secondaryType
-  		Element eleSecType = doc.createElement("secondaryType");
+  		Element eleSecType = doc.createElement(SECONDARY_TYPE);
   		Integer secondaryType = component.getSecondaryType();
   		Text txtSecType = doc.createTextNode(
-  				secondaryType != null ? secondaryType.toString() : "null");
+  				secondaryType != null ? secondaryType.toString() : NULL);
   		eleSecType.appendChild(txtSecType);
   		componentNode.appendChild(eleSecType);
   		
   		// about string (text, bbkName)
-  		Element eleString = doc.createElement("string");
+  		Element eleString = doc.createElement(STRING);
   		String string = component.getString();
   		Text txtString = doc.createTextNode(
-  				string != null ? string : "null");
+  				string != null ? string : NULL);
   		eleString.appendChild(txtString);
   		componentNode.appendChild(eleString);
   		
-  		// about center
-  		Element eleCenter = doc.createElement("center");
-  		Point center = component.getCenter();
-  		Text txtCenter = doc.createTextNode(
-  				center != null ? center.x + " " + center.y : "null");
-  		eleCenter.appendChild(txtCenter);
-  		componentNode.appendChild(eleCenter);
+  		// about bounds
+  		Element eleBounds = doc.createElement(BOUNDS);
+  		Rectangle bounds = component.getBounds();
+  		Text txtBounds = doc.createTextNode(bounds != null ? 
+  			bounds.x + " " + bounds.y + " " + bounds.width + " " + bounds.height : NULL);
+  		eleBounds.appendChild(txtBounds);
+  		componentNode.appendChild(eleBounds);
   		
   		// about curve (relation.points)
-  		Element eleCurve = doc.createElement("curve");
+  		Element eleCurve = doc.createElement(CURVE);
   		ArrayList<Point> curve = component.getCurve();
   		String curveStr = "";
   		if (curve != null && curve.size() != 0)	// a list of [] become <curve/> in file
   			for (Point point : curve)
   				curveStr += point.x + " " + point.y + ",";
   		else
-  			curveStr = "null";
+  			curveStr = NULL;
   		Text txtCurve = doc.createTextNode(curveStr);
   		eleCurve.appendChild(txtCurve);
   		componentNode.appendChild(eleCurve);
   		
-  		// about size (length, thickness, scale)
-  		Element eleSize = doc.createElement("size");
-  		Double size = component.getSize();
+  		// about thickness
+  		Element eleSize = doc.createElement(THICKNESS);
+  		Double size = component.getThickness();
   		Text txtSize = doc.createTextNode(
-  				size != null ? size.toString() : "null");
+  				size != null ? size.toString() : NULL);
   		eleSize.appendChild(txtSize);
   		componentNode.appendChild(eleSize);
   		
   		// about font
-  		Element eleFont = doc.createElement("font");
+  		Element eleFont = doc.createElement(FONT);
   		Font font = component.getFont();
   		Text txtFont = doc.createTextNode(font != null ? 
-  				font.getName() + "," + font.getStyle() + "," + font.getSize() : "null");
+  				font.getName() + "," + font.getStyle() + "," + font.getSize() : NULL);
   		eleFont.appendChild(txtFont);
   		componentNode.appendChild(eleFont);
   		
   		// about color
-  		Element eleColor = doc.createElement("color");
+  		Element eleColor = doc.createElement(COLOR);
   		Color color = component.getColor();
   		Text txtColor = doc.createTextNode(
-  				color != null ? Integer.toString(color.getRGB()) : "null");
+  				color != null ? Integer.toString(color.getRGB()) : NULL);
   		eleColor.appendChild(txtColor);
   		componentNode.appendChild(eleColor);
   		
   		// about children
-  		Element eleChildren = doc.createElement("children");
+  		Element eleChildren = doc.createElement(CHILDREN);
   		ArrayList<Integer> children = component.getChildren();
   		String childrenStr = "";
   		if (children != null && children.size() != 0)
   			for (Integer bbkID : children)
   				childrenStr += bbkID + " ";
   		else
-  			childrenStr = "null";
+  			childrenStr = NULL;
   		Text txtChildren = doc.createTextNode(childrenStr);
   		eleChildren.appendChild(txtChildren);
   		componentNode.appendChild(eleChildren);
@@ -496,37 +524,38 @@ public class SketchProject
 	
 	private Component parseComponentNode(Element componentNode)
 	{	
-		int ID = Integer.parseInt(componentNode.getAttribute("ID"));
-		String primaryType = componentNode.getAttribute("primaryType");
+		int ID = Integer.parseInt(componentNode.getAttribute(SketchProject.ID));
+		String primaryType = componentNode.getAttribute(SketchProject.PRIMARY_TYPE);
 		
 		// about secondaryType
 		Element eleSecType = 
-				(Element) componentNode.getElementsByTagName("secondaryType").item(0);
+				(Element) componentNode.getElementsByTagName(SECONDARY_TYPE).item(0);
 		String secTypeStr = eleSecType.getFirstChild().getNodeValue();
 		Integer secondaryType = null;
-		if ( !secTypeStr.equals("null") )
+		if ( !secTypeStr.equals(NULL) )
 			secondaryType = Integer.parseInt(secTypeStr);
 		
 		// about string (text, bbkName)
-		Element eleString = (Element) componentNode.getElementsByTagName("string").item(0);
+		Element eleString = (Element) componentNode.getElementsByTagName(STRING).item(0);
 		String string = eleString.getFirstChild().getNodeValue();
-		if (string.equals("null"))
+		if (string.equals(NULL))
 			string = null;
 		
-		// about center
-		Element eleCenter = (Element) componentNode.getElementsByTagName("center").item(0);
-		String centerStr = eleCenter.getFirstChild().getNodeValue();
-		Point center = null;
-		if ( !centerStr.equals("null") )
-		{	String[] xy = centerStr.split(" ");
-			center = new Point(Integer.parseInt(xy[0]), Integer.parseInt(xy[1]));
+		// about bounds
+		Element eleBounds = (Element) componentNode.getElementsByTagName(BOUNDS).item(0);
+		String boundsStr = eleBounds.getFirstChild().getNodeValue();
+		Rectangle bounds = null;
+		if ( !boundsStr.equals(NULL) )
+		{	String[] xy = boundsStr.split(" ");
+			bounds = new Rectangle(Integer.parseInt(xy[0]), Integer.parseInt(xy[1]), 
+								   Integer.parseInt(xy[2]), Integer.parseInt(xy[3]));
 		}
 		
 		// about curve
-		Element eleCurve = (Element) componentNode.getElementsByTagName("curve").item(0);
+		Element eleCurve = (Element) componentNode.getElementsByTagName(CURVE).item(0);
 		String curveStr = eleCurve.getFirstChild().getNodeValue();
 		ArrayList<Point> curve = null;
-		if ( !curveStr.equals("null") )
+		if ( !curveStr.equals(NULL) )
 		{	curve = new ArrayList<Point>();
 			String[] pointStrList = curveStr.split(",");
 			for (String pointStr : pointStrList)
@@ -536,35 +565,35 @@ public class SketchProject
 				}
 		}
 		
-		// about size
-		Element eleSize = (Element) componentNode.getElementsByTagName("size").item(0);
-		String sizeStr = eleSize.getFirstChild().getNodeValue();
-		Double size = null;
-		if ( !sizeStr.equals("null") )
-			size = Double.parseDouble(sizeStr);
+		// about thickness
+		Element eleThickness = (Element) componentNode.getElementsByTagName(THICKNESS).item(0);
+		String thicknessStr = eleThickness.getFirstChild().getNodeValue();
+		Double thickness = null;
+		if ( !thicknessStr.equals(NULL) )
+			thickness = Double.parseDouble(thicknessStr);
 		
 		// about font
-		Element eleFont = (Element) componentNode.getElementsByTagName("font").item(0);
+		Element eleFont = (Element) componentNode.getElementsByTagName(FONT).item(0);
 		String fontStr = eleFont.getFirstChild().getNodeValue();
 		Font font = null;
-		if ( !fontStr.equals("null") )
+		if ( !fontStr.equals(NULL) )
 		{	String[] tokens = fontStr.split(",");
 			font = new Font
 				(tokens[0], Integer.parseInt(tokens[1]), Integer.parseInt(tokens[2]));
 		}
 		
 		// about color
-		Element eleColor = (Element) componentNode.getElementsByTagName("color").item(0);
+		Element eleColor = (Element) componentNode.getElementsByTagName(COLOR).item(0);
 		String colorStr = eleColor.getFirstChild().getNodeValue();
 		Color color = null;
-		if ( !colorStr.equals("null") )
+		if ( !colorStr.equals(NULL) )
 			color = new Color(Integer.parseInt(colorStr));
 		
 		// about children
-		Element eleChildren = (Element) componentNode.getElementsByTagName("children").item(0);
+		Element eleChildren = (Element) componentNode.getElementsByTagName(CHILDREN).item(0);
 		String childrenStr = eleChildren.getFirstChild().getNodeValue();
 		ArrayList<Integer> children = null;
-		if ( !childrenStr.equals("null") )
+		if ( !childrenStr.equals(NULL) )
 		{	children = new ArrayList<Integer>();
 			String[] childStrList = childrenStr.split(" ");
 			for (String childStr : childStrList)
@@ -574,343 +603,18 @@ public class SketchProject
 		
 		Component component = null;
 		if (primaryType.equals(Label.class.getSimpleName()))
-			component = new Label(ID, string, center, font, color);
+			component = new Label(ID, string, bounds, font, color);
 		else if (primaryType.equals(BioBrick.class.getSimpleName()))
-			component = new BioBrick(ID, string, secondaryType, center, color);
+			component = new BioBrick(ID, string, secondaryType, bounds, color);
 		else if (primaryType.equals(Protein.class.getSimpleName()))
-			component = new Protein(ID, secondaryType, center, color);
+			component = new Protein(ID, secondaryType, bounds, color);
 		else if (primaryType.equals(BackBone.class.getSimpleName()))
-			component = new BackBone(ID, center, (int)size.doubleValue(), children);
+			component = new BackBone(ID, bounds, children);
 		else if (primaryType.equals(Relation.class.getSimpleName()))
-			component = new Relation(ID, secondaryType, curve, color, (int)size.doubleValue());
+			component = new Relation(ID, secondaryType, curve, color, thickness);
 		else if (primaryType.equals(BioVector.class.getSimpleName()))
-			component = new BioVector(ID, secondaryType, center, size);
+			component = new BioVector(ID, secondaryType, bounds);
 		
 		return component;
 	}
-	
-	
-	
-	
-	
-	
-	public static void callWriteXmlFile(Document doc, Writer w, String encoding) {
-		  try {
-		   Source source = new DOMSource(doc);
-		   Result result = new StreamResult(w);
-		   Transformer xformer = TransformerFactory.newInstance()
-		     .newTransformer();
-		   xformer.setOutputProperty(OutputKeys.ENCODING, encoding);
-		   xformer.transform(source, result);
-		  } catch (TransformerConfigurationException e) {
-		   e.printStackTrace();
-		  } catch (TransformerException e) {
-		   e.printStackTrace();
-		  }
-		 }
-
-    public void SaveIntoFile(String filePath, ArrayList<Component> List3)
-    {  
-    	System.out.println(List3.size());
-    	DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-  	  	DocumentBuilder builder = null;
-  	  	try {
-  	  		builder = dbf.newDocumentBuilder();
-  	  	} catch (Exception e) {
-  	  	}
-  	  	Document doc = builder.newDocument();
-  	  	Element root = doc.createElement("GraphDesign");
-  	  	doc.appendChild(root); // 将根元素添加到文档上
-  	  	// 获取节点信息
-  	  	for (int i = 0; i < List3.size(); i++) {
-  	  	Component it= List3.get(i);
-  	    System.out.println(it.getClass().getSimpleName());
-  	  	if (it.getClass().getSimpleName().equals("Label")){
-  		   Label l = it.toLabel();
-  		   // 创建一个节点
-  		   Element nod = doc.createElement("Component");
-  		   nod.setAttribute("name", "Label");
-  		   root.appendChild(nod);// 添加属性   
-  		   // 创建文本姓名节点
-  		   Element h1 = doc.createElement("text");
-  		   nod.appendChild(h1);
-  		   Text th1 = doc.createTextNode(l.text);
-  		   h1.appendChild(th1);
-  		   Element h2 = doc.createElement("centerx");
-  		   nod.appendChild(h2); 
-  		   Text th2 = doc.createTextNode(Integer.toString(l.center.x));
-  		   h2.appendChild(th2);
-  		   Element h3 = doc.createElement("centery");
-		   nod.appendChild(h3); 
-		   Text th3 = doc.createTextNode(Integer.toString(l.center.y));
-		   h3.appendChild(th3);
-		   Element h4 = doc.createElement("fonta");
-  		   nod.appendChild(h4); 
-  		   Text th4 = doc.createTextNode(l.font.getName());
-  		   h4.appendChild(th4);
-  		   Element h5 = doc.createElement("fontb");
-		   nod.appendChild(h5); 
-		   Text th5 = doc.createTextNode(Integer.toString(l.font.getStyle()));
-		   h5.appendChild(th5);
-		   Element h6 = doc.createElement("fontc");
-  		   nod.appendChild(h6); 
-  		   Text th6 = doc.createTextNode(Integer.toString(l.font.getSize()));
-  		   h6.appendChild(th6);
-  		   Element h7 = doc.createElement("colorx");
-		   nod.appendChild(h7); 
-		   Text th7 = doc.createTextNode(Integer.toString(l.color.getRed()));
-		   h7.appendChild(th7);
-		   Element h8 = doc.createElement("colory");
-		   nod.appendChild(h8); 
-		   Text th8 = doc.createTextNode(Integer.toString(l.color.getGreen()));
-		   h8.appendChild(th8);
-		   Element h9 = doc.createElement("colorz");
-		   nod.appendChild(h9); 
-		   Text th9 = doc.createTextNode(Integer.toString(l.color.getBlue()));
-		   h9.appendChild(th9);
-  		  }
-  	  if (it.getClass().getSimpleName().equals("BioBrick")){
- 		   BioBrick b = it.toBioBrick();
- 		   // 创建一个节点
- 		   Element nod = doc.createElement("Component");
- 		   nod.setAttribute("name", "BioBrick");
- 		   root.appendChild(nod);// 添加属性   
- 		   // 创建文本姓名节点
- 		   Element h1 = doc.createElement("secondaryType");
- 		   nod.appendChild(h1);
- 		   Text th1 = doc.createTextNode(Integer.toString(b.secondaryType));
- 		   h1.appendChild(th1);
- 		   Element h2 = doc.createElement("centerx");
- 		   nod.appendChild(h2); 
- 		   Text th2 = doc.createTextNode(Integer.toString(b.center.x));
- 		   h2.appendChild(th2);
- 		   Element h3 = doc.createElement("centery");
-		   nod.appendChild(h3); 
-		   Text th3 = doc.createTextNode(Integer.toString(b.center.y));
-		   h3.appendChild(th3);
- 		   Element h4 = doc.createElement("colorx");
-		   nod.appendChild(h4); 
-		   Text th4 = doc.createTextNode(Integer.toString(b.color.getRed()));
-		   h4.appendChild(th4);
-		   Element h5 = doc.createElement("colory");
-		   nod.appendChild(h5); 
-		   Text th5 = doc.createTextNode(Integer.toString(b.color.getGreen()));
-		   h5.appendChild(th5);
-		   Element h6 = doc.createElement("colorz");
-		   nod.appendChild(h6); 
-		   Text th6 = doc.createTextNode(Integer.toString(b.color.getBlue()));
-		   h6.appendChild(th6);
-		   Element h7 = doc.createElement("bbkName");
-		   nod.appendChild(h7); 
-		   Text th7 = doc.createTextNode(b.bbkOutline.name);
-		   h7.appendChild(th7);
- 		  }
-  	if (it.getClass().getSimpleName().equals("BackBone")){
-		   BackBone b = it.toBackBone();
-		   // 创建一个节点
-		   Element nod = doc.createElement("Component");
-		   nod.setAttribute("name", "BackBone");
-		   root.appendChild(nod);// 添加属性   
-		   // 创建文本姓名节点
-		   // modified by chyb due to the change in BackBone
-		   Element h1 = doc.createElement("centerx");
-		   nod.appendChild(h1);
-		   Text th1 = doc.createTextNode(Integer.toString(b.center.x));
-		   h1.appendChild(th1);
-		   Element h2 = doc.createElement("centery");
-		   nod.appendChild(h2); 
-		   Text th2 = doc.createTextNode(Integer.toString(b.center.y));
-		   h2.appendChild(th2);
-		   Element h3 = doc.createElement("length");
-		   nod.appendChild(h3);
-		   Text th3 = doc.createTextNode(Integer.toString(b.length));
-		   h3.appendChild(th3);
-		   /*
-		   Element h1 = doc.createElement("leftPointx");
-		   nod.appendChild(h1);
-		   Text th1 = doc.createTextNode("it.leftPoint.x");
-		   h1.appendChild(th1);
-		   Element h2 = doc.createElement("leftPointy");
-		   nod.appendChild(h2); 
-		   Text th2 = doc.createTextNode("it.leftPoint.y");
-		   h2.appendChild(th2);
-		   Element h3 = doc.createElement("rightPointx");
-		   nod.appendChild(h3);
-		   Text th3 = doc.createTextNode("it.rightPoint.x");
-		   h3.appendChild(th3);
-		   Element h4 = doc.createElement("rightPointy");
-		   nod.appendChild(h4); 
-		   Text th4 = doc.createTextNode("it.rightPoint.y");
-		   h4.appendChild(th4);
-			*/
-		  }
-  	if (it.getClass().getSimpleName().equals("BioVector")){
-		   BioVector b = it.toBioVictor();
-		   // 创建一个节点
-		   Element nod = doc.createElement("Component");
-		   nod.setAttribute("name", "BioVector");
-		   root.appendChild(nod);// 添加属性   
-		   // 创建文本姓名节点
-		   Element h1 = doc.createElement("secondaryType");
- 		   nod.appendChild(h1);
- 		   Text th1 = doc.createTextNode(Integer.toString(b.secondaryType));
- 		   h1.appendChild(th1);
- 		   Element h2 = doc.createElement("centerx");
- 		   nod.appendChild(h2); 
- 		   Text th2 = doc.createTextNode(Integer.toString(b.center.x));
- 		   h2.appendChild(th2);
- 		   Element h3 = doc.createElement("centery");
-		   nod.appendChild(h3); 
-		   Text th3 = doc.createTextNode(Integer.toString(b.center.y));
-		   h3.appendChild(th3);
-		   Element h4 = doc.createElement("scale");
-		   nod.appendChild(h4); 
-		   Text th4 = doc.createTextNode(Double.toString(b.scale));
-		   h4.appendChild(th4);
-		  
-		  }
-  	if (it.getClass().getSimpleName().equals("Relation")){
-		   Relation r = it.toRelation();
-		   // 创建一个节点
-		   Element nod = doc.createElement("Component");
-		   nod.setAttribute("name", "Relation");
-		   root.appendChild(nod);// 添加属性   
-		   // 创建文本姓名节点
-		   Element h1 = doc.createElement("secondaryType");
-		   nod.appendChild(h1);
-		   Text th1 = doc.createTextNode(Integer.toString(r.secondaryType));
-		   h1.appendChild(th1);
-		   Element h2 = doc.createElement("posListx");
-		   nod.appendChild(h2); 
-		   Text th2 = doc.createTextNode("it.posList.x");
-		   h2.appendChild(th2);
-		   Element h3 = doc.createElement("posListy");
-		   nod.appendChild(h3); 
-		   Text th3 = doc.createTextNode("it.posList.y");
-		   h3.appendChild(th3);
-		   Element h4 = doc.createElement("colorx");
-		   nod.appendChild(h4); 
-		   Text th4 = doc.createTextNode(Integer.toString(r.color.getRed()));
-		   h4.appendChild(th4);
-		   Element h5 = doc.createElement("colory");
-		   nod.appendChild(h5); 
-		   Text th5 = doc.createTextNode(Integer.toString(r.color.getGreen()));
-		   h5.appendChild(th5);
-		   Element h6 = doc.createElement("colorz");
-		   nod.appendChild(h6); 
-		   Text th6 = doc.createTextNode(Integer.toString(r.color.getBlue()));
-		   h6.appendChild(th6);
-		   Element h7 = doc.createElement("thickness");
-		   nod.appendChild(h7); 
-		   Text th7 = doc.createTextNode(Integer.toString(r.thickness));
-		   h7.appendChild(th7);
-		  
-		  }
-  	  	}
-  	 
-  	  try {
-  		   FileOutputStream fos = new FileOutputStream(filePath);
-  		   OutputStreamWriter outwriter = new OutputStreamWriter(fos);
-  		   // ((XmlDocument)doc).write(outwriter); //出错！
-  		   callWriteXmlFile(doc, outwriter, "gb2312");
-  		   outwriter.close();
-  		   fos.close();
-  		  } catch (Exception e) {
-  		   e.printStackTrace();
-  		  }
-  	  	
-    
-    }
-
-    public ArrayList<Component> LoadFromFile (String filePath)throws Exception
-    {   
-    	ArrayList<Component> List = new ArrayList<Component>(); //用来储存所有的node节点
-    	DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-        DocumentBuilder builder = dbf.newDocumentBuilder();
-        Document doc = builder.parse(filePath); // 获取到xml文件
-    	// 下面开始读取
-    	Element root = doc.getDocumentElement(); // 获取根元素
-    	NodeList nodes = root.getElementsByTagName("Component");
-    	 
-    	for (int i = 0; i < nodes.getLength(); i++) {
-        // 依次取得每一个节点
-    		
-    	Element ss = (Element) nodes.item(i);
-    	System.out.println(ss.getAttribute("name"));
-        // 创建一个节点的实例
-    	System.out.println(List.size());
-    	if (ss.getAttribute("name").equals("Label"))
-    	{
-    	 	
-    		Point p = new Point();
-    		p.x = Integer.parseInt(ss.getElementsByTagName("centerx").item(0).getFirstChild().getNodeValue());
-    		p.y = Integer.parseInt(ss.getElementsByTagName("centery").item(0).getFirstChild().getNodeValue());
-    		Font mf = new Font(ss.getElementsByTagName("fonta").item(0).getFirstChild().getNodeValue(),Integer.parseInt(ss.getElementsByTagName("fontb").item(0).getFirstChild().getNodeValue()),Integer.parseInt(ss.getElementsByTagName("fontc").item(0).getFirstChild().getNodeValue()));//字体，风格，字号
-    		Color c = new Color(Integer.parseInt(ss.getElementsByTagName("colorx").item(0).getFirstChild().getNodeValue()),Integer.parseInt(ss.getElementsByTagName("colory").item(0).getFirstChild().getNodeValue()),Integer.parseInt(ss.getElementsByTagName("colorz").item(0).getFirstChild().getNodeValue()));//红绿蓝
-    		Component temp = new Label(Integer.parseInt(ss.getElementsByTagName("ID").item(0).getFirstChild().getNodeValue()),ss.getElementsByTagName("text").item(0).getFirstChild().getNodeValue(),p,mf,c);
-    		List.add(temp);
-    		
-    	}
-    	else if (ss.getAttribute("name").equals("BioBrick"))
-    	{
-    		Point p = new Point();
-    		p.x = Integer.parseInt(ss.getElementsByTagName("centerx").item(0).getFirstChild().getNodeValue());
-    		p.y = Integer.parseInt(ss.getElementsByTagName("centery").item(0).getFirstChild().getNodeValue());
-    		Color c = new Color(Integer.parseInt(ss.getElementsByTagName("colorx").item(0).getFirstChild().getNodeValue()),Integer.parseInt(ss.getElementsByTagName("colory").item(0).getFirstChild().getNodeValue()),Integer.parseInt(ss.getElementsByTagName("colorz").item(0).getFirstChild().getNodeValue()));//红绿蓝
-    		Component temp = new BioBrick(Integer.parseInt(ss.getElementsByTagName("ID").item(0).getFirstChild().getNodeValue()),ss.getElementsByTagName("bbkName").item(0).getFirstChild().getNodeValue(), Integer.parseInt(ss.getElementsByTagName("secondaryType").item(0).getFirstChild().getNodeValue()),p,c);
-    		List.add(temp);
-    	}
-    	else if (ss.getAttribute("name").equals("Protein"))
-    	{
-    		Point p = new Point();
-    		p.x = Integer.parseInt(ss.getElementsByTagName("centerx").item(0).getFirstChild().getNodeValue());
-    		p.y = Integer.parseInt(ss.getElementsByTagName("centery").item(0).getFirstChild().getNodeValue());
-    		Color c = new Color(Integer.parseInt(ss.getElementsByTagName("colorx").item(0).getFirstChild().getNodeValue()),Integer.parseInt(ss.getElementsByTagName("colory").item(0).getFirstChild().getNodeValue()),Integer.parseInt(ss.getElementsByTagName("colorz").item(0).getFirstChild().getNodeValue()));//红绿蓝
-    		Component temp = new Protein(Integer.parseInt(ss.getElementsByTagName("ID").item(0).getFirstChild().getNodeValue()),Integer.parseInt(ss.getElementsByTagName("secondaryType").item(0).getFirstChild().getNodeValue()),p,c);
-    		List.add(temp);
-    	}
-    	else if (ss.getAttribute("name").equals("BackBone"))
-    	{
-    		Point p1 = new Point();
-    		//Point p2 = new Point();
-    		p1.x = Integer.parseInt(ss.getElementsByTagName("centerx").item(0).getFirstChild().getNodeValue());
-    		p1.y = Integer.parseInt(ss.getElementsByTagName("centery").item(0).getFirstChild().getNodeValue());
-    		int length = Integer.parseInt(ss.getElementsByTagName("length").item(0).getFirstChild().getNodeValue());
-    		//p2.x = Integer.parseInt(ss.getElementsByTagName("rightPointx").item(0).getFirstChild().getNodeValue());
-    		//p2.y = Integer.parseInt(ss.getElementsByTagName("rightPointy").item(0).getFirstChild().getNodeValue());
-    		Component temp = new BackBone(Integer.parseInt(ss.getElementsByTagName("ID").item(0).getFirstChild().getNodeValue()),p1,length, null);
-    		List.add(temp);
-    	}
-    	else if (ss.getAttribute("name").equals("Relation"))
-    	{
-    		Color c = new Color(Integer.parseInt(ss.getElementsByTagName("colorx").item(0).getFirstChild().getNodeValue()),Integer.parseInt(ss.getElementsByTagName("colory").item(0).getFirstChild().getNodeValue()),Integer.parseInt(ss.getElementsByTagName("colorz").item(0).getFirstChild().getNodeValue()));
-    		String a = ss.getElementsByTagName("posListx").item(0).getFirstChild().getNodeValue().toString();
-    		String b = ss.getElementsByTagName("posListy").item(0).getFirstChild().getNodeValue().toString();
-    		ArrayList<Point> h = new ArrayList<Point>();
-    		a=a.trim();
-    		
-            String[] aa=a.split("\\s+");
-            String[] bb=b.split("\\s+");
-            
-            for(int j=0;j<aa.length;j++){
-            	Point p1 = new Point();
-                p1.x = Integer.parseInt(aa[j]);
-                p1.y = Integer.parseInt(bb[j]);
-                h.add(p1);
-            }
-            Component temp = new Relation(Integer.parseInt(ss.getElementsByTagName("ID").item(0).getFirstChild().getNodeValue()),Integer.parseInt(ss.getElementsByTagName("secondaryType").item(0).getFirstChild().getNodeValue()),h,c,Integer.parseInt(ss.getElementsByTagName("thickness").item(0).getFirstChild().getNodeValue()));
-            List.add(temp);
-    	}
-    	else if (ss.getAttribute("name").equals("BioVector"))
-    	{
-    		Point p = new Point();
-    		p.x = Integer.parseInt(ss.getElementsByTagName("centerx").item(0).getFirstChild().getNodeValue());
-    		p.y = Integer.parseInt(ss.getElementsByTagName("centery").item(0).getFirstChild().getNodeValue());
-    		Component temp = new BioVector (Integer.parseInt(ss.getElementsByTagName("ID").item(0).getFirstChild().getNodeValue()),Integer.parseInt(ss.getElementsByTagName("secondaryType").item(0).getFirstChild().getNodeValue()),p,Double.valueOf(ss.getElementsByTagName("scale").item(0).getFirstChild().getNodeValue()));
-    		List.add(temp);
-    	}
-    	}
-    	return List;
-    }
-    
 }
