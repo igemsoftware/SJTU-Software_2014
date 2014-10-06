@@ -3,6 +3,7 @@ package data_center;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Point;
+import java.awt.Rectangle;
 import java.util.ArrayList;
 
 public class SketchComponent
@@ -58,10 +59,14 @@ public class SketchComponent
 		/** text for Label, and bbkName for BioBrick */
 		public void setString(String str) {}
 		
-		public Point getCenter()
+		/** The bounds specify both the position and the size of the component. 
+		 * The position is the location of the left upper corner.  */
+		public Rectangle getBounds()
 		{	return null;	}
 		
-		public void setCenter(Point center) {}
+		/** The bounds specify both the position and the size of the component. 
+		 * The position is the location of the left upper corner.  */
+		public void setBounds(Rectangle rect) {}
 		
 		public Font getFont()
 		{	return null;	}
@@ -73,11 +78,11 @@ public class SketchComponent
 		
 		public void setColor(Color color) {}
 		
-		/** length in BackBone, thickness in Relation and scale in BioVector */
-		public Double getSize()
+		/** the thickness in the Relation */
+		public Double getThickness()
 		{	return null;	}
 		
-		public void setSize(double size) {}
+		public void setThickness(double thickness) {}
 		
 		public ArrayList<Point> getCurve()
 		{	return null;	}
@@ -102,17 +107,17 @@ public class SketchComponent
 	public static class Label extends Component
 	{
 		public String text;
-		public Point center;
+		public Rectangle bounds;
 		public Font font;
 		public Color color;
 		
 		// primaryType already known in the class
-		public Label(int theID, String text, Point pos, 
+		public Label(int theID, String text, Rectangle bounds, 
 				Font font, Color color)
 		{
 			super(theID, Label.class.getSimpleName());
 			this.text = text;
-			this.center = pos;
+			this.bounds = bounds;
 			this.font = font;
 			this.color = color;
 		}
@@ -130,12 +135,12 @@ public class SketchComponent
 		{	this.text = text;	}
 		
 		@Override
-		public Point getCenter()
-		{	return center;	}
+		public Rectangle getBounds()
+		{	return bounds;	}
 		
 		@Override
-		public void setCenter(Point pos)
-		{	center.setLocation(pos);	}
+		public void setBounds(Rectangle bounds)
+		{	this.bounds = new Rectangle(bounds);	}
 		
 		@Override
 		public Font getFont()
@@ -157,7 +162,7 @@ public class SketchComponent
 		{
 			super.display();
 			System.out.println("Text: " + text);
-			System.out.println("Center: " + center.toString());
+			System.out.println("Bounds: " + bounds.toString());
 		}
 	}
 
@@ -165,28 +170,28 @@ public class SketchComponent
     {
 		public BbkOutline bbkOutline = null;
 		public int secondaryType;
-		public Point center;
+		public Rectangle bounds;
 		public Color color;
         
 		// primary type already known in the class
 		public BioBrick(int theID, int secondaryType, 
-        		Point center, Color color)
+				Rectangle bounds, Color color)
         {
         	super(theID, BioBrick.class.getSimpleName());
         	this.secondaryType = secondaryType;
         	this.bbkOutline = null;
-			this.center = center;
+			this.bounds = bounds;
 			this.color = color;
         }
 		
 		/** bbkOutline should be set by setString(bbkName) */
         public BioBrick(int theID, String bbkName, int secondaryType, 
-        		Point center, Color color)
+        		Rectangle bounds, Color color)
         {
         	super(theID, BioBrick.class.getSimpleName());
         	this.secondaryType = secondaryType;
         	this.bbkOutline = DatabaseConnector.getOutlineByName(bbkName);
-			this.center = center;
+			this.bounds = bounds;
 			this.color = color;
         }
 
@@ -213,12 +218,12 @@ public class SketchComponent
 		{	bbkOutline = DatabaseConnector.getOutlineByName(bbkName);	}
         
 		@Override
-		public Point getCenter()
-		{	return center;	}
+		public Rectangle getBounds()
+		{	return bounds;	}
 		
 		@Override
-		public void setCenter(Point pos)
-		{	center.setLocation(pos);	}
+		public void setBounds(Rectangle bounds)
+		{	this.bounds = new Rectangle(bounds);	}
 		
 		@Override
 		public Color getColor()
@@ -233,7 +238,7 @@ public class SketchComponent
 			super.display();
 			System.out.println("BbkName: " + bbkOutline.name);
 			System.out.println("SecondaryType: " + secondaryType);
-			System.out.println("Center: " + center.toString());
+			System.out.println("Bounds: " + bounds.toString());
 			System.out.println("Color: " + color);
         }
 
@@ -243,16 +248,16 @@ public class SketchComponent
 	public static class Protein extends Component
 	{
 		public int secondaryType;
-		public Point center;
+		public Rectangle bounds;
 		public Color color;
 
 		// primaryType already known in the class
-		public Protein(int theID, int secondaryType, Point center, Color color)
+		public Protein(int theID, int secondaryType, Rectangle bounds, Color color)
 			
 		{
 			super(theID, Protein.class.getSimpleName());
 			this.secondaryType = secondaryType; 
-			this.center = center;
+			this.bounds = bounds;
 			this.color = color;
 		}
 
@@ -269,12 +274,12 @@ public class SketchComponent
         {	secondaryType = type;	}
 		
 		@Override
-		public Point getCenter()
-		{	return center;	}
+		public Rectangle getBounds()
+		{	return bounds;	}
 		
 		@Override
-		public void setCenter(Point pos)
-		{	center.setLocation(pos);	}
+		public void setBounds(Rectangle bounds)
+		{	this.bounds = new Rectangle(bounds);	}
 		
 		@Override
 		public Color getColor()
@@ -288,7 +293,7 @@ public class SketchComponent
 		{
 			super.display();
 			System.out.println("SecondaryType :" + secondaryType);
-			System.out.println("Center: " + center.toString());
+			System.out.println("Bounds: " + bounds.toString());
 			System.out.println("Color: " + color);
 		}
 	
@@ -296,23 +301,20 @@ public class SketchComponent
 
 	public static class BackBone extends Component
 	{
-		public Point center;
-		public int length;
+		public Rectangle bounds;
 		public ArrayList<Integer> bbkChildren;
 		
-		public BackBone(int theID, Point pos, int length)
+		public BackBone(int theID, Rectangle bounds)
 		{	
 			super(theID, BackBone.class.getSimpleName());
-			this.center = pos;
-			this.length = length;
+			this.bounds = bounds;
 			this.bbkChildren = new ArrayList<Integer>();
 		}
 
-		public BackBone(int theID, Point pos, int length, ArrayList<Integer> childIDList)
+		public BackBone(int theID, Rectangle bounds, ArrayList<Integer> childIDList)
 		{
 			super(theID, BackBone.class.getSimpleName());
-			this.center = pos;
-			this.length = length;
+			this.bounds = bounds;
 			this.bbkChildren = childIDList;
 		}
 
@@ -321,20 +323,12 @@ public class SketchComponent
 		{	return this;	}
 		
 		@Override
-		public Point getCenter()
-		{	return center;	}
+		public Rectangle getBounds()
+		{	return bounds;	}
 		
 		@Override
-		public void setCenter(Point pos)
-		{	center.setLocation(pos);	}
-		
-		@Override
-		public Double getSize()
-		{	return (double) length;	}
-		
-		@Override
-		public void setSize(double length)
-		{	this.length = (int) length;	}
+		public void setBounds(Rectangle bounds)
+		{	this.bounds = new Rectangle(bounds);	}
 		
 		@Override
 		public ArrayList<Integer> getChildren()
@@ -347,8 +341,7 @@ public class SketchComponent
 		public void display()
 		{
 			super.display();
-			System.out.println("Center: " + center.toString());
-			System.out.println("Length: " + length);
+			System.out.println("Bounds: " + bounds.toString());
 			System.out.println("BbkChildren: ");
 			for (Integer bbkID : bbkChildren)
 				System.out.println("\tChild with ID: " + bbkID);
@@ -360,10 +353,10 @@ public class SketchComponent
 		public int secondaryType;
 		public ArrayList<Point> posList;
 		public Color color;
-		public int thickness;
+		public double thickness;
 
 		public Relation(int theID, int secondaryType, 
-				ArrayList<Point> list, Color color, int thickness)
+				ArrayList<Point> list, Color color, double thickness)
 		{
 			super(theID, Relation.class.getSimpleName());
 			this.secondaryType = secondaryType;
@@ -401,12 +394,12 @@ public class SketchComponent
 		{	this.color = color;	}
 		
 		@Override
-		public Double getSize()
-		{	return (double) thickness;	}
+		public Double getThickness()
+		{	return thickness;	}
 		
 		@Override
-		public void setSize(double thickness)
-		{	this.thickness = (int) thickness;	}
+		public void setThickness(double thickness)
+		{	this.thickness = thickness;	}
 		
 		public void display()
 		{
@@ -423,15 +416,13 @@ public class SketchComponent
 	public static class BioVector extends Component
 	{
 		public int secondaryType;
-		public Point center;
-		public double scale;
+		public Rectangle bounds;
 		
-		public BioVector(int theID, int secondaryType, Point center, double scale)
+		public BioVector(int theID, int secondaryType, Rectangle bounds)
 		{
 			super(theID, BioVector.class.getSimpleName());
 			this.secondaryType = secondaryType;
-			this.center = center;
-			this.scale = scale;
+			this.bounds = bounds;
 		}
 
 		@Override
@@ -447,27 +438,18 @@ public class SketchComponent
         {	secondaryType = type;	}
 		
 		@Override
-		public Point getCenter()
-		{	return center;	}
+		public Rectangle getBounds()
+		{	return bounds;	}
 		
 		@Override
-		public void setCenter(Point pos)
-		{	center.setLocation(pos);	}
-		
-		@Override
-		public Double getSize()
-		{	return scale;	}
-		
-		@Override
-		public void setSize(double scale)
-		{	this.scale = scale;	}
+		public void setBounds(Rectangle bounds)
+		{	this.bounds = new Rectangle(bounds);	}
 		
 		public void display()
 		{
 			super.display();
 			System.out.println("SecondaryType: " + secondaryType);
-			System.out.println("Center: " + center.toString());
-			System.out.println("Scale: " + scale);
+			System.out.println("Bounds: " + bounds.toString());
 		}
 	}
 }

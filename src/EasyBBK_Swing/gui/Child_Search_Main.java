@@ -5,23 +5,16 @@ import java.awt.Component;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.ImageIcon;
-import javax.swing.JCheckBox;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
-import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
-import javax.swing.SpinnerNumberModel;
-
-import data_center.*;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -42,6 +35,12 @@ public class Child_Search_Main extends JPanel {
 	 * Create the panel.
 	 */
 	public Child_Search_Main(MainPage mainpage1) {
+		addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				requestFocus();
+			}
+		});
 		mainpage = mainpage1;
 		setBounds(0, 0, 1366, 670);
 		setBackground(new Color(255, 255, 255));
@@ -89,6 +88,7 @@ public class Child_Search_Main extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				if(SearchText.getText() == null || SearchText.getText().trim().equals("")) return;
+				requestFocus();
 				Component component = mainpage.Mainpanel.getComponent(0);
 				if(component instanceof Child_Search_Main){
 					mainpage.child_search_main_current = (Child_Search_Main) component;
@@ -134,6 +134,7 @@ public class Child_Search_Main extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				if(SearchText.getText() == null || SearchText.getText().trim().equals("")) return;
+				requestFocus();
 				Component component = mainpage.Mainpanel.getComponent(0);
 				if(component instanceof Child_Search_Main){
 					mainpage.child_search_main_current = (Child_Search_Main) component;
@@ -145,6 +146,7 @@ public class Child_Search_Main extends JPanel {
 				mainpage.Mainpanel.add(child_search);
 				child_search.textField.setText(SearchText.getText());
 				mainpage.Mainpanel.updateUI();
+				
 				mainpage.CurrentPage = 11;
 			}
 			@Override
