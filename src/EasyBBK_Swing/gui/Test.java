@@ -8,15 +8,19 @@ import javax.swing.JLabel;
 import data_center.*;
 
 import java.awt.Font;
+
 import javax.swing.JButton;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+
 import javax.swing.JScrollPane;
 
 public class Test {
 
 	private JFrame frame;
-
+	public JLabel lblNewLabel;
 	/**
 	 * Launch the application.
 	 */
@@ -49,7 +53,7 @@ public class Test {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel = new JLabel("New label");
 		lblNewLabel.setFont(new Font("ËÎÌו", Font.PLAIN, 20));
 		lblNewLabel.setBounds(199, 123, 154, 50);
 		frame.getContentPane().add(lblNewLabel);
@@ -63,15 +67,25 @@ public class Test {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				SearchCenter searchcenter = new SearchCenter();
-				SearchResultList searchresultlist = searchcenter.blast("gcaaaccgcctc" , BlastingSearcher.MODE_INPUT_SEQUENCE);
-				SearchResultList searchresultlist1 = (SearchResultList)searchresultlist.clone();
-				
-				BbkOutline bbkoutline = searchresultlist.get(0);
-				BbkOutline bbkoutline1 = searchresultlist1.get(0);
-				lblNewLabel_1.setText(bbkoutline.name);
-				//BbkDetail bbkdetail = searchcenter.getDetail(bbkoutline.name);
-				searchresultlist = searchcenter.blast(null, BlastingSearcher.MODE_INPUT_SEQUENCE);
-				
+				SearchResultList searchresultlist = searchcenter.search("BBa_B");
+				ArrayList<String> type = new ArrayList<String>();
+				int[] enteredyear = new int[2];
+				enteredyear[0] = 2003;
+				enteredyear[1] = 2013;
+				type.add(SearchResultList.Filter.Type.RBS);
+				SearchResultList filteredlist = searchresultlist;
+				filteredlist.sortByEnterDate(true);
+				filteredlist = filteredlist.filterByType(type);
+				filteredlist = filteredlist.filterByEnterYear(enteredyear);
+				filteredlist = filteredlist.filterByRelaseStatus(SearchResultList.Filter.ReleaseStatus.RELEASED);
+				filteredlist = filteredlist.filterByDNAStatus(SearchResultList.Filter.DNAStatus.AVAILABLE);
+				filteredlist = filteredlist.filterByDeletedOrNot(false);
+				ArrayList<Integer> starNumList = new ArrayList();
+				starNumList.add(4);
+				starNumList.add(5);
+				filteredlist = filteredlist.filterByStarNum(starNumList);
+				BbkOutline bbkoutline = filteredlist.get(1);
+				lblNewLabel.setText(bbkoutline.name);
 			}
 		});
 		btnNewButton.setBounds(87, 46, 93, 23);

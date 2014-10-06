@@ -30,6 +30,12 @@ public class DetailsofResults extends JPanel {
 	 * Create the panel.
 	 */
 	public DetailsofResults() {
+		addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				requestFocus();
+			}
+		});
 		setBounds(0, 0, 665, 1500);
 		setBackground(new Color(255, 255, 255));
 		setBorder(BorderFactory.createLineBorder(Color.black));
