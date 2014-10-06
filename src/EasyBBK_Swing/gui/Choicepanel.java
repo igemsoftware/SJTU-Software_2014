@@ -66,6 +66,12 @@ public class Choicepanel extends JPanel {
 	 * Create the panel.
 	 */
 	public Choicepanel() {
+		addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				requestFocus();
+			}
+		});
 		setBackground(new Color(255, 255, 255));
 		setBounds(0, 0, 623, 489);
 		setBorder(BorderFactory.createLineBorder(Color.black));
@@ -178,7 +184,7 @@ public class Choicepanel extends JPanel {
 		middle.setBackground(new Color(255, 255, 255));
 		add(middle);
 		
-		low = new JCheckBox("<=2");
+		low = new JCheckBox("<2");
 		low.setFont(new Font("Times New Roman", Font.PLAIN, 16));
 		low.setBounds(478, 343, 65, 23);
 		low.setBackground(new Color(255, 255, 255));
@@ -533,7 +539,7 @@ public class Choicepanel extends JPanel {
 						information.type.add(SearchResultList.Filter.Type.SIGNALLING);
 					}
 					if(Other.isSelected()){
-						//information.type.add();
+						information.type.add(SearchResultList.Filter.Type.OTHER);
 					}
 				}
 				

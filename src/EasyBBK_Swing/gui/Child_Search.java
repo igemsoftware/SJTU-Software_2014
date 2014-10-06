@@ -3,7 +3,6 @@ package EasyBBK_Swing.gui;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Cursor;
-import java.awt.Dimension;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -18,11 +17,8 @@ import java.awt.event.MouseEvent;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.util.ArrayList;
 
-import javax.swing.SwingConstants;
 import javax.swing.JScrollPane;
-import javax.swing.ScrollPaneConstants;
 
 import data_center.*;
 
@@ -73,6 +69,12 @@ public class Child_Search extends JPanel {
 		setVisible(true);
 		
 		Result = new JPanel();
+		Result.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Result.requestFocus();
+			}
+		});
 		Result.setBounds(0, 0, 683, 670);
 		Result.setBackground(new Color(255, 255, 255));
 		Result.setBorder(BorderFactory.createLineBorder(Color.black));
@@ -86,6 +88,7 @@ public class Child_Search extends JPanel {
 				SearchResultList previousList = searchcenter.rollBack();
 				if(previousList == null) return;
 				else{
+					requestFocus();
 					textField.setText(previousList.keyword);
 					resultpanel.removeAll();
 					InitializeResultPage initializeresultpage = new InitializeResultPage(child_search, textField.getText());
@@ -113,6 +116,7 @@ public class Child_Search extends JPanel {
 				SearchResultList forwardList = searchcenter.goForward();
 				if(forwardList == null) return;
 				else{
+					requestFocus();
 					textField.setText(forwardList.keyword);
 					resultpanel.removeAll();
 					InitializeResultPage initializeresultpage = new InitializeResultPage(child_search, textField.getText());
@@ -140,7 +144,6 @@ public class Child_Search extends JPanel {
 		
 
 		Search = new JLabel();
-
 		Search.setBounds(481, 30, 100, 50);
 		Search.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/SearchBox_searchButton.png")));
 		Search.addMouseListener(new MouseAdapter() {
@@ -159,6 +162,7 @@ public class Child_Search extends JPanel {
 					return;
 				}
 				else{
+					requestFocus();
 					currentpage = 1;
 					blast = 1;
 					InitializeResultPage initializeresultpage = new InitializeResultPage(child_search, textField.getText());
@@ -234,6 +238,7 @@ public class Child_Search extends JPanel {
 					return;
 				}
 				else{
+					requestFocus();
 					currentpage = 1;
 					blast = 2;
 					InitializeResultPage initializeresultpage = new InitializeResultPage(child_search, textField.getText());
@@ -255,6 +260,12 @@ public class Child_Search extends JPanel {
 		Result.add(Blast);
 		
 		Details = new JPanel();
+		Details.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Details.requestFocus();
+			}
+		});
 		Details.setBounds(684, 0, 683, 670);
 		Details.setBackground(new Color(255, 255, 255));
 		Details.setBorder(BorderFactory.createLineBorder(Color.black));

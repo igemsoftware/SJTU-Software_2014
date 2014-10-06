@@ -36,6 +36,12 @@ public class DetailsofResults_Compare extends JPanel {
 	 * Create the panel.
 	 */
 	public DetailsofResults_Compare() {
+		addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				requestFocus();
+			}
+		});
 		setBounds(0, 0, 437, 820);
 		setPreferredSize(new Dimension(437, 820));
 		setBackground(new Color(255, 255, 255));

@@ -35,6 +35,12 @@ public class Child_Search_Main extends JPanel {
 	 * Create the panel.
 	 */
 	public Child_Search_Main(MainPage mainpage1) {
+		addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				requestFocus();
+			}
+		});
 		mainpage = mainpage1;
 		setBounds(0, 0, 1366, 670);
 		setBackground(new Color(255, 255, 255));
@@ -82,6 +88,7 @@ public class Child_Search_Main extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				if(SearchText.getText() == null || SearchText.getText().trim().equals("")) return;
+				requestFocus();
 				Component component = mainpage.Mainpanel.getComponent(0);
 				if(component instanceof Child_Search_Main){
 					mainpage.child_search_main_current = (Child_Search_Main) component;
@@ -127,6 +134,7 @@ public class Child_Search_Main extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				if(SearchText.getText() == null || SearchText.getText().trim().equals("")) return;
+				requestFocus();
 				Component component = mainpage.Mainpanel.getComponent(0);
 				if(component instanceof Child_Search_Main){
 					mainpage.child_search_main_current = (Child_Search_Main) component;

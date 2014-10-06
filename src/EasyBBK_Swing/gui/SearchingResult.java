@@ -29,6 +29,12 @@ public class SearchingResult extends JPanel{
 	 * Create the panel.
 	 */
 	public SearchingResult(){
+		addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				requestFocus();
+			}
+		});
 		setBackground(new Color(255, 255, 255));
 		setBounds(62, 117, 558, 250);
 		setBorder(BorderFactory.createLineBorder(Color.black));

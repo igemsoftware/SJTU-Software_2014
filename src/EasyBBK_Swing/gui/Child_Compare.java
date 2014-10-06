@@ -111,6 +111,12 @@ public class Child_Compare extends JPanel {
 		textField1.setColumns(20);
 		
 		scrollpanecontainer1 = new JPanel();
+		scrollpanecontainer1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				requestFocus();
+			}
+		});
 		scrollpanecontainer1.setBounds(0, 79, 455, 591);
 		scrollpanecontainer1.setBackground(new Color(255, 255, 255));
 		details1.add(scrollpanecontainer1);
@@ -174,6 +180,12 @@ public class Child_Compare extends JPanel {
 		textField2.setColumns(20);
 		
 		scrollpanecontainer2 = new JPanel();
+		scrollpanecontainer2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				requestFocus();
+			}
+		});
 		scrollpanecontainer2.setBounds(0, 79, 455, 591);
 		scrollpanecontainer2.setBackground(new Color(255, 255, 255));
 		details2.add(scrollpanecontainer2);
@@ -237,6 +249,12 @@ public class Child_Compare extends JPanel {
 		textField3.setColumns(20);
 		
 		scrollpanecontainer3 = new JPanel();
+		scrollpanecontainer3.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				requestFocus();
+			}
+		});
 		scrollpanecontainer3.setBounds(0, 79, 455, 591);
 		scrollpanecontainer3.setBackground(new Color(255, 255, 255));
 		details3.add(scrollpanecontainer3);
