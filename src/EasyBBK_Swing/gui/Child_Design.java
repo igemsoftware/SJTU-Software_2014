@@ -2,42 +2,67 @@ package EasyBBK_Swing.gui;
 
 import EasyBBK_Swing.gui.BackBone;
 import EasyBBK_Swing.gui.Child_Design;
-import EasyBBK_Swing.gui.DeleteListener;
 import EasyBBK_Swing.gui.DragCompListener;
 import EasyBBK_Swing.gui.JLabelWithID;
 import EasyBBK_Swing.gui.LinePanel;
 import EasyBBK_Swing.gui.Pen;
 import EasyBBK_Swing.gui.TPanel;
-import EasyBBK_Swing.gui.Child_Design.DrawCompListener;
-import EasyBBK_Swing.gui.Child_Design.IfDrawLineListener;
-import EasyBBK_Swing.gui.Child_Design.GetCompListener;
+import EasyBBK_Swing.gui.FontChooser;
+
+
+
+
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Cursor;
+import java.awt.Font;
+import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Point;
+import java.awt.Rectangle;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
+import javax.swing.border.TitledBorder;
 import javax.swing.event.MouseInputListener;
+import javax.swing.text.AttributeSet;
+import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.StyleConstants;
+import javax.swing.text.StyledDocument;
 
-import java.awt.Font;
+import data_center.BbkType;
+import data_center.SketchCenter;
+import data_center.SketchComponent;
+import data_center.SketchProject;
+import data_center.SketchComponent.BioBrick;
+
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 
+@SuppressWarnings("serial")
 public class Child_Design extends JPanel {
 	public MainPage mainpage;
 	private JLayeredPane panel = new JLayeredPane();
 	private TPanel Tpanel = new TPanel();
 	private Boolean choose = new Boolean(false);
 	private Object source = new Object();
-	private JTextField txtW;
-	private Pen pen = new Pen();
+	private Pen pen = null;
 	private LinePanel linePanel = new LinePanel(pen);
+	private TextLabel textLabel = null;
+	
+	private int compCount = 0;
+	
+	SketchCenter sketchCenter = new SketchCenter();
 	
 	/**
 	 * Create the panel.
@@ -57,15 +82,31 @@ public class Child_Design extends JPanel {
 	 */
 	private void initialize() 
 	{	
+		//initialize tool labels
+		JButton textButton = new JButton("");
 		JLabelWithID promoter = new JLabelWithID("");
 		JLabelWithID rbs = new JLabelWithID("");
 		JLabelWithID coding = new JLabelWithID("");
 		JLabelWithID terminator = new JLabelWithID("");
 		JLabelWithID primer = new JLabelWithID("");
 		JLabelWithID reporter = new JLabelWithID("");
+		JButton backout = new JButton();
+		Pen text = new Pen();
+		Pen eraser = new Pen();
+		Pen line_1 = new Pen();
+		
+		sketchCenter.newProject();
 		
 		this.setBounds(0, 0, 1366, 670);
-		this.setLayout(null);		
+		this.setLayout(null);
+		
+		backout.setBounds(0,0,100,50);
+		backout.setText("Backout");
+        this.add(backout);
+		
+		textButton.setBounds(0,50,100,50);
+		textButton.setText("Font");
+        this.add(textButton);
 		
 		ImageIcon image_promoter = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/dc_iso_promoter_Hover.png"));
 		image_promoter.setImage(image_promoter.getImage().getScaledInstance(100,50,Image.SCALE_DEFAULT));
@@ -117,12 +158,29 @@ public class Child_Design extends JPanel {
 		backbone.setName("backbone");
 		this.add(backbone);
 		
-		ImageIcon image_pen = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/dc_iso_codingsequence_Move.png"));
-		image_pen.setImage(image_pen.getImage().getScaledInstance(100,50,Image.SCALE_DEFAULT));
-		pen.setIcon(image_pen);
-		pen.setBounds(8, 498, 100, 50);
-		pen.setName("pen");
-		this.add(pen);		
+		ImageIcon image_line_1 = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/dc_iso_codingsequence_Move.png"));
+		image_line_1.setImage(image_line_1.getImage().getScaledInstance(100,50,Image.SCALE_DEFAULT));
+		line_1.setIcon(image_line_1);
+		line_1.setBounds(8, 498, 100, 50);
+		line_1.setName("line");
+		line_1.setType(0);
+		this.add(line_1);
+		
+		ImageIcon image_text = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/dtext_Hover.png"));
+		image_text.setImage(image_text.getImage().getScaledInstance(100,50,Image.SCALE_DEFAULT));
+		text.setIcon(image_text);
+		text.setBounds(119, 125, 100, 50);
+		text.setName("text");
+		text.setType(5);
+		this.add(text);	
+		
+		ImageIcon image_eraser = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/dtext_Hover.png"));
+		image_eraser.setImage(image_text.getImage().getScaledInstance(100,50,Image.SCALE_DEFAULT));
+		eraser.setIcon(image_eraser);
+		eraser.setBounds(226, 125, 100, 50);
+		eraser.setName("eraser");
+		eraser.setType(2);
+		this.add(eraser);
 		
 		panel.setLayout(null);
 		panel.setOpaque(true);
@@ -139,6 +197,7 @@ public class Child_Design extends JPanel {
 		linePanel.setBounds(0, 0, 1017, 665);
 		panel.add(linePanel);
 		
+		//add action to labels
 		GetCompListener listener_promoter = new GetCompListener();
 		promoter.addMouseListener(listener_promoter);
 		promoter.addMouseMotionListener(listener_promoter);
@@ -167,25 +226,33 @@ public class Child_Design extends JPanel {
 		backbone.addMouseListener(listener_backbone);
 		backbone.addMouseMotionListener(listener_backbone);
 		
-		IfDrawLineListener penListener = new IfDrawLineListener();
-		pen.addMouseListener(penListener);
-		pen.addMouseMotionListener(penListener);
+		IfDrawLineListener line_1Listener = new IfDrawLineListener();
+		line_1.addMouseListener(line_1Listener);
+		line_1.addMouseMotionListener(line_1Listener);
+		
+		IfDrawLineListener eraserListener = new IfDrawLineListener();
+		eraser.addMouseListener(eraserListener);
+		eraser.addMouseMotionListener(eraserListener);
+		
+		IfDrawLineListener textListener = new IfDrawLineListener();
+		text.addMouseListener(textListener);
+		text.addMouseMotionListener(textListener);
 		
 		DrawCompListener Plistener = new DrawCompListener();
 		panel.addMouseListener(Plistener);
 		panel.addMouseMotionListener(Plistener);
 		
-		//test
-		txtW = new JTextField();
-		txtW.setText("");
-		txtW.setBounds(48, 10, 246, 174);
-		this.add(txtW);
-		txtW.setColumns(10);
+		DrawLineListener drawLineListener = new DrawLineListener();
+		panel.addMouseListener(drawLineListener);
+		panel.addMouseMotionListener(drawLineListener);	
 		
+		ShowFontChooser showFont = new ShowFontChooser();
+		textButton.addMouseListener(showFont);
+		textButton.addMouseMotionListener(showFont);
 	}
 	
 	/**
-	 * Imply drag
+	 * Decide to use which component
 	 */
 	class GetCompListener implements MouseInputListener
 	{
@@ -226,7 +293,45 @@ public class Child_Design extends JPanel {
     			{
     				((BackBone)source).setEnabled(false);
     			}
-	    		pen.noUse();
+	    		
+	    		if (pen != null)
+	    		{
+	    			pen.noUse();
+	    			if (pen.getType()==-1 | pen.getType()==0 | pen.getType()==1)
+	    			{
+	    				if (linePanel.lineList.size()!=0)
+	    				{
+	    					BufferedImage img = new BufferedImage(panel.getWidth(),panel.getHeight(),BufferedImage.TRANSLUCENT);
+							Graphics2D g = (Graphics2D)img.getGraphics();
+							linePanel.paint(g);
+							
+							BufferedImage newimg = img.getSubimage(linePanel.getLineBorder()[0]-10, linePanel.getLineBorder()[2]-10,
+									linePanel.getLineBorder()[1]-linePanel.getLineBorder()[0]+20,
+									linePanel.getLineBorder()[3]-linePanel.getLineBorder()[2]+20);
+							JLabelWithID newLine = new JLabelWithID();
+							newLine.ID=compCount++;
+							ImageIcon image = new ImageIcon(newimg);
+							newLine.setIcon(image);
+							newLine.setBounds(linePanel.getLineBorder()[0]-10, linePanel.getLineBorder()[2]-10,
+									linePanel.getLineBorder()[1]-linePanel.getLineBorder()[0]+20,
+									linePanel.getLineBorder()[3]-linePanel.getLineBorder()[2]+20);
+							System.out.println("ok");
+							panel.add(newLine);
+							
+							//ÒÆ¶¯
+							DragLineListener dragListener = new DragLineListener();
+							newLine.addMouseListener(dragListener);
+							newLine.addMouseMotionListener(dragListener);
+							linePanel.endLine();
+							
+							//É¾³ý
+							DeleteListener deleteLine = new DeleteListener();
+							newLine.addMouseListener(deleteLine);
+							newLine.addMouseMotionListener(deleteLine);
+	    				}
+	    			}
+	    		}	
+	    		pen = null;
 	    	}
 	    	else
 	    	{
@@ -239,7 +344,8 @@ public class Child_Design extends JPanel {
     			{
     				((BackBone)source).setEnabled(true);
     			}
-	    		source=null;
+	    		source = null;
+	    		pen = null;
 	    	}
 	    }
 	      
@@ -247,7 +353,126 @@ public class Child_Design extends JPanel {
 	}
 	
 	/**
-	 * Provide container to sketch map
+	 * Decide to use which component
+	 */
+	class IfDrawLineListener implements MouseInputListener
+	{
+		public void mouseClicked(MouseEvent e) 
+		{			
+			
+			if (((Pen)e.getSource()) != pen & pen != null)
+			{
+				pen.noUse();
+				if (pen.getType()==-1 | pen.getType()==0 | pen.getType()==1)
+    			{
+    				if (linePanel.lineList.size()!=0)
+    				{
+    					BufferedImage img = new BufferedImage(panel.getWidth(),panel.getHeight(),BufferedImage.TRANSLUCENT);
+						Graphics2D g = (Graphics2D)img.getGraphics();
+						linePanel.paint(g);
+						
+						BufferedImage newimg = img.getSubimage(linePanel.getLineBorder()[0]-10, linePanel.getLineBorder()[2]-10,
+								linePanel.getLineBorder()[1]-linePanel.getLineBorder()[0]+20,
+								linePanel.getLineBorder()[3]-linePanel.getLineBorder()[2]+20);
+						JLabelWithID newLine = new JLabelWithID();
+						newLine.ID=compCount++;
+						ImageIcon image = new ImageIcon(newimg);
+						newLine.setIcon(image);
+						newLine.setBounds(linePanel.getLineBorder()[0]-10, linePanel.getLineBorder()[2]-10,
+								linePanel.getLineBorder()[1]-linePanel.getLineBorder()[0]+20,
+								linePanel.getLineBorder()[3]-linePanel.getLineBorder()[2]+20);
+						System.out.println("ok");
+						panel.add(newLine);
+						
+						//ÒÆ¶¯
+						DragLineListener dragListener = new DragLineListener();
+						newLine.addMouseListener(dragListener);
+						newLine.addMouseMotionListener(dragListener);
+						linePanel.endLine();
+						
+						//É¾³ý
+						DeleteListener deleteLine = new DeleteListener();
+						newLine.addMouseListener(deleteLine);
+						newLine.addMouseMotionListener(deleteLine);
+    				}
+    			}
+				pen = (Pen)e.getSource();
+				pen.inUse();
+			}						
+			else if (((Pen)e.getSource()) != pen & pen==null)
+			{
+				pen = (Pen)e.getSource();
+				pen.inUse();
+				if (choose)
+				{
+					if (((Component)source).getName() == "backbone")
+	    			{
+	    				((BackBone)source).setEnabled(true);
+	    			}
+	    			else
+	    			{
+	    				((JLabelWithID)source).setEnabled(true);
+	    			}
+					choose=false;
+					source=null;
+				}
+			}
+			else if (pen.ifUse())
+			{
+				pen.noUse();
+				if (pen.getType()==-1 | pen.getType()==0 | pen.getType()==1)
+    			{
+    				if (linePanel.lineList.size()!=0)
+    				{
+    					BufferedImage img = new BufferedImage(panel.getWidth(),panel.getHeight(),BufferedImage.TRANSLUCENT);
+						Graphics2D g = (Graphics2D)img.getGraphics();
+						linePanel.paint(g);
+						
+						BufferedImage newimg = img.getSubimage(linePanel.getLineBorder()[0]-10, linePanel.getLineBorder()[2]-10,
+								linePanel.getLineBorder()[1]-linePanel.getLineBorder()[0]+20,
+								linePanel.getLineBorder()[3]-linePanel.getLineBorder()[2]+20);
+						JLabelWithID newLine = new JLabelWithID();
+						newLine.ID=compCount++;
+						ImageIcon image = new ImageIcon(newimg);
+						newLine.setIcon(image);
+						newLine.setBounds(linePanel.getLineBorder()[0]-10, linePanel.getLineBorder()[2]-10,
+								linePanel.getLineBorder()[1]-linePanel.getLineBorder()[0]+20,
+								linePanel.getLineBorder()[3]-linePanel.getLineBorder()[2]+20);
+						System.out.println("ok");
+						panel.add(newLine);
+						
+						//ÒÆ¶¯
+						DragLineListener dragListener = new DragLineListener();
+						newLine.addMouseListener(dragListener);
+						newLine.addMouseMotionListener(dragListener);
+						linePanel.endLine();
+						
+						//É¾³ý
+						DeleteListener deleteLine = new DeleteListener();
+						newLine.addMouseListener(deleteLine);
+						newLine.addMouseMotionListener(deleteLine);
+    				}
+    			}
+				pen = null;
+				
+			}
+		}
+		
+		public void mousePressed(MouseEvent e) {}
+
+		public void mouseMoved(MouseEvent e) {}
+
+		public void mouseDragged(MouseEvent e) {}
+			
+		public void mouseReleased(MouseEvent e){}
+			
+		public void mouseEntered(MouseEvent e) {}
+
+		public void mouseExited(MouseEvent e) {}
+	}
+	
+	/**
+	 * Draw components and text
 	 */
 	class DrawCompListener implements MouseInputListener
 	{
@@ -270,48 +495,128 @@ public class Child_Design extends JPanel {
 	    	{	
 	    		if (((Component)source).getName() == "backbone")
 	    		{
+	    			SketchProject project = sketchCenter.currentProject;
+	    			
 	    			point =  e.getPoint();
 		    		BackBone newBackBone = new BackBone(panel,Tpanel);
+		    		newBackBone.ID=compCount++;		    			    		
 		    		newBackBone.setIcon(((BackBone)source).getIcon());
 		    		point.x = point.x - (((BackBone)source).getWidth())/2;
 		    		point.y = point.y - (((BackBone)source).getHeight())/2;
+		    		
+		    		//Location
 		    		newBackBone.setBounds(point.x, point.y, ((BackBone)source).getWidth(), 
 		    				((BackBone)source).getHeight());
 		    		newBackBone.setName(((BackBone)source).getName());
 		    		newBackBone.activate();
 					panel.add(newBackBone,-1);
 					
-					DragCompListener listener = new DragCompListener(panel,txtW,Tpanel);
+					Point center = new Point((int)(point.x+((BackBone)source).getWidth()/2),
+							(int)(point.y+((BackBone)source).getHeight()/2));
+					sketchCenter.currentProject.addComponent
+						(new SketchComponent.BackBone(newBackBone.ID, center, ((BackBone)source).getWidth()));
+					
+					DragCompListener listener = new DragCompListener(panel,Tpanel,sketchCenter);
 					newBackBone.addMouseListener(listener);
 					newBackBone.addMouseMotionListener(listener);
 					
-					DeleteListener delete = new DeleteListener();
-					newBackBone.addKeyListener(delete);
-
+					//É¾³ý
+					DeleteListener deleteBackbone = new DeleteListener();
+					newBackBone.addMouseListener(deleteBackbone);
+					newBackBone.addMouseMotionListener(deleteBackbone);
+					
 	    		}
 	    		else
 	    		{
 					point =  e.getPoint();
 		    		JLabelWithID newLabel = new JLabelWithID();
+		    		newLabel.ID=compCount++;
 		    		newLabel.setIcon(((JLabelWithID)source).getIcon());
 		    		point.x = point.x - (((JLabelWithID)source).getWidth())/2;
 		    		point.y = point.y - (((JLabelWithID)source).getHeight())/2;
+		    		
+		    		//Location
 		    		newLabel.setBounds(point.x, point.y, ((JLabelWithID)source).getWidth(), 
 		    				((JLabelWithID)source).getHeight());
 		    		newLabel.setName(((JLabelWithID)source).getName());
 					panel.add(newLabel);
 					
-					DragCompListener listener = new DragCompListener(panel,txtW,Tpanel);
+					Point center = new Point((int)(point.x+((JLabelWithID)source).getWidth()/2),
+							(int)(point.y+((JLabelWithID)source).getHeight()/2));
+
+					// test
+					
+					SketchComponent.Component component;
+					switch (newLabel.getName())
+					{	
+						case "promoter":
+							component = new SketchComponent.BioBrick(newLabel.ID, BbkType.Sketch.BioBrick.PROMOTER, center, null);
+							break;
+						case "rbs":
+							component = new SketchComponent.BioBrick(newLabel.ID, BbkType.Sketch.BioBrick.RBS, center, null);
+							break;
+						case "coding":
+							component = new SketchComponent.BioBrick(newLabel.ID, BbkType.Sketch.BioBrick.PROTEIN_CODING_SEQUENCE, center, null);
+							break;
+						case "terminator":
+							component = new SketchComponent.BioBrick(newLabel.ID, BbkType.Sketch.BioBrick.TERMINATOR, center, null);
+							break;	
+						case "primer":
+							component = new SketchComponent.BioBrick(newLabel.ID, BbkType.Sketch.BioBrick.PRIMER, center, null);
+							break;
+						case "reporter":
+							component = new SketchComponent.BioBrick(newLabel.ID, BbkType.Sketch.BioBrick.REPORTER, center, null);
+							break;
+						case "factor":
+							component = new SketchComponent.Protein(newLabel.ID, BbkType.Sketch.Protein.FACTOR, center, null);
+							break;
+						case "recepter":
+							component = new SketchComponent.Protein(newLabel.ID, BbkType.Sketch.Protein.RECEPTER, center, null);
+							break;
+						case "plasmid":
+							component = new SketchComponent.BioVector(newLabel.ID, BbkType.Sketch.Vector.PLASMID, center, null);
+						
+					}
+					
+					sketchCenter.currentProject.addComponent
+						(new SketchComponent.Protein(newLabel.ID, center, );
+					
+					DragCompListener listener = new DragCompListener(panel,Tpanel,sketchCenter);
 					newLabel.addMouseListener(listener);
 					newLabel.addMouseMotionListener(listener);
 					
-					DeleteListener delete = new DeleteListener();
-					newLabel.addKeyListener(delete);
-
+					//É¾³ý
+					DeleteListener deleteLabel = new DeleteListener();
+					newLabel.addMouseListener(deleteLabel);
+					newLabel.addMouseMotionListener(deleteLabel);
 	    		}
+	    	}
+	    	else if ((pen!=null) & (pen.getType()==5))
+	    	{
+	    		point =  e.getPoint();
+	    		TextLabel newText = new TextLabel(panel,Tpanel);
+	    		point.x = point.x - 25;
+	    		point.y = point.y - 15;
+	    		newText.setBounds(point.x, point.y, 50,30);
+	    		newText.ID=compCount++;
+	    		panel.add(newText);
+				
+	    		ChooseCurrentText chooseTextListener = new ChooseCurrentText();
+	    		newText.addFocusListener(chooseTextListener);
+	    		
+	    		DragTextListener dragListener = new DragTextListener();
+	    		newText.addMouseListener(dragListener);
+	    		newText.addMouseMotionListener(dragListener);
+	    		
+	    		//É¾³ý
+				DeleteListener deleteText = new DeleteListener();
+				newText.addMouseListener(deleteText);
+				newText.addMouseMotionListener(deleteText);
 	    	}
 	    	
 	    	//Draw lines
+	    	
+	    	panel.setPosition(linePanel, 0);
 	    	linePanel.repaint();
 	    }
 	      
@@ -319,32 +624,57 @@ public class Child_Design extends JPanel {
 	}
 	
 	/**
-	 * Provide container to sketch map
+	 * Draw line
 	 */
-	class IfDrawLineListener implements MouseInputListener
+	public class DrawLineListener implements MouseInputListener
 	{
+		private ArrayList<Point> lineList;
+		
 		public void mouseClicked(MouseEvent e) 
 		{
-			if (((Pen)e.getSource()).ifUse())
+			if (pen!=null)
 			{
-				((Pen)e.getSource()).noUse();
-			}
-			else
-			{
-				if (choose)
+				if (pen.ifUse() & (pen.getType()==-1 | pen.getType()==0 | pen.getType()==1))
 				{
-					if (((Component)source).getName() == "backbone")
-	    			{
-	    				((BackBone)source).setEnabled(true);
-	    			}
-	    			else
-	    			{
-	    				((JLabelWithID)source).setEnabled(true);
-	    			}
-					choose=false;
-					source=null;
+					if (e.getButton()==MouseEvent.BUTTON3)
+					{
+						linePanel.addPoint(e.getPoint());
+						linePanel.repaint();			
+
+						BufferedImage img = new BufferedImage(panel.getWidth(),panel.getHeight(),BufferedImage.TRANSLUCENT);
+						Graphics2D g = (Graphics2D)img.getGraphics();
+						linePanel.paint(g);
+						
+						BufferedImage newimg = img.getSubimage(linePanel.getLineBorder()[0]-10, linePanel.getLineBorder()[2]-10,
+								linePanel.getLineBorder()[1]-linePanel.getLineBorder()[0]+20,
+								linePanel.getLineBorder()[3]-linePanel.getLineBorder()[2]+20);
+						JLabelWithID newLine = new JLabelWithID();
+						newLine.ID=compCount++;
+						ImageIcon image = new ImageIcon(newimg);
+						newLine.setIcon(image);
+						newLine.setBounds(linePanel.getLineBorder()[0]-10, linePanel.getLineBorder()[2]-10,
+								linePanel.getLineBorder()[1]-linePanel.getLineBorder()[0]+20,
+								linePanel.getLineBorder()[3]-linePanel.getLineBorder()[2]+20);
+						System.out.println("ok");
+						panel.add(newLine);
+						
+						//ÒÆ¶¯
+						DragLineListener dragListener = new DragLineListener();
+						newLine.addMouseListener(dragListener);
+						newLine.addMouseMotionListener(dragListener);
+						linePanel.endLine();
+						
+						//É¾³ý
+						DeleteListener deleteLine = new DeleteListener();
+						newLine.addMouseListener(deleteLine);
+						newLine.addMouseMotionListener(deleteLine);
+					}
+					else if (e.getClickCount()==1 & e.getButton()==MouseEvent.BUTTON1)
+					{
+						linePanel.addPoint(e.getPoint());
+						linePanel.repaint();
+					}
 				}
-				((Pen)e.getSource()).inUse();
 			}
 		}
 		
@@ -359,6 +689,230 @@ public class Child_Design extends JPanel {
 		public void mouseEntered(MouseEvent e) {}
 
 		public void mouseExited(MouseEvent e) {}
+		
+		
 	}
+	
+	/**
+	 * Show FontChooser
+	 */
+	class ShowFontChooser implements MouseInputListener
+	{
+		public void mouseClicked(MouseEvent e) 
+		{	
+			Color col = null;
+			Font pFont = null;
+			if (textLabel == null)
+			{
+				col = Color.black;
+		        pFont = new Font("Time New Roman",Font.PLAIN,16);
+			}
+			else
+			{
+				StyledDocument totalStyle = (StyledDocument)(((TextLabel)textLabel).getDocument());
+				AttributeSet attr = ((TextLabel)textLabel).getCharacterAttributes();
+		        col = totalStyle.getForeground(attr);
+		        pFont = totalStyle.getFont(attr);	
+			}
+			
+			FontChooser one = new FontChooser(pFont, col);    
+	        one.showDialog((JFrame)((JButton)(e.getSource())).getRootPane().getParent(),500,200);
+	        
+	        Font font=one.getSelectedfont();  
+	        Color color=one.getSelectedcolor(); 	        
+	        SimpleAttributeSet attrNew = new SimpleAttributeSet();
+	        StyleConstants.setAlignment(attrNew, StyleConstants.ALIGN_CENTER);
+	        StyleConstants.setForeground(attrNew, color);
+	        if ((one.getSelectedstyle()).equals("Normal")) 
+            {  
+	        	StyleConstants.setItalic(attrNew, false); 
+	        	StyleConstants.setBold(attrNew, false);
+            }  
+            if ((one.getSelectedstyle()).equals("Italic")) 
+            {  
+            	StyleConstants.setItalic(attrNew, true); 
+            	StyleConstants.setBold(attrNew, false);       	
+            }  
+            if ((one.getSelectedstyle()).equals("Bold")) 
+            {  
+            	StyleConstants.setBold(attrNew, true);  
+            	StyleConstants.setItalic(attrNew, false);
+            }  
+            if ((one.getSelectedstyle()).equals("BoldItalic")) 
+            {  
+            	StyleConstants.setBold(attrNew, true); 
+            	StyleConstants.setItalic(attrNew, true);  
+            }
+	        StyleConstants.setFontSize(attrNew, font.getSize());
+	        StyleConstants.setFontFamily(attrNew, font.getFamily());
+	        if (textLabel!=null)
+	        {
+	        	textLabel.setCharacterAttributes(attrNew, true);
+		        textLabel.setParagraphAttributes(attrNew, true);
+	        }        
+		}
+		
+		public void mousePressed(MouseEvent e) {}
 
+		public void mouseMoved(MouseEvent e) {}
+
+		public void mouseDragged(MouseEvent e) {}
+			
+		public void mouseReleased(MouseEvent e){}
+			
+		public void mouseEntered(MouseEvent e) {}
+
+		public void mouseExited(MouseEvent e) {}
+	}
+	
+	class DragLineListener implements MouseInputListener
+	{
+		Point point = new Point(0,0);
+		
+		public void mouseClicked(MouseEvent e) {}
+		
+		public void mousePressed(MouseEvent e) 
+		{
+			point = SwingUtilities.convertPoint(e.getComponent() , e.getPoint(), 
+					(e.getComponent()).getParent());
+		}
+
+		public void mouseDragged(MouseEvent e) 
+		{
+			Point newPoint = SwingUtilities.convertPoint(e.getComponent() , 
+					e.getPoint(), (e.getComponent()).getParent());
+			(e.getComponent()).setLocation(
+					(e.getComponent()).getX()+(newPoint.x-point.x),
+					(e.getComponent()).getY()+(newPoint.y-point.y));
+			point = newPoint;		
+		}
+		
+		public void mouseMoved(MouseEvent e) 
+		{
+			TitledBorder border = new TitledBorder("");
+			((JLabelWithID)(e.getComponent())).setBorder(border);
+		}
+			
+		public void mouseReleased(MouseEvent e){}
+			
+		public void mouseEntered(MouseEvent e) 
+		{
+			TitledBorder border = new TitledBorder("");
+			((JLabelWithID)(e.getComponent())).setBorder(border);
+		}
+
+		public void mouseExited(MouseEvent e) 
+		{
+			((JLabelWithID)(e.getComponent())).setBorder(null);
+		}
+	}
+	
+	/**
+	 * Drag component
+	 */
+	class DragTextListener implements MouseInputListener
+	{
+		Point point = new Point(0,0);
+		
+		public void mouseClicked(MouseEvent e) {}
+		
+		public void mousePressed(MouseEvent e) 
+		{
+			point = SwingUtilities.convertPoint(e.getComponent() , e.getPoint(), 
+					(e.getComponent()).getParent());
+		}
+
+		public void mouseDragged(MouseEvent e) 
+		{
+			if (!((TextLabel)e.getComponent()).getResize() & ((TextLabel)e.getComponent()).movable )
+			{
+				Point newPoint = SwingUtilities.convertPoint(e.getComponent() , 
+						e.getPoint(), (e.getComponent()).getParent());
+				(e.getComponent()).setLocation(
+						(e.getComponent()).getX()+(newPoint.x-point.x),
+						(e.getComponent()).getY()+(newPoint.y-point.y));
+				point = newPoint;
+			}		
+		}
+		
+		public void mouseMoved(MouseEvent e) {}
+			
+		public void mouseReleased(MouseEvent e){}
+			
+		public void mouseEntered(MouseEvent e) {}
+
+		public void mouseExited(MouseEvent e) {}
+	}
+	
+	/**
+	 * Choose current listener
+	 */
+	class ChooseCurrentText implements FocusListener
+	{		
+		public void focusGained(FocusEvent e) 
+		{
+			textLabel = (TextLabel)(e.getSource());
+			TitledBorder border = new TitledBorder("");
+			textLabel.setBorder(border);
+			textLabel.focus=true;
+		}
+
+		public void focusLost(FocusEvent e) 
+		{
+			textLabel.focus=false;
+			textLabel.setBorder(null);			
+		}
+	}
+	
+	/**
+	 * Delete components
+	 */
+	class DeleteListener implements MouseInputListener
+	{		
+		public void mouseClicked(MouseEvent e) 
+		{
+			if (pen!=null)
+			{
+				if (pen.getType()==2)
+				{
+					((e.getComponent()).getParent()).remove(e.getComponent());
+				}
+			}
+		}
+		
+		public void mousePressed(MouseEvent e) {}
+
+		public void mouseDragged(MouseEvent e) {}
+		
+		public void mouseMoved(MouseEvent e) {}
+			
+		public void mouseReleased(MouseEvent e){}
+			
+		public void mouseEntered(MouseEvent e) {}
+
+		public void mouseExited(MouseEvent e) {}
+	}
+	
+	/**
+	 * Delete components
+	 */
+	class BackoutListener implements MouseInputListener
+	{		
+		public void mouseClicked(MouseEvent e) 
+		{
+			
+		}
+		
+		public void mousePressed(MouseEvent e) {}
+
+		public void mouseDragged(MouseEvent e) {}
+		
+		public void mouseMoved(MouseEvent e) {}
+			
+		public void mouseReleased(MouseEvent e){}
+			
+		public void mouseEntered(MouseEvent e) {}
+
+		public void mouseExited(MouseEvent e) {}
+	}
 }

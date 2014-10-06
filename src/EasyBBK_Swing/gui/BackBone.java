@@ -9,7 +9,6 @@ import java.awt.Dimension;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
-import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -19,8 +18,10 @@ import javax.swing.SwingUtilities;
 /**
  * Make JLabel contain more information
  */
+@SuppressWarnings("serial")
 class BackBone extends JLabel implements MouseListener, MouseMotionListener
 {
+	public int ID = 0;
 	Point newPoint =new Point(0,0);
 	private Rectangle outer_rect = new Rectangle();
 	private Rectangle inner_rect = new Rectangle();
@@ -58,7 +59,7 @@ class BackBone extends JLabel implements MouseListener, MouseMotionListener
 		if (activate == true)
 		{
 			outer_rect = this.getVisibleRect();
-			outer_rect.setRect(outer_rect.x+1, outer_rect.y, outer_rect.width-2, outer_rect.height);
+			outer_rect.setRect(outer_rect.x+1, outer_rect.y+1, outer_rect.width-2, outer_rect.height-2);
 			inner_rect.setRect(outer_rect.x+3, outer_rect.y, outer_rect.width-6, outer_rect.height);
 		}
 	}
