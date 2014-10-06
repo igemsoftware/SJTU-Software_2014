@@ -114,6 +114,7 @@ public class SketchProject
 	
 	// attributes
 	public String name;
+	public String filePath;
 	
 	public ArrayList<Component> componentList = new ArrayList<Component>();
 	public ArrayList<BackBone> backBoneList = new ArrayList<BackBone>();
@@ -323,9 +324,18 @@ public class SketchProject
 	
 	
 	
-
+	
+	/** Different from the overrided version in that this function is used to save
+	 * into the file path already specified, like "Save", not "Save As".  */
+	public void saveIntoFile()
+	{	
+		saveIntoFile(filePath);
+	}
+	
 	/** Save the project graph into XML file, note that the project.name will be 
-	 * specified after the file name.  */
+	 * specified after the file name. This function is used as the "Save As" 
+	 * function, if path already specified(namely already saved once), you may 
+	 * call the saveIntoFile(), the function with no parameter to save again.  */
 	public void saveIntoFile(String filePath)
 	{
 		Document doc = null;
@@ -356,6 +366,7 @@ public class SketchProject
   	  	} catch(Exception e) {e.printStackTrace();}
   	  	
   	  	name = getFileName(filePath);
+  	  	this.filePath = filePath;
   	  	modified = false;
 	}
 	
@@ -383,6 +394,7 @@ public class SketchProject
 	    }
 	    
     	name = getFileName(filePath);
+    	this.filePath = filePath;
     	modified = false;
 	}
 	

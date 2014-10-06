@@ -88,7 +88,6 @@ public class SketchCenter
 	public BbkUpload generateBbkUploadFromBackBone(BackBone backbone)
 	{	
 		BbkUpload bbkUpload = new BbkUpload();
-		ArrayList<Object> sequenceTokens = new ArrayList<Object>();
 		for (Integer componentID : backbone.bbkChildren)
 		{	BioBrick bbk = (BioBrick) currentProject.findComponentByID(componentID);
 			if (bbk == null)
@@ -96,9 +95,9 @@ public class SketchCenter
 			// else... 
 			BbkDetail bbkDetail = 
 					DatabaseConnector.getDetailByName(bbk.bbkOutline.name);	
-			sequenceTokens.add(bbkDetail);
+			bbkUpload.sequenceTokens.add(bbkDetail);
 		}
-		bbkUpload.setSequence(sequenceTokens, true);
+		bbkUpload.setSequence(true);
 		return bbkUpload;
 	}
 	
