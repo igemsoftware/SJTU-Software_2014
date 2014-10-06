@@ -399,6 +399,20 @@ public class Child_Design extends JLayeredPane {
 							System.out.println("ok");
 							panel.add(newLine);
 							
+							int lineType = -1;
+							switch (linePanel.lineType)
+							{	
+								case LinePanel.LINE_WITH_EMPTY_ARROW:
+									lineType = BbkType.Sketch.Relation.PROMOTE;	break;
+								case LinePanel.LINE_WIHT_STOP_END:
+									lineType = BbkType.Sketch.Relation.SUPPRESS;	break;
+								case LinePanel.LINE_WITH_FULL_ARROW:
+									lineType = BbkType.Sketch.Relation.OTHER;	break;
+							}						
+							
+							sketchCenter.currentProject.addComponent(new SketchComponent.Relation
+									(newLine.ID, lineType, linePanel.lineList, linePanel.color, (int) linePanel.stroke));
+							
 							//移动
 							DragLineListener dragListener = new DragLineListener();
 							newLine.addMouseListener(dragListener);
@@ -465,6 +479,20 @@ public class Child_Design extends JLayeredPane {
 						System.out.println("ok");
 						panel.add(newLine);
 						
+						int lineType = -1;
+						switch (linePanel.lineType)
+						{	
+							case LinePanel.LINE_WITH_EMPTY_ARROW:
+								lineType = BbkType.Sketch.Relation.PROMOTE;	break;
+							case LinePanel.LINE_WIHT_STOP_END:
+								lineType = BbkType.Sketch.Relation.SUPPRESS;	break;
+							case LinePanel.LINE_WITH_FULL_ARROW:
+								lineType = BbkType.Sketch.Relation.OTHER;	break;
+						}						
+						
+						sketchCenter.currentProject.addComponent(new SketchComponent.Relation
+								(newLine.ID, lineType, linePanel.lineList, linePanel.color, (int) linePanel.stroke));
+						
 						//移动
 						DragLineListener dragListener = new DragLineListener();
 						newLine.addMouseListener(dragListener);
@@ -523,6 +551,20 @@ public class Child_Design extends JLayeredPane {
 								linePanel.getLineBorder()[3]-linePanel.getLineBorder()[2]+20);
 						System.out.println("ok");
 						panel.add(newLine);
+						
+						int lineType = -1;
+						switch (linePanel.lineType)
+						{	
+							case LinePanel.LINE_WITH_EMPTY_ARROW:
+								lineType = BbkType.Sketch.Relation.PROMOTE;	break;
+							case LinePanel.LINE_WIHT_STOP_END:
+								lineType = BbkType.Sketch.Relation.SUPPRESS;	break;
+							case LinePanel.LINE_WITH_FULL_ARROW:
+								lineType = BbkType.Sketch.Relation.OTHER;	break;
+						}						
+						
+						sketchCenter.currentProject.addComponent(new SketchComponent.Relation
+								(newLine.ID, lineType, linePanel.lineList, linePanel.color, (int) linePanel.stroke));
 						
 						//移动
 						DragLineListener dragListener = new DragLineListener();
@@ -590,9 +632,8 @@ public class Child_Design extends JLayeredPane {
 		    		point.y = point.y - 25;
 		    		
 		    		//Location
-		    		newBackBone.setBounds(point.x, point.y, 83, 
-		    				50);
-		    		newBackBone.setName(((BackBone)source).getName());
+		    		newBackBone.setBounds(point.x, point.y, 83, 50);
+		    		newBackBone.setName("backbone");
 		    		newBackBone.activate();
 					panel.add(newBackBone,-1);
 					
@@ -731,9 +772,7 @@ public class Child_Design extends JLayeredPane {
 	 * Draw line
 	 */
 	public class DrawLineListener implements MouseInputListener
-	{
-		private ArrayList<Point> lineList;
-		
+	{		
 		public void mouseClicked(MouseEvent e) 
 		{
 			if (pen!=null)
@@ -773,7 +812,8 @@ public class Child_Design extends JLayeredPane {
 								lineType = BbkType.Sketch.Relation.OTHER;	break;
 						}						
 						
-						sketchCenter.currentProject.addComponent(new SketchComponent.Relation(newLine.ID, lineType, lineList, linePanel.color, (int) linePanel.stroke));
+						sketchCenter.currentProject.addComponent(new SketchComponent.Relation
+								(newLine.ID, lineType, linePanel.lineList, linePanel.color, (int) linePanel.stroke));
 						
 						//移动
 						DragLineListener dragListener = new DragLineListener();
@@ -1023,6 +1063,16 @@ public class Child_Design extends JLayeredPane {
 				if (pen.getType()==2)
 				{
 					((e.getComponent()).getParent()).remove(e.getComponent());
+					
+					SketchProject project = sketchCenter.currentProject;
+					int ID = -1;
+					
+					Component component = e.getComponent();
+					if (component.getName().equals("text"))
+						ID = ((TextLabel) component).ID;
+					else
+						ID = ((JLabelWithID) component).ID;
+					project.delComponent(project.findComponentByID(ID));
 				}
 			}
 		}

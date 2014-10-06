@@ -56,7 +56,6 @@ class DragCompListener implements MouseInputListener
 				& (e.getComponent()).getName() != "text")
 		{
 			SketchProject project = sketchCenter.currentProject;
-
 			
 			//get the location
 			if ((e.getComponent()).getName()=="backbone")
@@ -146,7 +145,7 @@ class DragCompListener implements MouseInputListener
 								(((JLabelWithID)e.getSource()).getX()>((BackBone)backboneList.get(i)).getX())
 								& ((((BackBone)backboneList.get(i)).getWidth()
 										+((BackBone)backboneList.get(i)).getX())
-										>(100+((JLabelWithID)e.getSource()).getX())) 
+										>(83+((JLabelWithID)e.getSource()).getX())) 
 						//component is close to backbone in Y axis
 						& (Math.abs((((JLabelWithID)e.getSource()).getY()+25)-
 								(((BackBone)backboneList.get(i)).getY()+25))<70))							

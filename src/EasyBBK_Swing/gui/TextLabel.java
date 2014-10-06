@@ -59,6 +59,7 @@ class TextLabel extends JTextPane implements MouseListener, MouseMotionListener
 		StyleConstants.setFontSize(attr, 16);
 		StyleConstants.setFontFamily(attr, "Time New Roman");
 		this.setParagraphAttributes(attr, true);
+		this.setName("text");
 		this.panel=panel;
 		this.Tpanel=Tpanel;
 		this.addMouseListener(this);
