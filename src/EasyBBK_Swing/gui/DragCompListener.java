@@ -75,7 +75,9 @@ class DragCompListener implements MouseInputListener
 			for (int i = 0; i<length ; i++)
 			{
 				if (((panel.getComponents())[i]).getName() != "TPanel" & ((panel.getComponents())[i]).getName() != "linePanel"
-						& ((panel.getComponents())[i]).getName() != "text")
+						& ((panel.getComponents())[i]).getName() != "text" & 
+						(((panel.getComponents())[i]).getName() != "recepter" & ((panel.getComponents())[i]).getName() != "factor"
+						& ((panel.getComponents())[i]).getName() != "protein" & ((panel.getComponents())[i]).getName() != "plasmid"))
 				{
 					if (((panel.getComponents())[i]).getName()=="backbone")
 					{
@@ -119,80 +121,94 @@ class DragCompListener implements MouseInputListener
 		{
 			if ((e.getComponent()).getName() != "backbone")
 			{
-				//solve the problem of overlapping
-				panel.setPosition(e.getComponent(),0);
-				Tpanel.setImage(null);
-				Tpanel.repaint();
-				//get new location
-				Point newPoint = SwingUtilities.convertPoint((JLabelWithID)e.getSource() , 
-						e.getPoint(), ((JLabelWithID)e.getSource()).getParent());
-				((JLabelWithID)e.getSource()).setLocation(
-						((JLabelWithID)e.getSource()).getX()+(newPoint.x-point.x),
-						((JLabelWithID)e.getSource()).getY()+(newPoint.y-point.y));
-				point = newPoint;
-				
-				//search closest backbone
-				int bCount = backboneList.size();
-				nearBackbone.clear();
-				
-				for (int i=0; i<bCount; i++)
+				if (((e.getComponent()).getName() != "recepter" & (e.getComponent()).getName() != "factor"
+						& (e.getComponent()).getName() != "protein" & (e.getComponent()).getName() != "plasmid"))
 				{
-					if (	//component is in the range of backbone in x axis
-							(((JLabelWithID)e.getSource()).getX()>((BackBone)backboneList.get(i)).getX())
-							& ((((BackBone)backboneList.get(i)).getWidth()
-									+((BackBone)backboneList.get(i)).getX())
-									>(100+((JLabelWithID)e.getSource()).getX())) 
-					//component is close to backbone in Y axis
-					& (Math.abs((((JLabelWithID)e.getSource()).getY()+25)-
-							(((BackBone)backboneList.get(i)).getY()+25))<70))							
+					//solve the problem of overlapping
+					panel.setPosition(e.getComponent(),0);
+					Tpanel.setImage(null);
+					Tpanel.repaint();
+					//get new location
+					Point newPoint = SwingUtilities.convertPoint((JLabelWithID)e.getSource() , 
+							e.getPoint(), ((JLabelWithID)e.getSource()).getParent());
+					((JLabelWithID)e.getSource()).setLocation(
+							((JLabelWithID)e.getSource()).getX()+(newPoint.x-point.x),
+							((JLabelWithID)e.getSource()).getY()+(newPoint.y-point.y));
+					point = newPoint;
+					
+					//search closest backbone
+					int bCount = backboneList.size();
+					nearBackbone.clear();
+					
+					for (int i=0; i<bCount; i++)
 					{
-						nearBackbone.add(i);
-					}
-				}
-				
-				//confirm the closest backbone
-				int numNear = nearBackbone.size();
-				if (numNear>0)
-				{
-					near = true;
-					if (numNear>1)
-					{
-						int closestIndex = 0;
-						int distance = Math.abs((backboneList.get(nearBackbone.get(0)).getY()+25)
-								-((e.getComponent()).getY()+25));
-						for (int i=0; i<numNear; i++)
+						if (	//component is in the range of backbone in x axis
+								(((JLabelWithID)e.getSource()).getX()>((BackBone)backboneList.get(i)).getX())
+								& ((((BackBone)backboneList.get(i)).getWidth()
+										+((BackBone)backboneList.get(i)).getX())
+										>(100+((JLabelWithID)e.getSource()).getX())) 
+						//component is close to backbone in Y axis
+						& (Math.abs((((JLabelWithID)e.getSource()).getY()+25)-
+								(((BackBone)backboneList.get(i)).getY()+25))<70))							
 						{
-							if (distance>Math.abs((backboneList.get(nearBackbone.get(0)).getY()+25)
-									-((e.getComponent()).getY()+25)))
-							{
-								distance=Math.abs((backboneList.get(nearBackbone.get(0)).getY()+25)
-										-((e.getComponent()).getY()+25));
-								closestIndex=i;
-							}					
+							nearBackbone.add(i);
 						}
-						closestBackbone = backboneList.get(nearBackbone.get(closestIndex));
+					}
+					
+					//confirm the closest backbone
+					int numNear = nearBackbone.size();
+					if (numNear>0)
+					{
+						near = true;
+						if (numNear>1)
+						{
+							int closestIndex = 0;
+							int distance = Math.abs((backboneList.get(nearBackbone.get(0)).getY()+25)
+									-((e.getComponent()).getY()+25));
+							for (int i=0; i<numNear; i++)
+							{
+								if (distance>Math.abs((backboneList.get(nearBackbone.get(0)).getY()+25)
+										-((e.getComponent()).getY()+25)))
+								{
+									distance=Math.abs((backboneList.get(nearBackbone.get(0)).getY()+25)
+											-((e.getComponent()).getY()+25));
+									closestIndex=i;
+								}					
+							}
+							closestBackbone = backboneList.get(nearBackbone.get(closestIndex));
+						}
+						else
+						{
+							closestBackbone = backboneList.get(nearBackbone.get(0));
+						}
+						
+						Point location = new Point(((JLabelWithID)(e.getSource())).getX(),
+								closestBackbone.getY());
+
+						//Paint transparent component
+						Component comp= e.getComponent();
+						BufferedImage im = new BufferedImage(comp.getWidth(),
+								comp.getHeight(),BufferedImage.TYPE_INT_ARGB);
+						Graphics g= im.getGraphics();
+						comp.paint(g);
+						Tpanel.setImage(im);
+						Tpanel.setPoint(location);
+						Tpanel.repaint();
 					}
 					else
 					{
-						closestBackbone = backboneList.get(nearBackbone.get(0));
+						near=false;
 					}
-					
-					Point location = new Point(((JLabelWithID)(e.getSource())).getX(),
-							closestBackbone.getY());
-
-					//Paint transparent component
-					Component comp= e.getComponent();
-					BufferedImage im = new BufferedImage(comp.getWidth(),
-							comp.getHeight(),BufferedImage.TYPE_INT_ARGB);
-					Graphics g= im.getGraphics();
-					comp.paint(g);
-					Tpanel.setImage(im);
-					Tpanel.setPoint(location);
-					Tpanel.repaint();
 				}
 				else
 				{
-					near=false;
+					panel.setPosition(e.getComponent(),0);
+					Point newPoint = SwingUtilities.convertPoint((JLabelWithID)e.getSource() , 
+							e.getPoint(), ((JLabelWithID)e.getSource()).getParent());
+					((JLabelWithID)e.getSource()).setLocation(
+							((JLabelWithID)e.getSource()).getX()+(newPoint.x-point.x),
+							((JLabelWithID)e.getSource()).getY()+(newPoint.y-point.y));
+					point = newPoint;
 				}
 			}
 			

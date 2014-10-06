@@ -38,8 +38,8 @@ class LinePanel extends JLayeredPane
 	public int height;
 	public Point topLeft = new Point();
 	public Point bottomRight = new Point();
-	public float stroke=5.0f;
-	public Color color = Color.blue;
+	public float stroke=3.0f;
+	public Color color = Color.black;
 	
 	public LinePanel(Pen p) 
 	{
@@ -54,10 +54,19 @@ class LinePanel extends JLayeredPane
 		}
         repaint();
     }  
+	
+	public void setPen(Pen p)
+	{
+		this.p = p;
+	}
   
     public void paintComponent(Graphics g)
     {
     	super.repaint();
+    	if (p != null)
+    	{
+    		lineType = p.getType();
+    	}   	
 		GraphicsCurve graCurve= new GraphicsCurve((Graphics2D)g);
 		graCurve.myGraphics.setPaint(color);
 		graCurve.myGraphics.setStroke(new BasicStroke(stroke));
@@ -391,11 +400,21 @@ class LinePanel extends JLayeredPane
     			y[i]=(List.get(i)).y;
     		}
     		if (n<=1)
+    		{
     			myGraphics.drawOval(x[0],y[0],(int)stroke,(int)stroke);
+    			left = x[0] - 1;
+    			right = x[0] + 1;
+    			top = y[0] - 1;
+    			bottom = y[0] + 1;
+    		}
     		else if (n==2)
     		{
     			myGraphics.drawLine(x[0], y[0], x[1], y[1]);
     			this.DrawEndLine((int)x[0], (int)y[0], (int)x[1], (int)y[1],100);
+    			left = Math.min(x[0], x[1]);
+    			right = Math.max(x[0], x[1]);
+    			top = Math.min(y[0], y[1]);
+    			bottom = Math.max(y[0], y[1]);
     		}
     		else
     		{
