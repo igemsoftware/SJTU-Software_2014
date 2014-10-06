@@ -1,40 +1,20 @@
 package EasyBBK_Swing.gui;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.Container;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.EventQueue;
-import java.awt.Graphics2D;
 import java.awt.GraphicsEnvironment;
-import java.awt.Image;
 import java.awt.Insets;
-import java.awt.RenderingHints;
 import java.awt.Toolkit;
-import java.awt.Canvas;
-import java.awt.image.BufferedImage;
-import java.awt.Dialog.ModalExclusionType;
-
-import javax.swing.JDesktopPane;
-import javax.swing.JFrame;
-import javax.swing.JButton;
-import javax.swing.JInternalFrame;
-import javax.swing.JLabel;
-import javax.swing.ImageIcon;
-import javax.swing.JLayeredPane;
-import javax.swing.LayoutStyle;
-
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
-import javax.swing.JSpinner;
-import javax.swing.SpinnerNumberModel;
-
-import java.util.*;
-import java.awt.Font;
 
 public class MainPage{
 	public JFrame frame;

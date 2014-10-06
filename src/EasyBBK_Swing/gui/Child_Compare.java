@@ -1,7 +1,6 @@
 package EasyBBK_Swing.gui;
 
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.event.KeyAdapter;
@@ -9,7 +8,6 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -73,7 +71,8 @@ public class Child_Compare extends JPanel {
 			public void mouseClicked(MouseEvent e) {
 				if(textField1.getText() == null || textField1.getText().trim().equals("")) return;
 				scrollpanecontainer1.removeAll();
-				initializedetailpage(textField1.getText(), datacenter1, scrollpanecontainer1, scrollpanel1, detailsofresult1, 0);
+				InitializeDetailPage initializedetailpage1 = new InitializeDetailPage(textField1.getText(), datacenter1, scrollpanecontainer1, scrollpanel1, detailsofresult1, 0);
+				initializedetailpage1.start();
 				scrollpanecontainer1.updateUI();
 			}
 			@Override
@@ -99,7 +98,8 @@ public class Child_Compare extends JPanel {
 				if(e.getKeyChar() == e.VK_ENTER){
 					if(textField1.getText() == null || textField1.getText().trim().equals("")) return;
 					scrollpanecontainer1.removeAll();
-					initializedetailpage(textField1.getText(), datacenter1, scrollpanecontainer1, scrollpanel1, detailsofresult1, 0);
+					InitializeDetailPage initializedetailpage1 = new InitializeDetailPage(textField1.getText(), datacenter1, scrollpanecontainer1, scrollpanel1, detailsofresult1, 0);
+					initializedetailpage1.start();
 					scrollpanecontainer1.updateUI();
 				}
 			}
@@ -111,6 +111,12 @@ public class Child_Compare extends JPanel {
 		textField1.setColumns(20);
 		
 		scrollpanecontainer1 = new JPanel();
+		scrollpanecontainer1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				requestFocus();
+			}
+		});
 		scrollpanecontainer1.setBounds(0, 79, 455, 591);
 		scrollpanecontainer1.setBackground(new Color(255, 255, 255));
 		details1.add(scrollpanecontainer1);
@@ -134,7 +140,8 @@ public class Child_Compare extends JPanel {
 			public void mouseClicked(MouseEvent e) {
 				if(textField2.getText() == null || textField2.getText().trim().equals("")) return;
 				scrollpanecontainer2.removeAll();
-				initializedetailpage(textField2.getText(), datacenter2, scrollpanecontainer2, scrollpanel2, detailsofresult2, 1);
+				InitializeDetailPage initializedetailpage2 = new InitializeDetailPage(textField2.getText(), datacenter2, scrollpanecontainer2, scrollpanel2, detailsofresult2, 1);
+				initializedetailpage2.start();
 				scrollpanecontainer2.updateUI();
 			}
 			@Override
@@ -160,7 +167,8 @@ public class Child_Compare extends JPanel {
 				if(e.getKeyChar() == e.VK_ENTER){
 					if(textField2.getText() == null || textField2.getText().trim().equals("")) return;
 					scrollpanecontainer2.removeAll();
-					initializedetailpage(textField2.getText(), datacenter2, scrollpanecontainer2, scrollpanel2, detailsofresult2, 1);
+					InitializeDetailPage initializedetailpage2 = new InitializeDetailPage(textField2.getText(), datacenter2, scrollpanecontainer2, scrollpanel2, detailsofresult2, 1);
+					initializedetailpage2.start();
 					scrollpanecontainer2.updateUI();
 				}
 			}
@@ -172,6 +180,12 @@ public class Child_Compare extends JPanel {
 		textField2.setColumns(20);
 		
 		scrollpanecontainer2 = new JPanel();
+		scrollpanecontainer2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				requestFocus();
+			}
+		});
 		scrollpanecontainer2.setBounds(0, 79, 455, 591);
 		scrollpanecontainer2.setBackground(new Color(255, 255, 255));
 		details2.add(scrollpanecontainer2);
@@ -195,7 +209,8 @@ public class Child_Compare extends JPanel {
 			public void mouseClicked(MouseEvent e) {
 				if(textField3.getText() == null || textField3.getText().trim().equals("")) return;
 				scrollpanecontainer3.removeAll();
-				initializedetailpage(textField3.getText(), datacenter3, scrollpanecontainer3, scrollpanel3, detailsofresult3, 2);
+				InitializeDetailPage initializedetailpage3 = new InitializeDetailPage(textField3.getText(), datacenter3, scrollpanecontainer3, scrollpanel3, detailsofresult3, 2);
+				initializedetailpage3.start();
 				scrollpanecontainer3.updateUI();
 			}
 			@Override
@@ -221,7 +236,8 @@ public class Child_Compare extends JPanel {
 				if(e.getKeyChar() == e.VK_ENTER){
 					if(textField3.getText() == null || textField3.getText().trim().equals("")) return;
 					scrollpanecontainer3.removeAll();
-					initializedetailpage(textField3.getText(), datacenter3, scrollpanecontainer3, scrollpanel3, detailsofresult3, 2);
+					InitializeDetailPage initializedetailpage3 = new InitializeDetailPage(textField3.getText(), datacenter3, scrollpanecontainer3, scrollpanel3, detailsofresult3, 2);
+					initializedetailpage3.start();
 					scrollpanecontainer1.updateUI();
 				}
 			}
@@ -233,74 +249,17 @@ public class Child_Compare extends JPanel {
 		textField3.setColumns(20);
 		
 		scrollpanecontainer3 = new JPanel();
+		scrollpanecontainer3.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				requestFocus();
+			}
+		});
 		scrollpanecontainer3.setBounds(0, 79, 455, 591);
 		scrollpanecontainer3.setBackground(new Color(255, 255, 255));
 		details3.add(scrollpanecontainer3);
 		scrollpanecontainer3.setLayout(null);
 		
 		setVisible(true);
-		
-		
-	}
-	
-	public void initializedetailpage(String keyword, DataCenter datacenter, JPanel container, JScrollPane scrollpanel, DetailsofResults_Compare detailsofresults, int num){
-		BbkDetail bbkdetail = datacenter.compareCenter.assignDetail(keyword, num);
-		
-		if(bbkdetail == null){
-			JLabel noresults = new JLabel("Sorry, no results found.");
-			noresults.setFont(new Font("Times New Roman", Font.BOLD, 30));
-			noresults.setBounds(20, 0, 300, 50);
-			container.add(noresults);
-		}
-		else{
-			showresult(container, scrollpanel, detailsofresults, bbkdetail);
-		}
-	}
-	
-	public void showresult(JPanel container, JScrollPane scrollpanel, DetailsofResults_Compare detailsofresults, BbkDetail bbkdetail){
-		detailsofresults = new DetailsofResults_Compare();
-		detailsofresults.ID_Content.setText(bbkdetail.name);
-		detailsofresults.Type_Content.setText(bbkdetail.type);
-		detailsofresults.Author_Content.setText(bbkdetail.author);
-		detailsofresults.EnteredDate_Content.setText(bbkdetail.enterDate);
-		detailsofresults.URL_Content.setText(bbkdetail.url);
-		detailsofresults.ReleasedStatus_Content.setText(bbkdetail.releaseStatus);
-		if(bbkdetail.rating.average_stars.equals("No Stars")){
-			detailsofresults.AverageStar_Content.setText(bbkdetail.rating.average_stars);
-		}
-		else if(bbkdetail.rating.average_stars.length() == 1){
-			detailsofresults.AverageStar_Content.setText(bbkdetail.rating.average_stars);
-		}
-		else if(bbkdetail.rating.average_stars.length() >= 3){
-			detailsofresults.AverageStar_Content.setText(bbkdetail.rating.average_stars.substring(0,3));
-		}
-		detailsofresults.ResultsInGoogle_Content.setText(bbkdetail.rating.google_items);
-		
-		String shortdescription = bbkdetail.shortDesc;
-		if(shortdescription.length()<=40){
-			detailsofresults.Description1.setText(shortdescription);
-			detailsofresults.Description2.setText(null);
-		}
-		else{
-			detailsofresults.Description1.setText(shortdescription.substring(0, 40));
-			detailsofresults.Description2.setText(shortdescription.substring(40));
-		}
-		
-		detailsofresults.ResultsInGoogle_Content.setText(bbkdetail.rating.google_items);
-		
-		String score = "" + bbkdetail.getScore();
-		detailsofresults.Score.setText(score);
-		
-		scrollpanel = new JScrollPane(detailsofresults);
-		JScrollBar scrollbar = new JScrollBar();
-		scrollbar.setUnitIncrement(100);
-		scrollpanel.setVerticalScrollBar(scrollbar);
-		scrollpanel.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-		scrollpanel.setBounds(0, 0, 455, 591);
-		scrollpanel.validate();
-		
-		container.removeAll();;
-		container.add(scrollpanel);
-		container.updateUI();
 	}
 }
