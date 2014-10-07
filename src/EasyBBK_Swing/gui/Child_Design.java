@@ -9,12 +9,6 @@ import EasyBBK_Swing.gui.Pen;
 import EasyBBK_Swing.gui.TPanel;
 import EasyBBK_Swing.gui.FontChooser;
 
-
-
-
-
-
-
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Cursor;
@@ -62,6 +56,8 @@ public class Child_Design extends JLayeredPane {
 	private Pen pen = null;
 	private LinePanel linePanel = new LinePanel(pen);
 	private TextLabel textLabel = null;
+	
+	private ArrayList<Component> totalCompList=new ArrayList<Component>();
 	
 	private Color lineColor = Color.black;
 	private float lineStroke = 3.0f;
@@ -453,6 +449,7 @@ public class Child_Design extends JLayeredPane {
 									linePanel.getLineBorder()[1]-linePanel.getLineBorder()[0]+20,
 									linePanel.getLineBorder()[3]-linePanel.getLineBorder()[2]+20);
 							JLabelWithID newLine = new JLabelWithID();
+							totalCompList.add(newLine);
 							newLine.ID=compCount++;
 							ImageIcon image = new ImageIcon(newimg);
 							newLine.setIcon(image);
@@ -534,6 +531,7 @@ public class Child_Design extends JLayeredPane {
 								linePanel.getLineBorder()[1]-linePanel.getLineBorder()[0]+20,
 								linePanel.getLineBorder()[3]-linePanel.getLineBorder()[2]+20);
 						JLabelWithID newLine = new JLabelWithID();
+						totalCompList.add(newLine);
 						newLine.ID=compCount++;
 						ImageIcon image = new ImageIcon(newimg);
 						newLine.setIcon(image);
@@ -608,6 +606,7 @@ public class Child_Design extends JLayeredPane {
 								linePanel.getLineBorder()[1]-linePanel.getLineBorder()[0]+20,
 								linePanel.getLineBorder()[3]-linePanel.getLineBorder()[2]+20);
 						JLabelWithID newLine = new JLabelWithID();
+						totalCompList.add(newLine);
 						newLine.ID=compCount++;
 						ImageIcon image = new ImageIcon(newimg);
 						newLine.setIcon(image);
@@ -689,6 +688,7 @@ public class Child_Design extends JLayeredPane {
 	    		{
 	    			point =  e.getPoint();
 		    		BackBone newBackBone = new BackBone(panel,Tpanel, sketchCenter);
+		    		totalCompList.add(newBackBone);
 		    		newBackBone.ID=compCount++;		
 		    		
 		    		ImageIcon image_newBackBone = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/backbone_move.png"));
@@ -720,6 +720,7 @@ public class Child_Design extends JLayeredPane {
 	    		{
 					point =  e.getPoint();
 		    		JLabelWithID newLabel = new JLabelWithID();
+		    		totalCompList.add(newLabel);
 		    		newLabel.ID=compCount++;
 		    		
 		    		ImageIcon image_newLabel = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/"+(((JLabelWithID)source)).getName()+"_move.png"));
@@ -812,6 +813,7 @@ public class Child_Design extends JLayeredPane {
 	    		point.x = point.x - 25;
 	    		point.y = point.y - 15;
 	    		newText.setBounds(point.x, point.y, 50,30);
+	    		totalCompList.add(newText);
 	    		newText.ID=compCount++;
 	    		panel.add(newText);
 				
@@ -866,6 +868,7 @@ public class Child_Design extends JLayeredPane {
 								linePanel.getLineBorder()[1]-linePanel.getLineBorder()[0]+20,
 								linePanel.getLineBorder()[3]-linePanel.getLineBorder()[2]+20);
 						JLabelWithID newLine = new JLabelWithID();
+						totalCompList.add(newLine);
 						newLine.ID=compCount++;
 						ImageIcon image = new ImageIcon(newimg);
 						newLine.setIcon(image);
@@ -1236,6 +1239,7 @@ public class Child_Design extends JLayeredPane {
 		public void mouseExited(MouseEvent e) {}
 	}
 	
+	@SuppressWarnings("unchecked")
 	public void addComponent(SketchComponent.Component component)
 	{
 		String primaryType = component.primaryType;
@@ -1280,7 +1284,7 @@ public class Child_Design extends JLayeredPane {
 			newText.ID=label.ID;
 			panel.add(newText);
 		}
-		else if (primaryType.equals(SketchComponent.Label.class.getSimpleName()))
+		else if (primaryType.equals(SketchComponent.BioBrick.class.getSimpleName()))
 		{
 			SketchComponent.BioBrick biobrick = component.toBioBrick();
 			String GUITypeName = null;
@@ -1310,14 +1314,101 @@ public class Child_Design extends JLayeredPane {
 		}
 		else if (primaryType.equals(SketchComponent.Protein.class.getSimpleName()))
 		{
+			SketchComponent.Protein protein = component.toProtein();
+			
+			JLabelWithID newLabel = new JLabelWithID();
+			newLabel.ID=protein.ID; 
+			String GUITypeName=null;
+			
+			switch (protein.secondaryType)
+			{
+				case BbkType.Sketch.Protein.FACTOR:
+					GUITypeName = "factor";	break;
+				case BbkType.Sketch.Protein.RECEPTER:
+					GUITypeName = "receptor";	break;
+				case BbkType.Sketch.Protein.COMBINED:
+					GUITypeName = "protein";	break;
+			}
+			ImageIcon image_newLabel = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/"+GUITypeName+"_move.png"));
+    		newLabel.setIcon(image_newLabel);    		
+    		newLabel.setName(GUITypeName);
+			newLabel.setBounds(protein.bounds);
+			panel.add(newLabel);
+		}
+		else if (primaryType.equals(SketchComponent.BackBone.class.getSimpleName()))
+		{
+			SketchComponent.BackBone backbone = component.toBackBone();
+
+    		BackBone newBackBone = new BackBone(panel,Tpanel, sketchCenter);
+    		newBackBone.ID = newBackBone.ID;		
+    		
+    		ImageIcon image_newBackBone = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/backbone_move.png"));
+    		image_newBackBone.setImage(image_newBackBone.getImage().getScaledInstance(((int)(backbone.bounds).getWidth()),50,Image.SCALE_DEFAULT));
+    		newBackBone.setIcon(image_newBackBone);
+    		newBackBone.setBounds(backbone.bounds);
+    		newBackBone.setName("backbone");
+    		newBackBone.activate();
+			panel.add(newBackBone,-1);
+		}
+		else if (primaryType.equals(SketchComponent.Relation.class.getSimpleName()))
+		{
+			SketchComponent.Relation relation = component.toRelation();
+			int GUIRelationType=-2;
+			switch (relation.secondaryType)
+			{	
+				case BbkType.Sketch.Relation.PROMOTE:
+					GUIRelationType = LinePanel.LINE_WITH_EMPTY_ARROW;	break;
+				case BbkType.Sketch.Relation.SUPPRESS:
+					GUIRelationType = LinePanel.LINE_WIHT_STOP_END;	break;
+				case BbkType.Sketch.Relation.OTHER:
+					GUIRelationType = LinePanel.LINE_WITH_FULL_ARROW;	break;
+			}
+			
+			Color previousColor = new Color(linePanel.color.getRGB());
+			float previousStroke = linePanel.stroke;
+			
+			linePanel.lineList = (ArrayList<Point>) relation.posList.clone();
+			linePanel.setPenValue(GUIRelationType);
+			linePanel.color = new Color(relation.color.getRGB());
+			linePanel.stroke = (float)relation.thickness;
+			linePanel.repaint();
+			
+			BufferedImage img = new BufferedImage(panel.getWidth(),panel.getHeight(),BufferedImage.TRANSLUCENT);
+			Graphics2D g = (Graphics2D)img.getGraphics();
+			linePanel.paint(g);
+			
+			BufferedImage newimg = img.getSubimage(linePanel.getLineBorder()[0]-10, linePanel.getLineBorder()[2]-10,
+					linePanel.getLineBorder()[1]-linePanel.getLineBorder()[0]+20,
+					linePanel.getLineBorder()[3]-linePanel.getLineBorder()[2]+20);
+			
+			JLabelWithID newLine = new JLabelWithID();
+			
+			newLine.ID=relation.ID;
+			ImageIcon image = new ImageIcon(newimg);
+			newLine.setIcon(image);
+			newLine.setBounds(linePanel.getLineBorder()[0]-10, linePanel.getLineBorder()[2]-10,
+					linePanel.getLineBorder()[1]-linePanel.getLineBorder()[0]+20,
+					linePanel.getLineBorder()[3]-linePanel.getLineBorder()[2]+20);
+			panel.add(newLine);
+			
+			linePanel.color = new Color(previousColor.getRGB());
+			linePanel.stroke = previousStroke;
 			
 		}
-		else if (primaryType.equals(SketchComponent.Label.class.getSimpleName()))
-			;
-		else if (primaryType.equals(SketchComponent.Label.class.getSimpleName()))
-			;
-		else if (primaryType.equals(SketchComponent.Label.class.getSimpleName()))
-			;
+		else if (primaryType.equals(SketchComponent.BioVector.class.getSimpleName()))
+		{
+			SketchComponent.BioVector bioVector = component.toBioVictor();
+			String GUIBioVectorType = null;
+			switch (bioVector.secondaryType)
+			{	
+				case BbkType.Sketch.BioVector.PLASMID:
+					GUIBioVectorType = "";	break;
+				case BbkType.Sketch.BioVector.VIRUS:
+					GUIBioVectorType = "";	break;
+				case BbkType.Sketch.BioVector.BACTERIA:
+					GUIBioVectorType = "";	break;
+			}
+		}
 		else
 			return;
 		

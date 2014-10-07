@@ -59,6 +59,12 @@ class LinePanel extends JLayeredPane
 	{
 		this.p = p;
 	}
+	
+	public void setPenValue(int value)
+	{
+		p.setType(value);
+	}
+	
   
     public void paintComponent(Graphics g)
     {
@@ -66,48 +72,33 @@ class LinePanel extends JLayeredPane
     	if (p != null)
     	{
     		lineType = p.getType();
+    		
+    		GraphicsCurve graCurve= new GraphicsCurve((Graphics2D)g);
+    		graCurve.myGraphics.setPaint(color);
+    		graCurve.myGraphics.setStroke(new BasicStroke(stroke));
+    		graCurve.myGraphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON); 
+    		if (lineList.size()==0) return;
+    		if (lineType == -1)
+    		{
+    			graCurve.DrawBezierWithLine(lineList);
+    		}
+    		else if (lineType == 0)
+    		{
+    			graCurve.DrawBezierWithArrow(lineList, false);
+    		}
+    		else
+    		{
+    			graCurve.DrawBezierWithArrow(lineList,true);
+    		}
+    		left = graCurve.getLeft();
+    		right = graCurve.getRight();
+    		top = graCurve.getTop();
+    		bottom = graCurve.getBottom();
+    		topLeft = graCurve.getTopLeft();
+    		bottomRight = graCurve.getBottomRight();
+    		width = graCurve.getWidth();
+    		height = graCurve.getHeight();
     	}   	
-		GraphicsCurve graCurve= new GraphicsCurve((Graphics2D)g);
-		graCurve.myGraphics.setPaint(color);
-		graCurve.myGraphics.setStroke(new BasicStroke(stroke));
-		graCurve.myGraphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON); 
-		//graCurve.DrawCurves(lineList.get(i));
-		//graCurve.DrawCurvesByCurve(lineList.get(i));
-		//graCurve.DrawPolyLine(lineList);
-		//graCurve.DrawBezier(lineList.get(i));
-		//System.out.println(" print"+lineList.size());
-		if (lineList.size()==0) return;
-		if (lineType == -1)
-		{
-			graCurve.DrawBezierWithLine(lineList);
-		}
-		else if (lineType == 0)
-		{
-			graCurve.DrawBezierWithArrow(lineList, false);
-		}
-		else
-		{
-			graCurve.DrawBezierWithArrow(lineList,true);
-		}
-		left = graCurve.getLeft();
-		right = graCurve.getRight();
-		top = graCurve.getTop();
-		bottom = graCurve.getBottom();
-		topLeft = graCurve.getTopLeft();
-		bottomRight = graCurve.getBottomRight();
-		width = graCurve.getWidth();
-		height = graCurve.getHeight();
-//		//SwingUtilities.convertPoint(this.getComponentAt(topLeft), 0, 0, this.getParent());
-//		//Rectangle rect = new Rectangle(left,right,width,height);
-//		//this.scrollRectToVisible(rect);
-//		this.setSize(width,height);
-//		//this.setBounds(left, top, width, height);
-//		BufferedImage bufferimage = new BufferedImage(width,height,BufferedImage.TYPE_INT_ARGB);
-//		bufferimage.
-//		//this.setLocation(left, top);
-//		//this.repaint();
-//		System.out.println(this.getSize()+" "+this.getLocation());
-//		System.out.println(left+" "+right+" "+top+" "+bottom);
     } 
     
     //获得点的list
@@ -137,6 +128,7 @@ class LinePanel extends JLayeredPane
     public void endLine()
     {
     	System.out.println(left+" "+right+" "+top+" "+bottom);
+    	p=null;
     	lineList.clear();
     }
     
