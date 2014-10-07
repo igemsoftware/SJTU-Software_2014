@@ -10,6 +10,7 @@ import java.util.Locale;
 
 import javax.imageio.ImageIO;
 import javax.swing.JFileChooser;
+import javax.swing.JLayeredPane;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -24,7 +25,7 @@ public class SaveListener implements MouseInputListener
 {
 	SketchCenter sketchCenter;
 	
-	public SaveListener(SketchCenter sketchCenter)
+	public SaveListener(SketchCenter sketchCenter,JLayeredPane panel,TPanel Tpanel)
 	{	
 		this.sketchCenter = sketchCenter;
 	}
@@ -63,7 +64,7 @@ public class SaveListener implements MouseInputListener
 				oFile = new File(oFile.getAbsolutePath() + extension);
 			}
 			
-			sketchCenter.currentProject.saveIntoFile(oFile.toString());
+			sketchCenter.saveProject(oFile.toString());
 		}		
 	}
 	
@@ -78,6 +79,9 @@ public class SaveListener implements MouseInputListener
 	public void mouseEntered(MouseEvent e) {}
 
 	public void mouseExited(MouseEvent e) {}
+	
+	
+	
 	class MyFileFilter extends FileFilter {  
 		  
 	    private String TYPE_UNKNOWN = "Type   Unknown ";  

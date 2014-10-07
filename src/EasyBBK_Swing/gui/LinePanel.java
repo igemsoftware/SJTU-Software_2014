@@ -23,7 +23,7 @@ import javax.swing.SwingUtilities;
 class LinePanel extends JLayeredPane
 {
 	public ArrayList<Point> lineList;
-	private Pen p;
+	public Pen p =new Pen();
 	
 	public final static int LINE_WIHT_STOP_END = -1;
 	public final static int LINE_WITH_EMPTY_ARROW = 0;
