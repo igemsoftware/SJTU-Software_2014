@@ -64,6 +64,7 @@ public class BbkType
 		{	
 			public final static int FACTOR = 0;
 			public final static int RECEPTER = 1;
+			public final static int COMBINED = 3;
 		}
 		
 		public static class BackBone
