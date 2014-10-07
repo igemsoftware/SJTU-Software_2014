@@ -3,6 +3,7 @@ package data_center;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Point;
+import java.awt.Rectangle;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -21,12 +22,13 @@ public class Testing
 	
 	public static void main(String[] args) throws Exception
 	{	
+		//searchKeywordAndGetDetail();
 		//searchFilterAndSort();
 		//searchBlasting();
 		//searchHistory();
 		//compareAssignDetail();
 		//sketchProjectOperation();
-		sketchXMLReadWrite();
+		//sketchXMLReadWrite();
 		//uploadUploadAndReappearBbkUpload();
 		//uploadPartNameSequenceTokenValidationCheck();
 		//uploadSubpartSubscarValidationCheck();
@@ -39,7 +41,7 @@ public class Testing
 	private static void searchKeywordAndGetDetail()
 	{	
 		SearchResultList list = dataCenter.searchCenter.search("GFP");
-		list.display();
+		list.displayRating();
 		System.out.println("List size: " + list.size());
 		for (int i = 0; i < list.size(); i += 10)
 		{	BbkDetail detail = dataCenter.searchCenter.getDetail(list.get(i).name);
@@ -160,18 +162,18 @@ public class Testing
 		System.out.println("Auto generated project name: " + project.name);
 		
 		project.addComponent(new Label(0, "Lable text", 
-				new Point(5, 5), new Font("Times Roman", 10, 3), new Color(0, 0, 0)));
+				new Rectangle(5, 5, 10, 10), new Font("Times Roman", 10, 3), new Color(0, 0, 0)));
 		project.addComponent(new BioBrick(1, "Bba_B0034", BbkType.Sketch.BioBrick.PROMOTER, 
-				new Point(10, 10), null));
-		project.addComponent(new BioBrick(1, "Bba_B0012", BbkType.Sketch.BioBrick.PROMOTER, 
-				new Point(10, 10), null));
+				new Rectangle(10, 10, 10, 10), null));
+		project.addComponent(new BioBrick(6, "Bba_B0012", BbkType.Sketch.BioBrick.PROMOTER, 
+				new Rectangle(10, 50, 10, 10), null));
 		project.addComponent(new Protein(2, BbkType.Sketch.Protein.FACTOR, 
-				new Point(20, 20), Color.BLUE));
-		project.addComponent(new BackBone(3, new Point(50, 50), 50, backBoneChildren));
+				new Rectangle(20, 20, 5, 5), Color.BLUE));
+		project.addComponent(new BackBone(3, new Rectangle(50, 50, 50, 5), backBoneChildren));
 		project.addComponent(new Relation(4, BbkType.Sketch.Relation.SUPPRESS, 
-				curve, new Color(50, 50, 50), 10));
+				new Rectangle(50, 50, 50, 5), curve, new Color(50, 50, 50), 10));
 		project.addComponent(new BioVector(5, BbkType.Sketch.BioVector.BACTERIA, 
-				new Point(300, 300), 3));
+				new Rectangle(300, 300, 100, 100)));
 		
 		project.saveIntoFile("testXML.xml");
 		project.loadFromFile("testXML.xml");

@@ -296,11 +296,11 @@ public class SearchResultList extends ArrayList<BbkOutline>
 			@Override
 			public int compare(BbkOutline bbk1, BbkOutline bbk2)
 			{
-				int score1 = bbk1.getScore(), score2 = bbk2.getScore();
+				double score1 = bbk1.getScore(), score2 = bbk2.getScore();
 				if (DESC)
-					return score2 - score1;
+					return (int)((score2 - score1) * 100);
 				else
-					return score1 - score2;
+					return (int)((score1 - score2) * 100);
 			}
 		};
 		Collections.sort(this, comparator);
@@ -318,14 +318,14 @@ public class SearchResultList extends ArrayList<BbkOutline>
 			@Override
 			public int compare(BbkOutline bbk1, BbkOutline bbk2)
 			{
-				int score1 = bbk1.getScore(status_weight, quality_weight, 
+				double score1 = bbk1.getScore(status_weight, quality_weight, 
 						feedbacks_weight, publication_weight);
-				int	score2 = bbk2.getScore(status_weight, quality_weight, 
+				double	score2 = bbk2.getScore(status_weight, quality_weight, 
 						feedbacks_weight, publication_weight);
 				if (DESC)
-					return score2 - score1;
+					return (int)((score2 - score1) * 100);
 				else
-					return score1 - score2;
+					return (int)((score1 - score2) * 100);
 			}
 		};
 		Collections.sort(this, comparator);

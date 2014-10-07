@@ -22,6 +22,9 @@ import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
 
+import data_center.SketchCenter;
+import data_center.SketchProject;
+
 @SuppressWarnings("serial")
 class TextLabel extends JTextPane implements MouseListener, MouseMotionListener
 {
@@ -49,7 +52,9 @@ class TextLabel extends JTextPane implements MouseListener, MouseMotionListener
 	public JLayeredPane panel = new JLayeredPane();
 	public TPanel Tpanel = new TPanel();	
 	
-	public TextLabel(JLayeredPane panel, TPanel Tpanel)
+	SketchCenter sketchCenter;
+	
+	public TextLabel(JLayeredPane panel, TPanel Tpanel, SketchCenter sketchCenter)
 	{
 		super();
 		StyleConstants.setAlignment(attr, StyleConstants.ALIGN_CENTER);
@@ -59,10 +64,13 @@ class TextLabel extends JTextPane implements MouseListener, MouseMotionListener
 		StyleConstants.setFontSize(attr, 16);
 		StyleConstants.setFontFamily(attr, "Time New Roman");
 		this.setParagraphAttributes(attr, true);
+		this.setName("text");
 		this.panel=panel;
 		this.Tpanel=Tpanel;
 		this.addMouseListener(this);
 		this.addMouseMotionListener(this);
+		
+		this.sketchCenter = sketchCenter;
 	}
 	
 	public boolean inUse = false;
@@ -315,9 +323,17 @@ class TextLabel extends JTextPane implements MouseListener, MouseMotionListener
 	
 	public void mouseReleased(MouseEvent e)
 	{
+		TextLabel labelResized = (TextLabel) e.getComponent();
+		
 		this.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
 		panel.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
     	Tpanel.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+    	if (resizeable)
+    	{
+    		Rectangle folBounds = new Rectangle(labelResized.getBounds());
+    		sketchCenter.currentProject.modifyComponent
+    			(labelResized.ID, SketchProject.Operation.TYPE_BOUNDS, folBounds);
+    	}
 		resizeable = false;
 		reType=0;
 		panel.setPosition(e.getComponent(),-1);

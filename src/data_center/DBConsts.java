@@ -32,18 +32,18 @@ public final class DBConsts
 	public static class Rating
 	{
 	    // default weight
-	    public final static double STATUS_DEFAULT_WEIGHT = 0.2;
-	    public final static double QUALITY_DEFAULT_WEIGHT = 0.12;
-	    public final static double FEEDBACKS_DEFAULT_WEIGHT = 0.48;
-	    public final static double PUBLICATION_DEFAULT_WEIGHT = 0.2;
+	    public final static double STATUS_DEFAULT_WEIGHT = 0.406;
+	    public final static double QUALITY_DEFAULT_WEIGHT = 0.233;
+	    public final static double FEEDBACKS_DEFAULT_WEIGHT = 0.244;
+	    public final static double PUBLICATION_DEFAULT_WEIGHT = 0.117;
 	    
 	    // total points
-	    public final static double STATUS_TOTAL_POINTS = 1;
-	    public final static double QUALITY_TOTAL_POINTS = 0.6;
-	    public final static double FEEDBACKS_TOTAL_POINTS = 2.4;
-	    public final static double PUBLICATION_TOTAL_POINTS = 1;
+	    public final static double STATUS_TOTAL_POINTS = 0.406;
+	    public final static double QUALITY_TOTAL_POINTS = 0.233;
+	    public final static double FEEDBACKS_TOTAL_POINTS = 0.244;
+	    public final static double PUBLICATION_TOTAL_POINTS = 0.117;
 	    
-	    public final static double TOTAL_POINTS = 5;
+	    public final static double TOTAL_POINTS = 1;
 	}
 	
 	
@@ -80,6 +80,8 @@ public final class DBConsts
 		    public final static String TOT_COMMENTS = "tot_comments";
 		    public final static String GOOGLE_ITEMS = "google_items";
 		    public final static String FIRST_URL = "first_url";
+		    public final static String DOCUMENTATION = "documentation";
+		    public final static String USED_TIMES = "used_times";
 		    
 		    public final static String STATUS = "status";
  		    public final static String QUALITY = "quality";
