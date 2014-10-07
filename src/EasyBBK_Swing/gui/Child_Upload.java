@@ -1,7 +1,10 @@
 package EasyBBK_Swing.gui;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Container;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
 
 import javax.swing.JComboBox;
@@ -22,6 +25,8 @@ import javax.swing.JTextArea;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 
+import data_center.BbkUpload;
+
 public class Child_Upload extends JPanel {
 	public MainPage mainpage;
 	public JScrollPane scrollpanel;
@@ -29,7 +34,6 @@ public class Child_Upload extends JPanel {
 	public JComboBox Type;
 	public JTextField Nickname;
 	public JTextField Designers;
-	public JComboBox DNAStatus;
 	public JTextArea SequenceInformation;
 	public JPanel UploadContainer;
 	public JScrollPane textscrollpanel;
@@ -45,7 +49,11 @@ public class Child_Upload extends JPanel {
 	public JButton RemoveFeature;
 	public JTextArea ContactInfo;
 	public JScrollPane contactscrollpanel;
-	public JButton Submit;
+	public JButton SubmitToDatabase;
+	public JButton SubmitToWebsite;
+	public String typestring;
+	public String information_shown = "";
+	public BbkUpload bbkupload;
 	/**
 	 * Create the panel.
 	 */
@@ -69,8 +77,8 @@ public class Child_Upload extends JPanel {
 				UploadContainer.requestFocus();
 			}
 		});
-		UploadContainer.setBounds(0, 0, 1348, 1250);
-		UploadContainer.setPreferredSize(new Dimension(1348, 1250));
+		UploadContainer.setBounds(0, 0, 1348, 1000);
+		UploadContainer.setPreferredSize(new Dimension(1348, 1000));
 		UploadContainer.setBackground(new Color(0, 255, 255));
 		UploadContainer.setLayout(null);
 		
@@ -104,7 +112,7 @@ public class Child_Upload extends JPanel {
 		Type.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
 				if(e.getStateChange() == ItemEvent.SELECTED){
-					String s = (String)Type.getSelectedItem();
+					typestring = (String)Type.getSelectedItem();
 				}
 			}
 		});
@@ -133,28 +141,9 @@ public class Child_Upload extends JPanel {
 		Designers.setBounds(506, 245, 205, 30);
 		UploadContainer.add(Designers);
 		
-		JLabel Status = new JLabel("DNA Status:");
-		Status.setFont(new Font("Times New Roman", Font.PLAIN, 24));
-		Status.setBounds(373, 285, 135, 30);
-		UploadContainer.add(Status);
-		
-		String dnastatus[] = {"Available", "Planning", "Informational", "Unavailable", "Deleted"};
-		DNAStatus = new JComboBox(dnastatus);
-		DNAStatus.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-	    DNAStatus.setSelectedIndex(0);
-		DNAStatus.addItemListener(new ItemListener() {
-			public void itemStateChanged(ItemEvent e) {
-				if(e.getStateChange() == ItemEvent.SELECTED){
-					String s = (String)Type.getSelectedItem();
-				}
-			}
-		});
-		DNAStatus.setBounds(516, 285, 135, 30);
-		UploadContainer.add(DNAStatus);
-		
 		JLabel Sequence = new JLabel("Sequence Information:");
 		Sequence.setFont(new Font("Times New Roman", Font.PLAIN, 24));
-		Sequence.setBounds(373, 325, 231, 30);
+		Sequence.setBounds(373, 285, 231, 30);
 		UploadContainer.add(Sequence);
 		
 		SequenceInformation = new JTextArea(4, 15);
@@ -165,7 +154,7 @@ public class Child_Upload extends JPanel {
 		SequenceInformation.setBackground(new Color(255, 255, 255));
 		
 		textscrollpanel = new JScrollPane(SequenceInformation);
-		textscrollpanel.setBounds(373, 365, 486, 117);
+		textscrollpanel.setBounds(373, 325, 486, 117);
 		JScrollBar scrollbar1 = new JScrollBar();
 		scrollbar1.setUnitIncrement(20);
 		textscrollpanel.setVerticalScrollBar(scrollbar1);
@@ -174,93 +163,115 @@ public class Child_Upload extends JPanel {
 		UploadContainer.add(textscrollpanel);
 		
 		AddSequence = new JButton("Add sequence");
+		AddSequence.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				new SequenceDialog(mainpage, "Please input a sequence", true);
+				if(mainpage.sequencestring.equals("") == false){
+					information_shown += mainpage.sequencestring;
+					information_shown += "  ";
+					SequenceInformation.setText(information_shown);
+					bbkupload.sequenceTokens.add(mainpage.sequencestring);
+					mainpage.sequencestring = "";
+				}				
+			}
+		});
 		AddSequence.setToolTipText("Click me to add a sequence.");
 		AddSequence.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		AddSequence.setBounds(373, 505, 156, 30);
+		AddSequence.setBounds(373, 465, 156, 30);
 		UploadContainer.add(AddSequence);
 		
 		AddSubpart = new JButton("Add subpart");
+		AddSubpart.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				new SubpartDialog(mainpage, "Please input a subpart name", true);
+				if(mainpage.subpartstring.equals("") == false){
+					information_shown += mainpage.subpartstring;
+					information_shown += "  ";
+					SequenceInformation.setText(information_shown);
+					bbkupload.sequenceTokens.add(mainpage.subpart_bbkdetail);
+					mainpage.subpartstring = "";
+				}
+			}
+		});
 		AddSubpart.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		AddSubpart.setBounds(539, 505, 156, 30);
+		AddSubpart.setBounds(539, 465, 156, 30);
 		UploadContainer.add(AddSubpart);
 		
 		AddSubscar = new JButton("Add subscar");
 		AddSubscar.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		AddSubscar.setBounds(705, 505, 156, 30);
+		AddSubscar.setBounds(705, 465, 156, 30);
 		UploadContainer.add(AddSubscar);
 		
 		UseDefaultScar = new JCheckBox("Use default scar");
 		UseDefaultScar.setBackground(new Color(0, 255, 255));
 		UseDefaultScar.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		UseDefaultScar.setBounds(373, 553, 169, 30);
+		UseDefaultScar.setBounds(373, 513, 169, 30);
 		UploadContainer.add(UseDefaultScar);
 		
 		JLabel Category = new JLabel("Category:");
 		Category.setFont(new Font("Times New Roman", Font.PLAIN, 24));
-		Category.setBounds(373, 593, 113, 30);
+		Category.setBounds(373, 553, 113, 30);
 		UploadContainer.add(Category);
 		
 		categorypanel = new JPanel();
-		categorypanel.setBounds(373, 633, 486, 117);
+		categorypanel.setBounds(373, 593, 486, 117);
 		categorypanel.setBackground(new Color(255, 255, 255));
 		categorypanel.setLayout(null);
 		UploadContainer.add(categorypanel);
 		
 		AddCategory = new JButton("Add");
 		AddCategory.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		AddCategory.setBounds(618, 593, 75, 30);
+		AddCategory.setBounds(618, 553, 75, 30);
 		UploadContainer.add(AddCategory);
 		
 		RemoveCategory = new JButton("Remove");
 		RemoveCategory.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		RemoveCategory.setBounds(713, 593, 100, 30);
+		RemoveCategory.setBounds(713, 553, 100, 30);
 		UploadContainer.add(RemoveCategory);
 		
 		JLabel Features = new JLabel("Features:");
 		Features.setFont(new Font("Times New Roman", Font.PLAIN, 24));
-		Features.setBounds(373, 765, 113, 30);
+		Features.setBounds(373, 725, 113, 30);
 		UploadContainer.add(Features);
 		
 		featurespanel = new JPanel();
-		featurespanel.setBounds(373, 805, 486, 117);
+		featurespanel.setBounds(373, 765, 486, 117);
 		featurespanel.setBackground(new Color(255, 255, 255));
 		featurespanel.setLayout(null);
 		UploadContainer.add(featurespanel);
 		
 		AddFeature = new JButton("Add");
 		AddFeature.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		AddFeature.setBounds(618, 765, 75, 30);
+		AddFeature.setBounds(618, 725, 75, 30);
 		UploadContainer.add(AddFeature);
 		
 		RemoveFeature = new JButton("Remove");
 		RemoveFeature.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		RemoveFeature.setBounds(713, 765, 100, 30);
+		RemoveFeature.setBounds(713, 725, 100, 30);
 		UploadContainer.add(RemoveFeature);
 		
-		JLabel Contact = new JLabel("Contact Information:");
-		Contact.setFont(new Font("Times New Roman", Font.PLAIN, 24));
-		Contact.setBounds(373, 937, 240, 30);
-		UploadContainer.add(Contact);
+		SubmitToDatabase = new JButton("<html>" + "Submit to" + "<br>" + " our database" + "</html>");
+		SubmitToDatabase.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				BbkUpload bbkupload = new BbkUpload();
+				bbkupload.shortDesc = ShortDescription.getText();
+				bbkupload.type = typestring;
+				bbkupload.nickname = Nickname.getText();
+				bbkupload.author = Designers.getText();
+				
+			}
+		});
+		SubmitToDatabase.setFont(new Font("Times New Roman", Font.PLAIN, 24));
+		SubmitToDatabase.setBounds(403, 902, 180, 55);
+		UploadContainer.add(SubmitToDatabase);
 		
-		ContactInfo = new JTextArea(4, 15);
-		ContactInfo.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		ContactInfo.setLineWrap(true);
-		ContactInfo.setWrapStyleWord(true);
-		ContactInfo.setBackground(new Color(255, 255, 255));
-		
-		contactscrollpanel = new JScrollPane(ContactInfo);
-		contactscrollpanel.setBounds(373, 982, 486, 117);
-		JScrollBar scrollbar3 = new JScrollBar();
-		scrollbar3.setUnitIncrement(20);
-		contactscrollpanel.setVerticalScrollBar(scrollbar3);
-		contactscrollpanel.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-		contactscrollpanel.validate();
-		UploadContainer.add(contactscrollpanel);
-		
-		AddFeature = new JButton("Submit");
-		AddFeature.setFont(new Font("Times New Roman", Font.PLAIN, 24));
-		AddFeature.setBounds(558, 1120, 120, 30);
-		UploadContainer.add(AddFeature);
+		SubmitToWebsite = new JButton("<html>" + "Submit to" + "<br>" + " offical website" + "</html>");
+		SubmitToWebsite.setFont(new Font("Times New Roman", Font.PLAIN, 24));
+		SubmitToWebsite.setBounds(649, 902, 180, 55);
+		UploadContainer.add(SubmitToWebsite);
 		
 		JScrollBar scrollbar = new JScrollBar();
 		scrollbar.setUnitIncrement(100);

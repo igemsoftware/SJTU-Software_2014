@@ -15,8 +15,12 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
+import javax.swing.JWindow;
 
-public class MainPage{
+import data_center.*;
+import data_center.BbkUpload.SpecifiedSubscar;
+
+public class MainPage extends JFrame{
 	public JFrame frame;
 	public JPanel Mainpanel;
 	public JLabel Search;
@@ -37,6 +41,11 @@ public class MainPage{
 	public Child_Upload child_upload_current = null;
 	public Child_Compare child_compare_current = null;
 	public int CurrentPage = 0;
+	public String sequencestring = "";
+	public String subpartstring = "";
+	public String subscarstring = "";
+	public BbkDetail subpart_bbkdetail;
+	public SpecifiedSubscar subscar;
 	/**
 	 * Launch the application.
 	 */
