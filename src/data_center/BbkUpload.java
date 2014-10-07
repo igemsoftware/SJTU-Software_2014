@@ -76,7 +76,7 @@ public class BbkUpload
 	 * Please call uploadCenter.isSequanceValid() first. 
 	 * useDefaultScar means use RFC[10] to fill all unspecified scars 
 	 * between bio-bricks */
-	public void setSequence(boolean useDefaultScar)
+	public void setSequence(boolean useDefaultScar, boolean findTwins)
 	{
 		sequence = "";
 		deepSubparts = new ArrayList<BbkUpload.DeepSubpart>();
@@ -111,7 +111,8 @@ public class BbkUpload
 			preToken = token;
 		}
 		// check for twins
-		twins = DatabaseConnector.findTwinsBySequence(sequence);
+		if (findTwins)
+			twins = DatabaseConnector.findTwinsBySequence(sequence);
 	}
 
 	
