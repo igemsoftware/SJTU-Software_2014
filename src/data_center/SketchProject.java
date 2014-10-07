@@ -286,9 +286,11 @@ public class SketchProject
 						component.setString((String) object);	break;
 					case Operation.TYPE_BOUNDS:
 						component.setBounds((Rectangle) object);
-						if (component.primaryType.equals(BackBone.class.getSimpleName())
-							&& isLinkageEvent(operation.previous, operation.following))
-							onLinkage(component.toBackBone(), operation.previous, operation.following);
+						if (isMoveEvent(operation.previous, operation.following))
+							if (component.primaryType.equals(BackBone.class.getSimpleName()))
+								onLinkage(component.toBackBone(), operation.previous, operation.following);
+							else if (component.primaryType.equals(BackBone.class.getSimpleName()))
+								onLinkage(component.toRelation(), operation.previous, operation.following);
 						break;
 					case Operation.TYPE_THICKNESS:
 						component.setThickness((Double) object);	break;
@@ -302,11 +304,11 @@ public class SketchProject
 		}
 	}
 	
-	/** Judge if the modify contains a linkage event by the size of the component. 
+	/** Judge if the modify contains a move event by the size of the component. 
 	 * If the size has not changed(and the position has changed, namely), 
-	 * it should be a linkage event. Otherwise it is the user dragging the edge 
+	 * it should be a move event. Otherwise it is the user dragging the edge 
 	 * of the backbone to extend or shrink it, not contains a linkage event.  */
-	private boolean isLinkageEvent(Object previous, Object following)
+	private boolean isMoveEvent(Object previous, Object following)
 	{	
 		Rectangle preBounds = (Rectangle) previous;
 		Rectangle folBounds = (Rectangle) following;
@@ -332,6 +334,20 @@ public class SketchProject
 				new Rectangle(preBoundsOfBbk.x + dx, preBoundsOfBbk.y + dy, 
 						preBoundsOfBbk.width, preBoundsOfBbk.height);
 			comp.setBounds(folBoundsOfBbk);
+		}
+	}
+	
+	/** Áª¶¯ in Chinese, move the points of a curve in a relation when the 
+	 * relation picture is moved.  */
+	private void onLinkage(Relation relation, Object previous, Object following)
+	{
+		Rectangle preBounds = (Rectangle) previous;
+		Rectangle folBounds = (Rectangle) following;
+		int dx = folBounds.x - preBounds.x,
+			dy = folBounds.y - preBounds.y;
+		for (Point point : relation.posList)
+		{	point.x += dx;
+			point.y += dy;
 		}
 	}
 	

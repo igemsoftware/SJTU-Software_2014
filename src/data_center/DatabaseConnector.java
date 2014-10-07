@@ -161,7 +161,7 @@ public class DatabaseConnector
 				" where " + DBConsts.Header.Main.SEQUENCE + " = " + "'" + sequence + "'");
     		while (resultSet.next())
     		{	BbkUpload.Twin twin = new Twin();
-    			twin.twin = resultSet.getString(DBConsts.Header.Twin.TWIN);
+    			twin.twin = resultSet.getString(DBConsts.Header.Main.NAME);
     			twins.add(twin);
     		}
     	} catch (SQLException e) {e.printStackTrace();}
