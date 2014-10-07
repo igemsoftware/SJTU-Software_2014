@@ -15,6 +15,9 @@ import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.SwingUtilities;
 
+import data_center.SketchCenter;
+import data_center.SketchProject;
+
 /**
  * Make JLabel contain more information
  */
@@ -32,27 +35,32 @@ class BackBone extends JLabelWithID implements MouseListener, MouseMotionListene
 	public JLayeredPane panel = new JLayeredPane();
 	public TPanel Tpanel = new TPanel();
 	
-	public BackBone(String s)
+	public SketchCenter sketchCenter;
+	
+	public BackBone(String s, SketchCenter sketchCenter)
 	{
 		super(s);
 		this.addMouseListener(this);
 		this.addMouseMotionListener(this);
+		this.sketchCenter = sketchCenter;
 	}
 	
-	public BackBone()
+	public BackBone(SketchCenter sketchCenter)
 	{
 		super();
 		this.addMouseListener(this);
 		this.addMouseMotionListener(this);
+		this.sketchCenter = sketchCenter;
 	}
 	
-	public BackBone(JLayeredPane panel, TPanel Tpanel)
+	public BackBone(JLayeredPane panel, TPanel Tpanel, SketchCenter sketchCenter)
 	{
 		super();
 		this.panel=panel;
 		this.Tpanel=Tpanel;
 		this.addMouseListener(this);
 		this.addMouseMotionListener(this);
+		this.sketchCenter = sketchCenter;
 	}
 	
 	protected void paintComponent(Graphics g)
@@ -159,6 +167,13 @@ class BackBone extends JLabelWithID implements MouseListener, MouseMotionListene
 		this.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
 		panel.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
     	Tpanel.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+    	if (resizeable)
+    	{
+    		BackBone backBoneResized = (BackBone) e.getComponent();
+    		Rectangle folBounds = new Rectangle(backBoneResized.getBounds());
+    		sketchCenter.currentProject.modifyComponent
+    			(backBoneResized.ID, SketchProject.Operation.TYPE_BOUNDS, folBounds);
+    	}
 		resizeable = false;
 		panel.setPosition(e.getComponent(),-1);
 	}
