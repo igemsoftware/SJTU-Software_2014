@@ -611,7 +611,7 @@ public class SketchProject
 		else if (primaryType.equals(BackBone.class.getSimpleName()))
 			component = new BackBone(ID, bounds, children);
 		else if (primaryType.equals(Relation.class.getSimpleName()))
-			component = new Relation(ID, secondaryType, curve, color, thickness);
+			component = new Relation(ID, secondaryType, bounds,  curve, color, thickness);
 		else if (primaryType.equals(BioVector.class.getSimpleName()))
 			component = new BioVector(ID, secondaryType, bounds);
 		
