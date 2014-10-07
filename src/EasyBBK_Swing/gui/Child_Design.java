@@ -99,8 +99,6 @@ public class Child_Design extends JLayeredPane {
 		JLabelWithID recepter = new JLabelWithID("");
 		JLabelWithID protein = new JLabelWithID("");
 		JLabelWithID plasmid = new JLabelWithID("");
-		JLabelWithID virus = new JLabelWithID("");
-		JLabelWithID ecoil = new JLabelWithID("");
 		JButton newButton = new JButton();
 		JButton openButton = new JButton();
 		JButton saveButton = new JButton();
@@ -109,6 +107,8 @@ public class Child_Design extends JLayeredPane {
 		JButton forward = new JButton();
 		JButton fontButton = new JButton();
 		JButton lineButton = new JButton();
+		JLabelWithID virus = new JLabelWithID("");
+		JLabelWithID ecoil = new JLabelWithID("");
 		Pen text = new Pen();
 		Pen eraser = new Pen();
 		Pen line_inhabit = new Pen();
@@ -744,6 +744,7 @@ public class Child_Design extends JLayeredPane {
 		    			newLabel.setBounds(point.x-41, point.y-25, 83,50);
 			    		newLabel.setName(((JLabelWithID)source).getName());
 		    		}		    		
+
 					panel.add(newLabel);
 					
 					SketchComponent.Component component = null;

@@ -35,6 +35,8 @@ class DragCompListener implements MouseInputListener
 	
 	private BackBone previousBackbone=null;
 	
+	private BackBone previousBackbone=null;
+	
 	JLayeredPane panel;
 	TPanel Tpanel;
 	
@@ -73,8 +75,12 @@ class DragCompListener implements MouseInputListener
 			}
 			
 			if ((e.getComponent()).getName() != "recepter" & (e.getComponent()).getName() != "factor"
+<<<<<<< HEAD
+					& (e.getComponent()).getName() != "protein" & (e.getComponent()).getName() != "plasmid")
+=======
 					& (e.getComponent()).getName() != "protein" & (e.getComponent()).getName() != "plasmid"
 					& (e.getComponent()).getName() != "virus" & (e.getComponent()).getName() != "ecoil")
+>>>>>>> origin/master
 			{
 				//create a list of backbones and a list of components
 				backboneList.clear();
@@ -85,8 +91,12 @@ class DragCompListener implements MouseInputListener
 					if (((panel.getComponents())[i]).getName() != "TPanel" & ((panel.getComponents())[i]).getName() != "linePanel"
 							& ((panel.getComponents())[i]).getName() != "text" & 
 							(((panel.getComponents())[i]).getName() != "recepter" & ((panel.getComponents())[i]).getName() != "factor"
+<<<<<<< HEAD
+							& ((panel.getComponents())[i]).getName() != "protein" & ((panel.getComponents())[i]).getName() != "plasmid"))
+=======
 							& ((panel.getComponents())[i]).getName() != "protein" & ((panel.getComponents())[i]).getName() != "plasmid"
 							& (e.getComponent()).getName() != "virus" & (e.getComponent()).getName() != "ecoil"))
+>>>>>>> origin/master
 					{
 						if (((panel.getComponents())[i]).getName()=="backbone")
 						{
@@ -287,9 +297,15 @@ class DragCompListener implements MouseInputListener
 		if ((e.getComponent()).getName() != "TPanel" & (e.getComponent()).getName() != "LinePanel"
 				& (e.getComponent()).getName() != "text" )
 		{
+<<<<<<< HEAD
+			if (((e.getComponent()).getName() != "recepter" & 
+					(e.getComponent()).getName() != "factor" & (e.getComponent()).getName() != "protein" 
+					& (e.getComponent()).getName() != "plasmid"))
+=======
 			if (((e.getComponent()).getName() != "recepter" & (e.getComponent()).getName() != "factor" 
 					& (e.getComponent()).getName() != "protein" & (e.getComponent()).getName() != "plasmid"
 					& (e.getComponent()).getName() != "virus" & (e.getComponent()).getName() != "ecoil"))
+>>>>>>> origin/master
 			{
 				if ((e.getComponent()).getName() != "backbone")
 				{
