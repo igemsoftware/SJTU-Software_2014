@@ -170,7 +170,7 @@ public class Testing
 				new Rectangle(20, 20, 5, 5), Color.BLUE));
 		project.addComponent(new BackBone(3, new Rectangle(50, 50, 50, 5), backBoneChildren));
 		project.addComponent(new Relation(4, BbkType.Sketch.Relation.SUPPRESS, 
-				curve, new Color(50, 50, 50), 10));
+				new Rectangle(50, 50, 50, 5), curve, new Color(50, 50, 50), 10));
 		project.addComponent(new BioVector(5, BbkType.Sketch.BioVector.BACTERIA, 
 				new Rectangle(300, 300, 100, 100)));
 		

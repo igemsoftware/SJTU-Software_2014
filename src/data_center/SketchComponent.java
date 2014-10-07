@@ -351,14 +351,16 @@ public class SketchComponent
 	public static class Relation extends Component
 	{
 		public int secondaryType;
+		public Rectangle bounds;
 		public ArrayList<Point> posList;
 		public Color color;
 		public double thickness;
 
-		public Relation(int theID, int secondaryType, 
+		public Relation(int theID, int secondaryType, Rectangle bounds, 
 				ArrayList<Point> list, Color color, double thickness)
 		{
 			super(theID, Relation.class.getSimpleName());
+			this.bounds = bounds;
 			this.secondaryType = secondaryType;
 			this.posList = list;
 			this.color = color;
@@ -377,6 +379,14 @@ public class SketchComponent
 		public void setSecondaryType(Integer type)
         {	secondaryType = type;	}
 		
+        @Override
+		public Rectangle getBounds()
+		{	return bounds;	}
+		
+		@Override
+		public void setBounds(Rectangle bounds)
+		{	this.bounds = new Rectangle(bounds);	}
+        
 		@Override
 		public ArrayList<Point> getCurve()
 		{	return this.posList;	}
