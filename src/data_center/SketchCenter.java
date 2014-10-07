@@ -85,7 +85,7 @@ public class SketchCenter
 	
 	/** Upload the newly designed biobrick to the database by SJTU-software! This 
 	 * function generates a BbkUpload instance to start this process.  */
-	public BbkUpload generateBbkUploadFromBackBone(BackBone backbone)
+	public BbkUpload generateBbkUploadFromBackBone(BackBone backbone, boolean findTwins)
 	{	
 		BbkUpload bbkUpload = new BbkUpload();
 		for (Integer componentID : backbone.bbkChildren)
@@ -97,7 +97,7 @@ public class SketchCenter
 					DatabaseConnector.getDetailByName(bbk.bbkOutline.name);	
 			bbkUpload.sequenceTokens.add(bbkDetail);
 		}
-		bbkUpload.setSequence(true);
+		bbkUpload.setSequence(false, findTwins);
 		return bbkUpload;
 	}
 	
