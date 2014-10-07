@@ -16,6 +16,7 @@ import data_center.*;
 public class SubpartDialog extends JDialog {
 	public MainPage parent;
 	public SubpartDialog sd;
+	public boolean confirmedflag = false;
 	/**
 	 * Create the dialog.
 	 */
@@ -43,6 +44,7 @@ public class SubpartDialog extends JDialog {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if(inputtext.getText().equals("")) return;
+				confirmedflag = true;
 				UploadCenter uploadcenter = new UploadCenter();
 				BbkDetail bbkdetail = uploadcenter.getSubpartForSequenceToken(inputtext.getText());
 				if(bbkdetail != null){

@@ -44,8 +44,8 @@ public class MainPage extends JFrame{
 	public String sequencestring = "";
 	public String subpartstring = "";
 	public String subscarstring = "";
-	public BbkDetail subpart_bbkdetail;
-	public SpecifiedSubscar subscar;
+	public BbkDetail subpart_bbkdetail = null;
+	public SpecifiedSubscar subscar = null;
 	/**
 	 * Launch the application.
 	 */

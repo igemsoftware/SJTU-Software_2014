@@ -48,6 +48,7 @@ public class SubscarDialog extends JDialog {
 				SpecifiedSubscar ss = uploadcenter.getSubscarForSequenceToken(inputtext.getText());
 				if(ss != null){
 					parent.subscarstring = inputtext.getText();
+					parent.subscar = ss;
 					sd.dispose();
 				}
 				else{
@@ -56,7 +57,7 @@ public class SubscarDialog extends JDialog {
 					jd.setSize(new Dimension(240, 100));
 					jd.setLocation(563, 294);
 					
-					JLabel text = new JLabel("This subpart doesn't exist.", JLabel.CENTER);
+					JLabel text = new JLabel("This subscar doesn't exist.", JLabel.CENTER);
 					text.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 					jd.getContentPane().add(text, BorderLayout.CENTER);
 					
