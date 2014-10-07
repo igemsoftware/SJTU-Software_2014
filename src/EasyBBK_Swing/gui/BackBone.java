@@ -15,42 +15,52 @@ import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.SwingUtilities;
 
+import data_center.SketchCenter;
+import data_center.SketchProject;
+
 /**
  * Make JLabel contain more information
  */
 @SuppressWarnings("serial")
-class BackBone extends JLabel implements MouseListener, MouseMotionListener
+class BackBone extends JLabelWithID implements MouseListener, MouseMotionListener
 {
-	public int ID = 0;
 	Point newPoint =new Point(0,0);
 	private Rectangle outer_rect = new Rectangle();
 	private Rectangle inner_rect = new Rectangle();
+	private Rectangle rect_right = new Rectangle();
+	private Rectangle rect_left = new Rectangle();
+	private int reType = 0;
 	public boolean activate = false;
 	public boolean resizeable = false;
 	public JLayeredPane panel = new JLayeredPane();
 	public TPanel Tpanel = new TPanel();
 	
-	public BackBone(String s)
+	public SketchCenter sketchCenter;
+	
+	public BackBone(String s, SketchCenter sketchCenter)
 	{
 		super(s);
 		this.addMouseListener(this);
 		this.addMouseMotionListener(this);
+		this.sketchCenter = sketchCenter;
 	}
 	
-	public BackBone()
+	public BackBone(SketchCenter sketchCenter)
 	{
 		super();
 		this.addMouseListener(this);
 		this.addMouseMotionListener(this);
+		this.sketchCenter = sketchCenter;
 	}
 	
-	public BackBone(JLayeredPane panel, TPanel Tpanel)
+	public BackBone(JLayeredPane panel, TPanel Tpanel, SketchCenter sketchCenter)
 	{
 		super();
 		this.panel=panel;
 		this.Tpanel=Tpanel;
 		this.addMouseListener(this);
 		this.addMouseMotionListener(this);
+		this.sketchCenter = sketchCenter;
 	}
 	
 	protected void paintComponent(Graphics g)
@@ -61,6 +71,8 @@ class BackBone extends JLabel implements MouseListener, MouseMotionListener
 			outer_rect = this.getVisibleRect();
 			outer_rect.setRect(outer_rect.x+1, outer_rect.y+1, outer_rect.width-2, outer_rect.height-2);
 			inner_rect.setRect(outer_rect.x+3, outer_rect.y, outer_rect.width-6, outer_rect.height);
+			rect_right.setRect(outer_rect.x+outer_rect.width-3, outer_rect.y+3, 2, outer_rect.height-6);
+			rect_left.setRect(outer_rect.x+1, outer_rect.y+3, 2, outer_rect.height-6);
 		}
 	}
 	
@@ -82,6 +94,15 @@ class BackBone extends JLabel implements MouseListener, MouseMotionListener
 				resizeable = true;
 			else
 				resizeable = false;
+			
+			if (rect_right.contains(e.getPoint())) 
+			{
+		    	reType=2;
+			}
+			else if (rect_left.contains(e.getPoint())) 
+			{
+		    	reType=1;
+			}
 		}
 		panel.setPosition(e.getComponent(),-1);
 	}
@@ -114,10 +135,26 @@ class BackBone extends JLabel implements MouseListener, MouseMotionListener
 			{
 				newPoint = SwingUtilities.convertPoint((BackBone)e.getSource() , 
 						e.getPoint(), ((BackBone)e.getSource()).getParent());
-				this.setSize(new Dimension(newPoint.x-this.getX(), this.getHeight()));
+				
+				switch (reType)
+				{
+				case 1:
+					if (this.getX()+this.getWidth()-newPoint.x>20)
+					{
+						this.setSize(new Dimension(this.getX()+this.getWidth()-newPoint.x, this.getHeight()));
+						this.setLocation(new Point(newPoint.x,this.getY()));
+					}
+					break;
+				case 2:
+					if (newPoint.x-this.getX()>20)
+					{
+						this.setSize(new Dimension(newPoint.x-this.getX(), this.getHeight()));
+					}
+					break;
+				}
 				
 				//test
-				ImageIcon image = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/dc_backbone_Hover.png"));
+				ImageIcon image = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/backbone_move.png"));
 				image.setImage(image.getImage().getScaledInstance(this.getWidth(),50,Image.SCALE_DEFAULT));
 				this.setIcon(image);
 			}
@@ -130,6 +167,13 @@ class BackBone extends JLabel implements MouseListener, MouseMotionListener
 		this.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
 		panel.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
     	Tpanel.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+    	if (resizeable)
+    	{
+    		BackBone backBoneResized = (BackBone) e.getComponent();
+    		Rectangle folBounds = new Rectangle(backBoneResized.getBounds());
+    		sketchCenter.currentProject.modifyComponent
+    			(backBoneResized.ID, SketchProject.Operation.TYPE_BOUNDS, folBounds);
+    	}
 		resizeable = false;
 		panel.setPosition(e.getComponent(),-1);
 	}
