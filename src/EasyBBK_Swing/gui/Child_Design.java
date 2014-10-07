@@ -96,6 +96,9 @@ public class Child_Design extends JLayeredPane {
 		JLabelWithID recepter = new JLabelWithID("");
 		JLabelWithID protein = new JLabelWithID("");
 		JLabelWithID plasmid = new JLabelWithID("");
+		JButton newButton = new JButton();
+		JButton openButton = new JButton();
+		JButton saveButton = new JButton();
 		JButton backout = new JButton();
 		JButton fontButton = new JButton();
 		JButton lineButton = new JButton();
@@ -110,6 +113,21 @@ public class Child_Design extends JLayeredPane {
 		
 		this.setBounds(0, 0, 1366, 670);
 		this.setLayout(null);
+        
+		newButton.setBounds(12,50,45,48);
+		ImageIcon image_newButton = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/New_design.png"));
+		newButton.setIcon(image_newButton);
+        this.add(newButton);
+        
+        saveButton.setBounds(77,50,45,48);
+		ImageIcon image_saveButton = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Save_design.png"));
+		saveButton.setIcon(image_saveButton);
+        this.add(saveButton);
+		
+        openButton.setBounds(148,50,45,48);
+		ImageIcon image_openButton = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Open_design.png"));
+		openButton.setIcon(image_openButton);
+        this.add(openButton);        
 		
 		backout.setBounds(214,113,45,48);
 		ImageIcon image_backout = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Backout.png"));
@@ -637,10 +655,8 @@ public class Child_Design extends JLayeredPane {
 		    		newBackBone.activate();
 					panel.add(newBackBone,-1);
 					
-					Point center = new Point((int)(point.x+((BackBone)source).getWidth()/2),
-							(int)(point.y+((BackBone)source).getHeight()/2));
 					sketchCenter.currentProject.addComponent
-						(new SketchComponent.BackBone(newBackBone.ID, center, ((BackBone)source).getWidth()));
+						(new SketchComponent.BackBone(newBackBone.ID, new Rectangle(newBackBone.getBounds())));
 					
 					DragCompListener listener = new DragCompListener(panel,Tpanel,sketchCenter);
 					newBackBone.addMouseListener(listener);
@@ -661,61 +677,50 @@ public class Child_Design extends JLayeredPane {
 		    		ImageIcon image_newLabel = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/"+(((JLabelWithID)source)).getName()+"_move.png"));
 		    		newLabel.setIcon(image_newLabel);		    		
 		    		
-		    		point.x = point.x - (((JLabelWithID)source).getWidth())/2;
-		    		point.y = point.y - (((JLabelWithID)source).getHeight())/2;
+		    		point.x = point.x - (newLabel.getWidth())/2;
+		    		point.y = point.y - (newLabel.getHeight())/2;
 		    		
 		    		//Location
-		    		newLabel.setBounds(point.x, point.y, ((JLabelWithID)source).getWidth(), 
-		    				((JLabelWithID)source).getHeight());
+		    		newLabel.setBounds(point.x-41, point.y-25, 83,50);
 		    		newLabel.setName(((JLabelWithID)source).getName());
 					panel.add(newLabel);
 					
-					Point center = new Point((int)(point.x+((JLabelWithID)source).getWidth()/2),
-							(int)(point.y+((JLabelWithID)source).getHeight()/2));
-
-					// test
-					
 					SketchComponent.Component component = null;
+					Rectangle bounds = new Rectangle(newLabel.getBounds());
 					switch (newLabel.getName())
 					{	
 						case "promoter":
-							component = new SketchComponent.BioBrick(newLabel.ID, BbkType.Sketch.BioBrick.PROMOTER, center, null);
+							component = new SketchComponent.BioBrick(newLabel.ID, BbkType.Sketch.BioBrick.PROMOTER, bounds, null);
 							break;
 						case "rbs":
-							component = new SketchComponent.BioBrick(newLabel.ID, BbkType.Sketch.BioBrick.RBS, center, null);
+							component = new SketchComponent.BioBrick(newLabel.ID, BbkType.Sketch.BioBrick.RBS, bounds, null);
 							break;
 						case "coding":
-							component = new SketchComponent.BioBrick(newLabel.ID, BbkType.Sketch.BioBrick.PROTEIN_CODING_SEQUENCE, center, null);
+							component = new SketchComponent.BioBrick(newLabel.ID, BbkType.Sketch.BioBrick.PROTEIN_CODING_SEQUENCE, bounds, null);
 							break;
 						case "terminator":
-							component = new SketchComponent.BioBrick(newLabel.ID, BbkType.Sketch.BioBrick.TERMINATOR, center, null);
+							component = new SketchComponent.BioBrick(newLabel.ID, BbkType.Sketch.BioBrick.TERMINATOR, bounds, null);
 							break;	
 						case "primer":
-							component = new SketchComponent.BioBrick(newLabel.ID, BbkType.Sketch.BioBrick.PRIMER, center, null);
+							component = new SketchComponent.BioBrick(newLabel.ID, BbkType.Sketch.BioBrick.PRIMER, bounds, null);
 							break;
 						case "reporter":
-							component = new SketchComponent.BioBrick(newLabel.ID, BbkType.Sketch.BioBrick.REPORTER, center, null);
+							component = new SketchComponent.BioBrick(newLabel.ID, BbkType.Sketch.BioBrick.REPORTER, bounds, null);
 							break;
 						case "factor":
-							component = new SketchComponent.Protein(newLabel.ID, BbkType.Sketch.Protein.FACTOR, center, null);
+							component = new SketchComponent.Protein(newLabel.ID, BbkType.Sketch.Protein.FACTOR, bounds, null);
 							break;
 						case "recepter":
-							component = new SketchComponent.Protein(newLabel.ID, BbkType.Sketch.Protein.RECEPTER, center, null);
+							component = new SketchComponent.Protein(newLabel.ID, BbkType.Sketch.Protein.RECEPTER, bounds, null);
 							break;
 						case "plasmid":
-							component = new SketchComponent.BioVector(newLabel.ID, BbkType.Sketch.BioVector.PLASMID, center, 1);
+							component = new SketchComponent.BioVector(newLabel.ID, BbkType.Sketch.BioVector.PLASMID, bounds);
 							break;
 						case "virus":
-							component = new SketchComponent.BioVector(newLabel.ID, BbkType.Sketch.BioVector.VIRUS, center, 1);
+							component = new SketchComponent.BioVector(newLabel.ID, BbkType.Sketch.BioVector.VIRUS, bounds);
 							break;
 						case "bacteria":
-							component = new SketchComponent.BioVector(newLabel.ID, BbkType.Sketch.BioVector.BACTERIA, center, 1);
-							break;
-						case "plant_cell":
-							component = new SketchComponent.BioVector(newLabel.ID, BbkType.Sketch.BioVector.PLANT_CELL, center, 1);
-							break;
-						case "animal_cell":
-							component = new SketchComponent.BioVector(newLabel.ID, BbkType.Sketch.BioVector.ANIMAL_CELL, center, 1);
+							component = new SketchComponent.BioVector(newLabel.ID, BbkType.Sketch.BioVector.BACTERIA, bounds);
 							break;
 					}
 					
@@ -734,7 +739,7 @@ public class Child_Design extends JLayeredPane {
 	    	else if ((pen!=null) & (pen.getType()==5))
 	    	{
 	    		point =  e.getPoint();
-	    		TextLabel newText = new TextLabel(panel,Tpanel);
+	    		TextLabel newText = new TextLabel(panel,Tpanel, sketchCenter);
 	    		point.x = point.x - 25;
 	    		point.y = point.y - 15;
 	    		newText.setBounds(point.x, point.y, 50,30);
@@ -744,10 +749,9 @@ public class Child_Design extends JLayeredPane {
 	    		ChooseCurrentText chooseTextListener = new ChooseCurrentText();
 	    		newText.addFocusListener(chooseTextListener);
 	    		
-	    		Point center = new Point(point.x + 25, point.y + 15);
-	    		
+	    		Rectangle bounds = new Rectangle(newText.getBounds());
 	    		sketchCenter.currentProject.addComponent
-	    			(new SketchComponent.Label(newText.ID, null, center, new Font("Time New Roman", Font.PLAIN, 16), Color.BLACK));
+	    			(new SketchComponent.Label(newText.ID, null, bounds, new Font("Time New Roman", Font.PLAIN, 16), Color.BLACK));
 	    		
 	    		DragTextListener dragListener = new DragTextListener();
 	    		newText.addMouseListener(dragListener);
@@ -995,7 +999,7 @@ public class Child_Design extends JLayeredPane {
 	}
 	
 	/**
-	 * Drag component
+	 * Drag text
 	 */
 	class DragTextListener implements MouseInputListener
 	{
@@ -1024,7 +1028,16 @@ public class Child_Design extends JLayeredPane {
 		
 		public void mouseMoved(MouseEvent e) {}
 			
-		public void mouseReleased(MouseEvent e){}
+		public void mouseReleased(MouseEvent e)
+		{
+			TextLabel textMoved = (TextLabel)e.getComponent();
+			if (textMoved.movable)
+			{
+				Rectangle folBounds = new Rectangle(textMoved.getBounds());
+				sketchCenter.currentProject.modifyComponent
+					(textMoved.ID, SketchProject.Operation.TYPE_BOUNDS, folBounds);
+			}
+		}
 			
 		public void mouseEntered(MouseEvent e) {}
 
