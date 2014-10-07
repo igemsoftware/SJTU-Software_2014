@@ -190,7 +190,8 @@ public class SketchComponent
         {
         	super(theID, BioBrick.class.getSimpleName());
         	this.secondaryType = secondaryType;
-        	this.bbkOutline = DatabaseConnector.getOutlineByName(bbkName);
+        	if (bbkName != null)
+        		this.bbkOutline = DatabaseConnector.getOutlineByName(bbkName);
 			this.bounds = bounds;
 			this.color = color;
         }
