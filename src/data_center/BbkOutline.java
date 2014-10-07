@@ -42,17 +42,28 @@ public class BbkOutline
     }
     
     /** Score at default weight.  */
-    public int getScore()
+    public double getScore()
     {	
-    	return this.rating.getScore();
+    	return getScore(DBConsts.Rating.STATUS_DEFAULT_WEIGHT, 
+				DBConsts.Rating.QUALITY_DEFAULT_WEIGHT,
+				DBConsts.Rating.FEEDBACKS_DEFAULT_WEIGHT,
+				DBConsts.Rating.PUBLICATION_DEFAULT_WEIGHT);
     }
     
     /** Score at custom weight.  */
-    public int getScore(double status_weight, double quality_weight, 
+    public double getScore(double status_weight, double quality_weight, 
 						double feedbacks_weight, double publication_weight)
     {	
-    	return this.rating.getScore(status_weight, quality_weight, 
-    								feedbacks_weight, publication_weight);
+    	double totalPoints = DBConsts.Rating.TOTAL_POINTS;
+		double points = 0;
+		try
+		{	points = Double.parseDouble(rating.status) / DBConsts.Rating.STATUS_DEFAULT_WEIGHT * status_weight
+				   + Double.parseDouble(rating.quality) / DBConsts.Rating.QUALITY_DEFAULT_WEIGHT * quality_weight
+				   + Double.parseDouble(rating.feedbacks) / DBConsts.Rating.FEEDBACKS_DEFAULT_WEIGHT * feedbacks_weight
+				   + Double.parseDouble(rating.publication) / DBConsts.Rating.PUBLICATION_DEFAULT_WEIGHT * publication_weight;
+		} catch (Exception e) {points = 0;}
+		double score = points / totalPoints * 100;
+		return score;
     }
     
     /** Print main attributes in cmd for testing.  */
@@ -97,7 +108,8 @@ public class BbkOutline
     public void displayRating()
     {	
     	System.out.println( "********\n" + 
-	   			"Name: " + name);
+	   			"Name: " + name + "\n" + 
+	   			"Total Score: " + getScore());
     			rating.display();
     	System.out.println("********\n");
     }
@@ -122,6 +134,8 @@ public class BbkOutline
      	public String tot_commets;
      	public String google_items;
      	public String first_url;
+     	public String documentation;
+     	public String used_times;
     	
     	public Rating(ResultSet resultSet) throws SQLException
     	{	
@@ -138,29 +152,8 @@ public class BbkOutline
     		tot_commets = resultSet.getString(DBConsts.Header.Main.TOT_COMMENTS);
     		google_items = resultSet.getString(DBConsts.Header.Main.GOOGLE_ITEMS);
     		first_url = resultSet.getString(DBConsts.Header.Main.FIRST_URL);
-    	}
-    	
-    	public int getScore()
-    	{
-    		return getScore(DBConsts.Rating.STATUS_DEFAULT_WEIGHT, 
-    						DBConsts.Rating.QUALITY_DEFAULT_WEIGHT,
-    						DBConsts.Rating.FEEDBACKS_DEFAULT_WEIGHT,
-    						DBConsts.Rating.PUBLICATION_DEFAULT_WEIGHT);
-    	}
-    	
-    	public int getScore(double status_weight, double quality_weight, 
-    						double feedbacks_weight, double publication_weight)
-    	{	
-    		double totalPoints = DBConsts.Rating.TOTAL_POINTS;
-    		double points = 0;
-    		try
-    		{	points = Double.parseDouble(status) / DBConsts.Rating.STATUS_DEFAULT_WEIGHT * status_weight
-    				   + Double.parseDouble(quality) / DBConsts.Rating.QUALITY_DEFAULT_WEIGHT * quality_weight
-    				   + Double.parseDouble(feedbacks) / DBConsts.Rating.FEEDBACKS_DEFAULT_WEIGHT * feedbacks_weight
-    				   + Double.parseDouble(publication) / DBConsts.Rating.PUBLICATION_DEFAULT_WEIGHT * publication_weight;
-    		} catch (Exception e) {points = 0;}
-    		int score = (int)(points / totalPoints * 100);
-    		return score;
+    		documentation = resultSet.getString(DBConsts.Header.Main.DOCUMENTATION);
+    		used_times = resultSet.getString(DBConsts.Header.Main.USED_TIMES);
     	}
     	
     	/** Print main attributes in cmd for testing.  */
@@ -170,8 +163,7 @@ public class BbkOutline
     						   "Status: " + status + "\n" + 
     						   "Quality: " + quality + "\n" + 
     						   "Feedbacks: " + feedbacks + "\n" +
-    						   "Publication: " + publication + "\n" +
-    						   "Total Score: " + getScore());
+    						   "Publication: " + publication);
     	}
     }
     

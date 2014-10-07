@@ -22,12 +22,13 @@ public class Testing
 	
 	public static void main(String[] args) throws Exception
 	{	
+		//searchKeywordAndGetDetail();
 		//searchFilterAndSort();
 		//searchBlasting();
 		//searchHistory();
 		//compareAssignDetail();
 		//sketchProjectOperation();
-		sketchXMLReadWrite();
+		//sketchXMLReadWrite();
 		//uploadUploadAndReappearBbkUpload();
 		//uploadPartNameSequenceTokenValidationCheck();
 		//uploadSubpartSubscarValidationCheck();
@@ -40,7 +41,7 @@ public class Testing
 	private static void searchKeywordAndGetDetail()
 	{	
 		SearchResultList list = dataCenter.searchCenter.search("GFP");
-		list.display();
+		list.displayRating();
 		System.out.println("List size: " + list.size());
 		for (int i = 0; i < list.size(); i += 10)
 		{	BbkDetail detail = dataCenter.searchCenter.getDetail(list.get(i).name);
