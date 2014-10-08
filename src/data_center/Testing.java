@@ -28,7 +28,7 @@ public class Testing
 		//searchHistory();
 		//compareAssignDetail();
 		//sketchProjectOperation();
-		//sketchXMLReadWrite();
+		sketchXMLReadWrite();
 		//uploadUploadAndReappearBbkUpload();
 		//uploadPartNameSequenceTokenValidationCheck();
 		//uploadSubpartSubscarValidationCheck();
@@ -161,11 +161,11 @@ public class Testing
 		SketchProject project = dataCenter.sketchCenter.newProject();
 		System.out.println("Auto generated project name: " + project.name);
 		
-		project.addComponent(new Label(0, "Lable text", 
+		project.addComponent(new Label(0, "", 
 				new Rectangle(5, 5, 10, 10), new Font("Times Roman", 10, 3), new Color(0, 0, 0)));
-		project.addComponent(new BioBrick(1, "Bba_B0034", BbkType.Sketch.BioBrick.PROMOTER, 
+		project.addComponent(new BioBrick(1, null, BbkType.Sketch.BioBrick.PROMOTER, 
 				new Rectangle(10, 10, 10, 10), null));
-		project.addComponent(new BioBrick(6, "Bba_B0012", BbkType.Sketch.BioBrick.PROMOTER, 
+		project.addComponent(new BioBrick(6, null, BbkType.Sketch.BioBrick.PROMOTER, 
 				new Rectangle(10, 50, 10, 10), null));
 		project.addComponent(new Protein(2, BbkType.Sketch.Protein.FACTOR, 
 				new Rectangle(20, 20, 5, 5), Color.BLUE));

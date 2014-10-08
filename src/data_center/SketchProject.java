@@ -473,7 +473,7 @@ public class SketchProject
   		Element eleString = doc.createElement(STRING);
   		String string = component.getString();
   		Text txtString = doc.createTextNode(
-  				string != null ? string : NULL);
+  				string != null && !string.equals("") ? string : NULL);
   		eleString.appendChild(txtString);
   		componentNode.appendChild(eleString);
   		

@@ -237,7 +237,8 @@ public class SketchComponent
         public void display()
         {
 			super.display();
-			System.out.println("BbkName: " + bbkOutline.name);
+			if (bbkOutline != null)
+				System.out.println("BbkName: " + bbkOutline.name);
 			System.out.println("SecondaryType: " + secondaryType);
 			System.out.println("Bounds: " + bounds.toString());
 			System.out.println("Color: " + color);
