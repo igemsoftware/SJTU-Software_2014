@@ -3,10 +3,14 @@ package EasyBBK_Swing.gui;
 import java.awt.Color;
 import java.awt.Cursor;
 
+import javax.swing.JCheckBox;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 
 import java.awt.Font;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -26,6 +30,7 @@ public class DetailsofResults extends JPanel {
 	public JLabel ResultsInGoogle_Content;
 	public JLabel Score;
 	public JLabel Description2;
+	public JCheckBox Addforcomparison;
 	/**
 	 * Create the panel.
 	 */
@@ -171,5 +176,13 @@ public class DetailsofResults extends JPanel {
 		Description2.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		Description2.setBounds(10, 214, 645, 24);
 		add(Description2);
+		
+        Addforcomparison = new JCheckBox("Add for comparison");
+        Addforcomparison.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+        Addforcomparison.setBounds(240, 26, 220, 24);
+        Addforcomparison.setBackground(new Color(0, 255, 255));
+		add(Addforcomparison);
+		
+		setVisible(true);
 	}
 }
