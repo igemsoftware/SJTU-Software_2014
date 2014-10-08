@@ -29,6 +29,7 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 
 import data_center.BbkUpload;
+import data_center.BbkUpload.*;
 
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
@@ -485,16 +486,19 @@ public class Child_Upload extends JPanel {
 		SubmitToDatabase.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				/*bbkupload.shortDesc = ShortDescription.getText();
+				bbkupload.shortDesc = ShortDescription.getText();
 				bbkupload.type = typestring;
 				bbkupload.nickname = Nickname.getText();
 				bbkupload.author = Designers.getText();
 				if(UseDefaultScar.isSelected()){
-					bbkupload.setSequence(true);
+					bbkupload.setSequence(true, false);
 				}
 				else if(!UseDefaultScar.isSelected()){
-					bbkupload.setSequence(false);
-				}*/
+					bbkupload.setSequence(false, false);
+				}
+				for(int i = 0; i < parameternumber; i++){
+					//Parameter parameter = new Parameter(name, value, units, url, ID, userName);
+				}
 			}
 		});
 		SubmitToDatabase.setFont(new Font("Times New Roman", Font.PLAIN, 24));
@@ -575,10 +579,10 @@ public class Child_Upload extends JPanel {
 				bf.write("}" + "\r\n");
 				//System.out.print(3);
 				if(UseDefaultScar.isSelected()){
-					bbkupload.setSequence(true);
+					bbkupload.setSequence(true, false);
 				}
 				else if(!UseDefaultScar.isSelected()){
-					bbkupload.setSequence(false);
+					bbkupload.setSequence(false, false);
 				}
 				//System.out.print(3.5);
 				//if(subpartdialog.confirmedflag){
