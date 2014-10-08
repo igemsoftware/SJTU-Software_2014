@@ -9,12 +9,6 @@ import EasyBBK_Swing.gui.Pen;
 import EasyBBK_Swing.gui.TPanel;
 import EasyBBK_Swing.gui.FontChooser;
 
-
-
-
-
-
-
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Cursor;
@@ -63,6 +57,8 @@ public class Child_Design extends JLayeredPane {
 	private LinePanel linePanel = new LinePanel(pen);
 	private TextLabel textLabel = null;
 	
+	private ArrayList<Component> totalCompList=new ArrayList<Component>();
+	
 	private Color lineColor = Color.black;
 	private float lineStroke = 3.0f;
 	
@@ -99,8 +95,6 @@ public class Child_Design extends JLayeredPane {
 		JLabelWithID recepter = new JLabelWithID("");
 		JLabelWithID protein = new JLabelWithID("");
 		JLabelWithID plasmid = new JLabelWithID("");
-		JLabelWithID virus = new JLabelWithID("");
-		JLabelWithID ecoil = new JLabelWithID("");
 		JButton newButton = new JButton();
 		JButton openButton = new JButton();
 		JButton saveButton = new JButton();
@@ -109,6 +103,8 @@ public class Child_Design extends JLayeredPane {
 		JButton forward = new JButton();
 		JButton fontButton = new JButton();
 		JButton lineButton = new JButton();
+		JLabelWithID virus = new JLabelWithID("");
+		JLabelWithID ecoil = new JLabelWithID("");
 		Pen text = new Pen();
 		Pen eraser = new Pen();
 		Pen line_inhabit = new Pen();
@@ -383,9 +379,13 @@ public class Child_Design extends JLayeredPane {
 		exportButton.addMouseListener(export);
 		exportButton.addMouseMotionListener(export);	
 		
-		SaveListener save = new SaveListener(sketchCenter);
+		SaveListener save = new SaveListener(sketchCenter,panel,Tpanel);
 		saveButton.addMouseListener(save);
 		exportButton.addMouseMotionListener(save);
+		
+		OpenFileListener open = new OpenFileListener(sketchCenter,panel,Tpanel,linePanel);
+		openButton.addMouseListener(open);
+		openButton.addMouseMotionListener(open);
 		
 		//background
 		this.add(background);
@@ -453,6 +453,7 @@ public class Child_Design extends JLayeredPane {
 									linePanel.getLineBorder()[1]-linePanel.getLineBorder()[0]+20,
 									linePanel.getLineBorder()[3]-linePanel.getLineBorder()[2]+20);
 							JLabelWithID newLine = new JLabelWithID();
+							totalCompList.add(newLine);
 							newLine.ID=compCount++;
 							ImageIcon image = new ImageIcon(newimg);
 							newLine.setIcon(image);
@@ -534,6 +535,7 @@ public class Child_Design extends JLayeredPane {
 								linePanel.getLineBorder()[1]-linePanel.getLineBorder()[0]+20,
 								linePanel.getLineBorder()[3]-linePanel.getLineBorder()[2]+20);
 						JLabelWithID newLine = new JLabelWithID();
+						totalCompList.add(newLine);
 						newLine.ID=compCount++;
 						ImageIcon image = new ImageIcon(newimg);
 						newLine.setIcon(image);
@@ -608,6 +610,7 @@ public class Child_Design extends JLayeredPane {
 								linePanel.getLineBorder()[1]-linePanel.getLineBorder()[0]+20,
 								linePanel.getLineBorder()[3]-linePanel.getLineBorder()[2]+20);
 						JLabelWithID newLine = new JLabelWithID();
+						totalCompList.add(newLine);
 						newLine.ID=compCount++;
 						ImageIcon image = new ImageIcon(newimg);
 						newLine.setIcon(image);
@@ -689,6 +692,7 @@ public class Child_Design extends JLayeredPane {
 	    		{
 	    			point =  e.getPoint();
 		    		BackBone newBackBone = new BackBone(panel,Tpanel, sketchCenter);
+		    		totalCompList.add(newBackBone);
 		    		newBackBone.ID=compCount++;		
 		    		
 		    		ImageIcon image_newBackBone = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/backbone_move.png"));
@@ -698,7 +702,7 @@ public class Child_Design extends JLayeredPane {
 		    		point.y = point.y - 25;
 		    		
 		    		//Location
-		    		newBackBone.setBounds(point.x, point.y, 83, 50);
+		    		newBackBone.setBounds(point.x, point.y, 200, 50);
 		    		newBackBone.setName("backbone");
 		    		newBackBone.activate();
 					panel.add(newBackBone,-1);
@@ -720,6 +724,7 @@ public class Child_Design extends JLayeredPane {
 	    		{
 					point =  e.getPoint();
 		    		JLabelWithID newLabel = new JLabelWithID();
+		    		totalCompList.add(newLabel);
 		    		newLabel.ID=compCount++;
 		    		
 		    		ImageIcon image_newLabel = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/"+(((JLabelWithID)source)).getName()+"_move.png"));
@@ -744,6 +749,7 @@ public class Child_Design extends JLayeredPane {
 		    			newLabel.setBounds(point.x-41, point.y-25, 83,50);
 			    		newLabel.setName(((JLabelWithID)source).getName());
 		    		}		    		
+
 					panel.add(newLabel);
 					
 					SketchComponent.Component component = null;
@@ -811,6 +817,7 @@ public class Child_Design extends JLayeredPane {
 	    		point.x = point.x - 25;
 	    		point.y = point.y - 15;
 	    		newText.setBounds(point.x, point.y, 50,30);
+	    		totalCompList.add(newText);
 	    		newText.ID=compCount++;
 	    		panel.add(newText);
 				
@@ -865,6 +872,7 @@ public class Child_Design extends JLayeredPane {
 								linePanel.getLineBorder()[1]-linePanel.getLineBorder()[0]+20,
 								linePanel.getLineBorder()[3]-linePanel.getLineBorder()[2]+20);
 						JLabelWithID newLine = new JLabelWithID();
+						totalCompList.add(newLine);
 						newLine.ID=compCount++;
 						ImageIcon image = new ImageIcon(newimg);
 						newLine.setIcon(image);
@@ -887,10 +895,13 @@ public class Child_Design extends JLayeredPane {
 						
 						Color lineColor = new Color(linePanel.color.getRGB());
 						float lineStroke = linePanel.stroke;
+						ArrayList<Point> points = new ArrayList<Point>();
+						for (Point point : linePanel.lineList)
+							points.add(new Point(point));
 						
-						Rectangle bounds = newLine.getBounds();
+						Rectangle bounds = new Rectangle(newLine.getBounds());
 						sketchCenter.currentProject.addComponent(new SketchComponent.Relation
-								(newLine.ID, lineType, bounds, linePanel.lineList, lineColor, lineStroke));
+								(newLine.ID, lineType, bounds, points, lineColor, lineStroke));
 						
 						//ÒÆ¶¯
 						DragLineListener dragListener = new DragLineListener();
@@ -1216,7 +1227,7 @@ public class Child_Design extends JLayeredPane {
 				if (component == null)
 					return;
 				else
-					modifyComponent(component, operation.attributeType, operation.following);
+					modifyComponent(component, operation.attributeType, operation.previous, operation.following);
 			}
 		}
 		
@@ -1235,6 +1246,7 @@ public class Child_Design extends JLayeredPane {
 		public void mouseExited(MouseEvent e) {}
 	}
 	
+	@SuppressWarnings("unchecked")
 	public void addComponent(SketchComponent.Component component)
 	{
 		String primaryType = component.primaryType;
@@ -1279,7 +1291,7 @@ public class Child_Design extends JLayeredPane {
 			newText.ID=label.ID;
 			panel.add(newText);
 		}
-		else if (primaryType.equals(SketchComponent.Label.class.getSimpleName()))
+		else if (primaryType.equals(SketchComponent.BioBrick.class.getSimpleName()))
 		{
 			SketchComponent.BioBrick biobrick = component.toBioBrick();
 			String GUITypeName = null;
@@ -1309,14 +1321,109 @@ public class Child_Design extends JLayeredPane {
 		}
 		else if (primaryType.equals(SketchComponent.Protein.class.getSimpleName()))
 		{
+			SketchComponent.Protein protein = component.toProtein();
+			
+			JLabelWithID newLabel = new JLabelWithID();
+			newLabel.ID=protein.ID; 
+			String GUITypeName=null;
+			
+			switch (protein.secondaryType)
+			{
+				case BbkType.Sketch.Protein.FACTOR:
+					GUITypeName = "factor";	break;
+				case BbkType.Sketch.Protein.RECEPTER:
+					GUITypeName = "receptor";	break;
+				case BbkType.Sketch.Protein.COMBINED:
+					GUITypeName = "protein";	break;
+			}
+			ImageIcon image_newLabel = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/"+GUITypeName+"_move.png"));
+    		newLabel.setIcon(image_newLabel);    		
+    		newLabel.setName(GUITypeName);
+			newLabel.setBounds(protein.bounds);
+			panel.add(newLabel);
+		}
+		else if (primaryType.equals(SketchComponent.BackBone.class.getSimpleName()))
+		{
+			SketchComponent.BackBone backbone = component.toBackBone();
+
+    		BackBone newBackBone = new BackBone(panel,Tpanel, sketchCenter);
+    		newBackBone.ID = newBackBone.ID;		
+    		
+    		ImageIcon image_newBackBone = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/backbone_move.png"));
+    		image_newBackBone.setImage(image_newBackBone.getImage().getScaledInstance(((int)(backbone.bounds).getWidth()),50,Image.SCALE_DEFAULT));
+    		newBackBone.setIcon(image_newBackBone);
+    		newBackBone.setBounds(backbone.bounds);
+    		newBackBone.setName("backbone");
+    		newBackBone.activate();
+			panel.add(newBackBone,-1);
+		}
+		else if (primaryType.equals(SketchComponent.Relation.class.getSimpleName()))
+		{
+			SketchComponent.Relation relation = component.toRelation();
+			int GUIRelationType=-2;
+			switch (relation.secondaryType)
+			{	
+				case BbkType.Sketch.Relation.PROMOTE:
+					GUIRelationType = LinePanel.LINE_WITH_EMPTY_ARROW;	break;
+				case BbkType.Sketch.Relation.SUPPRESS:
+					GUIRelationType = LinePanel.LINE_WIHT_STOP_END;	break;
+				case BbkType.Sketch.Relation.OTHER:
+					GUIRelationType = LinePanel.LINE_WITH_FULL_ARROW;	break;
+			}
+			
+			Color previousColor = new Color(linePanel.color.getRGB());
+			float previousStroke = linePanel.stroke;
+			
+			linePanel.lineList = (ArrayList<Point>) relation.posList.clone();
+			linePanel.setPenValue(GUIRelationType);
+			linePanel.color = new Color(relation.color.getRGB());
+			linePanel.stroke = (float)relation.thickness;
+			linePanel.repaint();
+			
+			BufferedImage img = new BufferedImage(panel.getWidth(),panel.getHeight(),BufferedImage.TRANSLUCENT);
+			Graphics2D g = (Graphics2D)img.getGraphics();
+			linePanel.paint(g);
+			
+			BufferedImage newimg = img.getSubimage(linePanel.getLineBorder()[0]-10, linePanel.getLineBorder()[2]-10,
+					linePanel.getLineBorder()[1]-linePanel.getLineBorder()[0]+20,
+					linePanel.getLineBorder()[3]-linePanel.getLineBorder()[2]+20);
+			
+			JLabelWithID newLine = new JLabelWithID();
+			
+			newLine.ID=relation.ID;
+			ImageIcon image = new ImageIcon(newimg);
+			newLine.setIcon(image);
+			newLine.setBounds(linePanel.getLineBorder()[0]-10, linePanel.getLineBorder()[2]-10,
+					linePanel.getLineBorder()[1]-linePanel.getLineBorder()[0]+20,
+					linePanel.getLineBorder()[3]-linePanel.getLineBorder()[2]+20);
+			panel.add(newLine);
+			
+			linePanel.color = new Color(previousColor.getRGB());
+			linePanel.stroke = previousStroke;
 			
 		}
-		else if (primaryType.equals(SketchComponent.Label.class.getSimpleName()))
-			;
-		else if (primaryType.equals(SketchComponent.Label.class.getSimpleName()))
-			;
-		else if (primaryType.equals(SketchComponent.Label.class.getSimpleName()))
-			;
+		else if (primaryType.equals(SketchComponent.BioVector.class.getSimpleName()))
+		{
+			SketchComponent.BioVector bioVector = component.toBioVictor();
+			String GUIBioVectorType = null;
+			switch (bioVector.secondaryType)
+			{	
+				case BbkType.Sketch.BioVector.PLASMID:
+					GUIBioVectorType = "plasmid";	break;
+				case BbkType.Sketch.BioVector.VIRUS:
+					GUIBioVectorType = "virus";	break;
+				case BbkType.Sketch.BioVector.BACTERIA:
+					GUIBioVectorType = "ecoil";	break;
+			}
+			
+			JLabelWithID newLabel = new JLabelWithID();
+    		newLabel.ID=bioVector.ID;
+    		newLabel.setBounds(bioVector.bounds);	    		
+			ImageIcon image_newLabel = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/"+GUIBioVectorType+"_move.png"));
+    		newLabel.setIcon(image_newLabel);
+    		newLabel.setName(GUIBioVectorType);
+			panel.add(newLabel);
+		}
 		else
 			return;
 		
@@ -1325,13 +1432,163 @@ public class Child_Design extends JLayeredPane {
 	public void removeComponent(SketchComponent.Component component)
 	{	
 		int ID = component.ID;
-		
+		Component comp = totalCompList.get(ID);
+		comp.getParent().remove(comp);
 	}
 	
-	public void modifyComponent(SketchComponent.Component component, int attributeType, Object following)
+	public void modifyComponent(SketchComponent.Component component, int attributeType, Object previous, Object following)
 	{
+		String primaryType = component.primaryType;
 		
+		if (primaryType.equals(SketchComponent.BioBrick.class.getSimpleName()) || 
+			primaryType.equals(SketchComponent.Protein.class.getSimpleName()) ||
+			primaryType.equals(SketchComponent.Relation.class.getSimpleName()) ||
+			primaryType.equals(SketchComponent.BioVector.class.getSimpleName()))
+		{	if (attributeType == Operation.TYPE_BOUNDS)
+			{	
+				Rectangle bounds = (Rectangle) following;
+				int ID = component.ID;
+				Component comp = totalCompList.get(ID);
+				comp.setBounds(bounds);
+			}
+			else
+				return;
+		}
+		else if (primaryType.equals(SketchComponent.BackBone.class.getSimpleName()))
+		{	if (attributeType == Operation.TYPE_BOUNDS)
+			{	
+				Rectangle bounds = (Rectangle) following;
+				int ID = component.ID;
+				
+				if (isMoveEvent(previous, following))	// linkage
+				{	
+					Component comp = totalCompList.get(ID);
+					Rectangle previousBounds = comp.getBounds();
+					comp.setBounds(bounds);
+					
+					SketchComponent.BackBone backbone = component.toBackBone();
+					ArrayList<Integer> compIndexList = backbone.bbkChildren;
+					if (compIndexList.size()>0)
+					{
+						for (int i=0;i<compIndexList.size();i++)
+						{
+							int compID = compIndexList.get(i);
+							Component sequence = totalCompList.get(compID);
+							Rectangle compBounds = new Rectangle(sequence.getX()+(comp.getBounds().x-previousBounds.x),
+									sequence.getY()+(comp.getBounds().y-previousBounds.y),
+									sequence.getWidth(),sequence.getHeight());
+							sequence.setBounds(compBounds);
+						}
+					}
+					
+				}
+				else	// no linkage
+				{	
+					Component comp = totalCompList.get(ID);
+					comp.setBounds(bounds);
+				}				
+			}
+			else
+				return;
+		}
+		else if (primaryType.equals(SketchComponent.Label.class.getSimpleName()))
+		{	
+			if (attributeType == Operation.TYPE_BOUNDS)
+			{	
+				Rectangle bounds = (Rectangle) following;
+				int ID = component.ID;
+				Component comp = totalCompList.get(ID);
+				comp.setBounds(bounds);
+			}
+			else if (attributeType == Operation.TYPE_FONT)
+			{	
+				Font font = (Font) following;				
+				Color color = component.toLabel().color;
+				int ID = component.ID;
+				Component comp = totalCompList.get(ID);
+				
+		        SimpleAttributeSet attrNew = new SimpleAttributeSet();
+		        StyleConstants.setAlignment(attrNew, StyleConstants.ALIGN_CENTER);
+		        StyleConstants.setForeground(attrNew, color);
+		        StyleConstants.setFontSize(attrNew, font.getSize());
+		        StyleConstants.setFontFamily(attrNew, font.getFamily());
+		        if (font.getStyle()==Font.PLAIN) 
+	            {  
+		        	StyleConstants.setItalic(attrNew, false); 
+		        	StyleConstants.setBold(attrNew, false);
+	            }  
+		        else if (font.getStyle()==Font.ITALIC) 
+	            {  
+	            	StyleConstants.setItalic(attrNew, true); 
+	            	StyleConstants.setBold(attrNew, false);       	
+	            }  
+		        else if (font.getStyle()==Font.BOLD) 
+	            {  
+	            	StyleConstants.setBold(attrNew, true);  
+	            	StyleConstants.setItalic(attrNew, false);
+	            }  
+		        else 
+	            {   //No ItalicBold in font
+	            	StyleConstants.setBold(attrNew, true); 
+	            	StyleConstants.setItalic(attrNew, true);  
+	            }
+		        
+		        ((TextLabel)comp).setCharacterAttributes(attrNew, true);
+		        ((TextLabel)comp).setParagraphAttributes(attrNew, true);				
+			}
+			else if (attributeType == Operation.TYPE_COLOR)
+			{	
+				Font font = component.toLabel().font;				
+				Color color = (Color) following;
+				int ID = component.ID;
+				Component comp = totalCompList.get(ID);
+				
+		        SimpleAttributeSet attrNew = new SimpleAttributeSet();
+		        StyleConstants.setAlignment(attrNew, StyleConstants.ALIGN_CENTER);
+		        StyleConstants.setForeground(attrNew, color);
+		        StyleConstants.setFontSize(attrNew, font.getSize());
+		        StyleConstants.setFontFamily(attrNew, font.getFamily());
+		        if (font.getStyle()==Font.PLAIN) 
+	            {  
+		        	StyleConstants.setItalic(attrNew, false); 
+		        	StyleConstants.setBold(attrNew, false);
+	            }  
+		        else if (font.getStyle()==Font.ITALIC) 
+	            {  
+	            	StyleConstants.setItalic(attrNew, true); 
+	            	StyleConstants.setBold(attrNew, false);       	
+	            }  
+		        else if (font.getStyle()==Font.BOLD) 
+	            {  
+	            	StyleConstants.setBold(attrNew, true);  
+	            	StyleConstants.setItalic(attrNew, false);
+	            }  
+		        else 
+	            {   //No ItalicBold in font
+	            	StyleConstants.setBold(attrNew, true); 
+	            	StyleConstants.setItalic(attrNew, true);  
+	            }
+		        
+		        ((TextLabel)comp).setCharacterAttributes(attrNew, true);
+		        ((TextLabel)comp).setParagraphAttributes(attrNew, true);
+
+			}
+			else
+				return;
+		}
+		else
+			return;
 	}
 
-	
+	/** Judge if the modify contains a move event by the size of the component. 
+	 * If the size has not changed(and the position has changed, namely), 
+	 * it should be a move event. Otherwise it is the user dragging the edge 
+	 * of the backbone to extend or shrink it, not contains a linkage event.  */
+	private boolean isMoveEvent(Object previous, Object following)
+	{	
+		Rectangle preBounds = (Rectangle) previous;
+		Rectangle folBounds = (Rectangle) following;
+		return !(preBounds.width - folBounds.width == 0 && 
+				 preBounds.height - folBounds.height == 0);
+	}
 }
