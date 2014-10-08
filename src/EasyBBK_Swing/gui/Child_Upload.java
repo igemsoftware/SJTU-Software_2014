@@ -81,6 +81,8 @@ public class Child_Upload extends JPanel {
 	public JTextField UserName;
 	public JPasswordField Password;
 	public SubpartDialog subpartdialog;
+	public JPanel showinfopanel;
+	public JLabel showinfo;
 	/**
 	 * Create the panel.
 	 */
@@ -503,6 +505,7 @@ public class Child_Upload extends JPanel {
 		SubmitToWebsite.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				//waitingdialog = new WaitingDialog(mainpage, "WaitingDialog", true, child_upload);
 				WriteTxt rt = new WriteTxt();
 				Thread demo1 = new Thread(rt);
 				demo1.start();
@@ -511,6 +514,17 @@ public class Child_Upload extends JPanel {
 		SubmitToWebsite.setFont(new Font("Times New Roman", Font.PLAIN, 24));
 		SubmitToWebsite.setBounds(649, 1720, 180, 55);
 		UploadContainer.add(SubmitToWebsite);
+		
+		showinfopanel = new JPanel();
+		showinfopanel.setBounds(920, 1500, 360, 240);
+		showinfopanel.setBackground(new Color(255, 255, 255));
+		UploadContainer.add(showinfopanel);
+		
+		showinfo = new JLabel("", JLabel.CENTER);
+		showinfo.setVisible(true);
+		showinfo.setBounds(0, 0, 360, 240);
+		showinfo.setFont(new Font("Times New Roman", Font.PLAIN, 24));
+		showinfopanel.add(showinfo);
 		
 		JScrollBar scrollbar = new JScrollBar();
 		scrollbar.setUnitIncrement(100);
@@ -524,6 +538,9 @@ public class Child_Upload extends JPanel {
 	class WriteTxt implements Runnable {
 		public void run() {
 			try {
+				System.out.print(1);
+				showinfo.setText("Uploading your biobrick...");;
+				showinfopanel.updateUI();
 				FileWriter output = new FileWriter("upload");
 				BufferedWriter bf = new BufferedWriter(output);
 				/*for (String l : list) {
@@ -544,9 +561,7 @@ public class Child_Upload extends JPanel {
 				bf.write("{");
 				for(int i = 0; i < parameternumber; i++){
 					if(i == (parameternumber - 1)) 
-					{
 						bf.write("'" + parameter_item[i].content + "':'" + parameter_item[i].textField.getText() + "'");
-					}
 					else 
 						bf.write("'" + parameter_item[i].content + "':'" + parameter_item[i].textField.getText() + "',");
 				}
@@ -565,9 +580,12 @@ public class Child_Upload extends JPanel {
 				else if(!UseDefaultScar.isSelected()){
 					bbkupload.setSequence(false);
 				}
+				//System.out.print(3.5);
 				//if(subpartdialog.confirmedflag){
+				//waitingdialog.inputtext.setText("Getting sequence");
 				bf.write(bbkupload.getSequence() + "\r\n");
 				//}
+				//child_upload.waitingdialog.inputtext.setText("Getting sequence done");
 				
 				//System.out.print(4);
 				bf.write("[");
@@ -591,10 +609,20 @@ public class Child_Upload extends JPanel {
 					e.printStackTrace();
 				}
 				String str = br.readLine();		        
-		        if (str.equals("-1"))
-		        	System.out.println("Username or password is wrong");
-		        else
-		        	System.out.println("New BioBrick is :"+str);
+		        if (str.equals("-1")){
+		        	//System.out.println("Username or password is wrong");
+		        	showinfo.setText("Username or password is wrong");
+		        	showinfopanel.updateUI();
+		        	//waitingdialog.inputtext.setText("Username or password is wrong");
+		        	//waitingdialog.Confirmed.setVisible(true);
+		        }
+		        else{
+		        	//System.out.println("New BioBrick is :"+str);
+		        	showinfo.setText("New BioBrick is :" + str);
+		        	showinfopanel.updateUI();
+		        	//waitingdialog.inputtext.setText("New BioBrick is :" + str);
+		        	//waitingdialog.Confirmed.setVisible(true);
+		        }
 
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
