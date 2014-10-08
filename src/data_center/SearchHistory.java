@@ -2,14 +2,16 @@ package data_center;
 
 import java.util.ArrayList;
 
-/** The class implements a history list contains roll back and go forward function.  */
-public class HistoryList<T>
+/** The class implements a history list contains roll back and go forward function. 
+ * Different from the OperationHistory, the SearchHistory aims the pointer at the
+ * data, not the nick between data, like [H H H C F] (history, current,  future) */
+public class SearchHistory
 {
 	private int currentItemNo = -1;
-	private ArrayList<T> dataList = new ArrayList<T>();
+	private ArrayList<SearchResultList> dataList = new ArrayList<SearchResultList>();
 
 	/** Keeps the previous items and flush the following items.  */
-	public void putInItem(T item)
+	public void putInItem(SearchResultList item)
 	{
 		// also suitable for currentItemNo == -1 case
 		if (currentItemNo < dataList.size() - 1) // not appending, sth to delete
@@ -25,7 +27,7 @@ public class HistoryList<T>
 		return currentItemNo;
 	}
 	
-	public T getCurrentItem()
+	public SearchResultList getCurrentItem()
 	{
 		if (dataList.size() == 0)
 			return null;
@@ -43,7 +45,7 @@ public class HistoryList<T>
 		return currentItemNo < dataList.size() - 1;
 	}
 
-	public T rollBack()
+	public SearchResultList rollBack()
 	{
 		if (canRollBack())
 		{
@@ -58,7 +60,7 @@ public class HistoryList<T>
 		}
 	}
 
-	public T goForward()
+	public SearchResultList goForward()
 	{
 		if (canGoForward())
 		{

@@ -115,7 +115,7 @@ public class SketchProject
 	
 	public ArrayList<Component> componentList = new ArrayList<Component>();
 	public ArrayList<BackBone> backBoneList = new ArrayList<BackBone>();
-	public HistoryList<Operation> operationHistory = new HistoryList<Operation>();
+	public OperationHistory operationHistory = new OperationHistory();
 
 	public boolean modified = false;
 	
@@ -151,7 +151,7 @@ public class SketchProject
 		if (component != null)
 		{	Operation operation = new Operation
 				(component.ID, Operation.ADD, Operation.TYPE_COMPONENT, null, component);
-			operationHistory.putInItem(operation);
+			operationHistory.newOperation(operation);
 			exeOperation(operation);
 			modified = true;
 		}
@@ -164,7 +164,7 @@ public class SketchProject
 		if (component != null)
 		{	Operation operation = new Operation
 				(component.ID, Operation.REMOVE, Operation.TYPE_COMPONENT, component, null);
-			operationHistory.putInItem(operation);
+			operationHistory.newOperation(operation);
 			exeOperation(operation);
 			modified = true;
 		}
@@ -195,7 +195,7 @@ public class SketchProject
 			default:
 				return;
 		}
-		operationHistory.putInItem(operation);
+		operationHistory.newOperation(operation);
 		exeOperation(operation);
 		modified = true;
 	}
@@ -229,7 +229,7 @@ public class SketchProject
 	 * No registration is needed since the operation is not read from the user.  */
 	public Operation ctrlZ()
 	{
-		Operation originalOp = operationHistory.rollBack();
+		Operation originalOp = operationHistory.ctrlZ();
 		if (originalOp == null)
 			return null;
 		// else... 
@@ -243,7 +243,7 @@ public class SketchProject
 	 * No registration is needed since the operation is not read from the user.  */
 	public Operation ctrlY()
 	{
-		Operation originalOp = operationHistory.goForward();
+		Operation originalOp = operationHistory.ctrlY();
 		if (originalOp == null)
 			return null;
 		// else... 
