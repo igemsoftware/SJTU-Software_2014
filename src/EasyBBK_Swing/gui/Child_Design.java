@@ -379,9 +379,13 @@ public class Child_Design extends JLayeredPane {
 		exportButton.addMouseListener(export);
 		exportButton.addMouseMotionListener(export);	
 		
-		SaveListener save = new SaveListener(sketchCenter);
+		SaveListener save = new SaveListener(sketchCenter,panel,Tpanel);
 		saveButton.addMouseListener(save);
 		exportButton.addMouseMotionListener(save);
+		
+		OpenFileListener open = new OpenFileListener(sketchCenter,panel,Tpanel,linePanel);
+		openButton.addMouseListener(open);
+		openButton.addMouseMotionListener(open);
 		
 		//background
 		this.add(background);
@@ -698,7 +702,7 @@ public class Child_Design extends JLayeredPane {
 		    		point.y = point.y - 25;
 		    		
 		    		//Location
-		    		newBackBone.setBounds(point.x, point.y, 83, 50);
+		    		newBackBone.setBounds(point.x, point.y, 200, 50);
 		    		newBackBone.setName("backbone");
 		    		newBackBone.activate();
 					panel.add(newBackBone,-1);
@@ -891,10 +895,13 @@ public class Child_Design extends JLayeredPane {
 						
 						Color lineColor = new Color(linePanel.color.getRGB());
 						float lineStroke = linePanel.stroke;
+						ArrayList<Point> points = new ArrayList<Point>();
+						for (Point point : linePanel.lineList)
+							points.add(new Point(point));
 						
-						Rectangle bounds = newLine.getBounds();
+						Rectangle bounds = new Rectangle(newLine.getBounds());
 						sketchCenter.currentProject.addComponent(new SketchComponent.Relation
-								(newLine.ID, lineType, bounds, linePanel.lineList, lineColor, lineStroke));
+								(newLine.ID, lineType, bounds, points, lineColor, lineStroke));
 						
 						//ÒÆ¶¯
 						DragLineListener dragListener = new DragLineListener();
@@ -1220,7 +1227,7 @@ public class Child_Design extends JLayeredPane {
 				if (component == null)
 					return;
 				else
-					modifyComponent(component, operation.attributeType, operation.following);
+					modifyComponent(component, operation.attributeType, operation.previous, operation.following);
 			}
 		}
 		
@@ -1402,12 +1409,20 @@ public class Child_Design extends JLayeredPane {
 			switch (bioVector.secondaryType)
 			{	
 				case BbkType.Sketch.BioVector.PLASMID:
-					GUIBioVectorType = "";	break;
+					GUIBioVectorType = "plasmid";	break;
 				case BbkType.Sketch.BioVector.VIRUS:
-					GUIBioVectorType = "";	break;
+					GUIBioVectorType = "virus";	break;
 				case BbkType.Sketch.BioVector.BACTERIA:
-					GUIBioVectorType = "";	break;
+					GUIBioVectorType = "ecoil";	break;
 			}
+			
+			JLabelWithID newLabel = new JLabelWithID();
+    		newLabel.ID=bioVector.ID;
+    		newLabel.setBounds(bioVector.bounds);	    		
+			ImageIcon image_newLabel = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/"+GUIBioVectorType+"_move.png"));
+    		newLabel.setIcon(image_newLabel);
+    		newLabel.setName(GUIBioVectorType);
+			panel.add(newLabel);
 		}
 		else
 			return;
@@ -1417,13 +1432,163 @@ public class Child_Design extends JLayeredPane {
 	public void removeComponent(SketchComponent.Component component)
 	{	
 		int ID = component.ID;
-		
+		Component comp = totalCompList.get(ID);
+		comp.getParent().remove(comp);
 	}
 	
-	public void modifyComponent(SketchComponent.Component component, int attributeType, Object following)
+	public void modifyComponent(SketchComponent.Component component, int attributeType, Object previous, Object following)
 	{
+		String primaryType = component.primaryType;
 		
+		if (primaryType.equals(SketchComponent.BioBrick.class.getSimpleName()) || 
+			primaryType.equals(SketchComponent.Protein.class.getSimpleName()) ||
+			primaryType.equals(SketchComponent.Relation.class.getSimpleName()) ||
+			primaryType.equals(SketchComponent.BioVector.class.getSimpleName()))
+		{	if (attributeType == Operation.TYPE_BOUNDS)
+			{	
+				Rectangle bounds = (Rectangle) following;
+				int ID = component.ID;
+				Component comp = totalCompList.get(ID);
+				comp.setBounds(bounds);
+			}
+			else
+				return;
+		}
+		else if (primaryType.equals(SketchComponent.BackBone.class.getSimpleName()))
+		{	if (attributeType == Operation.TYPE_BOUNDS)
+			{	
+				Rectangle bounds = (Rectangle) following;
+				int ID = component.ID;
+				
+				if (isMoveEvent(previous, following))	// linkage
+				{	
+					Component comp = totalCompList.get(ID);
+					Rectangle previousBounds = comp.getBounds();
+					comp.setBounds(bounds);
+					
+					SketchComponent.BackBone backbone = component.toBackBone();
+					ArrayList<Integer> compIndexList = backbone.bbkChildren;
+					if (compIndexList.size()>0)
+					{
+						for (int i=0;i<compIndexList.size();i++)
+						{
+							int compID = compIndexList.get(i);
+							Component sequence = totalCompList.get(compID);
+							Rectangle compBounds = new Rectangle(sequence.getX()+(comp.getBounds().x-previousBounds.x),
+									sequence.getY()+(comp.getBounds().y-previousBounds.y),
+									sequence.getWidth(),sequence.getHeight());
+							sequence.setBounds(compBounds);
+						}
+					}
+					
+				}
+				else	// no linkage
+				{	
+					Component comp = totalCompList.get(ID);
+					comp.setBounds(bounds);
+				}				
+			}
+			else
+				return;
+		}
+		else if (primaryType.equals(SketchComponent.Label.class.getSimpleName()))
+		{	
+			if (attributeType == Operation.TYPE_BOUNDS)
+			{	
+				Rectangle bounds = (Rectangle) following;
+				int ID = component.ID;
+				Component comp = totalCompList.get(ID);
+				comp.setBounds(bounds);
+			}
+			else if (attributeType == Operation.TYPE_FONT)
+			{	
+				Font font = (Font) following;				
+				Color color = component.toLabel().color;
+				int ID = component.ID;
+				Component comp = totalCompList.get(ID);
+				
+		        SimpleAttributeSet attrNew = new SimpleAttributeSet();
+		        StyleConstants.setAlignment(attrNew, StyleConstants.ALIGN_CENTER);
+		        StyleConstants.setForeground(attrNew, color);
+		        StyleConstants.setFontSize(attrNew, font.getSize());
+		        StyleConstants.setFontFamily(attrNew, font.getFamily());
+		        if (font.getStyle()==Font.PLAIN) 
+	            {  
+		        	StyleConstants.setItalic(attrNew, false); 
+		        	StyleConstants.setBold(attrNew, false);
+	            }  
+		        else if (font.getStyle()==Font.ITALIC) 
+	            {  
+	            	StyleConstants.setItalic(attrNew, true); 
+	            	StyleConstants.setBold(attrNew, false);       	
+	            }  
+		        else if (font.getStyle()==Font.BOLD) 
+	            {  
+	            	StyleConstants.setBold(attrNew, true);  
+	            	StyleConstants.setItalic(attrNew, false);
+	            }  
+		        else 
+	            {   //No ItalicBold in font
+	            	StyleConstants.setBold(attrNew, true); 
+	            	StyleConstants.setItalic(attrNew, true);  
+	            }
+		        
+		        ((TextLabel)comp).setCharacterAttributes(attrNew, true);
+		        ((TextLabel)comp).setParagraphAttributes(attrNew, true);				
+			}
+			else if (attributeType == Operation.TYPE_COLOR)
+			{	
+				Font font = component.toLabel().font;				
+				Color color = (Color) following;
+				int ID = component.ID;
+				Component comp = totalCompList.get(ID);
+				
+		        SimpleAttributeSet attrNew = new SimpleAttributeSet();
+		        StyleConstants.setAlignment(attrNew, StyleConstants.ALIGN_CENTER);
+		        StyleConstants.setForeground(attrNew, color);
+		        StyleConstants.setFontSize(attrNew, font.getSize());
+		        StyleConstants.setFontFamily(attrNew, font.getFamily());
+		        if (font.getStyle()==Font.PLAIN) 
+	            {  
+		        	StyleConstants.setItalic(attrNew, false); 
+		        	StyleConstants.setBold(attrNew, false);
+	            }  
+		        else if (font.getStyle()==Font.ITALIC) 
+	            {  
+	            	StyleConstants.setItalic(attrNew, true); 
+	            	StyleConstants.setBold(attrNew, false);       	
+	            }  
+		        else if (font.getStyle()==Font.BOLD) 
+	            {  
+	            	StyleConstants.setBold(attrNew, true);  
+	            	StyleConstants.setItalic(attrNew, false);
+	            }  
+		        else 
+	            {   //No ItalicBold in font
+	            	StyleConstants.setBold(attrNew, true); 
+	            	StyleConstants.setItalic(attrNew, true);  
+	            }
+		        
+		        ((TextLabel)comp).setCharacterAttributes(attrNew, true);
+		        ((TextLabel)comp).setParagraphAttributes(attrNew, true);
+
+			}
+			else
+				return;
+		}
+		else
+			return;
 	}
 
-	
+	/** Judge if the modify contains a move event by the size of the component. 
+	 * If the size has not changed(and the position has changed, namely), 
+	 * it should be a move event. Otherwise it is the user dragging the edge 
+	 * of the backbone to extend or shrink it, not contains a linkage event.  */
+	private boolean isMoveEvent(Object previous, Object following)
+	{	
+		Rectangle preBounds = (Rectangle) previous;
+		Rectangle folBounds = (Rectangle) following;
+		return !(preBounds.width - folBounds.width == 0 && 
+				 preBounds.height - folBounds.height == 0);
+	}
 }
