@@ -36,7 +36,7 @@ public class SearchingResult extends JPanel{
 			}
 		});
 		setBackground(new Color(255, 255, 255));
-		setBounds(62, 117, 558, 250);
+		setBounds(0, 0, 558, 250);
 		setBorder(BorderFactory.createLineBorder(Color.black));
 		setVisible(true);
 		setLayout(null);
