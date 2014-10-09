@@ -62,6 +62,7 @@ class LinePanel extends JLayeredPane
 	
 	public void setPenValue(int value)
 	{
+		p=new Pen();
 		p.setType(value);
 	}
 	

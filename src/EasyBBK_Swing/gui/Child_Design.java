@@ -402,7 +402,11 @@ public class Child_Design extends JLayeredPane {
 		
 		BackoutListener backoutListerer = new BackoutListener();
 		backout.addMouseListener(backoutListerer);
-		backout.addMouseMotionListener(backoutListerer);		
+		backout.addMouseMotionListener(backoutListerer);
+		
+		ForwardListener forwardListener = new ForwardListener();
+		forward.addMouseListener(forwardListener);
+		forward.addMouseMotionListener(forwardListener);
 		
 		//background
 		this.add(background);
@@ -470,6 +474,7 @@ public class Child_Design extends JLayeredPane {
 									linePanel.getLineBorder()[1]-linePanel.getLineBorder()[0]+20,
 									linePanel.getLineBorder()[3]-linePanel.getLineBorder()[2]+20);
 							JLabelWithID newLine = new JLabelWithID();
+							newLine.setName("line");
 							totalCompList.add(newLine);
 							newLine.ID=compCount++;
 							ImageIcon image = new ImageIcon(newimg);
@@ -558,6 +563,7 @@ public class Child_Design extends JLayeredPane {
 								linePanel.getLineBorder()[1]-linePanel.getLineBorder()[0]+20,
 								linePanel.getLineBorder()[3]-linePanel.getLineBorder()[2]+20);
 						JLabelWithID newLine = new JLabelWithID();
+						newLine.setName("line");
 						totalCompList.add(newLine);
 						newLine.ID=compCount++;
 						ImageIcon image = new ImageIcon(newimg);
@@ -639,6 +645,7 @@ public class Child_Design extends JLayeredPane {
 								linePanel.getLineBorder()[1]-linePanel.getLineBorder()[0]+20,
 								linePanel.getLineBorder()[3]-linePanel.getLineBorder()[2]+20);
 						JLabelWithID newLine = new JLabelWithID();
+						newLine.setName("line");
 						totalCompList.add(newLine);
 						newLine.ID=compCount++;
 						ImageIcon image = new ImageIcon(newimg);
@@ -849,6 +856,7 @@ public class Child_Design extends JLayeredPane {
 	    	{
 	    		point =  e.getPoint();
 	    		TextLabel newText = new TextLabel(panel,Tpanel, sketchCenter);
+	    		newText.setName("text");
 	    		point.x = point.x - 25;
 	    		point.y = point.y - 15;
 	    		newText.setBounds(point.x, point.y, 50,30);
@@ -910,6 +918,7 @@ public class Child_Design extends JLayeredPane {
 								linePanel.getLineBorder()[1]-linePanel.getLineBorder()[0]+20,
 								linePanel.getLineBorder()[3]-linePanel.getLineBorder()[2]+20);
 						JLabelWithID newLine = new JLabelWithID();
+						newLine.setName("line");
 						totalCompList.add(newLine);
 						newLine.ID=compCount++;
 						ImageIcon image = new ImageIcon(newimg);
@@ -1239,6 +1248,7 @@ public class Child_Design extends JLayeredPane {
 					int ID = -1;
 					
 					Component component = e.getComponent();
+					System.out.println(component.getName());
 					if ((component.getName()).equals("text"))
 						ID = ((TextLabel) component).ID;
 					else
@@ -1272,7 +1282,56 @@ public class Child_Design extends JLayeredPane {
 				System.out.println(comp.ID);
 			Operation operation = sketchCenter.currentProject.ctrlZ();
 			//test
-			System.out.println(operation.ID);
+			if (operation == null)
+				return;
+			// else... 
+			SketchComponent.Component component;
+			if (operation.operationType == Operation.ADD)
+			{
+				component = (SketchComponent.Component) operation.following;
+				addComponent(component);
+			}
+			else if (operation.operationType == Operation.REMOVE)
+			{	
+				component = (SketchComponent.Component) operation.previous;
+				removeComponent(component);
+			}
+			else
+			{	
+				component = sketchCenter.currentProject.findComponentByID(operation.ID);
+				if (component == null)
+					return;
+				else
+					modifyComponent(component, operation.attributeType, operation.previous, operation.following);
+			}
+		}
+		
+		
+
+		public void mousePressed(MouseEvent e) {}
+
+		public void mouseDragged(MouseEvent e) {}
+		
+		public void mouseMoved(MouseEvent e) {}
+			
+		public void mouseReleased(MouseEvent e){}
+			
+		public void mouseEntered(MouseEvent e) {}
+
+		public void mouseExited(MouseEvent e) {}
+	}
+	
+	/**
+	 * Forward
+	 */
+	class ForwardListener implements MouseInputListener
+	{		
+		public void mouseClicked(MouseEvent e) 
+		{
+			for (SketchComponent.Component comp : sketchCenter.currentProject.componentList)
+				System.out.println(comp.ID);
+			Operation operation = sketchCenter.currentProject.ctrlY();
+			//test
 			if (operation == null)
 				return;
 			// else... 
@@ -1561,7 +1620,28 @@ public class Child_Design extends JLayeredPane {
 			newText.setBounds(label.bounds);
 			newText.setText(label.text);
 			newText.ID=label.ID;
-			totalCompList.set(newText.ID, newText);
+			
+			if (totalCompList.size()<(newText.ID+1))
+			{
+				
+				ArrayList<Component> temptotalCompList = new ArrayList<Component>();
+				temptotalCompList = (ArrayList<Component>) totalCompList.clone();
+				for (int i=0;i<temptotalCompList.size();i++)
+				{					
+					totalCompList.set(i, temptotalCompList.get(i));
+				}
+				
+				for (int i2=0;i2<newText.ID-temptotalCompList.size();i2++)
+				{					
+					totalCompList.add(null);
+				}
+				totalCompList.add(newText);
+			}
+			else
+			{
+				totalCompList.set(newText.ID, newText);
+			}
+
 			panel.add(newText);
 			
 			DragTextListener dragListener = new DragTextListener();
@@ -1594,7 +1674,27 @@ public class Child_Design extends JLayeredPane {
 			}
 			JLabelWithID newLabel = new JLabelWithID();
 			newLabel.ID=biobrick.ID;
-			totalCompList.set(newLabel.ID, newLabel);
+			
+			if (totalCompList.size()<(newLabel.ID+1))
+			{
+				
+				ArrayList<Component> temptotalCompList = new ArrayList<Component>();
+				temptotalCompList = (ArrayList<Component>) totalCompList.clone();
+				for (int i=0;i<temptotalCompList.size();i++)
+				{					
+					totalCompList.set(i, temptotalCompList.get(i));
+				}
+				
+				for (int i2=0;i2<newLabel.ID-temptotalCompList.size();i2++)
+				{					
+					totalCompList.add(null);
+				}
+				totalCompList.add(newLabel);
+			}
+			else
+			{
+				totalCompList.set(newLabel.ID, newLabel);
+			}	
 			
     		ImageIcon image_newLabel = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/"+GUITypeName+"_move.png"));
     		newLabel.setIcon(image_newLabel);
@@ -1621,7 +1721,26 @@ public class Child_Design extends JLayeredPane {
 			
 			JLabelWithID newLabel = new JLabelWithID();
 			newLabel.ID=protein.ID; 
-			totalCompList.set(newLabel.ID, newLabel);
+			if (totalCompList.size()<(newLabel.ID+1))
+			{
+				
+				ArrayList<Component> temptotalCompList = new ArrayList<Component>();
+				temptotalCompList = (ArrayList<Component>) totalCompList.clone();
+				for (int i=0;i<temptotalCompList.size();i++)
+				{					
+					totalCompList.set(i, temptotalCompList.get(i));
+				}
+				
+				for (int i2=0;i2<newLabel.ID-temptotalCompList.size();i2++)
+				{					
+					totalCompList.add(null);
+				}
+				totalCompList.add(newLabel);
+			}
+			else
+			{
+				totalCompList.set(newLabel.ID, newLabel);
+			}
 			String GUITypeName=null;
 			
 			switch (protein.secondaryType)
@@ -1657,8 +1776,28 @@ public class Child_Design extends JLayeredPane {
 			SketchComponent.BackBone backbone = component.toBackBone();
 
     		BackBone newBackBone = new BackBone(panel,Tpanel, sketchCenter);
-    		newBackBone.ID = newBackBone.ID;		
-    		totalCompList.set(newBackBone.ID, newBackBone);
+    		newBackBone.ID = newBackBone.ID;	
+    		
+    		if (totalCompList.size()<(newBackBone.ID+1))
+			{
+				
+				ArrayList<Component> temptotalCompList = new ArrayList<Component>();
+				temptotalCompList = (ArrayList<Component>) totalCompList.clone();
+				for (int i=0;i<temptotalCompList.size();i++)
+				{					
+					totalCompList.set(i, temptotalCompList.get(i));
+				}
+				
+				for (int i2=0;i2<newBackBone.ID-temptotalCompList.size();i2++)
+				{					
+					totalCompList.add(null);
+				}
+				totalCompList.add(newBackBone);
+			}
+			else
+			{
+				totalCompList.set(newBackBone.ID, newBackBone);
+			}
     		
     		ImageIcon image_newBackBone = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/backbone_move.png"));
     		image_newBackBone.setImage(image_newBackBone.getImage().getScaledInstance(((int)(backbone.bounds).getWidth()),50,Image.SCALE_DEFAULT));
@@ -1709,9 +1848,31 @@ public class Child_Design extends JLayeredPane {
 					linePanel.getLineBorder()[3]-linePanel.getLineBorder()[2]+20);
 			
 			JLabelWithID newLine = new JLabelWithID();
-			
+			newLine.setName("line");
+			linePanel.setPen(null);
 			newLine.ID=relation.ID;
-			totalCompList.set(newLine.ID, newLine);
+			
+			if (totalCompList.size()<(newLine.ID+1))
+			{
+				
+				ArrayList<Component> temptotalCompList = new ArrayList<Component>();
+				temptotalCompList = (ArrayList<Component>) totalCompList.clone();
+				for (int i=0;i<temptotalCompList.size();i++)
+				{					
+					totalCompList.set(i, temptotalCompList.get(i));
+				}
+				
+				for (int i2=0;i2<newLine.ID-temptotalCompList.size();i2++)
+				{					
+					totalCompList.add(null);
+				}
+				totalCompList.add(newLine);
+			}
+			else
+			{
+				totalCompList.set(newLine.ID, newLine);
+			}
+			
 			ImageIcon image = new ImageIcon(newimg);
 			newLine.setIcon(image);
 			newLine.setBounds(linePanel.getLineBorder()[0]-10, linePanel.getLineBorder()[2]-10,
@@ -1749,6 +1910,28 @@ public class Child_Design extends JLayeredPane {
 			
 			JLabelWithID newLabel = new JLabelWithID();
     		newLabel.ID=bioVector.ID;
+    		
+    		if (totalCompList.size()<(newLabel.ID+1))
+			{
+				
+				ArrayList<Component> temptotalCompList = new ArrayList<Component>();
+				temptotalCompList = (ArrayList<Component>) totalCompList.clone();
+				for (int i=0;i<temptotalCompList.size();i++)
+				{					
+					totalCompList.set(i, temptotalCompList.get(i));
+				}
+				
+				for (int i2=0;i2<newLabel.ID-temptotalCompList.size();i2++)
+				{					
+					totalCompList.add(null);
+				}
+				totalCompList.add(newLabel);
+			}
+			else
+			{
+				totalCompList.set(newLabel.ID, newLabel);
+			}
+    		
     		totalCompList.set(newLabel.ID, newLabel);
     		newLabel.setBounds(bioVector.bounds);	    		
 			ImageIcon image_newLabel = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/"+GUIBioVectorType+"_move.png"));
