@@ -7,6 +7,7 @@ import java.awt.Rectangle;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -25,10 +26,10 @@ public class Testing
 		//searchKeywordAndGetDetail();
 		//searchFilterAndSort();
 		//searchBlasting();
-		//searchHistory();
+		searchHistory();
 		//compareAssignDetail();
 		//sketchProjectOperation();
-		sketchXMLReadWrite();
+		//sketchXMLReadWrite();
 		//uploadUploadAndReappearBbkUpload();
 		//uploadPartNameSequenceTokenValidationCheck();
 		//uploadSubpartSubscarValidationCheck();
@@ -112,6 +113,8 @@ public class Testing
 		dataCenter.searchCenter.rollBack().display();
 		System.out.println("Go forward... ");
 		dataCenter.searchCenter.goForward().display();
+		System.out.println("Go forward... ");
+		dataCenter.searchCenter.goForward().display();
 		
 		System.out.println("Search again... ");
 		dataCenter.searchCenter.search("BBa_B0034");
@@ -122,7 +125,18 @@ public class Testing
 	
 	private static void compareAssignDetail()
 	{	
+		Calendar calendar1 = Calendar.getInstance();
+		int sec1 = calendar1.get(Calendar.SECOND);
+		int mSec1 = calendar1.get(Calendar.MILLISECOND);
+		
 		dataCenter.compareCenter.assignDetail("BBa_I13545", 2).display();
+		
+		Calendar calendar2 = Calendar.getInstance();
+		int sec2 = calendar2.get(Calendar.SECOND);
+		int mSec2 = calendar2.get(Calendar.MILLISECOND);
+		
+		System.out.println("Network time: " + 
+				(1000 * sec2 + mSec2 - 1000 * sec1 - mSec1) + "ms");
 	}
 	
 	private static void sketchProjectOperation()
