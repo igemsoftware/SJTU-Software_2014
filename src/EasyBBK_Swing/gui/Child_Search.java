@@ -14,9 +14,9 @@ import javax.swing.JTextField;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 
 import javax.swing.JScrollPane;
 
@@ -52,6 +52,7 @@ public class Child_Search extends JPanel {
 	public boolean confirmed_clicked;
 	public Child_Search child_search;
 	public String keyword;
+	public ArrayList<BbkDetail> comparisonlist = new ArrayList<BbkDetail>();
 	/**
 	 * Create the panel.
 	 */

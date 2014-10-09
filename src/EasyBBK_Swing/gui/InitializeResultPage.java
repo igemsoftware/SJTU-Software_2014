@@ -116,19 +116,19 @@ public class InitializeResultPage extends Thread{
 				}
 				
 				if(child_search.information.averagestars.high == true){
-					ArrayList<Integer> starNumList = new ArrayList();
+					ArrayList<Integer> starNumList = new ArrayList<Integer>();
 					starNumList.add(4);
 					starNumList.add(5);
 					child_search.filteredlist = child_search.filteredlist.filterByStarNum(starNumList);
 				}
 				if(child_search.information.averagestars.middle == true){
-					ArrayList<Integer> starNumList = new ArrayList();
+					ArrayList<Integer> starNumList = new ArrayList<Integer>();
 					starNumList.add(2);
 					starNumList.add(3);
 					child_search.filteredlist = child_search.filteredlist.filterByStarNum(starNumList);
 				}
 				if(child_search.information.averagestars.low == true){
-					ArrayList<Integer> starNumList = new ArrayList();
+					ArrayList<Integer> starNumList = new ArrayList<Integer>();
 					starNumList.add(0);
 					starNumList.add(1);
 					child_search.filteredlist = child_search.filteredlist.filterByStarNum(starNumList);

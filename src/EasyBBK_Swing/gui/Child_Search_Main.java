@@ -163,8 +163,8 @@ public class Child_Search_Main extends JPanel {
 		Blast.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/blast.png")));
 		add(Blast);
 		
-		JLabel AddvancedSearch = new JLabel("Addvanced Search");
-		AddvancedSearch.addMouseListener(new MouseAdapter() {
+		JLabel AdvancedSearch = new JLabel("Advanced Search");
+		AdvancedSearch.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				if(flag == false){
@@ -178,11 +178,11 @@ public class Child_Search_Main extends JPanel {
 			}
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				AddvancedSearch.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+				AdvancedSearch.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 			}
 		});
-		AddvancedSearch.setFont(new Font("Times New Roman", Font.BOLD, 20));
-		AddvancedSearch.setBounds(358, 374, 174, 25);
-		add(AddvancedSearch);
+		AdvancedSearch.setFont(new Font("Times New Roman", Font.BOLD, 20));
+		AdvancedSearch.setBounds(358, 374, 174, 25);
+		add(AdvancedSearch);
 	}
 }

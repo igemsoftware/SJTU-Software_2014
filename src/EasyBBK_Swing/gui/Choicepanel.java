@@ -87,19 +87,47 @@ public class Choicepanel extends JPanel {
 		ReleaseStatus.setBounds(39, 265, 112, 17);
 		add(ReleaseStatus);
         
+		ItemListener itemListener_releasestatus = new ItemListener() {
+            JCheckBox jCheckBox;
+ 
+            public void itemStateChanged(ItemEvent e) {
+                jCheckBox = (JCheckBox) e.getSource();
+ 
+                if (jCheckBox.isSelected()) {
+                    if(jCheckBox == Released){
+                    	Deleted.setSelected(false);
+                    	NotReleased.setSelected(false);
+                    }
+                    else if(jCheckBox == Deleted){
+                    	Released.setSelected(false);
+                    	NotReleased.setSelected(false);
+                    }
+                    else if(jCheckBox == NotReleased){
+                    	Released.setSelected(false);
+                    	Deleted.setSelected(false);
+                    }
+                }else{
+                    
+                }
+            }
+        };
+		
         Released = new JCheckBox("Released");
+        Released.addItemListener(itemListener_releasestatus);
 		Released.setFont(new Font("Times New Roman", Font.PLAIN, 16));
 		Released.setBounds(156, 262, 103, 23);
 		Released.setBackground(new Color(255, 255, 255));
 		add(Released);
 		
 		Deleted = new JCheckBox("Deleted");
+		Deleted.addItemListener(itemListener_releasestatus);
 		Deleted.setFont(new Font("Times New Roman", Font.PLAIN, 16));
 		Deleted.setBounds(261, 262, 103, 23);
 		Deleted.setBackground(new Color(255, 255, 255));
 		add(Deleted);
 		
 		NotReleased = new JCheckBox("Not Released");
+		NotReleased.addItemListener(itemListener_releasestatus);
 		NotReleased.setFont(new Font("Times New Roman", Font.PLAIN, 16));
 		NotReleased.setBounds(366, 262, 121, 23);
 		NotReleased.setBackground(new Color(255, 255, 255));
@@ -110,19 +138,47 @@ public class Choicepanel extends JPanel {
 		DNAStatus.setBounds(39, 291, 99, 15);
 		add(DNAStatus);
 		
+		ItemListener itemListener_DNAstatus = new ItemListener() {
+            JCheckBox jCheckBox;
+ 
+            public void itemStateChanged(ItemEvent e) {
+                jCheckBox = (JCheckBox) e.getSource();
+ 
+                if (jCheckBox.isSelected()) {
+                    if(jCheckBox == Available){
+                    	Planning.setSelected(false);
+                    	Informational.setSelected(false);
+                    }
+                    else if(jCheckBox == Planning){
+                    	Available.setSelected(false);
+                    	Informational.setSelected(false);
+                    }
+                    else if(jCheckBox == Informational){
+                    	Available.setSelected(false);
+                    	Planning.setSelected(false);
+                    }
+                }else{
+                    
+                }
+            }
+        };
+		
 		Available = new JCheckBox("Available");
+		Available.addItemListener(itemListener_DNAstatus);
 		Available.setFont(new Font("Times New Roman", Font.PLAIN, 16));
 		Available.setBounds(157, 289, 103, 23);
 		Available.setBackground(new Color(255, 255, 255));
 		add(Available);
 		
 		Planning = new JCheckBox("Planning");
+		Planning.addItemListener(itemListener_DNAstatus);
 		Planning.setFont(new Font("Times New Roman", Font.PLAIN, 16));
 		Planning.setBounds(261, 288, 103, 23);
 		Planning.setBackground(new Color(255, 255, 255));
 		add(Planning);
 		
 		Informational = new JCheckBox("Informational");
+		Informational.addItemListener(itemListener_DNAstatus);
 		Informational.setFont(new Font("Times New Roman", Font.PLAIN, 16));
 		Informational.setBounds(366, 289, 121, 23);
 		Informational.setBackground(new Color(255, 255, 255));
@@ -547,10 +603,10 @@ public class Choicepanel extends JPanel {
 					if(Released.isSelected()){
 						information.releasestatus.released = true;
 					}
-					if(Deleted.isSelected()){
+					else if(Deleted.isSelected()){
 						information.releasestatus.deleted = true;
 					}
-					if(NotReleased.isSelected()){
+					else if(NotReleased.isSelected()){
 						information.releasestatus.notreleased = true;
 					}
 				}
@@ -559,10 +615,10 @@ public class Choicepanel extends JPanel {
 					if(Available.isSelected()){
 						information.dnastatus.available = true;
 					}
-					if(Planning.isSelected()){
+					else if(Planning.isSelected()){
 						information.dnastatus.planning = true;
 					}
-					if(Informational.isSelected()){
+					else if(Informational.isSelected()){
 						information.dnastatus.informational = true;
 					}
 				}
@@ -571,7 +627,7 @@ public class Choicepanel extends JPanel {
 					if(NotDeleted.isSelected()){
 						information.whetherornot = false;
 					}
-					if(Deleted1.isSelected()){
+					else if(Deleted1.isSelected()){
 						information.whetherornot = true;
 					}
 				}
