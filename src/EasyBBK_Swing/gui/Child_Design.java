@@ -21,13 +21,17 @@ import java.awt.Rectangle;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.border.TitledBorder;
 import javax.swing.event.MouseInputListener;
+import javax.swing.filechooser.FileFilter;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
@@ -44,7 +48,11 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.Hashtable;
+import java.util.Locale;
 
 @SuppressWarnings("serial")
 public class Child_Design extends JLayeredPane {
@@ -69,7 +77,10 @@ public class Child_Design extends JLayeredPane {
 	/**
 	 * Create the panel.
 	 */
-	public Child_Design(MainPage mainpage1) {
+	public Child_Design(MainPage mainpage1) 
+	{		
+		sketchCenter.newProject();
+		
 		mainpage = mainpage1;
 		setBounds(0, 0, 1366, 670);
 		setBackground(new Color(255, 255, 255));
@@ -111,8 +122,6 @@ public class Child_Design extends JLayeredPane {
 		Pen line_enhance = new Pen();
 		Pen line_other = new Pen();
 		JLabel background = new JLabel();
-		
-		sketchCenter.newProject();
 		
 		this.setBounds(0, 0, 1366, 670);
 		this.setLayout(null);
@@ -367,6 +376,10 @@ public class Child_Design extends JLayeredPane {
 		panel.addMouseListener(drawLineListener);
 		panel.addMouseMotionListener(drawLineListener);	
 		
+		PanelFocusListener panelFocusListener = new PanelFocusListener();
+		panel.addMouseListener(panelFocusListener);
+		panel.addMouseMotionListener(panelFocusListener);	
+		
 		ShowFontChooser showFont = new ShowFontChooser();
 		fontButton.addMouseListener(showFont);
 		fontButton.addMouseMotionListener(showFont);
@@ -383,9 +396,13 @@ public class Child_Design extends JLayeredPane {
 		saveButton.addMouseListener(save);
 		exportButton.addMouseMotionListener(save);
 		
-		OpenFileListener open = new OpenFileListener(sketchCenter,panel,Tpanel,linePanel);
+		OpenFileListener open = new OpenFileListener();
 		openButton.addMouseListener(open);
 		openButton.addMouseMotionListener(open);
+		
+		BackoutListener backoutListerer = new BackoutListener();
+		backout.addMouseListener(backoutListerer);
+		backout.addMouseMotionListener(backoutListerer);		
 		
 		//background
 		this.add(background);
@@ -474,9 +491,15 @@ public class Child_Design extends JLayeredPane {
 									lineType = BbkType.Sketch.Relation.OTHER;	break;
 							}						
 							
-							Rectangle bounds = newLine.getBounds();
+							Color lineColor = new Color(linePanel.color.getRGB());
+							float lineStroke = linePanel.stroke;
+							ArrayList<Point> points = new ArrayList<Point>();
+							for (Point point : linePanel.lineList)
+								points.add(new Point(point));
+							
+							Rectangle bounds = new Rectangle(newLine.getBounds());
 							sketchCenter.currentProject.addComponent(new SketchComponent.Relation
-									(newLine.ID, lineType, bounds, linePanel.lineList, linePanel.color, (int) linePanel.stroke));
+									(newLine.ID, lineType, bounds, points, lineColor, lineStroke));
 							
 							//ÒÆ¶¯
 							DragLineListener dragListener = new DragLineListener();
@@ -556,9 +579,15 @@ public class Child_Design extends JLayeredPane {
 								lineType = BbkType.Sketch.Relation.OTHER;	break;
 						}						
 						
-						Rectangle bounds = newLine.getBounds();
+						Color lineColor = new Color(linePanel.color.getRGB());
+						float lineStroke = linePanel.stroke;
+						ArrayList<Point> points = new ArrayList<Point>();
+						for (Point point : linePanel.lineList)
+							points.add(new Point(point));
+						
+						Rectangle bounds = new Rectangle(newLine.getBounds());
 						sketchCenter.currentProject.addComponent(new SketchComponent.Relation
-								(newLine.ID, lineType, bounds, linePanel.lineList, linePanel.color, (int) linePanel.stroke));
+								(newLine.ID, lineType, bounds, points, lineColor, lineStroke));
 						
 						//ÒÆ¶¯
 						DragLineListener dragListener = new DragLineListener();
@@ -631,9 +660,15 @@ public class Child_Design extends JLayeredPane {
 								lineType = BbkType.Sketch.Relation.OTHER;	break;
 						}						
 						
-						Rectangle bounds = newLine.getBounds();
+						Color lineColor = new Color(linePanel.color.getRGB());
+						float lineStroke = linePanel.stroke;
+						ArrayList<Point> points = new ArrayList<Point>();
+						for (Point point : linePanel.lineList)
+							points.add(new Point(point));
+						
+						Rectangle bounds = new Rectangle(newLine.getBounds());
 						sketchCenter.currentProject.addComponent(new SketchComponent.Relation
-								(newLine.ID, lineType, bounds, linePanel.lineList, linePanel.color, (int) linePanel.stroke));
+								(newLine.ID, lineType, bounds, points, lineColor, lineStroke));
 						
 						//ÒÆ¶¯
 						DragLineListener dragListener = new DragLineListener();
@@ -810,7 +845,7 @@ public class Child_Design extends JLayeredPane {
 					newLabel.addMouseMotionListener(deleteLabel);
 	    		}
 	    	}
-	    	else if ((pen!=null) & (pen.getType()==5))
+	    	else if ((pen!=null) && (pen.getType()==5))
 	    	{
 	    		point =  e.getPoint();
 	    		TextLabel newText = new TextLabel(panel,Tpanel, sketchCenter);
@@ -818,8 +853,11 @@ public class Child_Design extends JLayeredPane {
 	    		point.y = point.y - 15;
 	    		newText.setBounds(point.x, point.y, 50,30);
 	    		totalCompList.add(newText);
-	    		newText.ID=compCount++;
+	    		newText.ID=compCount++;	    		
 	    		panel.add(newText);
+	    		
+	    		newText.setVisible(true);	    		
+	    		newText.grabFocus();
 				
 	    		ChooseCurrentText chooseTextListener = new ChooseCurrentText();
 	    		newText.addFocusListener(chooseTextListener);
@@ -1155,9 +1193,33 @@ public class Child_Design extends JLayeredPane {
 
 		public void focusLost(FocusEvent e) 
 		{
+			String content=textLabel.getText();
+			sketchCenter.currentProject.modifyComponent(textLabel.ID, 
+					Operation.TYPE_STRING, new String(content));
+			
 			textLabel.focus=false;
 			textLabel.setBorder(null);			
 		}
+	}
+	
+	class PanelFocusListener implements MouseInputListener
+	{		
+		public void mouseClicked(MouseEvent e) 
+		{
+			panel.requestFocus();
+		}
+		
+		public void mousePressed(MouseEvent e) {}
+
+		public void mouseDragged(MouseEvent e) {}
+		
+		public void mouseMoved(MouseEvent e) {}
+			
+		public void mouseReleased(MouseEvent e){}
+			
+		public void mouseEntered(MouseEvent e) {}
+
+		public void mouseExited(MouseEvent e) {}
 	}
 	
 	/**
@@ -1206,7 +1268,11 @@ public class Child_Design extends JLayeredPane {
 	{		
 		public void mouseClicked(MouseEvent e) 
 		{
+			for (SketchComponent.Component comp : sketchCenter.currentProject.componentList)
+				System.out.println(comp.ID);
 			Operation operation = sketchCenter.currentProject.ctrlZ();
+			//test
+			System.out.println(operation.ID);
 			if (operation == null)
 				return;
 			// else... 
@@ -1244,6 +1310,212 @@ public class Child_Design extends JLayeredPane {
 		public void mouseEntered(MouseEvent e) {}
 
 		public void mouseExited(MouseEvent e) {}
+	}
+	
+	//Open file listener
+	public class OpenFileListener implements MouseInputListener
+	{
+		public File path;
+		
+		OpenFileListener()
+		{	
+			super();
+			path = new File("");
+		}
+		
+		public boolean validateFileName(String name) {
+	        if (name.indexOf('\\') != -1 || name.indexOf('/') != -1 ||
+	            name.indexOf(':') != -1 || name.indexOf('*') != -1 ||
+	            name.indexOf('?') != -1 || name.indexOf('"') != -1 ||
+	            name.indexOf('<') != -1 || name.indexOf('>') != -1 ||
+	            name.indexOf('|') != -1) { 
+
+	            return false;
+	        } else {
+	            return true;
+	        }
+	    }
+		
+		public void mouseClicked(MouseEvent e) 
+		{
+			// TODO Auto-generated method stub
+			
+			JFileChooser chooser=new JFileChooser();//ÎÄ¼þ´ò¿ª¶Ô»°¿ò
+			chooser.setLocale(Locale.ENGLISH);
+			chooser.setAcceptAllFileFilterUsed(true);
+			chooser.setMultiSelectionEnabled(false);
+			try {
+				UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+			} catch (ClassNotFoundException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (InstantiationException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (IllegalAccessException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (UnsupportedLookAndFeelException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		    SwingUtilities.updateComponentTreeUI(chooser);
+		    
+			chooser.addChoosableFileFilter(new MyFileFilter("xml","XML"));
+
+			chooser.setCurrentDirectory(new File("."));
+
+			chooser.showOpenDialog(null);
+
+			path = chooser.getSelectedFile();
+			
+			//Begin draw sketch map
+			sketchCenter.loadProject(path.toString());
+			for (SketchComponent.Component component : sketchCenter.currentProject.componentList)
+			{	
+				addComponent(component);
+			}
+			System.out.print(path);	
+			
+			
+		}
+
+		public void mousePressed(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		public void mouseReleased(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		public void mouseEntered(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		public void mouseExited(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		public void mouseDragged(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		public void mouseMoved(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+		class MyFileFilter extends FileFilter {  
+			  
+		    private String TYPE_UNKNOWN = "Type   Unknown ";  
+		    private String HIDDEN_FILE = "Hidden   File ";  
+		    private Hashtable filters = null;  
+		    private String description = null;  
+		    private String fullDescription = null;  
+		    private boolean useExtensionsInDescription = true;  
+		  
+		    public MyFileFilter() {  
+		        this.filters = new Hashtable();  
+		    }  
+		  
+		    public MyFileFilter(String extension) {  
+		        this(extension, null);  
+		    }  
+		  
+		    public MyFileFilter(String extension, String description) {  
+		        this();  
+		        if (extension != null) {  
+		            addExtension(extension);  
+		        }  
+		        if (description != null) {  
+		            setDescription(description);  
+		        }  
+		    }  
+		  
+		    public MyFileFilter(String[] filters) {  
+		        this(filters, null);  
+		    }  
+		  
+		    public MyFileFilter(String[] filters, String description) {  
+		        this();  
+		        for (int i = 0; i < filters.length; i++) {  
+		            //   add   filters   one   by   one   
+		            addExtension(filters[i]);  
+		        }  
+		        if (description != null) {  
+		            setDescription(description);  
+		        }  
+		    }  
+		  
+		    public boolean accept(File f) {  
+		        if (f != null) {  
+		            String extension = getExtension(f);  
+		            if (extension != null && f.getName().toUpperCase().endsWith(".XML")) {  
+		            	//System.out.println(extension);
+		                return true;  
+		            };  
+		        }  
+		        return false;  
+		    }  
+		  
+		    public String getExtension(File f) {  
+		        if (f != null) {  
+		            String filename = f.getName();  
+		            int i = filename.lastIndexOf('.');  
+		            if (i > 0 && i < filename.length() - 1) {  
+		                return filename.substring(i + 1).toLowerCase();  
+		            };  
+		        }  
+		        return null;  
+		    }  
+		  
+		    public void addExtension(String extension) {  
+		        if (filters == null) {  
+		            filters = new Hashtable(5);  
+		        }  
+		        filters.put(extension.toLowerCase(), this);  
+		        fullDescription = null;  
+		    }  
+		  
+		    public String getDescription() {  
+		        if (fullDescription == null) {  
+		            if (description == null || isExtensionListInDescription()) {  
+		                fullDescription = description == null ? "(" : description + "(";  
+		//   build   the   description   from   the   extension   list   
+		                Enumeration extensions = filters.keys();  
+		                if (extensions != null) {  
+		                    fullDescription += "." + (String) extensions.nextElement();  
+		                    while (extensions.hasMoreElements()) {  
+		                        fullDescription += "," + (String) extensions.nextElement();  
+		                    }  
+		                }  
+		                fullDescription += ")";  
+		            } else {  
+		                fullDescription = description;  
+		            }  
+		        }  
+		        return fullDescription;  
+		    }  
+		  
+		    public void setDescription(String description) {  
+		        this.description = description;  
+		        fullDescription = null;  
+		    }  
+		  
+		    public void setExtensionListInDescription(boolean b) {  
+		        useExtensionsInDescription = b;  
+		        fullDescription = null;  
+		    }  
+		  
+		    public boolean isExtensionListInDescription() {  
+		        return useExtensionsInDescription;  
+		    }    
+		}  
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -1289,7 +1561,17 @@ public class Child_Design extends JLayeredPane {
 			newText.setBounds(label.bounds);
 			newText.setText(label.text);
 			newText.ID=label.ID;
+			totalCompList.set(newText.ID, newText);
 			panel.add(newText);
+			
+			DragTextListener dragListener = new DragTextListener();
+    		newText.addMouseListener(dragListener);
+    		newText.addMouseMotionListener(dragListener);
+    		
+    		//É¾³ý
+			DeleteListener deleteText = new DeleteListener();
+			newText.addMouseListener(deleteText);
+			newText.addMouseMotionListener(deleteText);
 		}
 		else if (primaryType.equals(SketchComponent.BioBrick.class.getSimpleName()))
 		{
@@ -1312,12 +1594,26 @@ public class Child_Design extends JLayeredPane {
 			}
 			JLabelWithID newLabel = new JLabelWithID();
 			newLabel.ID=biobrick.ID;
+			totalCompList.set(newLabel.ID, newLabel);
+			
     		ImageIcon image_newLabel = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/"+GUITypeName+"_move.png"));
     		newLabel.setIcon(image_newLabel);
     		newLabel.setBounds(biobrick.bounds);
     		newLabel.setName(GUITypeName);
 			panel.add(newLabel);
     		
+			DragCompListener listener = new DragCompListener(panel,Tpanel,sketchCenter);
+			newLabel.addMouseListener(listener);
+			newLabel.addMouseMotionListener(listener);
+			
+			SetBioBrickNameListener setNameListener = new SetBioBrickNameListener(sketchCenter);
+			newLabel.addMouseListener(setNameListener);
+			newLabel.addMouseMotionListener(setNameListener);
+			
+			//É¾³ý
+			DeleteListener deleteLabel = new DeleteListener();
+			newLabel.addMouseListener(deleteLabel);
+			newLabel.addMouseMotionListener(deleteLabel);
 		}
 		else if (primaryType.equals(SketchComponent.Protein.class.getSimpleName()))
 		{
@@ -1325,6 +1621,7 @@ public class Child_Design extends JLayeredPane {
 			
 			JLabelWithID newLabel = new JLabelWithID();
 			newLabel.ID=protein.ID; 
+			totalCompList.set(newLabel.ID, newLabel);
 			String GUITypeName=null;
 			
 			switch (protein.secondaryType)
@@ -1332,7 +1629,7 @@ public class Child_Design extends JLayeredPane {
 				case BbkType.Sketch.Protein.FACTOR:
 					GUITypeName = "factor";	break;
 				case BbkType.Sketch.Protein.RECEPTER:
-					GUITypeName = "receptor";	break;
+					GUITypeName = "recepter";	break;
 				case BbkType.Sketch.Protein.COMBINED:
 					GUITypeName = "protein";	break;
 			}
@@ -1341,6 +1638,19 @@ public class Child_Design extends JLayeredPane {
     		newLabel.setName(GUITypeName);
 			newLabel.setBounds(protein.bounds);
 			panel.add(newLabel);
+			
+			DragCompListener listener = new DragCompListener(panel,Tpanel,sketchCenter);
+			newLabel.addMouseListener(listener);
+			newLabel.addMouseMotionListener(listener);
+			
+			SetBioBrickNameListener setNameListener = new SetBioBrickNameListener(sketchCenter);
+			newLabel.addMouseListener(setNameListener);
+			newLabel.addMouseMotionListener(setNameListener);
+			
+			//É¾³ý
+			DeleteListener deleteLabel = new DeleteListener();
+			newLabel.addMouseListener(deleteLabel);
+			newLabel.addMouseMotionListener(deleteLabel);
 		}
 		else if (primaryType.equals(SketchComponent.BackBone.class.getSimpleName()))
 		{
@@ -1348,6 +1658,7 @@ public class Child_Design extends JLayeredPane {
 
     		BackBone newBackBone = new BackBone(panel,Tpanel, sketchCenter);
     		newBackBone.ID = newBackBone.ID;		
+    		totalCompList.set(newBackBone.ID, newBackBone);
     		
     		ImageIcon image_newBackBone = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/backbone_move.png"));
     		image_newBackBone.setImage(image_newBackBone.getImage().getScaledInstance(((int)(backbone.bounds).getWidth()),50,Image.SCALE_DEFAULT));
@@ -1356,6 +1667,15 @@ public class Child_Design extends JLayeredPane {
     		newBackBone.setName("backbone");
     		newBackBone.activate();
 			panel.add(newBackBone,-1);
+			
+			DragCompListener listener = new DragCompListener(panel,Tpanel,sketchCenter);
+			newBackBone.addMouseListener(listener);
+			newBackBone.addMouseMotionListener(listener);
+			
+			//É¾³ý
+			DeleteListener deleteBackbone = new DeleteListener();
+			newBackBone.addMouseListener(deleteBackbone);
+			newBackBone.addMouseMotionListener(deleteBackbone);
 		}
 		else if (primaryType.equals(SketchComponent.Relation.class.getSimpleName()))
 		{
@@ -1391,6 +1711,7 @@ public class Child_Design extends JLayeredPane {
 			JLabelWithID newLine = new JLabelWithID();
 			
 			newLine.ID=relation.ID;
+			totalCompList.set(newLine.ID, newLine);
 			ImageIcon image = new ImageIcon(newimg);
 			newLine.setIcon(image);
 			newLine.setBounds(linePanel.getLineBorder()[0]-10, linePanel.getLineBorder()[2]-10,
@@ -1401,6 +1722,16 @@ public class Child_Design extends JLayeredPane {
 			linePanel.color = new Color(previousColor.getRGB());
 			linePanel.stroke = previousStroke;
 			
+			//ÒÆ¶¯
+			DragLineListener dragListener = new DragLineListener();
+			newLine.addMouseListener(dragListener);
+			newLine.addMouseMotionListener(dragListener);
+			linePanel.endLine();
+			
+			//É¾³ý
+			DeleteListener deleteLine = new DeleteListener();
+			newLine.addMouseListener(deleteLine);
+			newLine.addMouseMotionListener(deleteLine);
 		}
 		else if (primaryType.equals(SketchComponent.BioVector.class.getSimpleName()))
 		{
@@ -1418,11 +1749,25 @@ public class Child_Design extends JLayeredPane {
 			
 			JLabelWithID newLabel = new JLabelWithID();
     		newLabel.ID=bioVector.ID;
+    		totalCompList.set(newLabel.ID, newLabel);
     		newLabel.setBounds(bioVector.bounds);	    		
 			ImageIcon image_newLabel = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/"+GUIBioVectorType+"_move.png"));
     		newLabel.setIcon(image_newLabel);
     		newLabel.setName(GUIBioVectorType);
 			panel.add(newLabel);
+			
+			DragCompListener listener = new DragCompListener(panel,Tpanel,sketchCenter);
+			newLabel.addMouseListener(listener);
+			newLabel.addMouseMotionListener(listener);
+			
+			SetBioBrickNameListener setNameListener = new SetBioBrickNameListener(sketchCenter);
+			newLabel.addMouseListener(setNameListener);
+			newLabel.addMouseMotionListener(setNameListener);
+			
+			//É¾³ý
+			DeleteListener deleteLabel = new DeleteListener();
+			newLabel.addMouseListener(deleteLabel);
+			newLabel.addMouseMotionListener(deleteLabel);
 		}
 		else
 			return;
@@ -1572,6 +1917,13 @@ public class Child_Design extends JLayeredPane {
 		        ((TextLabel)comp).setCharacterAttributes(attrNew, true);
 		        ((TextLabel)comp).setParagraphAttributes(attrNew, true);
 
+			}
+			else if (attributeType == Operation.TYPE_STRING)
+			{	int ID = component.ID;
+				String str = (String) following;
+				
+				Component comp = totalCompList.get(ID);
+				((TextLabel)comp).setText(str);
 			}
 			else
 				return;
