@@ -225,6 +225,16 @@ public class SketchProject
 				backBone.bbkChildren.remove(IDInList);
 	}
 	
+	public boolean canCtrlZ()
+	{	
+		return operationHistory.canCtrlZ();
+	}
+	
+	public boolean canCtrlY()
+	{	
+		return operationHistory.canCtrlY();
+	}
+	
 	/** Guidance function, guide the GUI the operation from the history list. 
 	 * No registration is needed since the operation is not read from the user.  */
 	public Operation ctrlZ()

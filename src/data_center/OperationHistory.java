@@ -18,6 +18,16 @@ public class OperationHistory
 		history.push(operation);
 	}
 	
+	public boolean canCtrlZ()
+	{	
+		return !history.empty();
+	}
+	
+	public boolean canCtrlY()
+	{	
+		return !future.empty();
+	}
+	
 	public Operation ctrlZ()
 	{	
 		if (history.empty())
