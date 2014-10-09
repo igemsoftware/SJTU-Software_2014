@@ -39,7 +39,8 @@ public class DetailsofResults_Compare extends JPanel {
 		addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				requestFocus();
+				if(e.getButton() == e.BUTTON1)
+					requestFocus();
 			}
 		});
 		setBounds(0, 0, 437, 820);
@@ -247,12 +248,14 @@ public class DetailsofResults_Compare extends JPanel {
 		URL_Content = new JLabel("");
 		URL_Content.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				try{
-					Runtime.getRuntime().exec("explorer " + URL_Content.getText());
-				}
-				catch(Exception ex){
-					ex.printStackTrace();
+			public void mouseClicked(MouseEvent e) {
+				if(e.getButton() == e.BUTTON1){
+					try{
+						Runtime.getRuntime().exec("explorer " + URL_Content.getText());
+					}
+					catch(Exception ex){
+						ex.printStackTrace();
+					}
 				}
 			}
 			@Override

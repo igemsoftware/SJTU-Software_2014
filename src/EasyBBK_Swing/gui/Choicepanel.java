@@ -59,7 +59,7 @@ public class Choicepanel extends JPanel {
 	public JCheckBox high;
 	public JCheckBox middle;
 	public JCheckBox low;
-	public JButton Confirmed;
+	public JButton Confirme;
 	public Information information;
 	public boolean confirmed_clicked = false;
 	/**
@@ -69,7 +69,8 @@ public class Choicepanel extends JPanel {
 		addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				requestFocus();
+				if(e.getButton() == e.BUTTON1)
+					requestFocus();
 			}
 		});
 		setBackground(new Color(255, 255, 255));
@@ -525,30 +526,28 @@ public class Choicepanel extends JPanel {
 		
 		information = new Information();
 		
-		Confirmed = new JButton("Confirmed");
-		Confirmed.addMouseListener(new MouseAdapter() {
+		Confirme = new JButton("Confirme");
+		Confirme.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				
-				{
+				if(e.getButton() == e.BUTTON1){
+					
 					if(EnteredDate.isSelected()){
 						information.sortby = "Entered Date";
 					}
-					else if(GoogleQouteNumber.isSelected()){
+					if(GoogleQouteNumber.isSelected()){
 						information.sortby = "Google Qoute Number";
 					}
-					else if(AverageStars.isSelected()){
+					if(AverageStars.isSelected()){
 						information.sortby = "Average Stars";
 					}
-					else if(ConfirmedTimes.isSelected()){
+					if(ConfirmedTimes.isSelected()){
 						information.sortby = "Confirmed Times";
 					}
-					else if(TotalScore.isSelected()){
+					if(TotalScore.isSelected()){
 						information.sortby = "Total Score";
 					}
-				}
-				
-				{
+					
 					if(Promoter.isSelected()){
 						information.type.add(SearchResultList.Filter.Type.PRIMER);
 					}
@@ -597,41 +596,34 @@ public class Choicepanel extends JPanel {
 					if(Other.isSelected()){
 						information.type.add(SearchResultList.Filter.Type.OTHER);
 					}
-				}
-				
-				{
+					
 					if(Released.isSelected()){
 						information.releasestatus.released = true;
 					}
-					else if(Deleted.isSelected()){
+					if(Deleted.isSelected()){
 						information.releasestatus.deleted = true;
 					}
-					else if(NotReleased.isSelected()){
+					if(NotReleased.isSelected()){
 						information.releasestatus.notreleased = true;
 					}
-				}
-				
-				{
+					
 					if(Available.isSelected()){
 						information.dnastatus.available = true;
 					}
-					else if(Planning.isSelected()){
+					if(Planning.isSelected()){
 						information.dnastatus.planning = true;
 					}
-					else if(Informational.isSelected()){
+					if(Informational.isSelected()){
 						information.dnastatus.informational = true;
 					}
-				}
-				
-				{
+					
 					if(NotDeleted.isSelected()){
 						information.whetherornot = false;
 					}
-					else if(Deleted1.isSelected()){
+					if(Deleted1.isSelected()){
 						information.whetherornot = true;
 					}
-				}
-				{
+					
 					if(high.isSelected()){
 						information.averagestars.high = true;
 					}
@@ -641,17 +633,18 @@ public class Choicepanel extends JPanel {
 					if(low.isSelected()){
 						information.averagestars.low = true;
 					}
+					
+					information.preferences.status = (int)PercentofStatus.getValue();
+					information.preferences.quality = (int)PercentofQuality.getValue();
+					information.preferences.publication = (int)PercentofPublication.getValue();
+					information.preferences.feedbacks = (int)PercentofFeedbacks.getValue();
+					
+					confirmed_clicked = true;
 				}
-				information.preferences.status = (int)PercentofStatus.getValue();
-				information.preferences.quality = (int)PercentofQuality.getValue();
-				information.preferences.publication = (int)PercentofPublication.getValue();
-				information.preferences.feedbacks = (int)PercentofFeedbacks.getValue();
-				
-				confirmed_clicked = true;
 			}
 		});
-		Confirmed.setFont(new Font("Times New Roman", Font.BOLD, 16));
-		Confirmed.setBounds(243, 451, 121, 28);
-		add(Confirmed);
+		Confirme.setFont(new Font("Times New Roman", Font.BOLD, 16));
+		Confirme.setBounds(243, 451, 121, 28);
+		add(Confirme);
 	}
 }
