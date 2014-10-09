@@ -4,11 +4,11 @@ package data_center;
  * blast by sequence, get detail by name.  */
 public class SearchCenter
 {
-	public HistoryList<SearchResultList> historyList;
+	public SearchHistory historyList;
     
     public SearchCenter()
     {
-		historyList = new HistoryList<SearchResultList>();
+		historyList = new SearchHistory();
     }
 
 

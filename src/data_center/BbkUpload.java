@@ -18,6 +18,7 @@ public class BbkUpload
  	public String type;
     public String author;
     public String shortDesc;   // short description
+    public String longDesc;		// long description
  	public String nickname;
  	public String groupFavorite;
  	public String delete_this_part;
