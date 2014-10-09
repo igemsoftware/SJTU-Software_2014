@@ -40,7 +40,7 @@ public class InitializeDetailPage extends Thread{
 			detailsofresults.Description1.setText(shortdescription.substring(0, 10));
 			detailsofresults.Description2.setText(shortdescription.substring(10));
 		}
-		detailsofresults.URL_Content.setText(bbkdetail.url);
+		detailsofresults.URL_Content.setText("<html><u>" + bbkdetail.url + "</u></html>");
 		detailsofresults.ReleasedStatus_Content.setText(bbkdetail.releaseStatus);
 		detailsofresults.SampleStatus_Content.setText(bbkdetail.sampleStatus);
 		detailsofresults.DNAStatus_Content.setText(bbkdetail.DNA_status);
