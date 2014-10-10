@@ -344,7 +344,7 @@ class LinePanel extends JLayeredPane
     		else
     		{
     			int idx=0;
-    			for (t=0;t<=1;t+=0.002,idx++)
+    			for (t=0;t<=1;t+=0.01,idx++)
     			{
     				double xtmp=0,ytmp=0;
     				for (int i=0;i<n;i++)

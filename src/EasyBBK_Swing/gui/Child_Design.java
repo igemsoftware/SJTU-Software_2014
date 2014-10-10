@@ -40,9 +40,9 @@ import javax.swing.text.StyledDocument;
 import data_center.BbkType;
 import data_center.SketchCenter;
 import data_center.SketchComponent;
+import data_center.SketchOperation;
 import data_center.SketchProject;
 import data_center.SketchComponent.BioBrick;
-import data_center.SketchProject.Operation;
 
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
@@ -1021,8 +1021,8 @@ public class Child_Design extends JLayeredPane {
 	        Font folFont = new Font(font.getFamily(), font.getStyle(), font.getSize());
 	        Color folColor = new Color(color.getRGB());
 	        if (textLabel != null)
-	        {	sketchCenter.currentProject.modifyComponent(textLabel.ID, SketchProject.Operation.TYPE_FONT, folFont);
-	        	sketchCenter.currentProject.modifyComponent(textLabel.ID, SketchProject.Operation.TYPE_COLOR, folColor);
+	        {	sketchCenter.currentProject.modifyComponent(textLabel.ID, SketchOperation.TYPE_FONT, folFont);
+	        	sketchCenter.currentProject.modifyComponent(textLabel.ID, SketchOperation.TYPE_COLOR, folColor);
 	        }
 	        SimpleAttributeSet attrNew = new SimpleAttributeSet();
 	        StyleConstants.setAlignment(attrNew, StyleConstants.ALIGN_CENTER);
@@ -1170,7 +1170,7 @@ public class Child_Design extends JLayeredPane {
 				TextLabel textLabelMoved = (TextLabel)e.getComponent();
 				Rectangle folBounds = textLabelMoved.getBounds();
 				sketchCenter.currentProject.modifyComponent
-					(textLabelMoved.ID, SketchProject.Operation.TYPE_BOUNDS, folBounds);
+					(textLabelMoved.ID, SketchOperation.TYPE_BOUNDS, folBounds);
 			}		
 		}
 		
@@ -1183,7 +1183,7 @@ public class Child_Design extends JLayeredPane {
 			{
 				Rectangle folBounds = new Rectangle(textMoved.getBounds());
 				sketchCenter.currentProject.modifyComponent
-					(textMoved.ID, SketchProject.Operation.TYPE_BOUNDS, folBounds);
+					(textMoved.ID, SketchOperation.TYPE_BOUNDS, folBounds);
 			}
 		}
 			
@@ -1209,7 +1209,7 @@ public class Child_Design extends JLayeredPane {
 		{
 			String content=textLabel.getText();
 			sketchCenter.currentProject.modifyComponent(textLabel.ID, 
-					Operation.TYPE_STRING, new String(content));
+					SketchOperation.TYPE_STRING, new String(content));
 			
 			textLabel.focus=false;
 			textLabel.setBorder(null);			
@@ -1284,7 +1284,7 @@ public class Child_Design extends JLayeredPane {
 	{		
 		public void mouseClicked(MouseEvent e) 
 		{
-			Operation operation = sketchCenter.currentProject.ctrlZ();
+			SketchOperation operation = sketchCenter.currentProject.ctrlZ();
 			//test
 			if (operation == null)
 			{
@@ -1292,12 +1292,12 @@ public class Child_Design extends JLayeredPane {
 			}
 			// else... 
 			SketchComponent.Component component;
-			if (operation.operationType == Operation.ADD)
+			if (operation.operationType == SketchOperation.ADD)
 			{
 				component = (SketchComponent.Component) operation.following;
 				addComponent(component);
 			}
-			else if (operation.operationType == Operation.REMOVE)
+			else if (operation.operationType == SketchOperation.REMOVE)
 			{	
 				component = (SketchComponent.Component) operation.previous;
 				removeComponent(component);
@@ -1336,18 +1336,18 @@ public class Child_Design extends JLayeredPane {
 	{		
 		public void mouseClicked(MouseEvent e) 
 		{
-			Operation operation = sketchCenter.currentProject.ctrlY();
+			SketchOperation operation = sketchCenter.currentProject.ctrlY();
 			//test
 			if (operation == null)
 				return;
 			// else... 
 			SketchComponent.Component component;
-			if (operation.operationType == Operation.ADD)
+			if (operation.operationType == SketchOperation.ADD)
 			{
 				component = (SketchComponent.Component) operation.following;
 				addComponent(component);
 			}
-			else if (operation.operationType == Operation.REMOVE)
+			else if (operation.operationType == SketchOperation.REMOVE)
 			{	
 				component = (SketchComponent.Component) operation.previous;
 				removeComponent(component);
@@ -2025,7 +2025,7 @@ public class Child_Design extends JLayeredPane {
 			primaryType.equals(SketchComponent.Protein.class.getSimpleName()) ||
 			primaryType.equals(SketchComponent.Relation.class.getSimpleName()) ||
 			primaryType.equals(SketchComponent.BioVector.class.getSimpleName()))
-		{	if (attributeType == Operation.TYPE_BOUNDS)
+		{	if (attributeType == SketchOperation.TYPE_BOUNDS)
 			{	
 				Rectangle bounds = (Rectangle) following;
 				int ID = component.ID;
@@ -2036,7 +2036,7 @@ public class Child_Design extends JLayeredPane {
 				return;
 		}
 		else if (primaryType.equals(SketchComponent.BackBone.class.getSimpleName()))
-		{	if (attributeType == Operation.TYPE_BOUNDS)
+		{	if (attributeType == SketchOperation.TYPE_BOUNDS)
 			{	
 				Rectangle bounds = (Rectangle) following;
 				int ID = component.ID;
@@ -2074,14 +2074,14 @@ public class Child_Design extends JLayeredPane {
 		}
 		else if (primaryType.equals(SketchComponent.Label.class.getSimpleName()))
 		{	
-			if (attributeType == Operation.TYPE_BOUNDS)
+			if (attributeType == SketchOperation.TYPE_BOUNDS)
 			{	
 				Rectangle bounds = (Rectangle) following;
 				int ID = component.ID;
 				Component comp = totalCompList.get(ID);
 				comp.setBounds(bounds);
 			}
-			else if (attributeType == Operation.TYPE_FONT)
+			else if (attributeType == SketchOperation.TYPE_FONT)
 			{	
 				Font font = (Font) following;				
 				Color color = component.toLabel().color;
@@ -2117,7 +2117,7 @@ public class Child_Design extends JLayeredPane {
 		        ((TextLabel)comp).setCharacterAttributes(attrNew, true);
 		        ((TextLabel)comp).setParagraphAttributes(attrNew, true);				
 			}
-			else if (attributeType == Operation.TYPE_COLOR)
+			else if (attributeType == SketchOperation.TYPE_COLOR)
 			{	
 				Font font = component.toLabel().font;				
 				Color color = (Color) following;
@@ -2154,7 +2154,7 @@ public class Child_Design extends JLayeredPane {
 		        ((TextLabel)comp).setParagraphAttributes(attrNew, true);
 
 			}
-			else if (attributeType == Operation.TYPE_STRING)
+			else if (attributeType == SketchOperation.TYPE_STRING)
 			{	int ID = component.ID;
 				String str = (String) following;
 				

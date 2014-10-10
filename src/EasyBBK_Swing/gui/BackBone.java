@@ -16,6 +16,7 @@ import javax.swing.JLayeredPane;
 import javax.swing.SwingUtilities;
 
 import data_center.SketchCenter;
+import data_center.SketchOperation;
 import data_center.SketchProject;
 
 /**
@@ -172,7 +173,7 @@ class BackBone extends JLabelWithID implements MouseListener, MouseMotionListene
     		BackBone backBoneResized = (BackBone) e.getComponent();
     		Rectangle folBounds = new Rectangle(backBoneResized.getBounds());
     		sketchCenter.currentProject.modifyComponent
-    			(backBoneResized.ID, SketchProject.Operation.TYPE_BOUNDS, folBounds);
+    			(backBoneResized.ID, SketchOperation.TYPE_BOUNDS, folBounds);
     	}
 		resizeable = false;
 		panel.setPosition(e.getComponent(),-1);
