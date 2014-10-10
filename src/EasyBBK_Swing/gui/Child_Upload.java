@@ -29,7 +29,7 @@ import javax.swing.JTextArea;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 
-import data_center.BbkUpload;
+import data_center.*;
 import data_center.BbkUpload.*;
 
 import java.awt.event.FocusAdapter;
@@ -537,6 +537,9 @@ public class Child_Upload extends JPanel {
 						Feature feature = new Feature(null, feature_item[i].Label.getText(), feature_item[i].content1, feature_item[i].content2, feature_item[i].Start.getText(), feature_item[i].End.getText());
 						bbkupload.features.add(feature);
 					}
+					bbkupload.longDesc = LongDescription.getText();
+					UploadCenter uploadcenter = new UploadCenter();
+					//uploadcenter.getBbkUploadByNameAndOddNum(name, oddNum);
 				}
 			}
 		});

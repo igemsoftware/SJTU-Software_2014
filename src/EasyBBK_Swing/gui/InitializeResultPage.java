@@ -6,6 +6,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
@@ -24,6 +25,7 @@ public class InitializeResultPage extends Thread{
 	public SearchResultList searchresultlist;
 	public SearchResultList filteredlist;
 	public boolean whethersearched = false;
+	public ArrayList<MouseListener> showdetaillist = new ArrayList<MouseListener>();
 	
 	public InitializeResultPage(Child_Search child_search1, String keyword1, boolean whethersearched1){
 		child_search = child_search1;
@@ -249,6 +251,10 @@ public class InitializeResultPage extends Thread{
 						if(child_search.currentpage > 2){
 							child_search.searchingresultpage.setPreferredSize(new Dimension(558,2500));
 							for(int i = 10 * (child_search.currentpage - 2); i < 10 * (child_search.currentpage - 1); i++){
+								if(showdetaillist.get(i%10) != null){
+									child_search.searchingresultpage.searchingresult.get(i%10).ID_Content.removeMouseListener(showdetaillist.get(i%10));
+									showdetaillist.remove(i%10);
+								}
 								showresult(i);
 							}
 							child_search.nextpage.setVisible(true);
@@ -260,6 +266,8 @@ public class InitializeResultPage extends Thread{
 						else if(child_search.currentpage == 2){
 							child_search.searchingresultpage.setPreferredSize(new Dimension(558,2500));
 							for(int i = 0; i < 10; i++){
+								child_search.searchingresultpage.searchingresult.get(i%10).ID_Content.removeMouseListener(showdetaillist.get(i%10));
+								showdetaillist.remove(i%10);
 								showresult(i);
 							}
 							child_search.nextpage.setVisible(true);
@@ -298,6 +306,8 @@ public class InitializeResultPage extends Thread{
 						if(child_search.currentpage < num){
 							child_search.searchingresultpage.setPreferredSize(new Dimension(558,2500));
 							for(int i = 10 * child_search.currentpage; i < 10 * (child_search.currentpage + 1); i++){
+								child_search.searchingresultpage.searchingresult.get(i%10).ID_Content.removeMouseListener(showdetaillist.get(i%10));
+								showdetaillist.remove(i%10);
 								showresult(i);
 							}
 							child_search.previouspage.setVisible(true);
@@ -309,8 +319,11 @@ public class InitializeResultPage extends Thread{
 						else if(child_search.currentpage == num){
 							child_search.searchingresultpage.setPreferredSize(new Dimension(558,250 * leftnum));
 							for(int i = 10 * child_search.currentpage; i < numberofresults; i++){
+								child_search.searchingresultpage.searchingresult.get(i%10).ID_Content.removeMouseListener(showdetaillist.get(i%10));
+								showdetaillist.remove(i%10);
 								showresult(i);
 							}
+							
 							child_search.previouspage.setVisible(true);
 							child_search.nextpage.setVisible(false);
 							child_search.currentpage++;
@@ -358,7 +371,8 @@ public class InitializeResultPage extends Thread{
 	public void showresult(int j){
 		BbkOutline bbkoutline = filteredlist.get(j);
 		int i = j % 10;
-		child_search.searchingresultpage.searchingresult.get(i).ID_Content.addMouseListener(new MouseAdapter() {
+		
+		MouseListener showdetailpage = new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if(e.getButton() == e.BUTTON1){
@@ -366,7 +380,12 @@ public class InitializeResultPage extends Thread{
 					initializedetail.start();
 				}
 			}
-		});
+		};
+		
+		
+		showdetaillist.add(i, showdetailpage);;
+		
+		child_search.searchingresultpage.searchingresult.get(i).ID_Content.addMouseListener(showdetailpage);
 		child_search.searchingresultpage.searchingresult.get(i).ID_Content.setText(bbkoutline.name);
 		child_search.searchingresultpage.searchingresult.get(i).Type_Content.setText(bbkoutline.type);
 		child_search.searchingresultpage.searchingresult.get(i).Author_Content.setText(bbkoutline.author);
