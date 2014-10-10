@@ -394,7 +394,11 @@ public class Child_Design extends JLayeredPane {
 		
 		SaveListener save = new SaveListener(sketchCenter,panel,Tpanel);
 		saveButton.addMouseListener(save);
-		exportButton.addMouseMotionListener(save);
+		saveButton.addMouseMotionListener(save);
+		
+		NewListener newListener= new NewListener();
+		newButton.addMouseListener(newListener);
+		newButton.addMouseMotionListener(newListener);
 		
 		OpenFileListener open = new OpenFileListener();
 		openButton.addMouseListener(open);
@@ -1371,6 +1375,49 @@ public class Child_Design extends JLayeredPane {
 		public void mouseExited(MouseEvent e) {}
 	}
 	
+	/**
+	 * New (or clear)
+	 */
+	class NewListener implements MouseInputListener
+	{		
+		public void mouseClicked(MouseEvent e) 
+		{
+			panel.removeAll();
+			panel.repaint();
+			panel.add(Tpanel);
+			panel.add(linePanel);
+			if (pen!=null)
+			{
+				pen.setEnabled(true);
+			}
+			pen=null;
+			if (source!=null)
+			{
+				((JLabelWithID)source).setEnabled(true);
+			}
+			source = null;
+			choose = false;
+			textLabel=null;
+			totalCompList=new ArrayList<Component>();
+			lineColor = Color.black;
+			lineStroke = 3.0f;
+			compCount = 0;
+			SketchCenter sketchCenter = new SketchCenter();	
+		}
+
+		public void mousePressed(MouseEvent e) {}
+
+		public void mouseDragged(MouseEvent e) {}
+		
+		public void mouseMoved(MouseEvent e) {}
+			
+		public void mouseReleased(MouseEvent e){}
+			
+		public void mouseEntered(MouseEvent e) {}
+
+		public void mouseExited(MouseEvent e) {}
+	}
+	
 	//Open file listener
 	public class OpenFileListener implements MouseInputListener
 	{
@@ -1673,6 +1720,7 @@ public class Child_Design extends JLayeredPane {
 					GUITypeName = "terminator";	break;
 			}
 			JLabelWithID newLabel = new JLabelWithID();
+			panel.setPosition(newLabel, 0);
 			newLabel.ID=biobrick.ID;
 			
 			if (totalCompList.size()<(newLabel.ID+1))
@@ -1776,6 +1824,7 @@ public class Child_Design extends JLayeredPane {
 			SketchComponent.BackBone backbone = component.toBackBone();
 
     		BackBone newBackBone = new BackBone(panel,Tpanel, sketchCenter);
+    		panel.setPosition(newBackBone, -1);
     		newBackBone.ID = newBackBone.ID;	
     		
     		if (totalCompList.size()<(newBackBone.ID+1))
