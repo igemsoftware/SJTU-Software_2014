@@ -3,6 +3,7 @@ package EasyBBK_Swing.gui;
 import java.awt.BasicStroke;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Frame;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -58,9 +59,11 @@ public class SetBioBrickNameListener implements MouseInputListener
 					((JLabelWithID)e.getComponent()).getName()=="reporter")
 			{
 				SetBioBrickNameDialog one = new SetBioBrickNameDialog(((JLabelWithID)e.getComponent()).ID);
+				one.currentName=((JLabelWithID)(e.getComponent())).bioName;
+				one.selectedName=((JLabelWithID)(e.getComponent())).bioName;
 				one.showDialog((JFrame)((JLabelWithID)(e.getSource())).getRootPane().getParent(),500,200);
 				String name = one.getSelectedName();
-				
+				((JLabelWithID)(e.getComponent())).bioName = name;
 			}
 		}
 	}
@@ -88,6 +91,7 @@ public class SetBioBrickNameListener implements MouseInputListener
 	    }  
     
 	    public String selectedName="";
+	    public String currentName="";
 	      
 	    public SetBioBrickNameDialog(int ID)
 	    {     
@@ -109,6 +113,8 @@ public class SetBioBrickNameListener implements MouseInputListener
 	    
 	    JTextField nameInput =new JTextField();
 	    JButton set = new JButton();
+	    JButton ok = new JButton();
+	    JButton cancel = new JButton();
 	    JPanel showPanel = new JPanel();
 	    //
 	    
@@ -139,12 +145,21 @@ public class SetBioBrickNameListener implements MouseInputListener
 	    	set.setBounds(490,10,60,30);
 	    	set.setText("Set");
 	    	this.add(set);
+	    	
+	    	ok.setBounds(430,310,60,30);
+	    	ok.setText("ok");
+	    	this.add(ok);
+	    	
+	    	cancel.setBounds(500,310,60,30);
+	    	cancel.setText("cancel");
+	    	this.add(cancel);
+	    	cancel.setMargin(new Insets(0,0,0,0));
 
 	        /*用户确定*/  
 	    	set.addActionListener(new ActionListener() {  
 	            public void actionPerformed(ActionEvent e)
 	            {  
-	            	setSelectedName(nameInput.getText()); 
+	            	currentName=nameInput.getText(); 
 	            	
 	            	SketchComponent.Component component = sketchCenter.currentProject.findComponentByID(ID);
 	            	if (component == null || !component.getClass().equals(SketchComponent.BioBrick.class))
@@ -195,6 +210,23 @@ public class SetBioBrickNameListener implements MouseInputListener
 	            	
 	            }  
 	        });  
+	    	
+	    	/*用户确定*/  
+	        ok.addActionListener(new ActionListener() {  
+	            public void actionPerformed(ActionEvent e) {  
+	            	setSelectedName(currentName);    
+	                dialog.dispose();  
+	                dialog = null;  
+	            }  
+	        });  
+	  
+	        /*用户取消*/  
+	        cancel.addActionListener(new ActionListener() {  
+	            public void actionPerformed(ActionEvent e) {  
+	                dialog.dispose();  
+	                dialog = null;  
+	            }  
+	        }); 
 	    }  
 	      
 	    /*显示字体选择器对话框(x,y表示窗体的启动位置)*/  
@@ -204,7 +236,7 @@ public class SetBioBrickNameListener implements MouseInputListener
 	        dialog = new JDialog(parent, title,true);  
 	        dialog.add(this);  
 	        dialog.setResizable(false);  
-	        dialog.setSize(600, 350);  
+	        dialog.setSize(600, 385);  
 	      //设置接界面的启动位置  
 	        dialog.setLocation(x,y);  
 	        dialog.addWindowListener(new WindowAdapter() {  
