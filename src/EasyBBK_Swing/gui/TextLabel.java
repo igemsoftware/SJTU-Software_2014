@@ -23,6 +23,7 @@ import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
 
 import data_center.SketchCenter;
+import data_center.SketchOperation;
 import data_center.SketchProject;
 
 @SuppressWarnings("serial")
@@ -332,7 +333,7 @@ class TextLabel extends JTextPane implements MouseListener, MouseMotionListener
     	{
     		Rectangle folBounds = new Rectangle(labelResized.getBounds());
     		sketchCenter.currentProject.modifyComponent
-    			(labelResized.ID, SketchProject.Operation.TYPE_BOUNDS, folBounds);
+    			(labelResized.ID, SketchOperation.TYPE_BOUNDS, folBounds);
     	}
 		resizeable = false;
 		reType=0;
