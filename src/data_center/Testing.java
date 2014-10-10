@@ -26,10 +26,11 @@ public class Testing
 		//searchKeywordAndGetDetail();
 		//searchFilterAndSort();
 		//searchBlasting();
-		searchHistory();
+		//searchHistory();
 		//compareAssignDetail();
 		//sketchProjectOperation();
 		//sketchXMLReadWrite();
+		sketchOperationHistory();
 		//uploadUploadAndReappearBbkUpload();
 		//uploadPartNameSequenceTokenValidationCheck();
 		//uploadSubpartSubscarValidationCheck();
@@ -193,6 +194,33 @@ public class Testing
 		project.loadFromFile("testXML.xml");
 		
 		project.displayComponents();
+	}
+	
+	private static void sketchOperationHistory()
+	{	
+		SketchProject project = dataCenter.sketchCenter.newProject();
+		System.out.println("Auto generated project name: " + project.name);
+		
+		project.addComponent(new Label(0, "", 
+				new Rectangle(5, 5, 10, 10), new Font("Times Roman", 10, 3), new Color(0, 0, 0)));
+		project.addComponent(new BioBrick(1, null, BbkType.Sketch.BioBrick.PROMOTER, 
+				new Rectangle(10, 10, 10, 10), null));
+		project.addComponent(new Protein(2, BbkType.Sketch.Protein.FACTOR, 
+				new Rectangle(20, 20, 5, 5), Color.BLUE));
+		project.modifyComponent(0, SketchOperation.TYPE_STRING, "text");
+		
+		project.ctrlZ();
+		project.ctrlZ();
+		project.ctrlZ();
+		System.out.println("CtrlZ for 3 times, the history list: ");
+		project.displayOperationHistory();
+		
+		project.ctrlY();
+		project.ctrlY();
+		project.ctrlY();
+		System.out.println("CtrlY for 3 times, the history list: ");
+		project.displayOperationHistory();
+		
 	}
 	
 	private static void uploadUploadAndReappearBbkUpload()

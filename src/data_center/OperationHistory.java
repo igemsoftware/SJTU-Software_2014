@@ -2,17 +2,15 @@ package data_center;
 
 import java.util.Stack;
 
-import data_center.SketchProject.Operation;
-
 /** The class implements a history list contains roll back and go forward function. 
  * Different from the SearchHistory, the OperationHistory aims the pointer at the
  * nick between data, not the data, like [H H H¡ýF F] (history, pointer,  future) */
 public class OperationHistory
 {
-	Stack<Operation> history = new Stack<Operation>();
-	Stack<Operation> future = new Stack<Operation>();
+	Stack<SketchOperation> history = new Stack<SketchOperation>();
+	Stack<SketchOperation> future = new Stack<SketchOperation>();
 	
-	public void newOperation(Operation operation)
+	public void newOperation(SketchOperation operation)
 	{	
 		future.clear();
 		history.push(operation);
@@ -28,26 +26,26 @@ public class OperationHistory
 		return !future.empty();
 	}
 	
-	public Operation ctrlZ()
+	public SketchOperation ctrlZ()
 	{	
 		if (history.empty())
 		{	System.out.println("Oh already in the head of the history... 0.0");
 			return null;
 		}
 		// else... 
-		Operation operation = history.pop();
+		SketchOperation operation = history.pop();
 		future.push(operation);
 		return operation;
 	}
 	
-	public Operation ctrlY()
+	public SketchOperation ctrlY()
 	{	
 		if (future.empty())
 		{	System.out.println("Oh already in the tail of the history... 0.0");
 			return null;
 		}
 		// else... 
-		Operation operation = future.pop();
+		SketchOperation operation = future.pop();
 		history.push(operation);
 		return operation;
 	}
@@ -56,5 +54,16 @@ public class OperationHistory
 	{	
 		history.clear();
 		future.clear();
+	}
+	
+	public void display()
+	{	
+		System.out.println("In the history: ");
+		for (SketchOperation operation : history)
+			operation.display();
+		System.out.println("In the future: ");
+		for (SketchOperation operation : future)
+			operation.display();
+		
 	}
 }
