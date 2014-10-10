@@ -2,11 +2,13 @@ package EasyBBK_Swing.gui;
 
 import java.awt.Color;
 import java.awt.Cursor;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -15,251 +17,101 @@ import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
+import javax.swing.border.EmptyBorder;
 
 import data_center.*;
 
 public class Child_Compare extends JPanel {
 	public MainPage mainpage;
-	public JPanel details1;
-	public JPanel details2;
-	public JPanel details3;
-	public JLabel Back2;
-	public JLabel Back3;
-	public JLabel Forward2;
-	public JLabel Forward3;
-	public JLabel Search1;
-	public JLabel Search2;
-	public JLabel Search3;
-	public JTextField textField1;
-	public JTextField textField2;
-	public JTextField textField3;
-	public JScrollPane scrollpanel1;
-	public JScrollPane scrollpanel2;
-	public JScrollPane scrollpanel3;
-	public JPanel scrollpanecontainer1;
-	public JPanel scrollpanecontainer2;
-	public JPanel scrollpanecontainer3;
-	public DataCenter datacenter1;
-	public DataCenter datacenter2;
-	public DataCenter datacenter3;
-	public DetailsofResults_Compare detailsofresult1;
-	public DetailsofResults_Compare detailsofresult2;
-	public DetailsofResults_Compare detailsofresult3;
+	public ArrayList<BbkDetail> comparisonlist = new ArrayList<BbkDetail>();
+	public JPanel Containerpanel;
 	/**
 	 * Create the panel.
 	 */
 	public Child_Compare(MainPage mainpage1) {
 		mainpage = mainpage1;
+		comparisonlist = mainpage.child_search_current.comparisonlist;
+		initialize();
+	}
+	
+	public Child_Compare(MainPage mainpage1, ArrayList<BbkDetail> comparisonlist1) {
+		mainpage = mainpage1;
+		comparisonlist = comparisonlist1;
+		initialize();
+	}
+	
+	public void initialize(){
 		setBounds(0, 0, 1366, 670);
 		setBackground(new Color(255, 255, 255));
 		setLayout(null);
 		
-		details1 = new JPanel();
-		details1.setBounds(0, 0, 455, 670);
-		details1.setBackground(new Color(255, 255, 255));
-		add(details1);
-		details1.setLayout(null);
+		Containerpanel = new JPanel();
+		Containerpanel.setBounds(0, 0, 1348, 1000);
+		Containerpanel.setPreferredSize(new Dimension(1348, 1000));
+		Containerpanel.setBackground(new Color(255, 255, 255));
+		Containerpanel.setLayout(null);
 		
-		JLabel Text_Background1 = new JLabel();
-		Text_Background1.setBounds(22, 10, 300, 50);
-		Text_Background1.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Text.png")));
-		details1.add(Text_Background1);
+		JScrollPane scrollPane = new JScrollPane(Containerpanel);
+		JScrollBar scrollbar = new JScrollBar();
+		scrollbar.setUnitIncrement(50);
+		scrollPane.setVerticalScrollBar(scrollbar);
+		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		scrollPane.setBounds(0, 0, 1366, 670);
+		scrollPane.validate();
+		add(scrollPane);
 		
-		Search1 = new JLabel();
-		Search1.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				if(textField1.getText() == null || textField1.getText().trim().equals("")) return;
-				scrollpanecontainer1.removeAll();
-				InitializeDetailPage initializedetailpage1 = new InitializeDetailPage(textField1.getText(), datacenter1, scrollpanecontainer1, scrollpanel1, detailsofresult1, 0);
-				initializedetailpage1.start();
-				scrollpanecontainer1.updateUI();
-			}
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				Search1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-				Search1.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/SearchBox_searchButton_Hock.png")));
-			}
-			@Override
-			public void mouseExited(MouseEvent e) {
-				Search1.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/SearchBox_searchButton.png")));
-			}
-		});
-		Search1.setBounds(345, 10, 100, 50);
-		Search1.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/SearchBox_searchButton.png")));
-		details1.add(Search1);
+		JTextField comparison = new JTextField("The Comparison for Biobricks");
+		comparison.setFont(new Font("Times New Roman", Font.BOLD, 40));
+		comparison.setBackground(new Color(255, 255, 255));
+		comparison.setBounds(408, 50, 550, 50);
+		comparison.setEditable(false);
+		comparison.setBorder(new EmptyBorder(0,0,0,0));
+		Containerpanel.add(comparison);
+		comparison.setColumns(10);
 		
-		datacenter1 = new DataCenter();
-		
-		textField1 = new JTextField();
-		textField1.addKeyListener(new KeyAdapter() {
-			@Override
-			public void keyPressed(KeyEvent e) {
-				if(e.getKeyChar() == e.VK_ENTER){
-					if(textField1.getText() == null || textField1.getText().trim().equals("")) return;
-					scrollpanecontainer1.removeAll();
-					InitializeDetailPage initializedetailpage1 = new InitializeDetailPage(textField1.getText(), datacenter1, scrollpanecontainer1, scrollpanel1, detailsofresult1, 0);
-					initializedetailpage1.start();
-					scrollpanecontainer1.updateUI();
-				}
-			}
-		});
-		textField1.setFont(new Font("Times New Roman", Font.PLAIN, 24));
-		textField1.setVisible(true);
-		textField1.setBounds(10, 5, 282, 32);
-		Text_Background1.add(textField1);
-		textField1.setColumns(20);
-		
-		scrollpanecontainer1 = new JPanel();
-		scrollpanecontainer1.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				requestFocus();
-			}
-		});
-		scrollpanecontainer1.setBounds(0, 79, 455, 591);
-		scrollpanecontainer1.setBackground(new Color(255, 255, 255));
-		details1.add(scrollpanecontainer1);
-		scrollpanecontainer1.setLayout(null);
-		
-		
-		details2 = new JPanel();
-		details2.setBounds(456, 0, 455, 670);
-		details2.setBackground(new Color(255, 255, 255));
-		add(details2);
-		details2.setLayout(null);
-		
-		JLabel Text_Background2 = new JLabel();
-		Text_Background2.setBounds(22, 10, 300, 50);
-		Text_Background2.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Text.png")));
-		details2.add(Text_Background2);
-		
-		Search2 = new JLabel();
-		Search2.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				if(textField2.getText() == null || textField2.getText().trim().equals("")) return;
-				scrollpanecontainer2.removeAll();
-				InitializeDetailPage initializedetailpage2 = new InitializeDetailPage(textField2.getText(), datacenter2, scrollpanecontainer2, scrollpanel2, detailsofresult2, 1);
-				initializedetailpage2.start();
-				scrollpanecontainer2.updateUI();
-			}
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				Search2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-				Search2.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/SearchBox_searchButton_Hock.png")));
-			}
-			@Override
-			public void mouseExited(MouseEvent e) {
-				Search2.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/SearchBox_searchButton.png")));
-			}
-		});
-		Search2.setBounds(345, 10, 100, 50);
-		Search2.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/SearchBox_searchButton.png")));
-		details2.add(Search2);
-		
-		datacenter2 = new DataCenter();
-		
-		textField2 = new JTextField();
-		textField2.addKeyListener(new KeyAdapter() {
-			@Override
-			public void keyPressed(KeyEvent e) {
-				if(e.getKeyChar() == e.VK_ENTER){
-					if(textField2.getText() == null || textField2.getText().trim().equals("")) return;
-					scrollpanecontainer2.removeAll();
-					InitializeDetailPage initializedetailpage2 = new InitializeDetailPage(textField2.getText(), datacenter2, scrollpanecontainer2, scrollpanel2, detailsofresult2, 1);
-					initializedetailpage2.start();
-					scrollpanecontainer2.updateUI();
-				}
-			}
-		});
-		textField2.setFont(new Font("Times New Roman", Font.PLAIN, 24));
-		textField2.setVisible(true);
-		textField2.setBounds(10, 5, 282, 32);
-		Text_Background2.add(textField2);
-		textField2.setColumns(20);
-		
-		scrollpanecontainer2 = new JPanel();
-		scrollpanecontainer2.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				requestFocus();
-			}
-		});
-		scrollpanecontainer2.setBounds(0, 79, 455, 591);
-		scrollpanecontainer2.setBackground(new Color(255, 255, 255));
-		details2.add(scrollpanecontainer2);
-		scrollpanecontainer2.setLayout(null);
-		
-		
-		details3 = new JPanel();
-		details3.setBounds(912, 0, 455, 670);
-		details3.setBackground(new Color(255, 255, 255));
-		add(details3);
-		details3.setLayout(null);
-		
-		JLabel Text_Background3 = new JLabel();
-		Text_Background3.setBounds(22, 10, 300, 50);
-		Text_Background3.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Text.png")));
-		details3.add(Text_Background3);
-		
-		Search3 = new JLabel();
-		Search3.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				if(textField3.getText() == null || textField3.getText().trim().equals("")) return;
-				scrollpanecontainer3.removeAll();
-				InitializeDetailPage initializedetailpage3 = new InitializeDetailPage(textField3.getText(), datacenter3, scrollpanecontainer3, scrollpanel3, detailsofresult3, 2);
-				initializedetailpage3.start();
-				scrollpanecontainer3.updateUI();
-			}
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				Search3.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-				Search3.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/SearchBox_searchButton_Hock.png")));
-			}
-			@Override
-			public void mouseExited(MouseEvent e) {
-				Search3.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/SearchBox_searchButton.png")));
-			}
-		});
-		Search3.setBounds(345, 10, 100, 50);
-		Search3.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/SearchBox_searchButton.png")));
-		details3.add(Search3);
-		
-		datacenter3 = new DataCenter();
-		
-		textField3 = new JTextField();
-		textField3.addKeyListener(new KeyAdapter() {
-			@Override
-			public void keyPressed(KeyEvent e) {
-				if(e.getKeyChar() == e.VK_ENTER){
-					if(textField3.getText() == null || textField3.getText().trim().equals("")) return;
-					scrollpanecontainer3.removeAll();
-					InitializeDetailPage initializedetailpage3 = new InitializeDetailPage(textField3.getText(), datacenter3, scrollpanecontainer3, scrollpanel3, detailsofresult3, 2);
-					initializedetailpage3.start();
-					scrollpanecontainer1.updateUI();
-				}
-			}
-		});
-		textField3.setFont(new Font("Times New Roman", Font.PLAIN, 24));
-		textField3.setVisible(true);
-		textField3.setBounds(10, 5, 282, 32);
-		Text_Background3.add(textField3);
-		textField3.setColumns(20);
-		
-		scrollpanecontainer3 = new JPanel();
-		scrollpanecontainer3.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				requestFocus();
-			}
-		});
-		scrollpanecontainer3.setBounds(0, 79, 455, 591);
-		scrollpanecontainer3.setBackground(new Color(255, 255, 255));
-		details3.add(scrollpanecontainer3);
-		scrollpanecontainer3.setLayout(null);
+		initialpage();
 		
 		setVisible(true);
+	}
+	
+	public void initialpage(){
+		Comparison_info comparison_info = new Comparison_info();
+		comparison_info.setBounds(123, 150, 220, 690);
+		Containerpanel.add(comparison_info);
+		
+		if(comparisonlist == null) return;
+		int num = comparisonlist.size();
+		
+		for(int i = 0; i < num; i++){
+			Comparison_item comparison_item = new Comparison_item();
+			comparison_item.setBounds(343 + i*300, 150, 300, 690);
+			BbkDetail bbkdetail = comparisonlist.get(i);
+			comparison_item.PartName.setText(bbkdetail.name);
+			comparison_item.Type.setText(bbkdetail.type);
+			comparison_item.ShortDescription.setText(bbkdetail.shortDesc);
+			comparison_item.PartStatus.setText(bbkdetail.releaseStatus);
+			comparison_item.SampleStatus.setText(bbkdetail.sampleStatus);
+			comparison_item.Url.setText("<html><u>" + bbkdetail.url + "</u></html>");
+			comparison_item.DNAStatus.setText(bbkdetail.DNA_status);
+			comparison_item.DeleteThisPart.setText(bbkdetail.rating.delete_this_part);
+			comparison_item.ConfirmedTimes.setText(bbkdetail.rating.tot_confirmed);
+			comparison_item.LengthofDocumentation.setText(bbkdetail.rating.documentation);
+			comparison_item.PartResults.setText(bbkdetail.results);
+			comparison_item.GroupFavorite.setText(bbkdetail.groupFavorite);
+			comparison_item.UsedTimes.setText(bbkdetail.rating.used_times);
+			if(bbkdetail.rating.average_stars.equals("No Stars")){
+				comparison_item.AverageRating.setText(bbkdetail.rating.average_stars);
+			}
+			else if(bbkdetail.rating.average_stars.length() == 1){
+				comparison_item.AverageRating.setText(bbkdetail.rating.average_stars);
+			}
+			else if(bbkdetail.rating.average_stars.length() >= 3){
+				comparison_item.AverageRating.setText(bbkdetail.rating.average_stars.substring(0,3));
+			}
+			comparison_item.NumberofComments.setText(bbkdetail.rating.tot_commets);
+			comparison_item.GoogleItems.setText(bbkdetail.rating.google_items);
+			
+			Containerpanel.add(comparison_item);
+		}
 	}
 }
