@@ -222,7 +222,7 @@ public class SketchProject
 		BackBone backBone = comp.toBackBone();
 		for (Integer IDInList : backBone.bbkChildren)
 			if (IDInList == bbkID)
-				backBone.bbkChildren.remove(IDInList);
+			{	backBone.bbkChildren.remove(IDInList);	break;	}
 	}
 	
 	public boolean canCtrlZ()
