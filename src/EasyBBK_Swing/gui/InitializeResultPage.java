@@ -21,10 +21,21 @@ import data_center.*;
 public class InitializeResultPage extends Thread{
 	public Child_Search child_search;
 	public String keyword;
+	public SearchResultList searchresultlist;
+	public SearchResultList filteredlist;
+	public boolean whethersearched = false;
 	
-	public InitializeResultPage(Child_Search child_search1, String keyword1){
+	public InitializeResultPage(Child_Search child_search1, String keyword1, boolean whethersearched1){
 		child_search = child_search1;
 		keyword = keyword1;
+		whethersearched = whethersearched1;
+	}
+	
+	public InitializeResultPage(Child_Search child_search1, String keyword1, boolean whethersearched1, SearchResultList listtodeal){
+		child_search = child_search1;
+		keyword = keyword1;
+		whethersearched = whethersearched1;
+		searchresultlist = listtodeal;
 	}
 	
 	public void run(){
@@ -35,18 +46,22 @@ public class InitializeResultPage extends Thread{
 		child_search.resultpanel.add(searching);
 		child_search.resultpanel.updateUI();
 		
-		if(child_search.blast == 1){
-			child_search.searchresultlist = child_search.searchcenter.search(keyword);
-		}
-		else if(child_search.blast == 2){
-			child_search.searchresultlist = child_search.searchcenter.blast(keyword, BlastingSearcher.MODE_INPUT_SEQUENCE);
-		}
-		else if(child_search.blast == 3){
-			child_search.searchresultlist = child_search.searchcenter.blast(keyword, BlastingSearcher.MODE_INPUT_FILE_PATH);
+		if(whethersearched == false){
+			if(child_search.blast == 1){
+				searchresultlist = child_search.searchcenter.search(keyword);
+			}
+			else if(child_search.blast == 2){
+				searchresultlist = child_search.searchcenter.blast(keyword, BlastingSearcher.MODE_INPUT_SEQUENCE);
+			}
+			else if(child_search.blast == 3){
+				searchresultlist = child_search.searchcenter.blast(keyword, BlastingSearcher.MODE_INPUT_FILE_PATH);
+			}
 		}
 		
-		child_search.filteredlist = child_search.searchresultlist;
-		int number = child_search.filteredlist.size();
+		filteredlist = searchresultlist;
+		int number = filteredlist.size();
+		
+		//System.out.println(1);
 		
 		if(number == 0){
 			JLabel noresults = new JLabel("Sorry, no results found.");
@@ -58,87 +73,97 @@ public class InitializeResultPage extends Thread{
 			return;
 		}
 		
-		if(child_search.blast == 2){
-			child_search.filteredlist.sortByBlastResult(true);
-		}
-		else if(child_search.blast == 1){
-			if(child_search.confirmed_clicked == false){
-				child_search.filteredlist.sortByTotalScore(true);
+		if(child_search.confirmed_clicked == false){
+			if(child_search.blast == 2){
+				filteredlist.sortByBlastResult(true);
 			}
-			else if(child_search.confirmed_clicked == true){
-				if(child_search.information.sortby == "" || child_search.information.sortby.equals("")){
-					child_search.filteredlist.sortByTotalScore(true);
-				}
-				else if(child_search.information.sortby.equals("Entered Date")){
-					child_search.filteredlist.sortByEnterDate(true);
-				}
-				else if(child_search.information.sortby.equals("Google Qoute Number")){
-					child_search.filteredlist.sortByGoogleQuoteNum(true);
-				}
-				else if(child_search.information.sortby.equals("Average Stars")){
-					child_search.filteredlist.sortByAverageStars(true);
-				}
-				else if(child_search.information.sortby.equals("Confirmed Times")){
-					child_search.filteredlist.sortByConfrimedTimes(true);
-				}
-				else if(child_search.information.sortby.equals("Total Score")){
-					child_search.filteredlist.sortByTotalScore(true);
-				}
-				
-				child_search.filteredlist = child_search.filteredlist.filterByType(child_search.information.type);
-				child_search.filteredlist = child_search.filteredlist.filterByEnterYear(child_search.information.enteredyear);
-				
-				if(child_search.information.releasestatus.released == true){
-					child_search.filteredlist = child_search.filteredlist.filterByRelaseStatus(SearchResultList.Filter.ReleaseStatus.RELEASED);
-				}
-				if(child_search.information.releasestatus.deleted == true){
-					child_search.filteredlist = child_search.filteredlist.filterByRelaseStatus(SearchResultList.Filter.ReleaseStatus.DELETED);
-				}
-				if(child_search.information.releasestatus.notreleased == true){
-					child_search.filteredlist = child_search.filteredlist.filterByRelaseStatus(SearchResultList.Filter.ReleaseStatus.NOT_RELEASED);
-				}
-				
-				if(child_search.information.dnastatus.available == true){
-					child_search.filteredlist = child_search.filteredlist.filterByDNAStatus(SearchResultList.Filter.DNAStatus.AVAILABLE);
-				}
-				if(child_search.information.dnastatus.planning == true){
-					child_search.filteredlist = child_search.filteredlist.filterByDNAStatus(SearchResultList.Filter.DNAStatus.PLANNING);
-				}
-				if(child_search.information.dnastatus.informational == true){
-					child_search.filteredlist = child_search.filteredlist.filterByDNAStatus(SearchResultList.Filter.DNAStatus.INFORMATIONAL);
-				}
-				
-				if(child_search.information.whetherornot == false){
-					child_search.filteredlist = child_search.filteredlist.filterByDeletedOrNot(false);
-				}
-				if(child_search.information.whetherornot == true){
-					child_search.filteredlist = child_search.filteredlist.filterByDeletedOrNot(true);
-				}
-				
-				if(child_search.information.averagestars.high == true){
-					ArrayList<Integer> starNumList = new ArrayList<Integer>();
-					starNumList.add(4);
-					starNumList.add(5);
-					child_search.filteredlist = child_search.filteredlist.filterByStarNum(starNumList);
-				}
-				if(child_search.information.averagestars.middle == true){
-					ArrayList<Integer> starNumList = new ArrayList<Integer>();
-					starNumList.add(2);
-					starNumList.add(3);
-					child_search.filteredlist = child_search.filteredlist.filterByStarNum(starNumList);
-				}
-				if(child_search.information.averagestars.low == true){
-					ArrayList<Integer> starNumList = new ArrayList<Integer>();
-					starNumList.add(0);
-					starNumList.add(1);
-					child_search.filteredlist = child_search.filteredlist.filterByStarNum(starNumList);
-				}
-				
-				child_search.filteredlist.sortByTotalScore(true, child_search.information.preferences.status, child_search.information.preferences.quality, child_search.information.preferences.feedbacks, child_search.information.preferences.publication);
+			if(child_search.blast == 1){
+				filteredlist.sortByTotalScore(true);
 			}
 		}
 		
-		int numberofresults = child_search.filteredlist.size();
+		if(child_search.confirmed_clicked == true){
+			if(child_search.information.sortby.equals(null)){
+				filteredlist.sortByTotalScore(true);
+			}
+			else if(child_search.information.sortby.equals("Entered Date")){
+				filteredlist.sortByEnterDate(true);
+			}
+			else if(child_search.information.sortby.equals("Google Qoute Number")){
+				filteredlist.sortByGoogleQuoteNum(true);
+			}
+			else if(child_search.information.sortby.equals("Average Stars")){
+				filteredlist.sortByAverageStars(true);
+			}
+			else if(child_search.information.sortby.equals("Confirmed Times")){
+				filteredlist.sortByConfrimedTimes(true);
+			}
+			else if(child_search.information.sortby.equals("Total Score")){
+				filteredlist.sortByTotalScore(true);
+			}
+		
+		
+			if(child_search.information.type != null){
+				filteredlist = filteredlist.filterByType(child_search.information.type);
+			}
+		
+			if(child_search.information.enteredyear != null){
+				filteredlist = filteredlist.filterByEnterYear(child_search.information.enteredyear);
+			}
+		
+			if(child_search.information.releasestatus.released == true){
+				filteredlist = filteredlist.filterByRelaseStatus(SearchResultList.Filter.ReleaseStatus.RELEASED);
+			}
+			if(child_search.information.releasestatus.deleted == true){
+				filteredlist = filteredlist.filterByRelaseStatus(SearchResultList.Filter.ReleaseStatus.DELETED);
+			}
+			if(child_search.information.releasestatus.notreleased == true){
+				filteredlist = filteredlist.filterByRelaseStatus(SearchResultList.Filter.ReleaseStatus.NOT_RELEASED);
+			}
+		
+			if(child_search.information.dnastatus.available == true){
+				filteredlist = filteredlist.filterByDNAStatus(SearchResultList.Filter.DNAStatus.AVAILABLE);
+			}
+			if(child_search.information.dnastatus.planning == true){
+				filteredlist = filteredlist.filterByDNAStatus(SearchResultList.Filter.DNAStatus.PLANNING);
+			}
+			if(child_search.information.dnastatus.informational == true){
+				filteredlist = filteredlist.filterByDNAStatus(SearchResultList.Filter.DNAStatus.INFORMATIONAL);
+			}
+		
+			if(child_search.information.whetherornot == false){
+				filteredlist = filteredlist.filterByDeletedOrNot(false);
+			}
+			if(child_search.information.whetherornot == true){
+				filteredlist = filteredlist.filterByDeletedOrNot(true);
+			}
+			
+			ArrayList<Integer> starNumList = new ArrayList<Integer>();
+		
+			if(child_search.information.averagestars.high == true){
+				starNumList.add(4);
+				starNumList.add(5);
+				filteredlist = filteredlist.filterByStarNum(starNumList);
+			}
+			if(child_search.information.averagestars.middle == true){
+				starNumList.add(2);
+				starNumList.add(3);
+				filteredlist = filteredlist.filterByStarNum(starNumList);
+			}
+			if(child_search.information.averagestars.low == true){
+				starNumList.add(0);
+				starNumList.add(1);
+				filteredlist = filteredlist.filterByStarNum(starNumList);
+			}
+		
+			if(child_search.information.preferences.status != 0 ||  child_search.information.preferences.quality != 0 || child_search.information.preferences.feedbacks != 0 || child_search.information.preferences.publication != 0){
+				filteredlist.sortByTotalScore(true, child_search.information.preferences.status, child_search.information.preferences.quality, child_search.information.preferences.feedbacks, child_search.information.preferences.publication);
+			}
+		}
+		
+		int numberofresults = filteredlist.size();
+		
+		//System.out.println(2);
 		
 		if(numberofresults == 0){
 			JLabel noresults = new JLabel("Sorry, no results found.");
@@ -217,31 +242,33 @@ public class InitializeResultPage extends Thread{
 			
 			child_search.previouspage.addMouseListener(new MouseAdapter() {
 				@Override
-				public void mouseClicked(MouseEvent arg0) {
-					String s;
-					child_search.scrollbar.setValue(child_search.scrollbar.getMinimum());
-					if(child_search.currentpage > 2){
-						child_search.searchingresultpage.setPreferredSize(new Dimension(558,2500));
-						for(int i = 10 * (child_search.currentpage - 2); i < 10 * (child_search.currentpage - 1); i++){
-							showresult(i);
+				public void mouseClicked(MouseEvent e) {
+					if(e.getButton() == e.BUTTON1){
+						String s;
+						child_search.scrollbar.setValue(child_search.scrollbar.getMinimum());
+						if(child_search.currentpage > 2){
+							child_search.searchingresultpage.setPreferredSize(new Dimension(558,2500));
+							for(int i = 10 * (child_search.currentpage - 2); i < 10 * (child_search.currentpage - 1); i++){
+								showresult(i);
+							}
+							child_search.nextpage.setVisible(true);
+							child_search.currentpage--;
+							s = "" + child_search.currentpage;
+							child_search.showpagenum.setText(s);
+							return;
 						}
-						child_search.nextpage.setVisible(true);
-						child_search.currentpage--;
-						s = "" + child_search.currentpage;
-						child_search.showpagenum.setText(s);
-						return;
-					}
-					else if(child_search.currentpage == 2){
-						child_search.searchingresultpage.setPreferredSize(new Dimension(558,2500));
-						for(int i = 0; i < 10; i++){
-							showresult(i);
+						else if(child_search.currentpage == 2){
+							child_search.searchingresultpage.setPreferredSize(new Dimension(558,2500));
+							for(int i = 0; i < 10; i++){
+								showresult(i);
+							}
+							child_search.nextpage.setVisible(true);
+							child_search.previouspage.setVisible(false);
+							child_search.currentpage--;
+							s = "" + child_search.currentpage;
+							child_search.showpagenum.setText(s);
+							return;
 						}
-						child_search.nextpage.setVisible(true);
-						child_search.previouspage.setVisible(false);
-						child_search.currentpage--;
-						s = "" + child_search.currentpage;
-						child_search.showpagenum.setText(s);
-						return;
 					}
 				}
 			});
@@ -249,9 +276,6 @@ public class InitializeResultPage extends Thread{
 			child_search.nextpage = new JLabel("next page>", SwingConstants.CENTER);
 			child_search.nextpage.setForeground(Color.blue);
 			child_search.nextpage.addMouseListener(new MouseAdapter() {
-				@Override
-				public void mouseClicked(MouseEvent e) {
-				}
 				@Override
 				public void mouseEntered(MouseEvent e) {
 					child_search.nextpage.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -267,31 +291,33 @@ public class InitializeResultPage extends Thread{
 			
 			child_search.nextpage.addMouseListener(new MouseAdapter() {
 				@Override
-				public void mouseClicked(MouseEvent arg0) {
-					child_search.scrollbar.setValue(child_search.scrollbar.getMinimum());
-					String s;
-					if(child_search.currentpage < num){
-						child_search.searchingresultpage.setPreferredSize(new Dimension(558,2500));
-						for(int i = 10 * child_search.currentpage; i < 10 * (child_search.currentpage + 1); i++){
-							showresult(i);
+				public void mouseClicked(MouseEvent e) {
+					if(e.getButton() == e.BUTTON1){
+						child_search.scrollbar.setValue(child_search.scrollbar.getMinimum());
+						String s;
+						if(child_search.currentpage < num){
+							child_search.searchingresultpage.setPreferredSize(new Dimension(558,2500));
+							for(int i = 10 * child_search.currentpage; i < 10 * (child_search.currentpage + 1); i++){
+								showresult(i);
+							}
+							child_search.previouspage.setVisible(true);
+							child_search.currentpage++;
+							s = "" + child_search.currentpage;
+							child_search.showpagenum.setText(s);
+							return;
 						}
-						child_search.previouspage.setVisible(true);
-						child_search.currentpage++;
-						s = "" + child_search.currentpage;
-						child_search.showpagenum.setText(s);
-						return;
-					}
-					else if(child_search.currentpage == num){
-						child_search.searchingresultpage.setPreferredSize(new Dimension(558,250 * leftnum));
-						for(int i = 10 * child_search.currentpage; i < numberofresults; i++){
-							showresult(i);
+						else if(child_search.currentpage == num){
+							child_search.searchingresultpage.setPreferredSize(new Dimension(558,250 * leftnum));
+							for(int i = 10 * child_search.currentpage; i < numberofresults; i++){
+								showresult(i);
+							}
+							child_search.previouspage.setVisible(true);
+							child_search.nextpage.setVisible(false);
+							child_search.currentpage++;
+							s = "" + child_search.currentpage;
+							child_search.showpagenum.setText(s);
+							return;
 						}
-						child_search.previouspage.setVisible(true);
-						child_search.nextpage.setVisible(false);
-						child_search.currentpage++;
-						s = "" + child_search.currentpage;
-						child_search.showpagenum.setText(s);
-						return;
 					}
 				}
 			});
@@ -299,9 +325,6 @@ public class InitializeResultPage extends Thread{
 			child_search.showpagenum = new JLabel("1", SwingConstants.CENTER);
 			child_search.showpagenum.setForeground(Color.blue);
 			child_search.showpagenum.addMouseListener(new MouseAdapter() {
-				@Override
-				public void mouseClicked(MouseEvent e) {
-				}
 				@Override
 				public void mouseEntered(MouseEvent e) {
 					child_search.showpagenum.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -333,20 +356,22 @@ public class InitializeResultPage extends Thread{
 	}
 	
 	public void showresult(int j){
-		BbkOutline bbkoutline = child_search.filteredlist.get(j);
+		BbkOutline bbkoutline = filteredlist.get(j);
 		int i = j % 10;
 		child_search.searchingresultpage.searchingresult.get(i).ID_Content.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				InitializeDetail initializedetail = new InitializeDetail(child_search, bbkoutline);
-				initializedetail.start();
+				if(e.getButton() == e.BUTTON1){
+					InitializeDetail initializedetail = new InitializeDetail(child_search, bbkoutline);
+					initializedetail.start();
+				}
 			}
 		});
 		child_search.searchingresultpage.searchingresult.get(i).ID_Content.setText(bbkoutline.name);
 		child_search.searchingresultpage.searchingresult.get(i).Type_Content.setText(bbkoutline.type);
 		child_search.searchingresultpage.searchingresult.get(i).Author_Content.setText(bbkoutline.author);
 		child_search.searchingresultpage.searchingresult.get(i).EnteredDate_Content.setText(bbkoutline.enterDate);
-		child_search.searchingresultpage.searchingresult.get(i).URL_Content.setText(bbkoutline.url);
+		child_search.searchingresultpage.searchingresult.get(i).URL_Content.setText("<html><u>" + bbkoutline.url + "</u></html>");
 		child_search.searchingresultpage.searchingresult.get(i).ReleasedStatus_Content.setText(bbkoutline.releaseStatus);
 		if(bbkoutline.rating.average_stars.equals("No Stars")){
 			child_search.searchingresultpage.searchingresult.get(i).AverageStar_Content.setText(bbkoutline.rating.average_stars);

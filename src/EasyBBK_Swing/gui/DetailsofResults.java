@@ -3,10 +3,14 @@ package EasyBBK_Swing.gui;
 import java.awt.Color;
 import java.awt.Cursor;
 
+import javax.swing.JCheckBox;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 
 import java.awt.Font;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -26,6 +30,7 @@ public class DetailsofResults extends JPanel {
 	public JLabel ResultsInGoogle_Content;
 	public JLabel Score;
 	public JLabel Description2;
+	public JCheckBox Addforcomparison;
 	/**
 	 * Create the panel.
 	 */
@@ -33,7 +38,8 @@ public class DetailsofResults extends JPanel {
 		addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				requestFocus();
+				if(e.getButton() == e.BUTTON1)
+					requestFocus();
 			}
 		});
 		setBounds(0, 0, 665, 1500);
@@ -104,12 +110,14 @@ public class DetailsofResults extends JPanel {
 		URL_Content = new JLabel("");
 		URL_Content.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				try{
-					Runtime.getRuntime().exec("explorer " + URL_Content.getText());
-				}
-				catch(Exception ex){
-					ex.printStackTrace();
+			public void mouseClicked(MouseEvent e) {
+				if(e.getButton() == e.BUTTON1){
+					try{
+						Runtime.getRuntime().exec("explorer " + URL_Content.getText());
+					}
+					catch(Exception ex){
+						ex.printStackTrace();
+					}
 				}
 			}
 			@Override
@@ -122,7 +130,7 @@ public class DetailsofResults extends JPanel {
 				URL_Content.setForeground(Color.black);
 			}
 		});
-		URL_Content.setFont(new Font("Times New Roman", Font.ITALIC, 20));
+		URL_Content.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		URL_Content.setBounds(59, 248, 437, 24);
 		add(URL_Content);
 		
@@ -171,5 +179,13 @@ public class DetailsofResults extends JPanel {
 		Description2.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		Description2.setBounds(10, 214, 645, 24);
 		add(Description2);
+		
+        Addforcomparison = new JCheckBox("Add for comparison");
+        Addforcomparison.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+        Addforcomparison.setBounds(240, 26, 220, 24);
+        Addforcomparison.setBackground(new Color(0, 255, 255));
+		add(Addforcomparison);
+		
+		setVisible(true);
 	}
 }

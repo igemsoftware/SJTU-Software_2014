@@ -1,7 +1,10 @@
 package EasyBBK_Swing.gui;
 
 import java.awt.Dimension;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 
+import javax.swing.JCheckBox;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
@@ -21,11 +24,30 @@ public class InitializeDetail extends Thread{
 		BbkDetail bbkdetail = child_search.searchcenter.getDetail(bbkoutline.name);
 		DetailsofResults detailsofresults = new DetailsofResults();
 		
+		ItemListener itemListener_addforcomparison = new ItemListener() {
+            JCheckBox jCheckBox;
+ 
+            public void itemStateChanged(ItemEvent e) {
+                jCheckBox = (JCheckBox) e.getSource();
+ 
+                if(jCheckBox.isSelected()) {
+                	//System.out.println(1);
+                	child_search.comparisonlist.add(bbkdetail);
+                	//JOptionPane.showMessageDialog(null, "Successfully add for comparison", null, JOptionPane.PLAIN_MESSAGE);
+                }else {
+                	//System.out.println(0);
+                	child_search.comparisonlist.remove(bbkdetail);
+                	//JOptionPane.showMessageDialog(null, "Successfully remove from comparison", null, JOptionPane.PLAIN_MESSAGE);
+                }
+            }
+        };
+		detailsofresults.Addforcomparison.addItemListener(itemListener_addforcomparison);
+		
 		detailsofresults.ID_Content.setText(bbkdetail.name);
 		detailsofresults.Type_Content.setText(bbkdetail.type);
 		detailsofresults.Author_Content.setText(bbkdetail.author);
 		detailsofresults.EnteredDate_Content.setText(bbkdetail.enterDate);
-		detailsofresults.URL_Content.setText(bbkdetail.url);
+		detailsofresults.URL_Content.setText("<html><u>" + bbkdetail.url + "</u></html>");
 		detailsofresults.ReleasedStatus_Content.setText(bbkdetail.releaseStatus);
 		if(bbkdetail.rating.average_stars.equals("No Stars")){
 			detailsofresults.AverageStar_Content.setText(bbkdetail.rating.average_stars);

@@ -18,6 +18,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JToolTip;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
@@ -29,6 +30,7 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 
 import data_center.BbkUpload;
+import data_center.BbkUpload.*;
 
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
@@ -90,7 +92,8 @@ public class Child_Upload extends JPanel {
 		addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				requestFocus();
+				if(e.getButton() == e.BUTTON1)
+					requestFocus();
 			}
 		});
 		bbkupload = new BbkUpload();
@@ -104,7 +107,8 @@ public class Child_Upload extends JPanel {
 		UploadContainer.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				UploadContainer.requestFocus();
+				if(e.getButton() == e.BUTTON1)
+					UploadContainer.requestFocus();
 			}
 		});
 		UploadContainer.setBounds(0, 0, 1348, 1800);
@@ -197,14 +201,16 @@ public class Child_Upload extends JPanel {
 		AddSequence.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				new SequenceDialog(mainpage, "Please input a sequence", true);
-				if(mainpage.sequencestring.equals("") == false){
-					information_shown += mainpage.sequencestring;
-					information_shown += "  ";
-					SequenceInformation.setText(information_shown);
-					bbkupload.sequenceTokens.add(mainpage.sequencestring);
-					mainpage.sequencestring = "";
-				}				
+				if(e.getButton() == e.BUTTON1){
+					new SequenceDialog(mainpage, "Please input a sequence", true);
+					if(mainpage.sequencestring.equals("") == false){
+						information_shown += mainpage.sequencestring;
+						information_shown += "  ";
+						SequenceInformation.setText(information_shown);
+						bbkupload.sequenceTokens.add(mainpage.sequencestring);
+						mainpage.sequencestring = "";
+					}	
+				}		
 			}
 		});
 		AddSequence.setToolTipText("Click me to add a sequence.");
@@ -216,13 +222,15 @@ public class Child_Upload extends JPanel {
 		AddSubpart.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				subpartdialog = new SubpartDialog(mainpage, "Please input a subpart name", true);
-				if(mainpage.subpartstring.equals("") == false){
-					information_shown += mainpage.subpartstring;
-					information_shown += "  ";
-					SequenceInformation.setText(information_shown);
-					bbkupload.sequenceTokens.add(mainpage.subpart_bbkdetail);
-					mainpage.subpartstring = "";
+				if(e.getButton() == e.BUTTON1){
+					subpartdialog = new SubpartDialog(mainpage, "Please input a subpart name", true);
+					if(mainpage.subpartstring.equals("") == false){
+						information_shown += mainpage.subpartstring;
+						information_shown += "  ";
+						SequenceInformation.setText(information_shown);
+						bbkupload.sequenceTokens.add(mainpage.subpart_bbkdetail);
+						mainpage.subpartstring = "";
+					}
 				}
 			}
 		});
@@ -234,13 +242,15 @@ public class Child_Upload extends JPanel {
 		AddSubscar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				new SubscarDialog(mainpage, "Please input a subscar name", true);
-				if(mainpage.subscarstring.equals("") == false){
-					information_shown += mainpage.subscarstring;
-					information_shown += "  ";
-					SequenceInformation.setText(information_shown);
-					bbkupload.sequenceTokens.add(mainpage.subscar);
-					mainpage.subscarstring = "";
+				if(e.getButton() == e.BUTTON1){
+					new SubscarDialog(mainpage, "Please input a subscar name", true);
+					if(mainpage.subscarstring.equals("") == false){
+						information_shown += mainpage.subscarstring;
+						information_shown += "  ";
+						SequenceInformation.setText(information_shown);
+						bbkupload.sequenceTokens.add(mainpage.subscar);
+						mainpage.subscarstring = "";
+					}
 				}
 			}
 		});
@@ -263,7 +273,8 @@ public class Child_Upload extends JPanel {
 		parameterpanel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				parameterpanel.requestFocus();
+				if(e.getButton() == e.BUTTON1)
+					parameterpanel.requestFocus();
 			}
 		});
 		parameterpanel.setBounds(373, 593, 486, 124);
@@ -275,13 +286,15 @@ public class Child_Upload extends JPanel {
 		AddParameter = new JButton("Add");
 		AddParameter.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				if(parameternumber < 4){
-					parameter_item[parameternumber] = new Parameter_item();
-					parameter_item[parameternumber].setLocation(0, parameternumber*31);
-					parameterpanel.add(parameter_item[parameternumber]);
-					parameterpanel.updateUI();
-					parameternumber++;
+			public void mouseClicked(MouseEvent e) {
+				if(e.getButton() == e.BUTTON1){
+					if(parameternumber < 4){
+						parameter_item[parameternumber] = new Parameter_item();
+						parameter_item[parameternumber].setLocation(0, parameternumber*31);
+						parameterpanel.add(parameter_item[parameternumber]);
+						parameterpanel.updateUI();
+						parameternumber++;
+					}
 				}
 			}
 		});
@@ -293,10 +306,12 @@ public class Child_Upload extends JPanel {
 		RemoveParameter.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(parameternumber >= 1){
-					parameterpanel.remove(parameter_item[parameternumber-1]);
-					parameterpanel.updateUI();
-					parameternumber--;
+				if(e.getButton() == e.BUTTON1){
+					if(parameternumber >= 1){
+						parameterpanel.remove(parameter_item[parameternumber-1]);
+						parameterpanel.updateUI();
+						parameternumber--;
+					}
 				}
 			}
 		});
@@ -318,13 +333,15 @@ public class Child_Upload extends JPanel {
 		AddCategory = new JButton("Add");
 		AddCategory.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				if(categorynumber < 4){
-					category_item[categorynumber] = new Category_item();
-					category_item[categorynumber].setLocation(0, categorynumber*31);
-					categorypanel.add(category_item[categorynumber]);
-					categorypanel.updateUI();
-					categorynumber++;
+			public void mouseClicked(MouseEvent e) {
+				if(e.getButton() == e.BUTTON1){
+					if(categorynumber < 4){
+						category_item[categorynumber] = new Category_item();
+						category_item[categorynumber].setLocation(0, categorynumber*31);
+						categorypanel.add(category_item[categorynumber]);
+						categorypanel.updateUI();
+						categorynumber++;
+					}
 				}
 			}
 		});
@@ -336,10 +353,12 @@ public class Child_Upload extends JPanel {
 		RemoveCategory.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(categorynumber >= 1){
-					categorypanel.remove(category_item[categorynumber-1]);
-					categorypanel.updateUI();
-					categorynumber--;
+				if(e.getButton() == e.BUTTON1){
+					if(categorynumber >= 1){
+						categorypanel.remove(category_item[categorynumber-1]);
+						categorypanel.updateUI();
+						categorynumber--;
+					}
 				}
 			}
 		});
@@ -361,13 +380,15 @@ public class Child_Upload extends JPanel {
 		AddFeature = new JButton("Add");
 		AddFeature.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				if(featurenumber < 4){
-					feature_item[featurenumber] = new Feature_item();
-					feature_item[featurenumber].setLocation(0, featurenumber*31);
-					featurepanel.add(feature_item[featurenumber]);
-					featurepanel.updateUI();
-					featurenumber++;
+			public void mouseClicked(MouseEvent e) {
+				if(e.getButton() == e.BUTTON1){
+					if(featurenumber < 4){
+						feature_item[featurenumber] = new Feature_item();
+						feature_item[featurenumber].setLocation(0, featurenumber*31);
+						featurepanel.add(feature_item[featurenumber]);
+						featurepanel.updateUI();
+						featurenumber++;
+					}
 				}
 			}
 		});
@@ -379,10 +400,12 @@ public class Child_Upload extends JPanel {
 		RemoveFeature.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(featurenumber >= 1){
-					featurepanel.remove(feature_item[featurenumber-1]);
-					featurepanel.updateUI();
-					featurenumber--;
+				if(e.getButton() == e.BUTTON1){
+					if(featurenumber >= 1){
+						featurepanel.remove(feature_item[featurenumber-1]);
+						featurepanel.updateUI();
+						featurenumber--;
+					}
 				}
 			}
 		});
@@ -484,17 +507,37 @@ public class Child_Upload extends JPanel {
 		SubmitToDatabase = new JButton("<html>" + "Submit to" + "<br>" + " our database" + "</html>");
 		SubmitToDatabase.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				/*bbkupload.shortDesc = ShortDescription.getText();
-				bbkupload.type = typestring;
-				bbkupload.nickname = Nickname.getText();
-				bbkupload.author = Designers.getText();
-				if(UseDefaultScar.isSelected()){
-					bbkupload.setSequence(true);
+			public void mouseClicked(MouseEvent e) {
+				if(e.getButton() == e.BUTTON1){
+					showinfo.setText("Uploading your biobrick...");;
+					showinfopanel.updateUI();
+					
+					bbkupload.shortDesc = ShortDescription.getText();
+					bbkupload.type = typestring;
+					bbkupload.nickname = Nickname.getText();
+					bbkupload.author = Designers.getText();
+					if(UseDefaultScar.isSelected()){
+						bbkupload.setSequence(true, false);
+					}
+					else if(!UseDefaultScar.isSelected()){
+						bbkupload.setSequence(false, false);
+					}
+					
+					for(int i = 0; i < parameternumber; i++){
+						Parameter parameter = new Parameter(parameter_item[i].content, parameter_item[i].textField.getText(), null, null, null, null);
+						bbkupload.parameters.add(parameter);
+					}
+					
+					for(int i = 0; i < categorynumber; i++){
+						Category category = new Category(category_item[i].content);
+						bbkupload.categories.add(category);
+					}
+					
+					for(int i = 0; i < featurenumber; i++){
+						Feature feature = new Feature(null, feature_item[i].Label.getText(), feature_item[i].content1, feature_item[i].content2, feature_item[i].Start.getText(), feature_item[i].End.getText());
+						bbkupload.features.add(feature);
+					}
 				}
-				else if(!UseDefaultScar.isSelected()){
-					bbkupload.setSequence(false);
-				}*/
 			}
 		});
 		SubmitToDatabase.setFont(new Font("Times New Roman", Font.PLAIN, 24));
@@ -505,22 +548,28 @@ public class Child_Upload extends JPanel {
 		SubmitToWebsite.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				//waitingdialog = new WaitingDialog(mainpage, "WaitingDialog", true, child_upload);
-				WriteTxt rt = new WriteTxt();
-				Thread demo1 = new Thread(rt);
-				demo1.start();
+				if(e.getButton() == e.BUTTON1){
+					WriteTxt rt = new WriteTxt();
+					Thread demo1 = new Thread(rt);
+					demo1.start();
+				}
 			}
 		});
 		SubmitToWebsite.setFont(new Font("Times New Roman", Font.PLAIN, 24));
 		SubmitToWebsite.setBounds(649, 1720, 180, 55);
 		UploadContainer.add(SubmitToWebsite);
 		
+		JLabel information = new JLabel("Information", SwingConstants.CENTER);
+		information.setBounds(1040, 1450, 120, 30);
+		information.setFont(new Font("Times New Roman", Font.PLAIN, 24));
+		UploadContainer.add(information);
+		
 		showinfopanel = new JPanel();
 		showinfopanel.setBounds(920, 1500, 360, 240);
 		showinfopanel.setBackground(new Color(255, 255, 255));
 		UploadContainer.add(showinfopanel);
 		
-		showinfo = new JLabel("", JLabel.CENTER);
+		showinfo = new JLabel("", SwingConstants.CENTER);
 		showinfo.setVisible(true);
 		showinfo.setBounds(0, 0, 360, 240);
 		showinfo.setFont(new Font("Times New Roman", Font.PLAIN, 24));
@@ -575,10 +624,10 @@ public class Child_Upload extends JPanel {
 				bf.write("}" + "\r\n");
 				//System.out.print(3);
 				if(UseDefaultScar.isSelected()){
-					bbkupload.setSequence(true);
+					bbkupload.setSequence(true, false);
 				}
 				else if(!UseDefaultScar.isSelected()){
-					bbkupload.setSequence(false);
+					bbkupload.setSequence(false, false);
 				}
 				//System.out.print(3.5);
 				//if(subpartdialog.confirmedflag){
@@ -618,7 +667,7 @@ public class Child_Upload extends JPanel {
 		        }
 		        else{
 		        	//System.out.println("New BioBrick is :"+str);
-		        	showinfo.setText("New BioBrick is :" + str);
+		        	showinfo.setText("<html>" + "Successful uploading!" + "<br>" +  "New BioBrick is :" + str + "<html>");
 		        	showinfopanel.updateUI();
 		        	//waitingdialog.inputtext.setText("New BioBrick is :" + str);
 		        	//waitingdialog.Confirmed.setVisible(true);
