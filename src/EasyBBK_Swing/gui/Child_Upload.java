@@ -649,7 +649,7 @@ public class Child_Upload extends JPanel {
 				bf.close();
 				//System.out.println(System.getProperty("user.dir"));
 				
-				Process proc = Runtime.getRuntime().exec("LoginToUploadBiobrick.exe");
+				Process proc = Runtime.getRuntime().exec("./post_py/LoginToUploadBiobrick.exe");
 				BufferedReader br = new BufferedReader(new InputStreamReader(proc.getInputStream()));
 				try {
 					proc.waitFor();
