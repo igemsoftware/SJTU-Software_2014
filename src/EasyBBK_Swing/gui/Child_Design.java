@@ -47,6 +47,8 @@ import data_center.SketchProject.Operation;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.ArrayList;
@@ -57,6 +59,7 @@ import java.util.Locale;
 @SuppressWarnings("serial")
 public class Child_Design extends JLayeredPane {
 	public MainPage mainpage;
+	JLabel background = new JLabel();
 	private JLayeredPane panel = new JLayeredPane();
 	private TPanel Tpanel = new TPanel();
 	private Boolean choose = new Boolean(false);
@@ -121,7 +124,7 @@ public class Child_Design extends JLayeredPane {
 		Pen line_inhabit = new Pen();
 		Pen line_enhance = new Pen();
 		Pen line_other = new Pen();
-		JLabel background = new JLabel();
+		
 		
 		this.setBounds(0, 0, 1366, 670);
 		this.setLayout(null);
@@ -129,163 +132,163 @@ public class Child_Design extends JLayeredPane {
 		newButton.setBounds(14,55,40,41);
 		ImageIcon image_newButton = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/New_design.png"));
 		newButton.setIcon(image_newButton);
-        this.add(newButton);
+        background.add(newButton);
         
         openButton.setBounds(66,55,40,41);
 		ImageIcon image_openButton = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Open_design.png"));
 		openButton.setIcon(image_openButton);
-        this.add(openButton);
+        background.add(openButton);
         
         saveButton.setBounds(118,55,40,41);
 		ImageIcon image_saveButton = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Save_design.png"));
 		saveButton.setIcon(image_saveButton);
-        this.add(saveButton);
+        background.add(saveButton);
 		
         exportButton.setBounds(173,55,40,41);
 		ImageIcon image_exportButton = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Export_design.png"));
 		exportButton.setIcon(image_exportButton);
-        this.add(exportButton);        
+        background.add(exportButton);        
 		
 		backout.setBounds(173,112,40,42);
 		ImageIcon image_backout = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Backout.png"));
 		backout.setIcon(image_backout);
-        this.add(backout);
+        background.add(backout);
 		
         forward.setBounds(226,112,40,42);
 		ImageIcon image_forward = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Forward.png"));
 		forward.setIcon(image_forward);
-        this.add(forward);
+        background.add(forward);
         
         fontButton.setBounds(67,112,40,42);
 		ImageIcon image_font = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Font.png"));
 		fontButton.setIcon(image_font);
-        this.add(fontButton);
+        background.add(fontButton);
         
         ImageIcon image_text = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Text_design.png"));
 		text.setIcon(image_text);
 		text.setBounds(14, 112, 40, 42);
 		text.setName("text");
 		text.setType(5);
-		this.add(text);	
+		background.add(text);	
 		
 		ImageIcon image_eraser = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Eraser.png"));
 		eraser.setIcon(image_eraser);
 		eraser.setBounds(119, 112, 40, 42);
 		eraser.setName("eraser");
 		eraser.setType(2);
-		this.add(eraser);
+		background.add(eraser);
 
 		ImageIcon image_promoter = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Promoter.png"));
 		promoter.setIcon(image_promoter);
 		promoter.setBounds(6, 233, 84, 60);
 		promoter.setName("promoter");
-		this.add(promoter);		
+		background.add(promoter);		
 		
 		ImageIcon image_rbs = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/RBS.png"));
 		rbs.setIcon(image_rbs);
 		rbs.setBounds(100, 233, 84, 60);
 		rbs.setName("rbs");
-		this.add(rbs);		
+		background.add(rbs);		
 		
 		ImageIcon image_coding = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Coding.png"));
 		coding.setIcon(image_coding);
 		coding.setBounds(193, 233, 84, 60);
 		coding.setName("coding");
-		this.add(coding);		
+		background.add(coding);		
 		
 		ImageIcon image_terminator = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Terminator.png"));
 		terminator.setIcon(image_terminator);
 		terminator.setBounds(6, 299, 84, 60);
 		terminator.setName("terminator");
-		this.add(terminator);				
+		background.add(terminator);				
 		
 		ImageIcon image_primer = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Primer.png"));
 		primer.setIcon(image_primer);
 		primer.setBounds(100, 299, 84, 60);
 		primer.setName("primer");
-		this.add(primer);		
+		background.add(primer);		
 		
 		ImageIcon image_reporter = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Reporter.png"));
 		reporter.setIcon(image_reporter);
 		reporter.setBounds(193, 299, 84, 60);
 		reporter.setName("reporter");
-		this.add(reporter);
+		background.add(reporter);
 		
 		ImageIcon image_recepter = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Recepter.png"));
 		recepter.setIcon(image_recepter);
 		recepter.setBounds(6, 365, 84, 60);
 		recepter.setName("recepter");
-		this.add(recepter);
+		background.add(recepter);
 		
 		ImageIcon image_factor = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Factor.png"));
 		factor.setIcon(image_factor);
 		factor.setBounds(100, 365, 84, 60);
 		factor.setName("factor");
-		this.add(factor);
+		background.add(factor);
 		
 		ImageIcon image_protein = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Protein.png"));
 		protein.setIcon(image_protein);
 		protein.setBounds(193, 365, 84, 60);
 		protein.setName("protein");
-		this.add(protein);
+		background.add(protein);
 		
 		ImageIcon image_plasmid = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Plasmid.png"));
 		plasmid.setIcon(image_plasmid);
 		plasmid.setBounds(6, 433, 84, 60);
 		plasmid.setName("plasmid");
-		this.add(plasmid);
+		background.add(plasmid);
 		
 		ImageIcon image_virus = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Virus.png"));
 		virus.setIcon(image_virus);
 		virus.setBounds(100, 433, 84, 59);
 		virus.setName("virus");
-		this.add(virus);
+		background.add(virus);
 		
 		ImageIcon image_ecoil = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Ecoil.png"));
 		ecoil.setIcon(image_ecoil);
 		ecoil.setBounds(193, 433, 84, 59);
 		ecoil.setName("ecoil");
-		this.add(ecoil);
+		background.add(ecoil);
 		
 		BackBone backbone = new BackBone("", sketchCenter);
 		ImageIcon image_backbone = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Backbone.png"));
 		backbone.setIcon(image_backbone);
 		backbone.setBounds(6, 596, 224, 40);
 		backbone.setName("backbone");
-		this.add(backbone);
+		background.add(backbone);
 		
 		lineButton.setBounds(234,596,43,40);
 		ImageIcon image_line = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/LineStyleChooser.png"));
 		lineButton.setIcon(image_line);
-        this.add(lineButton);
+        background.add(lineButton);
 		
 		ImageIcon image_line_inhabit = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/InhabitLine.png"));
 		line_inhabit.setIcon(image_line_inhabit);
 		line_inhabit.setBounds(6, 517, 84, 59);
 		line_inhabit.setName("line");
 		line_inhabit.setType(-1);
-		this.add(line_inhabit);
+		background.add(line_inhabit);
 		
 		ImageIcon image_line_enhance = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/EnhanceLine.png"));
 		line_enhance.setIcon(image_line_enhance);
 		line_enhance.setBounds(100, 517, 84, 59);
 		line_enhance.setName("line");
 		line_enhance.setType(0);
-		this.add(line_enhance);
+		background.add(line_enhance);
 		
 		ImageIcon image_line_other = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/OtherLine.png"));
 		line_other.setIcon(image_line_other);
 		line_other.setBounds(193, 517, 84, 59);
 		line_other.setName("line");
 		line_other.setType(1);
-		this.add(line_other);
+		background.add(line_other);
 		
 		panel.setLayout(null);
 		panel.setOpaque(true);
 		panel.setBorder(BorderFactory.createEtchedBorder());
 		panel.setBackground(Color.WHITE);		
 		panel.setBounds(283, 0, 1083, 665);
-		this.add(panel);
+		background.add(panel);
 		
 		Tpanel.setLayout(null);
 		Tpanel.setBounds(0, 0, 1083, 665);
@@ -486,7 +489,6 @@ public class Child_Design extends JLayeredPane {
 							newLine.setBounds(linePanel.getLineBorder()[0]-10, linePanel.getLineBorder()[2]-10,
 									linePanel.getLineBorder()[1]-linePanel.getLineBorder()[0]+20,
 									linePanel.getLineBorder()[3]-linePanel.getLineBorder()[2]+20);
-							System.out.println("ok");
 							panel.add(newLine);
 							
 							int lineType = -1;
@@ -575,7 +577,6 @@ public class Child_Design extends JLayeredPane {
 						newLine.setBounds(linePanel.getLineBorder()[0]-10, linePanel.getLineBorder()[2]-10,
 								linePanel.getLineBorder()[1]-linePanel.getLineBorder()[0]+20,
 								linePanel.getLineBorder()[3]-linePanel.getLineBorder()[2]+20);
-						System.out.println("ok");
 						panel.add(newLine);
 						
 						int lineType = -1;
@@ -657,7 +658,7 @@ public class Child_Design extends JLayeredPane {
 						newLine.setBounds(linePanel.getLineBorder()[0]-10, linePanel.getLineBorder()[2]-10,
 								linePanel.getLineBorder()[1]-linePanel.getLineBorder()[0]+20,
 								linePanel.getLineBorder()[3]-linePanel.getLineBorder()[2]+20);
-						System.out.println("ok");
+						
 						panel.add(newLine);
 						
 						int lineType = -1;
@@ -827,7 +828,7 @@ public class Child_Design extends JLayeredPane {
 							component = new SketchComponent.Protein(newLabel.ID, BbkType.Sketch.Protein.RECEPTER, bounds, null);
 							break;
 						case "protein":
-							component = new SketchComponent.Protein(newLabel.ID, BbkType.Sketch.Protein.RECEPTER, bounds, null);
+							component = new SketchComponent.Protein(newLabel.ID, BbkType.Sketch.Protein.COMBINED, bounds, null);
 							break;
 						case "plasmid":
 							component = new SketchComponent.BioVector(newLabel.ID, BbkType.Sketch.BioVector.PLASMID, bounds);
@@ -930,7 +931,7 @@ public class Child_Design extends JLayeredPane {
 						newLine.setBounds(linePanel.getLineBorder()[0]-10, linePanel.getLineBorder()[2]-10,
 								linePanel.getLineBorder()[1]-linePanel.getLineBorder()[0]+20,
 								linePanel.getLineBorder()[3]-linePanel.getLineBorder()[2]+20);
-						System.out.println("ok");
+						
 						panel.add(newLine);
 						
 						int lineType = -1;
@@ -1246,13 +1247,14 @@ public class Child_Design extends JLayeredPane {
 			{
 				if (pen.getType()==2)
 				{
-					((e.getComponent()).getParent()).remove(e.getComponent());
+					Component comp = e.getComponent();
+					(comp.getParent()).remove(e.getComponent());
 					
 					SketchProject project = sketchCenter.currentProject;
 					int ID = -1;
 					
 					Component component = e.getComponent();
-					System.out.println(component.getName());
+					
 					if ((component.getName()).equals("text"))
 						ID = ((TextLabel) component).ID;
 					else
@@ -1282,12 +1284,12 @@ public class Child_Design extends JLayeredPane {
 	{		
 		public void mouseClicked(MouseEvent e) 
 		{
-			for (SketchComponent.Component comp : sketchCenter.currentProject.componentList)
-				System.out.println(comp.ID);
 			Operation operation = sketchCenter.currentProject.ctrlZ();
 			//test
 			if (operation == null)
+			{
 				return;
+			}
 			// else... 
 			SketchComponent.Component component;
 			if (operation.operationType == Operation.ADD)
@@ -1308,6 +1310,8 @@ public class Child_Design extends JLayeredPane {
 				else
 					modifyComponent(component, operation.attributeType, operation.previous, operation.following);
 			}
+			
+			panel.repaint();
 		}
 		
 		
@@ -1332,8 +1336,6 @@ public class Child_Design extends JLayeredPane {
 	{		
 		public void mouseClicked(MouseEvent e) 
 		{
-			for (SketchComponent.Component comp : sketchCenter.currentProject.componentList)
-				System.out.println(comp.ID);
 			Operation operation = sketchCenter.currentProject.ctrlY();
 			//test
 			if (operation == null)
@@ -1358,6 +1360,8 @@ public class Child_Design extends JLayeredPane {
 				else
 					modifyComponent(component, operation.attributeType, operation.previous, operation.following);
 			}
+			
+			panel.repaint();
 		}
 		
 		
@@ -1562,7 +1566,6 @@ public class Child_Design extends JLayeredPane {
 		        if (f != null) {  
 		            String extension = getExtension(f);  
 		            if (extension != null && f.getName().toUpperCase().endsWith(".XML")) {  
-		            	//System.out.println(extension);
 		                return true;  
 		            };  
 		        }  
@@ -1800,6 +1803,7 @@ public class Child_Design extends JLayeredPane {
 				case BbkType.Sketch.Protein.COMBINED:
 					GUITypeName = "protein";	break;
 			}
+			System.out.println(GUITypeName);
 			ImageIcon image_newLabel = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/"+GUITypeName+"_move.png"));
     		newLabel.setIcon(image_newLabel);    		
     		newLabel.setName(GUITypeName);

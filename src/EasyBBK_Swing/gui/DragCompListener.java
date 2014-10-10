@@ -123,7 +123,6 @@ class DragCompListener implements MouseInputListener
 				else
 				{
 					int bCount = backboneList.size();
-					System.out.println(bCount);
 					previousBackbone=null;
 					
 					for (int i2=0; i2<bCount; i2++)
@@ -137,8 +136,7 @@ class DragCompListener implements MouseInputListener
 								& (Math.abs((backboneList.get(i2)).getY()-(e.getComponent()).getY())==0))		
 						{
 							previousBackbone=backboneList.get(i2);
-							System.out.println("ok");
-							System.out.println(i2);
+							closestBackbone=previousBackbone;
 						}
 					}
 				}
