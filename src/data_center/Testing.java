@@ -30,11 +30,15 @@ public class Testing
 		//compareAssignDetail();
 		//sketchProjectOperation();
 		//sketchXMLReadWrite();
-		sketchOperationHistory();
+		//sketchOperationHistory();
 		//uploadUploadAndReappearBbkUpload();
 		//uploadPartNameSequenceTokenValidationCheck();
 		//uploadSubpartSubscarValidationCheck();
-	
+		
+		boolean succeed = OfficialUploadFiller.login("DustInMonteriggioni", "wtgwst0901");
+		System.out.println(succeed);
+		String[] strs = OfficialUploadFiller.getAvailablePartNameRegion();
+		System.out.println(strs.length + strs[0] + strs[1]);
 	}
 	
 	
