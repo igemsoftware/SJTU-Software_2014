@@ -32,83 +32,6 @@ import org.w3c.dom.Text;
  * ctrlZ, ctrlY function and save & load.  */
 public class SketchProject
 {
-	public class Operation
-	{
-		/** Add component, not bbkName or sth like that */
-		public final static int ADD = 1;
-		/** Remove component, not bbkName or sth like that */
-		public final static int REMOVE = 2;
-		public final static int MODIFY = 3;
-
-		// no TYPE_SECONDART_TYPE and TYPE_CURVE cause they can't be modified
-		public final static int TYPE_COMPONENT = 0;
-		public final static int TYPE_STRING = 1;
-		public final static int TYPE_BOUNDS = 2;
-		public final static int TYPE_FONT = 3;
-		public final static int TYPE_COLOR = 4;
-		public final static int TYPE_THICKNESS = 5;
-		public final static int TYPE_NULL = -1;
-		
-		// attributes
-		public int ID;
-		public int operationType;
-		public int attributeType;
-		public Object previous = null;
-		public Object following = null;
-		
-		public Operation(int ID, int opeType, int attType, Object pre, Object fol)
-		{
-			this.ID = ID;
-			this.operationType = opeType;
-			this.attributeType = attType;
-			this.previous = pre;
-			this.following = fol;
-		}
-
-		public Operation generateReversedOp()
-		{
-			switch (operationType)
-			{	case ADD:
-					return new Operation(ID, REMOVE, attributeType, following, previous);
-				case REMOVE:
-					return new Operation(ID, ADD, attributeType, following, previous);
-				case MODIFY:
-					return new Operation(ID, MODIFY, attributeType, following, previous);
-				default:
-					return null;	
-			}
-		}
-		
-		@SuppressWarnings("unused")
-		private int checkAttributeType(int opeType, Object pre, Object fol)
-		{	
-			if (pre == null && fol == null)
-				return TYPE_NULL;
-			if (pre != null && fol != null && pre.getClass() != fol.getClass())
-				return TYPE_NULL;
-			if (opeType == ADD || opeType == REMOVE)
-				return TYPE_COMPONENT;
-			
-			Object obj = (pre != null ? pre : fol);
-			switch (obj.getClass().getSimpleName())
-			{	case "String":
-					return TYPE_STRING;
-				case "Rectangle":
-					return TYPE_BOUNDS;
-				case "Integer":
-				case "Double":
-					return TYPE_THICKNESS;
-				case "Font":
-					return TYPE_FONT;
-				case "Color":
-					return TYPE_COLOR;
-				default:
-					return TYPE_NULL;
-			}
-		}
-	}
-
-	
 	// attributes
 	public String name;
 	public String filePath;
@@ -149,8 +72,9 @@ public class SketchProject
 	public void addComponent(Component component)
 	{
 		if (component != null)
-		{	Operation operation = new Operation
-				(component.ID, Operation.ADD, Operation.TYPE_COMPONENT, null, component);
+		{	SketchOperation operation = new SketchOperation
+				(component.ID, SketchOperation.ADD, 
+						SketchOperation.TYPE_COMPONENT, null, component);
 			operationHistory.newOperation(operation);
 			exeOperation(operation);
 			modified = true;
@@ -162,8 +86,9 @@ public class SketchProject
 	public void delComponent(Component component)
 	{
 		if (component != null)
-		{	Operation operation = new Operation
-				(component.ID, Operation.REMOVE, Operation.TYPE_COMPONENT, component, null);
+		{	SketchOperation operation = new SketchOperation
+				(component.ID, SketchOperation.REMOVE, 
+						SketchOperation.TYPE_COMPONENT, component, null);
 			operationHistory.newOperation(operation);
 			exeOperation(operation);
 			modified = true;
@@ -179,18 +104,18 @@ public class SketchProject
 		if (component == null)
 			return;
 		// operation.previous is null to be parsed in switch(){}
-		Operation operation = new Operation
-				(component.ID, Operation.MODIFY, attributeType, null, folAttribute);
+		SketchOperation operation = new SketchOperation
+				(component.ID, SketchOperation.MODIFY, attributeType, null, folAttribute);
 		switch (attributeType)
-		{	case Operation.TYPE_STRING:
+		{	case SketchOperation.TYPE_STRING:
 				operation.previous = component.getString();	break;
-			case Operation.TYPE_BOUNDS:
+			case SketchOperation.TYPE_BOUNDS:
 				operation.previous = component.getBounds();	break;
-			case Operation.TYPE_THICKNESS:
+			case SketchOperation.TYPE_THICKNESS:
 				operation.previous = component.getThickness();	break;
-			case Operation.TYPE_FONT:
+			case SketchOperation.TYPE_FONT:
 				operation.previous = component.getFont();	break;
-			case Operation.TYPE_COLOR:
+			case SketchOperation.TYPE_COLOR:
 				operation.previous = component.getColor();	break;
 			default:
 				return;
@@ -222,7 +147,7 @@ public class SketchProject
 		BackBone backBone = comp.toBackBone();
 		for (Integer IDInList : backBone.bbkChildren)
 			if (IDInList == bbkID)
-				backBone.bbkChildren.remove(IDInList);
+			{	backBone.bbkChildren.remove(IDInList);	break;	}
 	}
 	
 	public boolean canCtrlZ()
@@ -237,13 +162,13 @@ public class SketchProject
 	
 	/** Guidance function, guide the GUI the operation from the history list. 
 	 * No registration is needed since the operation is not read from the user.  */
-	public Operation ctrlZ()
+	public SketchOperation ctrlZ()
 	{
-		Operation originalOp = operationHistory.ctrlZ();
+		SketchOperation originalOp = operationHistory.ctrlZ();
 		if (originalOp == null)
 			return null;
 		// else... 
-		Operation reversedOp = originalOp.generateReversedOp();
+		SketchOperation reversedOp = originalOp.generateReversedOp();
 		exeOperation(reversedOp);
 		modified = true;
 		return reversedOp;
@@ -251,9 +176,9 @@ public class SketchProject
 
 	/** Guidance function, guide the GUI the operation from the history list. 
 	 * No registration is needed since the operation is not read from the user.  */
-	public Operation ctrlY()
+	public SketchOperation ctrlY()
 	{
-		Operation originalOp = operationHistory.ctrlY();
+		SketchOperation originalOp = operationHistory.ctrlY();
 		if (originalOp == null)
 			return null;
 		// else... 
@@ -268,33 +193,38 @@ public class SketchProject
 			component.display();
 	}
 	
+	public void displayOperationHistory()
+	{	
+		operationHistory.display();
+	}
+	
 	
 	
 	
 	/** Change the componentList without change the historyList 
 	 * because it is set to act under an operation, not to generate one.  */
-	private void exeOperation(Operation operation)
+	private void exeOperation(SketchOperation operation)
 	{	
 		switch (operation.operationType)
-		{	case Operation.ADD:
+		{	case SketchOperation.ADD:
 				Component compToAdd = (Component) operation.following;
 				componentList.add(compToAdd);
 				if (compToAdd.primaryType.equals(BackBone.class.getSimpleName()))
 					backBoneList.add(compToAdd.toBackBone());
 				break;
-			case Operation.REMOVE:
+			case SketchOperation.REMOVE:
 				Component compToRemove = (Component) operation.previous;
 				componentList.remove(compToRemove);
 				if (compToRemove.primaryType.equals(BackBone.class.getSimpleName()))
 					backBoneList.remove(compToRemove.toBackBone());
 				break;
-			case Operation.MODIFY:
+			case SketchOperation.MODIFY:
 				Component component = findComponentByID(operation.ID);
 				Object object = operation.following;
 				switch (operation.attributeType)
-				{	case Operation.TYPE_STRING:
+				{	case SketchOperation.TYPE_STRING:
 						component.setString((String) object);	break;
-					case Operation.TYPE_BOUNDS:
+					case SketchOperation.TYPE_BOUNDS:
 						component.setBounds((Rectangle) object);
 						if (isMoveEvent(operation.previous, operation.following))
 							if (component.primaryType.equals(BackBone.class.getSimpleName()))
@@ -302,11 +232,11 @@ public class SketchProject
 							else if (component.primaryType.equals(BackBone.class.getSimpleName()))
 								onLinkage(component.toRelation(), operation.previous, operation.following);
 						break;
-					case Operation.TYPE_THICKNESS:
+					case SketchOperation.TYPE_THICKNESS:
 						component.setThickness((Double) object);	break;
-					case Operation.TYPE_FONT:
+					case SketchOperation.TYPE_FONT:
 						component.setFont((Font) object);	break;
-					case Operation.TYPE_COLOR:
+					case SketchOperation.TYPE_COLOR:
 						component.setColor((Color) object);	break;
 					default:
 						return;
@@ -360,7 +290,6 @@ public class SketchProject
 			point.y += dy;
 		}
 	}
-	
 	
 	
 	
