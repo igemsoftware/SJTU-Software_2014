@@ -38,7 +38,6 @@ public class Child_Search extends JPanel {
 	public JLabel page10;
 	public int currentpage = 1;
 	public SearchingResultPage searchingresultpage;
-	public SearchResultList searchresultlist;
 	public JScrollBar scrollbar;
 	public JScrollBar scrollbar1;
 	public SearchCenter searchcenter;
@@ -48,7 +47,6 @@ public class Child_Search extends JPanel {
 	public JLabel previouspage;
 	public JLabel nextpage;
 	public JLabel showpagenum;
-	public SearchResultList filteredlist;
 	public boolean confirmed_clicked;
 	public Child_Search child_search;
 	public String keyword;
@@ -73,7 +71,8 @@ public class Child_Search extends JPanel {
 		Result.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Result.requestFocus();
+				if(e.getButton() == e.BUTTON1)
+					Result.requestFocus();
 			}
 		});
 		Result.setBounds(0, 0, 683, 670);
@@ -85,16 +84,18 @@ public class Child_Search extends JPanel {
 		final JLabel Back = new JLabel();
 		Back.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				SearchResultList previousList = searchcenter.rollBack();
-				if(previousList == null) return;
-				else{
-					requestFocus();
-					textField.setText(previousList.keyword);
-					resultpanel.removeAll();
-					InitializeResultPage initializeresultpage = new InitializeResultPage(child_search, textField.getText());
-					initializeresultpage.start();
-					resultpanel.updateUI();
+			public void mouseClicked(MouseEvent e) {
+				if(e.getButton() == e.BUTTON1){
+					SearchResultList previousList = searchcenter.rollBack();
+					if(previousList == null) return;
+					else{
+						requestFocus();
+						textField.setText(previousList.keyword);
+						resultpanel.removeAll();
+						InitializeResultPage initializeresultpage = new InitializeResultPage(child_search, previousList.keyword, true, previousList);
+						initializeresultpage.start();
+						resultpanel.updateUI();
+					}
 				}
 			}
 			@Override
@@ -113,16 +114,18 @@ public class Child_Search extends JPanel {
 		final JLabel Forward = new JLabel();
 		Forward.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				SearchResultList forwardList = searchcenter.goForward();
-				if(forwardList == null) return;
-				else{
-					requestFocus();
-					textField.setText(forwardList.keyword);
-					resultpanel.removeAll();
-					InitializeResultPage initializeresultpage = new InitializeResultPage(child_search, textField.getText());
-					initializeresultpage.start();
-					resultpanel.updateUI();
+			public void mouseClicked(MouseEvent e) {
+				if(e.getButton() == e.BUTTON1){
+					SearchResultList forwardList = searchcenter.goForward();
+					if(forwardList == null) return;
+					else{
+						requestFocus();
+						textField.setText(forwardList.keyword);
+						resultpanel.removeAll();
+						InitializeResultPage initializeresultpage = new InitializeResultPage(child_search, forwardList.keyword, true, forwardList);
+						initializeresultpage.start();
+						resultpanel.updateUI();
+					}
 				}
 			}
 			@Override
@@ -149,25 +152,27 @@ public class Child_Search extends JPanel {
 		Search.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/SearchBox_searchButton.png")));
 		Search.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				if(textField.getText() == null || textField.getText().trim().equals("")){
-					Component component = mainpage.Mainpanel.getComponent(0);
-					if(component instanceof Child_Search){
-						mainpage.child_search_current = (Child_Search) component;
-						Child_Search_Main child_search_main = new Child_Search_Main(mainpage);
-						mainpage.Mainpanel.removeAll();
-						mainpage.Mainpanel.add(child_search_main);
-						mainpage.Mainpanel.updateUI();
-						mainpage.CurrentPage = 1;
+			public void mouseClicked(MouseEvent e) {
+				if(e.getButton() == e.BUTTON1){
+					if(textField.getText().equals("")){
+						Component component = mainpage.Mainpanel.getComponent(0);
+						if(component instanceof Child_Search){
+							mainpage.child_search_current = (Child_Search) component;
+							Child_Search_Main child_search_main = new Child_Search_Main(mainpage);
+							mainpage.Mainpanel.removeAll();
+							mainpage.Mainpanel.add(child_search_main);
+							mainpage.Mainpanel.updateUI();
+							mainpage.CurrentPage = 1;
+						}
+						return;
 					}
-					return;
-				}
-				else{
-					requestFocus();
-					currentpage = 1;
-					blast = 1;
-					InitializeResultPage initializeresultpage = new InitializeResultPage(child_search, textField.getText());
-					initializeresultpage.start();
+					else{
+						requestFocus();
+						currentpage = 1;
+						blast = 1;
+						InitializeResultPage initializeresultpage = new InitializeResultPage(child_search, textField.getText(), false);
+						initializeresultpage.start();
+					}
 				}
 			}
 			@Override
@@ -187,7 +192,7 @@ public class Child_Search extends JPanel {
 			@Override
 			public void keyPressed(KeyEvent e) {
 				if(e.getKeyChar() == e.VK_ENTER){
-					if(textField.getText() == null || textField.getText().trim().equals("")){
+					if(textField.getText().equals("")){
 						Component component = mainpage.Mainpanel.getComponent(0);
 						if(component instanceof Child_Search){
 							mainpage.child_search_current = (Child_Search) component;
@@ -203,7 +208,7 @@ public class Child_Search extends JPanel {
 					else{
 						currentpage = 1;
 						blast = 1;
-						InitializeResultPage initializeresultpage = new InitializeResultPage(child_search, textField.getText());
+						InitializeResultPage initializeresultpage = new InitializeResultPage(child_search, textField.getText(), false);
 						initializeresultpage.start();
 					}
 				}
@@ -226,24 +231,26 @@ public class Child_Search extends JPanel {
 		Blast.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(textField.getText() == null || textField.getText().trim().equals("")){
-					Component component = mainpage.Mainpanel.getComponent(0);
-					if(component instanceof Child_Search){
-						mainpage.child_search_current = (Child_Search) component;
-						Child_Search_Main child_search_main = new Child_Search_Main(mainpage);
-						mainpage.Mainpanel.removeAll();
-						mainpage.Mainpanel.add(child_search_main);
-						mainpage.Mainpanel.updateUI();
-						mainpage.CurrentPage = 1;
+				if(e.getButton() == e.BUTTON1){
+					if(textField.getText().equals("")){
+						Component component = mainpage.Mainpanel.getComponent(0);
+						if(component instanceof Child_Search){
+							mainpage.child_search_current = (Child_Search) component;
+							Child_Search_Main child_search_main = new Child_Search_Main(mainpage);
+							mainpage.Mainpanel.removeAll();
+							mainpage.Mainpanel.add(child_search_main);
+							mainpage.Mainpanel.updateUI();
+							mainpage.CurrentPage = 1;
+						}
+						return;
 					}
-					return;
-				}
-				else{
-					requestFocus();
-					currentpage = 1;
-					blast = 2;
-					InitializeResultPage initializeresultpage = new InitializeResultPage(child_search, textField.getText());
-					initializeresultpage.start();
+					else{
+						requestFocus();
+						currentpage = 1;
+						blast = 2;
+						InitializeResultPage initializeresultpage = new InitializeResultPage(child_search, textField.getText(), false);
+						initializeresultpage.start();
+					}
 				}
 			}
 			@Override
@@ -275,7 +282,7 @@ public class Child_Search extends JPanel {
 		
 		updateUI();
 		
-		InitializeResultPage initializeresultpage = new InitializeResultPage(child_search, keyword);
+		InitializeResultPage initializeresultpage = new InitializeResultPage(child_search, keyword, false);
 		initializeresultpage.start();
 	}
 }

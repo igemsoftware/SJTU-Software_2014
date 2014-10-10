@@ -222,7 +222,17 @@ public class SketchProject
 		BackBone backBone = comp.toBackBone();
 		for (Integer IDInList : backBone.bbkChildren)
 			if (IDInList == bbkID)
-				backBone.bbkChildren.remove(IDInList);
+			{	backBone.bbkChildren.remove(IDInList);	break;	}
+	}
+	
+	public boolean canCtrlZ()
+	{	
+		return operationHistory.canCtrlZ();
+	}
+	
+	public boolean canCtrlY()
+	{	
+		return operationHistory.canCtrlY();
 	}
 	
 	/** Guidance function, guide the GUI the operation from the history list. 

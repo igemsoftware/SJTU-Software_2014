@@ -47,7 +47,7 @@ public class InitializeDetail extends Thread{
 		detailsofresults.Type_Content.setText(bbkdetail.type);
 		detailsofresults.Author_Content.setText(bbkdetail.author);
 		detailsofresults.EnteredDate_Content.setText(bbkdetail.enterDate);
-		detailsofresults.URL_Content.setText(bbkdetail.url);
+		detailsofresults.URL_Content.setText("<html><u>" + bbkdetail.url + "</u></html>");
 		detailsofresults.ReleasedStatus_Content.setText(bbkdetail.releaseStatus);
 		if(bbkdetail.rating.average_stars.equals("No Stars")){
 			detailsofresults.AverageStar_Content.setText(bbkdetail.rating.average_stars);

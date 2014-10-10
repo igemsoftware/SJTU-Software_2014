@@ -13,7 +13,7 @@ public class Information {
 	public Preferences preferences;
 	
 	public Information(){
-		sortby = "";
+		sortby = null;
 		type = new ArrayList<String>();
 		enteredyear = new int[2];
 		releasestatus = new ReleaseStatus();

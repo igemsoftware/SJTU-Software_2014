@@ -38,7 +38,8 @@ public class DetailsofResults extends JPanel {
 		addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				requestFocus();
+				if(e.getButton() == e.BUTTON1)
+					requestFocus();
 			}
 		});
 		setBounds(0, 0, 665, 1500);
@@ -109,12 +110,14 @@ public class DetailsofResults extends JPanel {
 		URL_Content = new JLabel("");
 		URL_Content.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				try{
-					Runtime.getRuntime().exec("explorer " + URL_Content.getText());
-				}
-				catch(Exception ex){
-					ex.printStackTrace();
+			public void mouseClicked(MouseEvent e) {
+				if(e.getButton() == e.BUTTON1){
+					try{
+						Runtime.getRuntime().exec("explorer " + URL_Content.getText());
+					}
+					catch(Exception ex){
+						ex.printStackTrace();
+					}
 				}
 			}
 			@Override
@@ -127,7 +130,7 @@ public class DetailsofResults extends JPanel {
 				URL_Content.setForeground(Color.black);
 			}
 		});
-		URL_Content.setFont(new Font("Times New Roman", Font.ITALIC, 20));
+		URL_Content.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		URL_Content.setBounds(59, 248, 437, 24);
 		add(URL_Content);
 		

@@ -38,7 +38,8 @@ public class Child_Search_Main extends JPanel {
 		addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				requestFocus();
+				if(e.getButton() == e.BUTTON1)
+					requestFocus();
 			}
 		});
 		mainpage = mainpage1;
@@ -62,7 +63,7 @@ public class Child_Search_Main extends JPanel {
 			@Override
 			public void keyPressed(KeyEvent arg0) {
 				if(arg0.getKeyChar() == arg0.VK_ENTER){
-					if(SearchText.getText() == null || SearchText.getText().trim().equals("")) return;
+					if(SearchText.getText().equals("")) return;
 					Component component = mainpage.Mainpanel.getComponent(0);
 					if(component instanceof Child_Search_Main){
 						mainpage.child_search_main_current = (Child_Search_Main) component;
@@ -86,21 +87,23 @@ public class Child_Search_Main extends JPanel {
 		goBox = new JLabel("");
 		goBox.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				if(SearchText.getText() == null || SearchText.getText().trim().equals("")) return;
-				requestFocus();
-				Component component = mainpage.Mainpanel.getComponent(0);
-				if(component instanceof Child_Search_Main){
-					mainpage.child_search_main_current = (Child_Search_Main) component;
+			public void mouseClicked(MouseEvent e) {
+				if(e.getButton() == e.BUTTON1){
+					if(SearchText.getText().equals("")) return;
+					requestFocus();
+					Component component = mainpage.Mainpanel.getComponent(0);
+					if(component instanceof Child_Search_Main){
+						mainpage.child_search_main_current = (Child_Search_Main) component;
+					}
+					
+					Child_Search child_search = new Child_Search(mainpage, SearchText.getText(), choicepanel.information , 1, choicepanel.confirmed_clicked);
+					
+					mainpage.Mainpanel.removeAll();
+					mainpage.Mainpanel.add(child_search);
+					child_search.textField.setText(SearchText.getText());
+					mainpage.Mainpanel.updateUI();
+					mainpage.CurrentPage = 11;
 				}
-				
-				Child_Search child_search = new Child_Search(mainpage, SearchText.getText(), choicepanel.information , 1, choicepanel.confirmed_clicked);
-				
-				mainpage.Mainpanel.removeAll();
-				mainpage.Mainpanel.add(child_search);
-				child_search.textField.setText(SearchText.getText());
-				mainpage.Mainpanel.updateUI();
-				mainpage.CurrentPage = 11;
 			}
 			@Override
 			public void mouseEntered(MouseEvent arg0) {
@@ -132,22 +135,24 @@ public class Child_Search_Main extends JPanel {
 		Blast = new JLabel("");
 		Blast.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				if(SearchText.getText() == null || SearchText.getText().trim().equals("")) return;
-				requestFocus();
-				Component component = mainpage.Mainpanel.getComponent(0);
-				if(component instanceof Child_Search_Main){
-					mainpage.child_search_main_current = (Child_Search_Main) component;
+			public void mouseClicked(MouseEvent e) {
+				if(e.getButton() == e.BUTTON1){
+					if(SearchText.getText().equals("")) return;
+					requestFocus();
+					Component component = mainpage.Mainpanel.getComponent(0);
+					if(component instanceof Child_Search_Main){
+						mainpage.child_search_main_current = (Child_Search_Main) component;
+					}
+					
+					Child_Search child_search = new Child_Search(mainpage, SearchText.getText(), choicepanel.information , 2, choicepanel.confirmed_clicked);
+					
+					mainpage.Mainpanel.removeAll();
+					mainpage.Mainpanel.add(child_search);
+					child_search.textField.setText(SearchText.getText());
+					mainpage.Mainpanel.updateUI();
+					
+					mainpage.CurrentPage = 11;
 				}
-				
-				Child_Search child_search = new Child_Search(mainpage, SearchText.getText(), choicepanel.information , 2, choicepanel.confirmed_clicked);
-				
-				mainpage.Mainpanel.removeAll();
-				mainpage.Mainpanel.add(child_search);
-				child_search.textField.setText(SearchText.getText());
-				mainpage.Mainpanel.updateUI();
-				
-				mainpage.CurrentPage = 11;
 			}
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -166,14 +171,16 @@ public class Child_Search_Main extends JPanel {
 		JLabel AdvancedSearch = new JLabel("Advanced Search");
 		AdvancedSearch.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				if(flag == false){
-					scrollpane.setVisible(true);
-					flag = true;
-				}
-				else if(flag == true){
-					scrollpane.setVisible(false);
-					flag = false;
+			public void mouseClicked(MouseEvent e) {
+				if(e.getButton() == e.BUTTON1){
+					if(flag == false){
+						scrollpane.setVisible(true);
+						flag = true;
+					}
+					else if(flag == true){
+						scrollpane.setVisible(false);
+						flag = false;
+					}
 				}
 			}
 			@Override
