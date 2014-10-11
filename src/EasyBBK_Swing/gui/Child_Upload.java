@@ -9,6 +9,7 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 
+import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -85,6 +86,7 @@ public class Child_Upload extends JPanel {
 	public SubpartDialog subpartdialog;
 	public JPanel showinfopanel;
 	public JLabel showinfo;
+	public JLabel BackGround;
 	/**
 	 * Create the panel.
 	 */
@@ -113,7 +115,7 @@ public class Child_Upload extends JPanel {
 		});
 		UploadContainer.setBounds(0, 0, 1348, 1800);
 		UploadContainer.setPreferredSize(new Dimension(1348, 1800));
-		UploadContainer.setBackground(new Color(0, 255, 255));
+		UploadContainer.setBackground(new Color(255, 255, 255));
 		UploadContainer.setLayout(null);
 		
 		scrollpanel = new JScrollPane(UploadContainer);
@@ -577,6 +579,12 @@ public class Child_Upload extends JPanel {
 		showinfo.setBounds(0, 0, 360, 240);
 		showinfo.setFont(new Font("Times New Roman", Font.PLAIN, 24));
 		showinfopanel.add(showinfo);
+		
+		BackGround = new JLabel("");
+		BackGround.setVisible(true);
+		BackGround.setBounds(0, 0, 1366, 1800);
+		BackGround.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/BackGround2.png")));
+		UploadContainer.add(BackGround);
 		
 		JScrollBar scrollbar = new JScrollBar();
 		scrollbar.setUnitIncrement(100);

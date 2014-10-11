@@ -25,6 +25,7 @@ public class Child_Compare extends JPanel {
 	public MainPage mainpage;
 	public ArrayList<BbkDetail> comparisonlist = new ArrayList<BbkDetail>();
 	public JPanel Containerpanel;
+	public JLabel BackGround;
 	/**
 	 * Create the panel.
 	 */
@@ -61,6 +62,7 @@ public class Child_Compare extends JPanel {
 		add(scrollPane);
 		
 		JTextField comparison = new JTextField("The Comparison for Biobricks");
+		comparison.setOpaque(false);
 		comparison.setFont(new Font("Times New Roman", Font.BOLD, 40));
 		comparison.setBackground(new Color(255, 255, 255));
 		comparison.setBounds(408, 50, 550, 50);
@@ -70,6 +72,12 @@ public class Child_Compare extends JPanel {
 		comparison.setColumns(10);
 		
 		initialpage();
+		
+		BackGround = new JLabel("");
+		BackGround.setVisible(true);
+		BackGround.setBounds(0, 0, 1366, 1000);
+		BackGround.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/BackGround1.png")));
+		Containerpanel.add(BackGround);
 		
 		setVisible(true);
 	}

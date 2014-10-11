@@ -2,11 +2,14 @@ package EasyBBK_Swing.gui;
 
 import java.awt.Color;
 import java.awt.Cursor;
+import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.net.URI;
+import java.net.URL;
 import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
@@ -391,6 +394,24 @@ public class InitializeResultPage extends Thread{
 		child_search.searchingresultpage.searchingresult.get(i).Author_Content.setText(bbkoutline.author);
 		child_search.searchingresultpage.searchingresult.get(i).EnteredDate_Content.setText(bbkoutline.enterDate);
 		child_search.searchingresultpage.searchingresult.get(i).URL_Content.setText("<html><u>" + bbkoutline.url + "</u></html>");
+		child_search.searchingresultpage.searchingresult.get(i).URL_Content.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(e.getButton() == e.BUTTON1){
+					try{
+						//URL url=new URL(child_search.searchingresultpage.searchingresult.get(i).URL_Content.getText().trim());
+						//getAppletContext().showDocument(url);
+						//Runtime.getRuntime().exec("cmd.exe /c start iexplore " + child_search.searchingresultpage.searchingresult.get(i).URL_Content.getText());
+						//URI uri=new java.net.URI(child_search.searchingresultpage.searchingresult.get(i).URL_Content.getText().trim());
+						//Desktop.getDesktop().browse(uri);
+						Runtime.getRuntime().exec("explorer " + bbkoutline.url);
+					}
+					catch(Exception ex){
+						ex.printStackTrace();
+					}
+				}
+			}
+		});
 		child_search.searchingresultpage.searchingresult.get(i).ReleasedStatus_Content.setText(bbkoutline.releaseStatus);
 		if(bbkoutline.rating.average_stars.equals("No Stars")){
 			child_search.searchingresultpage.searchingresult.get(i).AverageStar_Content.setText(bbkoutline.rating.average_stars);
