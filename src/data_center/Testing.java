@@ -35,9 +35,9 @@ public class Testing
 		//uploadPartNameSequenceTokenValidationCheck();
 		//uploadSubpartSubscarValidationCheck();
 		
-		//boolean succeed = OfficialUploadPoster.login("DustInMonteriggioni", "wtgwst0901");
-		//System.out.println(succeed);
-		//OfficialUploadPoster.testing();
+		boolean succeed = OfficialUploadPoster.login("DustInMonteriggioni", "wtgwst0901");
+		System.out.println(succeed);
+		OfficialUploadPoster.testing();
 	}
 	
 	
