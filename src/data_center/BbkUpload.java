@@ -42,12 +42,10 @@ public class BbkUpload
 	/** rawName is some thing without "BBa_", like "B0012". Suffix "_EasyBbk" will
 	 * be automatically appended to distinguish them from the biobricks fetched 
 	 * from igem.org */
-	public void setName(String rawName)
+	public void setName(String name)
 	{	
-		if (name == null)
-		{	name = "BBa_" + rawName + "_EasyBbk";
-			shortName = rawName + "_EasyBbk";
-		}
+		this.name = name;
+		this.shortName = name.substring("BBa_".length());
 	}
 
 	public String getEnterDate()
