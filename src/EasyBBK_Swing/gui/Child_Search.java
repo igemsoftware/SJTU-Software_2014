@@ -107,7 +107,7 @@ public class Child_Search extends JPanel {
 				Back.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/SearchBox_backward.png")));
 			}
 		});
-		Back.setBounds(30, 30, 50, 50);
+		Back.setBounds(0, 0, 58, 55);
 		Back.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/SearchBox_backward.png")));
 		Result.add(Back);
 		
@@ -137,18 +137,12 @@ public class Child_Search extends JPanel {
 				Forward.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/SearchBox_forward.png")));
 			}
 		});
-		Forward.setBounds(86, 30, 70, 50);
+		Forward.setBounds(58, 0, 54, 55);
 		Forward.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/SearchBox_forward.png")));
 		Result.add(Forward);
-		
-		JLabel Text_BackGround = new JLabel();
-		Text_BackGround.setBounds(169, 30, 300, 50);
-		Text_BackGround.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Text.png")));
-		Result.add(Text_BackGround);
-		
 
 		Search = new JLabel();
-		Search.setBounds(481, 30, 100, 50);
+		Search.setBounds(490, 0, 104, 53);
 		Search.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/SearchBox_searchButton.png")));
 		Search.addMouseListener(new MouseAdapter() {
 			@Override
@@ -215,10 +209,10 @@ public class Child_Search extends JPanel {
 				}
 			}
 		});
-		textField.setFont(new Font("Times New Roman", Font.PLAIN, 24));
+		textField.setFont(new Font("Times New Roman", Font.PLAIN, 40));
 		textField.setVisible(true);
-		textField.setBounds(10, 5, 283, 32);
-		Text_BackGround.add(textField);
+		textField.setBounds(112, 0, 378, 54);
+		Result.add(textField);
 		textField.setColumns(20);
 		
 		resultpanel = new JPanel();
@@ -257,15 +251,15 @@ public class Child_Search extends JPanel {
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				Blast.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-				Blast.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/blast1_enter.png")));
+				Blast.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/blast_enter.png")));
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
-				Blast.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/blast1.png")));
+				Blast.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/blast.png")));
 			}
 		});
-		Blast.setBounds(591, 39, 82, 32);
-		Blast.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/blast1.png")));
+		Blast.setBounds(596, 0, 84, 53);
+		Blast.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/blast.png")));
 		Result.add(Blast);
 		
 		Details = new JPanel();
