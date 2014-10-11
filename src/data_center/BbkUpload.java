@@ -19,6 +19,8 @@ public class BbkUpload
     public String author;
     public String shortDesc;   // short description
     public String longDesc;		// long description
+    public String source;
+    public String notes;
  	public String nickname;
  	public String groupFavorite;
  	public String delete_this_part;
@@ -60,6 +62,9 @@ public class BbkUpload
 	public String getID() 
 	{	return ID;	}
 
+	public void setID(String ID)
+	{	this.ID = ID;	}
+	
 	public void setID()
 	{
 		if (ID == null)
@@ -262,6 +267,8 @@ public class BbkUpload
 		System.out.println("********\n");
 	}
 	
+	
+
 	
 	
 	// BbkUpload 小黑屋，与outline相比没有的东西在这里：

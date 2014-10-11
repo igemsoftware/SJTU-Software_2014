@@ -30,11 +30,14 @@ public class Testing
 		//compareAssignDetail();
 		//sketchProjectOperation();
 		//sketchXMLReadWrite();
-		sketchOperationHistory();
+		//sketchOperationHistory();
 		//uploadUploadAndReappearBbkUpload();
 		//uploadPartNameSequenceTokenValidationCheck();
 		//uploadSubpartSubscarValidationCheck();
-	
+		
+		//boolean succeed = OfficialUploadPoster.login("DustInMonteriggioni", "wtgwst0901");
+		//System.out.println(succeed);
+		//OfficialUploadPoster.testing();
 	}
 	
 	
@@ -42,12 +45,17 @@ public class Testing
 	
 	private static void searchKeywordAndGetDetail()
 	{	
+		int startTime = getTimeInMs();
 		SearchResultList list = dataCenter.searchCenter.search("GFP");
-		list.displayRating();
+		//list.displayRating();
+		int endTime = getTimeInMs();
+		
+		System.out.println("Network time: " + (endTime - startTime) + "ms");
 		System.out.println("List size: " + list.size());
+		
 		for (int i = 0; i < list.size(); i += 10)
 		{	BbkDetail detail = dataCenter.searchCenter.getDetail(list.get(i).name);
-			detail.display();
+			//detail.display();
 		}
 	}
 	
@@ -126,18 +134,11 @@ public class Testing
 	
 	private static void compareAssignDetail()
 	{	
-		Calendar calendar1 = Calendar.getInstance();
-		int sec1 = calendar1.get(Calendar.SECOND);
-		int mSec1 = calendar1.get(Calendar.MILLISECOND);
-		
+		int startTime = getTimeInMs();
 		dataCenter.compareCenter.assignDetail("BBa_I13545", 2).display();
+		int endTime = getTimeInMs();
 		
-		Calendar calendar2 = Calendar.getInstance();
-		int sec2 = calendar2.get(Calendar.SECOND);
-		int mSec2 = calendar2.get(Calendar.MILLISECOND);
-		
-		System.out.println("Network time: " + 
-				(1000 * sec2 + mSec2 - 1000 * sec1 - mSec1) + "ms");
+		System.out.println("Network time: " + (endTime - startTime) + "ms");
 	}
 	
 	private static void sketchProjectOperation()
@@ -256,6 +257,14 @@ public class Testing
 			(dataCenter.uploadCenter.getSubscarForSequenceToken("RFC[10]") != null));
 		System.out.println("Subpart validation(RFC[1000]): " + 
 			(dataCenter.uploadCenter.getSubscarForSequenceToken("RFC[1000]") != null));
+	}
+	
+	private static int getTimeInMs()
+	{	
+		Calendar calendar = Calendar.getInstance();
+		int sec = calendar.get(Calendar.SECOND);
+		int mSec = calendar.get(Calendar.MILLISECOND);
+		return 1000 * sec + mSec;
 	}
 	
 }
