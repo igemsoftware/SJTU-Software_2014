@@ -135,12 +135,13 @@ public class OfficialUploadPoster
 		}
 		Elements elem = doc.select("part_id");
 		System.out.println(elem.html());
+		httpClient.close();
 		return elem.html();
 	}
 	
 	public static void modifyPrimaryInfo(BbkUpload bbkUpload) throws Exception
 	{
-		//httpClient = HttpClients.createDefault();
+		httpClient = HttpClients.createDefault();
 		List<NameValuePair> nvps = new ArrayList<NameValuePair>();
 	    nvps.add(new BasicNameValuePair("id", bbkUpload.getID()));
 	    nvps.add(new BasicNameValuePair("hidden_header", "14"));
@@ -157,12 +158,12 @@ public class OfficialUploadPoster
 	    HttpPost httpost = new HttpPost("http://parts.igem.org/cgi/partsdb/part_info.cgi?part_name=" + bbkUpload.getName());
 	    httpost.setEntity(new UrlEncodedFormEntity(nvps));
 		httpClient.execute(httpost, context);
-		//httpClient.close();
+		httpClient.close();
 	}
 
 	public static void modifySequence(BbkUpload bbkUpload) throws Exception
 	{	
-		//httpClient = HttpClients.createDefault();
+		httpClient = HttpClients.createDefault();
 		List<NameValuePair> nvps = new ArrayList<NameValuePair>();
 	    nvps.add(new BasicNameValuePair("id", bbkUpload.getID()));
 	    nvps.add(new BasicNameValuePair("dna_center", ""));
@@ -177,7 +178,7 @@ public class OfficialUploadPoster
 	    HttpPost httpost = new HttpPost("http://parts.igem.org/partsdb/edit_seq.cgi?part=" + bbkUpload.getName());
 	    httpost.setEntity(new UrlEncodedFormEntity(nvps));
 		httpClient.execute(httpost, context);
-		//httpClient.close();
+		httpClient.close();
 	}
 	
 	public static void modifyCategories(BbkUpload bbkUpload) throws Exception

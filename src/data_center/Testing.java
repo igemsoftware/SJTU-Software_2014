@@ -12,6 +12,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import data_center.BbkUpload.Category;
 import data_center.SketchComponent.*;
 
 /** The class used to test the data_center. Each private function tests a function in
@@ -35,8 +36,50 @@ public class Testing
 		//uploadPartNameSequenceTokenValidationCheck();
 		//uploadSubpartSubscarValidationCheck();
 		
-		boolean succeed = OfficialUploadPoster.login("DustInMonteriggioni", "wtgwst0901");
+		boolean succeed = OfficialUploadPoster.login("","");
 		System.out.println(succeed);
+		//boolean login = OfficialUploadPoster.login(UserName.getText(), String.valueOf(Password.getPassword()));
+		if (!succeed)
+		{
+			System.out.println("Username or password is wrong.");
+		}
+		System.out.println("Uploading your biobrick...\n10% Complete");
+		BbkUpload bbkUpload = new BbkUpload();
+		bbkUpload.setID("33810");
+		bbkUpload.setName("BBa_K1479011");
+		bbkUpload.shortDesc = "0.0 Testing the UE of the bio-brick upload page, not designing a real one";
+		bbkUpload.type = "Terminator";
+		bbkUpload.nickname = "LaLaLa";
+		bbkUpload.author = "YiBai Chen";
+		bbkUpload.groupFavorite = "No";
+		bbkUpload.categories.add(new Category("//cds/enzyme/endonuclease/restriction"));
+		bbkUpload.categories.add(new Category("//rnap/bacteriophage/t7"));
+		bbkUpload.categories.add(new Category("//plasmidbackbone/copynumber"));
+		bbkUpload.categories.add(new Category("//collections/biofab"));
+		bbkUpload.parameters.add(new BbkUpload.Parameter("biology","1","","","",""));
+		bbkUpload.parameters.add(new BbkUpload.Parameter("color","red","","","",""));
+		bbkUpload.parameters.add(new BbkUpload.Parameter("i_l","1","","","",""));
+		bbkUpload.parameters.add(new BbkUpload.Parameter("direction","1","","","",""));
+		bbkUpload.features.add(new BbkUpload.Feature("","label1","misc","Fwd","2","3"));
+		bbkUpload.features.add(new BbkUpload.Feature("","label2","rbs","Fwd","1","2"));
+		bbkUpload.features.add(new BbkUpload.Feature("","label3","cds","Rev","3","4"));
+		String newBbk = OfficialUploadPoster.getNextAvailablePartName();
+		newBbk = "BBa_K1479011";
+		System.out.println("Uploading your biobrick...\n15% Complete\nYour new BioBrick will be"+newBbk);
+		String newId = OfficialUploadPoster.createNewPart(newBbk, bbkUpload);
+		bbkUpload.setName(newBbk);
+		bbkUpload.setID(newId);
+		System.out.println("Uploading your biobrick...\n20% Complete\nYour new BioBrick will be "+newBbk);
+		OfficialUploadPoster.modifyPrimaryInfo(bbkUpload);
+		System.out.println("Uploading your biobrick...\n31% Complete\nYour new BioBrick will be "+newBbk);
+		OfficialUploadPoster.modifyParameters(bbkUpload);
+		System.out.println("Uploading your biobrick...\n49% Complete\nYour new BioBrick will be "+newBbk);
+		OfficialUploadPoster.modifyCategories(bbkUpload);
+		System.out.println("Uploading your biobrick...\n68% Complete\nYour new BioBrick will be "+newBbk);
+		OfficialUploadPoster.modifySequence(bbkUpload);
+		System.out.println("Uploading your biobrick...\n84% Complete\nYour new BioBrick will be "+newBbk);
+		OfficialUploadPoster.modifyFeatures(bbkUpload);
+		System.out.println("Uploading your biobrick...\n100% Complete\nYour new BioBrick is "+newBbk);
 		OfficialUploadPoster.testing();
 	}
 	
