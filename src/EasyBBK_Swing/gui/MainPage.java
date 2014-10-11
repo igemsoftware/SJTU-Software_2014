@@ -39,7 +39,7 @@ public class MainPage extends JFrame{
 	public Child_Search child_search_current = null;
 	public Child_Design child_design_current = null;
 	public Child_Upload child_upload_current = null;
-	public Child_Compare child_compare_current = null;
+	//public Child_Compare child_compare_current = null;
 	public int CurrentPage = 0;
 	public String sequencestring = "";
 	public String subpartstring = "";
@@ -219,12 +219,12 @@ public class MainPage extends JFrame{
 						}
 					}
 					
-					if(CurrentPage == 4){
+					/*if(CurrentPage == 4){
 						Component component = Mainpanel.getComponent(0);
 						if(component instanceof Child_Compare){
 							child_compare_current = (Child_Compare) component;
 						}
-					}
+					}*/
 					
 					if(child_search_main_current == null){
 						Child_Search_Main child_search_main = new Child_Search_Main(mainpage);
@@ -308,12 +308,12 @@ public class MainPage extends JFrame{
 						}
 					}
 					
-					if(CurrentPage == 4){
+					/*if(CurrentPage == 4){
 						Component component = Mainpanel.getComponent(0);
 						if(component instanceof Child_Compare){
 							child_compare_current = (Child_Compare) component;
 						}
-					}
+					}*/
 					
 					if(child_design_current == null){
 						Child_Design child_design = new Child_Design(mainpage);
@@ -382,12 +382,12 @@ public class MainPage extends JFrame{
 						}
 					}
 					
-					if(CurrentPage == 4){
+					/*if(CurrentPage == 4){
 						Component component = Mainpanel.getComponent(0);
 						if(component instanceof Child_Compare){
 							child_compare_current = (Child_Compare) component;
 						}
-					}
+					}*/
 					
 					if(child_upload_current == null){
 						Child_Upload child_upload = new Child_Upload(mainpage);
@@ -470,16 +470,17 @@ public class MainPage extends JFrame{
 						}
 					}
 					
-					if(child_compare_current == null){
-						Child_Compare child_compare = new Child_Compare(mainpage);
+					
+					if(child_search_current == null){
+						Child_Compare child_compare = new Child_Compare(mainpage, null);
 						Mainpanel.removeAll();
 						Mainpanel.add(child_compare);
 						Mainpanel.updateUI();
 						CurrentPage = 4;
-					}
-					else if(child_compare_current != null){
+					}else if(child_search_current != null){
+						Child_Compare child_compare = new Child_Compare(mainpage);
 						Mainpanel.removeAll();
-						Mainpanel.add(child_compare_current);
+						Mainpanel.add(child_compare);
 						Mainpanel.updateUI();
 						CurrentPage = 4;
 					}

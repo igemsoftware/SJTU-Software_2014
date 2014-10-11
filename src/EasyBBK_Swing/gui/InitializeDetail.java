@@ -5,6 +5,7 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
 import javax.swing.JCheckBox;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
@@ -24,6 +25,15 @@ public class InitializeDetail extends Thread{
 		BbkDetail bbkdetail = child_search.searchcenter.getDetail(bbkoutline.name);
 		DetailsofResults detailsofresults = new DetailsofResults();
 		
+		boolean addflag = false;
+		for(int i = 0; i < child_search.comparisonlist.size(); i++){
+			if(child_search.comparisonlist.get(i).name.equals(bbkdetail.name))
+				addflag = true;
+		}
+		
+		if(addflag == true)
+			detailsofresults.Addforcomparison.setSelected(true);
+		
 		ItemListener itemListener_addforcomparison = new ItemListener() {
             JCheckBox jCheckBox;
  
@@ -31,12 +41,21 @@ public class InitializeDetail extends Thread{
                 jCheckBox = (JCheckBox) e.getSource();
  
                 if(jCheckBox.isSelected()) {
-                	//System.out.println(1);
+                	if(child_search.comparisonlist.size() >= 3){
+                		//jCheckBox.setSelected(false);
+                		JOptionPane.showMessageDialog(null, "The comparison list is full!", "Attention",JOptionPane.PLAIN_MESSAGE);
+                		return;
+                	}
                 	child_search.comparisonlist.add(bbkdetail);
                 	//JOptionPane.showMessageDialog(null, "Successfully add for comparison", null, JOptionPane.PLAIN_MESSAGE);
                 }else {
-                	//System.out.println(0);
-                	child_search.comparisonlist.remove(bbkdetail);
+                	int j = 10;
+                	for(int i = 0; i < child_search.comparisonlist.size(); i++){
+            			if(child_search.comparisonlist.get(i).name.equals(bbkdetail.name))
+            				j = i;
+            		}
+                	if(j != 10)
+                		child_search.comparisonlist.remove(j);
                 	//JOptionPane.showMessageDialog(null, "Successfully remove from comparison", null, JOptionPane.PLAIN_MESSAGE);
                 }
             }

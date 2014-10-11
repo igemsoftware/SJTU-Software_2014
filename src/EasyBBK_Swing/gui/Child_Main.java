@@ -66,6 +66,7 @@ public class Child_Main extends JPanel {
 					mainpage.Search.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Search_click1.png")));
 					mainpage.Design.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Design1.png")));
 					mainpage.Upload.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Upload1.png")));
+					mainpage.Compare.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Compare.png")));
 					
 					if(mainpage.child_search_main_current == null){
 						Child_Search_Main child_search_main = new Child_Search_Main(mainpage);
@@ -113,7 +114,8 @@ public class Child_Main extends JPanel {
 					mainpage.Search.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Search1.png")));
 					mainpage.Design.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Design_click1.png")));
 					mainpage.Upload.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Upload1.png")));
-
+					mainpage.Compare.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Compare.png")));
+					
 					if(mainpage.child_design_current == null){
 						Child_Design child_design = new Child_Design(mainpage);
 						mainpage.Mainpanel.removeAll();
@@ -153,7 +155,8 @@ public class Child_Main extends JPanel {
 					mainpage.Search.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Search1.png")));
 					mainpage.Design.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Design1.png")));
 					mainpage.Upload.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Upload_click1.png")));
-
+					mainpage.Compare.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Compare.png")));
+					
 					if(mainpage.child_upload_current == null){
 						Child_Upload child_upload = new Child_Upload(mainpage);
 						mainpage.Mainpanel.removeAll();
@@ -183,18 +186,20 @@ public class Child_Main extends JPanel {
 					CompareDrawingBox.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/StartPage_upload.png")));
 					mainpage.Search.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Search1.png")));
 					mainpage.Design.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Design1.png")));
-					mainpage.Upload.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Upload_click1.png")));
+					mainpage.Upload.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Upload1.png")));
+					mainpage.Compare.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Compare_click.png")));
 
-					if(mainpage.child_compare_current == null){
-						Child_Compare child_compare = new Child_Compare(mainpage);
+					if(mainpage.child_upload_current == null){
+						Child_Compare child_compare = new Child_Compare(mainpage, null);
 						mainpage.Mainpanel.removeAll();
 						mainpage.Mainpanel.add(child_compare);
 						mainpage.Mainpanel.updateUI();
 						mainpage.CurrentPage = 4;
 					}
-					else if(mainpage.child_compare_current != null){
+					else if(mainpage.child_upload_current != null){
+						Child_Compare child_compare = new Child_Compare(mainpage);
 						mainpage.Mainpanel.removeAll();
-						mainpage.Mainpanel.add(mainpage.child_compare_current);
+						mainpage.Mainpanel.add(child_compare);
 						mainpage.Mainpanel.updateUI();
 						mainpage.CurrentPage = 4;
 					}
