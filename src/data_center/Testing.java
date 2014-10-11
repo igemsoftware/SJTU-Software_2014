@@ -35,10 +35,9 @@ public class Testing
 		//uploadPartNameSequenceTokenValidationCheck();
 		//uploadSubpartSubscarValidationCheck();
 		
-		boolean succeed = OfficialUploadFiller.login("DustInMonteriggioni", "wtgwst0901");
+		boolean succeed = OfficialUploadPoster.login("DustInMonteriggioni", "wtgwst0901");
 		System.out.println(succeed);
-		String[] strs = OfficialUploadFiller.getAvailablePartNameRegion();
-		System.out.println(strs.length + strs[0] + strs[1]);
+		OfficialUploadPoster.testing();
 	}
 	
 	
