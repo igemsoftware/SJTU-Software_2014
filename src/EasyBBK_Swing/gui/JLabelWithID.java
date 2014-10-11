@@ -8,6 +8,7 @@ import javax.swing.JLabel;
 class JLabelWithID extends JLabel
 {	
 	public int ID = 0;
+	public String bioName="";
 	
 	public JLabelWithID(String s)
 	{
