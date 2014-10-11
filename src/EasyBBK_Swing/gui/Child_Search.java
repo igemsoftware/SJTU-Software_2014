@@ -206,6 +206,7 @@ public class Child_Search extends JPanel {
 						return;
 					}
 					else{
+						Search.requestFocus();
 						currentpage = 1;
 						blast = 1;
 						InitializeResultPage initializeresultpage = new InitializeResultPage(child_search, textField.getText(), false);
