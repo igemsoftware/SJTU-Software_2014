@@ -162,6 +162,7 @@ public class MainPage extends JFrame{
 			}
 			@Override
 			public void mouseEntered(MouseEvent arg0) {
+				Home.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 				Home.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/home_Hover.png")));
 			}
 			@Override
@@ -296,7 +297,7 @@ public class MainPage extends JFrame{
 		
 		Design = new JLabel();
 		Design.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Design1.png")));
-		Design.setBounds(580, 0, 150, 58);
+		Design.setBounds(755, 0, 150, 58);
 		Design.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -370,7 +371,7 @@ public class MainPage extends JFrame{
 		
 		Upload = new JLabel();
 		Upload.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Upload1.png")));
-		Upload.setBounds(755, 0, 150, 58);
+		Upload.setBounds(937, 0, 150, 58);
 		Upload.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -516,7 +517,7 @@ public class MainPage extends JFrame{
 					Compare.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Compare.png")));
 			}
 		});
-		Compare.setBounds(937, 0, 150, 58);
+		Compare.setBounds(580, 0, 150, 58);
 		Compare.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Compare.png")));
 		GreenBar.add(Compare);
 		
