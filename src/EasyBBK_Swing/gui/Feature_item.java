@@ -19,6 +19,10 @@ public class Feature_item extends JPanel {
 	public JTextField End;
 	public JComboBox Direction;
 	public String content2;
+	public String feature[] = {"misc", "promoter", "rbs", "cds", "start", "stop", "scar", "dna", "tag", 
+			"stem_loop", "mutation", "s_mutation", "primer_binding", "operator", "binding", "protein", 
+			"conserved", "polya", "barcode", "BioBrick"};
+	public String direction[] = {"Fwd", "Rev"};
 	/**
 	 * Create the panel.
 	 */
@@ -27,9 +31,6 @@ public class Feature_item extends JPanel {
 		setBackground(new Color(255, 255, 255));
 		setLayout(null);
 		
-		String feature[] = {"misc", "promoter", "rbs", "cds", "start", "stop", "scar", "dna", "tag", 
-				"stem_loop", "mutation", "s_mutation", "primer_binding", "operator", "binding", "protein", 
-				"conserved", "polya", "barcode", "BioBrick"};
 		Choice = new JComboBox(feature);
 		content1 = "misc";
 		Choice.setFont(new Font("Arial", Font.PLAIN, 20));
@@ -58,7 +59,7 @@ public class Feature_item extends JPanel {
                 if(keyChar >= KeyEvent.VK_0 && keyChar <= KeyEvent.VK_9){  
                       
                 }else{  
-                    e.consume(); //关键，屏蔽掉非法输入  
+                    e.consume(); 
                 }  
             }
 		});
@@ -84,7 +85,6 @@ public class Feature_item extends JPanel {
 		add(End);
 		End.setColumns(10);
 		
-		String direction[] = {"Fwd", "Rev"};
 		Direction = new JComboBox(direction);
 		content2 = "Fwd";
 		Direction.setFont(new Font("Arial", Font.PLAIN, 20));

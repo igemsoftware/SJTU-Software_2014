@@ -87,10 +87,51 @@ public class Child_Upload extends JPanel {
 	public JPanel showinfopanel;
 	public JLabel showinfo;
 	public JLabel BackGround;
+	public JLabel Clearall;
 	/**
 	 * Create the panel.
 	 */
 	public Child_Upload(MainPage mainpage1) {
+		mainpage = mainpage1;
+		bbkupload = new BbkUpload();
+		
+		initialize();
+	}
+	
+	public Child_Upload(MainPage mainpage1, BbkUpload bbkupload1){
+		mainpage = mainpage1;
+		bbkupload = bbkupload1;
+		
+		information_shown = bbkupload.getSequence();
+		featurenumber = bbkupload.features.size();
+		
+		for(int i = 0; i < featurenumber; i++){
+			feature_item[i] = new Feature_item();
+			int j;
+			for(j = 0; j < feature_item[i].feature.length; j++){
+				if(bbkupload.features.get(i).type.equals(feature_item[i].feature[j]))
+					break;
+			}
+			feature_item[i].Choice.setSelectedIndex(j);
+			
+			for(j = 0; j < feature_item[i].direction.length; j++){
+				if(bbkupload.features.get(i).direction.equals(feature_item[i].direction[j]))
+					break;
+			}
+			feature_item[i].Direction.setSelectedIndex(j);
+			
+			feature_item[i].Start.setText(bbkupload.features.get(i).startPos);
+			feature_item[i].End.setText(bbkupload.features.get(i).endPos);
+			feature_item[i].Label.setText(bbkupload.features.get(i).title);
+			
+			feature_item[i].setLocation(0, featurenumber*31);
+			featurepanel.add(feature_item[i]);
+		}
+		
+		initialize();
+	}
+	
+	public void initialize(){
 		addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -98,8 +139,7 @@ public class Child_Upload extends JPanel {
 					requestFocus();
 			}
 		});
-		bbkupload = new BbkUpload();
-		mainpage = mainpage1;
+		
 		setBounds(0, 0, 1366, 670);
 		setBackground(new Color(255, 255, 255));
 		setLayout(null);
@@ -122,12 +162,12 @@ public class Child_Upload extends JPanel {
 		
 		JLabel Title = new JLabel("Welcome to the Upload Page!", JLabel.CENTER);
 		Title.setFont(new Font("Arial", Font.BOLD, 40));
-		Title.setBounds(415, 10, 536, 50);
+		Title.setBounds(383, 10, 600, 50);
 		UploadContainer.add(Title);
 		
 		JLabel Description = new JLabel("A short description of this biobrick:");
 		Description.setFont(new Font("Arial", Font.PLAIN, 24));
-		Description.setBounds(373, 85, 354, 30);
+		Description.setBounds(373, 85, 394, 30);
 		UploadContainer.add(Description);
 		
 		ShortDescription = new JTextField();
@@ -169,18 +209,18 @@ public class Child_Upload extends JPanel {
 		
 		JLabel ChooseDesigners = new JLabel("Designer(s):");
 		ChooseDesigners.setFont(new Font("Arial", Font.PLAIN, 24));
-		ChooseDesigners.setBounds(373, 245, 125, 30);
+		ChooseDesigners.setBounds(373, 245, 139, 30);
 		UploadContainer.add(ChooseDesigners);
 		
 		Designers = new JTextField();
 		Designers.setFont(new Font("Arial", Font.PLAIN, 24));
 		Designers.setColumns(10);
-		Designers.setBounds(506, 245, 205, 30);
+		Designers.setBounds(522, 245, 205, 30);
 		UploadContainer.add(Designers);
 		
 		JLabel Sequence = new JLabel("Sequence Information:");
 		Sequence.setFont(new Font("Arial", Font.PLAIN, 24));
-		Sequence.setBounds(373, 285, 231, 30);
+		Sequence.setBounds(373, 285, 259, 30);
 		UploadContainer.add(Sequence);
 		
 		SequenceInformation = new JTextArea(4, 15);
@@ -217,7 +257,7 @@ public class Child_Upload extends JPanel {
 		});
 		AddSequence.setToolTipText("Click me to add a sequence.");
 		AddSequence.setFont(new Font("Arial", Font.PLAIN, 20));
-		AddSequence.setBounds(373, 465, 156, 30);
+		AddSequence.setBounds(373, 465, 166, 30);
 		UploadContainer.add(AddSequence);
 		
 		AddSubpart = new JButton("Add subpart");
@@ -237,7 +277,7 @@ public class Child_Upload extends JPanel {
 			}
 		});
 		AddSubpart.setFont(new Font("Arial", Font.PLAIN, 20));
-		AddSubpart.setBounds(539, 465, 156, 30);
+		AddSubpart.setBounds(549, 465, 146, 30);
 		UploadContainer.add(AddSubpart);
 		
 		AddSubscar = new JButton("Add subscar");
@@ -318,7 +358,7 @@ public class Child_Upload extends JPanel {
 			}
 		});
 		RemoveParameter.setFont(new Font("Arial", Font.PLAIN, 20));
-		RemoveParameter.setBounds(713, 553, 100, 30);
+		RemoveParameter.setBounds(713, 553, 120, 30);
 		UploadContainer.add(RemoveParameter);
 		
 		JLabel Category = new JLabel("Category:");
@@ -365,7 +405,7 @@ public class Child_Upload extends JPanel {
 			}
 		});
 		RemoveCategory.setFont(new Font("Arial", Font.PLAIN, 20));
-		RemoveCategory.setBounds(713, 733, 100, 30);
+		RemoveCategory.setBounds(713, 733, 120, 30);
 		UploadContainer.add(RemoveCategory);
 		
 		JLabel Features = new JLabel("Features:");
@@ -412,7 +452,7 @@ public class Child_Upload extends JPanel {
 			}
 		});
 		RemoveFeature.setFont(new Font("Arial", Font.PLAIN, 20));
-		RemoveFeature.setBounds(713, 905, 100, 30);
+		RemoveFeature.setBounds(713, 905, 120, 30);
 		UploadContainer.add(RemoveFeature);
 		
 		JLabel LongDescription_text = new JLabel("Long Description:");
@@ -444,7 +484,7 @@ public class Child_Upload extends JPanel {
 		
 		JLabel Sourcetext = new JLabel("The source of this part:");
 		Sourcetext.setFont(new Font("Arial", Font.PLAIN, 24));
-		Sourcetext.setBounds(373, 1289, 240, 30);
+		Sourcetext.setBounds(373, 1289, 300, 30);
 		UploadContainer.add(Sourcetext);
 		
 		Source = new JTextArea(4, 15);
@@ -486,7 +526,7 @@ public class Child_Upload extends JPanel {
 		
 		JLabel username = new JLabel("User Name:");
 		username.setFont(new Font("Arial", Font.PLAIN, 20));
-		username.setBounds(373, 1633, 103, 24);
+		username.setBounds(373, 1633, 120, 24);
 		UploadContainer.add(username);
 		
 		JLabel password = new JLabel("Password:");
@@ -496,14 +536,14 @@ public class Child_Upload extends JPanel {
 		
 		UserName = new JTextField();
 		UserName.setFont(new Font("Arial", Font.PLAIN, 20));
-		UserName.setBounds(486, 1633, 146, 24);
+		UserName.setBounds(500, 1633, 146, 24);
 		UploadContainer.add(UserName);
 		UserName.setColumns(10);
 		
 		Password = new JPasswordField();
 		Password.setFont(new Font("Arial", Font.PLAIN, 20));
 		Password.setColumns(10);
-		Password.setBounds(486, 1667, 146, 24);
+		Password.setBounds(500, 1667, 146, 24);
 		UploadContainer.add(Password);
 		
 		SubmitToDatabase = new JButton("<html>" + "Submit to" + "<br>" + " our database" + "</html>");
@@ -540,7 +580,7 @@ public class Child_Upload extends JPanel {
 						bbkupload.features.add(feature);
 					}
 					bbkupload.longDesc = LongDescription.getText();
-					UploadCenter uploadcenter = new UploadCenter();
+					//UploadCenter uploadcenter = new UploadCenter();
 					//uploadcenter.getBbkUploadByNameAndOddNum(name, oddNum);
 				}
 			}
@@ -607,6 +647,34 @@ public class Child_Upload extends JPanel {
 		showinfo.setBounds(0, 0, 360, 240);
 		showinfo.setFont(new Font("Arial", Font.PLAIN, 24));
 		showinfopanel.add(showinfo);
+		
+		Clearall = new JLabel("Clear All");
+		Clearall.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				Clearall.requestFocus();
+				ShortDescription.setText(null);
+				Type.setSelectedIndex(0);
+				Nickname.setText(null);
+				Designers.setText(null);
+				SequenceInformation.setText(null);
+				UseDefaultScar.setSelected(false);
+				parameterpanel.removeAll();
+				categorypanel.removeAll();
+				featurepanel.removeAll();
+				LongDescription.setText(null);
+				Source.setText(null);
+				DesignConsideration.setText(null);
+				showinfopanel.removeAll();
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				Clearall.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+			}
+		});
+		Clearall.setFont(new Font("Arial", Font.PLAIN, 24));
+		Clearall.setBounds(1100, 30, 120, 24);
+		UploadContainer.add(Clearall);
 		
 		BackGround = new JLabel("");
 		BackGround.setVisible(true);
