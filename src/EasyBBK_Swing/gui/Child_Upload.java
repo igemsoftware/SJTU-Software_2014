@@ -87,10 +87,51 @@ public class Child_Upload extends JPanel {
 	public JPanel showinfopanel;
 	public JLabel showinfo;
 	public JLabel BackGround;
+	public JLabel Clearall;
 	/**
 	 * Create the panel.
 	 */
 	public Child_Upload(MainPage mainpage1) {
+		mainpage = mainpage1;
+		bbkupload = new BbkUpload();
+		
+		initialize();
+	}
+	
+	public Child_Upload(MainPage mainpage1, BbkUpload bbkupload1){
+		mainpage = mainpage1;
+		bbkupload = bbkupload1;
+		
+		information_shown = bbkupload.getSequence();
+		featurenumber = bbkupload.features.size();
+		
+		for(int i = 0; i < featurenumber; i++){
+			feature_item[i] = new Feature_item();
+			int j;
+			for(j = 0; j < feature_item[i].feature.length; j++){
+				if(bbkupload.features.get(i).type.equals(feature_item[i].feature[j]))
+					break;
+			}
+			feature_item[i].Choice.setSelectedIndex(j);
+			
+			for(j = 0; j < feature_item[i].direction.length; j++){
+				if(bbkupload.features.get(i).direction.equals(feature_item[i].direction[j]))
+					break;
+			}
+			feature_item[i].Direction.setSelectedIndex(j);
+			
+			feature_item[i].Start.setText(bbkupload.features.get(i).startPos);
+			feature_item[i].End.setText(bbkupload.features.get(i).endPos);
+			feature_item[i].Label.setText(bbkupload.features.get(i).title);
+			
+			feature_item[i].setLocation(0, featurenumber*31);
+			featurepanel.add(feature_item[i]);
+		}
+		
+		initialize();
+	}
+	
+	public void initialize(){
 		addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -98,8 +139,7 @@ public class Child_Upload extends JPanel {
 					requestFocus();
 			}
 		});
-		bbkupload = new BbkUpload();
-		mainpage = mainpage1;
+		
 		setBounds(0, 0, 1366, 670);
 		setBackground(new Color(255, 255, 255));
 		setLayout(null);
@@ -121,30 +161,30 @@ public class Child_Upload extends JPanel {
 		scrollpanel = new JScrollPane(UploadContainer);
 		
 		JLabel Title = new JLabel("Welcome to the Upload Page!", JLabel.CENTER);
-		Title.setFont(new Font("Times New Roman", Font.BOLD, 40));
-		Title.setBounds(415, 10, 536, 50);
+		Title.setFont(new Font("Arial", Font.BOLD, 40));
+		Title.setBounds(383, 10, 600, 50);
 		UploadContainer.add(Title);
 		
 		JLabel Description = new JLabel("A short description of this biobrick:");
-		Description.setFont(new Font("Times New Roman", Font.PLAIN, 24));
-		Description.setBounds(373, 85, 354, 30);
+		Description.setFont(new Font("Arial", Font.PLAIN, 24));
+		Description.setBounds(373, 85, 394, 30);
 		UploadContainer.add(Description);
 		
 		ShortDescription = new JTextField();
-		ShortDescription.setFont(new Font("Times New Roman", Font.PLAIN, 24));
+		ShortDescription.setFont(new Font("Arial", Font.PLAIN, 24));
 		ShortDescription.setColumns(10);
 		ShortDescription.setBounds(373, 125, 536, 30);
 		UploadContainer.add(ShortDescription);
 		
 		JLabel ChooseType = new JLabel("Type:");
-		ChooseType.setFont(new Font("Times New Roman", Font.PLAIN, 24));
+		ChooseType.setFont(new Font("Arial", Font.PLAIN, 24));
 		ChooseType.setBounds(373, 165, 67, 30);
 		UploadContainer.add(ChooseType);
 		
 		String type[] = {"Promoter", "RBS", "Protein_Domain", "Protein_Coding_Sequence", "Translation_Unit", "Terminator", "DNA", "Plasmid_Backbone", "Plasmid", "Primer", "Composite", "Protein_Generator", "Reporter", "Inventer", "Signalling", "Measurement", "Other"};
 		Type = new JComboBox(type);
 		typestring = "Promoter";
-		Type.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		Type.setFont(new Font("Arial", Font.PLAIN, 20));
 		Type.setSelectedIndex(0);
 		Type.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
@@ -157,35 +197,35 @@ public class Child_Upload extends JPanel {
 		UploadContainer.add(Type);
 		
 		JLabel ChooseNickname = new JLabel("Nickname:");
-		ChooseNickname.setFont(new Font("Times New Roman", Font.PLAIN, 24));
+		ChooseNickname.setFont(new Font("Arial", Font.PLAIN, 24));
 		ChooseNickname.setBounds(373, 205, 113, 30);
 		UploadContainer.add(ChooseNickname);
 		
 		Nickname = new JTextField();
-		Nickname.setFont(new Font("Times New Roman", Font.PLAIN, 24));
+		Nickname.setFont(new Font("Arial", Font.PLAIN, 24));
 		Nickname.setColumns(10);
 		Nickname.setBounds(496, 205, 205, 30);
 		UploadContainer.add(Nickname);
 		
 		JLabel ChooseDesigners = new JLabel("Designer(s):");
-		ChooseDesigners.setFont(new Font("Times New Roman", Font.PLAIN, 24));
-		ChooseDesigners.setBounds(373, 245, 125, 30);
+		ChooseDesigners.setFont(new Font("Arial", Font.PLAIN, 24));
+		ChooseDesigners.setBounds(373, 245, 139, 30);
 		UploadContainer.add(ChooseDesigners);
 		
 		Designers = new JTextField();
-		Designers.setFont(new Font("Times New Roman", Font.PLAIN, 24));
+		Designers.setFont(new Font("Arial", Font.PLAIN, 24));
 		Designers.setColumns(10);
-		Designers.setBounds(506, 245, 205, 30);
+		Designers.setBounds(522, 245, 205, 30);
 		UploadContainer.add(Designers);
 		
 		JLabel Sequence = new JLabel("Sequence Information:");
-		Sequence.setFont(new Font("Times New Roman", Font.PLAIN, 24));
-		Sequence.setBounds(373, 285, 231, 30);
+		Sequence.setFont(new Font("Arial", Font.PLAIN, 24));
+		Sequence.setBounds(373, 285, 259, 30);
 		UploadContainer.add(Sequence);
 		
 		SequenceInformation = new JTextArea(4, 15);
 		SequenceInformation.setEditable(false);
-		SequenceInformation.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		SequenceInformation.setFont(new Font("Arial", Font.PLAIN, 20));
 		SequenceInformation.setLineWrap(true);
 		SequenceInformation.setWrapStyleWord(true);
 		SequenceInformation.setBackground(new Color(255, 255, 255));
@@ -216,8 +256,8 @@ public class Child_Upload extends JPanel {
 			}
 		});
 		AddSequence.setToolTipText("Click me to add a sequence.");
-		AddSequence.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		AddSequence.setBounds(373, 465, 156, 30);
+		AddSequence.setFont(new Font("Arial", Font.PLAIN, 20));
+		AddSequence.setBounds(373, 465, 166, 30);
 		UploadContainer.add(AddSequence);
 		
 		AddSubpart = new JButton("Add subpart");
@@ -236,8 +276,8 @@ public class Child_Upload extends JPanel {
 				}
 			}
 		});
-		AddSubpart.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		AddSubpart.setBounds(539, 465, 156, 30);
+		AddSubpart.setFont(new Font("Arial", Font.PLAIN, 20));
+		AddSubpart.setBounds(549, 465, 146, 30);
 		UploadContainer.add(AddSubpart);
 		
 		AddSubscar = new JButton("Add subscar");
@@ -256,18 +296,18 @@ public class Child_Upload extends JPanel {
 				}
 			}
 		});
-		AddSubscar.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		AddSubscar.setFont(new Font("Arial", Font.PLAIN, 20));
 		AddSubscar.setBounds(705, 465, 156, 30);
 		UploadContainer.add(AddSubscar);
 		
 		UseDefaultScar = new JCheckBox("Use default scar");
 		UseDefaultScar.setBackground(new Color(0, 255, 255));
-		UseDefaultScar.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		UseDefaultScar.setFont(new Font("Arial", Font.PLAIN, 20));
 		UseDefaultScar.setBounds(373, 513, 169, 30);
 		UploadContainer.add(UseDefaultScar);
 		
-		JLabel Parameter = new JLabel("Parameter:");
-		Parameter.setFont(new Font("Times New Roman", Font.PLAIN, 24));
+		JLabel Parameter = new JLabel("Arial:");
+		Parameter.setFont(new Font("Arial", Font.PLAIN, 24));
 		Parameter.setBounds(373, 553, 113, 30);
 		UploadContainer.add(Parameter);
 		
@@ -300,7 +340,7 @@ public class Child_Upload extends JPanel {
 				}
 			}
 		});
-		AddParameter.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		AddParameter.setFont(new Font("Arial", Font.PLAIN, 20));
 		AddParameter.setBounds(618, 553, 75, 30);
 		UploadContainer.add(AddParameter);
 		
@@ -317,12 +357,12 @@ public class Child_Upload extends JPanel {
 				}
 			}
 		});
-		RemoveParameter.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		RemoveParameter.setBounds(713, 553, 100, 30);
+		RemoveParameter.setFont(new Font("Arial", Font.PLAIN, 20));
+		RemoveParameter.setBounds(713, 553, 120, 30);
 		UploadContainer.add(RemoveParameter);
 		
 		JLabel Category = new JLabel("Category:");
-		Category.setFont(new Font("Times New Roman", Font.PLAIN, 24));
+		Category.setFont(new Font("Arial", Font.PLAIN, 24));
 		Category.setBounds(373, 733, 113, 30);
 		UploadContainer.add(Category);
 		
@@ -347,7 +387,7 @@ public class Child_Upload extends JPanel {
 				}
 			}
 		});
-		AddCategory.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		AddCategory.setFont(new Font("Arial", Font.PLAIN, 20));
 		AddCategory.setBounds(618, 733, 75, 30);
 		UploadContainer.add(AddCategory);
 		
@@ -364,12 +404,12 @@ public class Child_Upload extends JPanel {
 				}
 			}
 		});
-		RemoveCategory.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		RemoveCategory.setBounds(713, 733, 100, 30);
+		RemoveCategory.setFont(new Font("Arial", Font.PLAIN, 20));
+		RemoveCategory.setBounds(713, 733, 120, 30);
 		UploadContainer.add(RemoveCategory);
 		
 		JLabel Features = new JLabel("Features:");
-		Features.setFont(new Font("Times New Roman", Font.PLAIN, 24));
+		Features.setFont(new Font("Arial", Font.PLAIN, 24));
 		Features.setBounds(373, 905, 113, 30);
 		UploadContainer.add(Features);
 		
@@ -394,7 +434,7 @@ public class Child_Upload extends JPanel {
 				}
 			}
 		});
-		AddFeature.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		AddFeature.setFont(new Font("Arial", Font.PLAIN, 20));
 		AddFeature.setBounds(618, 905, 75, 30);
 		UploadContainer.add(AddFeature);
 		
@@ -411,18 +451,18 @@ public class Child_Upload extends JPanel {
 				}
 			}
 		});
-		RemoveFeature.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		RemoveFeature.setBounds(713, 905, 100, 30);
+		RemoveFeature.setFont(new Font("Arial", Font.PLAIN, 20));
+		RemoveFeature.setBounds(713, 905, 120, 30);
 		UploadContainer.add(RemoveFeature);
 		
 		JLabel LongDescription_text = new JLabel("Long Description:");
-		LongDescription_text.setFont(new Font("Times New Roman", Font.PLAIN, 24));
+		LongDescription_text.setFont(new Font("Arial", Font.PLAIN, 24));
 		LongDescription_text.setBounds(373, 1077, 200, 30);
 		UploadContainer.add(LongDescription_text);
 		
 		LongDescription = new JTextArea(4, 15);
 		LongDescription.setEditable(true);
-		LongDescription.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		LongDescription.setFont(new Font("Arial", Font.PLAIN, 20));
 		LongDescription.setLineWrap(true);
 		LongDescription.setWrapStyleWord(true);
 		LongDescription.setBackground(new Color(255, 255, 255));
@@ -438,18 +478,18 @@ public class Child_Upload extends JPanel {
 		
 		JLabel Claim = new JLabel("Contents below only can be uploaded to offical website!");
 		Claim.setForeground(Color.red);
-		Claim.setFont(new Font("Times New Roman", Font.PLAIN, 24));
+		Claim.setFont(new Font("Arial", Font.PLAIN, 24));
 		Claim.setBounds(373, 1249, 600, 30);
 		UploadContainer.add(Claim);
 		
 		JLabel Sourcetext = new JLabel("The source of this part:");
-		Sourcetext.setFont(new Font("Times New Roman", Font.PLAIN, 24));
-		Sourcetext.setBounds(373, 1289, 240, 30);
+		Sourcetext.setFont(new Font("Arial", Font.PLAIN, 24));
+		Sourcetext.setBounds(373, 1289, 300, 30);
 		UploadContainer.add(Sourcetext);
 		
 		Source = new JTextArea(4, 15);
 		Source.setEditable(true);
-		Source.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		Source.setFont(new Font("Arial", Font.PLAIN, 20));
 		Source.setLineWrap(true);
 		Source.setWrapStyleWord(true);
 		Source.setBackground(new Color(255, 255, 255));
@@ -464,13 +504,13 @@ public class Child_Upload extends JPanel {
 		UploadContainer.add(Sourcescrollpanel);
 		
 		JLabel DesignConsiderationtext = new JLabel("Design Consideration:");
-		DesignConsiderationtext.setFont(new Font("Times New Roman", Font.PLAIN, 24));
+		DesignConsiderationtext.setFont(new Font("Arial", Font.PLAIN, 24));
 		DesignConsiderationtext.setBounds(373, 1461, 240, 30);
 		UploadContainer.add(DesignConsiderationtext);
 		
 		DesignConsideration = new JTextArea(4, 15);
 		DesignConsideration.setEditable(true);
-		DesignConsideration.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		DesignConsideration.setFont(new Font("Arial", Font.PLAIN, 20));
 		DesignConsideration.setLineWrap(true);
 		DesignConsideration.setWrapStyleWord(true);
 		DesignConsideration.setBackground(new Color(255, 255, 255));
@@ -485,25 +525,25 @@ public class Child_Upload extends JPanel {
 		UploadContainer.add(DCscrollpanel);
 		
 		JLabel username = new JLabel("User Name:");
-		username.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		username.setBounds(373, 1633, 103, 24);
+		username.setFont(new Font("Arial", Font.PLAIN, 20));
+		username.setBounds(373, 1633, 120, 24);
 		UploadContainer.add(username);
 		
 		JLabel password = new JLabel("Password:");
-		password.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		password.setFont(new Font("Arial", Font.PLAIN, 20));
 		password.setBounds(373, 1667, 103, 24);
 		UploadContainer.add(password);
 		
 		UserName = new JTextField();
-		UserName.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		UserName.setBounds(486, 1633, 146, 24);
+		UserName.setFont(new Font("Arial", Font.PLAIN, 20));
+		UserName.setBounds(500, 1633, 146, 24);
 		UploadContainer.add(UserName);
 		UserName.setColumns(10);
 		
 		Password = new JPasswordField();
-		Password.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		Password.setFont(new Font("Arial", Font.PLAIN, 20));
 		Password.setColumns(10);
-		Password.setBounds(486, 1667, 146, 24);
+		Password.setBounds(500, 1667, 146, 24);
 		UploadContainer.add(Password);
 		
 		SubmitToDatabase = new JButton("<html>" + "Submit to" + "<br>" + " our database" + "</html>");
@@ -540,12 +580,12 @@ public class Child_Upload extends JPanel {
 						bbkupload.features.add(feature);
 					}
 					bbkupload.longDesc = LongDescription.getText();
-					UploadCenter uploadcenter = new UploadCenter();
+					//UploadCenter uploadcenter = new UploadCenter();
 					//uploadcenter.getBbkUploadByNameAndOddNum(name, oddNum);
 				}
 			}
 		});
-		SubmitToDatabase.setFont(new Font("Times New Roman", Font.PLAIN, 24));
+		SubmitToDatabase.setFont(new Font("Arial", Font.PLAIN, 24));
 		SubmitToDatabase.setBounds(403, 1720, 180, 55);
 		UploadContainer.add(SubmitToDatabase);
 		
@@ -588,13 +628,13 @@ public class Child_Upload extends JPanel {
 				}
 			}
 		});
-		SubmitToWebsite.setFont(new Font("Times New Roman", Font.PLAIN, 24));
-		SubmitToWebsite.setBounds(649, 1720, 180, 55);
+		SubmitToWebsite.setFont(new Font("Arial", Font.PLAIN, 24));
+		SubmitToWebsite.setBounds(649, 1720, 200, 55);
 		UploadContainer.add(SubmitToWebsite);
 		
 		JLabel information = new JLabel("Information", SwingConstants.CENTER);
 		information.setBounds(1040, 1450, 120, 30);
-		information.setFont(new Font("Times New Roman", Font.PLAIN, 24));
+		information.setFont(new Font("Arial", Font.PLAIN, 24));
 		UploadContainer.add(information);
 		
 		showinfopanel = new JPanel();
@@ -605,8 +645,36 @@ public class Child_Upload extends JPanel {
 		showinfo = new JLabel("", SwingConstants.CENTER);
 		showinfo.setVisible(true);
 		showinfo.setBounds(0, 0, 360, 240);
-		showinfo.setFont(new Font("Times New Roman", Font.PLAIN, 24));
+		showinfo.setFont(new Font("Arial", Font.PLAIN, 24));
 		showinfopanel.add(showinfo);
+		
+		Clearall = new JLabel("Clear All");
+		Clearall.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				Clearall.requestFocus();
+				ShortDescription.setText(null);
+				Type.setSelectedIndex(0);
+				Nickname.setText(null);
+				Designers.setText(null);
+				SequenceInformation.setText(null);
+				UseDefaultScar.setSelected(false);
+				parameterpanel.removeAll();
+				categorypanel.removeAll();
+				featurepanel.removeAll();
+				LongDescription.setText(null);
+				Source.setText(null);
+				DesignConsideration.setText(null);
+				showinfopanel.removeAll();
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				Clearall.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+			}
+		});
+		Clearall.setFont(new Font("Arial", Font.PLAIN, 24));
+		Clearall.setBounds(1100, 30, 120, 24);
+		UploadContainer.add(Clearall);
 		
 		BackGround = new JLabel("");
 		BackGround.setVisible(true);

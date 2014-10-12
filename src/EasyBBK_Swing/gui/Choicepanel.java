@@ -79,12 +79,12 @@ public class Choicepanel extends JPanel {
 		setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Filters:");
-		lblNewLabel.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 20));
 		lblNewLabel.setBounds(10, 81, 76, 28);
 		add(lblNewLabel);
 		
 		JLabel ReleaseStatus = new JLabel("Release Status:");
-		ReleaseStatus.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		ReleaseStatus.setFont(new Font("Arial", Font.PLAIN, 16));
 		ReleaseStatus.setBounds(39, 265, 112, 17);
 		add(ReleaseStatus);
         
@@ -115,27 +115,27 @@ public class Choicepanel extends JPanel {
 		
         Released = new JCheckBox("Released");
         Released.addItemListener(itemListener_releasestatus);
-		Released.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		Released.setFont(new Font("Arial", Font.PLAIN, 16));
 		Released.setBounds(156, 262, 103, 23);
 		Released.setBackground(new Color(255, 255, 255));
 		add(Released);
 		
 		Deleted = new JCheckBox("Deleted");
 		Deleted.addItemListener(itemListener_releasestatus);
-		Deleted.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		Deleted.setFont(new Font("Arial", Font.PLAIN, 16));
 		Deleted.setBounds(261, 262, 103, 23);
 		Deleted.setBackground(new Color(255, 255, 255));
 		add(Deleted);
 		
 		NotReleased = new JCheckBox("Not Released");
 		NotReleased.addItemListener(itemListener_releasestatus);
-		NotReleased.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		NotReleased.setFont(new Font("Arial", Font.PLAIN, 16));
 		NotReleased.setBounds(366, 262, 121, 23);
 		NotReleased.setBackground(new Color(255, 255, 255));
 		add(NotReleased);
 		
 		JLabel DNAStatus = new JLabel("DNA Status:");
-		DNAStatus.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		DNAStatus.setFont(new Font("Arial", Font.PLAIN, 16));
 		DNAStatus.setBounds(39, 291, 99, 15);
 		add(DNAStatus);
 		
@@ -166,27 +166,27 @@ public class Choicepanel extends JPanel {
 		
 		Available = new JCheckBox("Available");
 		Available.addItemListener(itemListener_DNAstatus);
-		Available.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		Available.setFont(new Font("Arial", Font.PLAIN, 16));
 		Available.setBounds(157, 289, 103, 23);
 		Available.setBackground(new Color(255, 255, 255));
 		add(Available);
 		
 		Planning = new JCheckBox("Planning");
 		Planning.addItemListener(itemListener_DNAstatus);
-		Planning.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		Planning.setFont(new Font("Arial", Font.PLAIN, 16));
 		Planning.setBounds(261, 288, 103, 23);
 		Planning.setBackground(new Color(255, 255, 255));
 		add(Planning);
 		
 		Informational = new JCheckBox("Informational");
 		Informational.addItemListener(itemListener_DNAstatus);
-		Informational.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		Informational.setFont(new Font("Arial", Font.PLAIN, 16));
 		Informational.setBounds(366, 289, 121, 23);
 		Informational.setBackground(new Color(255, 255, 255));
 		add(Informational);
 		
 		JLabel Whetherornot = new JLabel("Whether or not Deleted:");
-		Whetherornot.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		Whetherornot.setFont(new Font("Arial", Font.PLAIN, 16));
 		Whetherornot.setBounds(39, 321, 173, 15);
 		add(Whetherornot);
 		
@@ -212,48 +212,48 @@ public class Choicepanel extends JPanel {
 		
 		NotDeleted = new JCheckBox("Not Deleted");
 		NotDeleted.addItemListener(itemListener_deleted);
-		NotDeleted.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		NotDeleted.setFont(new Font("Arial", Font.PLAIN, 16));
 		NotDeleted.setBounds(235, 317, 121, 23);
 		NotDeleted.setBackground(new Color(255, 255, 255));
 		add(NotDeleted);
 		
 		Deleted1 = new JCheckBox("Deleted");
 		Deleted1.addItemListener(itemListener_deleted);
-		Deleted1.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		Deleted1.setFont(new Font("Arial", Font.PLAIN, 16));
 		Deleted1.setBounds(366, 317, 103, 23);
 		Deleted1.setBackground(new Color(255, 255, 255));
 		add(Deleted1);
 		
 		JLabel AverageStar = new JLabel("Average Stars Given by Previous Teams:");
-		AverageStar.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		AverageStar.setFont(new Font("Arial", Font.PLAIN, 16));
 		AverageStar.setBounds(39, 347, 284, 15);
 		add(AverageStar);
 		
 		high = new JCheckBox(">=4");
-		high.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		high.setFont(new Font("Arial", Font.PLAIN, 16));
 		high.setBounds(326, 343, 68, 23);
 		high.setBackground(new Color(255, 255, 255));
 		add(high);
 		
 		middle = new JCheckBox("2-4");
-		middle.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		middle.setFont(new Font("Arial", Font.PLAIN, 16));
 		middle.setBounds(396, 343, 65, 23);
 		middle.setBackground(new Color(255, 255, 255));
 		add(middle);
 		
 		low = new JCheckBox("<2");
-		low.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		low.setFont(new Font("Arial", Font.PLAIN, 16));
 		low.setBounds(478, 343, 65, 23);
 		low.setBackground(new Color(255, 255, 255));
 		add(low);
 		
 		JLabel Preference = new JLabel("Preferences:");
-		Preference.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		Preference.setFont(new Font("Arial", Font.PLAIN, 20));
 		Preference.setBounds(10, 370, 121, 29);
 		add(Preference);
 		
 		JLabel Status = new JLabel("Status(%):");
-		Status.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		Status.setFont(new Font("Arial", Font.PLAIN, 16));
 		Status.setBounds(39, 411, 65, 15);
 		add(Status);
 		
@@ -263,7 +263,7 @@ public class Choicepanel extends JPanel {
 		add(PercentofStatus);
 		
 		JLabel Quality = new JLabel("Quality(%):");
-		Quality.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		Quality.setFont(new Font("Arial", Font.PLAIN, 16));
 		Quality.setBounds(156, 411, 78, 15);
 		add(Quality);
 		
@@ -273,7 +273,7 @@ public class Choicepanel extends JPanel {
 		add(PercentofQuality);
 		
 		JLabel Feedbacks = new JLabel("Feedbacks(%):");
-		Feedbacks.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		Feedbacks.setFont(new Font("Arial", Font.PLAIN, 16));
 		Feedbacks.setBounds(286, 411, 99, 15);
 		add(Feedbacks);
 		
@@ -283,7 +283,7 @@ public class Choicepanel extends JPanel {
 		add(PercentofFeedbacks);
 		
 		JLabel Publication = new JLabel("Publication(%):");
-		Publication.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		Publication.setFont(new Font("Arial", Font.PLAIN, 16));
 		Publication.setBounds(446, 411, 97, 15);
 		add(Publication);
 		
@@ -293,12 +293,12 @@ public class Choicepanel extends JPanel {
 		add(PercentofPublication);
 		
 		JLabel EnteredYear = new JLabel("Entered Year:");
-		EnteredYear.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		EnteredYear.setFont(new Font("Arial", Font.PLAIN, 16));
 		EnteredYear.setBounds(39, 229, 99, 17);
 		add(EnteredYear);
 		
 		JLabel From = new JLabel("from");
-		From.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		From.setFont(new Font("Arial", Font.PLAIN, 16));
 		From.setBounds(147, 229, 43, 17);
 		add(From);
 		
@@ -317,7 +317,7 @@ public class Choicepanel extends JPanel {
 		add(Year1);
 		
 		JLabel To = new JLabel("to");
-		To.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		To.setFont(new Font("Arial", Font.PLAIN, 16));
 		To.setBounds(277, 229, 28, 20);
 		add(To);
 		
@@ -335,114 +335,114 @@ public class Choicepanel extends JPanel {
 		add(Year2);
 		
 		JLabel Type = new JLabel("Type:");
-		Type.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		Type.setFont(new Font("Arial", Font.PLAIN, 16));
 		Type.setBounds(39, 118, 45, 17);
 		add(Type);
 		
 		Promoter = new JCheckBox("Promoter");
-		Promoter.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		Promoter.setFont(new Font("Arial", Font.PLAIN, 16));
 		Promoter.setBackground(Color.WHITE);
 		Promoter.setBounds(84, 115, 86, 23);
 		add(Promoter);
 		
 		RBS = new JCheckBox("RBS");
-		RBS.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		RBS.setFont(new Font("Arial", Font.PLAIN, 16));
 		RBS.setBackground(Color.WHITE);
 		RBS.setBounds(179, 115, 55, 23);
 		add(RBS);
 		
 		Protein_Domain = new JCheckBox("Protein_Domain");
-		Protein_Domain.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		Protein_Domain.setFont(new Font("Arial", Font.PLAIN, 16));
 		Protein_Domain.setBackground(Color.WHITE);
 		Protein_Domain.setBounds(264, 115, 135, 23);
 		add(Protein_Domain);
 		
 		Protein_Coding_Sequence = new JCheckBox("Protein_Coding_Sequence");
-		Protein_Coding_Sequence.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		Protein_Coding_Sequence.setFont(new Font("Arial", Font.PLAIN, 16));
 		Protein_Coding_Sequence.setBackground(Color.WHITE);
 		Protein_Coding_Sequence.setBounds(414, 115, 203, 23);
 		add(Protein_Coding_Sequence);
 		
 		Translation_Unit = new JCheckBox("Translation_Unit");
-		Translation_Unit.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		Translation_Unit.setFont(new Font("Arial", Font.PLAIN, 16));
 		Translation_Unit.setBackground(Color.WHITE);
 		Translation_Unit.setBounds(84, 141, 150, 23);
 		add(Translation_Unit);
 		
 		Terminator = new JCheckBox("Terminator");
-		Terminator.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		Terminator.setFont(new Font("Arial", Font.PLAIN, 16));
 		Terminator.setBackground(Color.WHITE);
 		Terminator.setBounds(235, 140, 103, 23);
 		add(Terminator);
 		
 		DNA = new JCheckBox("DNA");
-		DNA.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		DNA.setFont(new Font("Arial", Font.PLAIN, 16));
 		DNA.setBackground(Color.WHITE);
 		DNA.setBounds(346, 140, 68, 23);
 		add(DNA);
 		
 		Plasmid_Backbone = new JCheckBox("Plasmid_Backbone");
-		Plasmid_Backbone.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		Plasmid_Backbone.setFont(new Font("Arial", Font.PLAIN, 16));
 		Plasmid_Backbone.setBackground(Color.WHITE);
 		Plasmid_Backbone.setBounds(435, 141, 165, 23);
 		add(Plasmid_Backbone);
 		
 		Plasmid = new JCheckBox("Plasmid");
-		Plasmid.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		Plasmid.setFont(new Font("Arial", Font.PLAIN, 16));
 		Plasmid.setBackground(Color.WHITE);
 		Plasmid.setBounds(84, 170, 86, 23);
 		add(Plasmid);
 		
 		Primer = new JCheckBox("Primer");
-		Primer.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		Primer.setFont(new Font("Arial", Font.PLAIN, 16));
 		Primer.setBackground(Color.WHITE);
 		Primer.setBounds(213, 170, 86, 23);
 		add(Primer);
 		
 		Composite = new JCheckBox("Composite");
-		Composite.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		Composite.setFont(new Font("Arial", Font.PLAIN, 16));
 		Composite.setBackground(Color.WHITE);
 		Composite.setBounds(324, 170, 109, 23);
 		add(Composite);
 		
 		Protein_Generator = new JCheckBox("Protein_Generator");
-		Protein_Generator.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		Protein_Generator.setFont(new Font("Arial", Font.PLAIN, 16));
 		Protein_Generator.setBackground(Color.WHITE);
 		Protein_Generator.setBounds(443, 170, 157, 23);
 		add(Protein_Generator);
 		
 		Reporter = new JCheckBox("Reporter");
-		Reporter.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		Reporter.setFont(new Font("Arial", Font.PLAIN, 16));
 		Reporter.setBackground(Color.WHITE);
 		Reporter.setBounds(84, 199, 90, 23);
 		add(Reporter);
 		
 		Inventer = new JCheckBox("Inventer");
-		Inventer.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		Inventer.setFont(new Font("Arial", Font.PLAIN, 16));
 		Inventer.setBackground(Color.WHITE);
 		Inventer.setBounds(176, 199, 82, 23);
 		add(Inventer);
 		
 		Signalling = new JCheckBox("Signalling");
-		Signalling.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		Signalling.setFont(new Font("Arial", Font.PLAIN, 16));
 		Signalling.setBackground(Color.WHITE);
 		Signalling.setBounds(264, 199, 99, 23);
 		add(Signalling);
 		
 		Measurement = new JCheckBox("Measurement");
-		Measurement.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		Measurement.setFont(new Font("Arial", Font.PLAIN, 16));
 		Measurement.setBackground(Color.WHITE);
 		Measurement.setBounds(365, 199, 131, 23);
 		add(Measurement);
 		
 		Other = new JCheckBox("Other");
-		Other.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		Other.setFont(new Font("Arial", Font.PLAIN, 16));
 		Other.setBackground(Color.WHITE);
 		Other.setBounds(500, 199, 68, 23);
 		add(Other);
 		
 		JLabel Sort = new JLabel("Sort by:");
-		Sort.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		Sort.setFont(new Font("Arial", Font.PLAIN, 20));
 		Sort.setBounds(10, 10, 76, 28);
 		add(Sort);
 		
@@ -491,35 +491,35 @@ public class Choicepanel extends JPanel {
 		
 		EnteredDate = new JCheckBox("Entered Date");
 		EnteredDate.addItemListener(itemListener_sort);
-		EnteredDate.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		EnteredDate.setFont(new Font("Arial", Font.PLAIN, 16));
 		EnteredDate.setBackground(Color.WHITE);
 		EnteredDate.setBounds(88, 35, 113, 23);
 		add(EnteredDate);
 		
 		ConfirmedTimes = new JCheckBox("Confirmed Times");
 		ConfirmedTimes.addItemListener(itemListener_sort);
-		ConfirmedTimes.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		ConfirmedTimes.setFont(new Font("Arial", Font.PLAIN, 16));
 		ConfirmedTimes.setBackground(Color.WHITE);
 		ConfirmedTimes.setBounds(88, 58, 146, 23);
 		add(ConfirmedTimes);
 		
 		GoogleQouteNumber = new JCheckBox("Google Qoute Number");
 		GoogleQouteNumber.addItemListener(itemListener_sort);
-		GoogleQouteNumber.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		GoogleQouteNumber.setFont(new Font("Arial", Font.PLAIN, 16));
 		GoogleQouteNumber.setBackground(Color.WHITE);
 		GoogleQouteNumber.setBounds(243, 35, 180, 23);
 		add(GoogleQouteNumber);
 		
 		AverageStars = new JCheckBox("Average Stars");
 		AverageStars.addItemListener(itemListener_sort);
-		AverageStars.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		AverageStars.setFont(new Font("Arial", Font.PLAIN, 16));
 		AverageStars.setBackground(Color.WHITE);
 		AverageStars.setBounds(436, 35, 121, 23);
 		add(AverageStars);
 		
 		TotalScore = new JCheckBox("Total Score");
 		TotalScore.addItemListener(itemListener_sort);
-		TotalScore.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		TotalScore.setFont(new Font("Arial", Font.PLAIN, 16));
 		TotalScore.setBackground(Color.WHITE);
 		TotalScore.setBounds(243, 58, 123, 23);
 		add(TotalScore);
@@ -643,7 +643,7 @@ public class Choicepanel extends JPanel {
 				}
 			}
 		});
-		Confirme.setFont(new Font("Times New Roman", Font.BOLD, 16));
+		Confirme.setFont(new Font("Arial", Font.BOLD, 16));
 		Confirme.setBounds(243, 451, 121, 28);
 		add(Confirme);
 	}
