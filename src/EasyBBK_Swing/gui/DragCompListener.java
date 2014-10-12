@@ -181,8 +181,8 @@ class DragCompListener implements MouseInputListener
 										+((BackBone)backboneList.get(i)).getX())
 										>(83+((JLabelWithID)e.getSource()).getX())) 
 						//component is close to backbone in Y axis
-						& (Math.abs((((JLabelWithID)e.getSource()).getY()+25)-
-								(((BackBone)backboneList.get(i)).getY()+25))<70))							
+						& (Math.abs((((JLabelWithID)e.getSource()).getY()+30)-
+								(((BackBone)backboneList.get(i)).getY()+30))<70))							
 						{
 							nearBackbone.add(i);
 						}
@@ -196,15 +196,15 @@ class DragCompListener implements MouseInputListener
 						if (numNear>1)
 						{
 							int closestIndex = 0;
-							int distance = Math.abs((backboneList.get(nearBackbone.get(0)).getY()+25)
-									-((e.getComponent()).getY()+25));
+							int distance = Math.abs((backboneList.get(nearBackbone.get(0)).getY()+30)
+									-((e.getComponent()).getY()+30));
 							for (int i=0; i<numNear; i++)
 							{
-								if (distance>Math.abs((backboneList.get(nearBackbone.get(0)).getY()+25)
-										-((e.getComponent()).getY()+25)))
+								if (distance>Math.abs((backboneList.get(nearBackbone.get(0)).getY()+30)
+										-((e.getComponent()).getY()+30)))
 								{
-									distance=Math.abs((backboneList.get(nearBackbone.get(0)).getY()+25)
-											-((e.getComponent()).getY()+25));
+									distance=Math.abs((backboneList.get(nearBackbone.get(0)).getY()+30)
+											-((e.getComponent()).getY()+30));
 									closestIndex=i;
 								}					
 							}
