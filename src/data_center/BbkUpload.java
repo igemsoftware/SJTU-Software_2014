@@ -19,6 +19,8 @@ public class BbkUpload
     public String author;
     public String shortDesc;   // short description
     public String longDesc;		// long description
+    public String source;
+    public String notes;
  	public String nickname;
  	public String groupFavorite;
  	public String delete_this_part;
@@ -40,12 +42,10 @@ public class BbkUpload
 	/** rawName is some thing without "BBa_", like "B0012". Suffix "_EasyBbk" will
 	 * be automatically appended to distinguish them from the biobricks fetched 
 	 * from igem.org */
-	public void setName(String rawName)
+	public void setName(String name)
 	{	
-		if (name == null)
-		{	name = "BBa_" + rawName + "_EasyBbk";
-			shortName = rawName + "_EasyBbk";
-		}
+		this.name = name;
+		this.shortName = name.substring("BBa_".length());
 	}
 
 	public String getEnterDate()
@@ -60,6 +60,9 @@ public class BbkUpload
 	public String getID() 
 	{	return ID;	}
 
+	public void setID(String ID)
+	{	this.ID = ID;	}
+	
 	public void setID()
 	{
 		if (ID == null)
@@ -262,6 +265,8 @@ public class BbkUpload
 		System.out.println("********\n");
 	}
 	
+	
+
 	
 	
 	// BbkUpload 小黑屋，与outline相比没有的东西在这里：

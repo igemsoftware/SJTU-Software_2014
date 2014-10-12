@@ -12,6 +12,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import data_center.BbkUpload.Category;
 import data_center.SketchComponent.*;
 
 /** The class used to test the data_center. Each private function tests a function in
@@ -30,11 +31,56 @@ public class Testing
 		//compareAssignDetail();
 		//sketchProjectOperation();
 		//sketchXMLReadWrite();
-		sketchOperationHistory();
+		//sketchOperationHistory();
 		//uploadUploadAndReappearBbkUpload();
 		//uploadPartNameSequenceTokenValidationCheck();
 		//uploadSubpartSubscarValidationCheck();
-	
+		
+		boolean succeed = OfficialUploadPoster.login("","");
+		System.out.println(succeed);
+		//boolean login = OfficialUploadPoster.login(UserName.getText(), String.valueOf(Password.getPassword()));
+		if (!succeed)
+		{
+			System.out.println("Username or password is wrong.");
+		}
+		System.out.println("Uploading your biobrick...\n10% Complete");
+		BbkUpload bbkUpload = new BbkUpload();
+		bbkUpload.setID("33810");
+		bbkUpload.setName("BBa_K1479011");
+		bbkUpload.shortDesc = "0.0 Testing the UE of the bio-brick upload page, not designing a real one";
+		bbkUpload.type = "Terminator";
+		bbkUpload.nickname = "LaLaLa";
+		bbkUpload.author = "YiBai Chen";
+		bbkUpload.groupFavorite = "No";
+		bbkUpload.categories.add(new Category("//cds/enzyme/endonuclease/restriction"));
+		bbkUpload.categories.add(new Category("//rnap/bacteriophage/t7"));
+		bbkUpload.categories.add(new Category("//plasmidbackbone/copynumber"));
+		bbkUpload.categories.add(new Category("//collections/biofab"));
+		bbkUpload.parameters.add(new BbkUpload.Parameter("biology","1","","","",""));
+		bbkUpload.parameters.add(new BbkUpload.Parameter("color","red","","","",""));
+		bbkUpload.parameters.add(new BbkUpload.Parameter("i_l","1","","","",""));
+		bbkUpload.parameters.add(new BbkUpload.Parameter("direction","1","","","",""));
+		bbkUpload.features.add(new BbkUpload.Feature("","label1","misc","Fwd","2","3"));
+		bbkUpload.features.add(new BbkUpload.Feature("","label2","rbs","Fwd","1","2"));
+		bbkUpload.features.add(new BbkUpload.Feature("","label3","cds","Rev","3","4"));
+		String newBbk = OfficialUploadPoster.getNextAvailablePartName();
+		newBbk = "BBa_K1479011";
+		System.out.println("Uploading your biobrick...\n15% Complete\nYour new BioBrick will be"+newBbk);
+		String newId = OfficialUploadPoster.createNewPart(newBbk, bbkUpload);
+		bbkUpload.setName(newBbk);
+		bbkUpload.setID(newId);
+		System.out.println("Uploading your biobrick...\n20% Complete\nYour new BioBrick will be "+newBbk);
+		OfficialUploadPoster.modifyPrimaryInfo(bbkUpload);
+		System.out.println("Uploading your biobrick...\n31% Complete\nYour new BioBrick will be "+newBbk);
+		OfficialUploadPoster.modifyParameters(bbkUpload);
+		System.out.println("Uploading your biobrick...\n49% Complete\nYour new BioBrick will be "+newBbk);
+		OfficialUploadPoster.modifyCategories(bbkUpload);
+		System.out.println("Uploading your biobrick...\n68% Complete\nYour new BioBrick will be "+newBbk);
+		OfficialUploadPoster.modifySequence(bbkUpload);
+		System.out.println("Uploading your biobrick...\n84% Complete\nYour new BioBrick will be "+newBbk);
+		OfficialUploadPoster.modifyFeatures(bbkUpload);
+		System.out.println("Uploading your biobrick...\n100% Complete\nYour new BioBrick is "+newBbk);
+		OfficialUploadPoster.testing();
 	}
 	
 	
@@ -42,12 +88,17 @@ public class Testing
 	
 	private static void searchKeywordAndGetDetail()
 	{	
+		int startTime = getTimeInMs();
 		SearchResultList list = dataCenter.searchCenter.search("GFP");
-		list.displayRating();
+		//list.displayRating();
+		int endTime = getTimeInMs();
+		
+		System.out.println("Network time: " + (endTime - startTime) + "ms");
 		System.out.println("List size: " + list.size());
+		
 		for (int i = 0; i < list.size(); i += 10)
 		{	BbkDetail detail = dataCenter.searchCenter.getDetail(list.get(i).name);
-			detail.display();
+			//detail.display();
 		}
 	}
 	
@@ -126,18 +177,11 @@ public class Testing
 	
 	private static void compareAssignDetail()
 	{	
-		Calendar calendar1 = Calendar.getInstance();
-		int sec1 = calendar1.get(Calendar.SECOND);
-		int mSec1 = calendar1.get(Calendar.MILLISECOND);
-		
+		int startTime = getTimeInMs();
 		dataCenter.compareCenter.assignDetail("BBa_I13545", 2).display();
+		int endTime = getTimeInMs();
 		
-		Calendar calendar2 = Calendar.getInstance();
-		int sec2 = calendar2.get(Calendar.SECOND);
-		int mSec2 = calendar2.get(Calendar.MILLISECOND);
-		
-		System.out.println("Network time: " + 
-				(1000 * sec2 + mSec2 - 1000 * sec1 - mSec1) + "ms");
+		System.out.println("Network time: " + (endTime - startTime) + "ms");
 	}
 	
 	private static void sketchProjectOperation()
@@ -256,6 +300,14 @@ public class Testing
 			(dataCenter.uploadCenter.getSubscarForSequenceToken("RFC[10]") != null));
 		System.out.println("Subpart validation(RFC[1000]): " + 
 			(dataCenter.uploadCenter.getSubscarForSequenceToken("RFC[1000]") != null));
+	}
+	
+	private static int getTimeInMs()
+	{	
+		Calendar calendar = Calendar.getInstance();
+		int sec = calendar.get(Calendar.SECOND);
+		int mSec = calendar.get(Calendar.MILLISECOND);
+		return 1000 * sec + mSec;
 	}
 	
 }
