@@ -127,17 +127,6 @@ public class SearchingResult extends JPanel{
 		URL_Content = new JLabel("");
 		URL_Content.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) {
-				if(e.getButton() == e.BUTTON1){
-					try{
-						Runtime.getRuntime().exec("explorer " + URL_Content.getText());
-					}
-					catch(Exception ex){
-						ex.printStackTrace();
-					}
-				}
-			}
-			@Override
 			public void mouseEntered(MouseEvent e) {
 				URL_Content.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 				URL_Content.setForeground(Color.blue);

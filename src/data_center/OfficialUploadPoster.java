@@ -16,6 +16,9 @@ import org.apache.http.impl.client.BasicCookieStore;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.select.Elements;
 
 import data_center.BbkUpload.Category;
 
@@ -44,7 +47,7 @@ public class OfficialUploadPoster
 		
 		BufferedReader reader = new BufferedReader
 				(new InputStreamReader(response.getEntity().getContent(), "utf-8"));
-		
+		//httpClient.close();
 		String line;
 		while ( (line = reader.readLine()) != null )
 			if (line.contains("You have successfully logged into the iGEM and Registry web sites."))
@@ -56,12 +59,15 @@ public class OfficialUploadPoster
 	
 	public static String getNextAvailablePartName() throws Exception
 	{	
+		httpClient = HttpClients.createDefault();
 		HttpGet httpget = new HttpGet("http://parts.igem.org/cgi/partsdb/add_part_b.cgi");
 	    CloseableHttpResponse response = httpClient.execute(httpget, context);
+	    
 	    BufferedReader reader = new BufferedReader
 				(new InputStreamReader(response.getEntity().getContent(), "utf-8"));
 		
 		String line;
+		//httpClient.close();
 		// the next available name is surrounded like "<TD>BBa_XXXX<TR>"
 		// 	before it there is a "<TD>BBa_XXX to BBa_XXX<TD>" token to be excluded. 
 		while ( (line = reader.readLine()) != null )
@@ -70,6 +76,7 @@ public class OfficialUploadPoster
 				for (String rawToken : rawTokens)
 					if (rawToken.startsWith("BBa_") && !rawToken.contains(" to BBa_"))
 					{	String[] tokens = rawToken.split("<TR>");
+					System.out.println(tokens[0]);
 						return tokens[0];
 					}
 			}
@@ -80,12 +87,14 @@ public class OfficialUploadPoster
 	
 	public static String[] getAvailablePartNameRegion() throws Exception
 	{	
+		//httpClient = HttpClients.createDefault();
 		HttpGet httpget = new HttpGet("http://parts.igem.org/cgi/partsdb/add_part_b.cgi");
 	    CloseableHttpResponse response = httpClient.execute(httpget, context);
 	    BufferedReader reader = new BufferedReader
 				(new InputStreamReader(response.getEntity().getContent(), "utf-8"));
 		
 		String line;
+		//httpClient.close();
 		// the available name region is surrounded like "<TD>BBa_XXX to BBa_XXX<TD>"
 		while ( (line = reader.readLine()) != null )
 			if (line.contains("Next Available Part"))
@@ -99,6 +108,7 @@ public class OfficialUploadPoster
 	
 	public static String createNewPart(String part_name, BbkUpload bbkUpload) throws Exception
 	{	
+		//httpClient = HttpClients.createDefault();
 		List<NameValuePair> nvps = new ArrayList<NameValuePair>();
 	    nvps.add(new BasicNameValuePair("id", "0"));
 	    nvps.add(new BasicNameValuePair("group_1859", "on"));
@@ -113,23 +123,25 @@ public class OfficialUploadPoster
 	    HttpPost httpost = new HttpPost("http://parts.igem.org/cgi/partsdb/add_part_b.cgi");
 	    httpost.setEntity(new UrlEncodedFormEntity(nvps));
 		httpClient.execute(httpost, context);
-		
-		HttpGet httpget = new HttpGet("http://parts.igem.org/cgi/xml/part.cgi?part=" + part_name);
-		CloseableHttpResponse response = httpClient.execute(httpget, context);
-	    BufferedReader reader = new BufferedReader
-				(new InputStreamReader(response.getEntity().getContent(), "utf-8"));
-	    // the part_id is surrounded like "<part_id>XXXXX</part_id>"
-	    String line;
-	    while ( (line = reader.readLine()) != null )
-	    	if (line.contains("part_id"))
-	    	{	String[] tokens = line.split("</part_id>")[0].split("<part_id>");
-	    		return tokens[tokens.length - 1];
-	    	}
-		return null;
+				
+		String url = "http://parts.igem.org/cgi/xml/part.cgi?part=" + part_name;
+		System.out.println(url);
+		Document doc=null;  
+		try{  
+			doc = Jsoup.connect(url).get();
+		}  
+		catch(Exception e){  
+			e.printStackTrace();
+		}
+		Elements elem = doc.select("part_id");
+		System.out.println(elem.html());
+		httpClient.close();
+		return elem.html();
 	}
 	
 	public static void modifyPrimaryInfo(BbkUpload bbkUpload) throws Exception
-	{	
+	{
+		httpClient = HttpClients.createDefault();
 		List<NameValuePair> nvps = new ArrayList<NameValuePair>();
 	    nvps.add(new BasicNameValuePair("id", bbkUpload.getID()));
 	    nvps.add(new BasicNameValuePair("hidden_header", "14"));
@@ -146,10 +158,12 @@ public class OfficialUploadPoster
 	    HttpPost httpost = new HttpPost("http://parts.igem.org/cgi/partsdb/part_info.cgi?part_name=" + bbkUpload.getName());
 	    httpost.setEntity(new UrlEncodedFormEntity(nvps));
 		httpClient.execute(httpost, context);
+		httpClient.close();
 	}
 
 	public static void modifySequence(BbkUpload bbkUpload) throws Exception
 	{	
+		httpClient = HttpClients.createDefault();
 		List<NameValuePair> nvps = new ArrayList<NameValuePair>();
 	    nvps.add(new BasicNameValuePair("id", bbkUpload.getID()));
 	    nvps.add(new BasicNameValuePair("dna_center", ""));
@@ -164,50 +178,115 @@ public class OfficialUploadPoster
 	    HttpPost httpost = new HttpPost("http://parts.igem.org/partsdb/edit_seq.cgi?part=" + bbkUpload.getName());
 	    httpost.setEntity(new UrlEncodedFormEntity(nvps));
 		httpClient.execute(httpost, context);
+		httpClient.close();
 	}
 	
 	public static void modifyCategories(BbkUpload bbkUpload) throws Exception
-	{	
+	{		
 		List<NameValuePair> nvps = new ArrayList<NameValuePair>();		
 		ArrayList<data_center.BbkUpload.Category> uploadCategory = bbkUpload.categories;
-		uploadCategory.sort(new StringComparator(1));
+		uploadCategory.sort(new CatogoryComparator(1));
 		nvps.add(new BasicNameValuePair("id", bbkUpload.getID()));
 		nvps.add(new BasicNameValuePair("categories_center", ""));
 	    nvps.add(new BasicNameValuePair("categories_right", ""));
 	    nvps.add(new BasicNameValuePair("hidden_categories", "999"));
+		HttpPost httpost = new HttpPost("http://parts.igem.org/cgi/partsdb/part_info.cgi?part_name=" + bbkUpload.getName());	
 		for (int i=0; i<uploadCategory.size(); i++)
 		{
-			List<NameValuePair> localnvps = nvps;
+			httpClient = HttpClients.createDefault();
+			List<NameValuePair> localnvps = new ArrayList<NameValuePair>();
+			localnvps = new ArrayList<NameValuePair>(nvps);
 			localnvps.add(new BasicNameValuePair("categories_999", uploadCategory.get(i).category));
-			HttpPost httpost = new HttpPost("http://parts.igem.org/cgi/partsdb/part_info.cgi?part_name=" + bbkUpload.getName());
 			httpost.setEntity(new UrlEncodedFormEntity(localnvps));
 			httpClient.execute(httpost, context);
+			httpClient.close();
 			nvps.add(new BasicNameValuePair("categories_"+(i+1), uploadCategory.get(i).category));
 		}
-			
-//	    
-//	    
-//	    
-//	    nvps.add(new BasicNameValuePair("Edit_dna", "1"));
-//	    nvps.add(new BasicNameValuePair("Save_dna.x", "1"));
-//	    nvps.add(new BasicNameValuePair("Cancel.x", "0"));
-//	    nvps.add(new BasicNameValuePair("plurality", "basic"));
-//	    nvps.add(new BasicNameValuePair("sequence", bbkUpload.getSequence()));
-	    
-//	    HttpPost httpost = new HttpPost("http://parts.igem.org/partsdb/edit_seq.cgi?part=" + bbkUpload.getName());
-//	    httpost.setEntity(new UrlEncodedFormEntity(nvps));
-//		httpClient.execute(httpost, context);
 	}
 	
-	public static void modifyParameters()
+	public static void modifyParameters(BbkUpload bbkUpload) throws Exception
 	{	
-		
+		List<NameValuePair> nvps = new ArrayList<NameValuePair>();		
+		ArrayList<data_center.BbkUpload.Parameter> uploadParam = bbkUpload.parameters;
+		uploadParam.sort(new ParamComparator(1));
+		nvps.add(new BasicNameValuePair("id", bbkUpload.getID()));
+		nvps.add(new BasicNameValuePair("parameters_center", ""));
+	    nvps.add(new BasicNameValuePair("parameters_right", ""));
+	    nvps.add(new BasicNameValuePair("hidden_parameters", "999"));
+	    System.out.println(uploadParam.size());
+		HttpPost httpost = new HttpPost("http://parts.igem.org/cgi/partsdb/part_info.cgi?part_name=" + bbkUpload.getName());
+		System.out.println(httpost);
+		for (int i=0; i<uploadParam.size(); i++)
+		{
+			httpClient = HttpClients.createDefault();
+			List<NameValuePair> localnvps = new ArrayList<NameValuePair>();
+			localnvps = new ArrayList<NameValuePair>(nvps);
+			localnvps.add(new BasicNameValuePair("parameter_name_999", uploadParam.get(i).name));
+			localnvps.add(new BasicNameValuePair("parameter_value_999", uploadParam.get(i).value));
+			httpost.setEntity(new UrlEncodedFormEntity(localnvps));
+			httpClient.execute(httpost, context);
+			httpClient.close();
+			nvps.add(new BasicNameValuePair("parameter_name_"+(i+1), uploadParam.get(i).name));
+			nvps.add(new BasicNameValuePair("parameter_value_"+(i+1), uploadParam.get(i).value));
+		}
 	}
 	
 	
-	public static void modifyFeatures()
+	public static void modifyFeatures(BbkUpload bbkUpload) throws Exception
 	{	
-		
+		List<NameValuePair> nvps = new ArrayList<NameValuePair>();		
+		ArrayList<data_center.BbkUpload.Feature> uploadFeature = bbkUpload.features;
+		ArrayList<String> featuresId = new ArrayList<String>();
+		nvps.add(new BasicNameValuePair("id", bbkUpload.getID()));
+		nvps.add(new BasicNameValuePair("features_center", ""));
+	    nvps.add(new BasicNameValuePair("features_right", ""));
+	    nvps.add(new BasicNameValuePair("hidden_features", ""));
+	    HttpPost httpost = new HttpPost("http://parts.igem.org/partsdb/edit_seq.cgi?part="+bbkUpload.getName());
+		for (int i=0;i<uploadFeature.size();i++)
+		{
+			httpClient = HttpClients.createDefault();
+			String url = "http://parts.igem.org/partsdb/edit_seq.cgi?id="+bbkUpload.getID()+"&New_feature=1";
+			System.out.println(url);
+			Document doc=null;  
+			try{  
+				doc = Jsoup.connect(url).get();  
+			}  
+			catch(Exception e){  
+				e.printStackTrace();
+			}
+			HttpGet httpget = new HttpGet(url);
+			httpClient.execute(httpget, context);
+			httpClient.close();
+			httpClient = HttpClients.createDefault();
+			url = "http://parts.igem.org/cgi/xml/part.cgi?part="+bbkUpload.getName();
+			//System.out.println(url);
+			try{  
+				doc = Jsoup.connect(url).get();
+			}  
+			catch(Exception e){  
+				e.printStackTrace();
+			}
+			Elements elem = doc.select("features").select("id");
+			//System.out.println(elem.size());
+			for (int  j=0;j<elem.size();j++)
+			{
+				String currentId = elem.get(j).html();
+				if (!featuresId.contains(currentId))
+				{
+					//System.out.println(currentId);
+					featuresId.add(currentId);
+					nvps.set(3, new BasicNameValuePair("hidden_features", currentId));
+					nvps.add(new BasicNameValuePair("feature_type_"+currentId, bbkUpload.features.get(i).type));
+					nvps.add(new BasicNameValuePair("feature_label_"+currentId, bbkUpload.features.get(i).title));
+					nvps.add(new BasicNameValuePair("feature_start_"+currentId, bbkUpload.features.get(i).startPos));
+					nvps.add(new BasicNameValuePair("feature_end_"+currentId, bbkUpload.features.get(i).endPos));
+					nvps.add(new BasicNameValuePair("feature_reverse_"+currentId, bbkUpload.features.get(i).direction));
+					httpost.setEntity(new UrlEncodedFormEntity(nvps));
+					httpClient.execute(httpost, context);
+					httpClient.close();
+				}
+			}
+		}
 	}
 	
 	
@@ -215,21 +294,30 @@ public class OfficialUploadPoster
 	static void testing() throws Exception
 	{	
 		BbkUpload bbkUpload = new BbkUpload();
-		bbkUpload.setID("32081");
-		bbkUpload.setName("BBa_K1479001");
+		bbkUpload.setID("33789");
+		bbkUpload.setName("BBa_K1479008");
 		bbkUpload.shortDesc = "0.0 Testing the UE of the bio-brick upload page, not designing a real one";
 		bbkUpload.type = "Terminator";
 		bbkUpload.nickname = "LaLaLa";
 		bbkUpload.author = "YiBai Chen";
 		bbkUpload.groupFavorite = "No";
-		bbkUpload.categories.add(new Category("//qwert"));
-		bbkUpload.categories.add(new Category("//asdf"));
-		bbkUpload.categories.add(new Category("//zxcv"));
-		bbkUpload.categories.add(new Category("//qwert//q"));
-		modifyCategories(bbkUpload);
+		bbkUpload.categories.add(new Category("//cds/enzyme/endonuclease/restriction"));
+		bbkUpload.categories.add(new Category("//rnap/bacteriophage/t7"));
+		bbkUpload.categories.add(new Category("//plasmidbackbone/copynumber"));
+		bbkUpload.categories.add(new Category("//collections/biofab"));
+		bbkUpload.parameters.add(new BbkUpload.Parameter("biology","1","","","",""));
+		bbkUpload.parameters.add(new BbkUpload.Parameter("color","red","","","",""));
+		bbkUpload.parameters.add(new BbkUpload.Parameter("i_l","1","","","",""));
+		bbkUpload.parameters.add(new BbkUpload.Parameter("direction","1","","","",""));
+		bbkUpload.features.add(new BbkUpload.Feature("","label1","misc","Fwd","2","3"));
+		bbkUpload.features.add(new BbkUpload.Feature("","label2","rbs","Fwd","1","2"));
+		bbkUpload.features.add(new BbkUpload.Feature("","label3","cds","Rev","3","4"));
+		//modifyFeatures(bbkUpload);
+		getNextAvailablePartName();
+		createNewPart("BBa_K1479008",bbkUpload);
 	}
 	
-	public static class StringComparator implements Comparator<BbkUpload.Category>  
+	public static class CatogoryComparator implements Comparator<BbkUpload.Category>  
 	{
 		public final static int ASC = 1;  
 	    public final static int DESC = -1;  
@@ -237,13 +325,13 @@ public class OfficialUploadPoster
 	    private int NOA = 1;  
 	    private int NOB = -1;  
 	  
-	    public StringComparator()  
+	    public CatogoryComparator()  
 	    {  
 	    }  
 	  
-	    public StringComparator(int order)  
+	    public CatogoryComparator(int order)  
 	    {  
-	        if (StringComparator.DESC == order)  
+	        if (CatogoryComparator.DESC == order)  
 	        {  
 	            NOA = -1;  
 	            NOB = 1;  
@@ -264,5 +352,40 @@ public class OfficialUploadPoster
 	        }  
 	    }  
 	}
-  
+	
+	public static class ParamComparator implements Comparator<BbkUpload.Parameter>  
+	{
+		public final static int ASC = 1;  
+	    public final static int DESC = -1;  
+	  
+	    private int NOA = 1;  
+	    private int NOB = -1;  
+	  
+	    public ParamComparator()  
+	    {  
+	    }  
+	  
+	    public ParamComparator(int order)  
+	    {  
+	        if (ParamComparator.DESC == order)  
+	        {  
+	            NOA = -1;  
+	            NOB = 1;  
+	        }  
+	    }  
+	  
+	    public int compare(BbkUpload.Parameter o1, BbkUpload.Parameter o2)  
+	    {  
+	        if (o1.name.compareTo(o2.name) > 0)  
+	        {  
+	            return NOA;  
+	        } else if (o1.name.compareTo(o2.name) < 0)
+	        {  
+	            return NOB;  
+	        } else  
+	        {  
+	            return 0;  
+	        }  
+	    }  
+	}
 }
