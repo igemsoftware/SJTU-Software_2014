@@ -20,7 +20,6 @@ import javax.swing.BorderFactory;
 public class DetailsofResults extends JPanel {
 	public JLabel ID_Content;
 	public JLabel Type_Content;
-	public JLabel Evalue_Content;
 	public JLabel EnteredDate_Content;
 	public JLabel Author_Content;
 	public JLabel Description1;
@@ -62,49 +61,39 @@ public class DetailsofResults extends JPanel {
 		Type_Content.setBounds(71, 44, 146, 24);
 		add(Type_Content);
 		
-		JLabel Evalue = new JLabel("E-value:");
-		Evalue.setFont(new Font("Arial", Font.PLAIN, 20));
-		Evalue.setBounds(10, 78, 82, 24);
-		add(Evalue);
-		
-		Evalue_Content = new JLabel("");
-		Evalue_Content.setFont(new Font("Arial", Font.PLAIN, 20));
-		Evalue_Content.setBounds(91, 78, 117, 24);
-		add(Evalue_Content);
-		
 		JLabel EnteredDate = new JLabel("Entered Date:");
 		EnteredDate.setFont(new Font("Arial", Font.PLAIN, 20));
-		EnteredDate.setBounds(10, 112, 134, 24);
+		EnteredDate.setBounds(10, 78, 134, 24);
 		add(EnteredDate);
 		
 		EnteredDate_Content = new JLabel("");
 		EnteredDate_Content.setFont(new Font("Arial", Font.PLAIN, 20));
-		EnteredDate_Content.setBounds(154, 112, 117, 24);
+		EnteredDate_Content.setBounds(154, 78, 117, 24);
 		add(EnteredDate_Content);
 		
 		JLabel Author = new JLabel("Author:");
 		Author.setFont(new Font("Arial", Font.PLAIN, 20));
-		Author.setBounds(10, 146, 70, 24);
+		Author.setBounds(10, 112, 70, 24);
 		add(Author);
 		
 		Author_Content = new JLabel("");
 		Author_Content.setFont(new Font("Arial", Font.PLAIN, 20));
-		Author_Content.setBounds(81, 146, 574, 24);
+		Author_Content.setBounds(81, 112, 421, 24);
 		add(Author_Content);
 		
 		JLabel ShortDescription = new JLabel("Short Description:");
 		ShortDescription.setFont(new Font("Arial", Font.PLAIN, 20));
-		ShortDescription.setBounds(10, 180, 163, 24);
+		ShortDescription.setBounds(10, 146, 163, 24);
 		add(ShortDescription);
 		
 		Description1 = new JLabel("");
 		Description1.setFont(new Font("Arial", Font.PLAIN, 20));
-		Description1.setBounds(171, 180, 484, 24);
+		Description1.setBounds(171, 146, 484, 24);
 		add(Description1);
 		
-		JLabel URL = new JLabel("URL:");
+		JLabel URL = new JLabel("Main Page on Registry:");
 		URL.setFont(new Font("Arial", Font.PLAIN, 20));
-		URL.setBounds(10, 248, 48, 24);
+		URL.setBounds(10, 316, 213, 24);
 		add(URL);
 		
 		URL_Content = new JLabel("");
@@ -120,37 +109,37 @@ public class DetailsofResults extends JPanel {
 			}
 		});
 		URL_Content.setFont(new Font("Arial", Font.PLAIN, 20));
-		URL_Content.setBounds(59, 248, 437, 24);
+		URL_Content.setBounds(229, 316, 426, 24);
 		add(URL_Content);
 		
-		JLabel ReleasedStatus = new JLabel("Released Status:");
+		JLabel ReleasedStatus = new JLabel("Part Status:");
 		ReleasedStatus.setFont(new Font("Arial", Font.PLAIN, 20));
-		ReleasedStatus.setBounds(10, 282, 157, 24);
+		ReleasedStatus.setBounds(10, 350, 117, 24);
 		add(ReleasedStatus);
 		
 		ReleasedStatus_Content = new JLabel("");
 		ReleasedStatus_Content.setFont(new Font("Arial", Font.PLAIN, 20));
-		ReleasedStatus_Content.setBounds(175, 282, 278, 24);
+		ReleasedStatus_Content.setBounds(129, 350, 278, 24);
 		add(ReleasedStatus_Content);
 		
-		JLabel AverageStars = new JLabel("Average Stars:");
+		JLabel AverageStars = new JLabel("Average Rating:");
 		AverageStars.setFont(new Font("Arial", Font.PLAIN, 20));
-		AverageStars.setBounds(10, 316, 146, 24);
+		AverageStars.setBounds(10, 384, 146, 24);
 		add(AverageStars);
 		
 		AverageStar_Content = new JLabel("");
 		AverageStar_Content.setFont(new Font("Arial", Font.PLAIN, 20));
-		AverageStar_Content.setBounds(154, 316, 107, 24);
+		AverageStar_Content.setBounds(164, 384, 107, 24);
 		add(AverageStar_Content);
 		
-		JLabel ResultsInGoogle = new JLabel("Results in Google Scholar:");
+		JLabel ResultsInGoogle = new JLabel("Number of Related Results on Google Scholar:");
 		ResultsInGoogle.setFont(new Font("Arial", Font.PLAIN, 20));
-		ResultsInGoogle.setBounds(10, 350, 251, 24);
+		ResultsInGoogle.setBounds(10, 418, 425, 24);
 		add(ResultsInGoogle);
 		
 		ResultsInGoogle_Content = new JLabel("");
 		ResultsInGoogle_Content.setFont(new Font("Arial", Font.PLAIN, 20));
-		ResultsInGoogle_Content.setBounds(271, 350, 51, 24);
+		ResultsInGoogle_Content.setBounds(445, 418, 51, 24);
 		add(ResultsInGoogle_Content);
 		
 		Score = new JLabel("", SwingConstants.CENTER);
@@ -161,14 +150,19 @@ public class DetailsofResults extends JPanel {
 		
 		Description2 = new JLabel("");
 		Description2.setFont(new Font("Arial", Font.PLAIN, 20));
-		Description2.setBounds(10, 214, 645, 24);
+		Description2.setBounds(10, 180, 645, 24);
 		add(Description2);
 		
-        Addforcomparison = new JCheckBox("Add for comparison");
+        Addforcomparison = new JCheckBox("Add to compare");
         Addforcomparison.setFont(new Font("Arial", Font.PLAIN, 24));
-        Addforcomparison.setBounds(229, 17, 242, 30);
+        Addforcomparison.setBounds(229, 17, 206, 30);
         Addforcomparison.setBackground(new Color(0, 255, 255));
 		add(Addforcomparison);
+		
+		JLabel Sequence = new JLabel("Sequence:");
+		Sequence.setFont(new Font("Arial", Font.PLAIN, 20));
+		Sequence.setBounds(10, 210, 100, 24);
+		add(Sequence);
 		
 		setVisible(true);
 	}
