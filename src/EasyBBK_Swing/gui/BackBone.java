@@ -101,7 +101,6 @@ class BackBone extends JLabelWithID implements MouseListener, MouseMotionListene
 				else
 				{
 			    	reType=1;
-			    	
 				}
 			}
 			else

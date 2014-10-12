@@ -27,6 +27,7 @@ class DragCompListener implements MouseInputListener
 {
 	Point point = new Point(0,0);
 	boolean near =false;
+	private Rectangle outer_rect = new Rectangle();
 	
 	ArrayList<BackBone> backboneList = new ArrayList<BackBone>();
 	ArrayList<JLabelWithID> partList = new ArrayList<JLabelWithID>();
@@ -53,6 +54,7 @@ class DragCompListener implements MouseInputListener
 		this.panel = panel;
 		this.Tpanel = Tpanel;
 		this.sketchCenter = sketchCenter;
+		outer_rect=panel.getVisibleRect();
 	}
 	
 	public void mousePressed(MouseEvent e)
@@ -343,8 +345,25 @@ class DragCompListener implements MouseInputListener
 			Rectangle folBounds = new Rectangle(compMoved.getBounds());
 			sketchCenter.currentProject.modifyComponent
 				(compMoved.ID, SketchOperation.TYPE_BOUNDS, folBounds);
+		}	
+		
+		//delete
+		if(!outer_rect.contains((e.getComponent()).getLocation()))
+		{
+			Component comp = e.getComponent();
+			(comp.getParent()).remove(e.getComponent());
 			
-		}		
+			SketchProject project = sketchCenter.currentProject;
+			int ID = -1;
+			
+			Component component = e.getComponent();
+			
+			if ((component.getName()).equals("text"))
+				ID = ((TextLabel) component).ID;
+			else
+				ID = ((JLabelWithID) component).ID;
+			project.delComponent(project.findComponentByID(ID));
+		}
 	}
       
     public void mouseEntered(MouseEvent e){}
