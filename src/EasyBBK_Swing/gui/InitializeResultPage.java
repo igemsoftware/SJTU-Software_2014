@@ -45,7 +45,7 @@ public class InitializeResultPage extends Thread{
 	
 	public void run(){
 		JLabel searching = new JLabel("Searching...");
-		searching.setFont(new Font("Times New Roman", Font.BOLD, 30));
+		searching.setFont(new Font("Arial", Font.BOLD, 30));
 		searching.setBounds(20, 0, 300, 50);
 		child_search.resultpanel.removeAll();
 		child_search.resultpanel.add(searching);
@@ -70,7 +70,7 @@ public class InitializeResultPage extends Thread{
 		
 		if(number == 0){
 			JLabel noresults = new JLabel("Sorry, no results found.");
-			noresults.setFont(new Font("Times New Roman", Font.BOLD, 30));
+			noresults.setFont(new Font("Arial", Font.BOLD, 30));
 			noresults.setBounds(0, 0, 300, 50);
 			child_search.resultpanel.removeAll();
 			child_search.resultpanel.add(noresults);
@@ -172,7 +172,7 @@ public class InitializeResultPage extends Thread{
 		
 		if(numberofresults == 0){
 			JLabel noresults = new JLabel("Sorry, no results found.");
-			noresults.setFont(new Font("Times New Roman", Font.BOLD, 30));
+			noresults.setFont(new Font("Arial", Font.BOLD, 30));
 			noresults.setBounds(0, 0, 300, 50);
 			child_search.resultpanel.removeAll();
 			child_search.resultpanel.add(noresults);
@@ -210,7 +210,7 @@ public class InitializeResultPage extends Thread{
 					child_search.showpagenum.setBorder(null);
 				}
 			});
-			child_search.showpagenum.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+			child_search.showpagenum.setFont(new Font("Arial", Font.PLAIN, 16));
 			child_search.showpagenum.setBounds(281, 530, 25, 25);
 			child_search.resultpanel.add(child_search.showpagenum);
 			child_search.resultpanel.updateUI();
@@ -241,7 +241,7 @@ public class InitializeResultPage extends Thread{
 					child_search.previouspage.setBorder(null);
 				}
 			});
-			child_search.previouspage.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+			child_search.previouspage.setFont(new Font("Arial", Font.PLAIN, 16));
 			child_search.previouspage.setBounds(119, 530, 95, 25);
 			child_search.previouspage.setVisible(false);
 			
@@ -297,7 +297,7 @@ public class InitializeResultPage extends Thread{
 					child_search.nextpage.setBorder(null);
 				}
 			});
-			child_search.nextpage.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+			child_search.nextpage.setFont(new Font("Arial", Font.PLAIN, 16));
 			child_search.nextpage.setBounds(373, 530, 75, 25);
 			
 			child_search.nextpage.addMouseListener(new MouseAdapter() {
@@ -351,8 +351,21 @@ public class InitializeResultPage extends Thread{
 					child_search.showpagenum.setBorder(null);
 				}
 			});
-			child_search.showpagenum.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+			child_search.showpagenum.setFont(new Font("Arial", Font.PLAIN, 16));
 			child_search.showpagenum.setBounds(281, 530, 25, 25);
+			
+			child_search.totalpagenum = new JLabel("", SwingConstants.CENTER);
+			child_search.totalpagenum.setForeground(Color.blue);
+			String s = null;
+			if(numberofresults%10 > 0){
+				s = Integer.toString(numberofresults/10 + 1);
+			}
+			else if(numberofresults%10 == 0){
+				s = Integer.toString(numberofresults/10);
+			}
+			child_search.totalpagenum.setText(s);
+			child_search.totalpagenum.setFont(new Font("Arial", Font.PLAIN, 16));
+			child_search.totalpagenum.setBounds(470, 530, 25, 25);
 			
 			child_search.scrollPane = new JScrollPane(child_search.searchingresultpage);
 			child_search.scrollbar = new JScrollBar();
@@ -366,6 +379,7 @@ public class InitializeResultPage extends Thread{
 			child_search.resultpanel.add(child_search.previouspage);
 			child_search.resultpanel.add(child_search.showpagenum);
 			child_search.resultpanel.add(child_search.nextpage);
+			child_search.resultpanel.add(child_search.totalpagenum);
 			
 			child_search.resultpanel.updateUI();
 		}
@@ -435,6 +449,14 @@ public class InitializeResultPage extends Thread{
 		}
 		
 		String score = "" + bbkoutline.getScore();
+		char c = '.';
+		if(score.charAt(1) == c){
+			score = score.substring(0, 4);
+		}
+		else if(score.charAt(2) == c){
+			score = score.substring(0, 5);
+		}
+		
 		child_search.searchingresultpage.searchingresult.get(i).Score.setText(score);
 		
 		if(child_search.blast == 1){

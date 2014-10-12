@@ -1,6 +1,5 @@
 package EasyBBK_Swing.gui;
 
-import java.awt.Color;
 import java.awt.Component;
 import java.awt.Cursor;
 import java.awt.Dimension;
@@ -15,7 +14,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
-import javax.swing.JWindow;
 
 import data_center.*;
 import data_center.BbkUpload.SpecifiedSubscar;
@@ -86,7 +84,7 @@ public class MainPage extends JFrame{
 		
 		Mainpanel = new JPanel();
 		//Mainpanel.setOpaque(true);
-		Mainpanel.setBounds(0, 59, 1366, 670);
+		Mainpanel.setBounds(0, 58, 1366, 670);
 		Mainpanel.setVisible(true);
 		Mainpanel.setLayout(null);
 		frame.getContentPane().add(Mainpanel);
