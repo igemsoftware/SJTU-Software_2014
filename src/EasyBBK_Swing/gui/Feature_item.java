@@ -32,7 +32,7 @@ public class Feature_item extends JPanel {
 				"conserved", "polya", "barcode", "BioBrick"};
 		Choice = new JComboBox(feature);
 		content1 = "misc";
-		Choice.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		Choice.setFont(new Font("Arial", Font.PLAIN, 20));
 		Choice.setSelectedIndex(0);
 		Choice.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
@@ -46,7 +46,7 @@ public class Feature_item extends JPanel {
 		
 		Label = new JTextField();
 		Label.setBounds(153, 0, 150, 30);
-		Label.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		Label.setFont(new Font("Arial", Font.PLAIN, 20));
 		add(Label);
 		Label.setColumns(10);
 		
@@ -63,7 +63,7 @@ public class Feature_item extends JPanel {
             }
 		});
 		Start.setBounds(306, 0, 50, 30);
-		Start.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		Start.setFont(new Font("Arial", Font.PLAIN, 20));
 		add(Start);
 		Start.setColumns(10);
 		
@@ -80,14 +80,14 @@ public class Feature_item extends JPanel {
             }
 		});
 		End.setBounds(359, 0, 50, 30);
-		End.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		End.setFont(new Font("Arial", Font.PLAIN, 20));
 		add(End);
 		End.setColumns(10);
 		
 		String direction[] = {"Fwd", "Rev"};
 		Direction = new JComboBox(direction);
 		content2 = "Fwd";
-		Direction.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		Direction.setFont(new Font("Arial", Font.PLAIN, 20));
 		Direction.setSelectedIndex(0);
 		Direction.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {

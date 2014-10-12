@@ -34,7 +34,7 @@ public class SubpartDialog extends JDialog {
 		this.setLocation(533, 264);
 		
 		JTextField inputtext = new JTextField();
-		inputtext.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		inputtext.setFont(new Font("Arial", Font.PLAIN, 20));
 		inputtext.setColumns(10);
 		inputtext.setBounds(50, 50, 200, 30);
 		this.getContentPane().add(inputtext);
@@ -60,7 +60,7 @@ public class SubpartDialog extends JDialog {
 						jd.setLocation(563, 294);
 						
 						JLabel text = new JLabel("This subpart doesn't exist.", JLabel.CENTER);
-						text.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+						text.setFont(new Font("Arial", Font.PLAIN, 20));
 						jd.getContentPane().add(text, BorderLayout.CENTER);
 						
 						JButton Confirme = new JButton("Confirmed");
@@ -70,7 +70,7 @@ public class SubpartDialog extends JDialog {
 								jd.dispose();
 							}
 						});
-						Confirme.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+						Confirme.setFont(new Font("Arial", Font.PLAIN, 20));
 						Confirme.setSize(120, 30);
 						jd.getContentPane().add(Confirme, BorderLayout.SOUTH);
 						
@@ -79,7 +79,7 @@ public class SubpartDialog extends JDialog {
 				}
 			}
 		});
-		Confirme.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		Confirme.setFont(new Font("Arial", Font.PLAIN, 20));
 		Confirme.setBounds(15, 130, 120, 30);
 		this.getContentPane().add(Confirme);
 		
@@ -91,7 +91,7 @@ public class SubpartDialog extends JDialog {
 					sd.dispose();
 			}
 		});
-		Cancel.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		Cancel.setFont(new Font("Arial", Font.PLAIN, 20));
 		Cancel.setBounds(165, 130, 120, 30);
 		this.getContentPane().add(Cancel);
 		

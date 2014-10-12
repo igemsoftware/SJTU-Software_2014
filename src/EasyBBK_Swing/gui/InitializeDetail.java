@@ -87,7 +87,15 @@ public class InitializeDetail extends Thread{
 			detailsofresults.Description1.setText(shortdescription.substring(0, 40));
 			detailsofresults.Description2.setText(shortdescription.substring(40));
 		}
+		
 		String score = "" + bbkdetail.getScore();
+		char c = '.';
+		if(score.charAt(1) == c){
+			score = score.substring(0, 4);
+		}
+		else if(score.charAt(2) == c){
+			score = score.substring(0, 5);
+		}
 		detailsofresults.Score.setText(score);
 		
 		detailsofresults.setPreferredSize(new Dimension(665, 1500));
