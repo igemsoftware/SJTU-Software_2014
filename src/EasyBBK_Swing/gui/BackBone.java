@@ -70,10 +70,10 @@ class BackBone extends JLabelWithID implements MouseListener, MouseMotionListene
 		if (activate == true)
 		{
 			outer_rect = this.getVisibleRect();
-			outer_rect.setRect(outer_rect.x+1, outer_rect.y+1, outer_rect.width-2, outer_rect.height-2);
-			inner_rect.setRect(outer_rect.x+3, outer_rect.y, outer_rect.width-6, outer_rect.height);
-			rect_right.setRect(outer_rect.x+outer_rect.width-3, outer_rect.y+3, 2, outer_rect.height-6);
-			rect_left.setRect(outer_rect.x+1, outer_rect.y+3, 2, outer_rect.height-6);
+			outer_rect.setRect(outer_rect.x+2, outer_rect.y+3, outer_rect.width-4, outer_rect.height-6);
+			inner_rect.setRect(outer_rect.x+5, outer_rect.y, outer_rect.width-10, outer_rect.height);
+			rect_right.setRect(outer_rect.x+outer_rect.width-5, outer_rect.y, 5, outer_rect.height);
+			rect_left.setRect(outer_rect.x+5, outer_rect.y, 5, outer_rect.height);
 		}
 	}
 	
@@ -92,17 +92,21 @@ class BackBone extends JLabelWithID implements MouseListener, MouseMotionListene
 		if (activate == true)
 		{
 			if ((outer_rect.contains(e.getPoint())) && (!inner_rect.contains(e.getPoint()))) 
+			{
 				resizeable = true;
-			else
-				resizeable = false;
-			
-			if (rect_right.contains(e.getPoint())) 
-			{
-		    	reType=2;
+				if (rect_right.contains(e.getPoint())) 
+				{
+			    	reType=2;
+				}
+				else
+				{
+			    	reType=1;
+			    	
+				}
 			}
-			else if (rect_left.contains(e.getPoint())) 
+			else
 			{
-		    	reType=1;
+				resizeable = false;
 			}
 		}
 		panel.setPosition(e.getComponent(),-1);

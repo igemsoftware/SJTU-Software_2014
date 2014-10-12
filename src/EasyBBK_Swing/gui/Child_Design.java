@@ -1125,7 +1125,7 @@ public class Child_Design extends JLayeredPane {
 			if (textLabel == null)
 			{
 				col = Color.black;
-		        pFont = new Font("Time New Roman",Font.PLAIN,16);
+		        pFont = new Font("Arial",Font.PLAIN,16);
 			}
 			else
 			{
@@ -1509,27 +1509,38 @@ public class Child_Design extends JLayeredPane {
 	{		
 		public void mouseClicked(MouseEvent e) 
 		{
-			panel.removeAll();
-			panel.repaint();
-			panel.add(Tpanel);
-			panel.add(linePanel);
-			if (pen!=null)
+			IfSaveDialog one = new IfSaveDialog();
+			if (sketchCenter.currentProject.modified)
 			{
-				pen.setEnabled(true);
+				//Open Dialog
+				one.showDialog((JFrame)panel.getRootPane().getParent(),500,200);
 			}
-			pen=null;
-			if (source!=null)
+			
+			if (one.ifOperate)
 			{
-				((JLabelWithID)source).setEnabled(true);
+				panel.removeAll();
+				panel.repaint();
+				panel.add(Tpanel);
+				panel.add(linePanel);
+				if (pen!=null)
+				{
+					pen.setEnabled(true);
+				}
+				pen=null;
+				if (source!=null)
+				{
+					((JLabelWithID)source).setEnabled(true);
+				}
+				source = null;
+				choose = false;
+				textLabel=null;
+				totalCompList=new ArrayList<Component>();
+				lineColor = Color.black;
+				lineStroke = 3.0f;
+				compCount = 0;
+				SketchCenter sketchCenter = new SketchCenter();	
 			}
-			source = null;
-			choose = false;
-			textLabel=null;
-			totalCompList=new ArrayList<Component>();
-			lineColor = Color.black;
-			lineStroke = 3.0f;
-			compCount = 0;
-			SketchCenter sketchCenter = new SketchCenter();	
+			
 		}
 
 		public void mousePressed(MouseEvent e) {}
@@ -1572,44 +1583,75 @@ public class Child_Design extends JLayeredPane {
 		public void mouseClicked(MouseEvent e) 
 		{
 			// TODO Auto-generated method stub
-			
-			JFileChooser chooser=new JFileChooser();//文件打开对话框
-			chooser.setLocale(Locale.ENGLISH);
-			chooser.setAcceptAllFileFilterUsed(true);
-			chooser.setMultiSelectionEnabled(false);
-			try {
-				UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-			} catch (ClassNotFoundException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			} catch (InstantiationException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			} catch (IllegalAccessException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			} catch (UnsupportedLookAndFeelException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
+			if (sketchCenter.currentProject.modified)
+			{
+				//Open Dialog
+				IfSaveDialog one = new IfSaveDialog();
+				one.showDialog((JFrame)panel.getRootPane().getParent(),500,200);
 			}
-		    SwingUtilities.updateComponentTreeUI(chooser);
-		    
-			chooser.addChoosableFileFilter(new MyFileFilter("xml","XML"));
-
-			chooser.setCurrentDirectory(new File("."));
-
-			chooser.showOpenDialog(null);
-
-			path = chooser.getSelectedFile();
+			//Show open dialog
 			
-			//Begin draw sketch map
-			sketchCenter.loadProject(path.toString());
-			for (SketchComponent.Component component : sketchCenter.currentProject.componentList)
-			{	
-				addComponent(component);
-			}
-			System.out.print(path);	
-			
+				JFileChooser chooser=new JFileChooser();//文件打开对话框
+				chooser.setLocale(Locale.ENGLISH);
+				chooser.setAcceptAllFileFilterUsed(true);
+				chooser.setMultiSelectionEnabled(false);
+				try {
+					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+				} catch (ClassNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (InstantiationException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (IllegalAccessException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (UnsupportedLookAndFeelException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			    SwingUtilities.updateComponentTreeUI(chooser);
+			    
+				chooser.addChoosableFileFilter(new MyFileFilter("xml","XML"));
+
+				chooser.setCurrentDirectory(new File("."));
+
+				chooser.showOpenDialog(null);
+
+				path = chooser.getSelectedFile();
+				
+				if (path!=null)
+				{
+					//clear all
+					panel.removeAll();
+					panel.repaint();
+					panel.add(Tpanel);
+					panel.add(linePanel);
+					if (pen!=null)
+					{
+						pen.setEnabled(true);
+					}
+					pen=null;
+					if (source!=null)
+					{
+						((JLabelWithID)source).setEnabled(true);
+					}
+					source = null;
+					choose = false;
+					textLabel=null;
+					totalCompList=new ArrayList<Component>();
+					lineColor = Color.black;
+					lineStroke = 3.0f;
+					compCount = 0;
+						
+					//Begin draw sketch map
+					sketchCenter.loadProject(path.toString());
+					for (SketchComponent.Component component : sketchCenter.currentProject.componentList)
+					{	
+						addComponent(component);
+					}
+						
+				}
 			
 		}
 
