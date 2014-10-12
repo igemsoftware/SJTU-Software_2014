@@ -143,11 +143,11 @@ public class SetBioBrickNameListener implements MouseInputListener
 	    	this.add(set);
 	    	
 	    	ok.setBounds(430,310,60,30);
-	    	ok.setText("ok");
+	    	ok.setText("OK");
 	    	this.add(ok);
 	    	
 	    	cancel.setBounds(500,310,60,30);
-	    	cancel.setText("cancel");
+	    	cancel.setText("Cancel");
 	    	this.add(cancel);
 	    	cancel.setMargin(new Insets(0,0,0,0));
 	    	

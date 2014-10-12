@@ -69,6 +69,7 @@ public class Child_Design extends JLayeredPane {
 	private LinePanel linePanel = new LinePanel(pen);
 	private TextLabel textLabel = null;
 	boolean addText=false;
+	private Rectangle outer_rect = new Rectangle();
 	
 	private ArrayList<Component> totalCompList=new ArrayList<Component>();
 	
@@ -133,48 +134,57 @@ public class Child_Design extends JLayeredPane {
 		newButton.setBounds(14,55,40,41);
 		ImageIcon image_newButton = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/New_design.png"));
 		newButton.setIcon(image_newButton);
+		newButton.setToolTipText("Create a new sketch map.");
         background.add(newButton);
         
         openButton.setBounds(66,55,40,41);
 		ImageIcon image_openButton = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Open_design.png"));
 		openButton.setIcon(image_openButton);
+		openButton.setToolTipText("Open a XML file.");
         background.add(openButton);
         
         saveButton.setBounds(118,55,40,41);
 		ImageIcon image_saveButton = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Save_design.png"));
 		saveButton.setIcon(image_saveButton);
+		saveButton.setToolTipText("Save your work as a XML file.");
         background.add(saveButton);
 		
         exportButton.setBounds(173,55,40,41);
 		ImageIcon image_exportButton = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Export_design.png"));
 		exportButton.setIcon(image_exportButton);
+		exportButton.setToolTipText("Export your work as a picture.");
         background.add(exportButton);        
 		
 		backout.setBounds(173,112,40,42);
 		ImageIcon image_backout = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Backout.png"));
 		backout.setIcon(image_backout);
+		backout.setToolTipText("Undo");
         background.add(backout);
 		
         forward.setBounds(226,112,40,42);
 		ImageIcon image_forward = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Forward.png"));
 		forward.setIcon(image_forward);
+		forward.setToolTipText("Redo");
         background.add(forward);
         
         fontButton.setBounds(67,112,40,42);
 		ImageIcon image_font = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Font.png"));
 		fontButton.setIcon(image_font);
+		fontButton.setToolTipText("Choose the font of the test label.");
         background.add(fontButton);
         
         ImageIcon image_text = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Text_design.png"));
 		text.setIcon(image_text);
 		text.setBounds(14, 112, 40, 42);
 		text.setName("text");
+		text.setToolTipText("text");
 		background.add(text);	
 		
 		ImageIcon image_eraser = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Eraser.png"));
 		eraser.setIcon(image_eraser);
 		eraser.setBounds(119, 112, 40, 42);
 		eraser.setName("eraser");
+		eraser.setToolTipText("Remove components.");
 		eraser.setType(2);
 		background.add(eraser);
 
@@ -182,72 +192,84 @@ public class Child_Design extends JLayeredPane {
 		promoter.setIcon(image_promoter);
 		promoter.setBounds(6, 233, 84, 60);
 		promoter.setName("promoter");
+		promoter.setToolTipText("promoter");
 		background.add(promoter);		
 		
 		ImageIcon image_rbs = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/RBS.png"));
 		rbs.setIcon(image_rbs);
 		rbs.setBounds(100, 233, 84, 60);
 		rbs.setName("rbs");
+		rbs.setToolTipText("rbs");
 		background.add(rbs);		
 		
 		ImageIcon image_coding = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Coding.png"));
 		coding.setIcon(image_coding);
 		coding.setBounds(193, 233, 84, 60);
 		coding.setName("coding");
+		coding.setToolTipText("coding sequence");
 		background.add(coding);		
 		
 		ImageIcon image_terminator = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Terminator.png"));
 		terminator.setIcon(image_terminator);
 		terminator.setBounds(6, 299, 84, 60);
 		terminator.setName("terminator");
+		terminator.setToolTipText("terminator");
 		background.add(terminator);				
 		
 		ImageIcon image_primer = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Primer.png"));
 		primer.setIcon(image_primer);
 		primer.setBounds(100, 299, 84, 60);
 		primer.setName("primer");
+		primer.setToolTipText("primer");
 		background.add(primer);		
 		
 		ImageIcon image_reporter = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Reporter.png"));
 		reporter.setIcon(image_reporter);
 		reporter.setBounds(193, 299, 84, 60);
 		reporter.setName("reporter");
+		reporter.setToolTipText("reporter");
 		background.add(reporter);
 		
 		ImageIcon image_recepter = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Recepter.png"));
 		recepter.setIcon(image_recepter);
 		recepter.setBounds(6, 365, 84, 60);
 		recepter.setName("recepter");
+		recepter.setToolTipText("receptor");
 		background.add(recepter);
 		
 		ImageIcon image_factor = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Factor.png"));
 		factor.setIcon(image_factor);
 		factor.setBounds(100, 365, 84, 60);
 		factor.setName("factor");
+		factor.setToolTipText("factor");
 		background.add(factor);
 		
 		ImageIcon image_protein = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Protein.png"));
 		protein.setIcon(image_protein);
 		protein.setBounds(193, 365, 84, 60);
 		protein.setName("protein");
+		protein.setToolTipText("protein");
 		background.add(protein);
 		
 		ImageIcon image_plasmid = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Plasmid.png"));
 		plasmid.setIcon(image_plasmid);
 		plasmid.setBounds(6, 433, 84, 60);
 		plasmid.setName("plasmid");
+		plasmid.setToolTipText("plasmid");
 		background.add(plasmid);
 		
 		ImageIcon image_virus = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Virus.png"));
 		virus.setIcon(image_virus);
 		virus.setBounds(100, 433, 84, 59);
 		virus.setName("virus");
+		virus.setToolTipText("virus");
 		background.add(virus);
 		
 		ImageIcon image_ecoil = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Ecoil.png"));
 		ecoil.setIcon(image_ecoil);
 		ecoil.setBounds(193, 433, 84, 59);
 		ecoil.setName("ecoil");
+		ecoil.setToolTipText("bacteria");
 		background.add(ecoil);
 		
 		BackBone backbone = new BackBone("", sketchCenter);
@@ -255,11 +277,13 @@ public class Child_Design extends JLayeredPane {
 		backbone.setIcon(image_backbone);
 		backbone.setBounds(6, 596, 224, 40);
 		backbone.setName("backbone");
+		backbone.setToolTipText("backbone");
 		background.add(backbone);
 		
 		lineButton.setBounds(234,596,43,40);
 		ImageIcon image_line = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/LineStyleChooser.png"));
 		lineButton.setIcon(image_line);
+		lineButton.setToolTipText("Set the style of the line.");
         background.add(lineButton);
 		
 		ImageIcon image_line_inhabit = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/InhabitLine.png"));
@@ -267,6 +291,7 @@ public class Child_Design extends JLayeredPane {
 		line_inhabit.setBounds(6, 517, 84, 59);
 		line_inhabit.setName("line");
 		line_inhabit.setType(-1);
+		line_inhabit.setToolTipText("line_inhabit");
 		background.add(line_inhabit);
 		
 		ImageIcon image_line_enhance = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/EnhanceLine.png"));
@@ -274,12 +299,14 @@ public class Child_Design extends JLayeredPane {
 		line_enhance.setBounds(100, 517, 84, 59);
 		line_enhance.setName("line");
 		line_enhance.setType(0);
+		line_enhance.setToolTipText("line_enhance");
 		background.add(line_enhance);
 		
 		ImageIcon image_line_other = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/OtherLine.png"));
 		line_other.setIcon(image_line_other);
 		line_other.setBounds(193, 517, 84, 59);
 		line_other.setName("line");
+		line_other.setToolTipText("line_other");
 		line_other.setType(1);
 		background.add(line_other);
 		
@@ -289,6 +316,8 @@ public class Child_Design extends JLayeredPane {
 		panel.setBackground(Color.white);		
 		panel.setBounds(283, 0, 1083, 665);
 		background.add(panel);
+		
+		outer_rect=panel.getVisibleRect();
 		
 		Tpanel.setLayout(null);
 		Tpanel.setBounds(0, 0, 1083, 665);
@@ -1125,7 +1154,7 @@ public class Child_Design extends JLayeredPane {
 			if (textLabel == null)
 			{
 				col = Color.black;
-		        pFont = new Font("Time New Roman",Font.PLAIN,16);
+		        pFont = new Font("Arial",Font.PLAIN,16);
 			}
 			else
 			{
@@ -1250,7 +1279,26 @@ public class Child_Design extends JLayeredPane {
 			((JLabelWithID)(e.getComponent())).setBorder(border);
 		}
 			
-		public void mouseReleased(MouseEvent e){}
+		public void mouseReleased(MouseEvent e)
+		{
+			//delete
+			if(!outer_rect.contains((e.getComponent()).getLocation()))
+			{
+				Component comp = e.getComponent();
+				(comp.getParent()).remove(e.getComponent());
+				
+				SketchProject project = sketchCenter.currentProject;
+				int ID = -1;
+				
+				Component component = e.getComponent();
+				
+				if ((component.getName()).equals("text"))
+					ID = ((TextLabel) component).ID;
+				else
+					ID = ((JLabelWithID) component).ID;
+				project.delComponent(project.findComponentByID(ID));
+			}
+		}
 			
 		public void mouseEntered(MouseEvent e) 
 		{
@@ -1308,6 +1356,24 @@ public class Child_Design extends JLayeredPane {
 				sketchCenter.currentProject.modifyComponent
 					(textMoved.ID, SketchOperation.TYPE_BOUNDS, folBounds);
 			}
+			
+			//delete
+			if(!outer_rect.contains((e.getComponent()).getLocation()))
+			{
+				Component comp = e.getComponent();
+				(comp.getParent()).remove(e.getComponent());
+				
+				SketchProject project = sketchCenter.currentProject;
+				int ID = -1;
+				
+				Component component = e.getComponent();
+				
+				if ((component.getName()).equals("text"))
+					ID = ((TextLabel) component).ID;
+				else
+					ID = ((JLabelWithID) component).ID;
+				project.delComponent(project.findComponentByID(ID));
+			}
 		}
 			
 		public void mouseEntered(MouseEvent e) {}
@@ -1350,7 +1416,11 @@ public class Child_Design extends JLayeredPane {
 
 		public void mouseDragged(MouseEvent e) {}
 		
-		public void mouseMoved(MouseEvent e) {}
+		public void mouseMoved(MouseEvent e) 
+		{
+			panel.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+	    	Tpanel.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+		}
 			
 		public void mouseReleased(MouseEvent e){}
 			
@@ -1436,8 +1506,6 @@ public class Child_Design extends JLayeredPane {
 			
 			panel.repaint();
 		}
-		
-		
 
 		public void mousePressed(MouseEvent e) {}
 
@@ -1509,27 +1577,38 @@ public class Child_Design extends JLayeredPane {
 	{		
 		public void mouseClicked(MouseEvent e) 
 		{
-			panel.removeAll();
-			panel.repaint();
-			panel.add(Tpanel);
-			panel.add(linePanel);
-			if (pen!=null)
+			IfSaveDialog one = new IfSaveDialog();
+			if (sketchCenter.currentProject.modified)
 			{
-				pen.setEnabled(true);
+				//Open Dialog
+				one.showDialog((JFrame)panel.getRootPane().getParent(),500,200);
 			}
-			pen=null;
-			if (source!=null)
+			
+			if (one.ifOperate)
 			{
-				((JLabelWithID)source).setEnabled(true);
+				panel.removeAll();
+				panel.repaint();
+				panel.add(Tpanel);
+				panel.add(linePanel);
+				if (pen!=null)
+				{
+					pen.setEnabled(true);
+				}
+				pen=null;
+				if (source!=null)
+				{
+					((JLabelWithID)source).setEnabled(true);
+				}
+				source = null;
+				choose = false;
+				textLabel=null;
+				totalCompList=new ArrayList<Component>();
+				lineColor = Color.black;
+				lineStroke = 3.0f;
+				compCount = 0;
+				SketchCenter sketchCenter = new SketchCenter();	
 			}
-			source = null;
-			choose = false;
-			textLabel=null;
-			totalCompList=new ArrayList<Component>();
-			lineColor = Color.black;
-			lineStroke = 3.0f;
-			compCount = 0;
-			SketchCenter sketchCenter = new SketchCenter();	
+			
 		}
 
 		public void mousePressed(MouseEvent e) {}
@@ -1572,44 +1651,75 @@ public class Child_Design extends JLayeredPane {
 		public void mouseClicked(MouseEvent e) 
 		{
 			// TODO Auto-generated method stub
-			
-			JFileChooser chooser=new JFileChooser();//文件打开对话框
-			chooser.setLocale(Locale.ENGLISH);
-			chooser.setAcceptAllFileFilterUsed(true);
-			chooser.setMultiSelectionEnabled(false);
-			try {
-				UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-			} catch (ClassNotFoundException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			} catch (InstantiationException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			} catch (IllegalAccessException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			} catch (UnsupportedLookAndFeelException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
+			if (sketchCenter.currentProject.modified)
+			{
+				//Open Dialog
+				IfSaveDialog one = new IfSaveDialog();
+				one.showDialog((JFrame)panel.getRootPane().getParent(),500,200);
 			}
-		    SwingUtilities.updateComponentTreeUI(chooser);
-		    
-			chooser.addChoosableFileFilter(new MyFileFilter("xml","XML"));
-
-			chooser.setCurrentDirectory(new File("."));
-
-			chooser.showOpenDialog(null);
-
-			path = chooser.getSelectedFile();
+			//Show open dialog
 			
-			//Begin draw sketch map
-			sketchCenter.loadProject(path.toString());
-			for (SketchComponent.Component component : sketchCenter.currentProject.componentList)
-			{	
-				addComponent(component);
-			}
-			System.out.print(path);	
-			
+				JFileChooser chooser=new JFileChooser();//文件打开对话框
+				chooser.setLocale(Locale.ENGLISH);
+				chooser.setAcceptAllFileFilterUsed(true);
+				chooser.setMultiSelectionEnabled(false);
+				try {
+					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+				} catch (ClassNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (InstantiationException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (IllegalAccessException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (UnsupportedLookAndFeelException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			    SwingUtilities.updateComponentTreeUI(chooser);
+			    
+				chooser.addChoosableFileFilter(new MyFileFilter("xml","XML"));
+
+				chooser.setCurrentDirectory(new File("."));
+
+				chooser.showOpenDialog(null);
+
+				path = chooser.getSelectedFile();
+				
+				if (path!=null)
+				{
+					//clear all
+					panel.removeAll();
+					panel.repaint();
+					panel.add(Tpanel);
+					panel.add(linePanel);
+					if (pen!=null)
+					{
+						pen.setEnabled(true);
+					}
+					pen=null;
+					if (source!=null)
+					{
+						((JLabelWithID)source).setEnabled(true);
+					}
+					source = null;
+					choose = false;
+					textLabel=null;
+					totalCompList=new ArrayList<Component>();
+					lineColor = Color.black;
+					lineStroke = 3.0f;
+					compCount = 0;
+						
+					//Begin draw sketch map
+					sketchCenter.loadProject(path.toString());
+					for (SketchComponent.Component component : sketchCenter.currentProject.componentList)
+					{	
+						addComponent(component);
+					}
+						
+				}
 			
 		}
 

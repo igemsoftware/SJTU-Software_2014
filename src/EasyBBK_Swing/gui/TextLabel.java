@@ -98,17 +98,17 @@ class TextLabel extends JTextPane implements MouseListener, MouseMotionListener
 		super.paintComponent(g);
 		this.setName("text");
 		outer_rect = this.getVisibleRect();
-		middle_rect.setRect(outer_rect.x+1, outer_rect.y+1, outer_rect.width-2, outer_rect.height-2);
-		inner_rect.setRect(outer_rect.x+3, outer_rect.y+3, outer_rect.width-6, outer_rect.height-6);
-		rect_right.setRect(outer_rect.x+outer_rect.width-3, outer_rect.y+3, 2, outer_rect.height-6);
-		rect_left.setRect(outer_rect.x+1, outer_rect.y+3, 2, outer_rect.height-6);
-		rect_top.setRect(outer_rect.x+3, outer_rect.y+1, outer_rect.width-6, 2);
-		rect_bottom.setRect(outer_rect.x+3, outer_rect.y+outer_rect.height-3, outer_rect.width-6, 2);
-		rect_lefttop.setRect(outer_rect.x+1, outer_rect.y+1, 2, 2);
-		rect_leftbottom.setRect(outer_rect.x+1, outer_rect.y+outer_rect.height-3, 2, 2);
-		rect_righttop.setRect(outer_rect.x+outer_rect.width-3, outer_rect.y+1, 2, 2);
-		rect_rightbottom.setRect(outer_rect.x+outer_rect.width-3, outer_rect.y+outer_rect.height-3, 2, 2);
-		rect_move.setRect((int)(outer_rect.x+outer_rect.getWidth()/2-5), outer_rect.y+1, 10, 2);
+		middle_rect.setRect(outer_rect.x+2, outer_rect.y+2, outer_rect.width-4, outer_rect.height-4);
+		inner_rect.setRect(outer_rect.x+7, outer_rect.y+7, outer_rect.width-14, outer_rect.height-14);
+		rect_right.setRect(outer_rect.x+outer_rect.width-7, outer_rect.y+7, 5, outer_rect.height-14);
+		rect_left.setRect(outer_rect.x+2, outer_rect.y+7, 5, outer_rect.height-14);
+		rect_top.setRect(outer_rect.x+7, outer_rect.y+2, outer_rect.width-14, 5);
+		rect_bottom.setRect(outer_rect.x+7, outer_rect.y+outer_rect.height-7, outer_rect.width-14, 5);
+		rect_lefttop.setRect(outer_rect.x+2, outer_rect.y+2, 5, 5);
+		rect_leftbottom.setRect(outer_rect.x+2, outer_rect.y+outer_rect.height-7, 5, 5);
+		rect_righttop.setRect(outer_rect.x+outer_rect.width-7, outer_rect.y+2, 5, 5);
+		rect_rightbottom.setRect(outer_rect.x+outer_rect.width-7, outer_rect.y+outer_rect.height-7, 5, 5);
+		rect_move.setRect((int)(outer_rect.x+outer_rect.getWidth()/2-8), outer_rect.y+2, 15, 5);
 	}
 	
 	public boolean getResize()
@@ -230,6 +230,7 @@ class TextLabel extends JTextPane implements MouseListener, MouseMotionListener
 			this.setCursor(new Cursor(Cursor.NE_RESIZE_CURSOR));
 			panel.setCursor(new Cursor(Cursor.NE_RESIZE_CURSOR));
 	    	Tpanel.setCursor(new Cursor(Cursor.NE_RESIZE_CURSOR));
+	    	System.out.println("ppplll");
 	    	reType=3;
 		}
 		else if (rect_rightbottom.contains(e.getPoint()))
@@ -237,6 +238,7 @@ class TextLabel extends JTextPane implements MouseListener, MouseMotionListener
 			this.setCursor(new Cursor(Cursor.SE_RESIZE_CURSOR));
 			panel.setCursor(new Cursor(Cursor.SE_RESIZE_CURSOR));
 	    	Tpanel.setCursor(new Cursor(Cursor.SE_RESIZE_CURSOR));
+	    	System.out.println("ppp");
 	    	reType=5;
 		}
 		else if (rect_move.contains(e.getPoint()))
@@ -264,53 +266,53 @@ class TextLabel extends JTextPane implements MouseListener, MouseMotionListener
 			switch (reType)
 			{
 			case 1:	
-				if (this.getWidth()+this.getX()-newPoint.x>20 & this.getHeight()+this.getY()-newPoint.y>20)
+				if (this.getWidth()+this.getX()-newPoint.x>35 & this.getHeight()+this.getY()-newPoint.y>35)
 				{
 					this.setSize(new Dimension(this.getWidth()+this.getX()-newPoint.x, this.getHeight()+this.getY()-newPoint.y));
 					this.setLocation(newPoint);
 				}				
 				break;
 			case 2:
-				if (this.getY()+this.getHeight()-newPoint.y>20)
+				if (this.getY()+this.getHeight()-newPoint.y>35)
 				{
 					this.setSize(new Dimension(this.getWidth(), this.getY()+this.getHeight()-newPoint.y));
 					this.setLocation(new Point(this.getX(),newPoint.y));
 				}
 				break;
 			case 3:
-				if (newPoint.x-this.getX()>20 & this.getHeight()+this.getY()-newPoint.y>20)
+				if (newPoint.x-this.getX()>35 & this.getHeight()+this.getY()-newPoint.y>35)
 				{
 					this.setSize(new Dimension(newPoint.x-this.getX(), this.getHeight()+this.getY()-newPoint.y));
 					this.setLocation(new Point(this.getX(),newPoint.y));
 				}
 				break;
 			case 4:
-				if (newPoint.x-this.getX()>20)
+				if (newPoint.x-this.getX()>35)
 				{
 					this.setSize(new Dimension(newPoint.x-this.getX(), this.getHeight()));
 				}
 				break;
 			case 5:
-				if (newPoint.x-this.getX()>20 & newPoint.y-this.getY()>20)
+				if (newPoint.x-this.getX()>35 & newPoint.y-this.getY()>35)
 				{
 					this.setSize(new Dimension(newPoint.x-this.getX(), newPoint.y-this.getY()));
 				}
 				break;
 			case 6:
-				if (newPoint.y-this.getY()>20)
+				if (newPoint.y-this.getY()>35)
 				{
 					this.setSize(new Dimension(this.getWidth(), newPoint.y-this.getY()));
 				}
 				break;
 			case 7:
-				if (this.getX()+this.getWidth()-newPoint.x>20 & newPoint.y-this.getY()>20)
+				if (this.getX()+this.getWidth()-newPoint.x>35 & newPoint.y-this.getY()>35)
 				{
 					this.setSize(new Dimension(this.getX()+this.getWidth()-newPoint.x, newPoint.y-this.getY()));
 					this.setLocation(new Point(newPoint.x,this.getY()));
 				}
 				break;
 			case 8:
-				if (this.getX()+this.getWidth()-newPoint.x>20)
+				if (this.getX()+this.getWidth()-newPoint.x>35)
 				{
 					this.setSize(new Dimension(this.getX()+this.getWidth()-newPoint.x, this.getHeight()));
 					this.setLocation(new Point(newPoint.x,this.getY()));
