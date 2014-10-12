@@ -104,6 +104,7 @@ public class SketchCenter
 			bbkUpload.features.add(new BbkUpload.Feature
 					("", bbkDetail.name, bbkDetail.type, "Fwd", 
 							Integer.toString(startPos), Integer.toString(endPos)));
+			fillFeatureFromSubpartToBbkUpload(bbkUpload, bbkDetail, startPos - 1);
 		}
 		bbkUpload.setSequence(false, findTwins);
 		return bbkUpload;
@@ -111,6 +112,18 @@ public class SketchCenter
 	
 	
 	
+	
+	private void fillFeatureFromSubpartToBbkUpload
+		(BbkUpload bbkUpload, BbkDetail bbkDetail, int offset)
+	{	
+		for (BbkDetail.Feature feature : bbkDetail.features)
+		{	int startPos = Integer.parseInt(feature.startPos) + offset;
+			int endPos = Integer.parseInt(feature.endPos) + offset;
+			bbkUpload.features.add(new BbkUpload.Feature
+					(feature.ID, feature.title, feature.type, feature.direction, 
+							Integer.toString(startPos), Integer.toString(endPos)));
+		}
+	}
 	
 	private SketchProject findProjectByName(String projectName)
 	{	
