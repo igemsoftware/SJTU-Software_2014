@@ -47,7 +47,7 @@ public class Child_Compare extends JPanel {
 		setLayout(null);
 		
 		Containerpanel = new JPanel();
-		Containerpanel.setBounds(0, 0, 1348, 1000);
+		Containerpanel.setBounds(0, 1000, 1348, 1000);
 		Containerpanel.setPreferredSize(new Dimension(1348, 1000));
 		Containerpanel.setBackground(new Color(255, 255, 255));
 		Containerpanel.setLayout(null);
@@ -83,43 +83,62 @@ public class Child_Compare extends JPanel {
 	}
 	
 	public void initialpage(){
-		Comparison_info comparison_info = new Comparison_info();
-		comparison_info.setBounds(123, 150, 220, 690);
-		Containerpanel.add(comparison_info);
+		if(comparisonlist == null || comparisonlist.size() == 0){
+			JTextField attention = new JTextField("Parts being compared should be added from Search");
+			attention.setOpaque(false);
+			attention.setForeground(Color.red);
+			attention.setFont(new Font("Arial", Font.BOLD, 30));
+			attention.setBackground(new Color(255, 255, 255));
+			attention.setBounds(283, 150, 800, 50);
+			attention.setEditable(false);
+			attention.setBorder(new EmptyBorder(0,0,0,0));
+			Containerpanel.add(attention);
+			attention.setColumns(10);
+		}
 		
-		if(comparisonlist == null) return;
-		int num = comparisonlist.size();
-		
-		for(int i = 0; i < num; i++){
-			Comparison_item comparison_item = new Comparison_item();
-			comparison_item.setBounds(343 + i*300, 150, 300, 690);
-			BbkDetail bbkdetail = comparisonlist.get(i);
-			comparison_item.PartName.setText(bbkdetail.name);
-			comparison_item.Type.setText(bbkdetail.type);
-			comparison_item.ShortDescription.setText(bbkdetail.shortDesc);
-			comparison_item.PartStatus.setText(bbkdetail.releaseStatus);
-			comparison_item.SampleStatus.setText(bbkdetail.sampleStatus);
-			comparison_item.Url.setText("<html><u>" + bbkdetail.url + "</u></html>");
-			comparison_item.DNAStatus.setText(bbkdetail.DNA_status);
-			comparison_item.DeleteThisPart.setText(bbkdetail.rating.delete_this_part);
-			comparison_item.ConfirmedTimes.setText(bbkdetail.rating.tot_confirmed);
-			comparison_item.LengthofDocumentation.setText(bbkdetail.rating.documentation);
-			comparison_item.PartResults.setText(bbkdetail.results);
-			comparison_item.GroupFavorite.setText(bbkdetail.groupFavorite);
-			comparison_item.UsedTimes.setText(bbkdetail.rating.used_times);
-			if(bbkdetail.rating.average_stars.equals("No Stars")){
-				comparison_item.AverageRating.setText(bbkdetail.rating.average_stars);
-			}
-			else if(bbkdetail.rating.average_stars.length() == 1){
-				comparison_item.AverageRating.setText(bbkdetail.rating.average_stars);
-			}
-			else if(bbkdetail.rating.average_stars.length() >= 3){
-				comparison_item.AverageRating.setText(bbkdetail.rating.average_stars.substring(0,3));
-			}
-			comparison_item.NumberofComments.setText(bbkdetail.rating.tot_commets);
-			comparison_item.GoogleItems.setText(bbkdetail.rating.google_items);
+		else if(comparisonlist.size() != 0){
+			Comparison_info comparison_info = new Comparison_info();
+			comparison_info.setBounds(123, 150, 220, 690);
+			Containerpanel.add(comparison_info);
 			
-			Containerpanel.add(comparison_item);
+			int num = comparisonlist.size();
+			
+			for(int i = 0; i < num; i++){
+				Comparison_item comparison_item = new Comparison_item();
+				comparison_item.setBounds(343 + i*310, 150, 300, 690);
+				BbkDetail bbkdetail = comparisonlist.get(i);
+				comparison_item.PartName.setText(bbkdetail.name);
+				comparison_item.Type.setText(bbkdetail.type);
+				if(bbkdetail.shortDesc.length() <= 30){
+					comparison_item.ShortDescription.setText(bbkdetail.shortDesc);
+				}
+				else if(bbkdetail.shortDesc.length() > 30){
+					comparison_item.ShortDescription.setText("<html>" + bbkdetail.shortDesc.substring(0, 30) + "<br>" + bbkdetail.shortDesc.substring(30) + "</html>");
+				}
+				comparison_item.PartStatus.setText(bbkdetail.releaseStatus);
+				comparison_item.SampleStatus.setText(bbkdetail.sampleStatus);
+				comparison_item.Url.setText("<html><u>" + bbkdetail.url + "</u></html>");
+				comparison_item.DNAStatus.setText(bbkdetail.DNA_status);
+				comparison_item.DeleteThisPart.setText(bbkdetail.rating.delete_this_part);
+				comparison_item.ConfirmedTimes.setText(bbkdetail.rating.tot_confirmed);
+				comparison_item.LengthofDocumentation.setText(bbkdetail.rating.documentation);
+				comparison_item.PartResults.setText(bbkdetail.results);
+				comparison_item.GroupFavorite.setText(bbkdetail.groupFavorite);
+				comparison_item.UsedTimes.setText(bbkdetail.rating.used_times);
+				if(bbkdetail.rating.average_stars.equals("No Stars")){
+					comparison_item.AverageRating.setText(bbkdetail.rating.average_stars);
+				}
+				else if(bbkdetail.rating.average_stars.length() == 1){
+					comparison_item.AverageRating.setText(bbkdetail.rating.average_stars);
+				}
+				else if(bbkdetail.rating.average_stars.length() >= 3){
+					comparison_item.AverageRating.setText(bbkdetail.rating.average_stars.substring(0,3));
+				}
+				comparison_item.NumberofComments.setText(bbkdetail.rating.tot_commets);
+				comparison_item.GoogleItems.setText(bbkdetail.rating.google_items);
+				
+				Containerpanel.add(comparison_item);
+			}
 		}
 	}
 }
