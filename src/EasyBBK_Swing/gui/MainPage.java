@@ -84,7 +84,7 @@ public class MainPage extends JFrame{
 		
 		Mainpanel = new JPanel();
 		//Mainpanel.setOpaque(true);
-		Mainpanel.setBounds(0, 59, 1366, 670);
+		Mainpanel.setBounds(0, 58, 1366, 670);
 		Mainpanel.setVisible(true);
 		Mainpanel.setLayout(null);
 		frame.getContentPane().add(Mainpanel);
