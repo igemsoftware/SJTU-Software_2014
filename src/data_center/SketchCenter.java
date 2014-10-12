@@ -84,18 +84,26 @@ public class SketchCenter
 	}
 	
 	/** Upload the newly designed biobrick to the database by SJTU-software! This 
-	 * function generates a BbkUpload instance to start this process.  */
+	 * function generates a BbkUpload instance to start this process. This function
+	 * is aimed to simplify the upload process and as the interaction between the 4
+	 * functions of the software.  */
 	public BbkUpload generateBbkUploadFromBackBone(BackBone backbone, boolean findTwins)
 	{	
 		BbkUpload bbkUpload = new BbkUpload();
+		int startPos = 1, endPos = 0;
 		for (Integer componentID : backbone.bbkChildren)
 		{	BioBrick bbk = (BioBrick) currentProject.findComponentByID(componentID);
 			if (bbk == null)
 				continue;
 			// else... 
+			startPos = endPos + 1;
 			BbkDetail bbkDetail = 
-					DatabaseConnector.getDetailByName(bbk.bbkOutline.name);	
+					DatabaseConnector.getDetailByName(bbk.bbkOutline.name);
+			endPos = startPos + bbkDetail.sequence.length() - 1;
 			bbkUpload.sequenceTokens.add(bbkDetail);
+			bbkUpload.features.add(new BbkUpload.Feature
+					("", bbkDetail.name, bbkDetail.type, "Fwd", 
+							Integer.toString(startPos), Integer.toString(endPos)));
 		}
 		bbkUpload.setSequence(false, findTwins);
 		return bbkUpload;
