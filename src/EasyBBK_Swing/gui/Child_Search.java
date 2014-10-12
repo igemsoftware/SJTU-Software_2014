@@ -46,6 +46,7 @@ public class Child_Search extends JPanel {
 	public JPanel resultpanel;
 	public JLabel previouspage;
 	public JLabel nextpage;
+	public JLabel totalpagenum;
 	public JLabel showpagenum;
 	public boolean confirmed_clicked;
 	public Child_Search child_search;
@@ -209,7 +210,7 @@ public class Child_Search extends JPanel {
 				}
 			}
 		});
-		textField.setFont(new Font("Times New Roman", Font.PLAIN, 40));
+		textField.setFont(new Font("Arial", Font.PLAIN, 40));
 		textField.setVisible(true);
 		textField.setBounds(112, 0, 378, 54);
 		Result.add(textField);

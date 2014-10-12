@@ -182,14 +182,14 @@ public class Child_Main extends JPanel {
 					mainpage.Upload.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Upload1.png")));
 					mainpage.Compare.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Compare_click.png")));
 
-					if(mainpage.child_upload_current == null){
+					if(mainpage.child_search_current == null){
 						Child_Compare child_compare = new Child_Compare(mainpage, null);
 						mainpage.Mainpanel.removeAll();
 						mainpage.Mainpanel.add(child_compare);
 						mainpage.Mainpanel.updateUI();
 						mainpage.CurrentPage = 4;
 					}
-					else if(mainpage.child_upload_current != null){
+					else if(mainpage.child_search_current != null){
 						Child_Compare child_compare = new Child_Compare(mainpage);
 						mainpage.Mainpanel.removeAll();
 						mainpage.Mainpanel.add(child_compare);

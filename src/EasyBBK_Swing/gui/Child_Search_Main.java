@@ -75,7 +75,8 @@ public class Child_Search_Main extends JPanel {
 				}
 			}
 		});
-		SearchText.setFont(new Font("Times New Roman", Font.PLAIN, 40));
+		SearchText.setBorder(null);
+		SearchText.setFont(new Font("Arial", Font.PLAIN, 40));
 		SearchText.setVisible(true);
 		SearchText.setBounds(373, 237, 426, 65);
 		add(SearchText);

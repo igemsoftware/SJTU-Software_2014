@@ -159,6 +159,7 @@ class LinePanel extends JLayeredPane
     	public GraphicsCurve(Graphics2D graphics) 
     	{        
     		this.myGraphics=graphics; 
+    		(this.myGraphics).setRenderingHint(RenderingHints.KEY_ANTIALIASING , RenderingHints.VALUE_ANTIALIAS_ON);
     	} 
     	   	
     	public Point getTopLeft()

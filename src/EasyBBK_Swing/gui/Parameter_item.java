@@ -36,7 +36,7 @@ public class Parameter_item extends JPanel {
 				"t-oh", "t-ol", "tag", "target", "type", "t_hl", "t_lh", "t_m", "uniprot"};
 		Choice = new JComboBox(parameter);
 		content = "abs";
-		Choice.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		Choice.setFont(new Font("Arial", Font.PLAIN, 20));
 		Choice.setSelectedIndex(0);
 		Choice.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
@@ -50,7 +50,7 @@ public class Parameter_item extends JPanel {
 		
 		textField = new JTextField();
 		textField.setBounds(223, 0, 263, 30);
-		textField.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		textField.setFont(new Font("Arial", Font.PLAIN, 20));
 		add(textField);
 		textField.setColumns(10);
 		
