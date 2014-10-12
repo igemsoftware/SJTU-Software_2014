@@ -6,9 +6,11 @@ import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.GraphicsEnvironment;
 import java.awt.Insets;
+import java.awt.Point;
 import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionAdapter;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -19,7 +21,7 @@ import data_center.*;
 import data_center.BbkUpload.SpecifiedSubscar;
 
 public class MainPage extends JFrame{
-	public JFrame frame;
+	public static JFrame frame;
 	public JPanel Mainpanel;
 	public JLabel Search;
 	public JLabel Design;
@@ -44,6 +46,7 @@ public class MainPage extends JFrame{
 	public String subscarstring = "";
 	public BbkDetail subpart_bbkdetail = null;
 	public SpecifiedSubscar subscar = null;
+	static Point origin = new Point();
 	/**
 	 * Launch the application.
 	 */
@@ -91,6 +94,22 @@ public class MainPage extends JFrame{
 		frame.getContentPane().add(Mainpanel);
 		
 		GreenBar = new JLabel("");
+		GreenBar.addMouseListener(new MouseAdapter() {
+            public void mousePressed(MouseEvent e) {  //按下（mousePressed 不是点击，而是鼠标被按下没有抬起）
+                origin.x = e.getX();  //当鼠标按下的时候获得窗口当前的位置
+                origin.y = e.getY();
+            }
+		});
+		
+		GreenBar.addMouseMotionListener(new MouseMotionAdapter() {
+            public void mouseDragged(MouseEvent e) {  //拖动（mouseDragged 指的不是鼠标在窗口中移动，而是用鼠标拖动）
+                
+                Point p = frame.getLocation();  //当鼠标拖动时获取窗口当前位置
+                //设置窗口的位置
+                //窗口当前的位置 + 鼠标当前在窗口的位置 - 鼠标按下的时候在窗口的位置
+                frame.setLocation(p.x + e.getX() - origin.x, p.y + e.getY() - origin.y);
+            }
+		});
 		GreenBar.setOpaque(true);
 		GreenBar.setBounds(0, 0, 1366, 58);
 		GreenBar.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/greenbar.png")));
