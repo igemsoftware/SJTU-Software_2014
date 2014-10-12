@@ -83,7 +83,8 @@ public class MainPage extends JFrame{
 		//Dimension scrSize = Toolkit.getDefaultToolkit().getScreenSize();    
 		//Insets scrInsets=Toolkit.getDefaultToolkit().getScreenInsets(GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDefaultConfiguration());
 		//frame.setBounds(scrInsets.left,scrInsets.top,scrSize.width-scrInsets.left-scrInsets.right,scrSize.height-scrInsets.top-scrInsets.bottom);
-		frame.setBounds(0, 0, 1366, 728);
+		frame.setSize(new Dimension(1366, 728));
+		frame.setLocationRelativeTo(null);
 		frame.setUndecorated(true);
 		
 		Mainpanel = new JPanel();
