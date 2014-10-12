@@ -8,6 +8,7 @@ import EasyBBK_Swing.gui.LinePanel;
 import EasyBBK_Swing.gui.Pen;
 import EasyBBK_Swing.gui.TPanel;
 import EasyBBK_Swing.gui.FontChooser;
+import EasyBBK_Swing.gui.IfUploadListener.UploadDialog;
 
 import java.awt.Color;
 import java.awt.Component;
@@ -63,10 +64,12 @@ public class Child_Design extends JLayeredPane {
 	private JLayeredPane panel = new JLayeredPane();
 	private TPanel Tpanel = new TPanel();
 	private Boolean choose = new Boolean(false);
-	private Object source = new Object();
+	private Object source = null;
 	private Pen pen = null;
 	private LinePanel linePanel = new LinePanel(pen);
 	private TextLabel textLabel = null;
+	boolean addText=false;
+	private Rectangle outer_rect = new Rectangle();
 	
 	private ArrayList<Component> totalCompList=new ArrayList<Component>();
 	
@@ -119,12 +122,11 @@ public class Child_Design extends JLayeredPane {
 		JButton lineButton = new JButton();
 		JLabelWithID virus = new JLabelWithID("");
 		JLabelWithID ecoil = new JLabelWithID("");
-		Pen text = new Pen();
+		JButton text = new JButton();
 		Pen eraser = new Pen();
 		Pen line_inhabit = new Pen();
 		Pen line_enhance = new Pen();
 		Pen line_other = new Pen();
-		
 		
 		this.setBounds(0, 0, 1366, 670);
 		this.setLayout(null);
@@ -132,49 +134,57 @@ public class Child_Design extends JLayeredPane {
 		newButton.setBounds(14,55,40,41);
 		ImageIcon image_newButton = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/New_design.png"));
 		newButton.setIcon(image_newButton);
+		newButton.setToolTipText("Create a new sketch map.");
         background.add(newButton);
         
         openButton.setBounds(66,55,40,41);
 		ImageIcon image_openButton = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Open_design.png"));
 		openButton.setIcon(image_openButton);
+		openButton.setToolTipText("Open a XML file.");
         background.add(openButton);
         
         saveButton.setBounds(118,55,40,41);
 		ImageIcon image_saveButton = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Save_design.png"));
 		saveButton.setIcon(image_saveButton);
+		saveButton.setToolTipText("Save your work as a XML file.");
         background.add(saveButton);
 		
         exportButton.setBounds(173,55,40,41);
 		ImageIcon image_exportButton = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Export_design.png"));
 		exportButton.setIcon(image_exportButton);
+		exportButton.setToolTipText("Export your work as a picture.");
         background.add(exportButton);        
 		
 		backout.setBounds(173,112,40,42);
 		ImageIcon image_backout = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Backout.png"));
 		backout.setIcon(image_backout);
+		backout.setToolTipText("Undo");
         background.add(backout);
 		
         forward.setBounds(226,112,40,42);
 		ImageIcon image_forward = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Forward.png"));
 		forward.setIcon(image_forward);
+		forward.setToolTipText("Redo");
         background.add(forward);
         
         fontButton.setBounds(67,112,40,42);
 		ImageIcon image_font = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Font.png"));
 		fontButton.setIcon(image_font);
+		fontButton.setToolTipText("Choose the font of the test label.");
         background.add(fontButton);
         
         ImageIcon image_text = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Text_design.png"));
 		text.setIcon(image_text);
 		text.setBounds(14, 112, 40, 42);
 		text.setName("text");
-		text.setType(5);
+		text.setToolTipText("text");
 		background.add(text);	
 		
 		ImageIcon image_eraser = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Eraser.png"));
 		eraser.setIcon(image_eraser);
 		eraser.setBounds(119, 112, 40, 42);
 		eraser.setName("eraser");
+		eraser.setToolTipText("Remove components.");
 		eraser.setType(2);
 		background.add(eraser);
 
@@ -182,72 +192,84 @@ public class Child_Design extends JLayeredPane {
 		promoter.setIcon(image_promoter);
 		promoter.setBounds(6, 233, 84, 60);
 		promoter.setName("promoter");
+		promoter.setToolTipText("promoter");
 		background.add(promoter);		
 		
 		ImageIcon image_rbs = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/RBS.png"));
 		rbs.setIcon(image_rbs);
 		rbs.setBounds(100, 233, 84, 60);
 		rbs.setName("rbs");
+		rbs.setToolTipText("rbs");
 		background.add(rbs);		
 		
 		ImageIcon image_coding = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Coding.png"));
 		coding.setIcon(image_coding);
 		coding.setBounds(193, 233, 84, 60);
 		coding.setName("coding");
+		coding.setToolTipText("coding sequence");
 		background.add(coding);		
 		
 		ImageIcon image_terminator = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Terminator.png"));
 		terminator.setIcon(image_terminator);
 		terminator.setBounds(6, 299, 84, 60);
 		terminator.setName("terminator");
+		terminator.setToolTipText("terminator");
 		background.add(terminator);				
 		
 		ImageIcon image_primer = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Primer.png"));
 		primer.setIcon(image_primer);
 		primer.setBounds(100, 299, 84, 60);
 		primer.setName("primer");
+		primer.setToolTipText("primer");
 		background.add(primer);		
 		
 		ImageIcon image_reporter = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Reporter.png"));
 		reporter.setIcon(image_reporter);
 		reporter.setBounds(193, 299, 84, 60);
 		reporter.setName("reporter");
+		reporter.setToolTipText("reporter");
 		background.add(reporter);
 		
 		ImageIcon image_recepter = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Recepter.png"));
 		recepter.setIcon(image_recepter);
 		recepter.setBounds(6, 365, 84, 60);
 		recepter.setName("recepter");
+		recepter.setToolTipText("receptor");
 		background.add(recepter);
 		
 		ImageIcon image_factor = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Factor.png"));
 		factor.setIcon(image_factor);
 		factor.setBounds(100, 365, 84, 60);
 		factor.setName("factor");
+		factor.setToolTipText("factor");
 		background.add(factor);
 		
 		ImageIcon image_protein = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Protein.png"));
 		protein.setIcon(image_protein);
 		protein.setBounds(193, 365, 84, 60);
 		protein.setName("protein");
+		protein.setToolTipText("protein");
 		background.add(protein);
 		
 		ImageIcon image_plasmid = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Plasmid.png"));
 		plasmid.setIcon(image_plasmid);
 		plasmid.setBounds(6, 433, 84, 60);
 		plasmid.setName("plasmid");
+		plasmid.setToolTipText("plasmid");
 		background.add(plasmid);
 		
 		ImageIcon image_virus = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Virus.png"));
 		virus.setIcon(image_virus);
 		virus.setBounds(100, 433, 84, 59);
 		virus.setName("virus");
+		virus.setToolTipText("virus");
 		background.add(virus);
 		
 		ImageIcon image_ecoil = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Ecoil.png"));
 		ecoil.setIcon(image_ecoil);
 		ecoil.setBounds(193, 433, 84, 59);
 		ecoil.setName("ecoil");
+		ecoil.setToolTipText("bacteria");
 		background.add(ecoil);
 		
 		BackBone backbone = new BackBone("", sketchCenter);
@@ -255,11 +277,13 @@ public class Child_Design extends JLayeredPane {
 		backbone.setIcon(image_backbone);
 		backbone.setBounds(6, 596, 224, 40);
 		backbone.setName("backbone");
+		backbone.setToolTipText("backbone");
 		background.add(backbone);
 		
 		lineButton.setBounds(234,596,43,40);
 		ImageIcon image_line = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/LineStyleChooser.png"));
 		lineButton.setIcon(image_line);
+		lineButton.setToolTipText("Set the style of the line.");
         background.add(lineButton);
 		
 		ImageIcon image_line_inhabit = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/InhabitLine.png"));
@@ -267,6 +291,7 @@ public class Child_Design extends JLayeredPane {
 		line_inhabit.setBounds(6, 517, 84, 59);
 		line_inhabit.setName("line");
 		line_inhabit.setType(-1);
+		line_inhabit.setToolTipText("line_inhabit");
 		background.add(line_inhabit);
 		
 		ImageIcon image_line_enhance = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/EnhanceLine.png"));
@@ -274,21 +299,25 @@ public class Child_Design extends JLayeredPane {
 		line_enhance.setBounds(100, 517, 84, 59);
 		line_enhance.setName("line");
 		line_enhance.setType(0);
+		line_enhance.setToolTipText("line_enhance");
 		background.add(line_enhance);
 		
 		ImageIcon image_line_other = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/OtherLine.png"));
 		line_other.setIcon(image_line_other);
 		line_other.setBounds(193, 517, 84, 59);
 		line_other.setName("line");
+		line_other.setToolTipText("line_other");
 		line_other.setType(1);
 		background.add(line_other);
 		
 		panel.setLayout(null);
 		panel.setOpaque(true);
 		panel.setBorder(BorderFactory.createEtchedBorder());
-		panel.setBackground(Color.WHITE);		
+		panel.setBackground(Color.white);		
 		panel.setBounds(283, 0, 1083, 665);
 		background.add(panel);
+		
+		outer_rect=panel.getVisibleRect();
 		
 		Tpanel.setLayout(null);
 		Tpanel.setBounds(0, 0, 1083, 665);
@@ -367,9 +396,13 @@ public class Child_Design extends JLayeredPane {
 		eraser.addMouseListener(eraserListener);
 		eraser.addMouseMotionListener(eraserListener);
 		
-		IfDrawLineListener textListener = new IfDrawLineListener();
-		text.addMouseListener(textListener);
-		text.addMouseMotionListener(textListener);
+		addTextListener paddTextlistener = new addTextListener();
+		panel.addMouseListener(paddTextlistener);
+		panel.addMouseMotionListener(paddTextlistener);
+		
+		IfaddTextListener ifaddTextListener = new IfaddTextListener();
+		text.addMouseListener(ifaddTextListener);
+		text.addMouseMotionListener(ifaddTextListener);
 		
 		DrawCompListener Plistener = new DrawCompListener();
 		panel.addMouseListener(Plistener);
@@ -524,8 +557,8 @@ public class Child_Design extends JLayeredPane {
 							newLine.addMouseMotionListener(deleteLine);
 	    				}
 	    			}
+	    			pen = null;
 	    		}	
-	    		pen = null;
 	    	}
 	    	else
 	    	{
@@ -541,6 +574,7 @@ public class Child_Design extends JLayeredPane {
 	    		source = null;
 	    		pen = null;
 	    	}
+	    	addText=false;
 	    }
 	      
 	    public void mouseMoved(MouseEvent e){}
@@ -698,6 +732,7 @@ public class Child_Design extends JLayeredPane {
 				linePanel.setPen(pen);
 				
 			}
+			addText=false;
 		}
 		
 		public void mousePressed(MouseEvent e) {}
@@ -711,6 +746,102 @@ public class Child_Design extends JLayeredPane {
 		public void mouseEntered(MouseEvent e) {}
 
 		public void mouseExited(MouseEvent e) {}
+	}
+	
+	/**
+	 * If add text
+	 */
+	public class IfaddTextListener implements MouseInputListener
+	{	
+		public void mouseClicked(MouseEvent e) 
+		{
+			if (pen!=null)
+			{
+				pen.setEnabled(true);
+			}
+			pen=null;
+			if (source!=null)
+			{
+				((JLabelWithID)source).setEnabled(true);
+			}
+			source = null;
+			choose = false;
+			
+			addText=true;
+			if (pen != null)
+    		{
+    			pen.noUse();
+    			if (pen.getType()==-1 | pen.getType()==0 | pen.getType()==1)
+    			{
+    				if (linePanel.lineList.size()!=0)
+    				{
+    					BufferedImage img = new BufferedImage(panel.getWidth(),panel.getHeight(),BufferedImage.TRANSLUCENT);
+						Graphics2D g = (Graphics2D)img.getGraphics();
+						linePanel.paint(g);
+						
+						BufferedImage newimg = img.getSubimage(linePanel.getLineBorder()[0]-10, linePanel.getLineBorder()[2]-10,
+								linePanel.getLineBorder()[1]-linePanel.getLineBorder()[0]+20,
+								linePanel.getLineBorder()[3]-linePanel.getLineBorder()[2]+20);
+						JLabelWithID newLine = new JLabelWithID();
+						newLine.setName("line");
+						totalCompList.add(newLine);
+						newLine.ID=compCount++;
+						ImageIcon image = new ImageIcon(newimg);
+						newLine.setIcon(image);
+						newLine.setBounds(linePanel.getLineBorder()[0]-10, linePanel.getLineBorder()[2]-10,
+								linePanel.getLineBorder()[1]-linePanel.getLineBorder()[0]+20,
+								linePanel.getLineBorder()[3]-linePanel.getLineBorder()[2]+20);
+						panel.add(newLine);
+						
+						int lineType = -1;
+						switch (linePanel.lineType)
+						{	
+							case LinePanel.LINE_WITH_EMPTY_ARROW:
+								lineType = BbkType.Sketch.Relation.PROMOTE;	break;
+							case LinePanel.LINE_WIHT_STOP_END:
+								lineType = BbkType.Sketch.Relation.SUPPRESS;	break;
+							case LinePanel.LINE_WITH_FULL_ARROW:
+								lineType = BbkType.Sketch.Relation.OTHER;	break;
+						}						
+						
+						Color lineColor = new Color(linePanel.color.getRGB());
+						float lineStroke = linePanel.stroke;
+						ArrayList<Point> points = new ArrayList<Point>();
+						for (Point point : linePanel.lineList)
+							points.add(new Point(point));
+						
+						Rectangle bounds = new Rectangle(newLine.getBounds());
+						sketchCenter.currentProject.addComponent(new SketchComponent.Relation
+								(newLine.ID, lineType, bounds, points, lineColor, lineStroke));
+						
+						//移动
+						DragLineListener dragListener = new DragLineListener();
+						newLine.addMouseListener(dragListener);
+						newLine.addMouseMotionListener(dragListener);
+						linePanel.endLine();
+						
+						//删除
+						DeleteListener deleteLine = new DeleteListener();
+						newLine.addMouseListener(deleteLine);
+						newLine.addMouseMotionListener(deleteLine);
+    				}
+    			}
+    			pen = null;
+    		}
+		}
+		
+		public void mousePressed(MouseEvent e) {}
+
+		public void mouseDragged(MouseEvent e) {}
+		
+		public void mouseMoved(MouseEvent e) {}
+			
+		public void mouseReleased(MouseEvent e){}
+			
+		public void mouseEntered(MouseEvent e) {}
+
+		public void mouseExited(MouseEvent e) {}
+		
 	}
 	
 	/**
@@ -746,10 +877,10 @@ public class Child_Design extends JLayeredPane {
 		    		newBackBone.setIcon(image_newBackBone);
 		    		
 		    		point.x = point.x - 41;
-		    		point.y = point.y - 25;
+		    		point.y = point.y - 30;
 		    		
 		    		//Location
-		    		newBackBone.setBounds(point.x, point.y, 200, 50);
+		    		newBackBone.setBounds(point.x, point.y, 200, 60);
 		    		newBackBone.setName("backbone");
 		    		newBackBone.activate();
 					panel.add(newBackBone,-1);
@@ -766,6 +897,9 @@ public class Child_Design extends JLayeredPane {
 					newBackBone.addMouseListener(deleteBackbone);
 					newBackBone.addMouseMotionListener(deleteBackbone);
 					
+					IfUploadListener ifUploadListener = new IfUploadListener(sketchCenter,mainpage);
+					newBackBone.addMouseListener(ifUploadListener);
+					newBackBone.addMouseMotionListener(ifUploadListener);
 	    		}
 	    		else
 	    		{
@@ -783,17 +917,17 @@ public class Child_Design extends JLayeredPane {
 		    		//Location
 		    		if (((JLabelWithID)source).getName()=="ecoil")
 		    		{
-		    			newLabel.setBounds(point.x-62, point.y-25, 125,50);
+		    			newLabel.setBounds(point.x-62, point.y-30, 125,60);
 		    			newLabel.setName(((JLabelWithID)source).getName());
 		    		}
 		    		else if(((JLabelWithID)source).getName()=="virus")
 		    		{
-		    			newLabel.setBounds(point.x-25, point.y-25, 50,50);
+		    			newLabel.setBounds(point.x-25, point.y-30, 50,60);
 		    			newLabel.setName(((JLabelWithID)source).getName());
 		    		}
 		    		else
 		    		{
-		    			newLabel.setBounds(point.x-41, point.y-25, 83,50);
+		    			newLabel.setBounds(point.x-41, point.y-30, 83,60);
 			    		newLabel.setName(((JLabelWithID)source).getName());
 		    		}		    		
 
@@ -857,14 +991,24 @@ public class Child_Design extends JLayeredPane {
 					newLabel.addMouseMotionListener(deleteLabel);
 	    		}
 	    	}
-	    	else if ((pen!=null) && (pen.getType()==5))
+	    }
+	      
+	    public void mouseMoved(MouseEvent e){}
+	}
+	
+	public class addTextListener implements MouseInputListener
+	{	
+		Point point = new Point(0,0);
+		public void mouseClicked(MouseEvent e) 
+		{
+			if (addText)
 	    	{
 	    		point =  e.getPoint();
 	    		TextLabel newText = new TextLabel(panel,Tpanel, sketchCenter);
 	    		newText.setName("text");
-	    		point.x = point.x - 25;
+	    		point.x = point.x - 30;
 	    		point.y = point.y - 15;
-	    		newText.setBounds(point.x, point.y, 50,30);
+	    		newText.setBounds(point.x, point.y, 60,30);
 	    		totalCompList.add(newText);
 	    		newText.ID=compCount++;	    		
 	    		panel.add(newText);
@@ -888,15 +1032,23 @@ public class Child_Design extends JLayeredPane {
 				DeleteListener deleteText = new DeleteListener();
 				newText.addMouseListener(deleteText);
 				newText.addMouseMotionListener(deleteText);
+				
+				addText=false;
 	    	}
-	    	
-	    	//Draw lines
-	    	
-	    	panel.setPosition(linePanel, 0);
-	    	linePanel.repaint();
-	    }
-	      
-	    public void mouseMoved(MouseEvent e){}
+		}
+		
+		public void mousePressed(MouseEvent e) {}
+
+		public void mouseDragged(MouseEvent e) {}
+		
+		public void mouseMoved(MouseEvent e) {}
+			
+		public void mouseReleased(MouseEvent e){}
+			
+		public void mouseEntered(MouseEvent e) {}
+
+		public void mouseExited(MouseEvent e) {}
+		
 	}
 	
 	/**
@@ -1002,7 +1154,7 @@ public class Child_Design extends JLayeredPane {
 			if (textLabel == null)
 			{
 				col = Color.black;
-		        pFont = new Font("Time New Roman",Font.PLAIN,16);
+		        pFont = new Font("Arial",Font.PLAIN,16);
 			}
 			else
 			{
@@ -1127,7 +1279,26 @@ public class Child_Design extends JLayeredPane {
 			((JLabelWithID)(e.getComponent())).setBorder(border);
 		}
 			
-		public void mouseReleased(MouseEvent e){}
+		public void mouseReleased(MouseEvent e)
+		{
+			//delete
+			if(!outer_rect.contains((e.getComponent()).getLocation()))
+			{
+				Component comp = e.getComponent();
+				(comp.getParent()).remove(e.getComponent());
+				
+				SketchProject project = sketchCenter.currentProject;
+				int ID = -1;
+				
+				Component component = e.getComponent();
+				
+				if ((component.getName()).equals("text"))
+					ID = ((TextLabel) component).ID;
+				else
+					ID = ((JLabelWithID) component).ID;
+				project.delComponent(project.findComponentByID(ID));
+			}
+		}
 			
 		public void mouseEntered(MouseEvent e) 
 		{
@@ -1185,6 +1356,24 @@ public class Child_Design extends JLayeredPane {
 				sketchCenter.currentProject.modifyComponent
 					(textMoved.ID, SketchOperation.TYPE_BOUNDS, folBounds);
 			}
+			
+			//delete
+			if(!outer_rect.contains((e.getComponent()).getLocation()))
+			{
+				Component comp = e.getComponent();
+				(comp.getParent()).remove(e.getComponent());
+				
+				SketchProject project = sketchCenter.currentProject;
+				int ID = -1;
+				
+				Component component = e.getComponent();
+				
+				if ((component.getName()).equals("text"))
+					ID = ((TextLabel) component).ID;
+				else
+					ID = ((JLabelWithID) component).ID;
+				project.delComponent(project.findComponentByID(ID));
+			}
 		}
 			
 		public void mouseEntered(MouseEvent e) {}
@@ -1227,7 +1416,11 @@ public class Child_Design extends JLayeredPane {
 
 		public void mouseDragged(MouseEvent e) {}
 		
-		public void mouseMoved(MouseEvent e) {}
+		public void mouseMoved(MouseEvent e) 
+		{
+			panel.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+	    	Tpanel.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+		}
 			
 		public void mouseReleased(MouseEvent e){}
 			
@@ -1313,8 +1506,6 @@ public class Child_Design extends JLayeredPane {
 			
 			panel.repaint();
 		}
-		
-		
 
 		public void mousePressed(MouseEvent e) {}
 
@@ -1386,27 +1577,38 @@ public class Child_Design extends JLayeredPane {
 	{		
 		public void mouseClicked(MouseEvent e) 
 		{
-			panel.removeAll();
-			panel.repaint();
-			panel.add(Tpanel);
-			panel.add(linePanel);
-			if (pen!=null)
+			IfSaveDialog one = new IfSaveDialog();
+			if (sketchCenter.currentProject.modified)
 			{
-				pen.setEnabled(true);
+				//Open Dialog
+				one.showDialog((JFrame)panel.getRootPane().getParent(),500,200);
 			}
-			pen=null;
-			if (source!=null)
+			
+			if (one.ifOperate)
 			{
-				((JLabelWithID)source).setEnabled(true);
+				panel.removeAll();
+				panel.repaint();
+				panel.add(Tpanel);
+				panel.add(linePanel);
+				if (pen!=null)
+				{
+					pen.setEnabled(true);
+				}
+				pen=null;
+				if (source!=null)
+				{
+					((JLabelWithID)source).setEnabled(true);
+				}
+				source = null;
+				choose = false;
+				textLabel=null;
+				totalCompList=new ArrayList<Component>();
+				lineColor = Color.black;
+				lineStroke = 3.0f;
+				compCount = 0;
+				SketchCenter sketchCenter = new SketchCenter();	
 			}
-			source = null;
-			choose = false;
-			textLabel=null;
-			totalCompList=new ArrayList<Component>();
-			lineColor = Color.black;
-			lineStroke = 3.0f;
-			compCount = 0;
-			SketchCenter sketchCenter = new SketchCenter();	
+			
 		}
 
 		public void mousePressed(MouseEvent e) {}
@@ -1449,44 +1651,75 @@ public class Child_Design extends JLayeredPane {
 		public void mouseClicked(MouseEvent e) 
 		{
 			// TODO Auto-generated method stub
-			
-			JFileChooser chooser=new JFileChooser();//文件打开对话框
-			chooser.setLocale(Locale.ENGLISH);
-			chooser.setAcceptAllFileFilterUsed(true);
-			chooser.setMultiSelectionEnabled(false);
-			try {
-				UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-			} catch (ClassNotFoundException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			} catch (InstantiationException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			} catch (IllegalAccessException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			} catch (UnsupportedLookAndFeelException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
+			if (sketchCenter.currentProject.modified)
+			{
+				//Open Dialog
+				IfSaveDialog one = new IfSaveDialog();
+				one.showDialog((JFrame)panel.getRootPane().getParent(),500,200);
 			}
-		    SwingUtilities.updateComponentTreeUI(chooser);
-		    
-			chooser.addChoosableFileFilter(new MyFileFilter("xml","XML"));
-
-			chooser.setCurrentDirectory(new File("."));
-
-			chooser.showOpenDialog(null);
-
-			path = chooser.getSelectedFile();
+			//Show open dialog
 			
-			//Begin draw sketch map
-			sketchCenter.loadProject(path.toString());
-			for (SketchComponent.Component component : sketchCenter.currentProject.componentList)
-			{	
-				addComponent(component);
-			}
-			System.out.print(path);	
-			
+				JFileChooser chooser=new JFileChooser();//文件打开对话框
+				chooser.setLocale(Locale.ENGLISH);
+				chooser.setAcceptAllFileFilterUsed(true);
+				chooser.setMultiSelectionEnabled(false);
+				try {
+					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+				} catch (ClassNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (InstantiationException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (IllegalAccessException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (UnsupportedLookAndFeelException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			    SwingUtilities.updateComponentTreeUI(chooser);
+			    
+				chooser.addChoosableFileFilter(new MyFileFilter("xml","XML"));
+
+				chooser.setCurrentDirectory(new File("."));
+
+				chooser.showOpenDialog(null);
+
+				path = chooser.getSelectedFile();
+				
+				if (path!=null)
+				{
+					//clear all
+					panel.removeAll();
+					panel.repaint();
+					panel.add(Tpanel);
+					panel.add(linePanel);
+					if (pen!=null)
+					{
+						pen.setEnabled(true);
+					}
+					pen=null;
+					if (source!=null)
+					{
+						((JLabelWithID)source).setEnabled(true);
+					}
+					source = null;
+					choose = false;
+					textLabel=null;
+					totalCompList=new ArrayList<Component>();
+					lineColor = Color.black;
+					lineStroke = 3.0f;
+					compCount = 0;
+						
+					//Begin draw sketch map
+					sketchCenter.loadProject(path.toString());
+					for (SketchComponent.Component component : sketchCenter.currentProject.componentList)
+					{	
+						addComponent(component);
+					}
+						
+				}
 			
 		}
 
@@ -1723,7 +1956,7 @@ public class Child_Design extends JLayeredPane {
 					GUITypeName = "terminator";	break;
 			}
 			JLabelWithID newLabel = new JLabelWithID();
-			panel.setPosition(newLabel, 0);
+			
 			newLabel.ID=biobrick.ID;
 			
 			if (totalCompList.size()<(newLabel.ID+1))
@@ -1765,6 +1998,9 @@ public class Child_Design extends JLayeredPane {
 			DeleteListener deleteLabel = new DeleteListener();
 			newLabel.addMouseListener(deleteLabel);
 			newLabel.addMouseMotionListener(deleteLabel);
+			
+			panel.setPosition(newLabel, 0);
+			panel.repaint();
 		}
 		else if (primaryType.equals(SketchComponent.Protein.class.getSimpleName()))
 		{
@@ -1828,8 +2064,8 @@ public class Child_Design extends JLayeredPane {
 			SketchComponent.BackBone backbone = component.toBackBone();
 
     		BackBone newBackBone = new BackBone(panel,Tpanel, sketchCenter);
-    		panel.setPosition(newBackBone, -1);
-    		newBackBone.ID = newBackBone.ID;	
+    		
+    		newBackBone.ID = backbone.ID;	
     		
     		if (totalCompList.size()<(newBackBone.ID+1))
 			{
@@ -1853,12 +2089,12 @@ public class Child_Design extends JLayeredPane {
 			}
     		
     		ImageIcon image_newBackBone = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/backbone_move.png"));
-    		image_newBackBone.setImage(image_newBackBone.getImage().getScaledInstance(((int)(backbone.bounds).getWidth()),50,Image.SCALE_DEFAULT));
+    		image_newBackBone.setImage(image_newBackBone.getImage().getScaledInstance(((int)(backbone.bounds).getWidth()),60,Image.SCALE_DEFAULT));
     		newBackBone.setIcon(image_newBackBone);
     		newBackBone.setBounds(backbone.bounds);
     		newBackBone.setName("backbone");
     		newBackBone.activate();
-			panel.add(newBackBone,-1);
+    		panel.add(newBackBone);
 			
 			DragCompListener listener = new DragCompListener(panel,Tpanel,sketchCenter);
 			newBackBone.addMouseListener(listener);
@@ -1868,6 +2104,13 @@ public class Child_Design extends JLayeredPane {
 			DeleteListener deleteBackbone = new DeleteListener();
 			newBackBone.addMouseListener(deleteBackbone);
 			newBackBone.addMouseMotionListener(deleteBackbone);
+			
+			IfUploadListener ifUploadListener = new IfUploadListener(sketchCenter,mainpage);
+			newBackBone.addMouseListener(ifUploadListener);
+			newBackBone.addMouseMotionListener(ifUploadListener);
+			
+			panel.setPosition(newBackBone, -1);
+			panel.repaint();
 		}
 		else if (primaryType.equals(SketchComponent.Relation.class.getSimpleName()))
 		{
@@ -2006,15 +2249,15 @@ public class Child_Design extends JLayeredPane {
 			newLabel.addMouseMotionListener(deleteLabel);
 		}
 		else
-			return;
-		
+			return;		
 	}
 	
 	public void removeComponent(SketchComponent.Component component)
 	{	
 		int ID = component.ID;
 		Component comp = totalCompList.get(ID);
-		comp.getParent().remove(comp);
+		System.out.println(comp.getName());
+		(comp.getParent()).remove(comp);
 	}
 	
 	public void modifyComponent(SketchComponent.Component component, int attributeType, Object previous, Object following)
