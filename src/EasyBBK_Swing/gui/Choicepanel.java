@@ -83,9 +83,9 @@ public class Choicepanel extends JPanel {
 		lblNewLabel.setBounds(10, 81, 76, 28);
 		add(lblNewLabel);
 		
-		JLabel ReleaseStatus = new JLabel("Release Status:");
+		JLabel ReleaseStatus = new JLabel("Part Status:");
 		ReleaseStatus.setFont(new Font("Arial", Font.PLAIN, 16));
-		ReleaseStatus.setBounds(39, 265, 112, 17);
+		ReleaseStatus.setBounds(39, 265, 103, 17);
 		add(ReleaseStatus);
         
 		ItemListener itemListener_releasestatus = new ItemListener() {
@@ -224,26 +224,26 @@ public class Choicepanel extends JPanel {
 		Deleted1.setBackground(new Color(255, 255, 255));
 		add(Deleted1);
 		
-		JLabel AverageStar = new JLabel("Average Stars Given by Previous Teams:");
+		JLabel AverageStar = new JLabel("Average Rating Given by Previous Teams:");
 		AverageStar.setFont(new Font("Arial", Font.PLAIN, 16));
-		AverageStar.setBounds(39, 347, 284, 15);
+		AverageStar.setBounds(39, 347, 299, 15);
 		add(AverageStar);
 		
 		high = new JCheckBox(">=4");
 		high.setFont(new Font("Arial", Font.PLAIN, 16));
-		high.setBounds(326, 343, 68, 23);
+		high.setBounds(341, 342, 68, 23);
 		high.setBackground(new Color(255, 255, 255));
 		add(high);
 		
 		middle = new JCheckBox("2-4");
 		middle.setFont(new Font("Arial", Font.PLAIN, 16));
-		middle.setBounds(396, 343, 65, 23);
+		middle.setBounds(411, 342, 65, 23);
 		middle.setBackground(new Color(255, 255, 255));
 		add(middle);
 		
 		low = new JCheckBox("<2");
 		low.setFont(new Font("Arial", Font.PLAIN, 16));
-		low.setBounds(478, 343, 65, 23);
+		low.setBounds(493, 342, 65, 23);
 		low.setBackground(new Color(255, 255, 255));
 		add(low);
 		
@@ -254,37 +254,37 @@ public class Choicepanel extends JPanel {
 		
 		JLabel Status = new JLabel("Status(%):");
 		Status.setFont(new Font("Arial", Font.PLAIN, 16));
-		Status.setBounds(39, 411, 65, 15);
+		Status.setBounds(39, 411, 76, 15);
 		add(Status);
 		
 		PercentofStatus = new JSpinner();
 		PercentofStatus.setModel(new SpinnerNumberModel(0, 0, 100, 1));
-		PercentofStatus.setBounds(110, 406, 41, 27);
+		PercentofStatus.setBounds(113, 406, 41, 27);
 		add(PercentofStatus);
 		
-		JLabel Quality = new JLabel("Quality(%):");
+		JLabel Quality = new JLabel("Reliability(%):");
 		Quality.setFont(new Font("Arial", Font.PLAIN, 16));
-		Quality.setBounds(156, 411, 78, 15);
+		Quality.setBounds(156, 411, 103, 15);
 		add(Quality);
 		
 		PercentofQuality = new JSpinner();
 		PercentofQuality.setModel(new SpinnerNumberModel(0, 0, 100, 1));
-		PercentofQuality.setBounds(235, 406, 41, 27);
+		PercentofQuality.setBounds(253, 406, 41, 27);
 		add(PercentofQuality);
 		
-		JLabel Feedbacks = new JLabel("Feedbacks(%):");
+		JLabel Feedbacks = new JLabel("Feedback(%):");
 		Feedbacks.setFont(new Font("Arial", Font.PLAIN, 16));
-		Feedbacks.setBounds(286, 411, 99, 15);
+		Feedbacks.setBounds(296, 411, 108, 15);
 		add(Feedbacks);
 		
 		PercentofFeedbacks = new JSpinner();
 		PercentofFeedbacks.setModel(new SpinnerNumberModel(0, 0, 100, 1));
-		PercentofFeedbacks.setBounds(395, 406, 41, 27);
+		PercentofFeedbacks.setBounds(398, 406, 41, 27);
 		add(PercentofFeedbacks);
 		
 		JLabel Publication = new JLabel("Publication(%):");
 		Publication.setFont(new Font("Arial", Font.PLAIN, 16));
-		Publication.setBounds(446, 411, 97, 15);
+		Publication.setBounds(446, 411, 112, 15);
 		add(Publication);
 		
 		PercentofPublication = new JSpinner();
@@ -342,25 +342,25 @@ public class Choicepanel extends JPanel {
 		Promoter = new JCheckBox("Promoter");
 		Promoter.setFont(new Font("Arial", Font.PLAIN, 16));
 		Promoter.setBackground(Color.WHITE);
-		Promoter.setBounds(84, 115, 86, 23);
+		Promoter.setBounds(84, 115, 99, 23);
 		add(Promoter);
 		
 		RBS = new JCheckBox("RBS");
 		RBS.setFont(new Font("Arial", Font.PLAIN, 16));
 		RBS.setBackground(Color.WHITE);
-		RBS.setBounds(179, 115, 55, 23);
+		RBS.setBounds(179, 115, 65, 23);
 		add(RBS);
 		
 		Protein_Domain = new JCheckBox("Protein_Domain");
 		Protein_Domain.setFont(new Font("Arial", Font.PLAIN, 16));
 		Protein_Domain.setBackground(Color.WHITE);
-		Protein_Domain.setBounds(264, 115, 135, 23);
+		Protein_Domain.setBounds(246, 115, 148, 23);
 		add(Protein_Domain);
 		
 		Protein_Coding_Sequence = new JCheckBox("Protein_Coding_Sequence");
 		Protein_Coding_Sequence.setFont(new Font("Arial", Font.PLAIN, 16));
 		Protein_Coding_Sequence.setBackground(Color.WHITE);
-		Protein_Coding_Sequence.setBounds(414, 115, 203, 23);
+		Protein_Coding_Sequence.setBounds(395, 115, 222, 23);
 		add(Protein_Coding_Sequence);
 		
 		Translation_Unit = new JCheckBox("Translation_Unit");
@@ -493,7 +493,7 @@ public class Choicepanel extends JPanel {
 		EnteredDate.addItemListener(itemListener_sort);
 		EnteredDate.setFont(new Font("Arial", Font.PLAIN, 16));
 		EnteredDate.setBackground(Color.WHITE);
-		EnteredDate.setBounds(88, 35, 113, 23);
+		EnteredDate.setBounds(88, 35, 131, 23);
 		add(EnteredDate);
 		
 		ConfirmedTimes = new JCheckBox("Confirmed Times");
@@ -503,25 +503,25 @@ public class Choicepanel extends JPanel {
 		ConfirmedTimes.setBounds(88, 58, 146, 23);
 		add(ConfirmedTimes);
 		
-		GoogleQouteNumber = new JCheckBox("Google Qoute Number");
+		GoogleQouteNumber = new JCheckBox("Number of Results Related on Google Scholar");
 		GoogleQouteNumber.addItemListener(itemListener_sort);
 		GoogleQouteNumber.setFont(new Font("Arial", Font.PLAIN, 16));
 		GoogleQouteNumber.setBackground(Color.WHITE);
-		GoogleQouteNumber.setBounds(243, 35, 180, 23);
+		GoogleQouteNumber.setBounds(243, 35, 351, 23);
 		add(GoogleQouteNumber);
 		
-		AverageStars = new JCheckBox("Average Stars");
+		AverageStars = new JCheckBox("Average Rating");
 		AverageStars.addItemListener(itemListener_sort);
 		AverageStars.setFont(new Font("Arial", Font.PLAIN, 16));
 		AverageStars.setBackground(Color.WHITE);
-		AverageStars.setBounds(436, 35, 121, 23);
+		AverageStars.setBounds(469, 58, 148, 23);
 		add(AverageStars);
 		
-		TotalScore = new JCheckBox("Total Score");
+		TotalScore = new JCheckBox("Default Score Given to Part");
 		TotalScore.addItemListener(itemListener_sort);
 		TotalScore.setFont(new Font("Arial", Font.PLAIN, 16));
 		TotalScore.setBackground(Color.WHITE);
-		TotalScore.setBounds(243, 58, 123, 23);
+		TotalScore.setBounds(243, 58, 215, 23);
 		add(TotalScore);
 		
 		information = new Information();

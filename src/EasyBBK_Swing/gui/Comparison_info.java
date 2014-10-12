@@ -23,6 +23,7 @@ public class Comparison_info extends JPanel {
 		setLayout(null);
 		
 		JLabel PartName = new JLabel("Part Name", SwingConstants.CENTER);
+		PartName.setForeground(Color.blue);
 		PartName.setOpaque(false);
 		//PartName.setBorder(BorderFactory.createLineBorder(Color.black));
 		PartName.setFont(new Font("Arial", Font.BOLD, 24));
@@ -30,6 +31,7 @@ public class Comparison_info extends JPanel {
 		add(PartName);
 		
 		JLabel Type = new JLabel("Type", SwingConstants.CENTER);
+		Type.setForeground(Color.blue);
 		Type.setOpaque(false);
 		//Type.setBorder(BorderFactory.createLineBorder(Color.black));
 		Type.setFont(new Font("Arial", Font.BOLD, 24));
@@ -44,6 +46,7 @@ public class Comparison_info extends JPanel {
 		add(ShortDescription);
 		
 		JLabel Status = new JLabel("Status", SwingConstants.CENTER);
+		Status.setForeground(Color.blue);
 		Status.setOpaque(false);
 		//Status.setBorder(BorderFactory.createLineBorder(Color.black));
 		Status.setFont(new Font("Arial", Font.BOLD, 24));
@@ -100,6 +103,7 @@ public class Comparison_info extends JPanel {
 		add(LengthofDocumentation);
 		
 		JLabel Reliability = new JLabel("Reliability", SwingConstants.CENTER);
+		Reliability.setForeground(Color.blue);
 		Reliability.setOpaque(false);
 		Reliability.setFont(new Font("Arial", Font.BOLD, 24));
 		//Reliability.setBorder(BorderFactory.createLineBorder(Color.black));
@@ -121,6 +125,7 @@ public class Comparison_info extends JPanel {
 		add(GroupFavorite);
 		
 		JLabel Feedbacks = new JLabel("Feedbacks", SwingConstants.CENTER);
+		Feedbacks.setForeground(Color.blue);
 		Feedbacks.setOpaque(false);
 		Feedbacks.setFont(new Font("Arial", Font.BOLD, 24));
 		//Feedbacks.setBorder(BorderFactory.createLineBorder(Color.black));
@@ -149,6 +154,7 @@ public class Comparison_info extends JPanel {
 		add(NumberofComments);
 		
 		JLabel Publication = new JLabel("Publication", SwingConstants.CENTER);
+		Publication.setForeground(Color.blue);
 		Publication.setOpaque(false);
 		Publication.setFont(new Font("Arial", Font.BOLD, 24));
 		//Publication.setBorder(BorderFactory.createLineBorder(Color.black));

@@ -71,7 +71,7 @@ public class InitializeResultPage extends Thread{
 		if(number == 0){
 			JLabel noresults = new JLabel("Sorry, no results found.");
 			noresults.setFont(new Font("Arial", Font.BOLD, 30));
-			noresults.setBounds(0, 0, 300, 50);
+			noresults.setBounds(0, 0, 400, 50);
 			child_search.resultpanel.removeAll();
 			child_search.resultpanel.add(noresults);
 			child_search.resultpanel.updateUI();
@@ -173,7 +173,7 @@ public class InitializeResultPage extends Thread{
 		if(numberofresults == 0){
 			JLabel noresults = new JLabel("Sorry, no results found.");
 			noresults.setFont(new Font("Arial", Font.BOLD, 30));
-			noresults.setBounds(0, 0, 300, 50);
+			noresults.setBounds(0, 0, 400, 50);
 			child_search.resultpanel.removeAll();
 			child_search.resultpanel.add(noresults);
 			child_search.resultpanel.updateUI();
@@ -183,7 +183,7 @@ public class InitializeResultPage extends Thread{
 		if(numberofresults <= 10 && numberofresults > 0){
 			child_search.resultpanel.removeAll();
 			child_search.searchingresultpage = new SearchingResultPage(numberofresults);
-			child_search.searchingresultpage.setPreferredSize(new Dimension(558,250*numberofresults));
+			child_search.searchingresultpage.setPreferredSize(new Dimension(569,281*numberofresults));
 			for(int i = 0; i < numberofresults; i++){
 				showresult(i);
 			}
@@ -193,7 +193,7 @@ public class InitializeResultPage extends Thread{
 			child_search.scrollbar.setUnitIncrement(150);
 			child_search.scrollPane.setVerticalScrollBar(child_search.scrollbar);
 			child_search.scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-			child_search.scrollPane.setBounds(0, 0, 576, 520);
+			child_search.scrollPane.setBounds(0, 0, 587, 520);
 			child_search.scrollPane.validate();
 			child_search.resultpanel.add(child_search.scrollPane);
 			
@@ -223,7 +223,7 @@ public class InitializeResultPage extends Thread{
 			child_search.currentpage = 1;
 			
 			child_search.searchingresultpage = new SearchingResultPage();
-			child_search.searchingresultpage.setPreferredSize(new Dimension(558,2500));
+			child_search.searchingresultpage.setPreferredSize(new Dimension(569,2810));
 			for(int i = 0; i < 10; i++){
 				showresult(i);
 			}
@@ -242,7 +242,7 @@ public class InitializeResultPage extends Thread{
 				}
 			});
 			child_search.previouspage.setFont(new Font("Arial", Font.PLAIN, 16));
-			child_search.previouspage.setBounds(119, 530, 95, 25);
+			child_search.previouspage.setBounds(95, 530, 120, 25);
 			child_search.previouspage.setVisible(false);
 			
 			child_search.previouspage.addMouseListener(new MouseAdapter() {
@@ -252,7 +252,7 @@ public class InitializeResultPage extends Thread{
 						String s;
 						child_search.scrollbar.setValue(child_search.scrollbar.getMinimum());
 						if(child_search.currentpage > 2){
-							child_search.searchingresultpage.setPreferredSize(new Dimension(558,2500));
+							child_search.searchingresultpage.setPreferredSize(new Dimension(569,2810));
 							for(int i = 10 * (child_search.currentpage - 2); i < 10 * (child_search.currentpage - 1); i++){
 								if(showdetaillist.get(i%10) != null){
 									child_search.searchingresultpage.searchingresult.get(i%10).ID_Content.removeMouseListener(showdetaillist.get(i%10));
@@ -267,7 +267,7 @@ public class InitializeResultPage extends Thread{
 							return;
 						}
 						else if(child_search.currentpage == 2){
-							child_search.searchingresultpage.setPreferredSize(new Dimension(558,2500));
+							child_search.searchingresultpage.setPreferredSize(new Dimension(569,2810));
 							for(int i = 0; i < 10; i++){
 								child_search.searchingresultpage.searchingresult.get(i%10).ID_Content.removeMouseListener(showdetaillist.get(i%10));
 								showdetaillist.remove(i%10);
@@ -298,7 +298,7 @@ public class InitializeResultPage extends Thread{
 				}
 			});
 			child_search.nextpage.setFont(new Font("Arial", Font.PLAIN, 16));
-			child_search.nextpage.setBounds(373, 530, 75, 25);
+			child_search.nextpage.setBounds(373, 530, 85, 25);
 			
 			child_search.nextpage.addMouseListener(new MouseAdapter() {
 				@Override
@@ -307,7 +307,7 @@ public class InitializeResultPage extends Thread{
 						child_search.scrollbar.setValue(child_search.scrollbar.getMinimum());
 						String s;
 						if(child_search.currentpage < num){
-							child_search.searchingresultpage.setPreferredSize(new Dimension(558,2500));
+							child_search.searchingresultpage.setPreferredSize(new Dimension(569,2810));
 							for(int i = 10 * child_search.currentpage; i < 10 * (child_search.currentpage + 1); i++){
 								child_search.searchingresultpage.searchingresult.get(i%10).ID_Content.removeMouseListener(showdetaillist.get(i%10));
 								showdetaillist.remove(i%10);
@@ -320,7 +320,7 @@ public class InitializeResultPage extends Thread{
 							return;
 						}
 						else if(child_search.currentpage == num){
-							child_search.searchingresultpage.setPreferredSize(new Dimension(558,250 * leftnum));
+							child_search.searchingresultpage.setPreferredSize(new Dimension(569,281 * leftnum));
 							for(int i = 10 * child_search.currentpage; i < numberofresults; i++){
 								child_search.searchingresultpage.searchingresult.get(i%10).ID_Content.removeMouseListener(showdetaillist.get(i%10));
 								showdetaillist.remove(i%10);
@@ -365,14 +365,19 @@ public class InitializeResultPage extends Thread{
 			}
 			child_search.totalpagenum.setText(s);
 			child_search.totalpagenum.setFont(new Font("Arial", Font.PLAIN, 16));
-			child_search.totalpagenum.setBounds(470, 530, 25, 25);
+			child_search.totalpagenum.setBounds(535, 530, 25, 25);
+			
+			child_search.total = new JLabel("total:", SwingConstants.CENTER);
+			child_search.total.setForeground(Color.blue);
+			child_search.total.setFont(new Font("Arial", Font.PLAIN, 16));
+			child_search.total.setBounds(490, 530, 40, 25);
 			
 			child_search.scrollPane = new JScrollPane(child_search.searchingresultpage);
 			child_search.scrollbar = new JScrollBar();
 			child_search.scrollbar.setUnitIncrement(150);
 			child_search.scrollPane.setVerticalScrollBar(child_search.scrollbar);
 			child_search.scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-			child_search.scrollPane.setBounds(0, 0, 576, 520);
+			child_search.scrollPane.setBounds(0, 0, 587, 520);
 			child_search.scrollPane.validate();
 			child_search.resultpanel.add(child_search.scrollPane);
 			
@@ -380,6 +385,7 @@ public class InitializeResultPage extends Thread{
 			child_search.resultpanel.add(child_search.showpagenum);
 			child_search.resultpanel.add(child_search.nextpage);
 			child_search.resultpanel.add(child_search.totalpagenum);
+			child_search.resultpanel.add(child_search.total);
 			
 			child_search.resultpanel.updateUI();
 		}
@@ -393,6 +399,7 @@ public class InitializeResultPage extends Thread{
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if(e.getButton() == e.BUTTON1){
+					child_search.Details.removeAll();
 					InitializeDetail initializedetail = new InitializeDetail(child_search, bbkoutline);
 					initializedetail.start();
 				}
@@ -407,6 +414,7 @@ public class InitializeResultPage extends Thread{
 		child_search.searchingresultpage.searchingresult.get(i).Type_Content.setText(bbkoutline.type);
 		child_search.searchingresultpage.searchingresult.get(i).Author_Content.setText(bbkoutline.author);
 		child_search.searchingresultpage.searchingresult.get(i).EnteredDate_Content.setText(bbkoutline.enterDate);
+		child_search.searchingresultpage.searchingresult.get(i).UsedTimes_Content.setText(bbkoutline.rating.used_times);
 		child_search.searchingresultpage.searchingresult.get(i).URL_Content.setText("<html><u>" + bbkoutline.url + "</u></html>");
 		child_search.searchingresultpage.searchingresult.get(i).URL_Content.addMouseListener(new MouseAdapter() {
 			@Override
