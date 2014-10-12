@@ -848,7 +848,8 @@ public class Child_Upload extends JPanel {
 		showinfopanel.setBackground(new Color(255, 255, 255));
 		UploadContainer.add(showinfopanel);
 		
-		showinfo = new JLabel("", SwingConstants.CENTER);
+		showinfo = new JLabel("", SwingConstants.LEFT);
+		showinfo.setOpaque(false);
 		showinfo.setVisible(true);
 		showinfo.setBounds(0, 0, 360, 240);
 		showinfo.setFont(new Font("Arial", Font.PLAIN, 24));
@@ -865,9 +866,18 @@ public class Child_Upload extends JPanel {
 				Designers.setText(null);
 				SequenceInformation.setText(null);
 				UseDefaultScar.setSelected(false);
-				parameterpanel.removeAll();
-				categorypanel.removeAll();
-				featurepanel.removeAll();
+				for (int i = paramTable.getRowCount()-1;i>=0;i--)
+		    		 ((DefaultTableModel) paramTable.getModel()).removeRow(i);
+				for (int i = categoryTable.getRowCount()-1;i>=0;i--)
+		    		 ((DefaultTableModel) categoryTable.getModel()).removeRow(i);
+				for (int i = featureTable.getRowCount()-1;i>=0;i--)
+		    		 ((DefaultTableModel) featureTable.getModel()).removeRow(i);
+				//paramTable = null;
+				//categoryTable = null;
+				//featureTable = null;
+				//parameterpanel.removeAll();
+				//categorypanel.removeAll();
+				//featurepanel.removeAll();
 				LongDescription.setText(null);
 				Source.setText(null);
 				DesignConsideration.setText(null);
@@ -953,6 +963,7 @@ public class Child_Upload extends JPanel {
 				if (!login)
 				{
 					showinfo.setText("Username or password is wrong.");
+					return;
 				}
 				showinfo.setText("<html>Uploading your biobrick...<br>10% Complete</html>");
 				String newBbk = OfficialUploadPoster.getNextAvailablePartName();
