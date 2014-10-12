@@ -115,7 +115,7 @@ public class SetBioBrickNameListener implements MouseInputListener
 	    JButton set = new JButton();
 	    JButton ok = new JButton();
 	    JButton cancel = new JButton();
-	    JPanel showPanel = new JPanel();
+	    SearchingResult searchingresult = new SearchingResult();
 	    //
 	    
 	    
@@ -132,10 +132,6 @@ public class SetBioBrickNameListener implements MouseInputListener
 	    		biobrickName = component.toBioBrick().bbkOutline.name;
 	    	
 	    	this.setLayout(null);
-	    	
-	    	showPanel.setBounds(21, 50, 558, 250);
-	    	showPanel.setBackground(Color.white);
-	    	this.add(showPanel);
 	    	
 	    	nameInput.setBounds(50,10,400,30);
 	    	nameInput.setText(biobrickName);
@@ -154,7 +150,10 @@ public class SetBioBrickNameListener implements MouseInputListener
 	    	cancel.setText("cancel");
 	    	this.add(cancel);
 	    	cancel.setMargin(new Insets(0,0,0,0));
-
+	    	
+	    	this.add(searchingresult);
+	    	searchingresult.setBounds(21, 50, 558, 250);
+	    	
 	        /*用户确定*/  
 	    	set.addActionListener(new ActionListener() {  
 	            public void actionPerformed(ActionEvent e)
@@ -168,7 +167,9 @@ public class SetBioBrickNameListener implements MouseInputListener
 	            			sketchCenter.assignBbkOutlineToBioBrick
 	            			(nameInput.getText(), component.toBioBrick());
 	            	if(bbkoutline != null){
-	            		SearchingResult searchingresult = new SearchingResult();
+	            		System.out.println(bbkoutline.name);
+	            		
+	            		System.out.println(1);
 		            	searchingresult.ID_Content.setText(bbkoutline.name);
 		            	searchingresult.Type_Content.setText(bbkoutline.type);
 		            	searchingresult.Author_Content.setText(bbkoutline.author);
@@ -201,11 +202,9 @@ public class SetBioBrickNameListener implements MouseInputListener
 		        		String score = "" + bbkoutline.getScore();
 		        		searchingresult.Score.setText(score);
 		        		searchingresult.Evalue.setVisible(false);
-		                searchingresult.setBounds(0, 0, 558, 250);
-		        		
-		                showPanel.removeAll();
-		                showPanel.add(searchingresult);
+                
 		        		searchingresult.updateUI();
+
 	            	}
 	            	
 	            }  
@@ -244,7 +243,7 @@ public class SetBioBrickNameListener implements MouseInputListener
 	            /*窗体关闭时调用*/  
 	            public void windowClosing(WindowEvent e) 
 	            {  
-	                dialog.removeAll();  
+	                dialog.removeAll();
 	                dialog.dispose();  
 	                dialog = null;  
 	            }  

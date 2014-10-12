@@ -43,7 +43,7 @@ public class FontChooser extends JPanel
     }  
       
     //[start] 定义变量  
-    private String current_fontName = "Time New Roman";//当前的字体名称,默认Time New Roman.  
+    private String current_fontName = "Arial";//当前的字体名称,默认Time New Roman.  
     private String showStr = "I'm handsome";//展示的文字  
     private int current_fontStyle = Font.PLAIN;//当前的字样,默认常规.  
     private int current_fontSize = 9;//当前字体大小,默认9号.  
@@ -148,8 +148,8 @@ public class FontChooser extends JPanel
         lblStyle = new JLabel("Style:");  
         lblSize = new JLabel("Size:");  
         lblColor = new JLabel("Color:");  
-        otherColor = new JLabel("<html><U>Other</U></html>");  
-        txtFont = new JTextField("Time New Roman");  
+        otherColor = new JLabel("<html><U>Other Colors</U></html>");  
+        txtFont = new JTextField("Arial");  
         txtStyle = new JTextField("Normal");  
         txtSize = new JTextField("9");
                  
@@ -201,8 +201,8 @@ public class FontChooser extends JPanel
         txtFont.setEditable(false);  
         add(txtFont);  
         txtFont.setBounds(10, 30, 155, 20);  
-        txtFont.setText("Time New Roman");  
-        lstFont.setSelectedValue("Time New Roman", true);  
+        txtFont.setText("Arial");  
+        lstFont.setSelectedValue("Arial", true);  
         if (font != null) 
         {  
             txtFont.setText(font.getName());  
@@ -263,12 +263,12 @@ public class FontChooser extends JPanel
   
         //颜色  
         add(lblColor);  
-        lblColor.setBounds(18, 220, 50, 20);  
+        lblColor.setBounds(18, 225, 50, 20);  
         cbColor.setBounds(18, 245, 100, 22);  
         cbColor.setMaximumRowCount(5);  
         add(cbColor);  
         otherColor.setForeground(Color.black);  
-        otherColor.setBounds(130, 245, 60, 22);  
+        otherColor.setBounds(130, 245, 120, 22);  
         otherColor.setCursor(new Cursor(Cursor.HAND_CURSOR));  
         add(otherColor);  
 
