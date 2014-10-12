@@ -88,6 +88,8 @@ public class SaveFileListener implements MouseInputListener
 				extension = ".png";
 			else if (desc.equals("BMP(.bmp)"))
 				extension = ".bmp";
+			else 
+				extension = ".jpg";
 			if (!oFile.getAbsolutePath().toUpperCase().endsWith(extension.toUpperCase()))
 			{
 				oFile = new File(oFile.getAbsolutePath() + extension);
