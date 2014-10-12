@@ -1,8 +1,12 @@
 package EasyBBK_Swing.gui;
 
+import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.JCheckBox;
 import javax.swing.JOptionPane;
@@ -67,6 +71,19 @@ public class InitializeDetail extends Thread{
 		detailsofresults.Author_Content.setText(bbkdetail.author);
 		detailsofresults.EnteredDate_Content.setText(bbkdetail.enterDate);
 		detailsofresults.URL_Content.setText("<html><u>" + bbkdetail.url + "</u></html>");
+		detailsofresults.URL_Content.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(e.getButton() == e.BUTTON1){
+					try{
+						Runtime.getRuntime().exec("explorer " + bbkdetail.url);
+					}
+					catch(Exception ex){
+						ex.printStackTrace();
+					}
+				}
+			}
+		});
 		detailsofresults.ReleasedStatus_Content.setText(bbkdetail.releaseStatus);
 		if(bbkdetail.rating.average_stars.equals("No Stars")){
 			detailsofresults.AverageStar_Content.setText(bbkdetail.rating.average_stars);
@@ -87,7 +104,15 @@ public class InitializeDetail extends Thread{
 			detailsofresults.Description1.setText(shortdescription.substring(0, 40));
 			detailsofresults.Description2.setText(shortdescription.substring(40));
 		}
+		
 		String score = "" + bbkdetail.getScore();
+		char c = '.';
+		if(score.charAt(1) == c){
+			score = score.substring(0, 4);
+		}
+		else if(score.charAt(2) == c){
+			score = score.substring(0, 5);
+		}
 		detailsofresults.Score.setText(score);
 		
 		detailsofresults.setPreferredSize(new Dimension(665, 1500));

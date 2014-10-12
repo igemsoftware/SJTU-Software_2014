@@ -63,9 +63,9 @@ public class Child_Compare extends JPanel {
 		
 		JTextField comparison = new JTextField("The Comparison for Biobricks");
 		comparison.setOpaque(false);
-		comparison.setFont(new Font("Times New Roman", Font.BOLD, 40));
+		comparison.setFont(new Font("Arial", Font.BOLD, 40));
 		comparison.setBackground(new Color(255, 255, 255));
-		comparison.setBounds(408, 50, 550, 50);
+		comparison.setBounds(383, 50, 600, 50);
 		comparison.setEditable(false);
 		comparison.setBorder(new EmptyBorder(0,0,0,0));
 		Containerpanel.add(comparison);
