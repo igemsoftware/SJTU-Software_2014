@@ -255,7 +255,7 @@ public class Testing
 			(dataCenter.uploadCenter.getSubscarForSequenceToken("RFC[1000]") != null));
 	}
 	
-	private static int getTimeInMs()
+	static int getTimeInMs()
 	{	
 		Calendar calendar = Calendar.getInstance();
 		int sec = calendar.get(Calendar.SECOND);
