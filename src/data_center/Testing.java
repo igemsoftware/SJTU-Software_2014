@@ -87,11 +87,13 @@ public class Testing
 		list = dataCenter.searchCenter.blast
 			("blastInput", BlastingSearcher.MODE_INPUT_FILE_PATH);
 		list.sortByBlastResult(true);	list.displaySortingConditions();
+		System.out.println("Item num: " + list.size());
 		
 		list = dataCenter.searchCenter.blast
-			("tcaaataaaacgaaaggctcagtcgaaag", 
+			("tcaaataaaacgaaaggctcagtcg", 
 			 BlastingSearcher.MODE_INPUT_SEQUENCE);
 		list.sortByBlastResult(true);	list.displaySortingConditions();
+		System.out.println("Item num: " + list.size());
 		BlastingSearcher.deleteLocalCacheFiles();
 	}
 	
