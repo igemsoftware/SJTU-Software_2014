@@ -32,40 +32,48 @@ public class SaveListener implements MouseInputListener
 	
 	public void mouseClicked(MouseEvent e) 
 	{
-		JFileChooser chooser=new JFileChooser();//文件保存对话框
-		chooser.setLocale(Locale.ENGLISH);
-		chooser.setAcceptAllFileFilterUsed(true);
-		chooser.addChoosableFileFilter(new MyFileFilter("xml","XML"));
-		
-		try {
-			javax.swing.UIManager.setLookAndFeel(javax.swing.UIManager.getSystemLookAndFeelClassName());
-		} catch (ClassNotFoundException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		} catch (InstantiationException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		} catch (IllegalAccessException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		} catch (UnsupportedLookAndFeelException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		SwingUtilities.updateComponentTreeUI(chooser);
-		if(chooser.showSaveDialog(null)==JFileChooser.APPROVE_OPTION)
+		if (sketchCenter.currentProject.filePath==null)
 		{
-			File oFile=chooser.getSelectedFile();
-			FileFilter filter = chooser.getFileFilter();
-			String desc = filter.getDescription();
-			String extension = ".xml";
-			if (!oFile.getAbsolutePath().toUpperCase().endsWith(extension.toUpperCase()))
-			{
-				oFile = new File(oFile.getAbsolutePath() + extension);
-			}
+			JFileChooser chooser=new JFileChooser();//文件保存对话框
+			chooser.setLocale(Locale.ENGLISH);
+			chooser.setAcceptAllFileFilterUsed(true);
+			chooser.addChoosableFileFilter(new MyFileFilter("xml","XML"));
 			
-			sketchCenter.saveProject(oFile.toString());
-		}		
+			try {
+				javax.swing.UIManager.setLookAndFeel(javax.swing.UIManager.getSystemLookAndFeelClassName());
+			} catch (ClassNotFoundException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (InstantiationException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (IllegalAccessException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (UnsupportedLookAndFeelException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			SwingUtilities.updateComponentTreeUI(chooser);
+			if(chooser.showSaveDialog(null)==JFileChooser.APPROVE_OPTION)
+			{
+				File oFile=chooser.getSelectedFile();
+				FileFilter filter = chooser.getFileFilter();
+				String desc = filter.getDescription();
+				String extension = ".xml";
+				if (!oFile.getAbsolutePath().toUpperCase().endsWith(extension.toUpperCase()))
+				{
+					oFile = new File(oFile.getAbsolutePath() + extension);
+				}
+				
+				sketchCenter.saveProject(oFile.toString());
+			}
+		}
+		else
+		{
+			sketchCenter.currentProject.saveIntoFile();
+		}
+				
 	}
 	
 	public void mousePressed(MouseEvent e) {}
