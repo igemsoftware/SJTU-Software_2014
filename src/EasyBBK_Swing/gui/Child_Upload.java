@@ -847,7 +847,7 @@ public class Child_Upload extends JPanel {
 		showinfopanel.setBounds(920, 1500, 360, 240);
 		showinfopanel.setOpaque(false);
 		//showinfopanel.setBackground(new Color(255, 255, 255));
-		
+		UploadContainer.add(showinfopanel);
 		
 		showinfo = new JLabel("", SwingConstants.LEFT);
 		showinfo.setOpaque(false);
@@ -855,10 +855,8 @@ public class Child_Upload extends JPanel {
 		showinfo.setBounds(0, 0, 360, 240);
 		showinfo.setFont(new Font("Arial", Font.PLAIN, 24));
 		showinfopanel.add(showinfo);
-		UploadContainer.add(showinfopanel);
 		
 		Clearall = new JButton("Clear All");
-		//Clearall = new JLabel();
 		Clearall.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
@@ -892,7 +890,7 @@ public class Child_Upload extends JPanel {
 			}
 		});
 		Clearall.setFont(new Font("Arial", Font.PLAIN, 24));
-		Clearall.setBounds(1100, 30, 140, 40);
+		Clearall.setBounds(1100, 30, 125, 35);
 		UploadContainer.add(Clearall);
 		
 		BackGround = new JLabel("");
