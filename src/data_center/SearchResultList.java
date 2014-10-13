@@ -29,6 +29,14 @@ public class SearchResultList extends ArrayList<BbkOutline>
 		return false;
 	}
 	
+	public BbkOutline getByName(String bbkName)
+	{	
+		for (BbkOutline bbkOutline : this)
+			if (bbkOutline.name.equals(bbkName))
+				return bbkOutline;
+		return null;
+	}
+	
 	/** Able to be use like "listToShow = rawList.filterByType().filterByEnterYear()...;" 
 	 * Please use the String in the SearchResultList.Filter as the filter strings.  */
 	public SearchResultList filterByType(ArrayList<String> typeList)
@@ -270,16 +278,24 @@ public class SearchResultList extends ArrayList<BbkOutline>
 						return 1;
 					else if (bbk1.blasting.eValue > bbk2.blasting .eValue)
 						return -1;
-					else
-						return bbk2.blasting.score - bbk1.blasting.score;
+					else if (bbk1.blasting.score > bbk2.blasting.score)
+						return 1;
+					else if (bbk1.blasting.score < bbk2.blasting.score)
+						return -1;
+					else	// all equal
+						return 0;
 				}
 				else
 				{	if (bbk1.blasting.eValue < bbk2.blasting.eValue)
 						return -1;
 					else if (bbk1.blasting.eValue > bbk2.blasting .eValue)
 						return 1;
-					else
-						return bbk1.blasting.score - bbk2.blasting.score;
+					else if (bbk1.blasting.score > bbk2.blasting.score)
+						return -1;
+					else if (bbk1.blasting.score < bbk2.blasting.score)
+						return 1;
+					else	// all equal
+						return 0;
 				}
 			}
 		};

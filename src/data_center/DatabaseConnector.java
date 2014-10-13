@@ -77,6 +77,25 @@ public class DatabaseConnector
 
         return bbkOutline;
     }
+    
+    /** Used when blasting, not get outline one by one to reduce query times
+     * to reduce query time.  */
+    public static void fillOutlineIntoHalfFilledList(SearchResultList list)
+    {	
+    	checkConnection();
+    	String cmdStr = " select * from " + DBConsts.Table.MAIN + 
+        	" where " + DBConsts.Header.Main.NAME + " = " + "'" + list.get(0).name + "'";
+    	for (int i = 1; i < list.size(); ++i)
+    	{	String bbkName = list.get(i).name;
+    		cmdStr += 
+    			" OR " + DBConsts.Header.Main.NAME + " = " + "'" + bbkName + "'";
+    	}
+    	try 
+		{	Statement statement = connection.createStatement();
+			ResultSet resultSet = statement.executeQuery(cmdStr);
+			DBDataFiller.dbIntoHalfFilledSearchResultList(resultSet, list);
+		} catch (SQLException e) {e.printStackTrace();}
+    }
 
     /** Specify the part_name as the parameter name, get the detail of a 
      * unique biobrick.  */
