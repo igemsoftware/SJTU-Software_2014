@@ -967,7 +967,7 @@ public class Child_Upload extends JPanel {
 				}
 				showinfo.setText("<html>Uploading your biobrick...<br>10% Complete</html>");
 				String newBbk = OfficialUploadPoster.getNextAvailablePartName();
-				newBbk = "BBa_K1479005";
+				//newBbk = "BBa_K1479005";
 				showinfo.setText("<html>Uploading your biobrick...<br>21% Complete<br>New BioBrick is "+newBbk+"</html>");
 				String newId = OfficialUploadPoster.createNewPart(newBbk, bbkupload);
 				bbkupload.setName(newBbk);
