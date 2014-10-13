@@ -317,8 +317,6 @@ public class Child_Design extends JLayeredPane {
 		panel.setBounds(283, 0, 1083, 665);
 		background.add(panel);
 		
-		outer_rect=panel.getVisibleRect();
-		
 		Tpanel.setLayout(null);
 		Tpanel.setBounds(0, 0, 1083, 665);
 		panel.add(Tpanel,0);
@@ -1012,9 +1010,7 @@ public class Child_Design extends JLayeredPane {
 	    		totalCompList.add(newText);
 	    		newText.ID=compCount++;	    		
 	    		panel.add(newText);
-	    		
-	    		newText.setVisible(true);	    		
-	    		newText.grabFocus();
+	    		panel.setPosition(newText, 0);
 				
 	    		ChooseCurrentText chooseTextListener = new ChooseCurrentText();
 	    		newText.addFocusListener(chooseTextListener);
@@ -1282,6 +1278,7 @@ public class Child_Design extends JLayeredPane {
 		public void mouseReleased(MouseEvent e)
 		{
 			//delete
+			outer_rect=panel.getVisibleRect();
 			if(!outer_rect.contains((e.getComponent()).getLocation()))
 			{
 				Component comp = e.getComponent();
@@ -1357,6 +1354,7 @@ public class Child_Design extends JLayeredPane {
 					(textMoved.ID, SketchOperation.TYPE_BOUNDS, folBounds);
 			}
 			
+			outer_rect=panel.getVisibleRect();
 			//delete
 			if(!outer_rect.contains((e.getComponent()).getLocation()))
 			{

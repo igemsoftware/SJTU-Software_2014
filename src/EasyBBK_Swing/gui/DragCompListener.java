@@ -339,7 +339,7 @@ class DragCompListener implements MouseInputListener
 							sketchCenter.currentProject.onDesorb
 								(previousBackbone.ID, compMoved.ID);
 					}
-				}
+				}	
 			}
 			// register the move action
 			Rectangle folBounds = new Rectangle(compMoved.getBounds());
@@ -352,8 +352,22 @@ class DragCompListener implements MouseInputListener
 		{
 			Component comp = e.getComponent();
 			(comp.getParent()).remove(e.getComponent());
-			
 			SketchProject project = sketchCenter.currentProject;
+			
+			if (comp.getName()=="backbone")
+			{
+				if (onBackbone.size()>0)
+				{
+					for (int i=0; i<onBackbone.size();i++)
+					{
+						((partList.get(onBackbone.get(i))).getParent()).remove(partList.get(onBackbone.get(i)));
+						int biobrickID = ((JLabelWithID) (partList.get(onBackbone.get(i)))).ID;
+						project.delComponent(project.findComponentByID(biobrickID));
+					}
+				}
+			}
+			
+			
 			int ID = -1;
 			
 			Component component = e.getComponent();
