@@ -728,7 +728,6 @@ public class Child_Design extends JLayeredPane {
     			}
 				pen = null;
 				linePanel.setPen(pen);
-				
 			}
 			addText=false;
 		}
@@ -825,6 +824,7 @@ public class Child_Design extends JLayeredPane {
     				}
     			}
     			pen = null;
+    			linePanel.setPen(pen);
     		}
 		}
 		
@@ -843,7 +843,7 @@ public class Child_Design extends JLayeredPane {
 	}
 	
 	/**
-	 * Draw components and text
+	 * Draw components
 	 */
 	class DrawCompListener implements MouseInputListener
 	{
@@ -1058,6 +1058,7 @@ public class Child_Design extends JLayeredPane {
 			{
 				if (pen.ifUse() & (pen.getType()==-1 | pen.getType()==0 | pen.getType()==1))
 				{
+					linePanel.setPen(pen);
 					if (e.getButton()==MouseEvent.BUTTON3)
 					{
 						linePanel.addPoint(e.getPoint());
@@ -1081,6 +1082,8 @@ public class Child_Design extends JLayeredPane {
 								linePanel.getLineBorder()[3]-linePanel.getLineBorder()[2]+20);
 						
 						panel.add(newLine);
+						
+						System.out.println("continue");
 						
 						int lineType = -1;
 						switch (linePanel.lineType)
@@ -1116,6 +1119,10 @@ public class Child_Design extends JLayeredPane {
 					}
 					else if (e.getClickCount()==1 & e.getButton()==MouseEvent.BUTTON1)
 					{
+						System.out.println("ok");
+						System.out.println(linePanel.color);
+						System.out.println(linePanel.p.type);
+						
 						linePanel.addPoint(e.getPoint());
 						linePanel.repaint();
 					}
@@ -1277,8 +1284,8 @@ public class Child_Design extends JLayeredPane {
 			
 		public void mouseReleased(MouseEvent e)
 		{
-			//delete
 			outer_rect=panel.getVisibleRect();
+			//delete
 			if(!outer_rect.contains((e.getComponent()).getLocation()))
 			{
 				Component comp = e.getComponent();
@@ -1294,6 +1301,13 @@ public class Child_Design extends JLayeredPane {
 				else
 					ID = ((JLabelWithID) component).ID;
 				project.delComponent(project.findComponentByID(ID));
+			}
+			else
+			{
+				JLabelWithID lineMoved = (JLabelWithID)e.getComponent();
+				Rectangle folBounds = new Rectangle(lineMoved.getBounds());
+				sketchCenter.currentProject.modifyComponent
+					(lineMoved.ID, SketchOperation.TYPE_BOUNDS, folBounds);
 			}
 		}
 			
@@ -1334,11 +1348,6 @@ public class Child_Design extends JLayeredPane {
 						(e.getComponent()).getX()+(newPoint.x-point.x),
 						(e.getComponent()).getY()+(newPoint.y-point.y));
 				point = newPoint;
-				
-				TextLabel textLabelMoved = (TextLabel)e.getComponent();
-				Rectangle folBounds = textLabelMoved.getBounds();
-				sketchCenter.currentProject.modifyComponent
-					(textLabelMoved.ID, SketchOperation.TYPE_BOUNDS, folBounds);
 			}		
 		}
 		
@@ -1346,14 +1355,6 @@ public class Child_Design extends JLayeredPane {
 			
 		public void mouseReleased(MouseEvent e)
 		{
-			TextLabel textMoved = (TextLabel)e.getComponent();
-			if (textMoved.movable)
-			{
-				Rectangle folBounds = new Rectangle(textMoved.getBounds());
-				sketchCenter.currentProject.modifyComponent
-					(textMoved.ID, SketchOperation.TYPE_BOUNDS, folBounds);
-			}
-			
 			outer_rect=panel.getVisibleRect();
 			//delete
 			if(!outer_rect.contains((e.getComponent()).getLocation()))
@@ -1371,6 +1372,16 @@ public class Child_Design extends JLayeredPane {
 				else
 					ID = ((JLabelWithID) component).ID;
 				project.delComponent(project.findComponentByID(ID));
+			}
+			else
+			{
+				TextLabel textMoved = (TextLabel)e.getComponent();
+				if (textMoved.movable)
+				{
+					Rectangle folBounds = new Rectangle(textMoved.getBounds());
+					sketchCenter.currentProject.modifyComponent
+						(textMoved.ID, SketchOperation.TYPE_BOUNDS, folBounds);
+				}
 			}
 		}
 			
@@ -1475,6 +1486,8 @@ public class Child_Design extends JLayeredPane {
 	{		
 		public void mouseClicked(MouseEvent e) 
 		{
+			System.out.println(pen.toString());
+			
 			SketchOperation operation = sketchCenter.currentProject.ctrlZ();
 			//test
 			if (operation == null)
@@ -2037,7 +2050,6 @@ public class Child_Design extends JLayeredPane {
 				case BbkType.Sketch.Protein.COMBINED:
 					GUITypeName = "protein";	break;
 			}
-			System.out.println(GUITypeName);
 			ImageIcon image_newLabel = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/"+GUITypeName+"_move.png"));
     		newLabel.setIcon(image_newLabel);    		
     		newLabel.setName(GUITypeName);
@@ -2254,7 +2266,6 @@ public class Child_Design extends JLayeredPane {
 	{	
 		int ID = component.ID;
 		Component comp = totalCompList.get(ID);
-		System.out.println(comp.getName());
 		(comp.getParent()).remove(comp);
 	}
 	
