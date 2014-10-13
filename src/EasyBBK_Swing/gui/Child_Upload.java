@@ -96,7 +96,7 @@ public class Child_Upload extends JPanel {
 	public JPanel showinfopanel;
 	public JLabel showinfo;
 	public JLabel BackGround;
-	public JLabel Clearall;
+	public JButton Clearall;
 	
 	public JTable paramTable = null;
 	public String [] paramCols = {"Parameter Name","Value"};
@@ -845,8 +845,9 @@ public class Child_Upload extends JPanel {
 		
 		showinfopanel = new JPanel();
 		showinfopanel.setBounds(920, 1500, 360, 240);
-		showinfopanel.setBackground(new Color(255, 255, 255));
-		UploadContainer.add(showinfopanel);
+		showinfopanel.setOpaque(false);
+		//showinfopanel.setBackground(new Color(255, 255, 255));
+		
 		
 		showinfo = new JLabel("", SwingConstants.LEFT);
 		showinfo.setOpaque(false);
@@ -854,8 +855,10 @@ public class Child_Upload extends JPanel {
 		showinfo.setBounds(0, 0, 360, 240);
 		showinfo.setFont(new Font("Arial", Font.PLAIN, 24));
 		showinfopanel.add(showinfo);
+		UploadContainer.add(showinfopanel);
 		
-		Clearall = new JLabel("Clear All");
+		Clearall = new JButton("Clear All");
+		//Clearall = new JLabel();
 		Clearall.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
@@ -889,7 +892,7 @@ public class Child_Upload extends JPanel {
 			}
 		});
 		Clearall.setFont(new Font("Arial", Font.PLAIN, 24));
-		Clearall.setBounds(1100, 30, 120, 24);
+		Clearall.setBounds(1100, 30, 140, 40);
 		UploadContainer.add(Clearall);
 		
 		BackGround = new JLabel("");
