@@ -29,6 +29,14 @@ public class SearchResultList extends ArrayList<BbkOutline>
 		return false;
 	}
 	
+	public BbkOutline getByName(String bbkName)
+	{	
+		for (BbkOutline bbkOutline : this)
+			if (bbkOutline.name.equals(bbkName))
+				return bbkOutline;
+		return null;
+	}
+	
 	/** Able to be use like "listToShow = rawList.filterByType().filterByEnterYear()...;" 
 	 * Please use the String in the SearchResultList.Filter as the filter strings.  */
 	public SearchResultList filterByType(ArrayList<String> typeList)

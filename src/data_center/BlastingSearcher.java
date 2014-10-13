@@ -61,11 +61,12 @@ public class BlastingSearcher
 			   outfilePath = IO_DIR_LOCAL + OUTFILE_NAME + tag, 
 			   RemoteInfilePath = IO_DIR_SERVER + INFILE_NAME + tag,
 			   RemoteOutfilePath = IO_DIR_SERVER + OUTFILE_NAME + tag;
-		
-		prepareInfile(input, mode, infilePath);
+		SearchResultList list = new SearchResultList(input);
 		
 		try 
-		{	connect();	// connection newed
+		{	prepareInfile(input, mode, infilePath);
+			
+			connect();	// connection newed
 			// upload the infile
 			SCPClient scpClient = new SCPClient(connection);
 			scpClient.put(infilePath, IO_DIR_SERVER);
@@ -83,9 +84,12 @@ public class BlastingSearcher
 			connection.openSession().execCommand("rm " + RemoteInfilePath + "; "
 											   + "rm " + RemoteOutfilePath);
 			disconnect();
+			
+			readFromOutfile(outfilePath, list);	// .bbkName and .blasting filled
 		} catch (IOException e) {e.printStackTrace();}
 		
-		return readOutfile(outfilePath, input);
+		DatabaseConnector.fillOutlineIntoHalfFilledList(list);
+		return list;
 	}
 	
 	/** Used to delete cache files automatically generated when blasting.  */
@@ -135,56 +139,53 @@ public class BlastingSearcher
 		stdErr.close();
 	}
 	
-	private static void prepareInfile(String input, int mode, String infilePath)
+	private static void prepareInfile(String input, int mode, String infilePath) throws IOException
 	{	
 		if (mode == MODE_INPUT_SEQUENCE)	// copy input into file "input"
-		{	try
-			{	BufferedWriter writer 
-					= new BufferedWriter(new FileWriter(infilePath, false));
-				writer.write(input);
-				writer.flush();
-				writer.close();
-			} catch (IOException e) {e.printStackTrace();}
+		{	BufferedWriter writer 
+				= new BufferedWriter(new FileWriter(infilePath, false));
+			writer.write(input);
+			writer.flush();
+			writer.close();
+			
 		}
 		else // mode == MODE_INPUT_FILE_PATH, cpy the content of input into file "input"
-		{	try
-			{	BufferedReader reader 
-					= new BufferedReader(new FileReader(input)); 
-				BufferedWriter writer 
-					= new BufferedWriter(new FileWriter(infilePath, false));
-				String line;
-		        while ( (line = reader.readLine()) != null)
-		        	writer.write(line + "\n");
-		        reader.close();	writer.close();
-			} catch (IOException e) {e.printStackTrace();}
+		{	BufferedReader reader = new BufferedReader(new FileReader(input)); 
+			BufferedWriter writer 
+				= new BufferedWriter(new FileWriter(infilePath, false));
+			String line;
+	        while ( (line = reader.readLine()) != null)
+	        	writer.write(line + "\n");
+	        reader.close();	writer.close();
 		}
 	}
 	
-	private static SearchResultList readOutfile(String outfilePath, String inputStr)
+	/** .bbkName and .blasting filled in the list passed into the function
+	 * @throws IOException   */
+	private static SearchResultList readFromOutfile
+		(String outfilePath, SearchResultList list) throws IOException
 	{
-		SearchResultList list = new SearchResultList(inputStr);
-		try
-		{	BufferedReader reader 
-				= new BufferedReader(new FileReader(outfilePath));
-			String line;
-			boolean startReading = false, endReading = false;
-			while ((line = reader.readLine()) != null)
-				if (line.startsWith(RESULT_LINE_PREFIX))
-				{	startReading = true;
-					break;	
-				}
-			while (startReading && (!endReading))
-			{	processLine(line, list);
-				if ( !(line = reader.readLine()).startsWith(RESULT_LINE_PREFIX) )
-					endReading = true;
+		BufferedReader reader = new BufferedReader(new FileReader(outfilePath));
+		String line;
+		BbkOutline halfFilledBbkOutline;
+		boolean startReading = false, endReading = false;
+		while ((line = reader.readLine()) != null)
+			if (line.startsWith(RESULT_LINE_PREFIX))
+			{	startReading = true;
+				break;	
 			}
-			reader.close();
-		} catch (IOException e) {e.printStackTrace();}
+		while (startReading && (!endReading))
+		{	halfFilledBbkOutline = processLine(line);	// bbkName and Blasting filled
+			list.add(halfFilledBbkOutline);
+			if ( !(line = reader.readLine()).startsWith(RESULT_LINE_PREFIX) )
+				endReading = true;
+		}
+		reader.close();
 		
 		return list;
 	}
 
-	private static void processLine(String line, SearchResultList list)
+	private static BbkOutline processLine(String line)
 	{
 		line = line.substring(RESULT_LINE_PREFIX.length());	// cut off the prefix
 		String[] rawResults = line.split(" ");
@@ -196,12 +197,14 @@ public class BlastingSearcher
 		String bbkName = results.get(0), // the first token
 			   scoreStr = results.get(results.size() - 2), 	// the second last token
 			   eValueStr = results.get(results.size() - 1);	// the last token
-
-		BbkOutline outline = DatabaseConnector.getOutlineByName(bbkName);
-		outline.blasting = new BbkOutline.Blasting();
-		outline.blasting.score = Double.parseDouble(scoreStr);
-		outline.blasting.eValue = Double.parseDouble(eValueStr);
-		list.add(outline);
+		
+		BbkOutline halfFilledBbkOutline  = new BbkOutline();
+		
+		halfFilledBbkOutline.name = bbkName;
+		halfFilledBbkOutline.blasting = new BbkOutline.Blasting();
+		halfFilledBbkOutline.blasting.score = Double.parseDouble(scoreStr);
+		halfFilledBbkOutline.blasting.eValue = Double.parseDouble(eValueStr);
+		return halfFilledBbkOutline;
 	}
 	
 	
