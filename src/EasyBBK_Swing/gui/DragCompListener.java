@@ -288,96 +288,97 @@ class DragCompListener implements MouseInputListener
 		if ((e.getComponent()).getName() != "TPanel" & (e.getComponent()).getName() != "LinePanel"
 				& (e.getComponent()).getName() != "text" )
 		{
-			if (((e.getComponent()).getName() != "recepter" & (e.getComponent()).getName() != "factor" 
-					& (e.getComponent()).getName() != "protein" & (e.getComponent()).getName() != "plasmid"
-					& (e.getComponent()).getName() != "virus" & (e.getComponent()).getName() != "ecoil"))
+			//delete
+			if(!outer_rect.contains((e.getComponent()).getLocation()))
 			{
-				if ((e.getComponent()).getName() != "backbone")
+				Component comp = e.getComponent();
+				(comp.getParent()).remove(e.getComponent());
+				SketchProject project = sketchCenter.currentProject;
+				
+				if (comp.getName()=="backbone")
 				{
-					if (near)
+					if (onBackbone.size()>0)
 					{
-						Point location = new Point(((JLabelWithID)(e.getSource())).getX(),
-								(closestBackbone.getLocation()).y);
-						((JLabelWithID)(e.getSource())).setLocation(location);
-						
-						//search components on the backbone
-						int pCount = partList.size();
-						onBackbone.clear();
-						
-						for (int i=0; i<pCount; i++)
+						for (int i=0; i<onBackbone.size();i++)
 						{
-							if (	//component is in the range of backbone in x axis
-									(closestBackbone.getX()<(partList.get(i)).getX())
-									& ((closestBackbone.getX()+
-											closestBackbone.getWidth())> (partList.get(i)).getX())
-									//component is close to backbone in Y axis
-									& (Math.abs(closestBackbone.getY()-(partList.get(i)).getY())==0))		
-							{
-								onBackbone.add(i);
-							}
+							((partList.get(onBackbone.get(i))).getParent()).remove(partList.get(onBackbone.get(i)));
+							int biobrickID = ((JLabelWithID) (partList.get(onBackbone.get(i)))).ID;
+							project.delComponent(project.findComponentByID(biobrickID));
 						}
-						
-						//confirm the serial number on backbone
-						int compNum_OnBackbone = onBackbone.size();
-						int order=0;
-						int distance=e.getComponent().getX()- closestBackbone.getX();
-						for (int i2=0; i2<compNum_OnBackbone; i2++)
-						{
-							if ((partList.get(onBackbone.get(i2)).getX()-closestBackbone.getX())<distance)
-							{
-								order=order+1;
-							}					
-						}
-						
-						sketchCenter.currentProject.onAbsorb
-							(closestBackbone.ID, compMoved.ID, order);
-					}
-					else
-					{	// the previousBackbone represents the backbone once absorbed, if it is not a 
-						// 	null, it means a desorb event
-						if (previousBackbone != null)
-							sketchCenter.currentProject.onDesorb
-								(previousBackbone.ID, compMoved.ID);
-					}
-				}	
-			}
-			// register the move action
-			Rectangle folBounds = new Rectangle(compMoved.getBounds());
-			sketchCenter.currentProject.modifyComponent
-				(compMoved.ID, SketchOperation.TYPE_BOUNDS, folBounds);
-		}	
-		
-		//delete
-		if(!outer_rect.contains((e.getComponent()).getLocation()))
-		{
-			Component comp = e.getComponent();
-			(comp.getParent()).remove(e.getComponent());
-			SketchProject project = sketchCenter.currentProject;
-			
-			if (comp.getName()=="backbone")
-			{
-				if (onBackbone.size()>0)
-				{
-					for (int i=0; i<onBackbone.size();i++)
-					{
-						((partList.get(onBackbone.get(i))).getParent()).remove(partList.get(onBackbone.get(i)));
-						int biobrickID = ((JLabelWithID) (partList.get(onBackbone.get(i)))).ID;
-						project.delComponent(project.findComponentByID(biobrickID));
 					}
 				}
+
+				int ID = -1;
+				
+				Component component = e.getComponent();
+				
+				if ((component.getName()).equals("text"))
+					ID = ((TextLabel) component).ID;
+				else
+					ID = ((JLabelWithID) component).ID;
+				project.delComponent(project.findComponentByID(ID));
 			}
-			
-			
-			int ID = -1;
-			
-			Component component = e.getComponent();
-			
-			if ((component.getName()).equals("text"))
-				ID = ((TextLabel) component).ID;
 			else
-				ID = ((JLabelWithID) component).ID;
-			project.delComponent(project.findComponentByID(ID));
-		}
+			{
+				if (((e.getComponent()).getName() != "recepter" & (e.getComponent()).getName() != "factor" 
+						& (e.getComponent()).getName() != "protein" & (e.getComponent()).getName() != "plasmid"
+						& (e.getComponent()).getName() != "virus" & (e.getComponent()).getName() != "ecoil"))
+				{
+					if ((e.getComponent()).getName() != "backbone")
+					{
+						if (near)
+						{
+							Point location = new Point(((JLabelWithID)(e.getSource())).getX(),
+									(closestBackbone.getLocation()).y);
+							((JLabelWithID)(e.getSource())).setLocation(location);
+							
+							//search components on the backbone
+							int pCount = partList.size();
+							onBackbone.clear();
+							
+							for (int i=0; i<pCount; i++)
+							{
+								if (	//component is in the range of backbone in x axis
+										(closestBackbone.getX()<(partList.get(i)).getX())
+										& ((closestBackbone.getX()+
+												closestBackbone.getWidth())> (partList.get(i)).getX())
+										//component is close to backbone in Y axis
+										& (Math.abs(closestBackbone.getY()-(partList.get(i)).getY())==0))		
+								{
+									onBackbone.add(i);
+								}
+							}
+							
+							//confirm the serial number on backbone
+							int compNum_OnBackbone = onBackbone.size();
+							int order=0;
+							int distance=e.getComponent().getX()- closestBackbone.getX();
+							for (int i2=0; i2<compNum_OnBackbone; i2++)
+							{
+								if ((partList.get(onBackbone.get(i2)).getX()-closestBackbone.getX())<distance)
+								{
+									order=order+1;
+								}					
+							}
+							
+							sketchCenter.currentProject.onAbsorb
+								(closestBackbone.ID, compMoved.ID, order);
+						}
+						else
+						{	// the previousBackbone represents the backbone once absorbed, if it is not a 
+							// 	null, it means a desorb event
+							if (previousBackbone != null)
+								sketchCenter.currentProject.onDesorb
+									(previousBackbone.ID, compMoved.ID);
+						}
+					}	
+				}
+				// register the move action
+				Rectangle folBounds = new Rectangle(compMoved.getBounds());
+				sketchCenter.currentProject.modifyComponent
+					(compMoved.ID, SketchOperation.TYPE_BOUNDS, folBounds);
+			}
+		}	
 	}
       
     public void mouseEntered(MouseEvent e){}
