@@ -199,7 +199,7 @@ public class BlastingSearcher
 
 		BbkOutline outline = DatabaseConnector.getOutlineByName(bbkName);
 		outline.blasting = new BbkOutline.Blasting();
-		outline.blasting.score = Integer.parseInt(scoreStr);
+		outline.blasting.score = Double.parseDouble(scoreStr);
 		outline.blasting.eValue = Double.parseDouble(eValueStr);
 		list.add(outline);
 	}
