@@ -117,6 +117,7 @@ class TextLabel extends JTextPane implements MouseListener, MouseMotionListener
 	}
 	public void mousePressed(MouseEvent e) 
 	{
+		e.getComponent().requestFocus();
 		if ((middle_rect.contains(e.getPoint())) & (!inner_rect.contains(e.getPoint())) & (!rect_move.contains(e.getPoint())))
 		{
 			resizeable = true;			
@@ -339,7 +340,6 @@ class TextLabel extends JTextPane implements MouseListener, MouseMotionListener
     	}
 		resizeable = false;
 		reType=0;
-		panel.setPosition(e.getComponent(),-1);
 	}
 
 	public void mouseClicked(MouseEvent e) {}
