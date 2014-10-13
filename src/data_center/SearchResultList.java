@@ -270,16 +270,24 @@ public class SearchResultList extends ArrayList<BbkOutline>
 						return 1;
 					else if (bbk1.blasting.eValue > bbk2.blasting .eValue)
 						return -1;
-					else
-						return bbk2.blasting.score - bbk1.blasting.score;
+					else if (bbk1.blasting.score > bbk2.blasting.score)
+						return 1;
+					else if (bbk1.blasting.score < bbk2.blasting.score)
+						return -1;
+					else	// all equal
+						return 0;
 				}
 				else
 				{	if (bbk1.blasting.eValue < bbk2.blasting.eValue)
 						return -1;
 					else if (bbk1.blasting.eValue > bbk2.blasting .eValue)
 						return 1;
-					else
-						return bbk1.blasting.score - bbk2.blasting.score;
+					else if (bbk1.blasting.score > bbk2.blasting.score)
+						return -1;
+					else if (bbk1.blasting.score < bbk2.blasting.score)
+						return 1;
+					else	// all equal
+						return 0;
 				}
 			}
 		};

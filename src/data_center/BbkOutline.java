@@ -170,7 +170,7 @@ public class BbkOutline
     /** The evaluation criteria stored when blasting.  */
     public static class Blasting
     {	
-    	public int score;
+    	public double score;
     	public double eValue;
     }
 }
