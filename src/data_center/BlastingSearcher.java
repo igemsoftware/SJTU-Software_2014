@@ -181,7 +181,7 @@ public class BlastingSearcher
 				endReading = true;
 		}
 		reader.close();
-		
+		list.sortByBlastResult(true);
 		return list;
 	}
 
