@@ -21,7 +21,7 @@ public class Parameter_item extends JPanel {
 		setBackground(new Color(255, 255, 255));
 		setLayout(null);
 		
-		String parameter[] = {"abs", "activation_coeficient", "biology", 
+		String parameter[] = {"--Add Another Parameter--","abs", "activation_coeficient", "biology", 
 				"chassis", "color", "control", "copies", "device_type", 
 				"direction", "dissociation_constant", "ec_num", "efficiency", 
 				"emission", "emit", "excitation", "excite", "family", 

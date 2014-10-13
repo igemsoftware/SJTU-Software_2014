@@ -46,6 +46,7 @@ public class Child_Search extends JPanel {
 	public JPanel resultpanel;
 	public JLabel previouspage;
 	public JLabel nextpage;
+	public JLabel total;
 	public JLabel totalpagenum;
 	public JLabel showpagenum;
 	public boolean confirmed_clicked;
@@ -218,7 +219,7 @@ public class Child_Search extends JPanel {
 		
 		resultpanel = new JPanel();
 		resultpanel.setBackground(new Color(255, 255, 255));
-		resultpanel.setBounds(51, 105, 576, 565);
+		resultpanel.setBounds(51, 85, 587, 585);
 		Result.add(resultpanel);
 		resultpanel.setLayout(null);
 		

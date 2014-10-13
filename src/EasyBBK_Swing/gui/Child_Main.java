@@ -123,7 +123,7 @@ public class Child_Main extends JPanel {
 				}
 			}
 		});
-		DesignDrawingBox.setBounds(412, 327, 254, 293);
+		DesignDrawingBox.setBounds(705, 327, 254, 293);
 		DesignDrawingBox.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/StartPage_painting.png")));
 		DesignDrawingBox.setVisible(true);
 		BackGround.add(DesignDrawingBox);
@@ -165,7 +165,7 @@ public class Child_Main extends JPanel {
 				}
 			}
 		});
-		UploadDrawingBox.setBounds(705, 327, 254, 293);
+		UploadDrawingBox.setBounds(990, 327, 254, 293);
 		UploadDrawingBox.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/StartPage_upload.png")));
 		UploadDrawingBox.setVisible(true);
 		BackGround.add(UploadDrawingBox);
@@ -208,7 +208,7 @@ public class Child_Main extends JPanel {
 				CompareDrawingBox.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/StartPage_compare.png")));
 			}
 		});
-		CompareDrawingBox.setBounds(990, 327, 254, 293);
+		CompareDrawingBox.setBounds(412, 327, 254, 293);
 		CompareDrawingBox.setBackground(new Color(0,0,0,0));
 		CompareDrawingBox.setVisible(true);
 		BackGround.add(CompareDrawingBox);
