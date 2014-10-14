@@ -61,7 +61,7 @@ public class Choicepanel extends JPanel {
 	public JCheckBox high;
 	public JCheckBox middle;
 	public JCheckBox low;
-	public JButton Confirme;
+	public JButton Confirm;
 	public Information information;
 	public boolean confirmed_clicked = false;
 	/**
@@ -528,8 +528,8 @@ public class Choicepanel extends JPanel {
 		
 		information = new Information();
 		
-		Confirme = new JButton("Confirme");
-		Confirme.addMouseListener(new MouseAdapter() {
+		Confirm = new JButton("Confirm");
+		Confirm.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if(e.getButton() == MouseEvent.BUTTON1){
@@ -645,8 +645,8 @@ public class Choicepanel extends JPanel {
 				}
 			}
 		});
-		Confirme.setFont(new Font("Arial", Font.BOLD, 16));
-		Confirme.setBounds(243, 451, 121, 28);
-		add(Confirme);
+		Confirm.setFont(new Font("Arial", Font.BOLD, 16));
+		Confirm.setBounds(243, 451, 121, 28);
+		add(Confirm);
 	}
 }
