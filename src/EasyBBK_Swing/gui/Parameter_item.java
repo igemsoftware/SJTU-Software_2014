@@ -10,7 +10,9 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class Parameter_item extends JPanel {
-	public JComboBox Choice;
+	private static final long serialVersionUID = 1L;
+	
+	public JComboBox<?> Choice;
 	public String content;
 	public JTextField textField;
 	/**
@@ -34,7 +36,7 @@ public class Parameter_item extends JPanel {
 				"reversed_version", "reverse_efficiency", "sender", 
 				"signalling_molecule", "strain", "swisspro", "switch_point", 
 				"t-oh", "t-ol", "tag", "target", "type", "t_hl", "t_lh", "t_m", "uniprot"};
-		Choice = new JComboBox(parameter);
+		Choice = new JComboBox<Object>(parameter);
 		content = "abs";
 		Choice.setFont(new Font("Arial", Font.PLAIN, 20));
 		Choice.setSelectedIndex(0);

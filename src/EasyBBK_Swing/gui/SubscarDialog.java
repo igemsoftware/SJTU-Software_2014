@@ -15,6 +15,8 @@ import data_center.*;
 import data_center.BbkUpload.SpecifiedSubscar;
 
 public class SubscarDialog extends JDialog {
+	private static final long serialVersionUID = 1L;
+	
 	public MainPage parent;
 	public SubscarDialog sd;
 	/**
@@ -43,7 +45,7 @@ public class SubscarDialog extends JDialog {
 		Confirme.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(e.getButton() == e.BUTTON1){
+				if(e.getButton() == MouseEvent.BUTTON1){
 					if(inputtext.getText().equals("")) return;
 					UploadCenter uploadcenter = new UploadCenter();
 					SpecifiedSubscar ss = uploadcenter.getSubscarForSequenceToken(inputtext.getText());
@@ -86,7 +88,7 @@ public class SubscarDialog extends JDialog {
 		Cancel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(e.getButton() == e.BUTTON1)
+				if(e.getButton() == MouseEvent.BUTTON1)
 					sd.dispose();
 			}
 		});

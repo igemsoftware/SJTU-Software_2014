@@ -12,6 +12,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class SearchingResult extends JPanel{
+	private static final long serialVersionUID = 1L;
+	
 	public JLabel ID_Content;
 	public JLabel Type_Content;
 	public JLabel Evalue_Content;
@@ -34,7 +36,7 @@ public class SearchingResult extends JPanel{
 		addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(e.getButton() == e.BUTTON1)
+				if(e.getButton() == MouseEvent.BUTTON1)
 					requestFocus();
 			}
 		});

@@ -23,6 +23,8 @@ import javax.swing.JScrollPane;
 import data_center.*;
 
 public class Child_Search extends JPanel {
+	private static final long serialVersionUID = 1L;
+	
 	public JTextField textField;
 	public JPanel Result;
 	public JLabel Search;
@@ -73,7 +75,7 @@ public class Child_Search extends JPanel {
 		Result.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(e.getButton() == e.BUTTON1)
+				if(e.getButton() == MouseEvent.BUTTON1)
 					Result.requestFocus();
 			}
 		});
@@ -87,7 +89,7 @@ public class Child_Search extends JPanel {
 		Back.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(e.getButton() == e.BUTTON1){
+				if(e.getButton() == MouseEvent.BUTTON1){
 					SearchResultList previousList = searchcenter.rollBack();
 					if(previousList == null) return;
 					else{
@@ -117,7 +119,7 @@ public class Child_Search extends JPanel {
 		Forward.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(e.getButton() == e.BUTTON1){
+				if(e.getButton() == MouseEvent.BUTTON1){
 					SearchResultList forwardList = searchcenter.goForward();
 					if(forwardList == null) return;
 					else{
@@ -149,7 +151,7 @@ public class Child_Search extends JPanel {
 		Search.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(e.getButton() == e.BUTTON1){
+				if(e.getButton() == MouseEvent.BUTTON1){
 					if(textField.getText().equals("")){
 						Component component = mainpage.Mainpanel.getComponent(0);
 						if(component instanceof Child_Search){
@@ -187,7 +189,7 @@ public class Child_Search extends JPanel {
 		textField.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
-				if(e.getKeyChar() == e.VK_ENTER){
+				if(e.getKeyChar() == KeyEvent.VK_ENTER){
 					if(textField.getText().equals("")){
 						Component component = mainpage.Mainpanel.getComponent(0);
 						if(component instanceof Child_Search){
@@ -228,7 +230,7 @@ public class Child_Search extends JPanel {
 		Blast.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(e.getButton() == e.BUTTON1){
+				if(e.getButton() == MouseEvent.BUTTON1){
 					if(textField.getText().equals("")){
 						Component component = mainpage.Mainpanel.getComponent(0);
 						if(component instanceof Child_Search){

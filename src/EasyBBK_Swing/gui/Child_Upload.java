@@ -2,12 +2,8 @@ package EasyBBK_Swing.gui;
 
 import java.awt.Color;
 
-import sun.misc.*;
-
-import java.awt.BorderLayout;
 import java.awt.Cursor;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.Font;
 
 import javax.swing.DefaultCellEditor;
@@ -19,7 +15,6 @@ import javax.swing.JPasswordField;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.JToolTip;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -42,17 +37,16 @@ import javax.swing.table.TableRowSorter;
 import data_center.*;
 import data_center.BbkUpload.*;
 
-import java.awt.event.FocusAdapter;
-import java.awt.event.FocusEvent;
 import java.io.*;
 import java.util.ArrayList;
-import java.util.List;
 
 public class Child_Upload extends JPanel {
+	private static final long serialVersionUID = 1L;
+	
 	public MainPage mainpage;
 	public JScrollPane scrollpanel;
 	public JTextField ShortDescription;
-	public JComboBox Type;
+	public JComboBox<?> Type;
 	public JTextField Nickname;
 	public JTextField Designers;
 	public JTextArea SequenceInformation;
@@ -168,7 +162,7 @@ public class Child_Upload extends JPanel {
 		addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(e.getButton() == e.BUTTON1)
+				if(e.getButton() == MouseEvent.BUTTON1)
 					requestFocus();
 			}
 		});
@@ -182,7 +176,7 @@ public class Child_Upload extends JPanel {
 		UploadContainer.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(e.getButton() == e.BUTTON1)
+				if(e.getButton() == MouseEvent.BUTTON1)
 					UploadContainer.requestFocus();
 			}
 		});
@@ -215,7 +209,7 @@ public class Child_Upload extends JPanel {
 		UploadContainer.add(ChooseType);
 		
 		String type[] = {"Promoter", "RBS", "Protein_Domain", "Protein_Coding_Sequence", "Translation_Unit", "Terminator", "DNA", "Plasmid_Backbone", "Plasmid", "Primer", "Composite", "Protein_Generator", "Reporter", "Inventer", "Signalling", "Measurement", "Other"};
-		Type = new JComboBox(type);
+		Type = new JComboBox<Object>(type);
 		typestring = "Promoter";
 		Type.setFont(new Font("Arial", Font.PLAIN, 20));
 		Type.setSelectedIndex(0);
@@ -276,7 +270,7 @@ public class Child_Upload extends JPanel {
 		AddSequence.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(e.getButton() == e.BUTTON1){
+				if(e.getButton() == MouseEvent.BUTTON1){
 					new SequenceDialog(mainpage, "Please input a sequence", true);
 					if(mainpage.sequencestring.equals("") == false){
 						information_shown += mainpage.sequencestring;
@@ -297,7 +291,7 @@ public class Child_Upload extends JPanel {
 		AddSubpart.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(e.getButton() == e.BUTTON1){
+				if(e.getButton() == MouseEvent.BUTTON1){
 					subpartdialog = new SubpartDialog(mainpage, "Please input a subpart name", true);
 					if(mainpage.subpartstring.equals("") == false){
 						information_shown += mainpage.subpartstring;
@@ -317,7 +311,7 @@ public class Child_Upload extends JPanel {
 		AddSubscar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(e.getButton() == e.BUTTON1){
+				if(e.getButton() == MouseEvent.BUTTON1){
 					new SubscarDialog(mainpage, "Please input a subscar name", true);
 					if(mainpage.subscarstring.equals("") == false){
 						information_shown += mainpage.subscarstring;
@@ -383,7 +377,7 @@ public class Child_Upload extends JPanel {
 				"reversed_version", "reverse_efficiency", "sender", 
 				"signalling_molecule", "strain", "swisspro", "switch_point", 
 				"t-oh", "t-ol", "tag", "target", "type", "t_hl", "t_lh", "t_m", "uniprot"};
-		JComboBox paramComboBox = new JComboBox(parameter);
+		JComboBox<?> paramComboBox = new JComboBox<Object>(parameter);
 		paramComboBox.setFont(new Font("Arial", Font.PLAIN, 20));
 		paramComboBox.setSelectedIndex(0);
 		paramTable = new JTable(paramRows,paramCols);
@@ -426,7 +420,7 @@ public class Child_Upload extends JPanel {
 		AddCategory.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(e.getButton() == e.BUTTON1){
+				if(e.getButton() == MouseEvent.BUTTON1){
 					categoryAddClicked();
 				}
 			}
@@ -439,7 +433,7 @@ public class Child_Upload extends JPanel {
 		RemoveCategory.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(e.getButton() == e.BUTTON1){
+				if(e.getButton() == MouseEvent.BUTTON1){
 					categoryDeleteClicked();
 				}
 			}
@@ -526,7 +520,7 @@ public class Child_Upload extends JPanel {
 				"//plasmidbackbone/libraryscreening", "//plasmidbackbone/libraryscreening/codingsequence", 
 				"//plasmidbackbone/libraryscreening/promoter", "//plasmidbackbone/libraryscreening/rbscodingsequence", 
 				"//plasmidbackbone/operation", "//plasmidbackbone/proteinfusion", "//plasmidbackbone/synthesis", "//plasmidbackbone/version/10", "//plasmidbackbone/version/3", "//plasmidbackbone/version/4", "//plasmidbackbone/version/5", "//primer/m13", "//primer/part", "//primer/part/amplification", "//primer/part/sequencing", "//primer/plasmid/amplification", "//primer/reporter/cfp", "//primer/reporter/gfp", "//primer/reporter/yfp", "//primer/sp6", "//primer/t3", "//primer/t7", "//promoter", "//promoter/anderson", "//promoter/iron", "//promoter/logic/ustc", "//promoter/stresskit", "//proteindomain", "//proteindomain/activation", "//proteindomain/affinity", "//proteindomain/binding", "//proteindomain/cleavage", "//proteindomain/degradation", "//proteindomain/dnabinding", "//proteindomain/head", "//proteindomain/internal", "//proteindomain/internal/special", "//proteindomain/linker", "//proteindomain/localization", "//proteindomain/repression", "//proteindomain/tail", "//proteindomain/transmembrane", "//rbs/prokaryote", "//rbs/prokaryote/constitutive", "//rbs/prokaryote/constitutive/anderson", "//rbs/prokaryote/constitutive/community", "//rbs/prokaryote/constitutive/constitutive", "//rbs/prokaryote/constitutive/miscellaneous", "//rbs/prokaryote/constitutive/rackham", "//rbs/prokaryote/regulated/issacs", "//rbs/prokaryotic/constitutive/miscellaneous", "//regulation", "//regulation/constitutive", "//regulation/multiple", "//regulation/negative", "//regulation/positive", "//regulation/unknown", "//ribosome", "//ribosome/eukaryote", "//ribosome/eukaryote/yeast", "//ribosome/prokaryote", "//ribosome/prokaryote/bcepacia", "//ribosome/prokaryote/bsubtilis", "//ribosome/prokaryote/custom", "//ribosome/prokaryote/ecoli", "//ribosome/prokaryote/pananatis", "//ribosome/prokaryote/pputida", "//ribosome/prokaryote/salmonella", "//ribosome/prokaryote/sespanaensis", "//rnap", "//rnap/bacteriophage/sp6", "//rnap/bacteriophage/t3", "//rnap/bacteriophage/t7", "//rnap/eukaryote", "//rnap/eukaryote/pichia", "//rnap/eukaryote/yeast", "//rnap/miscellaneous", "//rnap/prokaryote", "//rnap/prokaryote/aferrooxidans", "//rnap/prokaryote/ecoli", "//rnap/prokaryote/ecoli/sigma24", "//rnap/prokaryote/ecoli/sigma25", "//rnap/prokaryote/ecoli/sigma32", "//rnap/prokaryote/ecoli/sigma54", "//rnap/prokaryote/ecoli/sigma70", "//rnap/prokaryote/ecoli/sigmas", "//rnap/prokaryote/pmirabilis", "//rnap/prokaryote/pputida", "//rnap/prokaryote/reuphora", "//rnap/prokaryote/salmonella", "//rnap/prokaryote/subtilis/sigmaa", "//rnap/prokaryote/subtilis/sigmab", "//rnap/prokaryote/synechocystis", "//rnap/prokaryote/vharveyi/sigma54", "//t3", "//t3/t2", "//t3/t4", "//terminator", "//terminator/double", "//terminator/single", "//test", "//test/test2", "//test1", "//viral_vectors", "//viral_vectors/aav", "//viral_vectors/aav/capsid_coding", "//viral_vectors/aav/miscellaneous", "//viral_vectors/aav/vector_plasmid","extremophiles","receiver","regulator","transcriptional","unnamed_4455zz"};
-		JComboBox categoryComboBox = new JComboBox(category);
+		JComboBox<?> categoryComboBox = new JComboBox<Object>(category);
 		categoryComboBox.setFont(new Font("Arial", Font.PLAIN, 20));
 		categoryComboBox.setSelectedIndex(0);
 		categoryTable = new JTable(categoryRows,categoryCols);
@@ -560,7 +554,7 @@ public class Child_Upload extends JPanel {
 		AddFeature.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(e.getButton() == e.BUTTON1){
+				if(e.getButton() == MouseEvent.BUTTON1){
 					featureAddClicked();
 				}
 			}
@@ -573,7 +567,7 @@ public class Child_Upload extends JPanel {
 		RemoveFeature.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(e.getButton() == e.BUTTON1){
+				if(e.getButton() == MouseEvent.BUTTON1){
 					featureDeleteClicked();
 				}
 			}
@@ -586,10 +580,10 @@ public class Child_Upload extends JPanel {
 				"stem_loop", "mutation", "s_mutation", "primer_binding", "operator", "binding", "protein", 
 				"conserved", "polya", "barcode", "BioBrick"};
 		String direction[] = {"Fwd", "Rev"};
-		JComboBox featureComboBox = new JComboBox(feature);
+		JComboBox<?> featureComboBox = new JComboBox<Object>(feature);
 		featureComboBox.setFont(new Font("Arial", Font.PLAIN, 20));
 		featureComboBox.setSelectedIndex(0);
-		JComboBox directionComboBox = new JComboBox(direction);
+		JComboBox<?> directionComboBox = new JComboBox<Object>(direction);
 		directionComboBox.setFont(new Font("Arial", Font.PLAIN, 20));
 		directionComboBox.setSelectedIndex(0);
 		featureTable = new JTable(featureRows,featureCols);
@@ -711,7 +705,7 @@ public class Child_Upload extends JPanel {
 		SubmitToDatabase.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(e.getButton() == e.BUTTON1){
+				if(e.getButton() == MouseEvent.BUTTON1){
 					showinfo.setText("Uploading your biobrick...");;
 					showinfopanel.updateUI();
 					
@@ -776,7 +770,7 @@ public class Child_Upload extends JPanel {
 		SubmitToWebsite.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(e.getButton() == e.BUTTON1){
+				if(e.getButton() == MouseEvent.BUTTON1){
 					bbkupload.shortDesc = ShortDescription.getText();
 					bbkupload.type = typestring;
 					bbkupload.nickname = Nickname.getText();

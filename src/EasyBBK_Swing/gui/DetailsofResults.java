@@ -4,13 +4,10 @@ import java.awt.Color;
 import java.awt.Cursor;
 
 import javax.swing.JCheckBox;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 
 import java.awt.Font;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -20,6 +17,8 @@ import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 
 public class DetailsofResults extends JPanel {
+	private static final long serialVersionUID = 1L;
+	
 	public JLabel ID_Content;
 	public JLabel Type_Content;
 	public JLabel EnteredDate_Content;
@@ -45,7 +44,7 @@ public class DetailsofResults extends JPanel {
 		addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(e.getButton() == e.BUTTON1)
+				if(e.getButton() == MouseEvent.BUTTON1)
 					requestFocus();
 			}
 		});
