@@ -18,6 +18,8 @@ import javax.swing.ScrollPaneConstants;
 import data_center.UploadCenter;
 
 public class SequenceDialog extends JDialog {
+	private static final long serialVersionUID = 1L;
+	
 	public MainPage parent;
 	public SequenceDialog sd;
 	/**
@@ -56,7 +58,7 @@ public class SequenceDialog extends JDialog {
 		Confirme.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(e.getButton() == e.BUTTON1){
+				if(e.getButton() == MouseEvent.BUTTON1){
 					if(SequenceInformation.getText().equals("")) return;
 					UploadCenter uploadcenter = new UploadCenter();
 					if(uploadcenter.isSequanceValid(SequenceInformation.getText())){
@@ -77,7 +79,7 @@ public class SequenceDialog extends JDialog {
 						Confirme.addMouseListener(new MouseAdapter() {
 							@Override
 							public void mouseClicked(MouseEvent e) {
-								if(e.getButton() == e.BUTTON1)
+								if(e.getButton() == MouseEvent.BUTTON1)
 									jd.dispose();
 							}
 						});
@@ -98,7 +100,7 @@ public class SequenceDialog extends JDialog {
 		Cancel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(e.getButton() == e.BUTTON1)
+				if(e.getButton() == MouseEvent.BUTTON1)
 					sd.dispose();
 			}
 		});

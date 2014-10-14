@@ -11,13 +11,11 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.SwingUtilities;
 
 import data_center.SketchCenter;
 import data_center.SketchOperation;
-import data_center.SketchProject;
 
 /**
  * Make JLabel contain more information

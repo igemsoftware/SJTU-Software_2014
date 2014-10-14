@@ -3,12 +3,9 @@ package EasyBBK_Swing.gui;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.Rectangle;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
@@ -17,14 +14,10 @@ import javax.swing.JLayeredPane;
 import javax.swing.JTextPane;
 import javax.swing.SwingUtilities;
 import javax.swing.border.TitledBorder;
-import javax.swing.text.AttributeSet;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
-import javax.swing.text.StyledDocument;
-
 import data_center.SketchCenter;
 import data_center.SketchOperation;
-import data_center.SketchProject;
 
 @SuppressWarnings("serial")
 class TextLabel extends JTextPane implements MouseListener, MouseMotionListener
