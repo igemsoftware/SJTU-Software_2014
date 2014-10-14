@@ -7,6 +7,8 @@ import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
 public class SearchingResultPage extends JPanel {
+	private static final long serialVersionUID = 1L;
+	
 	public ArrayList<SearchingResult> searchingresult;
 	public int num = 10;
 	/**

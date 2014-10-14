@@ -3,7 +3,6 @@ package EasyBBK_Swing.gui;
 import java.awt.BasicStroke;
 import java.awt.BorderLayout;  
 import java.awt.Color;  
-import java.awt.Font;  
 import java.awt.Frame;  
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -16,7 +15,6 @@ import java.util.HashMap;
 import java.util.Map;  
 
 import javax.swing.JButton;  
-import javax.swing.JColorChooser;  
 import javax.swing.JDialog;  
 import javax.swing.JLabel;  
 import javax.swing.JList;  
@@ -29,8 +27,12 @@ import javax.swing.event.ListSelectionListener;
 
 public class LineStyleChooser extends JPanel 
 {  
+	private static final long serialVersionUID = 1L;
+
 	private class ShowLine extends JPanel
 	{
+		private static final long serialVersionUID = 1L;
+		
 		int size=3;
 		Color color=Color.BLACK;
 		
@@ -83,8 +85,8 @@ public class LineStyleChooser extends JPanel
     
     private ShowLine showPanel; //展示框（输入框）  
 
-	private JList lstColor; //选择字型的列表.  
-	private JList lstSize; //选择字体大小的列表.  
+	private JList<?> lstColor; //选择字型的列表.  
+	private JList<?> lstSize; //选择字体大小的列表.  
 	
  
     private JButton ok, cancel; //"确定","取消"按钮.
@@ -94,9 +96,9 @@ public class LineStyleChooser extends JPanel
     
     private JPanel showPan; //显示框. 
 
-	private Map sizeMap; //字号映射表.  
-	private Map colorMap; //字着色映射表.  
-	private Map colortitleMap;
+	private Map<String, Integer> sizeMap; //字号映射表.  
+	private Map<String, Color> colorMap; //字着色映射表.  
+	private Map<Color, String> colortitleMap;
     private Integer selectedsize; //用户选择的字体  
     private Color selectedcolor; //用户选择的颜色  
     //[end]  
@@ -138,8 +140,7 @@ public class LineStyleChooser extends JPanel
         this.selectedcolor = selectedcolor;  
     }  
   
-    @SuppressWarnings({ "unchecked", "rawtypes" })
-	private void init(Integer size,Color color) 
+    private void init(Integer size,Color color) 
     {  
         lblColor = new JLabel("Color:");  
         lblSize = new JLabel("Size:");   
@@ -153,27 +154,27 @@ public class LineStyleChooser extends JPanel
         Color[] colorVal = new Color[]{  
                 Color.BLACK, Color.BLUE, Color.CYAN, Color.DARK_GRAY, Color.GRAY, Color.GREEN, Color.LIGHT_GRAY, Color.MAGENTA, Color.ORANGE, Color.PINK, Color.RED, Color.WHITE, Color.YELLOW  
             };  
-        colorMap = new HashMap(); 
-        colortitleMap = new HashMap(); 
+        colorMap = new HashMap<String, Color>(); 
+        colortitleMap = new HashMap<Color, String>(); 
         for (int i = 0; i < colorStr.length; i++) 
         {  
         	colorMap.put(colorStr[i], colorVal[i]);  
         	colortitleMap.put(colorVal[i], colorStr[i]);
         }  
-        lstColor = new JList(colorStr);       
+        lstColor = new JList<Object>(colorStr);       
         
         //Size chooser
         String[] sizeStr = new String[]{  
             "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15"};  
         int sizeVal[] = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15};  
-        sizeMap = new HashMap();  
+        sizeMap = new HashMap<String, Integer>();  
         for (int i = 0; i < sizeStr.length; ++i) 
         {  
             sizeMap.put(sizeStr[i], sizeVal[i]);  
         }
         
         
-        lstSize = new JList(sizeStr); 
+        lstSize = new JList<Object>(sizeStr); 
         
         //Scroll
         spColor = new JScrollPane(lstColor);  
@@ -259,7 +260,7 @@ public class LineStyleChooser extends JPanel
         lstColor.addListSelectionListener(new ListSelectionListener() {  
             public void valueChanged(ListSelectionEvent e) 
             {  
-                String value = (String) ((JList) e.getSource()).getSelectedValue();  
+                String value = (String) ((JList<?>) e.getSource()).getSelectedValue();  
                 current_color = (Color) colorMap.get(value);
                 txtColor.setText(value);  
                 showPanel.setColor(current_color);

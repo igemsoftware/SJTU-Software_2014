@@ -14,6 +14,8 @@ import javax.swing.JTextField;
 import data_center.*;
 
 public class SubpartDialog extends JDialog {
+	private static final long serialVersionUID = 1L;
+	
 	public MainPage parent;
 	public SubpartDialog sd;
 	public boolean confirmedflag = false;
@@ -43,7 +45,7 @@ public class SubpartDialog extends JDialog {
 		Confirme.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(e.getButton() == e.BUTTON1){
+				if(e.getButton() == MouseEvent.BUTTON1){
 					if(inputtext.getText().equals("")) return;
 					confirmedflag = true;
 					UploadCenter uploadcenter = new UploadCenter();
@@ -87,7 +89,7 @@ public class SubpartDialog extends JDialog {
 		Cancel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(e.getButton() == e.BUTTON1)
+				if(e.getButton() == MouseEvent.BUTTON1)
 					sd.dispose();
 			}
 		});

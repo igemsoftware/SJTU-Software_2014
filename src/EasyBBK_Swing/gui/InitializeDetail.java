@@ -1,7 +1,5 @@
 package EasyBBK_Swing.gui;
 
-import java.awt.Color;
-import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
@@ -74,7 +72,7 @@ public class InitializeDetail extends Thread{
 		detailsofresults.URL_Content.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(e.getButton() == e.BUTTON1){
+				if(e.getButton() == MouseEvent.BUTTON1){
 					try{
 						Runtime.getRuntime().exec("explorer " + bbkdetail.url);
 					}

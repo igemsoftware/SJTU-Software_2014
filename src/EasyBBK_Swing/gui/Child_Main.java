@@ -11,7 +11,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class Child_Main extends JPanel {
-
+	private static final long serialVersionUID = 1L;
+	
 	public JLabel Logo;
 	public JLabel SearchDrawingBox;
 	public JLabel DesignDrawingBox;
@@ -51,7 +52,7 @@ public class Child_Main extends JPanel {
 			}
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(e.getButton() == e.BUTTON1){
+				if(e.getButton() == MouseEvent.BUTTON1){
 					SearchDrawingBox.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/StartPage_searching.png")));
 					mainpage.Search.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Search_click1.png")));
 					mainpage.Design.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Design1.png")));
@@ -100,7 +101,7 @@ public class Child_Main extends JPanel {
 			}
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(e.getButton() == e.BUTTON1){
+				if(e.getButton() == MouseEvent.BUTTON1){
 					DesignDrawingBox.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/StartPage_painting.png")));
 					mainpage.Search.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Search1.png")));
 					mainpage.Design.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Design_click1.png")));
@@ -142,7 +143,7 @@ public class Child_Main extends JPanel {
 			}
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(e.getButton() == e.BUTTON1){
+				if(e.getButton() == MouseEvent.BUTTON1){
 					UploadDrawingBox.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/StartPage_upload.png")));
 					mainpage.Search.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Search1.png")));
 					mainpage.Design.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Design1.png")));
@@ -175,7 +176,7 @@ public class Child_Main extends JPanel {
 		CompareDrawingBox.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(e.getButton() == e.BUTTON1){
+				if(e.getButton() == MouseEvent.BUTTON1){
 					CompareDrawingBox.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/StartPage_compare.png")));
 					mainpage.Search.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Search1.png")));
 					mainpage.Design.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Design1.png")));

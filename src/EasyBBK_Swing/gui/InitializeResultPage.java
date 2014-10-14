@@ -2,19 +2,15 @@ package EasyBBK_Swing.gui;
 
 import java.awt.Color;
 import java.awt.Cursor;
-import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.net.URI;
-import java.net.URL;
 import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
@@ -248,7 +244,7 @@ public class InitializeResultPage extends Thread{
 			child_search.previouspage.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent e) {
-					if(e.getButton() == e.BUTTON1){
+					if(e.getButton() == MouseEvent.BUTTON1){
 						String s;
 						child_search.scrollbar.setValue(child_search.scrollbar.getMinimum());
 						if(child_search.currentpage > 2){
@@ -303,7 +299,7 @@ public class InitializeResultPage extends Thread{
 			child_search.nextpage.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent e) {
-					if(e.getButton() == e.BUTTON1){
+					if(e.getButton() == MouseEvent.BUTTON1){
 						child_search.scrollbar.setValue(child_search.scrollbar.getMinimum());
 						String s;
 						if(child_search.currentpage < num){
@@ -398,7 +394,7 @@ public class InitializeResultPage extends Thread{
 		MouseListener showdetailpage = new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(e.getButton() == e.BUTTON1){
+				if(e.getButton() == MouseEvent.BUTTON1){
 					child_search.Details.removeAll();
 					InitializeDetail initializedetail = new InitializeDetail(child_search, bbkoutline);
 					initializedetail.start();
@@ -419,7 +415,7 @@ public class InitializeResultPage extends Thread{
 		child_search.searchingresultpage.searchingresult.get(i).URL_Content.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(e.getButton() == e.BUTTON1){
+				if(e.getButton() == MouseEvent.BUTTON1){
 					try{
 						//URL url=new URL(child_search.searchingresultpage.searchingresult.get(i).URL_Content.getText().trim());
 						//getAppletContext().showDocument(url);

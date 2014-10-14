@@ -4,10 +4,7 @@ import java.awt.Component;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.EventQueue;
-import java.awt.GraphicsEnvironment;
-import java.awt.Insets;
 import java.awt.Point;
-import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
@@ -21,7 +18,9 @@ import data_center.*;
 import data_center.BbkUpload.SpecifiedSubscar;
 
 public class MainPage extends JFrame{
-	public static JFrame frame;
+	private static final long serialVersionUID = 1L;
+	
+	public JFrame frame;
 	public JPanel Mainpanel;
 	public JLabel Search;
 	public JLabel Design;
@@ -122,7 +121,7 @@ public class MainPage extends JFrame{
 		Home.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(e.getButton() == e.BUTTON1){
+				if(e.getButton() == MouseEvent.BUTTON1){
 					if(CurrentPage == 0) return;
 					
 					Search.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Search1.png")));
@@ -178,7 +177,7 @@ public class MainPage extends JFrame{
 		Close.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(e.getButton() == e.BUTTON1)
+				if(e.getButton() == MouseEvent.BUTTON1)
 					System.exit(0);
 			}
 			@Override
@@ -198,7 +197,7 @@ public class MainPage extends JFrame{
 		Min.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(e.getButton() == e.BUTTON1)
+				if(e.getButton() == MouseEvent.BUTTON1)
 					frame.setExtendedState(JFrame.ICONIFIED);
 			}
 			@Override
@@ -219,7 +218,7 @@ public class MainPage extends JFrame{
 		Search.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(e.getButton() == e.BUTTON1){
+				if(e.getButton() == MouseEvent.BUTTON1){
 					if(CurrentPage == 1 || CurrentPage == 11) return;
 					
 					Search_flag = true;
@@ -301,7 +300,7 @@ public class MainPage extends JFrame{
 		Design.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(e.getButton() == e.BUTTON1){
+				if(e.getButton() == MouseEvent.BUTTON1){
 					if(CurrentPage == 2) return;
 					
 					Design_flag = true;
@@ -375,7 +374,7 @@ public class MainPage extends JFrame{
 		Upload.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(e.getButton() == e.BUTTON1){
+				if(e.getButton() == MouseEvent.BUTTON1){
 					if(CurrentPage == 3) return;
 					
 					Upload_flag = true;
@@ -450,7 +449,7 @@ public class MainPage extends JFrame{
 		Compare.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(e.getButton() == e.BUTTON1){
+				if(e.getButton() == MouseEvent.BUTTON1){
 					if(CurrentPage == 4) return;
 					
 					Compare_flag = true;
