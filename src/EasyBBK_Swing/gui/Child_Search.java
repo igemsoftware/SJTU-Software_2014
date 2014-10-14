@@ -46,6 +46,7 @@ public class Child_Search extends JPanel {
 	public JPanel resultpanel;
 	public JLabel previouspage;
 	public JLabel nextpage;
+	public JLabel total;
 	public JLabel totalpagenum;
 	public JLabel showpagenum;
 	public boolean confirmed_clicked;
@@ -108,7 +109,7 @@ public class Child_Search extends JPanel {
 				Back.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/SearchBox_backward.png")));
 			}
 		});
-		Back.setBounds(0, 0, 58, 55);
+		Back.setBounds(1, 0, 58, 55);
 		Back.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/SearchBox_backward.png")));
 		Result.add(Back);
 		
@@ -138,7 +139,7 @@ public class Child_Search extends JPanel {
 				Forward.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/SearchBox_forward.png")));
 			}
 		});
-		Forward.setBounds(58, 0, 54, 55);
+		Forward.setBounds(59, 0, 54, 55);
 		Forward.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/SearchBox_forward.png")));
 		Result.add(Forward);
 
@@ -212,13 +213,13 @@ public class Child_Search extends JPanel {
 		});
 		textField.setFont(new Font("Arial", Font.PLAIN, 40));
 		textField.setVisible(true);
-		textField.setBounds(112, 0, 378, 54);
+		textField.setBounds(114, 0, 378, 54);
 		Result.add(textField);
 		textField.setColumns(20);
 		
 		resultpanel = new JPanel();
 		resultpanel.setBackground(new Color(255, 255, 255));
-		resultpanel.setBounds(51, 105, 576, 565);
+		resultpanel.setBounds(51, 85, 587, 585);
 		Result.add(resultpanel);
 		resultpanel.setLayout(null);
 		

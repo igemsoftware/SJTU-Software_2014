@@ -204,7 +204,6 @@ public class SetBioBrickNameListener implements MouseInputListener
 		        		searchingresult.Evalue.setVisible(false);
                 
 		        		searchingresult.updateUI();
-
 	            	}
 	            	
 	            }  

@@ -106,14 +106,11 @@ class LinePanel extends JLayeredPane
     public void drawGivenLine(ArrayList<Point> lineList)
     {
     	this.lineList=lineList;
-    	System.out.println(this.lineList.toString());
     }
     
     public void addPoint(Point point)
     {
-    	System.out.println(lineList.size());
     	lineList.add(point);
-    	System.out.println(lineList.size()+" "+point);
     }
     
     public int[] getLineBorder()
@@ -128,7 +125,6 @@ class LinePanel extends JLayeredPane
     
     public void endLine()
     {
-    	System.out.println(left+" "+right+" "+top+" "+bottom);
     	p=null;
     	lineList.clear();
     }
