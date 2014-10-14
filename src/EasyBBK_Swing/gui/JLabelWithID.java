@@ -10,7 +10,7 @@ class JLabelWithID extends JLabel
 	private static final long serialVersionUID = 1L;
 	
 	public int ID = 0;
-	public String bioName="";
+	public String bioName=null;
 	
 	public JLabelWithID(String s)
 	{

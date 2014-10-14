@@ -87,7 +87,7 @@ public class Child_Upload extends JPanel {
 	public JTextField UserName;
 	public JPasswordField Password;
 	public SubpartDialog subpartdialog;
-	public JPanel showinfopanel;
+	//public JPanel showinfopanel;
 	public JLabel showinfo;
 	public JLabel BackGround;
 	public JButton Clearall;
@@ -383,6 +383,7 @@ public class Child_Upload extends JPanel {
 		paramTable = new JTable(paramRows,paramCols);
 		paramTable.setFont(new Font("Arial", Font.PLAIN, 20));
 		paramTable.setModel(new DefaultTableModel(paramRows,paramCols));
+		paramTable.putClientProperty("terminateEditOnFocusLost", Boolean.TRUE);
 		JTableHeader header=paramTable.getTableHeader();
 		header.setPreferredSize(new Dimension(header.getWidth(),0));
 		//header.setFont(new Font("Arial", Font.PLAIN, 20));
@@ -526,6 +527,7 @@ public class Child_Upload extends JPanel {
 		categoryTable = new JTable(categoryRows,categoryCols);
 		categoryTable.setFont(new Font("Arial", Font.PLAIN, 20));
 		categoryTable.setModel(new DefaultTableModel(categoryRows,categoryCols));
+		categoryTable.putClientProperty("terminateEditOnFocusLost", Boolean.TRUE);
 		JTableHeader categoryHeader=categoryTable.getTableHeader();
 		categoryHeader.setPreferredSize(new Dimension(categoryHeader.getWidth(),0));
 		//header.setFont(new Font("Arial", Font.PLAIN, 20));
@@ -589,6 +591,7 @@ public class Child_Upload extends JPanel {
 		featureTable = new JTable(featureRows,featureCols);
 		featureTable.setFont(new Font("Arial", Font.PLAIN, 20));
 		featureTable.setModel(new DefaultTableModel(featureRows,featureCols));
+		featureTable.putClientProperty("terminateEditOnFocusLost", Boolean.TRUE);
 		JTableHeader featureHeader=featureTable.getTableHeader();
 		featureHeader.setPreferredSize(new Dimension(featureHeader.getWidth(),30));
 		featureHeader.setFont(new Font("Arial", Font.PLAIN, 20));
@@ -615,6 +618,11 @@ public class Child_Upload extends JPanel {
 		LongDescription_text.setBounds(373, 1260, 200, 30);
 		UploadContainer.add(LongDescription_text);
 		
+		JLabel longDescriptionTag = new JLabel("<html>Enter a long description of the part so that users of your part know what it is, what it does, and how to use it in their projects.</html>");
+		longDescriptionTag.setFont(new Font("Arial", Font.PLAIN, 20));
+		longDescriptionTag.setBounds(900, 1300, 300, 100);
+		UploadContainer.add(longDescriptionTag);
+		
 		LongDescription = new JTextArea(4, 15);
 		LongDescription.setEditable(true);
 		LongDescription.setFont(new Font("Arial", Font.PLAIN, 20));
@@ -631,16 +639,22 @@ public class Child_Upload extends JPanel {
 		LDscrollpanel.validate();
 		UploadContainer.add(LDscrollpanel);
 		
-		JLabel Claim = new JLabel("Contents below only can be uploaded to offical website!");
+		JLabel Claim = new JLabel("Contents below only can be uploaded to official website!");
 		Claim.setForeground(Color.red);
 		Claim.setFont(new Font("Arial", Font.PLAIN, 24));
-		Claim.setBounds(373, 1425, 600, 30);
+		Claim.setBounds(373, 1425, 620, 30);
 		UploadContainer.add(Claim);
 		
 		JLabel Sourcetext = new JLabel("The source of this part:");
 		Sourcetext.setFont(new Font("Arial", Font.PLAIN, 24));
 		Sourcetext.setBounds(373, 1460, 300, 30);
 		UploadContainer.add(Sourcetext);
+		
+		JLabel sourceTag = new JLabel("<html>Enter the source of this part. For example, does it come from some genomic sequence?</html>");
+		sourceTag.setFont(new Font("Arial", Font.PLAIN, 20));
+		sourceTag.setBounds(900, 1500, 300, 100);
+		UploadContainer.add(sourceTag);
+		
 		
 		Source = new JTextArea(4, 15);
 		Source.setEditable(true);
@@ -662,6 +676,11 @@ public class Child_Upload extends JPanel {
 		DesignConsiderationtext.setFont(new Font("Arial", Font.PLAIN, 24));
 		DesignConsiderationtext.setBounds(373, 1625, 240, 30);
 		UploadContainer.add(DesignConsiderationtext);
+		
+		JLabel designConsiderationTag = new JLabel("<html>Enter any design considerations you had to deal with during the detailed design of the sequence.</html>");
+		designConsiderationTag.setFont(new Font("Arial", Font.PLAIN, 20));
+		designConsiderationTag.setBounds(900, 1655, 300, 100);
+		UploadContainer.add(designConsiderationTag);
 		
 		DesignConsideration = new JTextArea(4, 15);
 		DesignConsideration.setEditable(true);
@@ -701,13 +720,13 @@ public class Child_Upload extends JPanel {
 		Password.setBounds(500, 1830, 146, 24);
 		UploadContainer.add(Password);
 		
-		SubmitToDatabase = new JButton("<html>" + "Submit to" + "<br>" + " our database" + "</html>");
+		SubmitToDatabase = new JButton("<html>" + "Submit to" + "<br>" + " EasyBBK DB" + "</html>");
 		SubmitToDatabase.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if(e.getButton() == MouseEvent.BUTTON1){
 					showinfo.setText("Uploading your biobrick...");;
-					showinfopanel.updateUI();
+					//showinfopanel.updateUI();
 					
 					bbkupload.shortDesc = ShortDescription.getText();
 					bbkupload.type = typestring;
@@ -766,7 +785,7 @@ public class Child_Upload extends JPanel {
 		SubmitToDatabase.setBounds(403, 1870, 180, 55);
 		UploadContainer.add(SubmitToDatabase);
 		
-		SubmitToWebsite = new JButton("<html>" + "Submit to" + "<br>" + " offical website" + "</html>");
+		SubmitToWebsite = new JButton("<html>" + "Submit to" + "<br>" + " official website" + "</html>");
 		SubmitToWebsite.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -835,23 +854,23 @@ public class Child_Upload extends JPanel {
 		SubmitToWebsite.setBounds(649, 1870, 200, 55);
 		UploadContainer.add(SubmitToWebsite);
 		
-		JLabel information = new JLabel("Information", SwingConstants.CENTER);
-		information.setBounds(1040, 1450, 120, 30);
-		information.setFont(new Font("Arial", Font.PLAIN, 24));
-		UploadContainer.add(information);
+//		JLabel information = new JLabel("Information", SwingConstants.CENTER);
+//		information.setBounds(1040, 1450, 120, 30);
+//		information.setFont(new Font("Arial", Font.PLAIN, 24));
+//		UploadContainer.add(information);
 		
-		showinfopanel = new JPanel();
-		showinfopanel.setBounds(920, 1500, 360, 240);
-		showinfopanel.setOpaque(false);
-		//showinfopanel.setBackground(new Color(255, 255, 255));
-		UploadContainer.add(showinfopanel);
+//		showinfopanel = new JPanel();
+//		showinfopanel.setBounds(630, 1780, 360, 240);
+//		showinfopanel.setOpaque(false);
+//		//showinfopanel.setBackground(new Color(255, 255, 255));
+//		UploadContainer.add(showinfopanel);
 		
-		showinfo = new JLabel("", SwingConstants.LEFT);
+		showinfo = new JLabel("");
 		showinfo.setOpaque(false);
 		showinfo.setVisible(true);
-		showinfo.setBounds(0, 0, 360, 240);
-		showinfo.setFont(new Font("Arial", Font.PLAIN, 24));
-		showinfopanel.add(showinfo);
+		showinfo.setBounds(670, 1700, 360, 240);
+		showinfo.setFont(new Font("Arial", Font.PLAIN, 20));
+		UploadContainer.add(showinfo);
 		
 		Clearall = new JButton("Clear All");
 		Clearall.addMouseListener(new MouseAdapter() {
@@ -879,7 +898,8 @@ public class Child_Upload extends JPanel {
 				LongDescription.setText(null);
 				Source.setText(null);
 				DesignConsideration.setText(null);
-				showinfopanel.removeAll();
+				showinfo.setText("");
+				//showinfopanel.removeAll();
 			}
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -934,6 +954,7 @@ public class Child_Upload extends JPanel {
     	if(row>-1){
     		 ((DefaultTableModel) categoryTable.getModel()).removeRow(row);
     	}
+    	System.out.println(row);
     }
 	
 	private void featureAddClicked(){
@@ -956,7 +977,7 @@ public class Child_Upload extends JPanel {
 		public void run() {
 			try {
 				showinfo.setText("Uploading your biobrick...");;
-				showinfopanel.updateUI();				
+				//showinfopanel.updateUI();				
 				boolean login = OfficialUploadPoster.login(UserName.getText(), String.valueOf(Password.getPassword()));
 				if (!login)
 				{
