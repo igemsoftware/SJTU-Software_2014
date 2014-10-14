@@ -43,7 +43,7 @@ public class Testing
 	private static void searchKeywordAndGetDetail()
 	{	
 		int startTime = getTimeInMs();
-		SearchResultList list = dataCenter.searchCenter.search("BBa_B");
+		SearchResultList list = dataCenter.searchCenter.search("GFP");
 		list.sortByTotalScore(true);
 		list.displayRating();
 		int endTime = getTimeInMs();
