@@ -20,6 +20,7 @@ import data_center.SketchComponent;
 public class SetBioBrickNameListener implements MouseInputListener
 {
 	SketchCenter sketchCenter;
+	int showID;
 	
 	SetBioBrickNameListener(SketchCenter sketchCenter)
 	{
@@ -39,6 +40,7 @@ public class SetBioBrickNameListener implements MouseInputListener
 					((JLabelWithID)e.getComponent()).getName()=="reporter")
 			{
 				SetBioBrickNameDialog one = new SetBioBrickNameDialog(((JLabelWithID)e.getComponent()).ID);
+				showID=((JLabelWithID)e.getComponent()).ID;
 				one.currentName=((JLabelWithID)(e.getComponent())).bioName;
 				one.selectedName=((JLabelWithID)(e.getComponent())).bioName;
 				one.showDialog((JFrame)((JLabelWithID)(e.getSource())).getRootPane().getParent(),500,200);
@@ -72,8 +74,9 @@ public class SetBioBrickNameListener implements MouseInputListener
 	        }  
 	    }  
     
-	    public String selectedName="";
-	    public String currentName="";
+	    public String selectedName=null;
+	    public String currentName=null;
+	    public boolean setDone=false;
 	      
 	    public SetBioBrickNameDialog(int ID)
 	    {     
@@ -140,18 +143,26 @@ public class SetBioBrickNameListener implements MouseInputListener
 	    	set.addActionListener(new ActionListener() {  
 	            public void actionPerformed(ActionEvent e)
 	            {  
-	            	currentName=nameInput.getText(); 
-	            	
 	            	SketchComponent.Component component = sketchCenter.currentProject.findComponentByID(ID);
 	            	if (component == null || !component.getClass().equals(SketchComponent.BioBrick.class))
 	            		return;
 	            	BbkOutline bbkoutline = 
 	            			sketchCenter.assignBbkOutlineToBioBrick
 	            			(nameInput.getText(), component.toBioBrick());
+	            	
+	            	if(bbkoutline != null)
+	            	{
+	            		currentName=nameInput.getText(); 
+	            		setDone=true;
+	            	}
+	            	else
+	            	{
+	            		currentName=null;
+	            		setDone=false;
+	            	}
+	            	
+	            	
 	            	if(bbkoutline != null){
-	            		System.out.println(bbkoutline.name);
-	            		
-	            		System.out.println(1);
 		            	searchingresult.ID_Content.setText(bbkoutline.name);
 		            	searchingresult.Type_Content.setText(bbkoutline.type);
 		            	searchingresult.Author_Content.setText(bbkoutline.author);
@@ -194,7 +205,14 @@ public class SetBioBrickNameListener implements MouseInputListener
 	    	/*用户确定*/  
 	        ok.addActionListener(new ActionListener() {  
 	            public void actionPerformed(ActionEvent e) {  
-	            	setSelectedName(currentName);    
+	            	if (setDone)
+	            	{
+	            		setSelectedName(currentName); 
+	            	}  
+	            	else
+	            	{
+	            		setSelectedName(null);
+	            	}
 	                dialog.dispose();  
 	                dialog = null;  
 	            }  
@@ -217,6 +235,53 @@ public class SetBioBrickNameListener implements MouseInputListener
 	        dialog.add(this);  
 	        dialog.setResizable(false);  
 	        dialog.setSize(600, 385);  
+	        setDone=false;
+	        
+	        if (selectedName !=null)
+	        {
+	        	nameInput.setText(selectedName);
+	        	
+	        	SketchComponent.Component component = sketchCenter.currentProject.findComponentByID(showID);
+            	BbkOutline bbkoutline = 
+            			sketchCenter.assignBbkOutlineToBioBrick
+            			(selectedName, component.toBioBrick());
+	        	
+	        	searchingresult.ID_Content.setText(bbkoutline.name);
+            	searchingresult.Type_Content.setText(bbkoutline.type);
+            	searchingresult.Author_Content.setText(bbkoutline.author);
+            	searchingresult.EnteredDate_Content.setText(bbkoutline.enterDate);
+            	searchingresult.URL_Content.setText(bbkoutline.url);
+            	searchingresult.ReleasedStatus_Content.setText(bbkoutline.releaseStatus);
+        		if(bbkoutline.rating.average_stars.equals("No Stars")){
+        			searchingresult.AverageStar_Content.setText(bbkoutline.rating.average_stars);
+        		}
+        		else if(bbkoutline.rating.average_stars.length() == 1){
+        			searchingresult.AverageStar_Content.setText(bbkoutline.rating.average_stars);
+        		}
+        		else if(bbkoutline.rating.average_stars.length() >= 3){
+        			searchingresult.AverageStar_Content.setText(bbkoutline.rating.average_stars.substring(0,3));
+        		}
+        		searchingresult.ResultsInGoogle_Content.setText(bbkoutline.rating.google_items);
+        		
+        		String shortdescription = bbkoutline.shortDesc;
+        		if(shortdescription.length()<=29)
+        		{
+        			searchingresult.Description1.setText(shortdescription);
+        			searchingresult.Description2.setText(null);
+        		}
+        		else
+        		{
+        			searchingresult.Description1.setText(shortdescription.substring(0, 29));
+        			searchingresult.Description2.setText(shortdescription.substring(29));
+        		}
+        		
+        		String score = "" + bbkoutline.getScore();
+        		searchingresult.Score.setText(score);
+        		searchingresult.Evalue.setVisible(false);
+        
+        		searchingresult.updateUI();
+	        }
+	        
 	      //设置接界面的启动位置  
 	        dialog.setLocation(x,y);  
 	        dialog.addWindowListener(new WindowAdapter() {  
