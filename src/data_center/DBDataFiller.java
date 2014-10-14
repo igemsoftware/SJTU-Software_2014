@@ -150,6 +150,19 @@ class DBDataFiller
 		}
 	}
 	
+	public static void dbIntoHalfFilledSearchResultList
+		(ResultSet resultSet, SearchResultList list) throws SQLException
+	{	
+		while (resultSet.next())
+		{	BbkOutline bbkOutline = 
+				list.getByName(resultSet.getString(DBConsts.Header.Main.NAME));
+			if (bbkOutline == null)
+				continue;
+			else
+				dbIntoMain(resultSet, bbkOutline);
+		}
+	}
+	
 	
 	
 	

@@ -76,7 +76,7 @@ public class OfficialUploadPoster
 				for (String rawToken : rawTokens)
 					if (rawToken.startsWith("BBa_") && !rawToken.contains(" to BBa_"))
 					{	String[] tokens = rawToken.split("<TR>");
-					System.out.println(tokens[0]);
+					//System.out.println(tokens[0]);
 						return tokens[0];
 					}
 			}
@@ -125,7 +125,7 @@ public class OfficialUploadPoster
 		httpClient.execute(httpost, context);
 				
 		String url = "http://parts.igem.org/cgi/xml/part.cgi?part=" + part_name;
-		System.out.println(url);
+		//System.out.println(url);
 		Document doc=null;  
 		try{  
 			doc = Jsoup.connect(url).get();
@@ -134,7 +134,7 @@ public class OfficialUploadPoster
 			e.printStackTrace();
 		}
 		Elements elem = doc.select("part_id");
-		System.out.println(elem.html());
+		//System.out.println(elem.html());
 		httpClient.close();
 		return elem.html();
 	}
@@ -213,9 +213,9 @@ public class OfficialUploadPoster
 		nvps.add(new BasicNameValuePair("parameters_center", ""));
 	    nvps.add(new BasicNameValuePair("parameters_right", ""));
 	    nvps.add(new BasicNameValuePair("hidden_parameters", "999"));
-	    System.out.println(uploadParam.size());
+	    //System.out.println(uploadParam.size());
 		HttpPost httpost = new HttpPost("http://parts.igem.org/cgi/partsdb/part_info.cgi?part_name=" + bbkUpload.getName());
-		System.out.println(httpost);
+		//System.out.println(httpost);
 		for (int i=0; i<uploadParam.size(); i++)
 		{
 			httpClient = HttpClients.createDefault();
@@ -236,6 +236,7 @@ public class OfficialUploadPoster
 	{	
 		List<NameValuePair> nvps = new ArrayList<NameValuePair>();		
 		ArrayList<data_center.BbkUpload.Feature> uploadFeature = bbkUpload.features;
+		System.out.println(uploadFeature.size());
 		ArrayList<String> featuresId = new ArrayList<String>();
 		nvps.add(new BasicNameValuePair("id", bbkUpload.getID()));
 		nvps.add(new BasicNameValuePair("features_center", ""));
@@ -246,7 +247,7 @@ public class OfficialUploadPoster
 		{
 			httpClient = HttpClients.createDefault();
 			String url = "http://parts.igem.org/partsdb/edit_seq.cgi?id="+bbkUpload.getID()+"&New_feature=1";
-			System.out.println(url);
+			//System.out.println(url);
 			Document doc=null;  
 			try{  
 				doc = Jsoup.connect(url).get();  
@@ -259,7 +260,7 @@ public class OfficialUploadPoster
 			httpClient.close();
 			httpClient = HttpClients.createDefault();
 			url = "http://parts.igem.org/cgi/xml/part.cgi?part="+bbkUpload.getName();
-			//System.out.println(url);
+			
 			try{  
 				doc = Jsoup.connect(url).get();
 			}  

@@ -24,9 +24,9 @@ public class Testing
 	
 	public static void main(String[] args) throws Exception
 	{	
-		//searchKeywordAndGetDetail();
+		searchKeywordAndGetDetail();
 		//searchFilterAndSort();
-		searchBlasting();
+		//searchBlasting();
 		//searchHistory();
 		//compareAssignDetail();
 		//sketchProjectOperation();
@@ -43,8 +43,9 @@ public class Testing
 	private static void searchKeywordAndGetDetail()
 	{	
 		int startTime = getTimeInMs();
-		SearchResultList list = dataCenter.searchCenter.search("GFP");
-		//list.displayRating();
+		SearchResultList list = dataCenter.searchCenter.search("BBa_B");
+		list.sortByTotalScore(true);
+		list.displayRating();
 		int endTime = getTimeInMs();
 		
 		System.out.println("Network time: " + (endTime - startTime) + "ms");
@@ -52,7 +53,7 @@ public class Testing
 		
 		for (int i = 0; i < list.size(); i += 10)
 		{	BbkDetail detail = dataCenter.searchCenter.getDetail(list.get(i).name);
-			//detail.display();
+			detail.display();
 		}
 	}
 	
@@ -87,11 +88,13 @@ public class Testing
 		list = dataCenter.searchCenter.blast
 			("blastInput", BlastingSearcher.MODE_INPUT_FILE_PATH);
 		list.sortByBlastResult(true);	list.displaySortingConditions();
+		System.out.println("Item num: " + list.size());
 		
 		list = dataCenter.searchCenter.blast
-			("tcaaataaaacgaaaggctcagtcgaaag", 
+			("tcaaataaaacgaaaggctcagtcg", 
 			 BlastingSearcher.MODE_INPUT_SEQUENCE);
 		list.sortByBlastResult(true);	list.displaySortingConditions();
+		System.out.println("Item num: " + list.size());
 		BlastingSearcher.deleteLocalCacheFiles();
 	}
 	
@@ -255,7 +258,7 @@ public class Testing
 			(dataCenter.uploadCenter.getSubscarForSequenceToken("RFC[1000]") != null));
 	}
 	
-	private static int getTimeInMs()
+	static int getTimeInMs()
 	{	
 		Calendar calendar = Calendar.getInstance();
 		int sec = calendar.get(Calendar.SECOND);

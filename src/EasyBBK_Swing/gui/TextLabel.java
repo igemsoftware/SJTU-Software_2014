@@ -231,7 +231,6 @@ class TextLabel extends JTextPane implements MouseListener, MouseMotionListener
 			this.setCursor(new Cursor(Cursor.NE_RESIZE_CURSOR));
 			panel.setCursor(new Cursor(Cursor.NE_RESIZE_CURSOR));
 	    	Tpanel.setCursor(new Cursor(Cursor.NE_RESIZE_CURSOR));
-	    	System.out.println("ppplll");
 	    	reType=3;
 		}
 		else if (rect_rightbottom.contains(e.getPoint()))
@@ -239,7 +238,6 @@ class TextLabel extends JTextPane implements MouseListener, MouseMotionListener
 			this.setCursor(new Cursor(Cursor.SE_RESIZE_CURSOR));
 			panel.setCursor(new Cursor(Cursor.SE_RESIZE_CURSOR));
 	    	Tpanel.setCursor(new Cursor(Cursor.SE_RESIZE_CURSOR));
-	    	System.out.println("ppp");
 	    	reType=5;
 		}
 		else if (rect_move.contains(e.getPoint()))

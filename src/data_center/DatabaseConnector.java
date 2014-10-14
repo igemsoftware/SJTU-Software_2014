@@ -10,9 +10,9 @@ public class DatabaseConnector
 {
 	@SuppressWarnings("unused")
 	private final static String DRIVER = "com.mysql.jdbc.Driver";
-	private final static String URL_SERVER = "jdbc:mysql://202.120.45.101:3306/igem14";
-	private final static String USER_NAME = "igem14";
-	private final static String PASSWORD = "bio34204348;";
+	private final static String URL_SERVER = Server.Database.URL_SERVER;
+	private final static String USER_NAME = Server.Database.USER_NAME;
+	private final static String PASSWORD = Server.Database.PASSWORD;
 	
     private static Connection connection = null;
     
@@ -76,6 +76,25 @@ public class DatabaseConnector
 		} catch (SQLException e) {e.printStackTrace();}
 
         return bbkOutline;
+    }
+    
+    /** Used when blasting, not get outline one by one to reduce query times
+     * to reduce query time.  */
+    public static void fillOutlineIntoHalfFilledList(SearchResultList list)
+    {	
+    	checkConnection();
+    	String cmdStr = " select * from " + DBConsts.Table.MAIN + 
+        	" where " + DBConsts.Header.Main.NAME + " = " + "'" + list.get(0).name + "'";
+    	for (int i = 1; i < list.size(); ++i)
+    	{	String bbkName = list.get(i).name;
+    		cmdStr += 
+    			" OR " + DBConsts.Header.Main.NAME + " = " + "'" + bbkName + "'";
+    	}
+    	try 
+		{	Statement statement = connection.createStatement();
+			ResultSet resultSet = statement.executeQuery(cmdStr);
+			DBDataFiller.dbIntoHalfFilledSearchResultList(resultSet, list);
+		} catch (SQLException e) {e.printStackTrace();}
     }
 
     /** Specify the part_name as the parameter name, get the detail of a 

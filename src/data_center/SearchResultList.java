@@ -29,6 +29,14 @@ public class SearchResultList extends ArrayList<BbkOutline>
 		return false;
 	}
 	
+	public BbkOutline getByName(String bbkName)
+	{	
+		for (BbkOutline bbkOutline : this)
+			if (bbkOutline.name.equals(bbkName))
+				return bbkOutline;
+		return null;
+	}
+	
 	/** Able to be use like "listToShow = rawList.filterByType().filterByEnterYear()...;" 
 	 * Please use the String in the SearchResultList.Filter as the filter strings.  */
 	public SearchResultList filterByType(ArrayList<String> typeList)
@@ -305,10 +313,11 @@ public class SearchResultList extends ArrayList<BbkOutline>
 			public int compare(BbkOutline bbk1, BbkOutline bbk2)
 			{
 				double score1 = bbk1.getScore(), score2 = bbk2.getScore();
+				int num1 = (int) (score1 * 100), num2 = (int) (score2 * 100);
 				if (DESC)
-					return (int)((score2 - score1) * 100);
+					return num2 - num1;
 				else
-					return (int)((score1 - score2) * 100);
+					return num1 - num2;
 			}
 		};
 		Collections.sort(this, comparator);

@@ -42,7 +42,6 @@ public class SaveFileListener implements MouseInputListener
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
 		BufferedImage savedImage = new BufferedImage(panel.getWidth(),panel.getHeight(), BufferedImage.TYPE_INT_RGB);
-		System.out.println(panel.getComponentCount());
 		Graphics2D g = (Graphics2D)savedImage.getGraphics();
 		panel.paint(g);
 		
@@ -94,8 +93,6 @@ public class SaveFileListener implements MouseInputListener
 			{
 				oFile = new File(oFile.getAbsolutePath() + extension);
 			}
-			
-			System.out.println(oFile);
 			try
 			{
 				if (extension.equals(".jpg"))

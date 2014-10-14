@@ -27,6 +27,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -63,6 +64,7 @@ public class Child_Design extends JLayeredPane {
 	JLabel background = new JLabel();
 	private JLayeredPane panel = new JLayeredPane();
 	private TPanel Tpanel = new TPanel();
+	private JTextField statusBar = new JTextField();
 	private Boolean choose = new Boolean(false);
 	private Object source = null;
 	private Pen pen = null;
@@ -314,16 +316,21 @@ public class Child_Design extends JLayeredPane {
 		panel.setOpaque(true);
 		panel.setBorder(BorderFactory.createEtchedBorder());
 		panel.setBackground(Color.white);		
-		panel.setBounds(283, 0, 1083, 665);
+		panel.setBounds(283, 0, 1083, 625);
 		background.add(panel);
 		
 		Tpanel.setLayout(null);
-		Tpanel.setBounds(0, 0, 1083, 665);
+		Tpanel.setBounds(0, 0, 1083, 625);
 		panel.add(Tpanel,0);
 		
 		linePanel.setLayout(null);
-		linePanel.setBounds(0, 0, 1083, 665);
+		linePanel.setBounds(0, 0, 1083, 625);
 		panel.add(linePanel);
+		
+		statusBar.setBounds(283,625,1083,45);
+		statusBar.setBorder(BorderFactory.createEtchedBorder());
+		statusBar.setBackground(new Color(225,225,225));
+		background.add(statusBar);
 		
 		//add action to labels
 		GetCompListener listener_promoter = new GetCompListener();
@@ -553,6 +560,10 @@ public class Child_Design extends JLayeredPane {
 							DeleteListener deleteLine = new DeleteListener();
 							newLine.addMouseListener(deleteLine);
 							newLine.addMouseMotionListener(deleteLine);
+							
+							ShowFocusListener showListener = new ShowFocusListener();
+							newLine.addMouseListener(showListener);
+							newLine.addMouseMotionListener(showListener);
 	    				}
 	    			}
 	    			pen = null;
@@ -642,6 +653,10 @@ public class Child_Design extends JLayeredPane {
 						DeleteListener deleteLine = new DeleteListener();
 						newLine.addMouseListener(deleteLine);
 						newLine.addMouseMotionListener(deleteLine);
+						
+						ShowFocusListener showListener = new ShowFocusListener();
+						newLine.addMouseListener(showListener);
+						newLine.addMouseMotionListener(showListener);
     				}
     			}
 				pen = (Pen)e.getSource();
@@ -724,6 +739,10 @@ public class Child_Design extends JLayeredPane {
 						DeleteListener deleteLine = new DeleteListener();
 						newLine.addMouseListener(deleteLine);
 						newLine.addMouseMotionListener(deleteLine);
+						
+						ShowFocusListener showListener = new ShowFocusListener();
+						newLine.addMouseListener(showListener);
+						newLine.addMouseMotionListener(showListener);
     				}
     			}
 				pen = null;
@@ -821,6 +840,10 @@ public class Child_Design extends JLayeredPane {
 						DeleteListener deleteLine = new DeleteListener();
 						newLine.addMouseListener(deleteLine);
 						newLine.addMouseMotionListener(deleteLine);
+						
+						ShowFocusListener showListener = new ShowFocusListener();
+						newLine.addMouseListener(showListener);
+						newLine.addMouseMotionListener(showListener);
     				}
     			}
     			pen = null;
@@ -898,6 +921,10 @@ public class Child_Design extends JLayeredPane {
 					IfUploadListener ifUploadListener = new IfUploadListener(sketchCenter,mainpage);
 					newBackBone.addMouseListener(ifUploadListener);
 					newBackBone.addMouseMotionListener(ifUploadListener);
+					
+					ShowFocusListener showListener = new ShowFocusListener();
+					newBackBone.addMouseListener(showListener);
+					newBackBone.addMouseMotionListener(showListener);
 	    		}
 	    		else
 	    		{
@@ -987,6 +1014,10 @@ public class Child_Design extends JLayeredPane {
 					DeleteListener deleteLabel = new DeleteListener();
 					newLabel.addMouseListener(deleteLabel);
 					newLabel.addMouseMotionListener(deleteLabel);
+					
+					ShowFocusListener showListener = new ShowFocusListener();
+					newLabel.addMouseListener(showListener);
+					newLabel.addMouseMotionListener(showListener);
 	    		}
 	    	}
 	    }
@@ -1028,6 +1059,10 @@ public class Child_Design extends JLayeredPane {
 				DeleteListener deleteText = new DeleteListener();
 				newText.addMouseListener(deleteText);
 				newText.addMouseMotionListener(deleteText);
+				
+				ShowFocusListener showListener = new ShowFocusListener();
+				newText.addMouseListener(showListener);
+				newText.addMouseMotionListener(showListener);
 				
 				addText=false;
 	    	}
@@ -1082,9 +1117,6 @@ public class Child_Design extends JLayeredPane {
 								linePanel.getLineBorder()[3]-linePanel.getLineBorder()[2]+20);
 						
 						panel.add(newLine);
-						
-						System.out.println("continue");
-						
 						int lineType = -1;
 						switch (linePanel.lineType)
 						{	
@@ -1095,7 +1127,6 @@ public class Child_Design extends JLayeredPane {
 							case LinePanel.LINE_WITH_FULL_ARROW:
 								lineType = BbkType.Sketch.Relation.OTHER;	break;
 						}						
-						
 						Color lineColor = new Color(linePanel.color.getRGB());
 						float lineStroke = linePanel.stroke;
 						ArrayList<Point> points = new ArrayList<Point>();
@@ -1116,13 +1147,13 @@ public class Child_Design extends JLayeredPane {
 						DeleteListener deleteLine = new DeleteListener();
 						newLine.addMouseListener(deleteLine);
 						newLine.addMouseMotionListener(deleteLine);
+						
+						ShowFocusListener showListener = new ShowFocusListener();
+						newLine.addMouseListener(showListener);
+						newLine.addMouseMotionListener(showListener);
 					}
 					else if (e.getClickCount()==1 & e.getButton()==MouseEvent.BUTTON1)
 					{
-						System.out.println("ok");
-						System.out.println(linePanel.color);
-						System.out.println(linePanel.p.type);
-						
 						linePanel.addPoint(e.getPoint());
 						linePanel.repaint();
 					}
@@ -1141,8 +1172,7 @@ public class Child_Design extends JLayeredPane {
 		public void mouseEntered(MouseEvent e) {}
 
 		public void mouseExited(MouseEvent e) {}
-		
-		
+
 	}
 	
 	/**
@@ -1439,6 +1469,82 @@ public class Child_Design extends JLayeredPane {
 	}
 	
 	/**
+	 * Show information in status bar
+	 */
+	class ShowFocusListener implements MouseInputListener
+	{		
+		public void mouseClicked(MouseEvent e) 
+		{
+			(e.getComponent()).requestFocus();
+			
+			if ((e.getComponent()).getName()!="line")
+			{
+				if ((e.getComponent()).getName()=="backbone")
+				{
+					statusBar.setText("     "+(e.getComponent()).getName()+"  "+"Position ("
+							+ (e.getComponent()).getX() + " , " + (e.getComponent()).getY() + ")" +
+							"  "+"Width: " + (e.getComponent()).getWidth() );
+				}
+				else if ((e.getComponent()).getName()=="text")
+				{
+					statusBar.setText("     "+(e.getComponent()).getName()+"  "+"Position ("
+							+ (e.getComponent()).getX() + " , " + (e.getComponent()).getY() + ")" +
+							"  "+"Width: " + (e.getComponent()).getWidth() +
+							"  "+"Height: " + (e.getComponent()).getHeight());
+				}
+				else
+				{
+					statusBar.setText("     "+(e.getComponent()).getName()+"  "+"Position ("
+							+ (e.getComponent()).getX() + " , " + (e.getComponent()).getY() + ")" );
+				}
+			}
+			else
+			{
+				statusBar.setText(null);
+			}
+		}
+		
+		public void mousePressed(MouseEvent e) {}
+
+		public void mouseDragged(MouseEvent e) 
+		{
+			if ((e.getComponent()).getName()!="line")
+			{
+				if ((e.getComponent()).getName()=="backbone")
+				{
+					statusBar.setText("     "+(e.getComponent()).getName()+"  "+"Position ("
+							+ (e.getComponent()).getX() + " , " + (e.getComponent()).getY() + ")" +
+							"  "+"Width: " + (e.getComponent()).getWidth() );
+				}
+				else if ((e.getComponent()).getName()=="text")
+				{
+					statusBar.setText("     "+(e.getComponent()).getName()+"  "+"Position ("
+							+ (e.getComponent()).getX() + " , " + (e.getComponent()).getY() + ")" +
+							"  "+"Width: " + (e.getComponent()).getWidth() +
+							"  "+"Height: " + (e.getComponent()).getHeight());
+				}
+				else
+				{
+					statusBar.setText("     "+(e.getComponent()).getName()+"  "+"Position ("
+							+ (e.getComponent()).getX() + " , " + (e.getComponent()).getY() + ")" );
+				}
+			}
+			else
+			{
+				statusBar.setText(null);
+			}
+		}
+		
+		public void mouseMoved(MouseEvent e) {}
+			
+		public void mouseReleased(MouseEvent e){}
+			
+		public void mouseEntered(MouseEvent e) {}
+
+		public void mouseExited(MouseEvent e) {}
+	}
+	
+	/**
 	 * Delete components
 	 */
 	class DeleteListener implements MouseInputListener
@@ -1486,8 +1592,6 @@ public class Child_Design extends JLayeredPane {
 	{		
 		public void mouseClicked(MouseEvent e) 
 		{
-			System.out.println(pen.toString());
-			
 			SketchOperation operation = sketchCenter.currentProject.ctrlZ();
 			//test
 			if (operation == null)
@@ -1946,6 +2050,10 @@ public class Child_Design extends JLayeredPane {
 			DeleteListener deleteText = new DeleteListener();
 			newText.addMouseListener(deleteText);
 			newText.addMouseMotionListener(deleteText);
+			
+			ShowFocusListener showListener = new ShowFocusListener();
+			newText.addMouseListener(showListener);
+			newText.addMouseMotionListener(showListener);
 		}
 		else if (primaryType.equals(SketchComponent.BioBrick.class.getSimpleName()))
 		{
@@ -2010,6 +2118,10 @@ public class Child_Design extends JLayeredPane {
 			newLabel.addMouseListener(deleteLabel);
 			newLabel.addMouseMotionListener(deleteLabel);
 			
+			ShowFocusListener showListener = new ShowFocusListener();
+			newLabel.addMouseListener(showListener);
+			newLabel.addMouseMotionListener(showListener);
+			
 			panel.setPosition(newLabel, 0);
 			panel.repaint();
 		}
@@ -2068,6 +2180,10 @@ public class Child_Design extends JLayeredPane {
 			DeleteListener deleteLabel = new DeleteListener();
 			newLabel.addMouseListener(deleteLabel);
 			newLabel.addMouseMotionListener(deleteLabel);
+			
+			ShowFocusListener showListener = new ShowFocusListener();
+			newLabel.addMouseListener(showListener);
+			newLabel.addMouseMotionListener(showListener);
 		}
 		else if (primaryType.equals(SketchComponent.BackBone.class.getSimpleName()))
 		{
@@ -2118,6 +2234,10 @@ public class Child_Design extends JLayeredPane {
 			IfUploadListener ifUploadListener = new IfUploadListener(sketchCenter,mainpage);
 			newBackBone.addMouseListener(ifUploadListener);
 			newBackBone.addMouseMotionListener(ifUploadListener);
+			
+			ShowFocusListener showListener = new ShowFocusListener();
+			newBackBone.addMouseListener(showListener);
+			newBackBone.addMouseMotionListener(showListener);
 			
 			panel.setPosition(newBackBone, -1);
 			panel.repaint();
@@ -2199,6 +2319,10 @@ public class Child_Design extends JLayeredPane {
 			DeleteListener deleteLine = new DeleteListener();
 			newLine.addMouseListener(deleteLine);
 			newLine.addMouseMotionListener(deleteLine);
+			
+			ShowFocusListener showListener = new ShowFocusListener();
+			newLine.addMouseListener(showListener);
+			newLine.addMouseMotionListener(showListener);
 		}
 		else if (primaryType.equals(SketchComponent.BioVector.class.getSimpleName()))
 		{
@@ -2219,7 +2343,6 @@ public class Child_Design extends JLayeredPane {
     		
     		if (totalCompList.size()<(newLabel.ID+1))
 			{
-				
 				ArrayList<Component> temptotalCompList = new ArrayList<Component>();
 				temptotalCompList = (ArrayList<Component>) totalCompList.clone();
 				for (int i=0;i<temptotalCompList.size();i++)
@@ -2257,6 +2380,10 @@ public class Child_Design extends JLayeredPane {
 			DeleteListener deleteLabel = new DeleteListener();
 			newLabel.addMouseListener(deleteLabel);
 			newLabel.addMouseMotionListener(deleteLabel);
+			
+			ShowFocusListener showListener = new ShowFocusListener();
+			newLabel.addMouseListener(showListener);
+			newLabel.addMouseMotionListener(showListener);
 		}
 		else
 			return;		

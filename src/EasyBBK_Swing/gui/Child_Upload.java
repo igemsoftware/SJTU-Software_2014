@@ -725,20 +725,20 @@ public class Child_Upload extends JPanel {
 					else if(!UseDefaultScar.isSelected()){
 						bbkupload.setSequence(false, false);
 					}
-					
+					bbkupload.parameters = new ArrayList<Parameter>();
 					for (int i = 0; i < paramTable.getRowCount();i++)
 					{
 						Parameter parameter = new Parameter(((DefaultTableModel) paramTable.getModel()).getValueAt(i, 0).toString(),
 								((DefaultTableModel) paramTable.getModel()).getValueAt(i, 1).toString(), null, null, null, null);
 						bbkupload.parameters.add(parameter);
 					}
-					
+					bbkupload.categories = new ArrayList<Category>();
 					for (int i = 0; i < categoryTable.getRowCount();i++)
 					{
 						Category category = new Category(((DefaultTableModel) categoryTable.getModel()).getValueAt(i, 0).toString());
 						bbkupload.categories.add(category);
 					}
-					
+					bbkupload.features = new ArrayList<Feature>();
 					for (int i = 0; i < featureTable.getRowCount();i++)
 					{
 						Feature feature = new Feature("",((DefaultTableModel) featureTable.getModel()).getValueAt(i, 1).toString(),
@@ -788,6 +788,7 @@ public class Child_Upload extends JPanel {
 						bbkupload.setSequence(false, false);
 					}
 					
+					bbkupload.parameters = new ArrayList<Parameter>();
 					for (int i = 0; i < paramTable.getRowCount();i++)
 					{
 						Parameter parameter = new Parameter(((DefaultTableModel) paramTable.getModel()).getValueAt(i, 0).toString(),
@@ -795,11 +796,13 @@ public class Child_Upload extends JPanel {
 						bbkupload.parameters.add(parameter);
 					}
 					
+					bbkupload.categories = new ArrayList<Category>();
 					for (int i = 0; i < categoryTable.getRowCount();i++)
 					{
 						Category category = new Category(((DefaultTableModel) categoryTable.getModel()).getValueAt(i, 0).toString());
 						bbkupload.categories.add(category);
 					}
+					bbkupload.features = new ArrayList<Feature>();
 					System.out.println(featureTable.getRowCount());
 					for (int i = 0; i < featureTable.getRowCount();i++)
 					{
@@ -918,7 +921,7 @@ public class Child_Upload extends JPanel {
 	
 	private void deleteBtn_Clicked(){
     	int row=paramTable.getSelectedRow();
-    	System.out.println(row);
+    	//System.out.println(row);
     	if(row>-1){
     		 ((DefaultTableModel) paramTable.getModel()).removeRow(row);
     	}
@@ -968,7 +971,7 @@ public class Child_Upload extends JPanel {
 				}
 				showinfo.setText("<html>Uploading your biobrick...<br>10% Complete</html>");
 				String newBbk = OfficialUploadPoster.getNextAvailablePartName();
-				newBbk = "BBa_K1479005";
+				//newBbk = "BBa_K1479016";
 				showinfo.setText("<html>Uploading your biobrick...<br>21% Complete<br>New BioBrick is "+newBbk+"</html>");
 				String newId = OfficialUploadPoster.createNewPart(newBbk, bbkupload);
 				bbkupload.setName(newBbk);
