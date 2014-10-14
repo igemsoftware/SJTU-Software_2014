@@ -634,10 +634,10 @@ public class Choicepanel extends JPanel {
 						information.averagestars.low = true;
 					}
 					
-					information.preferences.status = (int)PercentofStatus.getValue();
-					information.preferences.quality = (int)PercentofQuality.getValue();
-					information.preferences.publication = (int)PercentofPublication.getValue();
-					information.preferences.feedbacks = (int)PercentofFeedbacks.getValue();
+					information.preferences.status = (Integer)PercentofStatus.getValue();
+					information.preferences.quality = (Integer)PercentofQuality.getValue();
+					information.preferences.publication = (Integer)PercentofPublication.getValue();
+					information.preferences.feedbacks = (Integer)PercentofFeedbacks.getValue();
 					
 					confirmed_clicked = true;
 				}

@@ -26,7 +26,7 @@ public class InitializeDetail extends Thread{
 	}
 	
 	public void run(){
-		BbkDetail bbkdetail = child_search.searchcenter.getDetail(bbkoutline.name);
+		final BbkDetail bbkdetail = child_search.searchcenter.getDetail(bbkoutline.name);
 		DetailsofResults detailsofresults = new DetailsofResults();
 		
 		boolean addflag = false;

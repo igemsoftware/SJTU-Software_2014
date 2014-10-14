@@ -8,7 +8,6 @@ import EasyBBK_Swing.gui.LinePanel;
 import EasyBBK_Swing.gui.Pen;
 import EasyBBK_Swing.gui.TPanel;
 import EasyBBK_Swing.gui.FontChooser;
-import EasyBBK_Swing.gui.IfUploadListener.UploadDialog;
 
 import java.awt.Color;
 import java.awt.Component;
@@ -26,7 +25,6 @@ import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
-import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
@@ -44,13 +42,10 @@ import data_center.SketchCenter;
 import data_center.SketchComponent;
 import data_center.SketchOperation;
 import data_center.SketchProject;
-import data_center.SketchComponent.BioBrick;
 
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.ArrayList;
@@ -960,47 +955,36 @@ public class Child_Design extends JLayeredPane {
 					
 					SketchComponent.Component component = null;
 					Rectangle bounds = new Rectangle(newLabel.getBounds());
-					switch (newLabel.getName())
-					{	
-						case "promoter":
-							component = new SketchComponent.BioBrick(newLabel.ID, BbkType.Sketch.BioBrick.PROMOTER, bounds, null);
-							break;
-						case "rbs":
-							component = new SketchComponent.BioBrick(newLabel.ID, BbkType.Sketch.BioBrick.RBS, bounds, null);
-							break;
-						case "coding":
-							component = new SketchComponent.BioBrick(newLabel.ID, BbkType.Sketch.BioBrick.PROTEIN_CODING_SEQUENCE, bounds, null);
-							break;
-						case "terminator":
-							component = new SketchComponent.BioBrick(newLabel.ID, BbkType.Sketch.BioBrick.TERMINATOR, bounds, null);
-							break;	
-						case "primer":
-							component = new SketchComponent.BioBrick(newLabel.ID, BbkType.Sketch.BioBrick.PRIMER, bounds, null);
-							break;
-						case "reporter":
-							component = new SketchComponent.BioBrick(newLabel.ID, BbkType.Sketch.BioBrick.REPORTER, bounds, null);
-							break;
-						case "factor":
-							component = new SketchComponent.Protein(newLabel.ID, BbkType.Sketch.Protein.FACTOR, bounds, null);
-							break;
-						case "recepter":
-							component = new SketchComponent.Protein(newLabel.ID, BbkType.Sketch.Protein.RECEPTER, bounds, null);
-							break;
-						case "protein":
-							component = new SketchComponent.Protein(newLabel.ID, BbkType.Sketch.Protein.COMBINED, bounds, null);
-							break;
-						case "plasmid":
-							component = new SketchComponent.BioVector(newLabel.ID, BbkType.Sketch.BioVector.PLASMID, bounds);
-							break;
-						case "virus":
-							component = new SketchComponent.BioVector(newLabel.ID, BbkType.Sketch.BioVector.VIRUS, bounds);
-							break;
-						case "ecoil":
-							component = new SketchComponent.BioVector(newLabel.ID, BbkType.Sketch.BioVector.BACTERIA, bounds);
-							break;
-					}
+					String labelName = newLabel.getName();
+					if (labelName.equals("promoter"))
+						component = new SketchComponent.BioBrick(newLabel.ID, BbkType.Sketch.BioBrick.PROMOTER, bounds, null);
+					else if (labelName.equals("rbs"))
+						component = new SketchComponent.BioBrick(newLabel.ID, BbkType.Sketch.BioBrick.RBS, bounds, null);
+					else if (labelName.equals("coding"))
+						component = new SketchComponent.BioBrick(newLabel.ID, BbkType.Sketch.BioBrick.PROTEIN_CODING_SEQUENCE, bounds, null);
+					else if (labelName.equals("terminator"))
+						component = new SketchComponent.BioBrick(newLabel.ID, BbkType.Sketch.BioBrick.TERMINATOR, bounds, null);
+					else if (labelName.equals("primer"))
+						component = new SketchComponent.BioBrick(newLabel.ID, BbkType.Sketch.BioBrick.PRIMER, bounds, null);
+					else if (labelName.equals("reporter"))
+						component = new SketchComponent.BioBrick(newLabel.ID, BbkType.Sketch.BioBrick.REPORTER, bounds, null);
+					else if (labelName.equals("factor"))
+						component = new SketchComponent.Protein(newLabel.ID, BbkType.Sketch.Protein.FACTOR, bounds, null);
+					else if (labelName.equals("recepter"))
+						component = new SketchComponent.Protein(newLabel.ID, BbkType.Sketch.Protein.RECEPTER, bounds, null);
+					else if (labelName.equals("protein"))
+						component = new SketchComponent.Protein(newLabel.ID, BbkType.Sketch.Protein.COMBINED, bounds, null);
+					else if (labelName.equals("plasmid"))
+						component = new SketchComponent.BioVector(newLabel.ID, BbkType.Sketch.BioVector.PLASMID, bounds);
+					else if (labelName.equals("virus"))
+						component = new SketchComponent.BioVector(newLabel.ID, BbkType.Sketch.BioVector.VIRUS, bounds);
+					else if (labelName.equals("ecoil"))
+						component = new SketchComponent.BioVector(newLabel.ID, BbkType.Sketch.BioVector.BACTERIA, bounds);
+					else
+						component = null;
 					
-					sketchCenter.currentProject.addComponent(component);
+					if (component != null)
+						sketchCenter.currentProject.addComponent(component);
 					
 					DragCompListener listener = new DragCompListener(panel,Tpanel,sketchCenter);
 					newLabel.addMouseListener(listener);
@@ -1720,8 +1704,7 @@ public class Child_Design extends JLayeredPane {
 				totalCompList=new ArrayList<Component>();
 				lineColor = Color.black;
 				lineStroke = 3.0f;
-				compCount = 0;
-				SketchCenter sketchCenter = new SketchCenter();	
+				compCount = 0;	
 			}
 			
 		}
@@ -1868,17 +1851,18 @@ public class Child_Design extends JLayeredPane {
 			
 		}
 		
+		@SuppressWarnings("unused")
 		class MyFileFilter extends FileFilter {  
 			  
 		    private String TYPE_UNKNOWN = "Type   Unknown ";  
 		    private String HIDDEN_FILE = "Hidden   File ";  
-		    private Hashtable filters = null;  
+		    private Hashtable<String, MyFileFilter> filters = null;  
 		    private String description = null;  
 		    private String fullDescription = null;  
 		    private boolean useExtensionsInDescription = true;  
 		  
 		    public MyFileFilter() {  
-		        this.filters = new Hashtable();  
+		        this.filters = new Hashtable<String, MyFileFilter>();  
 		    }  
 		  
 		    public MyFileFilter(String extension) {  
@@ -1933,7 +1917,7 @@ public class Child_Design extends JLayeredPane {
 		  
 		    public void addExtension(String extension) {  
 		        if (filters == null) {  
-		            filters = new Hashtable(5);  
+		            filters = new Hashtable<String, MyFileFilter>(5);  
 		        }  
 		        filters.put(extension.toLowerCase(), this);  
 		        fullDescription = null;  
@@ -1944,7 +1928,7 @@ public class Child_Design extends JLayeredPane {
 		            if (description == null || isExtensionListInDescription()) {  
 		                fullDescription = description == null ? "(" : description + "(";  
 		//   build   the   description   from   the   extension   list   
-		                Enumeration extensions = filters.keys();  
+		                Enumeration<String> extensions = filters.keys();  
 		                if (extensions != null) {  
 		                    fullDescription += "." + (String) extensions.nextElement();  
 		                    while (extensions.hasMoreElements()) {  
