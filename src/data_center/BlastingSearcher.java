@@ -21,11 +21,11 @@ import ch.ethz.ssh2.StreamGobbler;
 public class BlastingSearcher
 {
 	// about server
-	private static final String SERVER_ADDRESS = Server.Blasting.SERVER_ADDRESS;
+	private static final String SERVER_ADDRESS = Server.Blasting_old.SERVER_ADDRESS;
 	@SuppressWarnings("unused")
-	private static final int PORT = Server.Blasting.PORT;
-	private static final String USER_NAME = Server.Blasting.USER_NAME;
-	private static final String PASS_WORD = Server.Blasting.PASSWORD;
+	private static final int PORT = Server.Blasting_old.PORT;
+	private static final String USER_NAME = Server.Blasting_old.USER_NAME;
+	private static final String PASS_WORD = Server.Blasting_old.PASSWORD;
 	
 	// about the cmd of blasting
 	private static final String PROGRAM_TASK_DATABASE
