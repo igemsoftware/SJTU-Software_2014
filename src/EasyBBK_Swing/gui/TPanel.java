@@ -1,13 +1,11 @@
 package EasyBBK_Swing.gui;
 
 import java.awt.AlphaComposite;
-import java.awt.BasicStroke;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.image.BufferedImage;
 
-import javax.swing.ImageIcon;
 import javax.swing.JLayeredPane;
 
 /**
@@ -15,6 +13,8 @@ import javax.swing.JLayeredPane;
  */
 class TPanel extends JLayeredPane
 {
+	private static final long serialVersionUID = 1L;
+	
 	private AlphaComposite composite;
 	private BufferedImage dragged = null;
 	private Point point = new Point(0,0);

@@ -8,6 +8,8 @@ import javax.swing.JLabel;
 
 class Pen extends JLabel
 {
+	private static final long serialVersionUID = 1L;
+	
 	public boolean inUse = false;
 	public Integer type = null;
 	

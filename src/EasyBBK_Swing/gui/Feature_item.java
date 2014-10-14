@@ -8,16 +8,19 @@ import java.awt.event.ItemListener;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 public class Feature_item extends JPanel {
-	public JComboBox Choice;
+	private static final long serialVersionUID = 1L;
+	
+	public JComboBox<?> Choice;
 	public String content1;
 	public JTextField Label;
 	public JTextField Start;
 	public JTextField End;
-	public JComboBox Direction;
+	public JComboBox<?> Direction;
 	public String content2;
 	public String feature[] = {"misc", "promoter", "rbs", "cds", "start", "stop", "scar", "dna", "tag", 
 			"stem_loop", "mutation", "s_mutation", "primer_binding", "operator", "binding", "protein", 
@@ -31,7 +34,7 @@ public class Feature_item extends JPanel {
 		setBackground(new Color(255, 255, 255));
 		setLayout(null);
 		
-		Choice = new JComboBox(feature);
+		Choice = new JComboBox<Object>(feature);
 		content1 = "misc";
 		Choice.setFont(new Font("Arial", Font.PLAIN, 20));
 		Choice.setSelectedIndex(0);
@@ -85,7 +88,7 @@ public class Feature_item extends JPanel {
 		add(End);
 		End.setColumns(10);
 		
-		Direction = new JComboBox(direction);
+		Direction = new JComboBox<Object>(direction);
 		content2 = "Fwd";
 		Direction.setFont(new Font("Arial", Font.PLAIN, 20));
 		Direction.setSelectedIndex(0);

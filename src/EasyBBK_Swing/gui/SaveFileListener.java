@@ -12,7 +12,6 @@ import javax.swing.JFileChooser;
 import javax.swing.JLayeredPane;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
-import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.event.MouseInputListener;
 import javax.swing.filechooser.FileFilter;
@@ -139,17 +138,18 @@ public class SaveFileListener implements MouseInputListener
 		
 	}
 	
+	@SuppressWarnings("unused")
 	class MyFileFilter extends FileFilter {  
 		  
 	    private String TYPE_UNKNOWN = "Type   Unknown ";  
 	    private String HIDDEN_FILE = "Hidden   File ";  
-	    private Hashtable filters = null;  
+	    private Hashtable<String, MyFileFilter> filters = null;  
 	    private String description = null;  
 	    private String fullDescription = null;  
 	    private boolean useExtensionsInDescription = true;  
 	  
 	    public MyFileFilter() {  
-	        this.filters = new Hashtable();  
+	        this.filters = new Hashtable<String, MyFileFilter>();  
 	    }  
 	  
 	    public MyFileFilter(String extension) {  
@@ -204,7 +204,7 @@ public class SaveFileListener implements MouseInputListener
 	  
 	    public void addExtension(String extension) {  
 	        if (filters == null) {  
-	            filters = new Hashtable(5);  
+	            filters = new Hashtable<String, MyFileFilter>(5);  
 	        }  
 	        filters.put(extension.toLowerCase(), this);  
 	        fullDescription = null;  
@@ -215,7 +215,7 @@ public class SaveFileListener implements MouseInputListener
 	            if (description == null || isExtensionListInDescription()) {  
 	                fullDescription = description == null ? "(" : description + "(";  
 	//   build   the   description   from   the   extension   list   
-	                Enumeration extensions = filters.keys();  
+	                Enumeration<String> extensions = filters.keys();  
 	                if (extensions != null) {  
 	                    fullDescription += "." + (String) extensions.nextElement();  
 	                    while (extensions.hasMoreElements()) {  

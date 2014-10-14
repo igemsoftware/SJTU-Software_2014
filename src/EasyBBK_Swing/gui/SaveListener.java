@@ -1,26 +1,22 @@
 package EasyBBK_Swing.gui;
 
-import java.awt.Component;
 import java.awt.event.MouseEvent;
 import java.io.File;
-import java.io.IOException;
 import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.Locale;
 
-import javax.imageio.ImageIO;
 import javax.swing.JFileChooser;
 import javax.swing.JLayeredPane;
-import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.event.MouseInputListener;
 import javax.swing.filechooser.FileFilter;
 
-import EasyBBK_Swing.gui.SaveFileListener.MyFileFilter;
+import EasyBBK_Swing.gui.SaveListener.MyFileFilter;
 import data_center.SketchCenter;
-import data_center.SketchProject;
 
+@SuppressWarnings("unused")
 public class SaveListener implements MouseInputListener
 {
 	SketchCenter sketchCenter;
@@ -94,13 +90,13 @@ public class SaveListener implements MouseInputListener
 		  
 	    private String TYPE_UNKNOWN = "Type   Unknown ";  
 	    private String HIDDEN_FILE = "Hidden   File ";  
-	    private Hashtable filters = null;  
+	    private Hashtable<String, MyFileFilter> filters = null;  
 	    private String description = null;  
 	    private String fullDescription = null;  
 	    private boolean useExtensionsInDescription = true;  
 	  
 	    public MyFileFilter() {  
-	        this.filters = new Hashtable();  
+	        this.filters = new Hashtable<String, MyFileFilter>();  
 	    }  
 	  
 	    public MyFileFilter(String extension) {  
@@ -155,7 +151,7 @@ public class SaveListener implements MouseInputListener
 	  
 	    public void addExtension(String extension) {  
 	        if (filters == null) {  
-	            filters = new Hashtable(5);  
+	            filters = new Hashtable<String, MyFileFilter>(5);  
 	        }  
 	        filters.put(extension.toLowerCase(), this);  
 	        fullDescription = null;  
@@ -166,7 +162,7 @@ public class SaveListener implements MouseInputListener
 	            if (description == null || isExtensionListInDescription()) {  
 	                fullDescription = description == null ? "(" : description + "(";  
 	//   build   the   description   from   the   extension   list   
-	                Enumeration extensions = filters.keys();  
+	                Enumeration<String> extensions = filters.keys();  
 	                if (extensions != null) {  
 	                    fullDescription += "." + (String) extensions.nextElement();  
 	                    while (extensions.hasMoreElements()) {  

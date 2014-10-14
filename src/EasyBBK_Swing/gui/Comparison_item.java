@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
 
-import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 
@@ -16,6 +15,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class Comparison_item extends JPanel {
+	private static final long serialVersionUID = 1L;
+	
 	public JLabel PartName;
 	public JLabel Type;
 	public JLabel ShortDescription;
@@ -90,7 +91,7 @@ public class Comparison_item extends JPanel {
 		Url.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(e.getButton() == e.BUTTON1){
+				if(e.getButton() == MouseEvent.BUTTON1){
 					try{
 						Runtime.getRuntime().exec("explorer " + Url.getText());
 					}

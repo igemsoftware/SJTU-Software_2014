@@ -5,16 +5,11 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Point;
-import java.awt.Rectangle;
 import java.awt.RenderingHints;
-import java.awt.Stroke;
 import java.awt.geom.*;
-import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 import javax.swing.JLayeredPane;
-import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
 
 
 /**
@@ -22,6 +17,8 @@ import javax.swing.SwingUtilities;
  */
 class LinePanel extends JLayeredPane
 {
+	private static final long serialVersionUID = 1L;
+	
 	public ArrayList<Point> lineList;
 	public Pen p =new Pen();
 	

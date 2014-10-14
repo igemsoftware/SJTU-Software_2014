@@ -11,12 +11,10 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 import javax.swing.JLayeredPane;
-import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import javax.swing.event.MouseInputListener;
 
 import data_center.SketchCenter;
-import data_center.SketchComponent;
 import data_center.SketchOperation;
 import data_center.SketchProject;
 

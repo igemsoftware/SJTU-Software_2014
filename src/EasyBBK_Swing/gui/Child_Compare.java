@@ -1,13 +1,8 @@
 package EasyBBK_Swing.gui;
 
 import java.awt.Color;
-import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
@@ -22,6 +17,8 @@ import javax.swing.border.EmptyBorder;
 import data_center.*;
 
 public class Child_Compare extends JPanel {
+	private static final long serialVersionUID = 1L;
+	
 	public MainPage mainpage;
 	public ArrayList<BbkDetail> comparisonlist = new ArrayList<BbkDetail>();
 	public JPanel Containerpanel;
