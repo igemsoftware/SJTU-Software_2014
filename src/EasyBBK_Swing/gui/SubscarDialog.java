@@ -15,6 +15,8 @@ import data_center.*;
 import data_center.BbkUpload.SpecifiedSubscar;
 
 public class SubscarDialog extends JDialog {
+	private static final long serialVersionUID = 1L;
+	
 	public MainPage parent;
 	public SubscarDialog sd;
 	/**
@@ -33,7 +35,7 @@ public class SubscarDialog extends JDialog {
 		this.setResizable(false);
 		this.setLocation(533, 264);
 		
-		JTextField inputtext = new JTextField();
+		final JTextField inputtext = new JTextField();
 		inputtext.setFont(new Font("Arial", Font.PLAIN, 20));
 		inputtext.setColumns(10);
 		inputtext.setBounds(50, 50, 200, 30);
@@ -43,7 +45,7 @@ public class SubscarDialog extends JDialog {
 		Confirme.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(e.getButton() == e.BUTTON1){
+				if(e.getButton() == MouseEvent.BUTTON1){
 					if(inputtext.getText().equals("")) return;
 					UploadCenter uploadcenter = new UploadCenter();
 					SpecifiedSubscar ss = uploadcenter.getSubscarForSequenceToken(inputtext.getText());
@@ -53,7 +55,7 @@ public class SubscarDialog extends JDialog {
 						sd.dispose();
 					}
 					else{
-						JDialog jd = new JDialog(sd, true);
+						final JDialog jd = new JDialog(sd, true);
 						jd.getContentPane().setLayout(new BorderLayout());
 						jd.setSize(new Dimension(240, 100));
 						jd.setLocation(563, 294);
@@ -86,7 +88,7 @@ public class SubscarDialog extends JDialog {
 		Cancel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(e.getButton() == e.BUTTON1)
+				if(e.getButton() == MouseEvent.BUTTON1)
 					sd.dispose();
 			}
 		});

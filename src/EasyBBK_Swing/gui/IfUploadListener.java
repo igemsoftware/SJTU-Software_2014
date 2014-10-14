@@ -1,41 +1,24 @@
 package EasyBBK_Swing.gui;
 
-import java.awt.BasicStroke;
-import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
 import java.awt.Frame;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.io.File;
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.Map;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
-import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JTextField;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 import javax.swing.event.MouseInputListener;
-import javax.swing.filechooser.FileFilter;
 
-import data_center.BbkOutline;
 import data_center.BbkUpload;
 import data_center.SketchCenter;
 import data_center.SketchComponent;
@@ -79,7 +62,9 @@ public class IfUploadListener implements MouseInputListener
 	
 	public class UploadDialog extends JPanel 
 	{  
-	    {  
+	    private static final long serialVersionUID = 1L;
+
+		{  
 	        try {  
 	            javax.swing.UIManager.setLookAndFeel(javax.swing.UIManager.getSystemLookAndFeelClassName());  
 	        } catch (Exception e) {  
@@ -103,7 +88,7 @@ public class IfUploadListener implements MouseInputListener
 	    
 	    
 	    //
-		private void init(int ID) 
+		private void init(final int ID) 
 	    {
 	    	//layout
 	    	this.setLayout(null);
@@ -145,7 +130,9 @@ public class IfUploadListener implements MouseInputListener
 	            	{	System.out.println("The backbone can be found no where in backstage, please check~ @.@");
 	            		return;	
 	            	}
-	            	BbkUpload bbkUpload = sketchCenter.generateBbkUploadFromBackBone(backbone, false);
+	            	
+	            	@SuppressWarnings("unused")
+					BbkUpload bbkUpload = sketchCenter.generateBbkUploadFromBackBone(backbone, false);
 	            	
 	            	//to upload interface
 	            	mainpage.Upload_flag = true;

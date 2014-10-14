@@ -20,6 +20,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class Choicepanel extends JPanel {
+	private static final long serialVersionUID = 1L;
+	
 	public JCheckBox Released;
 	public JCheckBox Deleted;
 	public JCheckBox NotReleased;
@@ -50,8 +52,8 @@ public class Choicepanel extends JPanel {
 	public JCheckBox Signalling;
 	public JCheckBox Measurement;
 	public JCheckBox Other;
-	public JComboBox Year1;
-	public JComboBox Year2;
+	public JComboBox<?> Year1;
+	public JComboBox<?> Year2;
 	public JSpinner PercentofStatus;
 	public JSpinner PercentofQuality;
 	public JSpinner PercentofFeedbacks;
@@ -69,7 +71,7 @@ public class Choicepanel extends JPanel {
 		addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(e.getButton() == e.BUTTON1)
+				if(e.getButton() == MouseEvent.BUTTON1)
 					requestFocus();
 			}
 		});
@@ -303,7 +305,7 @@ public class Choicepanel extends JPanel {
 		add(From);
 		
 		String year[] = {"2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014"};
-		Year1 = new JComboBox(year);
+		Year1 = new JComboBox<Object>(year);
 		Year1.setSelectedIndex(0);
 		Year1.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
@@ -321,7 +323,7 @@ public class Choicepanel extends JPanel {
 		To.setBounds(277, 229, 28, 20);
 		add(To);
 		
-		Year2 = new JComboBox(year);
+		Year2 = new JComboBox<Object>(year);
 		Year2.setSelectedIndex(11);
 		Year2.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
@@ -530,7 +532,7 @@ public class Choicepanel extends JPanel {
 		Confirme.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(e.getButton() == e.BUTTON1){
+				if(e.getButton() == MouseEvent.BUTTON1){
 					
 					if(EnteredDate.isSelected()){
 						information.sortby = "Entered Date";
@@ -634,10 +636,10 @@ public class Choicepanel extends JPanel {
 						information.averagestars.low = true;
 					}
 					
-					information.preferences.status = (int)PercentofStatus.getValue();
-					information.preferences.quality = (int)PercentofQuality.getValue();
-					information.preferences.publication = (int)PercentofPublication.getValue();
-					information.preferences.feedbacks = (int)PercentofFeedbacks.getValue();
+					information.preferences.status = (Integer)PercentofStatus.getValue();
+					information.preferences.quality = (Integer)PercentofQuality.getValue();
+					information.preferences.publication = (Integer)PercentofPublication.getValue();
+					information.preferences.feedbacks = (Integer)PercentofFeedbacks.getValue();
 					
 					confirmed_clicked = true;
 				}

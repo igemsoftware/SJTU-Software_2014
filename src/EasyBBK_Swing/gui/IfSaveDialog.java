@@ -1,6 +1,5 @@
 package EasyBBK_Swing.gui;
 
-import java.awt.Component;
 import java.awt.Font;
 import java.awt.Frame;
 import java.awt.Insets;
@@ -13,7 +12,6 @@ import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.Locale;
 
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
@@ -24,13 +22,12 @@ import javax.swing.SwingUtilities;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.filechooser.FileFilter;
 
-import EasyBBK_Swing.gui.SaveListener.MyFileFilter;
-import data_center.BbkUpload;
 import data_center.SketchCenter;
-import data_center.SketchComponent;
 
 public class IfSaveDialog extends JPanel
 {
+	private static final long serialVersionUID = 1L;
+	
 	SketchCenter sketchCenter;
 	boolean ifOperate = false;
 	
@@ -97,7 +94,8 @@ public class IfSaveDialog extends JPanel
 
     	/*用户确定*/  
         ok.addActionListener(new ActionListener() {  
-            public void actionPerformed(ActionEvent e) 
+            @SuppressWarnings("unused")
+			public void actionPerformed(ActionEvent e) 
             {
             	ifOperate=true;
             	//Open save dialog
@@ -151,17 +149,18 @@ public class IfSaveDialog extends JPanel
         }); 
     } 
 	
+	@SuppressWarnings("unused")
 	class MyFileFilter extends FileFilter {  
 		  
 	    private String TYPE_UNKNOWN = "Type   Unknown ";  
 	    private String HIDDEN_FILE = "Hidden   File ";  
-	    private Hashtable filters = null;  
+	    private Hashtable<String, MyFileFilter> filters = null;  
 	    private String description = null;  
 	    private String fullDescription = null;  
 	    private boolean useExtensionsInDescription = true;  
 	  
 	    public MyFileFilter() {  
-	        this.filters = new Hashtable();  
+	        this.filters = new Hashtable<String, MyFileFilter>();  
 	    }  
 	  
 	    public MyFileFilter(String extension) {  
@@ -216,7 +215,7 @@ public class IfSaveDialog extends JPanel
 	  
 	    public void addExtension(String extension) {  
 	        if (filters == null) {  
-	            filters = new Hashtable(5);  
+	            filters = new Hashtable<String, MyFileFilter>(5);  
 	        }  
 	        filters.put(extension.toLowerCase(), this);  
 	        fullDescription = null;  
@@ -227,7 +226,7 @@ public class IfSaveDialog extends JPanel
 	            if (description == null || isExtensionListInDescription()) {  
 	                fullDescription = description == null ? "(" : description + "(";  
 	//   build   the   description   from   the   extension   list   
-	                Enumeration extensions = filters.keys();  
+	                Enumeration<String> extensions = filters.keys();  
 	                if (extensions != null) {  
 	                    fullDescription += "." + (String) extensions.nextElement();  
 	                    while (extensions.hasMoreElements()) {  

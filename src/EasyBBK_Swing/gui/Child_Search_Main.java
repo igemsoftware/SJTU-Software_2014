@@ -20,6 +20,8 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 public class Child_Search_Main extends JPanel {
+	private static final long serialVersionUID = 1L;
+	
 	public JLabel LogoBox;
 	public JLabel TextBox;
 	public JTextField SearchText;
@@ -40,7 +42,7 @@ public class Child_Search_Main extends JPanel {
 		addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(e.getButton() == e.BUTTON1)
+				if(e.getButton() == MouseEvent.BUTTON1)
 					requestFocus();
 			}
 		});
@@ -59,7 +61,7 @@ public class Child_Search_Main extends JPanel {
 		SearchText.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent arg0) {
-				if(arg0.getKeyChar() == arg0.VK_ENTER){
+				if(arg0.getKeyChar() == KeyEvent.VK_ENTER){
 					if(SearchText.getText().equals("")) return;
 					Component component = mainpage.Mainpanel.getComponent(0);
 					if(component instanceof Child_Search_Main){
@@ -86,7 +88,7 @@ public class Child_Search_Main extends JPanel {
 		goBox.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(e.getButton() == e.BUTTON1){
+				if(e.getButton() == MouseEvent.BUTTON1){
 					if(SearchText.getText().equals("")) return;
 					requestFocus();
 					Component component = mainpage.Mainpanel.getComponent(0);
@@ -134,7 +136,7 @@ public class Child_Search_Main extends JPanel {
 		Blast.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(e.getButton() == e.BUTTON1){
+				if(e.getButton() == MouseEvent.BUTTON1){
 					if(SearchText.getText().equals("")) return;
 					requestFocus();
 					Component component = mainpage.Mainpanel.getComponent(0);
@@ -171,7 +173,7 @@ public class Child_Search_Main extends JPanel {
 		AdvancedSearch.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(e.getButton() == e.BUTTON1){
+				if(e.getButton() == MouseEvent.BUTTON1){
 					AdvancedSearch.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/advancedsearch_clicked.png")));
 					if(flag == false){
 						scrollpane.setVisible(true);
