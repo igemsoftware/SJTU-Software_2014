@@ -10,9 +10,9 @@ public class DatabaseConnector
 {
 	@SuppressWarnings("unused")
 	private final static String DRIVER = "com.mysql.jdbc.Driver";
-	private final static String URL_SERVER = "jdbc:mysql://202.120.45.101:3306/igem14";
-	private final static String USER_NAME = "igem14";
-	private final static String PASSWORD = "bio34204348;";
+	private final static String URL_SERVER = Server.Database.URL_SERVER;
+	private final static String USER_NAME = Server.Database.USER_NAME;
+	private final static String PASSWORD = Server.Database.PASSWORD;
 	
     private static Connection connection = null;
     
