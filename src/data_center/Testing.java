@@ -24,9 +24,9 @@ public class Testing
 	
 	public static void main(String[] args) throws Exception
 	{	
-		//searchKeywordAndGetDetail();
+		searchKeywordAndGetDetail();
 		//searchFilterAndSort();
-		searchBlasting();
+		//searchBlasting();
 		//searchHistory();
 		//compareAssignDetail();
 		//sketchProjectOperation();
@@ -43,8 +43,9 @@ public class Testing
 	private static void searchKeywordAndGetDetail()
 	{	
 		int startTime = getTimeInMs();
-		SearchResultList list = dataCenter.searchCenter.search("GFP");
-		//list.displayRating();
+		SearchResultList list = dataCenter.searchCenter.search("BBa");
+		list.sortByTotalScore(true);
+		list.displayRating();
 		int endTime = getTimeInMs();
 		
 		System.out.println("Network time: " + (endTime - startTime) + "ms");
