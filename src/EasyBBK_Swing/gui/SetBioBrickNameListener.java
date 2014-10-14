@@ -120,7 +120,7 @@ public class SetBioBrickNameListener implements MouseInputListener
 	    
 	    
 	    //
-		private void init(int ID) 
+		private void init(final int ID) 
 	    {
 	    	String biobrickName;
 	    	SketchComponent.Component component = sketchCenter.currentProject.findComponentByID(ID);

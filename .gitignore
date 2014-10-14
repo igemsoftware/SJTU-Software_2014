@@ -1,1 +1,5 @@
+*.class
+/bin/data_center/
+/bin/EasyBbk_Swing/
+/bin/
 /bin/EasyBbk_Swing//bin/
