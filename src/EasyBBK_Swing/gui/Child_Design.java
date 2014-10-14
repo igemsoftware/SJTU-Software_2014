@@ -9,6 +9,7 @@ import EasyBBK_Swing.gui.Pen;
 import EasyBBK_Swing.gui.TPanel;
 import EasyBBK_Swing.gui.FontChooser;
 
+import java.awt.AWTEvent;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Cursor;
@@ -17,6 +18,7 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.awt.Toolkit;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -43,8 +45,11 @@ import data_center.SketchComponent;
 import data_center.SketchOperation;
 import data_center.SketchProject;
 
+import java.awt.event.AWTEventListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -124,7 +129,7 @@ public class Child_Design extends JLayeredPane {
 		Pen line_inhabit = new Pen();
 		Pen line_enhance = new Pen();
 		Pen line_other = new Pen();
-		
+
 		this.setBounds(0, 0, 1366, 670);
 		this.setLayout(null);
         
@@ -454,6 +459,88 @@ public class Child_Design extends JLayeredPane {
 		background.setBounds(0, 0, 1366, 670);
 		ImageIcon image_background = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/design_background.png"));
 		background.setIcon(image_background);
+		
+		//backout by keyboard
+		Toolkit.getDefaultToolkit().addAWTEventListener( 
+				new AWTEventListener(){
+					 public void eventDispatched(AWTEvent e) {
+	                        if(e.getClass() == KeyEvent.class){
+	                        	KeyEvent ek = (KeyEvent) e;
+	                        	if (ek.getKeyCode()==KeyEvent.VK_Z && ek.isControlDown() 
+	                        			&& ek.getID() == KeyEvent.KEY_RELEASED)
+	                        	{
+	                        		SketchOperation operation = sketchCenter.currentProject.ctrlZ();
+	                    			//test
+	                    			if (operation == null)
+	                    			{
+	                    				return;
+	                    			}
+	                    			// else... 
+	                    			SketchComponent.Component component;
+	                    			if (operation.operationType == SketchOperation.ADD)
+	                    			{
+	                    				component = (SketchComponent.Component) operation.following;
+	                    				addComponent(component);
+	                    			}
+	                    			else if (operation.operationType == SketchOperation.REMOVE)
+	                    			{	
+	                    				component = (SketchComponent.Component) operation.previous;
+	                    				removeComponent(component);
+	                    			}
+	                    			else
+	                    			{	
+	                    				component = sketchCenter.currentProject.findComponentByID(operation.ID);
+	                    				if (component == null)
+	                    					return;
+	                    				else
+	                    					modifyComponent(component, operation.attributeType, operation.previous, operation.following);
+	                    			}
+	                    			
+	                    			panel.repaint();
+	                        	}
+	                       }
+					 }
+				},  AWTEvent.KEY_EVENT_MASK);		
+				
+		//forward by keyboard
+		Toolkit.getDefaultToolkit().addAWTEventListener( 
+				new AWTEventListener(){
+					 public void eventDispatched(AWTEvent e) {
+	                        if(e.getClass() == KeyEvent.class){
+	                        	KeyEvent ek = (KeyEvent) e;
+	                        	if (ek.getKeyCode()==KeyEvent.VK_Y && ek.isControlDown()
+	                        			&& ek.getID() == KeyEvent.KEY_RELEASED)
+	                        	{
+	                        		SketchOperation operation = sketchCenter.currentProject.ctrlY();
+	                    			//test
+	                    			if (operation == null)
+	                    				return;
+	                    			// else... 
+	                    			SketchComponent.Component component;
+	                    			if (operation.operationType == SketchOperation.ADD)
+	                    			{
+	                    				component = (SketchComponent.Component) operation.following;
+	                    				addComponent(component);
+	                    			}
+	                    			else if (operation.operationType == SketchOperation.REMOVE)
+	                    			{	
+	                    				component = (SketchComponent.Component) operation.previous;
+	                    				removeComponent(component);
+	                    			}
+	                    			else
+	                    			{	
+	                    				component = sketchCenter.currentProject.findComponentByID(operation.ID);
+	                    				if (component == null)
+	                    					return;
+	                    				else
+	                    					modifyComponent(component, operation.attributeType, operation.previous, operation.following);
+	                    			}
+	                    			
+	                    			panel.repaint();
+	                        	}
+	                       }
+					 }
+				},  AWTEvent.KEY_EVENT_MASK);		
 	}
 	
 	/**
@@ -559,6 +646,9 @@ public class Child_Design extends JLayeredPane {
 							ShowFocusListener showListener = new ShowFocusListener();
 							newLine.addMouseListener(showListener);
 							newLine.addMouseMotionListener(showListener);
+							
+							KeyDeleteListener keyDeleteListener = new KeyDeleteListener();
+							newLine.addKeyListener(keyDeleteListener);
 	    				}
 	    			}
 	    			pen = null;
@@ -652,6 +742,9 @@ public class Child_Design extends JLayeredPane {
 						ShowFocusListener showListener = new ShowFocusListener();
 						newLine.addMouseListener(showListener);
 						newLine.addMouseMotionListener(showListener);
+						
+						KeyDeleteListener keyDeleteListener = new KeyDeleteListener();
+						newLine.addKeyListener(keyDeleteListener);
     				}
     			}
 				pen = (Pen)e.getSource();
@@ -738,6 +831,9 @@ public class Child_Design extends JLayeredPane {
 						ShowFocusListener showListener = new ShowFocusListener();
 						newLine.addMouseListener(showListener);
 						newLine.addMouseMotionListener(showListener);
+						
+						KeyDeleteListener keyDeleteListener = new KeyDeleteListener();
+						newLine.addKeyListener(keyDeleteListener);
     				}
     			}
 				pen = null;
@@ -839,6 +935,9 @@ public class Child_Design extends JLayeredPane {
 						ShowFocusListener showListener = new ShowFocusListener();
 						newLine.addMouseListener(showListener);
 						newLine.addMouseMotionListener(showListener);
+						
+						KeyDeleteListener keyDeleteListener = new KeyDeleteListener();
+						newLine.addKeyListener(keyDeleteListener);
     				}
     			}
     			pen = null;
@@ -920,6 +1019,9 @@ public class Child_Design extends JLayeredPane {
 					ShowFocusListener showListener = new ShowFocusListener();
 					newBackBone.addMouseListener(showListener);
 					newBackBone.addMouseMotionListener(showListener);
+					
+					KeyDeleteListener keyDeleteListener = new KeyDeleteListener();
+					newBackBone.addKeyListener(keyDeleteListener);
 	    		}
 	    		else
 	    		{
@@ -1002,6 +1104,9 @@ public class Child_Design extends JLayeredPane {
 					ShowFocusListener showListener = new ShowFocusListener();
 					newLabel.addMouseListener(showListener);
 					newLabel.addMouseMotionListener(showListener);
+					
+					KeyDeleteListener keyDeleteListener = new KeyDeleteListener();
+					newLabel.addKeyListener(keyDeleteListener);
 	    		}
 	    	}
 	    }
@@ -1047,6 +1152,9 @@ public class Child_Design extends JLayeredPane {
 				ShowFocusListener showListener = new ShowFocusListener();
 				newText.addMouseListener(showListener);
 				newText.addMouseMotionListener(showListener);
+				
+				KeyDeleteListener keyDeleteListener = new KeyDeleteListener();
+				newText.addKeyListener(keyDeleteListener);
 				
 				addText=false;
 	    	}
@@ -1135,6 +1243,9 @@ public class Child_Design extends JLayeredPane {
 						ShowFocusListener showListener = new ShowFocusListener();
 						newLine.addMouseListener(showListener);
 						newLine.addMouseMotionListener(showListener);
+						
+						KeyDeleteListener keyDeleteListener = new KeyDeleteListener();
+						newLine.addKeyListener(keyDeleteListener);
 					}
 					else if (e.getClickCount()==1 & e.getButton()==MouseEvent.BUTTON1)
 					{
@@ -1570,6 +1681,37 @@ public class Child_Design extends JLayeredPane {
 	}
 	
 	/**
+	 * Delete component by keyboard
+	 */
+	class KeyDeleteListener implements KeyListener
+	{
+		public void keyPressed(KeyEvent e){}
+		
+		public void keyTyped(KeyEvent e){}
+		
+		public void keyReleased(KeyEvent e)
+		{
+			if (e.getKeyCode()==KeyEvent.VK_DELETE)
+			{
+				Component comp = e.getComponent();
+				(comp.getParent()).remove(e.getComponent());
+				
+				SketchProject project = sketchCenter.currentProject;
+				int ID = -1;
+				
+				Component component = e.getComponent();
+				
+				if ((component.getName()).equals("text"))
+					ID = ((TextLabel) component).ID;
+				else
+					ID = ((JLabelWithID) component).ID;
+				project.delComponent(project.findComponentByID(ID));
+			}
+		}
+		
+	}
+	
+	/**
 	 * Backout
 	 */
 	class BackoutListener implements MouseInputListener
@@ -1653,8 +1795,6 @@ public class Child_Design extends JLayeredPane {
 			
 			panel.repaint();
 		}
-		
-		
 
 		public void mousePressed(MouseEvent e) {}
 
@@ -2038,6 +2178,9 @@ public class Child_Design extends JLayeredPane {
 			ShowFocusListener showListener = new ShowFocusListener();
 			newText.addMouseListener(showListener);
 			newText.addMouseMotionListener(showListener);
+			
+			KeyDeleteListener keyDeleteListener = new KeyDeleteListener();
+			newText.addKeyListener(keyDeleteListener);
 		}
 		else if (primaryType.equals(SketchComponent.BioBrick.class.getSimpleName()))
 		{
@@ -2106,6 +2249,9 @@ public class Child_Design extends JLayeredPane {
 			newLabel.addMouseListener(showListener);
 			newLabel.addMouseMotionListener(showListener);
 			
+			KeyDeleteListener keyDeleteListener = new KeyDeleteListener();
+			newLabel.addKeyListener(keyDeleteListener);
+			
 			panel.setPosition(newLabel, 0);
 			panel.repaint();
 		}
@@ -2168,6 +2314,9 @@ public class Child_Design extends JLayeredPane {
 			ShowFocusListener showListener = new ShowFocusListener();
 			newLabel.addMouseListener(showListener);
 			newLabel.addMouseMotionListener(showListener);
+			
+			KeyDeleteListener keyDeleteListener = new KeyDeleteListener();
+			newLabel.addKeyListener(keyDeleteListener);
 		}
 		else if (primaryType.equals(SketchComponent.BackBone.class.getSimpleName()))
 		{
@@ -2222,6 +2371,9 @@ public class Child_Design extends JLayeredPane {
 			ShowFocusListener showListener = new ShowFocusListener();
 			newBackBone.addMouseListener(showListener);
 			newBackBone.addMouseMotionListener(showListener);
+			
+			KeyDeleteListener keyDeleteListener = new KeyDeleteListener();
+			newBackBone.addKeyListener(keyDeleteListener);
 			
 			panel.setPosition(newBackBone, -1);
 			panel.repaint();
@@ -2307,6 +2459,9 @@ public class Child_Design extends JLayeredPane {
 			ShowFocusListener showListener = new ShowFocusListener();
 			newLine.addMouseListener(showListener);
 			newLine.addMouseMotionListener(showListener);
+			
+			KeyDeleteListener keyDeleteListener = new KeyDeleteListener();
+			newLine.addKeyListener(keyDeleteListener);
 		}
 		else if (primaryType.equals(SketchComponent.BioVector.class.getSimpleName()))
 		{
@@ -2368,6 +2523,9 @@ public class Child_Design extends JLayeredPane {
 			ShowFocusListener showListener = new ShowFocusListener();
 			newLabel.addMouseListener(showListener);
 			newLabel.addMouseMotionListener(showListener);
+			
+			KeyDeleteListener keyDeleteListener = new KeyDeleteListener();
+			newLabel.addKeyListener(keyDeleteListener);
 		}
 		else
 			return;		
@@ -2424,7 +2582,6 @@ public class Child_Design extends JLayeredPane {
 							sequence.setBounds(compBounds);
 						}
 					}
-					
 				}
 				else	// no linkage
 				{	
