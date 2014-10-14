@@ -313,10 +313,11 @@ public class SearchResultList extends ArrayList<BbkOutline>
 			public int compare(BbkOutline bbk1, BbkOutline bbk2)
 			{
 				double score1 = bbk1.getScore(), score2 = bbk2.getScore();
+				int num1 = (int) (score1 * 100), num2 = (int) (score2 * 100);
 				if (DESC)
-					return (int)((score2 - score1) * 100);
+					return num2 - num1;
 				else
-					return (int)((score1 - score2) * 100);
+					return num1 - num2;
 			}
 		};
 		Collections.sort(this, comparator);
