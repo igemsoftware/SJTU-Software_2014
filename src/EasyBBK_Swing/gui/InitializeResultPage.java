@@ -166,7 +166,7 @@ public class InitializeResultPage extends Thread{
 			}
 		}
 		
-		int numberofresults = filteredlist.size();
+		final int numberofresults = filteredlist.size();
 		
 		//System.out.println(2);
 		
@@ -218,8 +218,8 @@ public class InitializeResultPage extends Thread{
 		
 		if(numberofresults > 10){
 			child_search.resultpanel.removeAll();
-			int num = (int) numberofresults / 10;
-			int leftnum = numberofresults % 10;
+			final int num = (int) numberofresults / 10;
+			final int leftnum = numberofresults % 10;
 			child_search.currentpage = 1;
 			
 			child_search.searchingresultpage = new SearchingResultPage();
@@ -392,7 +392,7 @@ public class InitializeResultPage extends Thread{
 	}
 	
 	public void showresult(int j){
-		BbkOutline bbkoutline = filteredlist.get(j);
+		final BbkOutline bbkoutline = filteredlist.get(j);
 		int i = j % 10;
 		
 		MouseListener showdetailpage = new MouseAdapter() {

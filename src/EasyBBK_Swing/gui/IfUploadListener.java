@@ -103,7 +103,7 @@ public class IfUploadListener implements MouseInputListener
 	    
 	    
 	    //
-		private void init(int ID) 
+		private void init(final int ID) 
 	    {
 	    	//layout
 	    	this.setLayout(null);

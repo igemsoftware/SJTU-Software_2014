@@ -36,7 +36,7 @@ public class SequenceDialog extends JDialog {
 		this.setResizable(false);
 		this.setLocation(533, 264);
 		
-		JTextArea SequenceInformation = new JTextArea(4, 15);
+		final JTextArea SequenceInformation = new JTextArea(4, 15);
 		SequenceInformation.setEditable(true);
 		SequenceInformation.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		SequenceInformation.setLineWrap(true);
@@ -64,7 +64,7 @@ public class SequenceDialog extends JDialog {
 						sd.dispose();
 					}
 					else{
-						JDialog jd = new JDialog(sd, true);
+						final JDialog jd = new JDialog(sd, true);
 						jd.getContentPane().setLayout(new BorderLayout());
 						jd.setSize(new Dimension(150, 100));
 						jd.setLocation(608, 294);
