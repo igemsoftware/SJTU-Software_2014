@@ -5,6 +5,7 @@ import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Point;
+import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
@@ -46,6 +47,7 @@ public class MainPage extends JFrame{
 	public BbkDetail subpart_bbkdetail = null;
 	public SpecifiedSubscar subscar = null;
 	static Point origin = new Point();
+	public boolean small;
 	/**
 	 * Launch the application.
 	 */
@@ -74,50 +76,74 @@ public class MainPage extends JFrame{
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		Dimension screensize = Toolkit.getDefaultToolkit().getScreenSize();
+		if(screensize.width >= 1366){
+			small = false;
+		}
+		else if(screensize.width < 1366){
+			small = true;
+		}
 		
 		frame = new JFrame();
+		if(small == false){
+			frame.setSize(new Dimension(1366, 728));
+		}
+		else if(small == true){
+			frame.setSize(new Dimension(1280, 728));
+		}
 		frame.setResizable(false);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-		//Dimension scrSize = Toolkit.getDefaultToolkit().getScreenSize();    
+		//Dimension scrSize = Toolkit.getDefaultToolkit().getScreenSize();   
 		//Insets scrInsets=Toolkit.getDefaultToolkit().getScreenInsets(GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDefaultConfiguration());
 		//frame.setBounds(scrInsets.left,scrInsets.top,scrSize.width-scrInsets.left-scrInsets.right,scrSize.height-scrInsets.top-scrInsets.bottom);
-		frame.setSize(new Dimension(1366, 728));
+		
 		frame.setLocationRelativeTo(null);
 		frame.setUndecorated(true);
 		
 		Mainpanel = new JPanel();
-		//Mainpanel.setOpaque(true);
-		Mainpanel.setBounds(0, 58, 1366, 670);
+		if(small == false){
+			Mainpanel.setBounds(0, 58, 1366, 670);
+		}
+		else if(small == true){
+			Mainpanel.setBounds(0, 58, 1280, 670);
+		}
 		Mainpanel.setVisible(true);
 		Mainpanel.setLayout(null);
 		frame.getContentPane().add(Mainpanel);
 		
 		GreenBar = new JLabel("");
+		if(small == false){
+			GreenBar.setBounds(0, 0, 1366, 58);
+		}
+		else if(small == true){
+			GreenBar.setBounds(0, 0, 1280, 58);
+		}
 		GreenBar.addMouseListener(new MouseAdapter() {
-            public void mousePressed(MouseEvent e) {  //按下（mousePressed 不是点击，而是鼠标被按下没有抬起）
-                origin.x = e.getX();  //当鼠标按下的时候获得窗口当前的位置
+            public void mousePressed(MouseEvent e) {
+                origin.x = e.getX();  
                 origin.y = e.getY();
             }
 		});
-		
 		GreenBar.addMouseMotionListener(new MouseMotionAdapter() {
-            public void mouseDragged(MouseEvent e) {  //拖动（mouseDragged 指的不是鼠标在窗口中移动，而是用鼠标拖动）
+            public void mouseDragged(MouseEvent e) {
                 
-                Point p = frame.getLocation();  //当鼠标拖动时获取窗口当前位置
-                //设置窗口的位置
-                //窗口当前的位置 + 鼠标当前在窗口的位置 - 鼠标按下的时候在窗口的位置
+                Point p = frame.getLocation(); 
                 frame.setLocation(p.x + e.getX() - origin.x, p.y + e.getY() - origin.y);
             }
 		});
 		GreenBar.setOpaque(true);
-		GreenBar.setBounds(0, 0, 1366, 58);
 		GreenBar.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/greenbar.png")));
 		frame.getContentPane().add(GreenBar);
 		
 		Home = new JLabel();
+		if(small == false){
+			Home.setBounds(0, 0, 227, 58);
+		}
+		else if(small == true){
+			Home.setBounds(0, 0, 227, 58);
+		}
 		Home.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/home.png")));
-		Home.setBounds(0, 0, 227, 58);
 		Home.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -172,8 +198,13 @@ public class MainPage extends JFrame{
 		GreenBar.add(Home);
 		
 		final JLabel Close = new JLabel();
+		if(small == false){
+			Close.setBounds(1323, 3, 40, 40);
+		}
+		else if(small == true){
+			Close.setBounds(1238, 3, 40, 40);
+		}
 		Close.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Close1.png")));
-		Close.setBounds(1323, 3, 40, 40);
 		Close.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -192,8 +223,13 @@ public class MainPage extends JFrame{
 		GreenBar.add(Close);
 		
 		final JLabel Min = new JLabel();
+		if(small == false){
+			Min.setBounds(1277, 3, 40, 40);
+		}
+		else if(small == true){
+			Min.setBounds(1196, 3, 40, 40);
+		}
 		Min.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Min1.png")));
-		Min.setBounds(1277, 3, 40, 40);
 		Min.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -212,9 +248,14 @@ public class MainPage extends JFrame{
 		GreenBar.add(Min);
 		
 		Search = new JLabel();
+		if(small == false){
+			Search.setBounds(399, 0, 150, 58);
+		}
+		else if(small == true){
+			Search.setBounds(375, 0, 150, 58);
+		}
 		Search_flag = false;
 		Search.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Search1.png")));
-		Search.setBounds(399, 0, 150, 58);
 		Search.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -243,13 +284,6 @@ public class MainPage extends JFrame{
 							child_upload_current = (Child_Upload) component;
 						}
 					}
-					
-					/*if(CurrentPage == 4){
-						Component component = Mainpanel.getComponent(0);
-						if(component instanceof Child_Compare){
-							child_compare_current = (Child_Compare) component;
-						}
-					}*/
 					
 					if(child_search_main_current == null){
 						Child_Search_Main child_search_main = new Child_Search_Main(mainpage);
@@ -295,8 +329,13 @@ public class MainPage extends JFrame{
 		GreenBar.add(Search);
 		
 		Design = new JLabel();
+		if(small == false){
+			Design.setBounds(755, 0, 150, 58);
+		}
+		else if(small == true){
+			Design.setBounds(707, 0, 150, 58);
+		}
 		Design.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Design1.png")));
-		Design.setBounds(755, 0, 150, 58);
 		Design.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -333,13 +372,6 @@ public class MainPage extends JFrame{
 						}
 					}
 					
-					/*if(CurrentPage == 4){
-						Component component = Mainpanel.getComponent(0);
-						if(component instanceof Child_Compare){
-							child_compare_current = (Child_Compare) component;
-						}
-					}*/
-					
 					if(child_design_current == null){
 						Child_Design child_design = new Child_Design(mainpage);
 						Mainpanel.removeAll();
@@ -369,8 +401,13 @@ public class MainPage extends JFrame{
 		GreenBar.add(Design);
 		
 		Upload = new JLabel();
+		if(small == false){
+			Upload.setBounds(937, 0, 150, 58);
+		}
+		else if(small == true){
+			Upload.setBounds(878, 0, 150, 58);
+		}
 		Upload.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Upload1.png")));
-		Upload.setBounds(937, 0, 150, 58);
 		Upload.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -407,13 +444,6 @@ public class MainPage extends JFrame{
 						}
 					}
 					
-					/*if(CurrentPage == 4){
-						Component component = Mainpanel.getComponent(0);
-						if(component instanceof Child_Compare){
-							child_compare_current = (Child_Compare) component;
-						}
-					}*/
-					
 					if(child_upload_current == null){
 						Child_Upload child_upload = new Child_Upload(mainpage);
 						Mainpanel.removeAll();
@@ -446,6 +476,12 @@ public class MainPage extends JFrame{
 		Mainpanel.add(child_main);
 		
 		Compare = new JLabel();
+		if(small == false){
+			Compare.setBounds(580, 0, 150, 58);
+		}
+		else if(small == true){
+			Compare.setBounds(543, 0, 150, 58);
+		}
 		Compare.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -516,7 +552,6 @@ public class MainPage extends JFrame{
 					Compare.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Compare.png")));
 			}
 		});
-		Compare.setBounds(580, 0, 150, 58);
 		Compare.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Compare.png")));
 		GreenBar.add(Compare);
 		

@@ -458,13 +458,13 @@ public class InitializeResultPage extends Thread{
 		child_search.searchingresultpage.searchingresult.get(i).ResultsInGoogle_Content.setText(bbkoutline.rating.google_items);
 		
 		String shortdescription = bbkoutline.shortDesc;
-		if(shortdescription.length()<=25){
+		if(shortdescription.length() <= 35){
 			child_search.searchingresultpage.searchingresult.get(i).Description1.setText(shortdescription);
 			child_search.searchingresultpage.searchingresult.get(i).Description2.setText(null);
 		}
 		else{
-			child_search.searchingresultpage.searchingresult.get(i).Description1.setText(shortdescription.substring(0, 25));
-			child_search.searchingresultpage.searchingresult.get(i).Description2.setText(shortdescription.substring(25));
+			child_search.searchingresultpage.searchingresult.get(i).Description1.setText(shortdescription.substring(0, 35));
+			child_search.searchingresultpage.searchingresult.get(i).Description2.setText(shortdescription.substring(35));
 		}
 		
 		String score = "" + bbkoutline.getScore();
@@ -475,8 +475,6 @@ public class InitializeResultPage extends Thread{
 		else if(score.charAt(2) == c){
 			score = score.substring(0, 5);
 		}
-		
-		child_search.searchingresultpage.searchingresult.get(i).Score.setText(score);
 		
 		if(child_search.blast == 1){
 			child_search.searchingresultpage.searchingresult.get(i).Evalue.setVisible(false);

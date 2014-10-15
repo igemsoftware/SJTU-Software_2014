@@ -192,8 +192,6 @@ public class SetBioBrickNameListener implements MouseInputListener
 		        			searchingresult.Description2.setText(shortdescription.substring(29));
 		        		}
 		        		
-		        		String score = "" + bbkoutline.getScore();
-		        		searchingresult.Score.setText(score);
 		        		searchingresult.Evalue.setVisible(false);
                 
 		        		searchingresult.updateUI();
@@ -275,8 +273,6 @@ public class SetBioBrickNameListener implements MouseInputListener
         			searchingresult.Description2.setText(shortdescription.substring(29));
         		}
         		
-        		String score = "" + bbkoutline.getScore();
-        		searchingresult.Score.setText(score);
         		searchingresult.Evalue.setVisible(false);
         
         		searchingresult.updateUI();
