@@ -21,9 +21,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="Logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">EasyBbk
-   &#160;<span id="projectnumber">1.0</span>
+   &#160;<span id="projectnumber">1.0.0</span>
    </div>
    <div id="projectbrief">&quot;Easy BBK&quot; is a trial to provide a standardized, visualized and user friendly access to bio-brick system by simplify and interassociate the searching, comparing, designing and uploading of bio-bricks. These four main functions constitute the &quot;Easy BBK&quot; client-side which is realized by pure java and supported by a remote server through the internet. We hope that you will have better experiences when exploring the biobrick world using &quot;Easy BBK&quot;.</div>
   </td>
@@ -41,7 +42,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="namespaces.html"><span>Packages</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
-      <li><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -73,7 +73,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -161,7 +161,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Use the part_name and the oddNum to find a previously uploaded biobrick. The oddNum is stored as the part_id of an bbk </p>
 
-<p>Definition at line <a class="el" href="_upload_center_8java_source.html#l00030">30</a> of file <a class="el" href="_upload_center_8java_source.html">UploadCenter.java</a>.</p>
+<p>Definition at line <a class="el" href="_upload_center_8java_source.html#l00027">27</a> of file <a class="el" href="_upload_center_8java_source.html">UploadCenter.java</a>.</p>
 
 </div>
 </div>
@@ -180,7 +180,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Used for subpart validation check. </p><dl class="section return"><dt>Returns</dt><dd>null if no such part_name is found, thus it can't be a subpart. </dd></dl>
 
-<p>Definition at line <a class="el" href="_upload_center_8java_source.html#l00049">49</a> of file <a class="el" href="_upload_center_8java_source.html">UploadCenter.java</a>.</p>
+<p>Definition at line <a class="el" href="_upload_center_8java_source.html#l00046">46</a> of file <a class="el" href="_upload_center_8java_source.html">UploadCenter.java</a>.</p>
 
 </div>
 </div>
@@ -199,7 +199,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Used for subscar validation check. </p><dl class="section return"><dt>Returns</dt><dd>null if no such scar name is found, thus it can't be a subscar. </dd></dl>
 
-<p>Definition at line <a class="el" href="_upload_center_8java_source.html#l00056">56</a> of file <a class="el" href="_upload_center_8java_source.html">UploadCenter.java</a>.</p>
+<p>Definition at line <a class="el" href="_upload_center_8java_source.html#l00053">53</a> of file <a class="el" href="_upload_center_8java_source.html">UploadCenter.java</a>.</p>
 
 </div>
 </div>
@@ -237,7 +237,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Check if the sequence string is only consist if base group, not other chars. </p>
 
-<p>Definition at line <a class="el" href="_upload_center_8java_source.html#l00036">36</a> of file <a class="el" href="_upload_center_8java_source.html">UploadCenter.java</a>.</p>
+<p>Definition at line <a class="el" href="_upload_center_8java_source.html#l00033">33</a> of file <a class="el" href="_upload_center_8java_source.html">UploadCenter.java</a>.</p>
 
 </div>
 </div>
@@ -256,17 +256,17 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Upload a new biobrick and get the odd number used to modify it later. The oddNum is stored in the part_id of an biobrick. </p>
 
-<p>Definition at line <a class="el" href="_upload_center_8java_source.html#l00023">23</a> of file <a class="el" href="_upload_center_8java_source.html">UploadCenter.java</a>.</p>
+<p>Definition at line <a class="el" href="_upload_center_8java_source.html#l00020">20</a> of file <a class="el" href="_upload_center_8java_source.html">UploadCenter.java</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li><a class="el" href="_upload_center_8java_source.html">UploadCenter.java</a></li>
+<li>D:/_About 学习/爱吉姆/SJTU-Software_2014/src/data_center/<a class="el" href="_upload_center_8java_source.html">UploadCenter.java</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Oct 5 2014 13:31:49 for EasyBbk by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Oct 15 2014 02:00:01 for EasyBbk by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

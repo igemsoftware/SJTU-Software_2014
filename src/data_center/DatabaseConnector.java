@@ -79,7 +79,7 @@ public class DatabaseConnector
     }
     
     /** Used when blasting, not get outline one by one to reduce query times
-     * to reduce query time.  */
+     * to reduce query time. Change the input list in situ.  */
     public static void fillOutlineIntoHalfFilledList(SearchResultList list)
     {	
     	checkConnection();
