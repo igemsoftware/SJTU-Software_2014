@@ -81,7 +81,7 @@ public class Child_Search extends JPanel {
 		});
 		Result.setBounds(0, 0, 683, 670);
 		Result.setBackground(new Color(255, 255, 255));
-		Result.setBorder(BorderFactory.createLineBorder(Color.black));
+		//Result.setBorder(BorderFactory.createLineBorder(Color.black));
 		add(Result);
 		Result.setLayout(null);
 		
@@ -287,7 +287,7 @@ public class Child_Search extends JPanel {
 		});
 		Details.setBounds(684, 0, 683, 670);
 		Details.setBackground(new Color(255, 255, 255));
-		Details.setBorder(BorderFactory.createLineBorder(Color.black));
+		//Details.setBorder(BorderFactory.createLineBorder(Color.black));
 		add(Details);
 		Details.setLayout(null);
 		

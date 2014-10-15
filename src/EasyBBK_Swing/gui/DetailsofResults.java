@@ -12,7 +12,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.JTextArea;
-import javax.swing.SwingConstants;
 import javax.swing.BorderFactory;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
@@ -29,7 +28,6 @@ public class DetailsofResults extends JPanel {
 	public JLabel ReleasedStatus_Content;
 	public JLabel AverageStar_Content;
 	public JLabel ResultsInGoogle_Content;
-	public JLabel Score;
 	public JLabel Description2;
 	public JCheckBox Addforcomparison;
 	public JLabel related_URL;
@@ -73,7 +71,7 @@ public class DetailsofResults extends JPanel {
 		
 		Type_Content = new JLabel("");
 		Type_Content.setFont(new Font("Arial", Font.PLAIN, 20));
-		Type_Content.setBounds(71, 44, 146, 24);
+		Type_Content.setBounds(71, 44, 213, 24);
 		add(Type_Content);
 		
 		JLabel EnteredDate = new JLabel("Entered Date:");
@@ -93,7 +91,7 @@ public class DetailsofResults extends JPanel {
 		
 		Author_Content = new JLabel("");
 		Author_Content.setFont(new Font("Arial", Font.PLAIN, 20));
-		Author_Content.setBounds(81, 112, 421, 24);
+		Author_Content.setBounds(81, 112, 574, 24);
 		add(Author_Content);
 		
 		JLabel ShortDescription = new JLabel("Short Description:");
@@ -137,12 +135,6 @@ public class DetailsofResults extends JPanel {
 		ReleasedStatus_Content.setBounds(129, 686, 278, 24);
 		add(ReleasedStatus_Content);
 		
-		Score = new JLabel("", SwingConstants.CENTER);
-		Score.setFont(new Font("Arial", Font.BOLD, 40));
-		Score.setBorder(BorderFactory.createLineBorder(Color.black));
-		Score.setBounds(514, 30, 112, 100);
-		add(Score);
-		
 		Description2 = new JLabel("");
 		Description2.setFont(new Font("Arial", Font.PLAIN, 20));
 		Description2.setBounds(10, 180, 645, 24);
@@ -150,7 +142,7 @@ public class DetailsofResults extends JPanel {
 		
         Addforcomparison = new JCheckBox("Add to compare");
         Addforcomparison.setFont(new Font("Arial", Font.PLAIN, 24));
-        Addforcomparison.setBounds(229, 17, 206, 30);
+        Addforcomparison.setBounds(421, 28, 206, 30);
         Addforcomparison.setBackground(new Color(0, 255, 255));
 		add(Addforcomparison);
 		
