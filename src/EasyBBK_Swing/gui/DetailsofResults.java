@@ -11,6 +11,7 @@ import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 import javax.swing.BorderFactory;
 import javax.swing.JScrollPane;
@@ -37,6 +38,13 @@ public class DetailsofResults extends JPanel {
 	public JLabel Deletethispart_Content;
 	public JLabel ConfirmedTimes_Content;
 	public JLabel LengthofDocumentation_Content;
+	public JLabel PartResults_Content;
+	public JLabel GroupFavorite_Content;
+	public JLabel UsedTimes_Content;
+	public JLabel NumberofComments_Content;
+	public JTextArea Sequences_Content;
+	public JTextArea Categories_Content;
+	public JTextArea Twins_Content;
 	/**
 	 * Create the panel.
 	 */
@@ -48,7 +56,7 @@ public class DetailsofResults extends JPanel {
 					requestFocus();
 			}
 		});
-		setBounds(0, 0, 665, 1500);
+		setBounds(0, 0, 665, 1200);
 		setBackground(new Color(255, 255, 255));
 		setBorder(BorderFactory.createLineBorder(Color.black));
 		setLayout(null);
@@ -100,7 +108,7 @@ public class DetailsofResults extends JPanel {
 		
 		JLabel URL = new JLabel("Main Page on Registry:");
 		URL.setFont(new Font("Arial", Font.PLAIN, 20));
-		URL.setBounds(10, 584, 213, 24);
+		URL.setBounds(10, 554, 213, 24);
 		add(URL);
 		
 		URL_Content = new JLabel("");
@@ -116,7 +124,7 @@ public class DetailsofResults extends JPanel {
 			}
 		});
 		URL_Content.setFont(new Font("Arial", Font.PLAIN, 20));
-		URL_Content.setBounds(229, 584, 426, 24);
+		URL_Content.setBounds(229, 554, 426, 24);
 		add(URL_Content);
 		
 		JLabel ReleasedStatus = new JLabel("Part Status:");
@@ -128,26 +136,6 @@ public class DetailsofResults extends JPanel {
 		ReleasedStatus_Content.setFont(new Font("Arial", Font.PLAIN, 20));
 		ReleasedStatus_Content.setBounds(129, 686, 278, 24);
 		add(ReleasedStatus_Content);
-		
-		JLabel AverageStars = new JLabel("Average Rating:");
-		AverageStars.setFont(new Font("Arial", Font.PLAIN, 20));
-		AverageStars.setBounds(10, 1382, 146, 24);
-		add(AverageStars);
-		
-		AverageStar_Content = new JLabel("");
-		AverageStar_Content.setFont(new Font("Arial", Font.PLAIN, 20));
-		AverageStar_Content.setBounds(164, 1382, 107, 24);
-		add(AverageStar_Content);
-		
-		JLabel ResultsInGoogle = new JLabel("Number of Related Results on Google Scholar:");
-		ResultsInGoogle.setFont(new Font("Arial", Font.PLAIN, 20));
-		ResultsInGoogle.setBounds(10, 1416, 425, 24);
-		add(ResultsInGoogle);
-		
-		ResultsInGoogle_Content = new JLabel("");
-		ResultsInGoogle_Content.setFont(new Font("Arial", Font.PLAIN, 20));
-		ResultsInGoogle_Content.setBounds(445, 1416, 51, 24);
-		add(ResultsInGoogle_Content);
 		
 		Score = new JLabel("", SwingConstants.CENTER);
 		Score.setFont(new Font("Arial", Font.BOLD, 40));
@@ -173,37 +161,69 @@ public class DetailsofResults extends JPanel {
 		
 		JLabel Categories = new JLabel("Categories:");
 		Categories.setFont(new Font("Arial", Font.PLAIN, 20));
-		Categories.setBounds(10, 308, 117, 24);
+		Categories.setBounds(10, 332, 117, 24);
 		add(Categories);
 		
 		JLabel Twins = new JLabel("Twins:");
 		Twins.setFont(new Font("Arial", Font.PLAIN, 20));
-		Twins.setBounds(10, 470, 70, 24);
+		Twins.setBounds(10, 443, 70, 24);
 		add(Twins);
 		
-		JScrollPane sequence_scrollPane = new JScrollPane();
+		Sequences_Content = new JTextArea();
+		Sequences_Content.setEditable(false);
+		Sequences_Content.setLineWrap(true);
+		Sequences_Content.setWrapStyleWord(true);
+		Sequences_Content.setBounds(0, 0, 627, 500);
+		Sequences_Content.setFont(new Font("Arial", Font.PLAIN, 20));
+		
+		JScrollPane sequence_scrollPane = new JScrollPane(Sequences_Content);
 		sequence_scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-		sequence_scrollPane.setBounds(10, 233, 645, 72);
+		sequence_scrollPane.setBounds(10, 236, 645, 92);
 		add(sequence_scrollPane);
 		
-		JScrollPane categories_scrollPane = new JScrollPane();
+		Categories_Content = new JTextArea();
+		Categories_Content.setEditable(false);
+		Categories_Content.setLineWrap(true);
+		Categories_Content.setWrapStyleWord(true);
+		Categories_Content.setBounds(0, 0, 627, 500);
+		Categories_Content.setFont(new Font("Arial", Font.PLAIN, 20));
+		
+		JScrollPane categories_scrollPane = new JScrollPane(Categories_Content);
 		categories_scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-		categories_scrollPane.setBounds(10, 331, 645, 137);
+		categories_scrollPane.setBounds(10, 361, 645, 72);
 		add(categories_scrollPane);
 		
-		JScrollPane twins_scrollPane = new JScrollPane();
+		Twins_Content = new JTextArea();
+		Twins_Content.setEditable(false);
+		Twins_Content.setLineWrap(true);
+		Twins_Content.setWrapStyleWord(true);
+		Twins_Content.setBounds(0, 0, 627, 500);
+		Twins_Content.setFont(new Font("Arial", Font.PLAIN, 20));
+		
+		JScrollPane twins_scrollPane = new JScrollPane(Twins_Content);
 		twins_scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-		twins_scrollPane.setBounds(10, 502, 645, 72);
+		twins_scrollPane.setBounds(10, 472, 645, 72);
 		add(twins_scrollPane);
 		
 		JLabel UrlOfGoogle = new JLabel("URL of the most related publication:");
 		UrlOfGoogle.setFont(new Font("Arial", Font.PLAIN, 20));
-		UrlOfGoogle.setBounds(10, 618, 320, 24);
+		UrlOfGoogle.setBounds(10, 588, 320, 24);
 		add(UrlOfGoogle);
 		
 		related_URL = new JLabel("");
+		related_URL.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				related_URL.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+				related_URL.setForeground(Color.blue);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				related_URL.setForeground(Color.black);
+			}
+		});
 		related_URL.setFont(new Font("Arial", Font.PLAIN, 20));
-		related_URL.setBounds(335, 618, 320, 24);
+		related_URL.setBounds(10, 618, 645, 24);
 		add(related_URL);
 		
 		JLabel Status = new JLabel("Status");
@@ -216,7 +236,7 @@ public class DetailsofResults extends JPanel {
 		SampleStatus.setBounds(10, 720, 146, 24);
 		add(SampleStatus);
 		
-		SampleStatus_Content = new JLabel("1");
+		SampleStatus_Content = new JLabel("");
 		SampleStatus_Content.setFont(new Font("Arial", Font.PLAIN, 20));
 		SampleStatus_Content.setBounds(154, 720, 278, 24);
 		add(SampleStatus_Content);
@@ -226,7 +246,7 @@ public class DetailsofResults extends JPanel {
 		DNAStatus.setBounds(10, 754, 110, 24);
 		add(DNAStatus);
 		
-		DNAStatus_Content = new JLabel("2");
+		DNAStatus_Content = new JLabel("");
 		DNAStatus_Content.setFont(new Font("Arial", Font.PLAIN, 20));
 		DNAStatus_Content.setBounds(130, 754, 278, 24);
 		add(DNAStatus_Content);
@@ -236,7 +256,7 @@ public class DetailsofResults extends JPanel {
 		Deletethispart.setBounds(10, 788, 150, 24);
 		add(Deletethispart);
 		
-		Deletethispart_Content = new JLabel("3");
+		Deletethispart_Content = new JLabel("");
 		Deletethispart_Content.setFont(new Font("Arial", Font.PLAIN, 20));
 		Deletethispart_Content.setBounds(170, 788, 278, 24);
 		add(Deletethispart_Content);
@@ -246,7 +266,7 @@ public class DetailsofResults extends JPanel {
 		ConfirmedTimes.setBounds(10, 822, 160, 24);
 		add(ConfirmedTimes);
 		
-		ConfirmedTimes_Content = new JLabel("4");
+		ConfirmedTimes_Content = new JLabel("");
 		ConfirmedTimes_Content.setFont(new Font("Arial", Font.PLAIN, 20));
 		ConfirmedTimes_Content.setBounds(180, 822, 278, 24);
 		add(ConfirmedTimes_Content);
@@ -256,7 +276,7 @@ public class DetailsofResults extends JPanel {
 		LengthofDocumentation.setBounds(10, 856, 240, 24);
 		add(LengthofDocumentation);
 		
-		LengthofDocumentation_Content = new JLabel("5");
+		LengthofDocumentation_Content = new JLabel("");
 		LengthofDocumentation_Content.setFont(new Font("Arial", Font.PLAIN, 20));
 		LengthofDocumentation_Content.setBounds(250, 856, 278, 24);
 		add(LengthofDocumentation_Content);
@@ -266,7 +286,75 @@ public class DetailsofResults extends JPanel {
 		Reliability.setBounds(10, 890, 140, 28);
 		add(Reliability);
 		
+		JLabel PartResults = new JLabel("Part Results:");
+		PartResults.setFont(new Font("Arial", Font.PLAIN, 20));
+		PartResults.setBounds(10, 924, 120, 24);
+		add(PartResults);
 		
+		PartResults_Content = new JLabel("");
+		PartResults_Content.setFont(new Font("Arial", Font.PLAIN, 20));
+		PartResults_Content.setBounds(140, 924, 178, 24);
+		add(PartResults_Content);
+		
+		JLabel GroupFavorite = new JLabel("Group Favorite:");
+		GroupFavorite.setFont(new Font("Arial", Font.PLAIN, 20));
+		GroupFavorite.setBounds(10, 958, 150, 24);
+		add(GroupFavorite);
+		
+		GroupFavorite_Content = new JLabel("");
+		GroupFavorite_Content.setFont(new Font("Arial", Font.PLAIN, 20));
+		GroupFavorite_Content.setBounds(170, 958, 178, 24);
+		add(GroupFavorite_Content);
+		
+		JLabel Feedbacks = new JLabel("Feedbacks");
+		Feedbacks.setFont(new Font("Arial", Font.BOLD, 24));
+		Feedbacks.setBounds(10, 992, 140, 28);
+		add(Feedbacks);
+		
+		JLabel UsedTimes = new JLabel("Used Times:");
+		UsedTimes.setFont(new Font("Arial", Font.PLAIN, 20));
+		UsedTimes.setBounds(10, 1026, 120, 24);
+		add(UsedTimes);
+		
+		UsedTimes_Content = new JLabel("");
+		UsedTimes_Content.setFont(new Font("Arial", Font.PLAIN, 20));
+		UsedTimes_Content.setBounds(140, 1026, 178, 24);
+		add(UsedTimes_Content);
+		
+		JLabel AverageStars = new JLabel("Average Rating:");
+		AverageStars.setFont(new Font("Arial", Font.PLAIN, 20));
+		AverageStars.setBounds(10, 1060, 146, 24);
+		add(AverageStars);
+		
+		AverageStar_Content = new JLabel("");
+		AverageStar_Content.setFont(new Font("Arial", Font.PLAIN, 20));
+		AverageStar_Content.setBounds(164, 1060, 107, 24);
+		add(AverageStar_Content);
+		
+		JLabel NumberofComments = new JLabel("Number of Comments:");
+		NumberofComments.setFont(new Font("Arial", Font.PLAIN, 20));
+		NumberofComments.setBounds(10, 1094, 200, 24);
+		add(NumberofComments);
+		
+		NumberofComments_Content = new JLabel("");
+		NumberofComments_Content.setFont(new Font("Arial", Font.PLAIN, 20));
+		NumberofComments_Content.setBounds(220, 1094, 107, 24);
+		add(NumberofComments_Content);
+		
+		JLabel Publication = new JLabel("Publication");
+		Publication.setFont(new Font("Arial", Font.BOLD, 24));
+		Publication.setBounds(10, 1128, 140, 28);
+		add(Publication);
+		
+		JLabel ResultsInGoogle = new JLabel("Number of Related Results on Google Scholar:");
+		ResultsInGoogle.setFont(new Font("Arial", Font.PLAIN, 20));
+		ResultsInGoogle.setBounds(10, 1162, 415, 24);
+		add(ResultsInGoogle);
+		
+		ResultsInGoogle_Content = new JLabel("");
+		ResultsInGoogle_Content.setFont(new Font("Arial", Font.PLAIN, 20));
+		ResultsInGoogle_Content.setBounds(435, 1162, 51, 24);
+		add(ResultsInGoogle_Content);
 		
 		setVisible(true);
 	}

@@ -33,7 +33,8 @@ public class SubscarDialog extends JDialog {
 		this.getContentPane().setLayout(null);
 		this.setSize(new Dimension(300, 200));
 		this.setResizable(false);
-		this.setLocation(533, 264);
+		//this.setLocation(533, 264);
+		this.setLocationRelativeTo(null);
 		
 		final JTextField inputtext = new JTextField();
 		inputtext.setFont(new Font("Arial", Font.PLAIN, 20));
@@ -41,8 +42,8 @@ public class SubscarDialog extends JDialog {
 		inputtext.setBounds(50, 50, 200, 30);
 		this.getContentPane().add(inputtext);
 		
-		JButton Confirme = new JButton("Confirme");
-		Confirme.addMouseListener(new MouseAdapter() {
+		JButton Confirm = new JButton("Confirm");
+		Confirm.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if(e.getButton() == MouseEvent.BUTTON1){
@@ -57,32 +58,33 @@ public class SubscarDialog extends JDialog {
 					else{
 						final JDialog jd = new JDialog(sd, true);
 						jd.getContentPane().setLayout(new BorderLayout());
-						jd.setSize(new Dimension(240, 100));
-						jd.setLocation(563, 294);
+						jd.setSize(new Dimension(300, 100));
+						//jd.setLocation(563, 294);
+						jd.setLocationRelativeTo(null);
 						
 						JLabel text = new JLabel("This subscar doesn't exist.", JLabel.CENTER);
 						text.setFont(new Font("Arial", Font.PLAIN, 20));
 						jd.getContentPane().add(text, BorderLayout.CENTER);
 						
-						JButton Confirme = new JButton("Confirme");
-						Confirme.addMouseListener(new MouseAdapter() {
+						JButton Confirm = new JButton("Confirm");
+						Confirm.addMouseListener(new MouseAdapter() {
 							@Override
 							public void mouseClicked(MouseEvent e) {
 								jd.dispose();
 							}
 						});
-						Confirme.setFont(new Font("Arial", Font.PLAIN, 20));
-						Confirme.setSize(120, 30);
-						jd.getContentPane().add(Confirme, BorderLayout.SOUTH);
+						Confirm.setFont(new Font("Arial", Font.PLAIN, 20));
+						Confirm.setSize(120, 30);
+						jd.getContentPane().add(Confirm, BorderLayout.SOUTH);
 						
 						jd.setVisible(true);
 					}
 				}
 			}
 		});
-		Confirme.setFont(new Font("Arial", Font.PLAIN, 20));
-		Confirme.setBounds(15, 130, 120, 30);
-		this.getContentPane().add(Confirme);
+		Confirm.setFont(new Font("Arial", Font.PLAIN, 20));
+		Confirm.setBounds(15, 130, 120, 30);
+		this.getContentPane().add(Confirm);
 		
 		JButton Cancel = new JButton("Cancel");
 		Cancel.addMouseListener(new MouseAdapter() {

@@ -91,7 +91,19 @@ public class Child_Search extends JPanel {
 			public void mouseClicked(MouseEvent e) {
 				if(e.getButton() == MouseEvent.BUTTON1){
 					SearchResultList previousList = searchcenter.rollBack();
-					if(previousList == null) return;
+					if(previousList == null){
+						Component component = mainpage.Mainpanel.getComponent(0);
+						if(component instanceof Child_Search){
+							mainpage.child_search_current = (Child_Search) component;
+							Child_Search_Main child_search_main = new Child_Search_Main(mainpage);
+							mainpage.Mainpanel.removeAll();
+							mainpage.Mainpanel.add(child_search_main);
+							child_search_main.SearchText.requestFocus();
+							mainpage.Mainpanel.updateUI();
+							mainpage.CurrentPage = 1;
+						}
+						return;
+					}
 					else{
 						requestFocus();
 						textField.setText(previousList.keyword);
@@ -221,7 +233,7 @@ public class Child_Search extends JPanel {
 		
 		resultpanel = new JPanel();
 		resultpanel.setBackground(new Color(255, 255, 255));
-		resultpanel.setBounds(51, 85, 587, 585);
+		resultpanel.setBounds(51, 85, 587, 583);
 		Result.add(resultpanel);
 		resultpanel.setLayout(null);
 		
