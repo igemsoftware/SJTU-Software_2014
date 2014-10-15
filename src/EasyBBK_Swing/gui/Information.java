@@ -13,9 +13,11 @@ public class Information {
 	public Preferences preferences;
 	
 	public Information(){
-		sortby = null;
+		sortby = "";
 		type = new ArrayList<String>();
 		enteredyear = new int[2];
+		enteredyear[0] = 2003;
+		enteredyear[1] = 2014;
 		releasestatus = new ReleaseStatus();
 		dnastatus = new DNAStatus();
 		whetherornot = false;

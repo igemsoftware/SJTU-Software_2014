@@ -84,34 +84,32 @@ public class InitializeResultPage extends Thread{
 		}
 		
 		if(child_search.confirmed_clicked == true){
-			if(child_search.information.sortby.equals(null)){
+			if(child_search.information.sortby.equals("")){
 				filteredlist.sortByTotalScore(true);
 			}
-			else if(child_search.information.sortby.equals("Entered Date")){
+			if(child_search.information.sortby.equals("Entered Date")){
 				filteredlist.sortByEnterDate(true);
 			}
-			else if(child_search.information.sortby.equals("Google Qoute Number")){
+			if(child_search.information.sortby.equals("Google Qoute Number")){
 				filteredlist.sortByGoogleQuoteNum(true);
 			}
-			else if(child_search.information.sortby.equals("Average Stars")){
+			if(child_search.information.sortby.equals("Average Stars")){
 				filteredlist.sortByAverageStars(true);
 			}
-			else if(child_search.information.sortby.equals("Confirmed Times")){
+			if(child_search.information.sortby.equals("Confirmed Times")){
 				filteredlist.sortByConfrimedTimes(true);
 			}
-			else if(child_search.information.sortby.equals("Total Score")){
+			if(child_search.information.sortby.equals("Total Score")){
 				filteredlist.sortByTotalScore(true);
 			}
 		
 		
-			if(child_search.information.type != null){
+			if(child_search.information.type.size() != 0){
 				filteredlist = filteredlist.filterByType(child_search.information.type);
 			}
-		
-			if(child_search.information.enteredyear != null){
-				filteredlist = filteredlist.filterByEnterYear(child_search.information.enteredyear);
-			}
-		
+		    
+			filteredlist = filteredlist.filterByEnterYear(child_search.information.enteredyear);
+			
 			if(child_search.information.releasestatus.released == true){
 				filteredlist = filteredlist.filterByRelaseStatus(SearchResultList.Filter.ReleaseStatus.RELEASED);
 			}
@@ -144,19 +142,20 @@ public class InitializeResultPage extends Thread{
 			if(child_search.information.averagestars.high == true){
 				starNumList.add(4);
 				starNumList.add(5);
-				filteredlist = filteredlist.filterByStarNum(starNumList);
 			}
 			if(child_search.information.averagestars.middle == true){
 				starNumList.add(2);
 				starNumList.add(3);
-				filteredlist = filteredlist.filterByStarNum(starNumList);
 			}
 			if(child_search.information.averagestars.low == true){
 				starNumList.add(0);
 				starNumList.add(1);
+			}
+			
+			if(starNumList.size() != 0){
 				filteredlist = filteredlist.filterByStarNum(starNumList);
 			}
-		
+			
 			if(child_search.information.preferences.status != 0 ||  child_search.information.preferences.quality != 0 || child_search.information.preferences.feedbacks != 0 || child_search.information.preferences.publication != 0){
 				filteredlist.sortByTotalScore(true, child_search.information.preferences.status, child_search.information.preferences.quality, child_search.information.preferences.feedbacks, child_search.information.preferences.publication);
 			}
@@ -348,9 +347,9 @@ public class InitializeResultPage extends Thread{
 				}
 			});
 			child_search.showpagenum.setFont(new Font("Arial", Font.PLAIN, 16));
-			child_search.showpagenum.setBounds(281, 530, 25, 25);
+			child_search.showpagenum.setBounds(260, 530, 80, 25);
 			
-			child_search.totalpagenum = new JLabel("", SwingConstants.CENTER);
+			child_search.totalpagenum = new JLabel("");
 			child_search.totalpagenum.setForeground(Color.blue);
 			String s = null;
 			if(numberofresults%10 > 0){
@@ -361,7 +360,7 @@ public class InitializeResultPage extends Thread{
 			}
 			child_search.totalpagenum.setText(s);
 			child_search.totalpagenum.setFont(new Font("Arial", Font.PLAIN, 16));
-			child_search.totalpagenum.setBounds(535, 530, 25, 25);
+			child_search.totalpagenum.setBounds(530, 530, 80, 25);
 			
 			child_search.total = new JLabel("total:", SwingConstants.CENTER);
 			child_search.total.setForeground(Color.blue);
@@ -396,6 +395,7 @@ public class InitializeResultPage extends Thread{
 			public void mouseClicked(MouseEvent e) {
 				if(e.getButton() == MouseEvent.BUTTON1){
 					child_search.Details.removeAll();
+					child_search.Details.updateUI();
 					InitializeDetail initializedetail = new InitializeDetail(child_search, bbkoutline);
 					initializedetail.start();
 				}
