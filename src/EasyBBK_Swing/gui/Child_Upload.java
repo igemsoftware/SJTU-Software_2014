@@ -107,6 +107,7 @@ public class Child_Upload extends JPanel {
 	
 	/**
 	 * Create the panel.
+	 * @wbp.parser.constructor
 	 */
 	public Child_Upload(MainPage mainpage1) {
 		mainpage = mainpage1;

@@ -82,7 +82,45 @@ public class InitializeDetail extends Thread{
 				}
 			}
 		});
+		
+		detailsofresults.Sequences_Content.setText(bbkdetail.sequence);
+		
+		String categories = "";
+		for(int i = 0; i < bbkdetail.categories.size(); i++){
+			categories = categories + bbkdetail.categories.get(i).category + "  ";
+		}
+		detailsofresults.Categories_Content.setText(categories);
+		
+		String twins = "";
+		for(int i = 0; i < bbkdetail.twins.size(); i++){
+			twins = twins + bbkdetail.twins.get(i).twin + "  ";
+		}
+		detailsofresults.Twins_Content.setText(twins);
+		
+		detailsofresults.related_URL.setText("<html><u>" + bbkdetail.rating.first_url + "</u></html>");
+		detailsofresults.related_URL.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(e.getButton() == MouseEvent.BUTTON1){
+					try{
+						Runtime.getRuntime().exec("explorer " + bbkdetail.rating.first_url);
+					}
+					catch(Exception ex){
+						ex.printStackTrace();
+					}
+				}
+			}
+		});
 		detailsofresults.ReleasedStatus_Content.setText(bbkdetail.releaseStatus);
+		detailsofresults.SampleStatus_Content.setText(bbkdetail.sampleStatus);
+		detailsofresults.DNAStatus_Content.setText(bbkdetail.DNA_status);
+		detailsofresults.Deletethispart_Content.setText(bbkdetail.rating.delete_this_part);
+		detailsofresults.ConfirmedTimes_Content.setText(bbkdetail.rating.tot_confirmed);
+		detailsofresults.LengthofDocumentation_Content.setText(bbkdetail.rating.documentation);
+		detailsofresults.PartResults_Content.setText(bbkdetail.results);
+		detailsofresults.GroupFavorite_Content.setText(bbkdetail.groupFavorite);
+		detailsofresults.UsedTimes_Content.setText(bbkdetail.rating.used_times);
+		
 		if(bbkdetail.rating.average_stars.equals("No Stars")){
 			detailsofresults.AverageStar_Content.setText(bbkdetail.rating.average_stars);
 		}
@@ -92,6 +130,8 @@ public class InitializeDetail extends Thread{
 		else if(bbkdetail.rating.average_stars.length() >= 3){
 			detailsofresults.AverageStar_Content.setText(bbkdetail.rating.average_stars.substring(0,3));
 		}
+		detailsofresults.NumberofComments_Content.setText(bbkdetail.rating.tot_commets);
+		
 		detailsofresults.ResultsInGoogle_Content.setText(bbkdetail.rating.google_items);
 		String shortdescription = bbkdetail.shortDesc;
 		if(shortdescription.length()<=40){
@@ -113,7 +153,7 @@ public class InitializeDetail extends Thread{
 		}
 		detailsofresults.Score.setText(score);
 		
-		detailsofresults.setPreferredSize(new Dimension(665, 1500));
+		detailsofresults.setPreferredSize(new Dimension(665, 1200));
 		child_search.scrollPane1 = new JScrollPane(detailsofresults);
 		child_search.scrollbar1 = new JScrollBar();
 		child_search.scrollbar1.setUnitIncrement(100);
