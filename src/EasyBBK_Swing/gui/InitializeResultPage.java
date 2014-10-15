@@ -25,6 +25,7 @@ public class InitializeResultPage extends Thread{
 	public SearchResultList filteredlist;
 	public boolean whethersearched = false;
 	public ArrayList<MouseListener> showdetaillist = new ArrayList<MouseListener>();
+	public ArrayList<MouseListener> openurllist = new ArrayList<MouseListener>();
 	
 	public InitializeResultPage(Child_Search child_search1, String keyword1, boolean whethersearched1){
 		child_search = child_search1;
@@ -253,6 +254,10 @@ public class InitializeResultPage extends Thread{
 									child_search.searchingresultpage.searchingresult.get(i%10).ID_Content.removeMouseListener(showdetaillist.get(i%10));
 									showdetaillist.remove(i%10);
 								}
+								if(openurllist.get(i%10) != null){
+									child_search.searchingresultpage.searchingresult.get(i%10).URL_Content.removeMouseListener(openurllist.get(i%10));
+									openurllist.remove(i%10);
+								}
 								showresult(i);
 							}
 							child_search.nextpage.setVisible(true);
@@ -266,6 +271,8 @@ public class InitializeResultPage extends Thread{
 							for(int i = 0; i < 10; i++){
 								child_search.searchingresultpage.searchingresult.get(i%10).ID_Content.removeMouseListener(showdetaillist.get(i%10));
 								showdetaillist.remove(i%10);
+								child_search.searchingresultpage.searchingresult.get(i%10).URL_Content.removeMouseListener(openurllist.get(i%10));
+								openurllist.remove(i%10);
 								showresult(i);
 							}
 							child_search.nextpage.setVisible(true);
@@ -306,6 +313,8 @@ public class InitializeResultPage extends Thread{
 							for(int i = 10 * child_search.currentpage; i < 10 * (child_search.currentpage + 1); i++){
 								child_search.searchingresultpage.searchingresult.get(i%10).ID_Content.removeMouseListener(showdetaillist.get(i%10));
 								showdetaillist.remove(i%10);
+								child_search.searchingresultpage.searchingresult.get(i%10).URL_Content.removeMouseListener(openurllist.get(i%10));
+								openurllist.remove(i%10);
 								showresult(i);
 							}
 							child_search.previouspage.setVisible(true);
@@ -319,9 +328,10 @@ public class InitializeResultPage extends Thread{
 							for(int i = 10 * child_search.currentpage; i < numberofresults; i++){
 								child_search.searchingresultpage.searchingresult.get(i%10).ID_Content.removeMouseListener(showdetaillist.get(i%10));
 								showdetaillist.remove(i%10);
+								child_search.searchingresultpage.searchingresult.get(i%10).URL_Content.removeMouseListener(openurllist.get(i%10));
+								openurllist.remove(i%10);
 								showresult(i);
 							}
-							
 							child_search.previouspage.setVisible(true);
 							child_search.nextpage.setVisible(false);
 							child_search.currentpage++;
@@ -412,7 +422,8 @@ public class InitializeResultPage extends Thread{
 		child_search.searchingresultpage.searchingresult.get(i).EnteredDate_Content.setText(bbkoutline.enterDate);
 		child_search.searchingresultpage.searchingresult.get(i).UsedTimes_Content.setText(bbkoutline.rating.used_times);
 		child_search.searchingresultpage.searchingresult.get(i).URL_Content.setText("<html><u>" + bbkoutline.url + "</u></html>");
-		child_search.searchingresultpage.searchingresult.get(i).URL_Content.addMouseListener(new MouseAdapter() {
+		
+		MouseListener openurl = new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if(e.getButton() == MouseEvent.BUTTON1){
@@ -429,7 +440,11 @@ public class InitializeResultPage extends Thread{
 					}
 				}
 			}
-		});
+		};
+		
+		openurllist.add(i, openurl);
+		
+		child_search.searchingresultpage.searchingresult.get(i).URL_Content.addMouseListener(openurl);
 		child_search.searchingresultpage.searchingresult.get(i).ReleasedStatus_Content.setText(bbkoutline.releaseStatus);
 		if(bbkoutline.rating.average_stars.equals("No Stars")){
 			child_search.searchingresultpage.searchingresult.get(i).AverageStar_Content.setText(bbkoutline.rating.average_stars);
@@ -443,13 +458,13 @@ public class InitializeResultPage extends Thread{
 		child_search.searchingresultpage.searchingresult.get(i).ResultsInGoogle_Content.setText(bbkoutline.rating.google_items);
 		
 		String shortdescription = bbkoutline.shortDesc;
-		if(shortdescription.length()<=29){
+		if(shortdescription.length()<=25){
 			child_search.searchingresultpage.searchingresult.get(i).Description1.setText(shortdescription);
 			child_search.searchingresultpage.searchingresult.get(i).Description2.setText(null);
 		}
 		else{
-			child_search.searchingresultpage.searchingresult.get(i).Description1.setText(shortdescription.substring(0, 29));
-			child_search.searchingresultpage.searchingresult.get(i).Description2.setText(shortdescription.substring(29));
+			child_search.searchingresultpage.searchingresult.get(i).Description1.setText(shortdescription.substring(0, 25));
+			child_search.searchingresultpage.searchingresult.get(i).Description2.setText(shortdescription.substring(25));
 		}
 		
 		String score = "" + bbkoutline.getScore();
