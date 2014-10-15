@@ -80,10 +80,12 @@ public class Choicepanel extends JPanel {
 		setBorder(BorderFactory.createLineBorder(Color.black));
 		setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Filters:");
-		lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 20));
-		lblNewLabel.setBounds(10, 81, 76, 28);
-		add(lblNewLabel);
+		information = new Information();
+		
+		JLabel Filters = new JLabel("Filters:");
+		Filters.setFont(new Font("Arial", Font.PLAIN, 20));
+		Filters.setBounds(10, 81, 76, 28);
+		add(Filters);
 		
 		JLabel ReleaseStatus = new JLabel("Part Status:");
 		ReleaseStatus.setFont(new Font("Arial", Font.PLAIN, 16));

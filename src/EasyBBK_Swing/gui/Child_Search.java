@@ -221,7 +221,7 @@ public class Child_Search extends JPanel {
 		
 		resultpanel = new JPanel();
 		resultpanel.setBackground(new Color(255, 255, 255));
-		resultpanel.setBounds(51, 85, 587, 585);
+		resultpanel.setBounds(51, 85, 587, 583);
 		Result.add(resultpanel);
 		resultpanel.setLayout(null);
 		
