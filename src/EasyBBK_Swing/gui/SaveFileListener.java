@@ -19,6 +19,7 @@ import javax.swing.filechooser.FileFilter;
 public class SaveFileListener implements MouseInputListener
 {
 	private JLayeredPane panel = new JLayeredPane();
+
 	
 	SaveFileListener(JLayeredPane panel)
 	{

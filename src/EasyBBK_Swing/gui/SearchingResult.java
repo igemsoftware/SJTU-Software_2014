@@ -25,7 +25,6 @@ public class SearchingResult extends JPanel{
 	public JLabel ReleasedStatus_Content;
 	public JLabel AverageStar_Content;
 	public JLabel ResultsInGoogle_Content;
-	public JLabel Score;
 	public JLabel Evalue;
 	public JLabel UsedTimes_Content;
 	
@@ -100,14 +99,8 @@ public class SearchingResult extends JPanel{
 		
 		Author_Content = new JLabel("");
 		Author_Content.setFont(new Font("Arial", Font.PLAIN, 20));
-		Author_Content.setBounds(81, 144, 378, 24);
+		Author_Content.setBounds(81, 144, 478, 24);
 		add(Author_Content);
-		
-		Score = new JLabel("", JLabel.CENTER);
-		Score.setFont(new Font("Arial", Font.BOLD, 30));
-		Score.setBounds(469, 78, 82, 73);
-		Score.setBorder(BorderFactory.createLineBorder(Color.black));
-		add(Score);
 		
 		JLabel ShortDescription = new JLabel("Short Description:");
 		ShortDescription.setFont(new Font("Arial", Font.PLAIN, 20));
@@ -116,12 +109,12 @@ public class SearchingResult extends JPanel{
 		
 		Description1 = new JLabel("");
 		Description1.setFont(new Font("Arial", Font.PLAIN, 20));
-		Description1.setBounds(173, 78, 286, 24);
+		Description1.setBounds(173, 78, 386, 24);
 		add(Description1);
 		
 		Description2 = new JLabel("");
 		Description2.setFont(new Font("Arial", Font.PLAIN, 20));
-		Description2.setBounds(10, 113, 450, 24);
+		Description2.setBounds(10, 113, 549, 24);
 		add(Description2);
 		
 		JLabel Url = new JLabel("URL:");

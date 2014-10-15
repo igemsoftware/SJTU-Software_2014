@@ -81,7 +81,7 @@ public class Child_Search extends JPanel {
 		});
 		Result.setBounds(0, 0, 683, 670);
 		Result.setBackground(new Color(255, 255, 255));
-		Result.setBorder(BorderFactory.createLineBorder(Color.black));
+		//Result.setBorder(BorderFactory.createLineBorder(Color.black));
 		add(Result);
 		Result.setLayout(null);
 		
@@ -91,7 +91,19 @@ public class Child_Search extends JPanel {
 			public void mouseClicked(MouseEvent e) {
 				if(e.getButton() == MouseEvent.BUTTON1){
 					SearchResultList previousList = searchcenter.rollBack();
-					if(previousList == null) return;
+					if(previousList == null){
+						Component component = mainpage.Mainpanel.getComponent(0);
+						if(component instanceof Child_Search){
+							mainpage.child_search_current = (Child_Search) component;
+							Child_Search_Main child_search_main = new Child_Search_Main(mainpage);
+							mainpage.Mainpanel.removeAll();
+							mainpage.Mainpanel.add(child_search_main);
+							child_search_main.SearchText.requestFocus();
+							mainpage.Mainpanel.updateUI();
+							mainpage.CurrentPage = 1;
+						}
+						return;
+					}
 					else{
 						requestFocus();
 						textField.setText(previousList.keyword);
@@ -275,7 +287,7 @@ public class Child_Search extends JPanel {
 		});
 		Details.setBounds(684, 0, 683, 670);
 		Details.setBackground(new Color(255, 255, 255));
-		Details.setBorder(BorderFactory.createLineBorder(Color.black));
+		//Details.setBorder(BorderFactory.createLineBorder(Color.black));
 		add(Details);
 		Details.setLayout(null);
 		

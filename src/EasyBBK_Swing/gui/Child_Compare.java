@@ -1,7 +1,6 @@
 package EasyBBK_Swing.gui;
 
 import java.awt.Color;
-import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
@@ -121,7 +120,7 @@ public class Child_Compare extends JPanel {
 				}
 				comparison_item.PartStatus.setText(bbkdetail.releaseStatus);
 				comparison_item.SampleStatus.setText(bbkdetail.sampleStatus);
-				comparison_item.Url.setText("<html><u>" + bbkdetail.url + "</u></html>");
+				comparison_item.Url.setText(bbkdetail.url);
 				comparison_item.DNAStatus.setText(bbkdetail.DNA_status);
 				comparison_item.DeleteThisPart.setText(bbkdetail.rating.delete_this_part);
 				comparison_item.ConfirmedTimes.setText(bbkdetail.rating.tot_confirmed);

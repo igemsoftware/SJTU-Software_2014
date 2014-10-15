@@ -151,7 +151,7 @@ public class InitializeDetail extends Thread{
 		else if(score.charAt(2) == c){
 			score = score.substring(0, 5);
 		}
-		detailsofresults.Score.setText(score);
+		//detailsofresults.Score.setText(score);
 		
 		detailsofresults.setPreferredSize(new Dimension(665, 1200));
 		child_search.scrollPane1 = new JScrollPane(detailsofresults);

@@ -26,14 +26,24 @@ public class Child_Main extends JPanel {
 	public Child_Main(MainPage mainpage1) {
 		mainpage = mainpage1;
 		setLayout(null);
-		setBounds(0, 0, 1366, 670);
+		if(mainpage.small == false){
+			setBounds(0, 0, 1366, 670);
+		}
+		else if(mainpage.small == true){
+			setBounds(0, 0, 1280, 670);
+		}
 		setVisible(true);
 		setBackground(new Color(255, 255, 255));
 		
 		BackGround = new JLabel("");
 		
 		Logo = new JLabel("");
-		Logo.setBounds(486, 35, 410, 187);
+		if(mainpage.small == false){
+			Logo.setBounds(486, 35, 410, 187);
+		}
+		else if(mainpage.small == true){
+			Logo.setBounds(455, 35, 410, 187);
+		}
 		Logo.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Logo.png")));
 		Logo.setVisible(true);
 		add(Logo);
