@@ -9,6 +9,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.JComboBox;
@@ -22,14 +23,14 @@ import java.awt.event.MouseEvent;
 public class Choicepanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 	
-	public JCheckBox Released;
-	public JCheckBox Deleted;
-	public JCheckBox NotReleased;
-	public JCheckBox Available;
-	public JCheckBox Planning;
-	public JCheckBox Informational;
-	public JCheckBox NotDeleted;
-	public JCheckBox Deleted1;
+	public JRadioButton Released;
+	public JRadioButton Deleted;
+	public JRadioButton NotReleased;
+	public JRadioButton Available;
+	public JRadioButton Planning;
+	public JRadioButton Informational;
+	public JRadioButton NotDeleted;
+	public JRadioButton Deleted1;
 	public JCheckBox EnteredDate;
 	public JCheckBox GoogleQouteNumber;
 	public JCheckBox AverageStars;
@@ -93,21 +94,21 @@ public class Choicepanel extends JPanel {
 		add(ReleaseStatus);
         
 		ItemListener itemListener_releasestatus = new ItemListener() {
-            JCheckBox jCheckBox;
+			JRadioButton jRadioButton;
  
             public void itemStateChanged(ItemEvent e) {
-                jCheckBox = (JCheckBox) e.getSource();
+            	jRadioButton = (JRadioButton) e.getSource();
  
-                if (jCheckBox.isSelected()) {
-                    if(jCheckBox == Released){
+                if (jRadioButton.isSelected()) {
+                    if(jRadioButton == Released){
                     	Deleted.setSelected(false);
                     	NotReleased.setSelected(false);
                     }
-                    else if(jCheckBox == Deleted){
+                    else if(jRadioButton == Deleted){
                     	Released.setSelected(false);
                     	NotReleased.setSelected(false);
                     }
-                    else if(jCheckBox == NotReleased){
+                    else if(jRadioButton == NotReleased){
                     	Released.setSelected(false);
                     	Deleted.setSelected(false);
                     }
@@ -117,21 +118,21 @@ public class Choicepanel extends JPanel {
             }
         };
 		
-        Released = new JCheckBox("Released");
+        Released = new JRadioButton("Released");
         Released.addItemListener(itemListener_releasestatus);
 		Released.setFont(new Font("Arial", Font.PLAIN, 16));
 		Released.setBounds(156, 262, 103, 23);
 		Released.setBackground(new Color(255, 255, 255));
 		add(Released);
 		
-		Deleted = new JCheckBox("Deleted");
+		Deleted = new JRadioButton("Deleted");
 		Deleted.addItemListener(itemListener_releasestatus);
 		Deleted.setFont(new Font("Arial", Font.PLAIN, 16));
 		Deleted.setBounds(261, 262, 103, 23);
 		Deleted.setBackground(new Color(255, 255, 255));
 		add(Deleted);
 		
-		NotReleased = new JCheckBox("Not Released");
+		NotReleased = new JRadioButton("Not Released");
 		NotReleased.addItemListener(itemListener_releasestatus);
 		NotReleased.setFont(new Font("Arial", Font.PLAIN, 16));
 		NotReleased.setBounds(366, 262, 121, 23);
@@ -144,21 +145,21 @@ public class Choicepanel extends JPanel {
 		add(DNAStatus);
 		
 		ItemListener itemListener_DNAstatus = new ItemListener() {
-            JCheckBox jCheckBox;
+			JRadioButton jRadioButton;
  
             public void itemStateChanged(ItemEvent e) {
-                jCheckBox = (JCheckBox) e.getSource();
+            	jRadioButton = (JRadioButton) e.getSource();
  
-                if (jCheckBox.isSelected()) {
-                    if(jCheckBox == Available){
+                if (jRadioButton.isSelected()) {
+                    if(jRadioButton == Available){
                     	Planning.setSelected(false);
                     	Informational.setSelected(false);
                     }
-                    else if(jCheckBox == Planning){
+                    else if(jRadioButton == Planning){
                     	Available.setSelected(false);
                     	Informational.setSelected(false);
                     }
-                    else if(jCheckBox == Informational){
+                    else if(jRadioButton == Informational){
                     	Available.setSelected(false);
                     	Planning.setSelected(false);
                     }
@@ -168,21 +169,21 @@ public class Choicepanel extends JPanel {
             }
         };
 		
-		Available = new JCheckBox("Available");
+		Available = new JRadioButton("Available");
 		Available.addItemListener(itemListener_DNAstatus);
 		Available.setFont(new Font("Arial", Font.PLAIN, 16));
 		Available.setBounds(157, 289, 103, 23);
 		Available.setBackground(new Color(255, 255, 255));
 		add(Available);
 		
-		Planning = new JCheckBox("Planning");
+		Planning = new JRadioButton("Planning");
 		Planning.addItemListener(itemListener_DNAstatus);
 		Planning.setFont(new Font("Arial", Font.PLAIN, 16));
 		Planning.setBounds(261, 288, 103, 23);
 		Planning.setBackground(new Color(255, 255, 255));
 		add(Planning);
 		
-		Informational = new JCheckBox("Informational");
+		Informational = new JRadioButton("Informational");
 		Informational.addItemListener(itemListener_DNAstatus);
 		Informational.setFont(new Font("Arial", Font.PLAIN, 16));
 		Informational.setBounds(366, 289, 121, 23);
@@ -195,16 +196,16 @@ public class Choicepanel extends JPanel {
 		add(Whetherornot);
 		
 		ItemListener itemListener_deleted = new ItemListener() {
-            JCheckBox jCheckBox;
+			JRadioButton jRadioButton;
  
             public void itemStateChanged(ItemEvent e) {
-                jCheckBox = (JCheckBox) e.getSource();
+            	jRadioButton = (JRadioButton) e.getSource();
  
-                if (jCheckBox.isSelected()) {
-                    if(jCheckBox == NotDeleted){
+                if (jRadioButton.isSelected()) {
+                    if(jRadioButton == NotDeleted){
                     	Deleted1.setSelected(false);
                     }
-                    else if(jCheckBox == Deleted1){
+                    else if(jRadioButton == Deleted1){
                     	NotDeleted.setSelected(false);
                     }
                 } else {
@@ -214,14 +215,14 @@ public class Choicepanel extends JPanel {
             }
         };
 		
-		NotDeleted = new JCheckBox("Not Deleted");
+		NotDeleted = new JRadioButton("Not Deleted");
 		NotDeleted.addItemListener(itemListener_deleted);
 		NotDeleted.setFont(new Font("Arial", Font.PLAIN, 16));
 		NotDeleted.setBounds(235, 317, 121, 23);
 		NotDeleted.setBackground(new Color(255, 255, 255));
 		add(NotDeleted);
 		
-		Deleted1 = new JCheckBox("Deleted");
+		Deleted1 = new JRadioButton("Deleted");
 		Deleted1.addItemListener(itemListener_deleted);
 		Deleted1.setFont(new Font("Arial", Font.PLAIN, 16));
 		Deleted1.setBounds(366, 317, 103, 23);
