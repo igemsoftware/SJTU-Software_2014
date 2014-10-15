@@ -17,7 +17,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.JTextField;
-import javax.swing.SwingConstants;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -107,6 +106,7 @@ public class Child_Upload extends JPanel {
 	
 	/**
 	 * Create the panel.
+	 * @wbp.parser.constructor
 	 */
 	public Child_Upload(MainPage mainpage1) {
 		mainpage = mainpage1;

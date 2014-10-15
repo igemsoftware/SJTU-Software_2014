@@ -3,6 +3,8 @@ package EasyBBK_Swing.gui;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
@@ -23,17 +25,21 @@ public class Child_Compare extends JPanel {
 	public ArrayList<BbkDetail> comparisonlist = new ArrayList<BbkDetail>();
 	public JPanel Containerpanel;
 	public JLabel BackGround;
+	public Child_Compare child_compare;
 	/**
 	 * Create the panel.
+	 * @wbp.parser.constructor
 	 */
 	public Child_Compare(MainPage mainpage1) {
 		mainpage = mainpage1;
+		child_compare = this;
 		comparisonlist = mainpage.child_search_current.comparisonlist;
 		initialize();
 	}
 	
 	public Child_Compare(MainPage mainpage1, ArrayList<BbkDetail> comparisonlist1) {
 		mainpage = mainpage1;
+		child_compare = this;
 		comparisonlist = comparisonlist1;
 		initialize();
 	}
@@ -95,15 +101,15 @@ public class Child_Compare extends JPanel {
 		
 		else if(comparisonlist.size() != 0){
 			Comparison_info comparison_info = new Comparison_info();
-			comparison_info.setBounds(123, 150, 220, 690);
+			comparison_info.setBounds(123, 210, 220, 690);
 			Containerpanel.add(comparison_info);
 			
 			int num = comparisonlist.size();
 			
 			for(int i = 0; i < num; i++){
 				Comparison_item comparison_item = new Comparison_item();
-				comparison_item.setBounds(343 + i*310, 150, 300, 690);
-				BbkDetail bbkdetail = comparisonlist.get(i);
+				comparison_item.setBounds(343 + i*310, 150, 300, 750);
+				final BbkDetail bbkdetail = comparisonlist.get(i);
 				comparison_item.PartName.setText(bbkdetail.name);
 				comparison_item.Type.setText(bbkdetail.type);
 				if(bbkdetail.shortDesc.length() <= 30){
@@ -114,7 +120,7 @@ public class Child_Compare extends JPanel {
 				}
 				comparison_item.PartStatus.setText(bbkdetail.releaseStatus);
 				comparison_item.SampleStatus.setText(bbkdetail.sampleStatus);
-				comparison_item.Url.setText("<html><u>" + bbkdetail.url + "</u></html>");
+				comparison_item.Url.setText(bbkdetail.url);
 				comparison_item.DNAStatus.setText(bbkdetail.DNA_status);
 				comparison_item.DeleteThisPart.setText(bbkdetail.rating.delete_this_part);
 				comparison_item.ConfirmedTimes.setText(bbkdetail.rating.tot_confirmed);
@@ -133,6 +139,41 @@ public class Child_Compare extends JPanel {
 				}
 				comparison_item.NumberofComments.setText(bbkdetail.rating.tot_commets);
 				comparison_item.GoogleItems.setText(bbkdetail.rating.google_items);
+				comparison_item.Remove.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						if(e.getButton() == MouseEvent.BUTTON1){
+							for(int i = 0; i < comparisonlist.size(); i++){
+								if(comparisonlist.get(i).name.equals(bbkdetail.name)){
+									comparisonlist.remove(i);
+									break;
+								}
+									
+							}
+							Containerpanel.removeAll();
+							
+							JTextField comparison = new JTextField("The Comparison for Biobricks");
+							comparison.setOpaque(false);
+							comparison.setFont(new Font("Arial", Font.BOLD, 40));
+							comparison.setBackground(new Color(255, 255, 255));
+							comparison.setBounds(383, 50, 600, 50);
+							comparison.setEditable(false);
+							comparison.setBorder(new EmptyBorder(0,0,0,0));
+							Containerpanel.add(comparison);
+							comparison.setColumns(10);
+							
+							initialpage();
+							
+							BackGround = new JLabel("");
+							BackGround.setVisible(true);
+							BackGround.setBounds(0, 0, 1366, 1000);
+							BackGround.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/BackGround1.png")));
+							Containerpanel.add(BackGround);
+							
+							Containerpanel.updateUI();
+						}
+					}
+				});
 				
 				Containerpanel.add(comparison_item);
 			}
