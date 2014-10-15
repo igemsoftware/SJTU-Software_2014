@@ -5,5 +5,5 @@ var searchData=
   ['main_5fupload',['MAIN_UPLOAD',['../classdata__center_1_1_d_b_consts_1_1_table.html#a43f58e8a3549966bac5557747cb4ee75',1,'data_center::DBConsts::Table']]],
   ['measurement',['MEASUREMENT',['../classdata__center_1_1_bbk_type.html#ac7693173df100529ec495b4b3061bd45',1,'data_center::BbkType']]],
   ['modified',['modified',['../classdata__center_1_1_sketch_project.html#a64c410f16144e14df0c6e3402593c3d6',1,'data_center::SketchProject']]],
-  ['modify',['MODIFY',['../classdata__center_1_1_sketch_project_1_1_operation.html#a73d7ea1967584146c67af447ba37310d',1,'data_center::SketchProject::Operation']]]
+  ['modify',['MODIFY',['../classdata__center_1_1_sketch_operation.html#a2f635da3e7a123ed9ae694e5d5b20b5d',1,'data_center::SketchOperation']]]
 ];

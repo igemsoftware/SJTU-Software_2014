@@ -21,9 +21,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="Logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">EasyBbk
-   &#160;<span id="projectnumber">1.0</span>
+   &#160;<span id="projectnumber">1.0.0</span>
    </div>
    <div id="projectbrief">&quot;Easy BBK&quot; is a trial to provide a standardized, visualized and user friendly access to bio-brick system by simplify and interassociate the searching, comparing, designing and uploading of bio-bricks. These four main functions constitute the &quot;Easy BBK&quot; client-side which is realized by pure java and supported by a remote server through the internet. We hope that you will have better experiences when exploring the biobrick world using &quot;Easy BBK&quot;.</div>
   </td>
@@ -41,7 +42,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="namespaces.html"><span>Packages</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
-      <li><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -101,7 +101,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -114,27 +114,40 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 &#160;
 
 <h3><a class="anchor" id="index_c"></a>- c -</h3><ul>
-<li>callWriteXmlFile()
-: <a class="el" href="classdata__center_1_1_sketch_project.html#a315a9c11f24039d19dc2298a24b20459">data_center.SketchProject</a>
+<li>canCtrlY()
+: <a class="el" href="classdata__center_1_1_operation_history.html#a69593910ea40aa1ca900642bd54a480c">data_center.OperationHistory</a>
+, <a class="el" href="classdata__center_1_1_sketch_project.html#afb8d7523c0168c934b45854bfc88d371">data_center.SketchProject</a>
+</li>
+<li>canCtrlZ()
+: <a class="el" href="classdata__center_1_1_operation_history.html#a339b333c2e7cf27a5df9c71c1c28bb37">data_center.OperationHistory</a>
+, <a class="el" href="classdata__center_1_1_sketch_project.html#aa7c20b7600edf3c3a99673f6f0cd47c1">data_center.SketchProject</a>
 </li>
 <li>canGoForward()
-: <a class="el" href="classdata__center_1_1_history_list_3_01_t_01_4.html#aed5eaa4091b104a2e5a917b71eab284b">data_center.HistoryList&lt; T &gt;</a>
-, <a class="el" href="classdata__center_1_1_search_center.html#a9b03cb613c688a86a1938c1cb47a45e4">data_center.SearchCenter</a>
+: <a class="el" href="classdata__center_1_1_search_center.html#a9b03cb613c688a86a1938c1cb47a45e4">data_center.SearchCenter</a>
+, <a class="el" href="classdata__center_1_1_search_history.html#a7fb2fb00cc53056955547f5f5e1cc63b">data_center.SearchHistory</a>
 </li>
 <li>canRollBack()
-: <a class="el" href="classdata__center_1_1_history_list_3_01_t_01_4.html#a6fa03e079e756d234f567e7393120635">data_center.HistoryList&lt; T &gt;</a>
-, <a class="el" href="classdata__center_1_1_search_center.html#a6a8217c3e9f1785b7433e1eb568c8553">data_center.SearchCenter</a>
+: <a class="el" href="classdata__center_1_1_search_center.html#a6a8217c3e9f1785b7433e1eb568c8553">data_center.SearchCenter</a>
+, <a class="el" href="classdata__center_1_1_search_history.html#a33935a208348c0fc6c2c5a7978c6c671">data_center.SearchHistory</a>
 </li>
 <li>Category()
 : <a class="el" href="classdata__center_1_1_bbk_detail_1_1_category.html#ae75d8a145deeb0884b524dd9608d180d">data_center.BbkDetail.Category</a>
-, <a class="el" href="classdata__center_1_1_bbk_properties_1_1_category.html#a845bbdfc980f3fda6bc5ac4cd7a08024">data_center.BbkProperties.Category</a>
+, <a class="el" href="classdata__center_1_1_bbk_properties_1_1_category.html#ac83b77de162e4404a87c499d5c524e87">data_center.BbkProperties.Category</a>
 , <a class="el" href="classdata__center_1_1_bbk_upload_1_1_category.html#a673527dd995e7df4816f40385f637458">data_center.BbkUpload.Category</a>
 </li>
+<li>CatogoryComparator()
+: <a class="el" href="classdata__center_1_1_official_upload_poster_1_1_catogory_comparator.html#aca52214d402120948c2c780633e7fa99">data_center.OfficialUploadPoster.CatogoryComparator</a>
+</li>
 <li>clear()
-: <a class="el" href="classdata__center_1_1_history_list_3_01_t_01_4.html#a0ef5f619eb17d3d826230e8c2c0d4341">data_center.HistoryList&lt; T &gt;</a>
+: <a class="el" href="classdata__center_1_1_operation_history.html#ac9a688d94721f1b022422f2025c01dcc">data_center.OperationHistory</a>
+, <a class="el" href="classdata__center_1_1_search_history.html#adcb36137a820cbf938ec2df7fa4755cf">data_center.SearchHistory</a>
 </li>
 <li>closeProject()
 : <a class="el" href="classdata__center_1_1_sketch_center.html#abc667454703ae74b08653ee633abb071">data_center.SketchCenter</a>
+</li>
+<li>compare()
+: <a class="el" href="classdata__center_1_1_official_upload_poster_1_1_catogory_comparator.html#a6082b2376d5208104447cf4b09901ea0">data_center.OfficialUploadPoster.CatogoryComparator</a>
+, <a class="el" href="classdata__center_1_1_official_upload_poster_1_1_param_comparator.html#a1a26c75f4a7c735ded8a82142efc1b31">data_center.OfficialUploadPoster.ParamComparator</a>
 </li>
 <li>CompareCenter()
 : <a class="el" href="classdata__center_1_1_compare_center.html#a750e2a2c0580e2ad15a93d477476b1da">data_center.CompareCenter</a>
@@ -142,17 +155,22 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>Component()
 : <a class="el" href="classdata__center_1_1_sketch_component_1_1_component.html#ad86765c5de1b6f4781629736406e871c">data_center.SketchComponent.Component</a>
 </li>
+<li>createNewPart()
+: <a class="el" href="classdata__center_1_1_official_upload_poster.html#ad7a23e595c7f04ac7f70ada6c44641e4">data_center.OfficialUploadPoster</a>
+</li>
 <li>ctrlY()
-: <a class="el" href="classdata__center_1_1_sketch_project.html#a8fe3d620b7f25dd4fb45a9c4a5849b51">data_center.SketchProject</a>
+: <a class="el" href="classdata__center_1_1_operation_history.html#a54cf82045a2e6df1ef55b160ba0e6c3f">data_center.OperationHistory</a>
+, <a class="el" href="classdata__center_1_1_sketch_project.html#aab5382051eb35c081877689cd5efe89a">data_center.SketchProject</a>
 </li>
 <li>ctrlZ()
-: <a class="el" href="classdata__center_1_1_sketch_project.html#ac194b8389e80899b33d1620da6d69e00">data_center.SketchProject</a>
+: <a class="el" href="classdata__center_1_1_operation_history.html#a2f7ad51de2acb96200af7490a03ce180">data_center.OperationHistory</a>
+, <a class="el" href="classdata__center_1_1_sketch_project.html#abd279577cd74aa53300c8e7c73f21118">data_center.SketchProject</a>
 </li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Oct 5 2014 13:31:49 for EasyBbk by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Oct 15 2014 02:00:01 for EasyBbk by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

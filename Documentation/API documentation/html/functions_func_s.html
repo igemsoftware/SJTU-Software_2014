@@ -21,9 +21,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="Logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">EasyBbk
-   &#160;<span id="projectnumber">1.0</span>
+   &#160;<span id="projectnumber">1.0.0</span>
    </div>
    <div id="projectbrief">&quot;Easy BBK&quot; is a trial to provide a standardized, visualized and user friendly access to bio-brick system by simplify and interassociate the searching, comparing, designing and uploading of bio-bricks. These four main functions constitute the &quot;Easy BBK&quot; client-side which is realized by pure java and supported by a remote server through the internet. We hope that you will have better experiences when exploring the biobrick world using &quot;Easy BBK&quot;.</div>
   </td>
@@ -41,7 +42,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="namespaces.html"><span>Packages</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
-      <li><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -101,7 +101,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -115,10 +115,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <h3><a class="anchor" id="index_s"></a>- s -</h3><ul>
 <li>saveIntoFile()
-: <a class="el" href="classdata__center_1_1_sketch_project.html#acc05f0642428f47bafd9121afd28096d">data_center.SketchProject</a>
-</li>
-<li>SaveIntoFile()
-: <a class="el" href="classdata__center_1_1_sketch_project.html#a6fa4fe0c5464c781cf8e4a0dc9e409f4">data_center.SketchProject</a>
+: <a class="el" href="classdata__center_1_1_sketch_project.html#a91255c3b4668d0e61a3ef198c3bc1dc5">data_center.SketchProject</a>
 </li>
 <li>saveProject()
 : <a class="el" href="classdata__center_1_1_sketch_center.html#a451b9792776367b79d459c16fb580b90">data_center.SketchCenter</a>
@@ -129,13 +126,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>SearchCenter()
 : <a class="el" href="classdata__center_1_1_search_center.html#a64c6163a98e98075e588eee5c1589c42">data_center.SearchCenter</a>
 </li>
-<li>setCenter()
-: <a class="el" href="classdata__center_1_1_sketch_component_1_1_back_bone.html#a08d81154296b4a54020498ab2a5ad872">data_center.SketchComponent.BackBone</a>
-, <a class="el" href="classdata__center_1_1_sketch_component_1_1_bio_brick.html#a045605e59564ef8fb990a60e7eaa5025">data_center.SketchComponent.BioBrick</a>
-, <a class="el" href="classdata__center_1_1_sketch_component_1_1_bio_vector.html#a3605fd7d956e1b832a2f87e6ff47b337">data_center.SketchComponent.BioVector</a>
-, <a class="el" href="classdata__center_1_1_sketch_component_1_1_component.html#aec63615cf1fdce453d3da3d28f8ed406">data_center.SketchComponent.Component</a>
-, <a class="el" href="classdata__center_1_1_sketch_component_1_1_label.html#a706cb516e29a51c5ea4481dd0ccc6380">data_center.SketchComponent.Label</a>
-, <a class="el" href="classdata__center_1_1_sketch_component_1_1_protein.html#a00b7416e51d2d74c79ade8d3d314b16c">data_center.SketchComponent.Protein</a>
+<li>setBounds()
+: <a class="el" href="classdata__center_1_1_sketch_component_1_1_back_bone.html#a597e34896861cb25ccf8690ee9ff5817">data_center.SketchComponent.BackBone</a>
+, <a class="el" href="classdata__center_1_1_sketch_component_1_1_bio_brick.html#a6baf60e64fe3acc5d8828f1d6bea35f5">data_center.SketchComponent.BioBrick</a>
+, <a class="el" href="classdata__center_1_1_sketch_component_1_1_bio_vector.html#aa6d2f603e5e33e4ff85b01c5689b8bf1">data_center.SketchComponent.BioVector</a>
+, <a class="el" href="classdata__center_1_1_sketch_component_1_1_component.html#a961e419f83617a96ac554e51f92b4059">data_center.SketchComponent.Component</a>
+, <a class="el" href="classdata__center_1_1_sketch_component_1_1_label.html#a794a58eb7f9ca0eb04b5c8dfa9f9a462">data_center.SketchComponent.Label</a>
+, <a class="el" href="classdata__center_1_1_sketch_component_1_1_protein.html#aaa7329c3107b1d79a1240f23e6e927ed">data_center.SketchComponent.Protein</a>
+, <a class="el" href="classdata__center_1_1_sketch_component_1_1_relation.html#a9afc11a13169db432f5add971f2f2bb4">data_center.SketchComponent.Relation</a>
 </li>
 <li>setChildren()
 : <a class="el" href="classdata__center_1_1_sketch_component_1_1_back_bone.html#ae0625e3900f31bec302bb8b58da7bb9a">data_center.SketchComponent.BackBone</a>
@@ -160,10 +158,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 , <a class="el" href="classdata__center_1_1_sketch_component_1_1_label.html#a9ba8c74f3a449bf7e4ee6e30b0760774">data_center.SketchComponent.Label</a>
 </li>
 <li>setID()
-: <a class="el" href="classdata__center_1_1_bbk_upload.html#aaef900d0fac1a6b7980431227b88d6c3">data_center.BbkUpload</a>
+: <a class="el" href="classdata__center_1_1_bbk_upload.html#a9b809020c580f3ab1fe6747018e7ae10">data_center.BbkUpload</a>
 </li>
 <li>setName()
-: <a class="el" href="classdata__center_1_1_bbk_upload.html#a740b5d2ccca24e15b3e6e032bad96d9f">data_center.BbkUpload</a>
+: <a class="el" href="classdata__center_1_1_bbk_upload.html#a626ef51adb2b523ea87b77587dcff8f5">data_center.BbkUpload</a>
 </li>
 <li>setSecondaryType()
 : <a class="el" href="classdata__center_1_1_sketch_component_1_1_bio_brick.html#aaa9b1b5f428c73106902ebf52a8d9fe6">data_center.SketchComponent.BioBrick</a>
@@ -173,18 +171,19 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 , <a class="el" href="classdata__center_1_1_sketch_component_1_1_relation.html#a5c6be44649045b69c3b65341a6091dbe">data_center.SketchComponent.Relation</a>
 </li>
 <li>setSequence()
-: <a class="el" href="classdata__center_1_1_bbk_upload.html#aae3dda073f19a4859a25aee1500e0348">data_center.BbkUpload</a>
-</li>
-<li>setSize()
-: <a class="el" href="classdata__center_1_1_sketch_component_1_1_back_bone.html#ab713dc165281392c6a1cf79fce01d797">data_center.SketchComponent.BackBone</a>
-, <a class="el" href="classdata__center_1_1_sketch_component_1_1_bio_vector.html#aa7cb038fd00a559d05d1b16714e37986">data_center.SketchComponent.BioVector</a>
-, <a class="el" href="classdata__center_1_1_sketch_component_1_1_component.html#abdfb4edbdcaef4788f0e4f4508a34e04">data_center.SketchComponent.Component</a>
-, <a class="el" href="classdata__center_1_1_sketch_component_1_1_relation.html#a9e4c7bbb422ae5893355beeb0734885d">data_center.SketchComponent.Relation</a>
+: <a class="el" href="classdata__center_1_1_bbk_upload.html#a586f5b653e34a6ff9bb7770cb90add1b">data_center.BbkUpload</a>
 </li>
 <li>setString()
 : <a class="el" href="classdata__center_1_1_sketch_component_1_1_bio_brick.html#afabea69c26df621eeef112640fdf9620">data_center.SketchComponent.BioBrick</a>
 , <a class="el" href="classdata__center_1_1_sketch_component_1_1_component.html#a85f372488c37bb201cbe56c71d6261e8">data_center.SketchComponent.Component</a>
 , <a class="el" href="classdata__center_1_1_sketch_component_1_1_label.html#a4a6b20b377028e587531e19ccf4ead14">data_center.SketchComponent.Label</a>
+</li>
+<li>setThickness()
+: <a class="el" href="classdata__center_1_1_sketch_component_1_1_component.html#a610913f423a63ddcf1649a20ac28e6fd">data_center.SketchComponent.Component</a>
+, <a class="el" href="classdata__center_1_1_sketch_component_1_1_relation.html#a4d2dc4cb8c38397c69e6ad05fcd876b4">data_center.SketchComponent.Relation</a>
+</li>
+<li>SketchOperation()
+: <a class="el" href="classdata__center_1_1_sketch_operation.html#a8ac0229cfbae937a7844f3981137fd03">data_center.SketchOperation</a>
 </li>
 <li>SketchProject()
 : <a class="el" href="classdata__center_1_1_sketch_project.html#af00ff653607ce4f91dbd0c7e06a4e2cb">data_center.SketchProject</a>
@@ -192,7 +191,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>SpecifiedSubpart()
 : <a class="el" href="classdata__center_1_1_bbk_detail_1_1_specified_subpart.html#ada2df5044977b8dc960d04f12e4127ff">data_center.BbkDetail.SpecifiedSubpart</a>
 , <a class="el" href="classdata__center_1_1_bbk_properties_1_1_specified_subpart.html#ad74e2297bb37448ab98da24b8aef5f2d">data_center.BbkProperties.SpecifiedSubpart</a>
-, <a class="el" href="classdata__center_1_1_bbk_upload_1_1_specified_subpart.html#a141711ec4b036f165dfd9c95ea1a9d1d">data_center.BbkUpload.SpecifiedSubpart</a>
+, <a class="el" href="classdata__center_1_1_bbk_upload_1_1_specified_subpart.html#a6d6b226e7719185b0f1b7d9df90d2468">data_center.BbkUpload.SpecifiedSubpart</a>
 </li>
 <li>SpecifiedSubscar()
 : <a class="el" href="classdata__center_1_1_bbk_detail_1_1_specified_subscar.html#a47ba711cae06ab68c348e42a5b748e06">data_center.BbkDetail.SpecifiedSubscar</a>
@@ -206,7 +205,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Oct 5 2014 13:31:49 for EasyBbk by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Oct 15 2014 02:00:01 for EasyBbk by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

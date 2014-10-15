@@ -7,8 +7,9 @@ var searchData=
   ['bbkproperties',['BbkProperties',['../classdata__center_1_1_bbk_properties.html',1,'data_center']]],
   ['bbktype',['BbkType',['../classdata__center_1_1_bbk_type.html',1,'data_center']]],
   ['bbkupload',['BbkUpload',['../classdata__center_1_1_bbk_upload.html',1,'data_center']]],
-  ['biobrick',['BioBrick',['../classdata__center_1_1_sketch_component_1_1_bio_brick.html',1,'data_center::SketchComponent']]],
   ['biobrick',['BioBrick',['../classdata__center_1_1_bbk_type_1_1_sketch_1_1_bio_brick.html',1,'data_center::BbkType::Sketch']]],
+  ['biobrick',['BioBrick',['../classdata__center_1_1_sketch_component_1_1_bio_brick.html',1,'data_center::SketchComponent']]],
+  ['biovector',['BioVector',['../classdata__center_1_1_bbk_type_1_1_sketch_1_1_bio_vector.html',1,'data_center::BbkType::Sketch']]],
   ['biovector',['BioVector',['../classdata__center_1_1_sketch_component_1_1_bio_vector.html',1,'data_center::SketchComponent']]],
   ['blasting',['Blasting',['../classdata__center_1_1_bbk_outline_1_1_blasting.html',1,'data_center::BbkOutline']]],
   ['blastingsearcher',['BlastingSearcher',['../classdata__center_1_1_blasting_searcher.html',1,'data_center']]]

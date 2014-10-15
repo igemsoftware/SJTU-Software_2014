@@ -24,7 +24,7 @@ public class Testing
 	
 	public static void main(String[] args) throws Exception
 	{	
-		searchKeywordAndGetDetail();
+		//searchKeywordAndGetDetail();
 		//searchFilterAndSort();
 		//searchBlasting();
 		//searchHistory();
@@ -43,7 +43,7 @@ public class Testing
 	private static void searchKeywordAndGetDetail()
 	{	
 		int startTime = getTimeInMs();
-		SearchResultList list = dataCenter.searchCenter.search("BBa_B");
+		SearchResultList list = dataCenter.searchCenter.search("GFP");
 		list.sortByTotalScore(true);
 		list.displayRating();
 		int endTime = getTimeInMs();
