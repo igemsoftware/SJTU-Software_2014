@@ -44,7 +44,7 @@ public class FontChooser extends JPanel
       
     //[start] 定义变量  
     private String current_fontName = "Arial";//当前的字体名称,默认Time New Roman.  
-    private String showStr = "I'm handsome";//展示的文字  
+    private String showStr = "I Love iGEM";//展示的文字  
     private int current_fontStyle = Font.PLAIN;//当前的字样,默认常规.  
     private int current_fontSize = 9;//当前字体大小,默认9号.  
     private Color current_color = Color.BLACK;//当前字色,默认黑色.  
@@ -267,7 +267,7 @@ public class FontChooser extends JPanel
         cbColor.setBounds(18, 245, 100, 22);  
         cbColor.setMaximumRowCount(5);  
         add(cbColor);  
-        otherColor.setForeground(Color.black);  
+        otherColor.setForeground(Color.blue);  
         otherColor.setBounds(130, 245, 120, 22);  
         otherColor.setCursor(new Cursor(Cursor.HAND_CURSOR));  
         add(otherColor);  
