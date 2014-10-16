@@ -117,7 +117,9 @@ public class SketchCenter
 		(BbkUpload bbkUpload, BbkDetail bbkDetail, int offset)
 	{	
 		for (BbkDetail.Feature feature : bbkDetail.features)
-		{	int startPos = Integer.parseInt(feature.startPos) + offset;
+		{	if (feature.endPos.endsWith("\r"))	// every line in the database ends with "\r"
+				feature.endPos = feature.endPos.substring(0, feature.endPos.length() - 1);
+			int startPos = Integer.parseInt(feature.startPos) + offset;
 			int endPos = Integer.parseInt(feature.endPos) + offset;
 			bbkUpload.features.add(new BbkUpload.Feature
 					(feature.ID, feature.title, feature.type, feature.direction, 
