@@ -26,18 +26,21 @@ public class InitializeResultPage extends Thread{
 	public boolean whethersearched = false;
 	public ArrayList<MouseListener> showdetaillist = new ArrayList<MouseListener>();
 	public ArrayList<MouseListener> openurllist = new ArrayList<MouseListener>();
+	public boolean small;
 	
-	public InitializeResultPage(Child_Search child_search1, String keyword1, boolean whethersearched1){
+	public InitializeResultPage(Child_Search child_search1, String keyword1, boolean whethersearched1, boolean small1){
 		child_search = child_search1;
 		keyword = keyword1;
 		whethersearched = whethersearched1;
+		small = small1;
 	}
 	
-	public InitializeResultPage(Child_Search child_search1, String keyword1, boolean whethersearched1, SearchResultList listtodeal){
+	public InitializeResultPage(Child_Search child_search1, String keyword1, boolean whethersearched1, SearchResultList listtodeal, boolean small1){
 		child_search = child_search1;
 		keyword = keyword1;
 		whethersearched = whethersearched1;
 		searchresultlist = listtodeal;
+		small = small1;
 	}
 	
 	public void run(){
@@ -179,7 +182,7 @@ public class InitializeResultPage extends Thread{
 		if(numberofresults <= 10 && numberofresults > 0){
 			child_search.resultpanel.removeAll();
 			child_search.searchingresultpage = new SearchingResultPage(numberofresults);
-			child_search.searchingresultpage.setPreferredSize(new Dimension(569,281*numberofresults));
+			child_search.searchingresultpage.setPreferredSize(new Dimension(569,192*numberofresults));
 			for(int i = 0; i < numberofresults; i++){
 				showresult(i);
 			}
@@ -219,7 +222,7 @@ public class InitializeResultPage extends Thread{
 			child_search.currentpage = 1;
 			
 			child_search.searchingresultpage = new SearchingResultPage();
-			child_search.searchingresultpage.setPreferredSize(new Dimension(569,2810));
+			child_search.searchingresultpage.setPreferredSize(new Dimension(569,1920));
 			for(int i = 0; i < 10; i++){
 				showresult(i);
 			}
@@ -248,7 +251,7 @@ public class InitializeResultPage extends Thread{
 						String s;
 						child_search.scrollbar.setValue(child_search.scrollbar.getMinimum());
 						if(child_search.currentpage > 2){
-							child_search.searchingresultpage.setPreferredSize(new Dimension(569,2810));
+							child_search.searchingresultpage.setPreferredSize(new Dimension(569,1920));
 							for(int i = 10 * (child_search.currentpage - 2); i < 10 * (child_search.currentpage - 1); i++){
 								if(showdetaillist.get(i%10) != null){
 									child_search.searchingresultpage.searchingresult.get(i%10).ID_Content.removeMouseListener(showdetaillist.get(i%10));
@@ -267,7 +270,7 @@ public class InitializeResultPage extends Thread{
 							return;
 						}
 						else if(child_search.currentpage == 2){
-							child_search.searchingresultpage.setPreferredSize(new Dimension(569,2810));
+							child_search.searchingresultpage.setPreferredSize(new Dimension(569,1920));
 							for(int i = 0; i < 10; i++){
 								child_search.searchingresultpage.searchingresult.get(i%10).ID_Content.removeMouseListener(showdetaillist.get(i%10));
 								showdetaillist.remove(i%10);
@@ -309,7 +312,7 @@ public class InitializeResultPage extends Thread{
 						child_search.scrollbar.setValue(child_search.scrollbar.getMinimum());
 						String s;
 						if(child_search.currentpage < num){
-							child_search.searchingresultpage.setPreferredSize(new Dimension(569,2810));
+							child_search.searchingresultpage.setPreferredSize(new Dimension(569,1920));
 							for(int i = 10 * child_search.currentpage; i < 10 * (child_search.currentpage + 1); i++){
 								child_search.searchingresultpage.searchingresult.get(i%10).ID_Content.removeMouseListener(showdetaillist.get(i%10));
 								showdetaillist.remove(i%10);
@@ -324,7 +327,7 @@ public class InitializeResultPage extends Thread{
 							return;
 						}
 						else if(child_search.currentpage == num){
-							child_search.searchingresultpage.setPreferredSize(new Dimension(569,281 * leftnum));
+							child_search.searchingresultpage.setPreferredSize(new Dimension(569,192 * leftnum));
 							for(int i = 10 * child_search.currentpage; i < numberofresults; i++){
 								child_search.searchingresultpage.searchingresult.get(i%10).ID_Content.removeMouseListener(showdetaillist.get(i%10));
 								showdetaillist.remove(i%10);
@@ -406,7 +409,7 @@ public class InitializeResultPage extends Thread{
 				if(e.getButton() == MouseEvent.BUTTON1){
 					child_search.Details.removeAll();
 					child_search.Details.updateUI();
-					InitializeDetail initializedetail = new InitializeDetail(child_search, bbkoutline);
+					InitializeDetail initializedetail = new InitializeDetail(child_search, bbkoutline, small);
 					initializedetail.start();
 				}
 			}
@@ -458,14 +461,7 @@ public class InitializeResultPage extends Thread{
 		child_search.searchingresultpage.searchingresult.get(i).ResultsInGoogle_Content.setText(bbkoutline.rating.google_items);
 		
 		String shortdescription = bbkoutline.shortDesc;
-		if(shortdescription.length() <= 35){
-			child_search.searchingresultpage.searchingresult.get(i).Description1.setText(shortdescription);
-			child_search.searchingresultpage.searchingresult.get(i).Description2.setText(null);
-		}
-		else{
-			child_search.searchingresultpage.searchingresult.get(i).Description1.setText(shortdescription.substring(0, 35));
-			child_search.searchingresultpage.searchingresult.get(i).Description2.setText(shortdescription.substring(35));
-		}
+		child_search.searchingresultpage.searchingresult.get(i).Description.setText(shortdescription);
 		
 		String score = "" + bbkoutline.getScore();
 		char c = '.';
@@ -475,6 +471,8 @@ public class InitializeResultPage extends Thread{
 		else if(score.charAt(2) == c){
 			score = score.substring(0, 5);
 		}
+		
+		child_search.searchingresultpage.searchingresult.get(i).Score.setText(score);
 		
 		if(child_search.blast == 1){
 			child_search.searchingresultpage.searchingresult.get(i).Evalue.setVisible(false);
