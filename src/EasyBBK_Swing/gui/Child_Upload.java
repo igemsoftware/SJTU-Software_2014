@@ -334,7 +334,8 @@ public class Child_Upload extends JPanel {
 		UploadContainer.add(AddSubscar);
 		
 		UseDefaultScar = new JCheckBox("Use default scar");
-		UseDefaultScar.setBackground(new Color(0, 255, 255));
+		//UseDefaultScar.setBackground(new Color(0, 255, 255));
+		UseDefaultScar.setOpaque(false);
 		UseDefaultScar.setFont(new Font("Arial", Font.PLAIN, 20));
 		UseDefaultScar.setBounds(373, 513, 169, 30);
 		UploadContainer.add(UseDefaultScar);
@@ -352,7 +353,7 @@ public class Child_Upload extends JPanel {
 		AddParameter = new JButton("Add");
 		AddParameter.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
-				updateTable();
+				paramAddClicked();
 			}
 		});
 		AddParameter.setFont(new Font("Arial", Font.PLAIN, 20));
@@ -363,7 +364,7 @@ public class Child_Upload extends JPanel {
 		RemoveParameter.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				deleteBtn_Clicked();
+				paramDeleteClicked();
 			}
 		});
 		RemoveParameter.setFont(new Font("Arial", Font.PLAIN, 20));
@@ -704,9 +705,9 @@ public class Child_Upload extends JPanel {
 		DCscrollpanel.validate();
 		UploadContainer.add(DCscrollpanel);
 		
-		JLabel username = new JLabel("User Name:");
+		JLabel username = new JLabel("IGEM Username:");
 		username.setFont(new Font("Arial", Font.PLAIN, 20));
-		username.setBounds(373, 1790, 120, 24);
+		username.setBounds(373, 1790, 160, 24);
 		UploadContainer.add(username);
 		
 		JLabel password = new JLabel("Password:");
@@ -716,17 +717,17 @@ public class Child_Upload extends JPanel {
 		
 		UserName = new JTextField();
 		UserName.setFont(new Font("Arial", Font.PLAIN, 20));
-		UserName.setBounds(500, 1790, 146, 24);
+		UserName.setBounds(550, 1790, 146, 30);
 		UploadContainer.add(UserName);
 		UserName.setColumns(10);
 		
 		Password = new JPasswordField();
 		Password.setFont(new Font("Arial", Font.PLAIN, 20));
 		Password.setColumns(10);
-		Password.setBounds(500, 1830, 146, 24);
+		Password.setBounds(550, 1830, 146, 30);
 		UploadContainer.add(Password);
 		
-		SubmitToDatabase = new JButton("<html>" + "Submit to" + "<br>" + " EasyBBK DB" + "</html>");
+		SubmitToDatabase = new JButton("<html>" + "Submit to" + "<br>" + " EasyBBK" + "</html>");
 		SubmitToDatabase.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -788,7 +789,7 @@ public class Child_Upload extends JPanel {
 			}
 		});
 		SubmitToDatabase.setFont(new Font("Arial", Font.PLAIN, 24));
-		SubmitToDatabase.setBounds(403, 1870, 200, 55);
+		SubmitToDatabase.setBounds(403, 1870, 200, 65);
 		UploadContainer.add(SubmitToDatabase);
 		
 		SubmitToWebsite = new JButton("<html>" + "Submit to" + "<br>" + "Registry" + "</html>");
@@ -822,7 +823,6 @@ public class Child_Upload extends JPanel {
 						bbkupload.categories.add(category);
 					}
 					bbkupload.features = new ArrayList<Feature>();
-					System.out.println(featureTable.getRowCount());
 					for (int i = 0; i < featureTable.getRowCount();i++)
 					{
 						Feature feature = new Feature("",((DefaultTableModel) featureTable.getModel()).getValueAt(i, 1).toString(),
@@ -857,7 +857,7 @@ public class Child_Upload extends JPanel {
 			}
 		});
 		SubmitToWebsite.setFont(new Font("Arial", Font.PLAIN, 24));
-		SubmitToWebsite.setBounds(649, 1870, 200, 55);
+		SubmitToWebsite.setBounds(649, 1870, 200, 65);
 		UploadContainer.add(SubmitToWebsite);
 		
 //		JLabel information = new JLabel("Information", SwingConstants.CENTER);
@@ -874,7 +874,7 @@ public class Child_Upload extends JPanel {
 		showinfo = new JLabel("");
 		showinfo.setOpaque(false);
 		showinfo.setVisible(true);
-		showinfo.setBounds(670, 1700, 360, 240);
+		showinfo.setBounds(750, 1700, 360, 240);
 		showinfo.setFont(new Font("Arial", Font.PLAIN, 20));
 		UploadContainer.add(showinfo);
 		
@@ -936,7 +936,7 @@ public class Child_Upload extends JPanel {
 		add(scrollpanel);
 	}
 	
-	private void updateTable(){
+	private void paramAddClicked(){
 		String[] addnew = {"--Add Another Parameter--",""};
 		if (paramTable.getRowCount()>0)
 			if (((DefaultTableModel) paramTable.getModel()).getValueAt(paramTable.getRowCount()-1, 0).equals(addnew[0]))
@@ -944,9 +944,8 @@ public class Child_Upload extends JPanel {
 		((DefaultTableModel) paramTable.getModel()).addRow(addnew);
     }
 	
-	private void deleteBtn_Clicked(){
+	private void paramDeleteClicked(){
     	int row=paramTable.getSelectedRow();
-    	//System.out.println(row);
     	if(row>-1){
     		 ((DefaultTableModel) paramTable.getModel()).removeRow(row);
     	}
@@ -965,7 +964,6 @@ public class Child_Upload extends JPanel {
     	if(row>-1){
     		 ((DefaultTableModel) categoryTable.getModel()).removeRow(row);
     	}
-    	System.out.println(row);
     }
 	
 	private void featureAddClicked(){
@@ -974,7 +972,6 @@ public class Child_Upload extends JPanel {
 			if (((DefaultTableModel) featureTable.getModel()).getValueAt(featureTable.getRowCount()-1, 0).equals(addnew[0]))
 				return;
 		((DefaultTableModel) featureTable.getModel()).addRow(addnew);
-		//System.out.println(featureTable.getRowCount());
     }
 	
 	private void featureDeleteClicked(){
@@ -1024,113 +1021,4 @@ public class Child_Upload extends JPanel {
 			}
 		}
 	}
-}				
-				
-
-//				System.out.print(1);
-//				showinfo.setText("Uploading your biobrick...");;
-//				showinfopanel.updateUI();
-//				FileWriter output = new FileWriter("upload");
-//				BufferedWriter bf = new BufferedWriter(output);
-//				/*for (String l : list) {
-//					bf.write(l + "\r\n");
-//				}*/
-//				//System.out.print(1);
-//				String pwd_output = (new BASE64Encoder()).encode(String.valueOf(Password.getPassword()).getBytes());
-//				bf.write(UserName.getText() + "\r\n");
-//				bf.write(pwd_output + "\r\n");
-//				bf.write(typestring + "\r\n");
-//				bf.write(ShortDescription.getText() + "\r\n");
-//				bf.write(LongDescription.getText() + "\r\n");
-//				bf.write(Source.getText() + "\r\n");
-//				bf.write(DesignConsideration.getText() + "\r\n");
-//				bf.write(Nickname.getText() + "\r\n");
-//				bf.write(Designers.getText() + "\r\n");
-//				//System.out.print(2);
-//				bf.write("{");
-//				for(int i = 0; i < parameternumber; i++){
-//					if(i == (parameternumber - 1)) 
-//						bf.write("'" + parameter_item[i].content + "':'" + parameter_item[i].textField.getText() + "'");
-//					else 
-//						bf.write("'" + parameter_item[i].content + "':'" + parameter_item[i].textField.getText() + "',");
-//				}
-//				bf.write("}" + "\r\n");
-//				
-//				bf.write("{");
-//				for(int i = 0; i < categorynumber; i++){
-//					if(i == (categorynumber - 1)) bf.write("'" + category_item[i].content + "'");
-//					else bf.write("'" + category_item[i].content + "',");
-//				}
-//				bf.write("}" + "\r\n");
-//				//System.out.print(3);
-//				if(UseDefaultScar.isSelected()){
-//					bbkupload.setSequence(true, false);
-//				}
-//				else if(!UseDefaultScar.isSelected()){
-//					bbkupload.setSequence(false, false);
-//				}
-//				//System.out.print(3.5);
-//				//if(subpartdialog.confirmedflag){
-//				//waitingdialog.inputtext.setText("Getting sequence");
-//				bf.write(bbkupload.getSequence() + "\r\n");
-//				//}
-//				//child_upload.waitingdialog.inputtext.setText("Getting sequence done");
-//				
-//				//System.out.print(4);
-//				bf.write("[");
-//				for(int i = 0; i < featurenumber; i++){
-//					if(i == (featurenumber - 1)) bf.write("['" + feature_item[i].content1 + "','"+ feature_item[i].Label.getText() + "','" + feature_item[i].Start.getText() + "','" + feature_item[i].End.getText() + "','" + feature_item[i].content2 + "']");
-//					else bf.write("['" + feature_item[i].content1 + "','"+ feature_item[i].Label.getText() + "','" + feature_item[i].Start.getText() + "','" + feature_item[i].End.getText() + "','" + feature_item[i].content2 + "'],");
-//				}
-//				bf.write("]");
-//				//System.out.print(5);
-//				
-//				bf.flush();
-//				bf.close();
-//				//System.out.println(System.getProperty("user.dir"));
-//				
-//				Process proc = Runtime.getRuntime().exec("./post_py/LoginToUploadBiobrick.exe");
-//				BufferedReader br = new BufferedReader(new InputStreamReader(proc.getInputStream()));
-//				try {
-//					proc.waitFor();
-//				} catch (InterruptedException e) {
-//					// TODO Auto-generated catch block
-//					e.printStackTrace();
-//				}
-//				String str = br.readLine();		        
-//		        if (str.equals("-1")){
-//		        	//System.out.println("Username or password is wrong");
-//		        	showinfo.setText("Username or password is wrong");
-//		        	showinfopanel.updateUI();
-//		        	//waitingdialog.inputtext.setText("Username or password is wrong");
-//		        	//waitingdialog.Confirmed.setVisible(true);
-//		        }
-//		        else{
-//		        	//System.out.println("New BioBrick is :"+str);
-//		        	showinfo.setText("<html>" + "Successful uploading!" + "<br>" +  "New BioBrick is :" + str + "<html>");
-//		        	showinfopanel.updateUI();
-//		        	//waitingdialog.inputtext.setText("New BioBrick is :" + str);
-//		        	//waitingdialog.Confirmed.setVisible(true);
-//		        }
-
-
-
-		/*public static void main(String[] args) {
-				WriteTxt rt = new WriteTxt();
-				Thread demo1 = new Thread(rt);
-				demo1.start();*/
-
-
-		// 读txt文件里的内容
-		/*try {
-		FileReader input = new FileReader("E://igem//Code//potential-octo-wookie//test.txt");
-		BufferedReader br = new BufferedReader(input);
-		String text = null;
-		while ((text = br.readLine()) != null) {
-		System.out.println(text);
-		}
-		br.close();
-		input.close();
-		} catch (IOException e) {
-		e.printStackTrace();
-		}*/
+}
