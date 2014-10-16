@@ -78,15 +78,11 @@ public class Child_Upload extends JPanel {
 	public JTextArea DesignConsideration;
 	public JScrollPane DCscrollpanel;
 	public int parameternumber = 0;
-	public Parameter_item[] parameter_item = new Parameter_item[4];
 	public int categorynumber = 0;
-	public Category_item[] category_item = new Category_item[4];
 	public int featurenumber = 0;
-	public Feature_item[] feature_item = new Feature_item[4];
 	public JTextField UserName;
 	public JPasswordField Password;
 	public SubpartDialog subpartdialog;
-	//public JPanel showinfopanel;
 	public JLabel showinfo;
 	public JLabel BackGround;
 	public JButton Clearall;
@@ -166,13 +162,25 @@ public class Child_Upload extends JPanel {
 					requestFocus();
 			}
 		});
-		
-		setBounds(0, 0, 1366, 670);
+		if(mainpage.small == false){
+			setBounds(0, 0, 1366, 670);
+		}
+		else if(mainpage.small == true){
+			setBounds(0, 0, 1280, 670);
+		}
 		setBackground(new Color(255, 255, 255));
 		setLayout(null);
 		setVisible(true);
 		
 		UploadContainer = new JPanel();
+		if(mainpage.small == false){
+			UploadContainer.setBounds(0, 0, 1348, 2000);
+			UploadContainer.setPreferredSize(new Dimension(1348, 2000));
+		}
+		else if(mainpage.small == true){
+			UploadContainer.setBounds(0, 0, 1262, 2000);
+			UploadContainer.setPreferredSize(new Dimension(1262, 2000));
+		}
 		UploadContainer.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -180,8 +188,6 @@ public class Child_Upload extends JPanel {
 					UploadContainer.requestFocus();
 			}
 		});
-		UploadContainer.setBounds(0, 0, 1348, 2000);
-		UploadContainer.setPreferredSize(new Dimension(1348, 2000));
 		UploadContainer.setBackground(new Color(255, 255, 255));
 		UploadContainer.setLayout(null);
 		
@@ -782,7 +788,7 @@ public class Child_Upload extends JPanel {
 			}
 		});
 		SubmitToDatabase.setFont(new Font("Arial", Font.PLAIN, 24));
-		SubmitToDatabase.setBounds(403, 1870, 180, 55);
+		SubmitToDatabase.setBounds(403, 1870, 200, 55);
 		UploadContainer.add(SubmitToDatabase);
 		
 		SubmitToWebsite = new JButton("<html>" + "Submit to" + "<br>" + " official website" + "</html>");
@@ -917,10 +923,15 @@ public class Child_Upload extends JPanel {
 		UploadContainer.add(BackGround);
 		
 		JScrollBar scrollbar = new JScrollBar();
+		if(mainpage.small == false){
+			scrollpanel.setBounds(0, 0, 1366, 670);
+		}
+		else if(mainpage.small == true){
+			scrollpanel.setBounds(0, 0, 1280, 670);
+		}
 		scrollbar.setUnitIncrement(100);
 		scrollpanel.setVerticalScrollBar(scrollbar);
 		scrollpanel.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-		scrollpanel.setBounds(0, 0, 1366, 670);
 		scrollpanel.validate();
 		add(scrollpanel);
 	}
