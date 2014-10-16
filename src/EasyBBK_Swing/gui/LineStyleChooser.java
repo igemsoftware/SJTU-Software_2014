@@ -3,18 +3,22 @@ package EasyBBK_Swing.gui;
 import java.awt.BasicStroke;
 import java.awt.BorderLayout;  
 import java.awt.Color;  
+import java.awt.Cursor;
 import java.awt.Frame;  
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;  
 import java.awt.event.ActionListener;  
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;  
 import java.awt.event.WindowEvent;  
 import java.util.HashMap;  
 import java.util.Map;  
 
 import javax.swing.JButton;  
+import javax.swing.JColorChooser;
 import javax.swing.JDialog;  
 import javax.swing.JLabel;  
 import javax.swing.JList;  
@@ -79,7 +83,8 @@ public class LineStyleChooser extends JPanel
  
     private JLabel lblColor; 
     private JLabel lblSize; 
-  
+    private JLabel otherColor;
+    
     private JTextField txtColor;   
     private JTextField txtSize;
     
@@ -197,6 +202,12 @@ public class LineStyleChooser extends JPanel
         txtColor.setBounds(10, 30, 130, 20); 
         txtColor.setText("Black"); //初始化为默认的样式  
         
+        otherColor = new JLabel("<html><U>Other Colors</U></html>");
+        otherColor.setForeground(Color.blue);  
+        otherColor.setBounds(60, 8, 120, 20);  
+        otherColor.setCursor(new Cursor(Cursor.HAND_CURSOR));  
+        add(otherColor); 
+        
         add(spColor);  
         spColor.setBounds(10, 50, 130, 100);  
         
@@ -292,7 +303,20 @@ public class LineStyleChooser extends JPanel
                 dialog.dispose();  
                 dialog = null;  
             }  
-        });  
+        }); 
+        
+        otherColor.addMouseListener(new MouseAdapter() {  
+            @Override  
+            public void mouseClicked(MouseEvent e) {  
+                @SuppressWarnings("static-access")
+				Color col_temp = new JColorChooser().showDialog(null, null, Color.pink);  
+                if (col_temp != null) {  
+                    current_color = col_temp;  
+                    showPanel.setColor(current_color);  
+                    super.mouseClicked(e);  
+                }  
+            }  
+        });
     }  
       
     /*显示字体选择器对话框(x,y表示窗体的启动位置)*/  
