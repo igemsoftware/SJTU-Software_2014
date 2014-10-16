@@ -264,7 +264,7 @@ public class Child_Design extends JLayeredPane {
 		
 		ImageIcon image_plasmid = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Plasmid.png"));
 		plasmid.setIcon(image_plasmid);
-		plasmid.setBounds(6, 416, 84, 60);
+		plasmid.setBounds(6, 415, 84, 60);
 		plasmid.setName("plasmid");
 		plasmid.setToolTipText("plasmid");
 		background.add(plasmid);
