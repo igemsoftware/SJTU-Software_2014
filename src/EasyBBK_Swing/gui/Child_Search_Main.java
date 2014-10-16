@@ -69,11 +69,12 @@ public class Child_Search_Main extends JPanel {
 		
 		SearchText = new JTextField();
 		if(mainpage.small == false){
-			SearchText.setBounds(373, 237, 426, 65);
+			SearchText.setBounds(373, 237, 426, 53);
 		}
 		else if(mainpage.small == true){
-			SearchText.setBounds(349, 237, 426, 65);
+			SearchText.setBounds(349, 237, 426, 53);
 		}
+		SearchText.setBackground(new Color(254, 254, 254));
 		SearchText.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent arg0) {
@@ -101,10 +102,10 @@ public class Child_Search_Main extends JPanel {
 		
 		goBox = new JLabel("");
 		if(mainpage.small == false){
-			goBox.setBounds(799, 237, 105, 64);
+			goBox.setBounds(799, 237, 105, 53);
 		}
 		else if(mainpage.small == true){
-			goBox.setBounds(776, 237, 105, 64);
+			goBox.setBounds(775, 237, 105, 53);
 		}
 		goBox.addMouseListener(new MouseAdapter() {
 			@Override
@@ -159,10 +160,10 @@ public class Child_Search_Main extends JPanel {
 		
 		Blast = new JLabel("");
 		if(mainpage.small == false){
-			Blast.setBounds(908, 237, 84, 64);
+			Blast.setBounds(908, 237, 92, 53);
 		}
 		else if(mainpage.small == true){
-			Blast.setBounds(885, 237, 84, 64);
+			Blast.setBounds(885, 237, 92, 53);
 		}
 		Blast.addMouseListener(new MouseAdapter() {
 			@Override

@@ -97,10 +97,10 @@ public class Child_Search extends JPanel {
 		
 		final JLabel Back = new JLabel();
 		if(mainpage.small == false){
-			Back.setBounds(1, 0, 58, 55);
+			Back.setBounds(1, 1, 50, 44);
 		}
 		else if(mainpage.small == true){
-			Back.setBounds(1, 0, 58, 55);
+			Back.setBounds(1, 1, 50, 44);
 		}
 		Back.addMouseListener(new MouseAdapter() {
 			@Override
@@ -132,22 +132,22 @@ public class Child_Search extends JPanel {
 			}
 			@Override
 			public void mouseEntered(MouseEvent arg0) {
-				Back.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/SearchBox_backward_Hock.png")));
+				Back.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Child_SearchBox_backward_Hock.png")));
 			}
 			@Override
 			public void mouseExited(MouseEvent arg0) {
-				Back.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/SearchBox_backward.png")));
+				Back.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Child_SearchBox_backward.png")));
 			}
 		});
-		Back.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/SearchBox_backward.png")));
+		Back.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Child_SearchBox_backward.png")));
 		Result.add(Back);
 		
 		final JLabel Forward = new JLabel();
 		if(mainpage.small == false){
-			Forward.setBounds(59, 0, 54, 55);
+			Forward.setBounds(52, 1, 50, 44);
 		}
 		else if(mainpage.small == true){
-			Forward.setBounds(59, 0, 54, 55);
+			Forward.setBounds(52, 1, 50, 44);
 		}
 		Forward.addMouseListener(new MouseAdapter() {
 			@Override
@@ -167,24 +167,24 @@ public class Child_Search extends JPanel {
 			}
 			@Override
 			public void mouseEntered(MouseEvent arg0) {
-				Forward.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/SearchBox_forward_Hock.png")));
+				Forward.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Child_SearchBox_forward_Hock.png")));
 			}
 			@Override
 			public void mouseExited(MouseEvent arg0) {
-				Forward.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/SearchBox_forward.png")));
+				Forward.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Child_SearchBox_forward.png")));
 			}
 		});
-		Forward.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/SearchBox_forward.png")));
+		Forward.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Child_SearchBox_forward.png")));
 		Result.add(Forward);
 
 		Search = new JLabel();
 		if(mainpage.small == false){
-			Search.setBounds(490, 0, 104, 53);
+			Search.setBounds(479, 0, 104, 42);
 		}
 		else if(mainpage.small == true){
-			Search.setBounds(447, 0, 104, 53);
+			Search.setBounds(436, 0, 104, 42);
 		}
-		Search.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/SearchBox_searchButton.png")));
+		Search.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Child_SearchBox_searchButton.png")));
 		Search.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -223,21 +223,21 @@ public class Child_Search extends JPanel {
 			@Override
 			public void mouseEntered(MouseEvent arg0) {
 				Search.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-				Search.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/SearchBox_searchButton_Hock.png")));
+				Search.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Child_SearchBox_searchButton_Hock.png")));
 			}
 			@Override
 			public void mouseExited(MouseEvent arg0) {
-				Search.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/SearchBox_searchButton.png")));
+				Search.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Child_SearchBox_searchButton.png")));
 			}
 		});
 		Result.add(Search);
 		
 		textField = new JTextField();
 		if(mainpage.small == false){
-			textField.setBounds(114, 0, 378, 54);
+			textField.setBounds(102, 1, 379, 42);
 		}
 		else if(mainpage.small == true){
-			textField.setBounds(114, 0, 335, 54);
+			textField.setBounds(102, 1, 336, 42);
 		}
 		textField.addKeyListener(new KeyAdapter() {
 			@Override
@@ -277,6 +277,7 @@ public class Child_Search extends JPanel {
 			}
 		});
 		textField.setFont(new Font("Arial", Font.PLAIN, 40));
+		textField.setBorder(null);
 		textField.setVisible(true);
 		Result.add(textField);
 		textField.setColumns(20);
@@ -296,10 +297,10 @@ public class Child_Search extends JPanel {
 		
 		Blast = new JLabel("");
 		if(mainpage.small == false){
-			Blast.setBounds(596, 0, 84, 53);
+			Blast.setBounds(588, 0, 95, 42);
 		}
 		else if(mainpage.small == true){
-			Blast.setBounds(553, 0, 84, 53);
+			Blast.setBounds(545, 0, 95, 42);
 		}
 		Blast.addMouseListener(new MouseAdapter() {
 			@Override
@@ -339,14 +340,14 @@ public class Child_Search extends JPanel {
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				Blast.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-				Blast.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/blast_enter.png")));
+				Blast.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Child_blast_enter.png")));
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
-				Blast.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/blast.png")));
+				Blast.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Child_blast.png")));
 			}
 		});
-		Blast.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/blast.png")));
+		Blast.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Child_blast.png")));
 		Result.add(Blast);
 		
 		Details = new JPanel();
