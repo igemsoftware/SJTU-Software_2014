@@ -17,7 +17,7 @@ public class SearchingResultPage extends JPanel {
 	public SearchingResultPage(int number) {
 		num = number;
 		setBackground(new Color(255, 255, 255));
-		setBounds(0, 0, 569, 281*num);
+		setBounds(0, 0, 569, 192*num);
 		setBorder(BorderFactory.createLineBorder(Color.black));
 		setVisible(true);
 		setLayout(null);
@@ -28,13 +28,13 @@ public class SearchingResultPage extends JPanel {
 			SearchingResult single = new SearchingResult();
 			searchingresult.add(single);
 			add(single);
-			single.setBounds(0, 281*i, 569, 281);
+			single.setBounds(0, 192*i, 569, 192);
 		}
 	}
 	
 	public SearchingResultPage() {
 		setBackground(new Color(255, 255, 255));
-		setBounds(0, 0, 569, 281*num);
+		setBounds(0, 0, 569, 192*num);
 		setBorder(BorderFactory.createLineBorder(Color.black));
 		setVisible(true);
 		setLayout(null);
@@ -45,7 +45,7 @@ public class SearchingResultPage extends JPanel {
 			SearchingResult single = new SearchingResult();
 			searchingresult.add(single);
 			add(single);
-			single.setBounds(0, 281*i, 569, 281);
+			single.setBounds(0, 192*i, 569, 192);
 		}
 	}
 }

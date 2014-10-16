@@ -6,6 +6,7 @@ import java.awt.Cursor;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.swing.SwingConstants;
 
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
@@ -19,16 +20,14 @@ public class SearchingResult extends JPanel{
 	public JLabel Evalue_Content;
 	public JLabel EnteredDate_Content;
 	public JLabel Author_Content;
-	public JLabel Description1;
-	public JLabel Description2;
+	public JLabel Description;
 	public JLabel URL_Content;
 	public JLabel ReleasedStatus_Content;
 	public JLabel AverageStar_Content;
 	public JLabel ResultsInGoogle_Content;
-	public JLabel Score;
 	public JLabel Evalue;
 	public JLabel UsedTimes_Content;
-	
+	public JLabel Score;
 	/**
 	 * Create the panel.
 	 */
@@ -41,8 +40,8 @@ public class SearchingResult extends JPanel{
 			}
 		});
 		setBackground(new Color(255, 255, 255));
-		setBounds(0, 0, 569, 281);
-		setBorder(BorderFactory.createLineBorder(Color.black));
+		setBounds(0, 0, 569, 192);
+		//setBorder(BorderFactory.createLineBorder(Color.black));
 		setVisible(true);
 		setLayout(null);
 
@@ -59,74 +58,63 @@ public class SearchingResult extends JPanel{
 				ID_Content.setForeground(Color.blue);
 			}
 		});
-		ID_Content.setFont(new Font("Arial", Font.BOLD, 24));
-		ID_Content.setBounds(10, 10, 169, 24);
+		ID_Content.setFont(new Font("Times New Roman", Font.BOLD, 25));
+		ID_Content.setBounds(10, 10, 180, 36);
 		add(ID_Content);
 		
 		JLabel Type = new JLabel("Type:");
-		Type.setFont(new Font("Arial", Font.PLAIN, 20));
-		Type.setBounds(202, 10, 51, 24);
+		Type.setFont(new Font("Times New Roman", Font.BOLD, 18));
+		Type.setBounds(195, 16, 50, 24);
 		add(Type);
 		
 		Type_Content = new JLabel("");
-		Type_Content.setFont(new Font("Arial", Font.PLAIN, 20));
-		Type_Content.setBounds(263, 10, 117, 24);
+		Type_Content.setFont(new Font("Times New Roman", Font.BOLD, 18));
+		Type_Content.setBounds(245, 16, 117, 24);
 		add(Type_Content);
 		
 		Evalue = new JLabel("E-value:");
-		Evalue.setFont(new Font("Arial", Font.PLAIN, 20));
-		Evalue.setBounds(409, 10, 82, 24);
+		Evalue.setFont(new Font("Times New Roman", Font.BOLD, 18));
+		Evalue.setBounds(365, 16, 68, 24);
 		add(Evalue);
 		
 		Evalue_Content = new JLabel("");
-		Evalue_Content.setFont(new Font("Arial", Font.PLAIN, 20));
-		Evalue_Content.setBounds(495, 10, 56, 24);
+		Evalue_Content.setFont(new Font("Times New Roman", Font.BOLD, 18));
+		Evalue_Content.setBounds(435, 16, 56, 24);
 		add(Evalue_Content);
 		
 		JLabel EnteredDate = new JLabel("Entered Date:");
-		EnteredDate.setFont(new Font("Arial", Font.PLAIN, 20));
-		EnteredDate.setBounds(10, 44, 134, 24);
+		EnteredDate.setFont(new Font("Times New Roman", Font.PLAIN, 17));
+		EnteredDate.setBounds(10, 54, 101, 24);
 		add(EnteredDate);
 		
 		EnteredDate_Content = new JLabel("");
-		EnteredDate_Content.setFont(new Font("Arial", Font.PLAIN, 20));
-		EnteredDate_Content.setBounds(143, 44, 134, 24);
+		EnteredDate_Content.setFont(new Font("Times New Roman", Font.PLAIN, 17));
+		EnteredDate_Content.setBounds(110, 54, 134, 24);
 		add(EnteredDate_Content);
 		
 		JLabel Author = new JLabel("Author:");
-		Author.setFont(new Font("Arial", Font.PLAIN, 20));
-		Author.setBounds(10, 144, 68, 24);
+		Author.setFont(new Font("Times New Roman", Font.PLAIN, 17));
+		Author.setBounds(10, 92, 56, 24);
 		add(Author);
 		
 		Author_Content = new JLabel("");
-		Author_Content.setFont(new Font("Arial", Font.PLAIN, 20));
-		Author_Content.setBounds(81, 144, 378, 24);
+		Author_Content.setFont(new Font("Times New Roman", Font.PLAIN, 17));
+		Author_Content.setBounds(65, 92, 494, 24);
 		add(Author_Content);
 		
-		Score = new JLabel("", JLabel.CENTER);
-		Score.setFont(new Font("Arial", Font.BOLD, 30));
-		Score.setBounds(469, 78, 82, 73);
-		Score.setBorder(BorderFactory.createLineBorder(Color.black));
-		add(Score);
-		
 		JLabel ShortDescription = new JLabel("Short Description:");
-		ShortDescription.setFont(new Font("Arial", Font.PLAIN, 20));
-		ShortDescription.setBounds(10, 78, 159, 24);
+		ShortDescription.setFont(new Font("Times New Roman", Font.PLAIN, 17));
+		ShortDescription.setBounds(10, 73, 127, 24);
 		add(ShortDescription);
 		
-		Description1 = new JLabel("");
-		Description1.setFont(new Font("Arial", Font.PLAIN, 20));
-		Description1.setBounds(173, 78, 286, 24);
-		add(Description1);
+		Description = new JLabel("");
+		Description.setFont(new Font("Times New Roman", Font.PLAIN, 17));
+		Description.setBounds(141, 73, 418, 24);
+		add(Description);
 		
-		Description2 = new JLabel("");
-		Description2.setFont(new Font("Arial", Font.PLAIN, 20));
-		Description2.setBounds(10, 113, 450, 24);
-		add(Description2);
-		
-		JLabel Url = new JLabel("URL:");
-		Url.setFont(new Font("Arial", Font.PLAIN, 20));
-		Url.setBounds(10, 178, 48, 24);
+		JLabel Url = new JLabel("Main Page of This Part:");
+		Url.setFont(new Font("Times New Roman", Font.PLAIN, 17));
+		Url.setBounds(10, 111, 161, 24);
 		add(Url);
 		
 		URL_Content = new JLabel("");
@@ -141,48 +129,54 @@ public class SearchingResult extends JPanel{
 				URL_Content.setForeground(Color.black);
 			}
 		});
-		URL_Content.setFont(new Font("Arial", Font.PLAIN, 20));
-		URL_Content.setBounds(60, 178, 399, 24);
+		URL_Content.setFont(new Font("Times New Roman", Font.PLAIN, 17));
+		URL_Content.setBounds(175, 111, 384, 24);
 		add(URL_Content);
 		
 		JLabel ReleasedStatus = new JLabel("Part Status:");
-		ReleasedStatus.setFont(new Font("Arial", Font.PLAIN, 20));
-		ReleasedStatus.setBounds(10, 212, 111, 24);
+		ReleasedStatus.setFont(new Font("Times New Roman", Font.PLAIN, 17));
+		ReleasedStatus.setBounds(10, 130, 79, 24);
 		add(ReleasedStatus);
 		
 		ReleasedStatus_Content = new JLabel("");
-		ReleasedStatus_Content.setFont(new Font("Arial", Font.PLAIN, 20));
-		ReleasedStatus_Content.setBounds(125, 212, 189, 24);
+		ReleasedStatus_Content.setFont(new Font("Times New Roman", Font.PLAIN, 17));
+		ReleasedStatus_Content.setBounds(90, 130, 169, 24);
 		add(ReleasedStatus_Content);
 		
 		JLabel AverageStars = new JLabel("Average Rating:");
-		AverageStars.setFont(new Font("Arial", Font.PLAIN, 20));
-		AverageStars.setBounds(321, 212, 145, 24);
+		AverageStars.setFont(new Font("Times New Roman", Font.PLAIN, 17));
+		AverageStars.setBounds(321, 130, 117, 24);
 		add(AverageStars);
 		
 		AverageStar_Content = new JLabel("");
-		AverageStar_Content.setFont(new Font("Arial", Font.PLAIN, 20));
-		AverageStar_Content.setBounds(469, 212, 79, 24);
+		AverageStar_Content.setFont(new Font("Times New Roman", Font.PLAIN, 17));
+		AverageStar_Content.setBounds(435, 130, 79, 24);
 		add(AverageStar_Content);
 		
 		JLabel ResultsInGoogle = new JLabel("Number of Related Results on Google Scholar:");
-		ResultsInGoogle.setFont(new Font("Arial", Font.PLAIN, 20));
-		ResultsInGoogle.setBounds(10, 247, 422, 24);
+		ResultsInGoogle.setFont(new Font("Times New Roman", Font.PLAIN, 17));
+		ResultsInGoogle.setBounds(10, 149, 322, 24);
 		add(ResultsInGoogle);
 		
 		ResultsInGoogle_Content = new JLabel("");
-		ResultsInGoogle_Content.setFont(new Font("Arial", Font.PLAIN, 20));
-		ResultsInGoogle_Content.setBounds(442, 246, 51, 24);
+		ResultsInGoogle_Content.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		ResultsInGoogle_Content.setBounds(340, 149, 68, 24);
 		add(ResultsInGoogle_Content);
 		
 		JLabel UsedTimes = new JLabel("Used Times:");
-		UsedTimes.setFont(new Font("Arial", Font.PLAIN, 20));
-		UsedTimes.setBounds(315, 44, 117, 24);
+		UsedTimes.setFont(new Font("Times New Roman", Font.PLAIN, 17));
+		UsedTimes.setBounds(318, 54, 92, 24);
 		add(UsedTimes);
 		
 		UsedTimes_Content = new JLabel("");
-		UsedTimes_Content.setFont(new Font("Arial", Font.PLAIN, 20));
-		UsedTimes_Content.setBounds(440, 44, 68, 24);
+		UsedTimes_Content.setFont(new Font("Times New Roman", Font.PLAIN, 17));
+		UsedTimes_Content.setBounds(410, 54, 68, 24);
 		add(UsedTimes_Content);
+		
+		Score = new JLabel("", SwingConstants.CENTER);
+		Score.setBorder(BorderFactory.createLineBorder(Color.black));
+		Score.setFont(new Font("Times New Roman", Font.BOLD, 18));
+		Score.setBounds(509, 10, 50, 40);
+		add(Score);
 	}
 }

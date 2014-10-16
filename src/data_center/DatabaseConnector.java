@@ -10,9 +10,9 @@ public class DatabaseConnector
 {
 	@SuppressWarnings("unused")
 	private final static String DRIVER = "com.mysql.jdbc.Driver";
-	private final static String URL_SERVER = Server.Database_old.URL_SERVER;
-	private final static String USER_NAME = Server.Database_old.USER_NAME;
-	private final static String PASSWORD = Server.Database_old.PASSWORD;
+	private final static String URL_SERVER = Server.Database.URL_SERVER;
+	private final static String USER_NAME = Server.Database.USER_NAME;
+	private final static String PASSWORD = Server.Database.PASSWORD;
 	
     private static Connection connection = null;
     
@@ -79,7 +79,7 @@ public class DatabaseConnector
     }
     
     /** Used when blasting, not get outline one by one to reduce query times
-     * to reduce query time.  */
+     * to reduce query time. Change the input list in situ.  */
     public static void fillOutlineIntoHalfFilledList(SearchResultList list)
     {	
     	checkConnection();
@@ -212,7 +212,7 @@ public class DatabaseConnector
 	        			   + DBConsts.Header.Main.NAME + " like " + "'%" + token + "%'" +
 					" OR " + DBConsts.Header.Main.SHORT_DESC + " like " + "'%" + token + "%'" +
 					" OR " + DBConsts.Header.Main.TYPE + " like " + "'%" + token + "%'" + 
-					" OR " + DBConsts.Header.Main.AUTHOR + " like " + "'%" + token + "%'" + 
+					//" OR " + DBConsts.Header.Main.AUTHOR + " like " + "'%" + token + "%'" + 
 					" OR " + DBConsts.Header.Main.NICKNAME + " like " + "'%" + token + "%'");
 				while (resultSet.next())
 				{	BbkOutline bbkOutline = new BbkOutline(resultSet);

@@ -21,9 +21,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="Logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">EasyBbk
-   &#160;<span id="projectnumber">1.0</span>
+   &#160;<span id="projectnumber">1.0.0</span>
    </div>
    <div id="projectbrief">&quot;Easy BBK&quot; is a trial to provide a standardized, visualized and user friendly access to bio-brick system by simplify and interassociate the searching, comparing, designing and uploading of bio-bricks. These four main functions constitute the &quot;Easy BBK&quot; client-side which is realized by pure java and supported by a remote server through the internet. We hope that you will have better experiences when exploring the biobrick world using &quot;Easy BBK&quot;.</div>
   </td>
@@ -41,7 +42,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="namespaces.html"><span>Packages</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
-      <li><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -73,7 +73,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -101,10 +101,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a1cbc89f76456ddb51ba3e08e1d545205"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdata__center_1_1_bbk_outline_1_1_rating.html#a1cbc89f76456ddb51ba3e08e1d545205">Rating</a> (ResultSet resultSet)  throws SQLException     	</td></tr>
 <tr class="separator:a1cbc89f76456ddb51ba3e08e1d545205"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa47eae7a97df08240f1a828051a95bb2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdata__center_1_1_bbk_outline_1_1_rating.html#aa47eae7a97df08240f1a828051a95bb2">getScore</a> ()</td></tr>
-<tr class="separator:aa47eae7a97df08240f1a828051a95bb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a90b3222cad3add43335636a1c15232bb"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdata__center_1_1_bbk_outline_1_1_rating.html#a90b3222cad3add43335636a1c15232bb">getScore</a> (double status_weight, double quality_weight, double feedbacks_weight, double publication_weight)</td></tr>
-<tr class="separator:a90b3222cad3add43335636a1c15232bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab88996a071244fe77a41b0763becc23a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdata__center_1_1_bbk_outline_1_1_rating.html#ab88996a071244fe77a41b0763becc23a">display</a> ()</td></tr>
 <tr class="separator:ab88996a071244fe77a41b0763becc23a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -134,11 +130,15 @@ Public Attributes</h2></td></tr>
 <tr class="separator:abdd5f1b194f592a9d128f99285020783"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad2a76c29026009626c40517440909b7c"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdata__center_1_1_bbk_outline_1_1_rating.html#ad2a76c29026009626c40517440909b7c">first_url</a></td></tr>
 <tr class="separator:ad2a76c29026009626c40517440909b7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4bfb44ebfee50ca684c7385043ab975c"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdata__center_1_1_bbk_outline_1_1_rating.html#a4bfb44ebfee50ca684c7385043ab975c">documentation</a></td></tr>
+<tr class="separator:a4bfb44ebfee50ca684c7385043ab975c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7787ac4a30fd4b6aeab77033cf039268"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdata__center_1_1_bbk_outline_1_1_rating.html#a7787ac4a30fd4b6aeab77033cf039268">used_times</a></td></tr>
+<tr class="separator:a7787ac4a30fd4b6aeab77033cf039268"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The rating by EasyBbk, evaluation criteria from both official web page and criteria by SJTU-software. </p>
 
-<p>Definition at line <a class="el" href="_bbk_outline_8java_source.html#l00077">77</a> of file <a class="el" href="_bbk_outline_8java_source.html">BbkOutline.java</a>.</p>
+<p>Definition at line <a class="el" href="_bbk_outline_8java_source.html#l00122">122</a> of file <a class="el" href="_bbk_outline_8java_source.html">BbkOutline.java</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a1cbc89f76456ddb51ba3e08e1d545205"></a>
 <div class="memitem">
@@ -154,7 +154,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_bbk_outline_8java_source.html#l00093">93</a> of file <a class="el" href="_bbk_outline_8java_source.html">BbkOutline.java</a>.</p>
+<p>Definition at line <a class="el" href="_bbk_outline_8java_source.html#l00140">140</a> of file <a class="el" href="_bbk_outline_8java_source.html">BbkOutline.java</a>.</p>
 
 </div>
 </div>
@@ -173,64 +173,7 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Print main attributes in cmd for testing. </p>
 
-<p>Definition at line <a class="el" href="_bbk_outline_8java_source.html#l00134">134</a> of file <a class="el" href="_bbk_outline_8java_source.html">BbkOutline.java</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="aa47eae7a97df08240f1a828051a95bb2"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int data_center.BbkOutline.Rating.getScore </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="_bbk_outline_8java_source.html#l00110">110</a> of file <a class="el" href="_bbk_outline_8java_source.html">BbkOutline.java</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a90b3222cad3add43335636a1c15232bb"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int data_center.BbkOutline.Rating.getScore </td>
-          <td>(</td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>status_weight</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>quality_weight</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>feedbacks_weight</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>publication_weight</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="_bbk_outline_8java_source.html#l00118">118</a> of file <a class="el" href="_bbk_outline_8java_source.html">BbkOutline.java</a>.</p>
+<p>Definition at line <a class="el" href="_bbk_outline_8java_source.html#l00160">160</a> of file <a class="el" href="_bbk_outline_8java_source.html">BbkOutline.java</a>.</p>
 
 </div>
 </div>
@@ -245,7 +188,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_bbk_outline_8java_source.html#l00088">88</a> of file <a class="el" href="_bbk_outline_8java_source.html">BbkOutline.java</a>.</p>
+<p>Definition at line <a class="el" href="_bbk_outline_8java_source.html#l00133">133</a> of file <a class="el" href="_bbk_outline_8java_source.html">BbkOutline.java</a>.</p>
 
 </div>
 </div>
@@ -259,7 +202,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_bbk_outline_8java_source.html#l00085">85</a> of file <a class="el" href="_bbk_outline_8java_source.html">BbkOutline.java</a>.</p>
+<p>Definition at line <a class="el" href="_bbk_outline_8java_source.html#l00130">130</a> of file <a class="el" href="_bbk_outline_8java_source.html">BbkOutline.java</a>.</p>
 
 </div>
 </div>
@@ -273,7 +216,21 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_bbk_outline_8java_source.html#l00087">87</a> of file <a class="el" href="_bbk_outline_8java_source.html">BbkOutline.java</a>.</p>
+<p>Definition at line <a class="el" href="_bbk_outline_8java_source.html#l00132">132</a> of file <a class="el" href="_bbk_outline_8java_source.html">BbkOutline.java</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a4bfb44ebfee50ca684c7385043ab975c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">String data_center.BbkOutline.Rating.documentation</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_bbk_outline_8java_source.html#l00137">137</a> of file <a class="el" href="_bbk_outline_8java_source.html">BbkOutline.java</a>.</p>
 
 </div>
 </div>
@@ -287,7 +244,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_bbk_outline_8java_source.html#l00082">82</a> of file <a class="el" href="_bbk_outline_8java_source.html">BbkOutline.java</a>.</p>
+<p>Definition at line <a class="el" href="_bbk_outline_8java_source.html#l00127">127</a> of file <a class="el" href="_bbk_outline_8java_source.html">BbkOutline.java</a>.</p>
 
 </div>
 </div>
@@ -301,7 +258,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_bbk_outline_8java_source.html#l00091">91</a> of file <a class="el" href="_bbk_outline_8java_source.html">BbkOutline.java</a>.</p>
+<p>Definition at line <a class="el" href="_bbk_outline_8java_source.html#l00136">136</a> of file <a class="el" href="_bbk_outline_8java_source.html">BbkOutline.java</a>.</p>
 
 </div>
 </div>
@@ -315,7 +272,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_bbk_outline_8java_source.html#l00090">90</a> of file <a class="el" href="_bbk_outline_8java_source.html">BbkOutline.java</a>.</p>
+<p>Definition at line <a class="el" href="_bbk_outline_8java_source.html#l00135">135</a> of file <a class="el" href="_bbk_outline_8java_source.html">BbkOutline.java</a>.</p>
 
 </div>
 </div>
@@ -329,7 +286,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_bbk_outline_8java_source.html#l00083">83</a> of file <a class="el" href="_bbk_outline_8java_source.html">BbkOutline.java</a>.</p>
+<p>Definition at line <a class="el" href="_bbk_outline_8java_source.html#l00128">128</a> of file <a class="el" href="_bbk_outline_8java_source.html">BbkOutline.java</a>.</p>
 
 </div>
 </div>
@@ -343,7 +300,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_bbk_outline_8java_source.html#l00081">81</a> of file <a class="el" href="_bbk_outline_8java_source.html">BbkOutline.java</a>.</p>
+<p>Definition at line <a class="el" href="_bbk_outline_8java_source.html#l00126">126</a> of file <a class="el" href="_bbk_outline_8java_source.html">BbkOutline.java</a>.</p>
 
 </div>
 </div>
@@ -357,7 +314,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_bbk_outline_8java_source.html#l00079">79</a> of file <a class="el" href="_bbk_outline_8java_source.html">BbkOutline.java</a>.</p>
+<p>Definition at line <a class="el" href="_bbk_outline_8java_source.html#l00124">124</a> of file <a class="el" href="_bbk_outline_8java_source.html">BbkOutline.java</a>.</p>
 
 </div>
 </div>
@@ -371,7 +328,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_bbk_outline_8java_source.html#l00080">80</a> of file <a class="el" href="_bbk_outline_8java_source.html">BbkOutline.java</a>.</p>
+<p>Definition at line <a class="el" href="_bbk_outline_8java_source.html#l00125">125</a> of file <a class="el" href="_bbk_outline_8java_source.html">BbkOutline.java</a>.</p>
 
 </div>
 </div>
@@ -385,7 +342,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_bbk_outline_8java_source.html#l00089">89</a> of file <a class="el" href="_bbk_outline_8java_source.html">BbkOutline.java</a>.</p>
+<p>Definition at line <a class="el" href="_bbk_outline_8java_source.html#l00134">134</a> of file <a class="el" href="_bbk_outline_8java_source.html">BbkOutline.java</a>.</p>
 
 </div>
 </div>
@@ -399,17 +356,31 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_bbk_outline_8java_source.html#l00086">86</a> of file <a class="el" href="_bbk_outline_8java_source.html">BbkOutline.java</a>.</p>
+<p>Definition at line <a class="el" href="_bbk_outline_8java_source.html#l00131">131</a> of file <a class="el" href="_bbk_outline_8java_source.html">BbkOutline.java</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a7787ac4a30fd4b6aeab77033cf039268"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">String data_center.BbkOutline.Rating.used_times</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_bbk_outline_8java_source.html#l00138">138</a> of file <a class="el" href="_bbk_outline_8java_source.html">BbkOutline.java</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li><a class="el" href="_bbk_outline_8java_source.html">BbkOutline.java</a></li>
+<li>D:/_About 学习/爱吉姆/SJTU-Software_2014/src/data_center/<a class="el" href="_bbk_outline_8java_source.html">BbkOutline.java</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Oct 5 2014 13:31:48 for EasyBbk by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Oct 15 2014 02:00:00 for EasyBbk by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>
