@@ -11,6 +11,7 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 import javax.swing.JLayeredPane;
+import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import javax.swing.event.MouseInputListener;
 
@@ -32,6 +33,7 @@ class DragCompListener implements MouseInputListener
 	ArrayList<Integer> nearBackbone = new ArrayList<Integer>();
 	ArrayList<Integer> onBackbone = new ArrayList<Integer>();
 	BackBone closestBackbone = null;
+	JTextField statusBar=null;
 	
 	private BackBone previousBackbone=null;
 	
@@ -45,12 +47,13 @@ class DragCompListener implements MouseInputListener
 		super();
 	}
 	
-	public DragCompListener(JLayeredPane panel, TPanel Tpanel,SketchCenter sketchCenter)
+	public DragCompListener(JLayeredPane panel, TPanel Tpanel,JTextField statusBar,SketchCenter sketchCenter)
 	{
 		super();
 		//get panel
 		this.panel = panel;
 		this.Tpanel = Tpanel;
+		this.statusBar=statusBar;
 		this.sketchCenter = sketchCenter;
 		outer_rect=panel.getVisibleRect();
 	}
@@ -315,6 +318,8 @@ class DragCompListener implements MouseInputListener
 				else
 					ID = ((JLabelWithID) component).ID;
 				project.delComponent(project.findComponentByID(ID));
+				
+				statusBar.setText(null);
 			}
 			else
 			{

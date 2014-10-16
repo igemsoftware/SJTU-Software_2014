@@ -14,26 +14,29 @@ For tutorial and more details, please visit our [wiki page](http://2014.igem.org
 * Mac OS
 
 ##Client Installation
-// fix me
+The runnable EasyBbk.jar file in /Executeable/, which is the client of our sofrware, can be execute under all of the OS mentioned above with jre6 or higher. You may install the [java enviroment](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) to execute it. 
 
 ##Further Development
 Having new ideas? We also provide the source code and the document of the project. For further development, these might help: 
 ####Floder Structure
-#####Executable:
-	// fix me
+#####/Executable/:
+The runnable .jar file which can be runned by double click under java environment. 
 
-#####Source code and Linked Libs of the Client:
-	// fix me
+#####/src/:
+The source code of the client and the server. The folder /src/data_collection/ contains the perl source code for database data collecting. The folder /src/data_center/ contains the source code that provides database and server connection and backstage data storing. The folder /src/EasyBbk_Swing/gui/ contains the source code for GUI.  (Note that the server detail like username and password is not provided for information safety). 
 
-#####Source Code and Data of the Server:
-	// fix me
+#####/lib/:
+The linked .jar file essential to the client. You may also link these resources into the software when further modifying. 
+	
+#####/Documentation/:
+The documentation for data collection, API documentation and test documentation for the backstage unit "data_center". 
 
 
 ####API Documents and Architecture Introductions:
-// fix me
+In /Documentation/. Provides the API and the architecture documentation in corresponding folders. The documentation for database data collection and data_center unit test is also provided. The same documentation can also be downloaded from our [wiki download page](http://2014.igem.org/Team:SJTU-Software/Project/Download). 
 
 ####Compiling
-The source code is compiled under [JavaSE-1.8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) and [Eclipse 4.4](http://www.eclipse.org/downloads/packages/eclipse-standard-44/lunar) by SJTU-Software team,  you may also compile under the same environment or higher. 
+The source code is compiled under [JavaSE-1.6 (the link of JavaSE-1.8 is provided here)](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) and [Eclipse 4.4](http://www.eclipse.org/downloads/packages/eclipse-standard-44/lunar) by SJTU-Software team,  you may also compile under the same environment or higher. 
 
 ##Contact Us
 For any questions or ideas about EasyBbk, please contact:

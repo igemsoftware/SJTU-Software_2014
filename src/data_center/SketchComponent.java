@@ -6,8 +6,11 @@ import java.awt.Point;
 import java.awt.Rectangle;
 import java.util.ArrayList;
 
+/** The class that contains the 6 sketch components and their subclass.  */
 public class SketchComponent
 {
+	/** The class to be extended by the 6 subclasses. Providing all the required 
+	 * set/get functions. Including toXXXXX() to make class cast easier~ */
 	public abstract static class Component
 	{
 		public int ID;
