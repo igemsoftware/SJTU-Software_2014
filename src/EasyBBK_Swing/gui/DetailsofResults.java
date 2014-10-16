@@ -157,7 +157,7 @@ public class DetailsofResults extends JPanel {
         Addforcomparison = new JCheckBox("Add to compare");
         Addforcomparison.setFont(new Font("Times New Roman", Font.PLAIN, 24));
         Addforcomparison.setBounds(296, 5, 190, 30);
-        Addforcomparison.setBackground(new Color(0, 255, 255));
+        Addforcomparison.setBackground(new Color(83, 213, 240));
 		add(Addforcomparison);
 		
 		JLabel Sequence = new JLabel("Sequences:");
