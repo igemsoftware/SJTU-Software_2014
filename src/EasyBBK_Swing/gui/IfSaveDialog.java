@@ -261,7 +261,7 @@ public class IfSaveDialog extends JPanel
     public void showDialog(Frame parent,int x,int y) 
     {  
     	ifOperate=false;
-        String  title = "Upload";  
+        String  title = "Warnning";  
         dialog = new JDialog(parent, title,true);  
         dialog.add(this);  
         dialog.setResizable(false);  

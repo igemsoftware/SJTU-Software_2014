@@ -150,7 +150,7 @@ public class IfUploadListener implements MouseInputListener
 					}
 					
 					
-					Child_Upload child_upload = new Child_Upload(mainpage);
+					Child_Upload child_upload = new Child_Upload(mainpage,bbkUpload);
 					mainpage.Mainpanel.removeAll();
 					mainpage.Mainpanel.add(child_upload);
 					mainpage.Mainpanel.updateUI();

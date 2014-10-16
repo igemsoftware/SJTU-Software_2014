@@ -130,47 +130,54 @@ public class Child_Design extends JLayeredPane {
 		Pen line_inhibit = new Pen();
 		Pen line_enhance = new Pen();
 		Pen line_other = new Pen();
-
-		this.setBounds(0, 0, 1366, 670);
+		
+		if (mainpage.small)
+		{
+			this.setBounds(0, 0, 1277, 670);
+		}
+		else
+		{
+			this.setBounds(0, 0, 1366, 670);
+		}	
 		this.setLayout(null);
         
-		newButton.setBounds(14,55,40,41);
+		newButton.setBounds(9,9,35,35);
 		ImageIcon image_newButton = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/New_design.png"));
 		newButton.setIcon(image_newButton);
 		newButton.setToolTipText("Create a new sketch map.");
         background.add(newButton);
         
-        openButton.setBounds(66,55,40,41);
+        openButton.setBounds(56,9,35,35);
 		ImageIcon image_openButton = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Open_design.png"));
 		openButton.setIcon(image_openButton);
 		openButton.setToolTipText("Open a XML file.");
         background.add(openButton);
         
-        saveButton.setBounds(118,55,40,41);
+        saveButton.setBounds(103,9,35,35);
 		ImageIcon image_saveButton = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Save_design.png"));
 		saveButton.setIcon(image_saveButton);
 		saveButton.setToolTipText("Save your work as a XML file.");
         background.add(saveButton);
 		
-        exportButton.setBounds(173,55,40,41);
+        exportButton.setBounds(151,9,35,35);
 		ImageIcon image_exportButton = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Export_design.png"));
 		exportButton.setIcon(image_exportButton);
 		exportButton.setToolTipText("Export your work as a picture.");
         background.add(exportButton);        
 		
-		backout.setBounds(173,112,40,42);
+		backout.setBounds(151,49,35,35);
 		ImageIcon image_backout = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Backout.png"));
 		backout.setIcon(image_backout);
 		backout.setToolTipText("Undo");
         background.add(backout);
 		
-        forward.setBounds(226,112,40,42);
+        forward.setBounds(195,49,35,35);
 		ImageIcon image_forward = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Forward.png"));
 		forward.setIcon(image_forward);
 		forward.setToolTipText("Redo");
         background.add(forward);
         
-        fontButton.setBounds(67,112,40,42);
+        fontButton.setBounds(56,49,35,35);
 		ImageIcon image_font = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Font.png"));
 		fontButton.setIcon(image_font);
 		fontButton.setToolTipText("Choose the font of the test label.");
@@ -178,14 +185,14 @@ public class Child_Design extends JLayeredPane {
         
         ImageIcon image_text = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Text_design.png"));
 		text.setIcon(image_text);
-		text.setBounds(14, 112, 40, 42);
+		text.setBounds(9, 49, 35, 35);
 		text.setName("text");
 		text.setToolTipText("text");
 		background.add(text);	
 		
 		ImageIcon image_eraser = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Eraser.png"));
 		eraser.setIcon(image_eraser);
-		eraser.setBounds(119, 112, 40, 42);
+		eraser.setBounds(103, 49, 35, 35);
 		eraser.setBorder(new LineBorder(Color.GRAY));
 		eraser.setName("eraser");
 		eraser.setToolTipText("Remove components.");
@@ -194,84 +201,84 @@ public class Child_Design extends JLayeredPane {
 
 		ImageIcon image_promoter = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Promoter.png"));
 		promoter.setIcon(image_promoter);
-		promoter.setBounds(6, 233, 84, 60);
+		promoter.setBounds(6, 217, 84, 60);
 		promoter.setName("promoter");
 		promoter.setToolTipText("promoter");
 		background.add(promoter);		
 		
 		ImageIcon image_rbs = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/RBS.png"));
 		rbs.setIcon(image_rbs);
-		rbs.setBounds(100, 233, 84, 60);
+		rbs.setBounds(100, 217, 84, 60);
 		rbs.setName("rbs");
 		rbs.setToolTipText("rbs");
 		background.add(rbs);		
 		
 		ImageIcon image_coding = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Coding.png"));
 		coding.setIcon(image_coding);
-		coding.setBounds(193, 233, 84, 60);
+		coding.setBounds(193, 217, 84, 60);
 		coding.setName("coding");
 		coding.setToolTipText("coding sequence");
 		background.add(coding);		
 		
 		ImageIcon image_terminator = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Terminator.png"));
 		terminator.setIcon(image_terminator);
-		terminator.setBounds(6, 299, 84, 60);
+		terminator.setBounds(6, 283, 84, 60);
 		terminator.setName("terminator");
 		terminator.setToolTipText("terminator");
 		background.add(terminator);				
 		
 		ImageIcon image_primer = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Primer.png"));
 		primer.setIcon(image_primer);
-		primer.setBounds(100, 299, 84, 60);
+		primer.setBounds(100, 283, 84, 60);
 		primer.setName("primer");
 		primer.setToolTipText("primer");
 		background.add(primer);		
 		
 		ImageIcon image_reporter = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Reporter.png"));
 		reporter.setIcon(image_reporter);
-		reporter.setBounds(193, 299, 84, 60);
+		reporter.setBounds(193, 283, 84, 60);
 		reporter.setName("reporter");
 		reporter.setToolTipText("reporter");
 		background.add(reporter);
 		
 		ImageIcon image_recepter = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Recepter.png"));
 		recepter.setIcon(image_recepter);
-		recepter.setBounds(6, 365, 84, 60);
+		recepter.setBounds(6, 349, 84, 60);
 		recepter.setName("recepter");
 		recepter.setToolTipText("receptor");
 		background.add(recepter);
 		
 		ImageIcon image_factor = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Factor.png"));
 		factor.setIcon(image_factor);
-		factor.setBounds(100, 365, 84, 60);
+		factor.setBounds(100, 349, 84, 60);
 		factor.setName("factor");
 		factor.setToolTipText("factor");
 		background.add(factor);
 		
 		ImageIcon image_protein = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Protein.png"));
 		protein.setIcon(image_protein);
-		protein.setBounds(193, 365, 84, 60);
+		protein.setBounds(193, 349, 84, 60);
 		protein.setName("protein");
 		protein.setToolTipText("protein");
 		background.add(protein);
 		
 		ImageIcon image_plasmid = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Plasmid.png"));
 		plasmid.setIcon(image_plasmid);
-		plasmid.setBounds(6, 433, 84, 60);
+		plasmid.setBounds(6, 416, 84, 60);
 		plasmid.setName("plasmid");
 		plasmid.setToolTipText("plasmid");
 		background.add(plasmid);
 		
 		ImageIcon image_virus = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Virus.png"));
 		virus.setIcon(image_virus);
-		virus.setBounds(100, 433, 84, 59);
+		virus.setBounds(100, 416, 84, 59);
 		virus.setName("virus");
 		virus.setToolTipText("virus");
 		background.add(virus);
 		
 		ImageIcon image_ecoil = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Ecoil.png"));
 		ecoil.setIcon(image_ecoil);
-		ecoil.setBounds(193, 433, 84, 59);
+		ecoil.setBounds(193, 416, 84, 59);
 		ecoil.setName("ecoil");
 		ecoil.setToolTipText("bacteria");
 		background.add(ecoil);
@@ -279,12 +286,12 @@ public class Child_Design extends JLayeredPane {
 		BackBone backbone = new BackBone("", sketchCenter);
 		ImageIcon image_backbone = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Backbone.png"));
 		backbone.setIcon(image_backbone);
-		backbone.setBounds(6, 596, 224, 40);
+		backbone.setBounds(6, 133, 271, 28);
 		backbone.setName("backbone");
 		backbone.setToolTipText("backbone");
 		background.add(backbone);
 		
-		lineButton.setBounds(234,596,43,40);
+		lineButton.setBounds(6,596,31,29);
 		ImageIcon image_line = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/LineStyleChooser.png"));
 		lineButton.setIcon(image_line);
 		lineButton.setToolTipText("Set the style of the line.");
@@ -292,7 +299,7 @@ public class Child_Design extends JLayeredPane {
 		
 		ImageIcon image_line_inhibit = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/InhibitLine.png"));
 		line_inhibit.setIcon(image_line_inhibit);
-		line_inhibit.setBounds(6, 517, 84, 59);
+		line_inhibit.setBounds(6, 531, 84, 59);
 		line_inhibit.setName("line");
 		line_inhibit.setType(-1);
 		line_inhibit.setToolTipText("line_inhibit");
@@ -300,7 +307,7 @@ public class Child_Design extends JLayeredPane {
 		
 		ImageIcon image_line_enhance = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/EnhanceLine.png"));
 		line_enhance.setIcon(image_line_enhance);
-		line_enhance.setBounds(100, 517, 84, 59);
+		line_enhance.setBounds(100, 531, 84, 59);
 		line_enhance.setName("line");
 		line_enhance.setType(0);
 		line_enhance.setToolTipText("line_enhance");
@@ -308,7 +315,7 @@ public class Child_Design extends JLayeredPane {
 		
 		ImageIcon image_line_other = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/OtherLine.png"));
 		line_other.setIcon(image_line_other);
-		line_other.setBounds(193, 517, 84, 59);
+		line_other.setBounds(193, 531, 84, 59);
 		line_other.setName("line");
 		line_other.setToolTipText("line_other");
 		line_other.setType(1);
@@ -316,20 +323,49 @@ public class Child_Design extends JLayeredPane {
 		
 		panel.setLayout(null);
 		panel.setOpaque(true);
-		panel.setBorder(BorderFactory.createEtchedBorder());
-		panel.setBackground(Color.white);		
-		panel.setBounds(283, 0, 1083, 625);
+		panel.setBorder(null);
+		panel.setBackground(Color.white);
+		
+		if (mainpage.small)
+		{
+			panel.setBounds(283, 0, 997, 625);
+		}
+		else
+		{
+			panel.setBounds(283, 0, 1083, 625);
+		}			
 		background.add(panel);
 		
 		Tpanel.setLayout(null);
-		Tpanel.setBounds(0, 0, 1083, 625);
+		if (mainpage.small)
+		{
+			Tpanel.setBounds(0, 0, 997, 625);
+		}
+		else
+		{
+			Tpanel.setBounds(0, 0, 1083, 625);
+		}
 		panel.add(Tpanel,0);
 		
 		linePanel.setLayout(null);
-		linePanel.setBounds(0, 0, 1083, 625);
+		if (mainpage.small)
+		{
+			linePanel.setBounds(0, 0, 997, 625);
+		}
+		else
+		{
+			linePanel.setBounds(0, 0, 1083, 625);
+		}
 		panel.add(linePanel);
 		
-		statusBar.setBounds(283,625,1083,45);
+		if (mainpage.small)
+		{
+			statusBar.setBounds(283,625,997,45);
+		}
+		else
+		{
+			statusBar.setBounds(283,625,1083,45);
+		}	
 		statusBar.setBorder(BorderFactory.createEtchedBorder());
 		statusBar.setBackground(new Color(225,225,225));
 		background.add(statusBar);
@@ -466,7 +502,14 @@ public class Child_Design extends JLayeredPane {
 		//background
 		this.add(background);
 		this.setPosition(background, -1);
-		background.setBounds(0, 0, 1366, 670);
+		if (mainpage.small)
+		{
+			background.setBounds(0, 0, 1280, 670);
+		}
+		else
+		{
+			background.setBounds(0, 0, 1366, 670);
+		}		
 		ImageIcon image_background = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/design_background.png"));
 		background.setIcon(image_background);
 		
@@ -1032,6 +1075,10 @@ public class Child_Design extends JLayeredPane {
 					
 					KeyDeleteListener keyDeleteListener = new KeyDeleteListener();
 					newBackBone.addKeyListener(keyDeleteListener);
+					
+					ShowBorderListener showBorderListener = new ShowBorderListener();
+					newBackBone.addMouseListener(showBorderListener);
+					newBackBone.addMouseMotionListener(showBorderListener);
 	    		}
 	    		else
 	    		{
@@ -1117,6 +1164,10 @@ public class Child_Design extends JLayeredPane {
 					
 					KeyDeleteListener keyDeleteListener = new KeyDeleteListener();
 					newLabel.addKeyListener(keyDeleteListener);
+					
+					ShowBorderListener showBorderListener = new ShowBorderListener();
+					newLabel.addMouseListener(showBorderListener);
+					newLabel.addMouseMotionListener(showBorderListener);
 	    		}
 	    	}
 	    }
@@ -1659,13 +1710,13 @@ public class Child_Design extends JLayeredPane {
 				{
 					statusBar.setText("     "+(e.getComponent()).getName()+"  "+"Position ("
 							+ (e.getComponent()).getX() + " , " + (e.getComponent()).getY() + ")" +
-							"  "+"Width: " + (e.getComponent()).getWidth() );
+							"  "+"Length: " + (e.getComponent()).getWidth() );
 				}
 				else if ((e.getComponent()).getName()=="text")
 				{
 					statusBar.setText("     "+(e.getComponent()).getName()+"  "+"Position ("
 							+ (e.getComponent()).getX() + " , " + (e.getComponent()).getY() + ")" +
-							"  "+"Width: " + (e.getComponent()).getWidth() +
+							"  "+"Length: " + (e.getComponent()).getWidth() +
 							"  "+"Height: " + (e.getComponent()).getHeight());
 				}
 				else
@@ -1690,13 +1741,13 @@ public class Child_Design extends JLayeredPane {
 				{
 					statusBar.setText("     "+(e.getComponent()).getName()+"  "+"Position ("
 							+ (e.getComponent()).getX() + " , " + (e.getComponent()).getY() + ")" +
-							"  "+"Width: " + (e.getComponent()).getWidth() );
+							"  "+"Length: " + (e.getComponent()).getWidth() );
 				}
 				else if ((e.getComponent()).getName()=="text")
 				{
 					statusBar.setText("     "+(e.getComponent()).getName()+"  "+"Position ("
 							+ (e.getComponent()).getX() + " , " + (e.getComponent()).getY() + ")" +
-							"  "+"Width: " + (e.getComponent()).getWidth() +
+							"  "+"Length: " + (e.getComponent()).getWidth() +
 							"  "+"Height: " + (e.getComponent()).getHeight());
 				}
 				else
@@ -1719,13 +1770,13 @@ public class Child_Design extends JLayeredPane {
 				{
 					statusBar.setText("     "+(e.getComponent()).getName()+"  "+"Position ("
 							+ (e.getComponent()).getX() + " , " + (e.getComponent()).getY() + ")" +
-							"  "+"Width: " + (e.getComponent()).getWidth() );
+							"  "+"Length: " + (e.getComponent()).getWidth() );
 				}
 				else if ((e.getComponent()).getName()=="text")
 				{
 					statusBar.setText("     "+(e.getComponent()).getName()+"  "+"Position ("
 							+ (e.getComponent()).getX() + " , " + (e.getComponent()).getY() + ")" +
-							"  "+"Width: " + (e.getComponent()).getWidth() +
+							"  "+"Length: " + (e.getComponent()).getWidth() +
 							"  "+"Height: " + (e.getComponent()).getHeight());
 				}
 				else
@@ -1750,13 +1801,13 @@ public class Child_Design extends JLayeredPane {
 				{
 					statusBar.setText("     "+(e.getComponent()).getName()+"  "+"Position ("
 							+ (e.getComponent()).getX() + " , " + (e.getComponent()).getY() + ")" +
-							"  "+"Width: " + (e.getComponent()).getWidth() );
+							"  "+"Length: " + (e.getComponent()).getWidth() );
 				}
 				else if ((e.getComponent()).getName()=="text")
 				{
 					statusBar.setText("     "+(e.getComponent()).getName()+"  "+"Position ("
 							+ (e.getComponent()).getX() + " , " + (e.getComponent()).getY() + ")" +
-							"  "+"Width: " + (e.getComponent()).getWidth() +
+							"  "+"Length: " + (e.getComponent()).getWidth() +
 							"  "+"Height: " + (e.getComponent()).getHeight());
 				}
 				else
@@ -1774,6 +1825,32 @@ public class Child_Design extends JLayeredPane {
 		public void mouseExited(MouseEvent e) 
 		{
 			statusBar.setText(null);
+		}
+	}
+	
+	/**
+	 * Show border
+	 */
+	class ShowBorderListener implements MouseInputListener
+	{		
+		public void mouseClicked(MouseEvent e) {}
+		
+		public void mousePressed(MouseEvent e) {}
+
+		public void mouseDragged(MouseEvent e) {}
+		
+		public void mouseMoved(MouseEvent e) {}
+			
+		public void mouseReleased(MouseEvent e){}
+			
+		public void mouseEntered(MouseEvent e) 
+		{
+			((JLabelWithID)e.getComponent()).setBorder(new TitledBorder(""));
+		}
+
+		public void mouseExited(MouseEvent e) 
+		{
+			((JLabelWithID)e.getComponent()).setBorder(null);
 		}
 	}
 	
@@ -2099,7 +2176,8 @@ public class Child_Design extends JLayeredPane {
 					//Begin draw sketch map
 					sketchCenter.loadProject(path.toString());
 					for (SketchComponent.Component component : sketchCenter.currentProject.componentList)
-					{	
+					{
+						compCount=sketchCenter.currentProject.getMaxID()+1;
 						addComponent(component);
 					}						
 				}			
@@ -2416,6 +2494,10 @@ public class Child_Design extends JLayeredPane {
 			KeyDeleteListener keyDeleteListener = new KeyDeleteListener();
 			newLabel.addKeyListener(keyDeleteListener);
 			
+			ShowBorderListener showBorderListener = new ShowBorderListener();
+			newLabel.addMouseListener(showBorderListener);
+			newLabel.addMouseMotionListener(showBorderListener);
+			
 			panel.setPosition(newLabel, 0);
 			panel.repaint();
 		}
@@ -2481,6 +2563,10 @@ public class Child_Design extends JLayeredPane {
 			
 			KeyDeleteListener keyDeleteListener = new KeyDeleteListener();
 			newLabel.addKeyListener(keyDeleteListener);
+			
+			ShowBorderListener showBorderListener = new ShowBorderListener();
+			newLabel.addMouseListener(showBorderListener);
+			newLabel.addMouseMotionListener(showBorderListener);
 		}
 		else if (primaryType.equals(SketchComponent.BackBone.class.getSimpleName()))
 		{
@@ -2538,6 +2624,10 @@ public class Child_Design extends JLayeredPane {
 			
 			KeyDeleteListener keyDeleteListener = new KeyDeleteListener();
 			newBackBone.addKeyListener(keyDeleteListener);
+			
+			ShowBorderListener showBorderListener = new ShowBorderListener();
+			newBackBone.addMouseListener(showBorderListener);
+			newBackBone.addMouseMotionListener(showBorderListener);
 			
 			panel.setPosition(newBackBone, -1);
 			panel.repaint();
@@ -2690,6 +2780,10 @@ public class Child_Design extends JLayeredPane {
 			
 			KeyDeleteListener keyDeleteListener = new KeyDeleteListener();
 			newLabel.addKeyListener(keyDeleteListener);
+			
+			ShowBorderListener showBorderListener = new ShowBorderListener();
+			newLabel.addMouseListener(showBorderListener);
+			newLabel.addMouseMotionListener(showBorderListener);
 		}
 		else
 			return;		
