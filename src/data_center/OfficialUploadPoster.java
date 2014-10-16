@@ -132,13 +132,13 @@ public class OfficialUploadPoster
 	    nvps.add(new BasicNameValuePair("source", bbkUpload.source));
 	    nvps.add(new BasicNameValuePair("notes", bbkUpload.notes));
 	    nvps.add(new BasicNameValuePair("proceed", "Go on to enter the sequence and add feature annotations"));
-	    
+	    System.out.println(nvps);
 	    HttpPost httpost = new HttpPost("http://parts.igem.org/cgi/partsdb/add_part_b.cgi");
 	    httpost.setEntity(new UrlEncodedFormEntity(nvps));
 		httpClient.execute(httpost, context);
 				
 		String url = "http://parts.igem.org/cgi/xml/part.cgi?part=" + part_name;
-		//System.out.println(url);
+		System.out.println(url);
 		Document doc=null;  
 		try{  
 			doc = Jsoup.connect(url).get();
@@ -147,7 +147,7 @@ public class OfficialUploadPoster
 			e.printStackTrace();
 		}
 		Elements elem = doc.select("part_id");
-		//System.out.println(elem.html());
+		System.out.println(elem.html());
 		httpClient.close();
 		return elem.html();
 	}
