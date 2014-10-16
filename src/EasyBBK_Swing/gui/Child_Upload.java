@@ -1,7 +1,6 @@
 package EasyBBK_Swing.gui;
 
 import java.awt.Color;
-
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -118,6 +117,7 @@ public class Child_Upload extends JPanel {
 		initialize();
 		
 		information_shown = bbkupload.getSequence();
+		SequenceInformation.setText(information_shown);
 		featurenumber = bbkupload.features.size();
 		
 		
@@ -645,7 +645,7 @@ public class Child_Upload extends JPanel {
 		LDscrollpanel.validate();
 		UploadContainer.add(LDscrollpanel);
 		
-		JLabel Claim = new JLabel("Contents below only can be uploaded to official website!");
+		JLabel Claim = new JLabel("Contents below only can be uploaded to Registry!");
 		Claim.setForeground(Color.red);
 		Claim.setFont(new Font("Arial", Font.PLAIN, 24));
 		Claim.setBounds(373, 1425, 620, 30);
@@ -791,7 +791,7 @@ public class Child_Upload extends JPanel {
 		SubmitToDatabase.setBounds(403, 1870, 200, 55);
 		UploadContainer.add(SubmitToDatabase);
 		
-		SubmitToWebsite = new JButton("<html>" + "Submit to" + "<br>" + " official website" + "</html>");
+		SubmitToWebsite = new JButton("<html>" + "Submit to" + "<br>" + "Registry" + "</html>");
 		SubmitToWebsite.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
