@@ -54,6 +54,7 @@ public class Child_Search extends JPanel {
 	public Child_Search child_search;
 	public String keyword;
 	public ArrayList<BbkDetail> comparisonlist = new ArrayList<BbkDetail>();
+	public ArrayList<InitializeResultPage> threadlist = new ArrayList<InitializeResultPage>();
 	/**
 	 * Create the panel.
 	 */
@@ -201,11 +202,21 @@ public class Child_Search extends JPanel {
 						return;
 					}
 					else{
+						if(threadlist.size() != 0){
+							for(int i = 0; i < threadlist.size(); i++){
+								threadlist.get(i).interrupt();
+							}
+							for(int i = 0; i < threadlist.size(); i++){
+								threadlist.remove(i);
+							}
+							return;
+						}
 						requestFocus();
 						currentpage = 1;
 						blast = 1;
 						InitializeResultPage initializeresultpage = new InitializeResultPage(child_search, textField.getText(), false, mainpage.small);
 						initializeresultpage.start();
+						threadlist.add(initializeresultpage);
 					}
 				}
 			}
@@ -246,11 +257,21 @@ public class Child_Search extends JPanel {
 						return;
 					}
 					else{
+						if(threadlist.size() != 0){
+							for(int i = 0; i < threadlist.size(); i++){
+								threadlist.get(i).interrupt();
+							}
+							for(int i = 0; i < threadlist.size(); i++){
+								threadlist.remove(i);
+							}
+							return;
+						}
 						Search.requestFocus();
 						currentpage = 1;
 						blast = 1;
 						InitializeResultPage initializeresultpage = new InitializeResultPage(child_search, textField.getText(), false, mainpage.small);
 						initializeresultpage.start();
+						threadlist.add(initializeresultpage);
 					}
 				}
 			}
@@ -297,11 +318,21 @@ public class Child_Search extends JPanel {
 						return;
 					}
 					else{
+						if(threadlist.size() != 0){
+							for(int i = 0; i < threadlist.size(); i++){
+								threadlist.get(i).interrupt();
+							}
+							for(int i = 0; i < threadlist.size(); i++){
+								threadlist.remove(i);
+							}
+							return;
+						}
 						requestFocus();
 						currentpage = 1;
 						blast = 2;
 						InitializeResultPage initializeresultpage = new InitializeResultPage(child_search, textField.getText(), false, mainpage.small);
 						initializeresultpage.start();
+						threadlist.add(initializeresultpage);
 					}
 				}
 			}
@@ -340,5 +371,6 @@ public class Child_Search extends JPanel {
 		
 		InitializeResultPage initializeresultpage = new InitializeResultPage(child_search, keyword, false, mainpage.small);
 		initializeresultpage.start();
+		threadlist.add(initializeresultpage);
 	}
 }
