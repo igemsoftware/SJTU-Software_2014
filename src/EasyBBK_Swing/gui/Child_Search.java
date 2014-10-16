@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Cursor;
 
-import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
@@ -66,12 +65,23 @@ public class Child_Search extends JPanel {
 		blast = blast1;
 		information = information1;
 		mainpage = mainpage1;
-		setBounds(0, 0, 1366, 670);
+		if(mainpage.small == false){
+			setBounds(0, 0, 1366, 670);
+		}
+		else if(mainpage.small == true){
+			setBounds(0, 0, 1280, 670);
+		}
 		setBackground(new Color(255, 255, 255));
 		setLayout(null);
 		setVisible(true);
 		
 		Result = new JPanel();
+		if(mainpage.small == false){
+			Result.setBounds(0, 0, 683, 670);
+		}
+		else if(mainpage.small == true){
+			Result.setBounds(0, 0, 640, 670);
+		}
 		Result.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -79,13 +89,18 @@ public class Child_Search extends JPanel {
 					Result.requestFocus();
 			}
 		});
-		Result.setBounds(0, 0, 683, 670);
 		Result.setBackground(new Color(255, 255, 255));
 		//Result.setBorder(BorderFactory.createLineBorder(Color.black));
 		add(Result);
 		Result.setLayout(null);
 		
 		final JLabel Back = new JLabel();
+		if(mainpage.small == false){
+			Back.setBounds(1, 0, 58, 55);
+		}
+		else if(mainpage.small == true){
+			Back.setBounds(1, 0, 58, 55);
+		}
 		Back.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -108,7 +123,7 @@ public class Child_Search extends JPanel {
 						requestFocus();
 						textField.setText(previousList.keyword);
 						resultpanel.removeAll();
-						InitializeResultPage initializeresultpage = new InitializeResultPage(child_search, previousList.keyword, true, previousList);
+						InitializeResultPage initializeresultpage = new InitializeResultPage(child_search, previousList.keyword, true, previousList, mainpage.small);
 						initializeresultpage.start();
 						resultpanel.updateUI();
 					}
@@ -123,11 +138,16 @@ public class Child_Search extends JPanel {
 				Back.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/SearchBox_backward.png")));
 			}
 		});
-		Back.setBounds(1, 0, 58, 55);
 		Back.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/SearchBox_backward.png")));
 		Result.add(Back);
 		
 		final JLabel Forward = new JLabel();
+		if(mainpage.small == false){
+			Forward.setBounds(59, 0, 54, 55);
+		}
+		else if(mainpage.small == true){
+			Forward.setBounds(59, 0, 54, 55);
+		}
 		Forward.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -138,7 +158,7 @@ public class Child_Search extends JPanel {
 						requestFocus();
 						textField.setText(forwardList.keyword);
 						resultpanel.removeAll();
-						InitializeResultPage initializeresultpage = new InitializeResultPage(child_search, forwardList.keyword, true, forwardList);
+						InitializeResultPage initializeresultpage = new InitializeResultPage(child_search, forwardList.keyword, true, forwardList, mainpage.small);
 						initializeresultpage.start();
 						resultpanel.updateUI();
 					}
@@ -153,12 +173,16 @@ public class Child_Search extends JPanel {
 				Forward.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/SearchBox_forward.png")));
 			}
 		});
-		Forward.setBounds(59, 0, 54, 55);
 		Forward.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/SearchBox_forward.png")));
 		Result.add(Forward);
 
 		Search = new JLabel();
-		Search.setBounds(490, 0, 104, 53);
+		if(mainpage.small == false){
+			Search.setBounds(490, 0, 104, 53);
+		}
+		else if(mainpage.small == true){
+			Search.setBounds(447, 0, 104, 53);
+		}
 		Search.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/SearchBox_searchButton.png")));
 		Search.addMouseListener(new MouseAdapter() {
 			@Override
@@ -180,7 +204,7 @@ public class Child_Search extends JPanel {
 						requestFocus();
 						currentpage = 1;
 						blast = 1;
-						InitializeResultPage initializeresultpage = new InitializeResultPage(child_search, textField.getText(), false);
+						InitializeResultPage initializeresultpage = new InitializeResultPage(child_search, textField.getText(), false, mainpage.small);
 						initializeresultpage.start();
 					}
 				}
@@ -198,6 +222,12 @@ public class Child_Search extends JPanel {
 		Result.add(Search);
 		
 		textField = new JTextField();
+		if(mainpage.small == false){
+			textField.setBounds(114, 0, 378, 54);
+		}
+		else if(mainpage.small == true){
+			textField.setBounds(114, 0, 335, 54);
+		}
 		textField.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
@@ -219,7 +249,7 @@ public class Child_Search extends JPanel {
 						Search.requestFocus();
 						currentpage = 1;
 						blast = 1;
-						InitializeResultPage initializeresultpage = new InitializeResultPage(child_search, textField.getText(), false);
+						InitializeResultPage initializeresultpage = new InitializeResultPage(child_search, textField.getText(), false, mainpage.small);
 						initializeresultpage.start();
 					}
 				}
@@ -227,18 +257,29 @@ public class Child_Search extends JPanel {
 		});
 		textField.setFont(new Font("Arial", Font.PLAIN, 40));
 		textField.setVisible(true);
-		textField.setBounds(114, 0, 378, 54);
 		Result.add(textField);
 		textField.setColumns(20);
 		
 		resultpanel = new JPanel();
+		if(mainpage.small == false){
+			resultpanel.setBounds(51, 85, 587, 583);
+		}
+		else if(mainpage.small == true){
+			resultpanel.setBounds(30, 85, 587, 583);
+		}
 		resultpanel.setBackground(new Color(255, 255, 255));
-		resultpanel.setBounds(51, 85, 587, 583);
+		
 		Result.add(resultpanel);
 		resultpanel.setLayout(null);
 		
 		
 		Blast = new JLabel("");
+		if(mainpage.small == false){
+			Blast.setBounds(596, 0, 84, 53);
+		}
+		else if(mainpage.small == true){
+			Blast.setBounds(553, 0, 84, 53);
+		}
 		Blast.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -259,7 +300,7 @@ public class Child_Search extends JPanel {
 						requestFocus();
 						currentpage = 1;
 						blast = 2;
-						InitializeResultPage initializeresultpage = new InitializeResultPage(child_search, textField.getText(), false);
+						InitializeResultPage initializeresultpage = new InitializeResultPage(child_search, textField.getText(), false, mainpage.small);
 						initializeresultpage.start();
 					}
 				}
@@ -274,26 +315,30 @@ public class Child_Search extends JPanel {
 				Blast.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/blast.png")));
 			}
 		});
-		Blast.setBounds(596, 0, 84, 53);
 		Blast.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/blast.png")));
 		Result.add(Blast);
 		
 		Details = new JPanel();
+		if(mainpage.small == false){
+			Details.setBounds(684, 0, 683, 670);
+		}
+		else if(mainpage.small == true){
+			Details.setBounds(641, 0, 640, 670);
+		}
 		Details.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				Details.requestFocus();
 			}
 		});
-		Details.setBounds(684, 0, 683, 670);
+		
 		Details.setBackground(new Color(255, 255, 255));
 		//Details.setBorder(BorderFactory.createLineBorder(Color.black));
 		add(Details);
 		Details.setLayout(null);
-		
 		updateUI();
 		
-		InitializeResultPage initializeresultpage = new InitializeResultPage(child_search, keyword, false);
+		InitializeResultPage initializeresultpage = new InitializeResultPage(child_search, keyword, false, mainpage.small);
 		initializeresultpage.start();
 	}
 }

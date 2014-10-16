@@ -15,20 +15,21 @@ import javax.swing.JTextArea;
 import javax.swing.BorderFactory;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
+import javax.swing.SwingConstants;
 
 public class DetailsofResults extends JPanel {
 	private static final long serialVersionUID = 1L;
+	public boolean small;
 	
 	public JLabel ID_Content;
 	public JLabel Type_Content;
 	public JLabel EnteredDate_Content;
 	public JLabel Author_Content;
-	public JLabel Description1;
+	public JLabel Description;
 	public JLabel URL_Content;
 	public JLabel ReleasedStatus_Content;
 	public JLabel AverageStar_Content;
 	public JLabel ResultsInGoogle_Content;
-	public JLabel Description2;
 	public JCheckBox Addforcomparison;
 	public JLabel related_URL;
 	public JLabel SampleStatus_Content;
@@ -43,10 +44,12 @@ public class DetailsofResults extends JPanel {
 	public JTextArea Sequences_Content;
 	public JTextArea Categories_Content;
 	public JTextArea Twins_Content;
+	public JLabel Score;
 	/**
 	 * Create the panel.
 	 */
-	public DetailsofResults() {
+	public DetailsofResults(boolean small1) {
+		small = small1;
 		addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -54,59 +57,75 @@ public class DetailsofResults extends JPanel {
 					requestFocus();
 			}
 		});
-		setBounds(0, 0, 665, 1200);
+		if(small == false){
+			setBounds(0, 0, 665, 1200);
+		}
+		else if(small == true){
+			setBounds(0, 0, 622, 1200);
+		}
+		
 		setBackground(new Color(255, 255, 255));
-		setBorder(BorderFactory.createLineBorder(Color.black));
+		//setBorder(BorderFactory.createLineBorder(Color.black));
 		setLayout(null);
 		
 		ID_Content = new JLabel("");
-		ID_Content.setFont(new Font("Arial", Font.BOLD, 24));
-		ID_Content.setBounds(10, 10, 176, 24);
+		ID_Content.setFont(new Font("Times New Roman", Font.BOLD, 32));
+		ID_Content.setBounds(10, 5, 242, 40);
 		add(ID_Content);
 		
 		JLabel Type = new JLabel("Type:");
-		Type.setFont(new Font("Arial", Font.PLAIN, 20));
+		Type.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		Type.setBounds(10, 44, 51, 24);
 		add(Type);
 		
 		Type_Content = new JLabel("");
-		Type_Content.setFont(new Font("Arial", Font.PLAIN, 20));
+		Type_Content.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		Type_Content.setBounds(71, 44, 213, 24);
 		add(Type_Content);
 		
 		JLabel EnteredDate = new JLabel("Entered Date:");
-		EnteredDate.setFont(new Font("Arial", Font.PLAIN, 20));
-		EnteredDate.setBounds(10, 78, 134, 24);
+		EnteredDate.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		EnteredDate.setBounds(10, 68, 117, 24);
 		add(EnteredDate);
 		
 		EnteredDate_Content = new JLabel("");
-		EnteredDate_Content.setFont(new Font("Arial", Font.PLAIN, 20));
-		EnteredDate_Content.setBounds(154, 78, 117, 24);
+		EnteredDate_Content.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		EnteredDate_Content.setBounds(135, 68, 117, 24);
 		add(EnteredDate_Content);
 		
 		JLabel Author = new JLabel("Author:");
-		Author.setFont(new Font("Arial", Font.PLAIN, 20));
-		Author.setBounds(10, 112, 70, 24);
+		Author.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		Author.setBounds(10, 92, 70, 24);
 		add(Author);
 		
 		Author_Content = new JLabel("");
-		Author_Content.setFont(new Font("Arial", Font.PLAIN, 20));
-		Author_Content.setBounds(81, 112, 574, 24);
+		if(small == false){
+			Author_Content.setBounds(81, 92, 574, 24);
+		}
+		else if(small == true){
+			Author_Content.setBounds(81, 92, 531, 24);
+		}
+		Author_Content.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		add(Author_Content);
 		
 		JLabel ShortDescription = new JLabel("Short Description:");
-		ShortDescription.setFont(new Font("Arial", Font.PLAIN, 20));
-		ShortDescription.setBounds(10, 146, 163, 24);
+		ShortDescription.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		ShortDescription.setBounds(10, 116, 150, 24);
 		add(ShortDescription);
 		
-		Description1 = new JLabel("");
-		Description1.setFont(new Font("Arial", Font.PLAIN, 20));
-		Description1.setBounds(171, 146, 484, 24);
-		add(Description1);
+		Description = new JLabel("");
+		if(small == false){
+			Description.setBounds(165, 116, 490, 24);
+		}
+		else if(small == true){
+			Description.setBounds(165, 116, 447, 24);
+		}
+		Description.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		add(Description);
 		
 		JLabel URL = new JLabel("Main Page on Registry:");
-		URL.setFont(new Font("Arial", Font.PLAIN, 20));
-		URL.setBounds(10, 554, 213, 24);
+		URL.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		URL.setBounds(10, 280, 190, 24);
 		add(URL);
 		
 		URL_Content = new JLabel("");
@@ -121,85 +140,116 @@ public class DetailsofResults extends JPanel {
 				URL_Content.setForeground(Color.black);
 			}
 		});
-		URL_Content.setFont(new Font("Arial", Font.PLAIN, 20));
-		URL_Content.setBounds(229, 554, 426, 24);
+		URL_Content.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		URL_Content.setBounds(10, 304, 446, 24);
 		add(URL_Content);
 		
 		JLabel ReleasedStatus = new JLabel("Part Status:");
-		ReleasedStatus.setFont(new Font("Arial", Font.PLAIN, 20));
-		ReleasedStatus.setBounds(10, 686, 117, 24);
+		ReleasedStatus.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		ReleasedStatus.setBounds(10, 460, 117, 24);
 		add(ReleasedStatus);
 		
 		ReleasedStatus_Content = new JLabel("");
-		ReleasedStatus_Content.setFont(new Font("Arial", Font.PLAIN, 20));
-		ReleasedStatus_Content.setBounds(129, 686, 278, 24);
+		ReleasedStatus_Content.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		ReleasedStatus_Content.setBounds(129, 460, 278, 24);
 		add(ReleasedStatus_Content);
 		
-		Description2 = new JLabel("");
-		Description2.setFont(new Font("Arial", Font.PLAIN, 20));
-		Description2.setBounds(10, 180, 645, 24);
-		add(Description2);
-		
         Addforcomparison = new JCheckBox("Add to compare");
-        Addforcomparison.setFont(new Font("Arial", Font.PLAIN, 24));
-        Addforcomparison.setBounds(421, 28, 206, 30);
+        Addforcomparison.setFont(new Font("Times New Roman", Font.PLAIN, 24));
+        Addforcomparison.setBounds(296, 5, 190, 30);
         Addforcomparison.setBackground(new Color(0, 255, 255));
 		add(Addforcomparison);
 		
 		JLabel Sequence = new JLabel("Sequences:");
-		Sequence.setFont(new Font("Arial", Font.PLAIN, 20));
-		Sequence.setBounds(10, 210, 117, 24);
+		Sequence.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		Sequence.setBounds(10, 164, 98, 24);
 		add(Sequence);
 		
 		JLabel Categories = new JLabel("Categories:");
-		Categories.setFont(new Font("Arial", Font.PLAIN, 20));
-		Categories.setBounds(10, 332, 117, 24);
+		Categories.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		Categories.setBounds(10, 978, 98, 24);
 		add(Categories);
 		
 		JLabel Twins = new JLabel("Twins:");
-		Twins.setFont(new Font("Arial", Font.PLAIN, 20));
-		Twins.setBounds(10, 443, 70, 24);
+		Twins.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		Twins.setBounds(10, 1078, 70, 24);
 		add(Twins);
 		
 		Sequences_Content = new JTextArea();
+		if(small == false){
+			Sequences_Content.setBounds(0, 0, 627, 500);
+		}
+		else if(small == true){
+			Sequences_Content.setBounds(0, 0, 584, 500);
+		}
 		Sequences_Content.setEditable(false);
 		Sequences_Content.setLineWrap(true);
 		Sequences_Content.setWrapStyleWord(true);
-		Sequences_Content.setBounds(0, 0, 627, 500);
-		Sequences_Content.setFont(new Font("Arial", Font.PLAIN, 20));
+		
+		Sequences_Content.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		
 		JScrollPane sequence_scrollPane = new JScrollPane(Sequences_Content);
+		if(small == false){
+			sequence_scrollPane.setBounds(10, 188, 645, 92);
+		}
+		else if(small == true){
+			sequence_scrollPane.setBounds(10, 188, 602, 92);
+		}
 		sequence_scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-		sequence_scrollPane.setBounds(10, 236, 645, 92);
+		
 		add(sequence_scrollPane);
 		
 		Categories_Content = new JTextArea();
+		if(small == false){
+			Categories_Content.setBounds(0, 0, 627, 500);
+		}
+		else if(small == true){
+			Categories_Content.setBounds(0, 0, 584, 500);
+		}
 		Categories_Content.setEditable(false);
 		Categories_Content.setLineWrap(true);
 		Categories_Content.setWrapStyleWord(true);
-		Categories_Content.setBounds(0, 0, 627, 500);
-		Categories_Content.setFont(new Font("Arial", Font.PLAIN, 20));
+		
+		Categories_Content.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		
 		JScrollPane categories_scrollPane = new JScrollPane(Categories_Content);
+		if(small == false){
+			categories_scrollPane.setBounds(10, 1002, 645, 72);
+		}
+		else if(small == true){
+			categories_scrollPane.setBounds(10, 1002, 602, 72);
+		}
 		categories_scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-		categories_scrollPane.setBounds(10, 361, 645, 72);
+		
 		add(categories_scrollPane);
 		
 		Twins_Content = new JTextArea();
+		if(small == false){
+			Twins_Content.setBounds(0, 0, 627, 500);
+		}
+		else if(small == true){
+			Twins_Content.setBounds(0, 0, 584, 500);
+		}
 		Twins_Content.setEditable(false);
 		Twins_Content.setLineWrap(true);
 		Twins_Content.setWrapStyleWord(true);
-		Twins_Content.setBounds(0, 0, 627, 500);
-		Twins_Content.setFont(new Font("Arial", Font.PLAIN, 20));
+		
+		Twins_Content.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		
 		JScrollPane twins_scrollPane = new JScrollPane(Twins_Content);
+		if(small == false){
+			twins_scrollPane.setBounds(10, 1102, 645, 72);
+		}
+		else if(small == true){
+			twins_scrollPane.setBounds(10, 1102, 602, 72);
+		}
 		twins_scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-		twins_scrollPane.setBounds(10, 472, 645, 72);
+		
 		add(twins_scrollPane);
 		
 		JLabel UrlOfGoogle = new JLabel("URL of the most related publication:");
-		UrlOfGoogle.setFont(new Font("Arial", Font.PLAIN, 20));
-		UrlOfGoogle.setBounds(10, 588, 320, 24);
+		UrlOfGoogle.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		UrlOfGoogle.setBounds(10, 328, 317, 24);
 		add(UrlOfGoogle);
 		
 		related_URL = new JLabel("");
@@ -214,139 +264,151 @@ public class DetailsofResults extends JPanel {
 				related_URL.setForeground(Color.black);
 			}
 		});
-		related_URL.setFont(new Font("Arial", Font.PLAIN, 20));
-		related_URL.setBounds(10, 618, 645, 24);
+		related_URL.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		related_URL.setBounds(10, 352, 645, 24);
 		add(related_URL);
 		
 		JLabel Status = new JLabel("Status");
-		Status.setFont(new Font("Arial", Font.BOLD, 24));
-		Status.setBounds(10, 652, 98, 28);
+		Status.setFont(new Font("Times New Roman", Font.BOLD, 24));
+		Status.setBounds(10, 432, 98, 28);
 		add(Status);
 		
 		JLabel SampleStatus = new JLabel("Sample Status:");
-		SampleStatus.setFont(new Font("Arial", Font.PLAIN, 20));
-		SampleStatus.setBounds(10, 720, 146, 24);
+		SampleStatus.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		SampleStatus.setBounds(10, 484, 146, 24);
 		add(SampleStatus);
 		
 		SampleStatus_Content = new JLabel("");
-		SampleStatus_Content.setFont(new Font("Arial", Font.PLAIN, 20));
-		SampleStatus_Content.setBounds(154, 720, 278, 24);
+		SampleStatus_Content.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		SampleStatus_Content.setBounds(154, 484, 278, 24);
 		add(SampleStatus_Content);
 		
 		JLabel DNAStatus = new JLabel("DNA Status:");
-		DNAStatus.setFont(new Font("Arial", Font.PLAIN, 20));
-		DNAStatus.setBounds(10, 754, 110, 24);
+		DNAStatus.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		DNAStatus.setBounds(10, 508, 110, 24);
 		add(DNAStatus);
 		
 		DNAStatus_Content = new JLabel("");
-		DNAStatus_Content.setFont(new Font("Arial", Font.PLAIN, 20));
-		DNAStatus_Content.setBounds(130, 754, 278, 24);
+		DNAStatus_Content.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		DNAStatus_Content.setBounds(130, 508, 278, 24);
 		add(DNAStatus_Content);
 		
 		JLabel Deletethispart = new JLabel("Delete this Part:");
-		Deletethispart.setFont(new Font("Arial", Font.PLAIN, 20));
-		Deletethispart.setBounds(10, 788, 150, 24);
+		Deletethispart.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		Deletethispart.setBounds(10, 532, 150, 24);
 		add(Deletethispart);
 		
 		Deletethispart_Content = new JLabel("");
-		Deletethispart_Content.setFont(new Font("Arial", Font.PLAIN, 20));
-		Deletethispart_Content.setBounds(170, 788, 278, 24);
+		Deletethispart_Content.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		Deletethispart_Content.setBounds(170, 532, 278, 24);
 		add(Deletethispart_Content);
 		
 		JLabel ConfirmedTimes = new JLabel("Confirmed Times:");
-		ConfirmedTimes.setFont(new Font("Arial", Font.PLAIN, 20));
-		ConfirmedTimes.setBounds(10, 822, 160, 24);
+		ConfirmedTimes.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		ConfirmedTimes.setBounds(10, 556, 160, 24);
 		add(ConfirmedTimes);
 		
 		ConfirmedTimes_Content = new JLabel("");
-		ConfirmedTimes_Content.setFont(new Font("Arial", Font.PLAIN, 20));
-		ConfirmedTimes_Content.setBounds(180, 822, 278, 24);
+		ConfirmedTimes_Content.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		ConfirmedTimes_Content.setBounds(180, 556, 278, 24);
 		add(ConfirmedTimes_Content);
 		
 		JLabel LengthofDocumentation = new JLabel("Length of Documentation:");
-		LengthofDocumentation.setFont(new Font("Arial", Font.PLAIN, 20));
-		LengthofDocumentation.setBounds(10, 856, 240, 24);
+		LengthofDocumentation.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		LengthofDocumentation.setBounds(10, 580, 240, 24);
 		add(LengthofDocumentation);
 		
 		LengthofDocumentation_Content = new JLabel("");
-		LengthofDocumentation_Content.setFont(new Font("Arial", Font.PLAIN, 20));
-		LengthofDocumentation_Content.setBounds(250, 856, 278, 24);
+		LengthofDocumentation_Content.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		LengthofDocumentation_Content.setBounds(250, 580, 278, 24);
 		add(LengthofDocumentation_Content);
 		
 		JLabel Reliability = new JLabel("Reliability");
-		Reliability.setFont(new Font("Arial", Font.BOLD, 24));
-		Reliability.setBounds(10, 890, 140, 28);
+		Reliability.setFont(new Font("Times New Roman", Font.BOLD, 24));
+		Reliability.setBounds(10, 642, 140, 28);
 		add(Reliability);
 		
 		JLabel PartResults = new JLabel("Part Results:");
-		PartResults.setFont(new Font("Arial", Font.PLAIN, 20));
-		PartResults.setBounds(10, 924, 120, 24);
+		PartResults.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		PartResults.setBounds(10, 670, 120, 24);
 		add(PartResults);
 		
 		PartResults_Content = new JLabel("");
-		PartResults_Content.setFont(new Font("Arial", Font.PLAIN, 20));
-		PartResults_Content.setBounds(140, 924, 178, 24);
+		PartResults_Content.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		PartResults_Content.setBounds(140, 670, 178, 24);
 		add(PartResults_Content);
 		
 		JLabel GroupFavorite = new JLabel("Group Favorite:");
-		GroupFavorite.setFont(new Font("Arial", Font.PLAIN, 20));
-		GroupFavorite.setBounds(10, 958, 150, 24);
+		GroupFavorite.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		GroupFavorite.setBounds(10, 694, 150, 24);
 		add(GroupFavorite);
 		
 		GroupFavorite_Content = new JLabel("");
-		GroupFavorite_Content.setFont(new Font("Arial", Font.PLAIN, 20));
-		GroupFavorite_Content.setBounds(170, 958, 178, 24);
+		GroupFavorite_Content.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		GroupFavorite_Content.setBounds(170, 694, 178, 24);
 		add(GroupFavorite_Content);
 		
 		JLabel Feedbacks = new JLabel("Feedbacks");
-		Feedbacks.setFont(new Font("Arial", Font.BOLD, 24));
-		Feedbacks.setBounds(10, 992, 140, 28);
+		Feedbacks.setFont(new Font("Times New Roman", Font.BOLD, 24));
+		Feedbacks.setBounds(10, 746, 140, 28);
 		add(Feedbacks);
 		
 		JLabel UsedTimes = new JLabel("Used Times:");
-		UsedTimes.setFont(new Font("Arial", Font.PLAIN, 20));
-		UsedTimes.setBounds(10, 1026, 120, 24);
+		UsedTimes.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		UsedTimes.setBounds(10, 774, 120, 24);
 		add(UsedTimes);
 		
 		UsedTimes_Content = new JLabel("");
-		UsedTimes_Content.setFont(new Font("Arial", Font.PLAIN, 20));
-		UsedTimes_Content.setBounds(140, 1026, 178, 24);
+		UsedTimes_Content.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		UsedTimes_Content.setBounds(140, 774, 178, 24);
 		add(UsedTimes_Content);
 		
 		JLabel AverageStars = new JLabel("Average Rating:");
-		AverageStars.setFont(new Font("Arial", Font.PLAIN, 20));
-		AverageStars.setBounds(10, 1060, 146, 24);
+		AverageStars.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		AverageStars.setBounds(10, 798, 146, 24);
 		add(AverageStars);
 		
 		AverageStar_Content = new JLabel("");
-		AverageStar_Content.setFont(new Font("Arial", Font.PLAIN, 20));
-		AverageStar_Content.setBounds(164, 1060, 107, 24);
+		AverageStar_Content.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		AverageStar_Content.setBounds(164, 798, 107, 24);
 		add(AverageStar_Content);
 		
 		JLabel NumberofComments = new JLabel("Number of Comments:");
-		NumberofComments.setFont(new Font("Arial", Font.PLAIN, 20));
-		NumberofComments.setBounds(10, 1094, 200, 24);
+		NumberofComments.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		NumberofComments.setBounds(10, 822, 200, 24);
 		add(NumberofComments);
 		
 		NumberofComments_Content = new JLabel("");
-		NumberofComments_Content.setFont(new Font("Arial", Font.PLAIN, 20));
-		NumberofComments_Content.setBounds(220, 1094, 107, 24);
+		NumberofComments_Content.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		NumberofComments_Content.setBounds(220, 822, 107, 24);
 		add(NumberofComments_Content);
 		
 		JLabel Publication = new JLabel("Publication");
-		Publication.setFont(new Font("Arial", Font.BOLD, 24));
-		Publication.setBounds(10, 1128, 140, 28);
+		Publication.setFont(new Font("Times New Roman", Font.BOLD, 24));
+		Publication.setBounds(10, 874, 140, 28);
 		add(Publication);
 		
 		JLabel ResultsInGoogle = new JLabel("Number of Related Results on Google Scholar:");
-		ResultsInGoogle.setFont(new Font("Arial", Font.PLAIN, 20));
-		ResultsInGoogle.setBounds(10, 1162, 415, 24);
+		ResultsInGoogle.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		ResultsInGoogle.setBounds(10, 902, 415, 24);
 		add(ResultsInGoogle);
 		
 		ResultsInGoogle_Content = new JLabel("");
-		ResultsInGoogle_Content.setFont(new Font("Arial", Font.PLAIN, 20));
-		ResultsInGoogle_Content.setBounds(435, 1162, 51, 24);
+		ResultsInGoogle_Content.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		ResultsInGoogle_Content.setBounds(435, 902, 51, 24);
 		add(ResultsInGoogle_Content);
+		
+		Score = new JLabel("", SwingConstants.CENTER);
+		if(small == false){
+			Score.setBounds(550, 28, 80, 50);
+		}
+		else if(small == true){
+			Score.setBounds(520, 28, 80, 50);
+		}
+		Score.setFont(new Font("Times New Roman", Font.BOLD, 28));
+		Score.setBorder(BorderFactory.createLineBorder(Color.black));
+		
+		add(Score);
 		
 		setVisible(true);
 	}
