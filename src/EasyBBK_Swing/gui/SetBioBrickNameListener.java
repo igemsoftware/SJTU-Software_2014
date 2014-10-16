@@ -181,19 +181,8 @@ public class SetBioBrickNameListener implements MouseInputListener
 		        		searchingresult.ResultsInGoogle_Content.setText(bbkoutline.rating.google_items);
 		        		
 		        		String shortdescription = bbkoutline.shortDesc;
-		        		if(shortdescription.length()<=29)
-		        		{
-		        			searchingresult.Description1.setText(shortdescription);
-		        			searchingresult.Description2.setText(null);
-		        		}
-		        		else
-		        		{
-		        			searchingresult.Description1.setText(shortdescription.substring(0, 29));
-		        			searchingresult.Description2.setText(shortdescription.substring(29));
-		        		}
+		        		searchingresult.Description.setText(shortdescription);
 		        		
-		        		String score = "" + bbkoutline.getScore();
-		        		searchingresult.Score.setText(score);
 		        		searchingresult.Evalue.setVisible(false);
                 
 		        		searchingresult.updateUI();
@@ -264,19 +253,8 @@ public class SetBioBrickNameListener implements MouseInputListener
         		searchingresult.ResultsInGoogle_Content.setText(bbkoutline.rating.google_items);
         		
         		String shortdescription = bbkoutline.shortDesc;
-        		if(shortdescription.length()<=29)
-        		{
-        			searchingresult.Description1.setText(shortdescription);
-        			searchingresult.Description2.setText(null);
-        		}
-        		else
-        		{
-        			searchingresult.Description1.setText(shortdescription.substring(0, 29));
-        			searchingresult.Description2.setText(shortdescription.substring(29));
-        		}
+        		searchingresult.Description.setText(shortdescription);
         		
-        		String score = "" + bbkoutline.getScore();
-        		searchingresult.Score.setText(score);
         		searchingresult.Evalue.setVisible(false);
         
         		searchingresult.updateUI();

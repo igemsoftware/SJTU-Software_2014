@@ -26,19 +26,35 @@ public class Child_Main extends JPanel {
 	public Child_Main(MainPage mainpage1) {
 		mainpage = mainpage1;
 		setLayout(null);
-		setBounds(0, 0, 1366, 670);
+		if(mainpage.small == false){
+			setBounds(0, 0, 1366, 670);
+		}
+		else if(mainpage.small == true){
+			setBounds(0, 0, 1280, 670);
+		}
 		setVisible(true);
 		setBackground(new Color(255, 255, 255));
 		
 		BackGround = new JLabel("");
 		
 		Logo = new JLabel("");
-		Logo.setBounds(486, 35, 410, 187);
+		if(mainpage.small == false){
+			Logo.setBounds(486, 35, 410, 187);
+		}
+		else if(mainpage.small == true){
+			Logo.setBounds(455, 35, 410, 187);
+		}
 		Logo.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Logo.png")));
 		Logo.setVisible(true);
 		add(Logo);
 		
 		SearchDrawingBox = new JLabel("");
+		if(mainpage.small == false){
+			SearchDrawingBox.setBounds(123, 327, 254, 293);
+		}
+		else if(mainpage.small == true){
+			SearchDrawingBox.setBounds(115, 327, 254, 293);
+		}
 		SearchDrawingBox.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/StartPage_searching.png")));
 		SearchDrawingBox.addMouseListener(new MouseAdapter() {
 			@Override
@@ -82,12 +98,17 @@ public class Child_Main extends JPanel {
 				}
 			}
 		});
-		SearchDrawingBox.setBounds(123, 327, 254, 293);
 		SearchDrawingBox.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/StartPage_searching.png")));
 		SearchDrawingBox.setVisible(true);
 		BackGround.add(SearchDrawingBox);
 		
 		DesignDrawingBox = new JLabel("");
+		if(mainpage.small == false){
+			DesignDrawingBox.setBounds(705, 327, 254, 293);
+		}
+		else if(mainpage.small == true){
+			DesignDrawingBox.setBounds(660, 327, 254, 293);
+		}
 		DesignDrawingBox.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/StartPage_painting.png")));
 		DesignDrawingBox.addMouseListener(new MouseAdapter() {
 			@Override
@@ -124,12 +145,17 @@ public class Child_Main extends JPanel {
 				}
 			}
 		});
-		DesignDrawingBox.setBounds(705, 327, 254, 293);
 		DesignDrawingBox.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/StartPage_painting.png")));
 		DesignDrawingBox.setVisible(true);
 		BackGround.add(DesignDrawingBox);
 		
 		UploadDrawingBox = new JLabel("");
+		if(mainpage.small == false){
+			UploadDrawingBox.setBounds(990, 327, 254, 293);
+		}
+		else if(mainpage.small == true){
+			UploadDrawingBox.setBounds(930, 327, 254, 293);
+		}
 		UploadDrawingBox.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/StartPage_upload.png")));
 		UploadDrawingBox.addMouseListener(new MouseAdapter() {
 			@Override
@@ -166,12 +192,17 @@ public class Child_Main extends JPanel {
 				}
 			}
 		});
-		UploadDrawingBox.setBounds(990, 327, 254, 293);
 		UploadDrawingBox.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/StartPage_upload.png")));
 		UploadDrawingBox.setVisible(true);
 		BackGround.add(UploadDrawingBox);
 		
 		CompareDrawingBox = new JLabel("");
+		if(mainpage.small == false){
+			CompareDrawingBox.setBounds(412, 327, 254, 293);
+		}
+		else if(mainpage.small == true){
+			CompareDrawingBox.setBounds(386, 327, 254, 293);
+		}
 		CompareDrawingBox.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/StartPage_compare.png")));
 		CompareDrawingBox.addMouseListener(new MouseAdapter() {
 			@Override
@@ -209,13 +240,17 @@ public class Child_Main extends JPanel {
 				CompareDrawingBox.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/StartPage_compare.png")));
 			}
 		});
-		CompareDrawingBox.setBounds(412, 327, 254, 293);
 		CompareDrawingBox.setBackground(new Color(0,0,0,0));
 		CompareDrawingBox.setVisible(true);
 		BackGround.add(CompareDrawingBox);
 		
 		BackGround.setVisible(true);
-		BackGround.setBounds(0, 0, 1366, 670);
+		if(mainpage.small == false){
+			BackGround.setBounds(0, 0, 1366, 670);
+		}
+		else if(mainpage.small == true){
+			BackGround.setBounds(0, 0, 1280, 670);
+		}
 		BackGround.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/BackGround.png")));
 		add(BackGround);
 	}

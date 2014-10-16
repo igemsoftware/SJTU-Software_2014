@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.8"/>
-<title>EasyBbk: SketchCenter.java Source File</title>
+<title>EasyBbk: D:/_About 学习/爱吉姆/SJTU-Software_2014/src/data_center/SketchCenter.java Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,9 +21,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="Logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">EasyBbk
-   &#160;<span id="projectnumber">1.0</span>
+   &#160;<span id="projectnumber">1.0.0</span>
    </div>
    <div id="projectbrief">&quot;Easy BBK&quot; is a trial to provide a standardized, visualized and user friendly access to bio-brick system by simplify and interassociate the searching, comparing, designing and uploading of bio-bricks. These four main functions constitute the &quot;Easy BBK&quot; client-side which is realized by pure java and supported by a remote server through the internet. We hope that you will have better experiences when exploring the biobrick world using &quot;Easy BBK&quot;.</div>
   </td>
@@ -41,7 +42,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="namespaces.html"><span>Packages</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
-      <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -60,18 +60,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       </li>
     </ul>
   </div>
-  <div id="navrow2" class="tabs2">
-    <ul class="tablist">
-      <li><a href="files.html"><span>File&#160;List</span></a></li>
-    </ul>
-  </div>
-</div><!-- top -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -80,12 +74,17 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_19d3224ee714b267f9e964e1f61cada9.html">_About 学习</a></li><li class="navelem"><a class="el" href="dir_b9ddd5950a0a82d6efe820effea7fe25.html">爱吉姆</a></li><li class="navelem"><a class="el" href="dir_a3c475edc3dc573389f9c72a80b194c9.html">SJTU-Software_2014</a></li><li class="navelem"><a class="el" href="dir_586523173c3e6594dab6dd2513345a5d.html">src</a></li><li class="navelem"><a class="el" href="dir_73c7766663e9fe1b762269d1dc2d85ca.html">data_center</a></li>  </ul>
+</div>
+</div><!-- top -->
 <div class="header">
   <div class="headertitle">
 <div class="title">SketchCenter.java</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="_sketch_center_8java.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">package </span>data_center;</div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">package </span>data_center;</div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;</div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">import</span> java.util.ArrayList;</div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;</div>
@@ -134,7 +133,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    {   </div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="keywordflow">if</span> (currentProject == null)</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        currentProject.<a class="code" href="classdata__center_1_1_sketch_project.html#acc05f0642428f47bafd9121afd28096d">saveIntoFile</a>(filePath);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        currentProject.<a class="code" href="classdata__center_1_1_sketch_project.html#a91255c3b4668d0e61a3ef198c3bc1dc5">saveIntoFile</a>(filePath);</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    }</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    </div>
 <div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="classdata__center_1_1_sketch_center.html#a457692bcdac852059127ac3d2616104f">   64</a></span>&#160;    <span class="keyword">public</span> <a class="code" href="classdata__center_1_1_sketch_project.html">SketchProject</a> <a class="code" href="classdata__center_1_1_sketch_center.html#a457692bcdac852059127ac3d2616104f">loadProject</a>(String filePath)</div>
@@ -157,85 +156,110 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        <span class="keywordflow">return</span> biobrick.<a class="code" href="classdata__center_1_1_sketch_component_1_1_bio_brick.html#a85a98ecc265cbe4ede6d8e10f222dbe8">bbkOutline</a>;</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    }</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    </div>
-<div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="classdata__center_1_1_sketch_center.html#a0d8e33164965d9574cb72c73e18f9986">   88</a></span>&#160;    <span class="keyword">public</span> <a class="code" href="classdata__center_1_1_bbk_upload.html">BbkUpload</a> <a class="code" href="classdata__center_1_1_sketch_center.html#a0d8e33164965d9574cb72c73e18f9986">generateBbkUploadFromBackBone</a>(<a class="code" href="classdata__center_1_1_sketch_component_1_1_back_bone.html">BackBone</a> backbone)</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    {   </div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        <a class="code" href="classdata__center_1_1_bbk_upload.html">BbkUpload</a> bbkUpload = <span class="keyword">new</span> <a class="code" href="classdata__center_1_1_bbk_upload.html">BbkUpload</a>();</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        ArrayList&lt;Object&gt; sequenceTokens = <span class="keyword">new</span> ArrayList&lt;Object&gt;();</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <span class="keywordflow">for</span> (Integer componentID : backbone.<a class="code" href="classdata__center_1_1_sketch_component_1_1_back_bone.html#a64cdc7fef86b85db2ed15fc671a62e5b">bbkChildren</a>)</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        {   <a class="code" href="classdata__center_1_1_sketch_component_1_1_bio_brick.html">BioBrick</a> bbk = (<a class="code" href="classdata__center_1_1_sketch_component_1_1_bio_brick.html">BioBrick</a>) currentProject.<a class="code" href="classdata__center_1_1_sketch_project.html#ae659ddf1e750bcefa3c95f2bb55b2f0e">findComponentByID</a>(componentID);</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            <span class="keywordflow">if</span> (bbk == null)</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                <span class="keywordflow">continue</span>;</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            <span class="comment">// else... </span></div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            <a class="code" href="classdata__center_1_1_bbk_detail.html">BbkDetail</a> bbkDetail = </div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                    <a class="code" href="classdata__center_1_1_database_connector.html">DatabaseConnector</a>.getDetailByName(bbk.<a class="code" href="classdata__center_1_1_sketch_component_1_1_bio_brick.html#a85a98ecc265cbe4ede6d8e10f222dbe8">bbkOutline</a>.<a class="code" href="classdata__center_1_1_bbk_outline.html#a8e191e721f0fe8af8f69e7beb3a05385">name</a>); </div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            sequenceTokens.add(bbkDetail);</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        }</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        bbkUpload.<a class="code" href="classdata__center_1_1_bbk_upload.html#aae3dda073f19a4859a25aee1500e0348">setSequence</a>(sequenceTokens, <span class="keyword">true</span>);</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        <span class="keywordflow">return</span> bbkUpload;</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    }</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    </div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    </div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    </div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    </div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <span class="keyword">private</span> <a class="code" href="classdata__center_1_1_sketch_project.html">SketchProject</a> findProjectByName(String projectName)</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    {   </div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        <span class="keywordflow">for</span> (<a class="code" href="classdata__center_1_1_sketch_project.html">SketchProject</a> project : projectList)</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;            <span class="keywordflow">if</span> (projectName.equals(project.name))</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                <span class="keywordflow">return</span> project;</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        <span class="keywordflow">return</span> null;</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    }</div>
+<div class="line"><a name="l00090"></a><span class="lineno"><a class="line" href="classdata__center_1_1_sketch_center.html#aa4a118b42adc43c93167ff40804f9201">   90</a></span>&#160;    <span class="keyword">public</span> <a class="code" href="classdata__center_1_1_bbk_upload.html">BbkUpload</a> <a class="code" href="classdata__center_1_1_sketch_center.html#aa4a118b42adc43c93167ff40804f9201">generateBbkUploadFromBackBone</a>(<a class="code" href="classdata__center_1_1_sketch_component_1_1_back_bone.html">BackBone</a> backbone, <span class="keywordtype">boolean</span> findTwins)</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    {   </div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <a class="code" href="classdata__center_1_1_bbk_upload.html">BbkUpload</a> bbkUpload = <span class="keyword">new</span> <a class="code" href="classdata__center_1_1_bbk_upload.html">BbkUpload</a>();</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <span class="keywordtype">int</span> startPos = 1, endPos = 0;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        <span class="keywordflow">for</span> (Integer componentID : backbone.<a class="code" href="classdata__center_1_1_sketch_component_1_1_back_bone.html#a64cdc7fef86b85db2ed15fc671a62e5b">bbkChildren</a>)</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        {   <a class="code" href="classdata__center_1_1_sketch_component_1_1_bio_brick.html">BioBrick</a> bbk = (<a class="code" href="classdata__center_1_1_sketch_component_1_1_bio_brick.html">BioBrick</a>) currentProject.<a class="code" href="classdata__center_1_1_sketch_project.html#ae659ddf1e750bcefa3c95f2bb55b2f0e">findComponentByID</a>(componentID);</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            <span class="keywordflow">if</span> (bbk == null)</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            <span class="comment">// else... </span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            startPos = endPos + 1;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            <a class="code" href="classdata__center_1_1_bbk_detail.html">BbkDetail</a> bbkDetail = </div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                    <a class="code" href="classdata__center_1_1_database_connector.html">DatabaseConnector</a>.getDetailByName(bbk.<a class="code" href="classdata__center_1_1_sketch_component_1_1_bio_brick.html#a85a98ecc265cbe4ede6d8e10f222dbe8">bbkOutline</a>.<a class="code" href="classdata__center_1_1_bbk_outline.html#a8e191e721f0fe8af8f69e7beb3a05385">name</a>);</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;            endPos = startPos + bbkDetail.<a class="code" href="classdata__center_1_1_bbk_outline.html#a01cad23a576c0788d6d09cf8dda8320b">sequence</a>.length() - 1;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;            bbkUpload.<a class="code" href="classdata__center_1_1_bbk_upload.html#a3a1549832980d217b11558692e462f1e">sequenceTokens</a>.add(bbkDetail);</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            bbkUpload.<a class="code" href="classdata__center_1_1_bbk_upload.html#a2b25968e846bbedc37000d794eb46c25">features</a>.add(<span class="keyword">new</span> <a class="code" href="classdata__center_1_1_bbk_upload.html">BbkUpload</a>.<a class="code" href="classdata__center_1_1_bbk_upload_1_1_feature.html">Feature</a></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                    (<span class="stringliteral">&quot;&quot;</span>, bbkDetail.<a class="code" href="classdata__center_1_1_bbk_outline.html#a8e191e721f0fe8af8f69e7beb3a05385">name</a>, bbkDetail.<a class="code" href="classdata__center_1_1_bbk_outline.html#ad62bb94b6f00f9f3ebc021cb7ed20f51">type</a>, <span class="stringliteral">&quot;Fwd&quot;</span>, </div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;                            Integer.toString(startPos), Integer.toString(endPos)));</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;            fillFeatureFromSubpartToBbkUpload(bbkUpload, bbkDetail, startPos - 1);</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        }</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        bbkUpload.<a class="code" href="classdata__center_1_1_bbk_upload.html#a586f5b653e34a6ff9bb7770cb90add1b">setSequence</a>(<span class="keyword">false</span>, findTwins);</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        <span class="keywordflow">return</span> bbkUpload;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    }</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    </div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    </div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    </div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    </div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <span class="keyword">private</span> String generateProjectName()</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    {   </div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        <span class="keywordtype">boolean</span> toContinue = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        String projectName = null;</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        <span class="keywordtype">int</span> serialNo = 0;</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        <span class="keywordflow">while</span> (toContinue)</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        {   ++serialNo;</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;            projectName = <span class="stringliteral">&quot;SketchProject&quot;</span> + serialNo;</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;            toContinue = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;            <span class="keywordflow">for</span> (SketchProject project : projectList)</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;                <span class="keywordflow">if</span> (projectName.equals(project.name))</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;                {   toContinue = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;                    <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;                }</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        }</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        <span class="keywordflow">return</span> projectName;</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    }</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;}</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <span class="keyword">private</span> <span class="keywordtype">void</span> fillFeatureFromSubpartToBbkUpload</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        (<a class="code" href="classdata__center_1_1_bbk_upload.html">BbkUpload</a> bbkUpload, <a class="code" href="classdata__center_1_1_bbk_detail.html">BbkDetail</a> bbkDetail, <span class="keywordtype">int</span> offset)</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    {   </div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        <span class="keywordflow">for</span> (<a class="code" href="classdata__center_1_1_bbk_detail.html">BbkDetail</a>.<a class="code" href="classdata__center_1_1_bbk_detail_1_1_feature.html">Feature</a> feature : bbkDetail.<a class="code" href="classdata__center_1_1_bbk_detail.html#a8b8aabcfcc5133a7b55bd21bb29f5f0a">features</a>)</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        {   <span class="keywordtype">int</span> startPos = Integer.parseInt(feature.startPos) + offset;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;            <span class="keywordtype">int</span> endPos = Integer.parseInt(feature.endPos) + offset;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;            bbkUpload.<a class="code" href="classdata__center_1_1_bbk_upload.html#a2b25968e846bbedc37000d794eb46c25">features</a>.add(<span class="keyword">new</span> <a class="code" href="classdata__center_1_1_bbk_upload.html">BbkUpload</a>.<a class="code" href="classdata__center_1_1_bbk_upload_1_1_feature.html">Feature</a></div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;                    (feature.ID, feature.title, feature.type, feature.direction, </div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;                            Integer.toString(startPos), Integer.toString(endPos)));</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        }</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    }</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    </div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    <span class="keyword">private</span> SketchProject findProjectByName(String projectName)</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    {   </div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        <span class="keywordflow">for</span> (SketchProject project : projectList)</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;            <span class="keywordflow">if</span> (projectName.equals(project.name))</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;                <span class="keywordflow">return</span> project;</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        <span class="keywordflow">return</span> null;</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    }</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    </div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    <span class="keyword">private</span> String generateProjectName()</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    {   </div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        <span class="keywordtype">boolean</span> toContinue = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;        String projectName = null;</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;        <span class="keywordtype">int</span> serialNo = 0;</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        <span class="keywordflow">while</span> (toContinue)</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;        {   ++serialNo;</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;            projectName = <span class="stringliteral">&quot;SketchProject&quot;</span> + serialNo;</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;            toContinue = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;            <span class="keywordflow">for</span> (SketchProject project : projectList)</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;                <span class="keywordflow">if</span> (projectName.equals(project.name))</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;                {   toContinue = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;                    <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;                }</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        }</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;        <span class="keywordflow">return</span> projectName;</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    }</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;}</div>
 <div class="ttc" id="classdata__center_1_1_bbk_outline_html_a8e191e721f0fe8af8f69e7beb3a05385"><div class="ttname"><a href="classdata__center_1_1_bbk_outline.html#a8e191e721f0fe8af8f69e7beb3a05385">data_center.BbkOutline.name</a></div><div class="ttdeci">String name</div><div class="ttdef"><b>Definition:</b> <a href="_bbk_outline_8java_source.html#l00012">BbkOutline.java:12</a></div></div>
-<div class="ttc" id="classdata__center_1_1_sketch_component_1_1_bio_brick_html"><div class="ttname"><a href="classdata__center_1_1_sketch_component_1_1_bio_brick.html">data_center.SketchComponent.BioBrick</a></div><div class="ttdef"><b>Definition:</b> <a href="_sketch_component_8java_source.html#l00164">SketchComponent.java:164</a></div></div>
+<div class="ttc" id="classdata__center_1_1_sketch_component_1_1_bio_brick_html"><div class="ttname"><a href="classdata__center_1_1_sketch_component_1_1_bio_brick.html">data_center.SketchComponent.BioBrick</a></div><div class="ttdef"><b>Definition:</b> <a href="_sketch_component_8java_source.html#l00172">SketchComponent.java:172</a></div></div>
 <div class="ttc" id="classdata__center_1_1_sketch_center_html"><div class="ttname"><a href="classdata__center_1_1_sketch_center.html">data_center.SketchCenter</a></div><div class="ttdef"><b>Definition:</b> <a href="_sketch_center_8java_source.html#l00013">SketchCenter.java:13</a></div></div>
-<div class="ttc" id="classdata__center_1_1_sketch_component_html"><div class="ttname"><a href="classdata__center_1_1_sketch_component.html">data_center.SketchComponent</a></div><div class="ttdef"><b>Definition:</b> <a href="_sketch_component_8java_source.html#l00008">SketchComponent.java:8</a></div></div>
-<div class="ttc" id="classdata__center_1_1_sketch_component_1_1_back_bone_html"><div class="ttname"><a href="classdata__center_1_1_sketch_component_1_1_back_bone.html">data_center.SketchComponent.BackBone</a></div><div class="ttdef"><b>Definition:</b> <a href="_sketch_component_8java_source.html#l00297">SketchComponent.java:297</a></div></div>
-<div class="ttc" id="classdata__center_1_1_sketch_center_html_a0d8e33164965d9574cb72c73e18f9986"><div class="ttname"><a href="classdata__center_1_1_sketch_center.html#a0d8e33164965d9574cb72c73e18f9986">data_center.SketchCenter.generateBbkUploadFromBackBone</a></div><div class="ttdeci">BbkUpload generateBbkUploadFromBackBone(BackBone backbone)</div><div class="ttdef"><b>Definition:</b> <a href="_sketch_center_8java_source.html#l00088">SketchCenter.java:88</a></div></div>
+<div class="ttc" id="classdata__center_1_1_sketch_component_html"><div class="ttname"><a href="classdata__center_1_1_sketch_component.html">data_center.SketchComponent</a></div><div class="ttdef"><b>Definition:</b> <a href="_sketch_component_8java_source.html#l00010">SketchComponent.java:10</a></div></div>
+<div class="ttc" id="classdata__center_1_1_bbk_upload_1_1_feature_html"><div class="ttname"><a href="classdata__center_1_1_bbk_upload_1_1_feature.html">data_center.BbkUpload.Feature</a></div><div class="ttdef"><b>Definition:</b> <a href="_bbk_upload_8java_source.html#l00150">BbkUpload.java:150</a></div></div>
+<div class="ttc" id="classdata__center_1_1_sketch_component_1_1_back_bone_html"><div class="ttname"><a href="classdata__center_1_1_sketch_component_1_1_back_bone.html">data_center.SketchComponent.BackBone</a></div><div class="ttdef"><b>Definition:</b> <a href="_sketch_component_8java_source.html#l00307">SketchComponent.java:307</a></div></div>
 <div class="ttc" id="classdata__center_1_1_sketch_center_html_afd5b914425087fe3339d3b4830e0963e"><div class="ttname"><a href="classdata__center_1_1_sketch_center.html#afd5b914425087fe3339d3b4830e0963e">data_center.SketchCenter.getAllProjectNames</a></div><div class="ttdeci">String[] getAllProjectNames()</div><div class="ttdef"><b>Definition:</b> <a href="_sketch_center_8java_source.html#l00070">SketchCenter.java:70</a></div></div>
-<div class="ttc" id="classdata__center_1_1_bbk_upload_html_aae3dda073f19a4859a25aee1500e0348"><div class="ttname"><a href="classdata__center_1_1_bbk_upload.html#aae3dda073f19a4859a25aee1500e0348">data_center.BbkUpload.setSequence</a></div><div class="ttdeci">void setSequence(ArrayList&lt; Object &gt; sequenceTokens, boolean useDefaultScar)</div><div class="ttdef"><b>Definition:</b> <a href="_bbk_upload_8java_source.html#l00078">BbkUpload.java:78</a></div></div>
 <div class="ttc" id="classdata__center_1_1_sketch_center_html_a94d94392b236bd68eabf62c84425c98a"><div class="ttname"><a href="classdata__center_1_1_sketch_center.html#a94d94392b236bd68eabf62c84425c98a">data_center.SketchCenter.currentProject</a></div><div class="ttdeci">SketchProject currentProject</div><div class="ttdef"><b>Definition:</b> <a href="_sketch_center_8java_source.html#l00015">SketchCenter.java:15</a></div></div>
 <div class="ttc" id="classdata__center_1_1_bbk_outline_html"><div class="ttname"><a href="classdata__center_1_1_bbk_outline.html">data_center.BbkOutline</a></div><div class="ttdef"><b>Definition:</b> <a href="_bbk_outline_8java_source.html#l00009">BbkOutline.java:9</a></div></div>
 <div class="ttc" id="classdata__center_1_1_database_connector_html"><div class="ttname"><a href="classdata__center_1_1_database_connector.html">data_center.DatabaseConnector</a></div><div class="ttdef"><b>Definition:</b> <a href="_database_connector_8java_source.html#l00009">DatabaseConnector.java:9</a></div></div>
-<div class="ttc" id="classdata__center_1_1_sketch_component_1_1_back_bone_html_a64cdc7fef86b85db2ed15fc671a62e5b"><div class="ttname"><a href="classdata__center_1_1_sketch_component_1_1_back_bone.html#a64cdc7fef86b85db2ed15fc671a62e5b">data_center.SketchComponent.BackBone.bbkChildren</a></div><div class="ttdeci">ArrayList&lt; Integer &gt; bbkChildren</div><div class="ttdef"><b>Definition:</b> <a href="_sketch_component_8java_source.html#l00301">SketchComponent.java:301</a></div></div>
+<div class="ttc" id="classdata__center_1_1_sketch_project_html_a91255c3b4668d0e61a3ef198c3bc1dc5"><div class="ttname"><a href="classdata__center_1_1_sketch_project.html#a91255c3b4668d0e61a3ef198c3bc1dc5">data_center.SketchProject.saveIntoFile</a></div><div class="ttdeci">void saveIntoFile()</div><div class="ttdef"><b>Definition:</b> <a href="_sketch_project_8java_source.html#l00298">SketchProject.java:298</a></div></div>
+<div class="ttc" id="classdata__center_1_1_sketch_component_1_1_back_bone_html_a64cdc7fef86b85db2ed15fc671a62e5b"><div class="ttname"><a href="classdata__center_1_1_sketch_component_1_1_back_bone.html#a64cdc7fef86b85db2ed15fc671a62e5b">data_center.SketchComponent.BackBone.bbkChildren</a></div><div class="ttdeci">ArrayList&lt; Integer &gt; bbkChildren</div><div class="ttdef"><b>Definition:</b> <a href="_sketch_component_8java_source.html#l00310">SketchComponent.java:310</a></div></div>
 <div class="ttc" id="classdata__center_1_1_sketch_center_html_a457692bcdac852059127ac3d2616104f"><div class="ttname"><a href="classdata__center_1_1_sketch_center.html#a457692bcdac852059127ac3d2616104f">data_center.SketchCenter.loadProject</a></div><div class="ttdeci">SketchProject loadProject(String filePath)</div><div class="ttdef"><b>Definition:</b> <a href="_sketch_center_8java_source.html#l00064">SketchCenter.java:64</a></div></div>
-<div class="ttc" id="classdata__center_1_1_sketch_project_html_ae8dbee263c33b1bce029515a806fc74b"><div class="ttname"><a href="classdata__center_1_1_sketch_project.html#ae8dbee263c33b1bce029515a806fc74b">data_center.SketchProject.name</a></div><div class="ttdeci">String name</div><div class="ttdef"><b>Definition:</b> <a href="_sketch_project_8java_source.html#l00116">SketchProject.java:116</a></div></div>
-<div class="ttc" id="classdata__center_1_1_sketch_project_html_ae659ddf1e750bcefa3c95f2bb55b2f0e"><div class="ttname"><a href="classdata__center_1_1_sketch_project.html#ae659ddf1e750bcefa3c95f2bb55b2f0e">data_center.SketchProject.findComponentByID</a></div><div class="ttdeci">Component findComponentByID(int ID)</div><div class="ttdef"><b>Definition:</b> <a href="_sketch_project_8java_source.html#l00131">SketchProject.java:131</a></div></div>
+<div class="ttc" id="classdata__center_1_1_bbk_detail_1_1_feature_html"><div class="ttname"><a href="classdata__center_1_1_bbk_detail_1_1_feature.html">data_center.BbkDetail.Feature</a></div><div class="ttdef"><b>Definition:</b> <a href="_bbk_detail_8java_source.html#l00058">BbkDetail.java:58</a></div></div>
+<div class="ttc" id="classdata__center_1_1_sketch_project_html_ae8dbee263c33b1bce029515a806fc74b"><div class="ttname"><a href="classdata__center_1_1_sketch_project.html#ae8dbee263c33b1bce029515a806fc74b">data_center.SketchProject.name</a></div><div class="ttdeci">String name</div><div class="ttdef"><b>Definition:</b> <a href="_sketch_project_8java_source.html#l00036">SketchProject.java:36</a></div></div>
+<div class="ttc" id="classdata__center_1_1_sketch_project_html_ae659ddf1e750bcefa3c95f2bb55b2f0e"><div class="ttname"><a href="classdata__center_1_1_sketch_project.html#ae659ddf1e750bcefa3c95f2bb55b2f0e">data_center.SketchProject.findComponentByID</a></div><div class="ttdeci">Component findComponentByID(int ID)</div><div class="ttdef"><b>Definition:</b> <a href="_sketch_project_8java_source.html#l00052">SketchProject.java:52</a></div></div>
+<div class="ttc" id="classdata__center_1_1_bbk_upload_html_a3a1549832980d217b11558692e462f1e"><div class="ttname"><a href="classdata__center_1_1_bbk_upload.html#a3a1549832980d217b11558692e462f1e">data_center.BbkUpload.sequenceTokens</a></div><div class="ttdeci">ArrayList&lt; Object &gt; sequenceTokens</div><div class="ttdef"><b>Definition:</b> <a href="_bbk_upload_8java_source.html#l00027">BbkUpload.java:27</a></div></div>
+<div class="ttc" id="classdata__center_1_1_bbk_outline_html_a01cad23a576c0788d6d09cf8dda8320b"><div class="ttname"><a href="classdata__center_1_1_bbk_outline.html#a01cad23a576c0788d6d09cf8dda8320b">data_center.BbkOutline.sequence</a></div><div class="ttdeci">String sequence</div><div class="ttdef"><b>Definition:</b> <a href="_bbk_outline_8java_source.html#l00029">BbkOutline.java:29</a></div></div>
 <div class="ttc" id="classdata__center_1_1_sketch_center_html_a3c21c72476fab33fd517135ab4e54757"><div class="ttname"><a href="classdata__center_1_1_sketch_center.html#a3c21c72476fab33fd517135ab4e54757">data_center.SketchCenter.assignBbkOutlineToBioBrick</a></div><div class="ttdeci">BbkOutline assignBbkOutlineToBioBrick(String bbkName, BioBrick biobrick)</div><div class="ttdef"><b>Definition:</b> <a href="_sketch_center_8java_source.html#l00080">SketchCenter.java:80</a></div></div>
+<div class="ttc" id="classdata__center_1_1_sketch_center_html_aa4a118b42adc43c93167ff40804f9201"><div class="ttname"><a href="classdata__center_1_1_sketch_center.html#aa4a118b42adc43c93167ff40804f9201">data_center.SketchCenter.generateBbkUploadFromBackBone</a></div><div class="ttdeci">BbkUpload generateBbkUploadFromBackBone(BackBone backbone, boolean findTwins)</div><div class="ttdef"><b>Definition:</b> <a href="_sketch_center_8java_source.html#l00090">SketchCenter.java:90</a></div></div>
 <div class="ttc" id="classdata__center_1_1_sketch_center_html_ac118c478e95a452b5ffd055c33a77a07"><div class="ttname"><a href="classdata__center_1_1_sketch_center.html#ac118c478e95a452b5ffd055c33a77a07">data_center.SketchCenter.projectList</a></div><div class="ttdeci">ArrayList&lt; SketchProject &gt; projectList</div><div class="ttdef"><b>Definition:</b> <a href="_sketch_center_8java_source.html#l00016">SketchCenter.java:16</a></div></div>
-<div class="ttc" id="classdata__center_1_1_sketch_project_html_acc05f0642428f47bafd9121afd28096d"><div class="ttname"><a href="classdata__center_1_1_sketch_project.html#acc05f0642428f47bafd9121afd28096d">data_center.SketchProject.saveIntoFile</a></div><div class="ttdeci">void saveIntoFile(String filePath)</div><div class="ttdef"><b>Definition:</b> <a href="_sketch_project_8java_source.html#l00329">SketchProject.java:329</a></div></div>
-<div class="ttc" id="classdata__center_1_1_sketch_project_html_a531254d9138dafa18ee69d3d85026427"><div class="ttname"><a href="classdata__center_1_1_sketch_project.html#a531254d9138dafa18ee69d3d85026427">data_center.SketchProject.loadFromFile</a></div><div class="ttdeci">void loadFromFile(String filePath)</div><div class="ttdef"><b>Definition:</b> <a href="_sketch_project_8java_source.html#l00364">SketchProject.java:364</a></div></div>
+<div class="ttc" id="classdata__center_1_1_bbk_detail_html_a8b8aabcfcc5133a7b55bd21bb29f5f0a"><div class="ttname"><a href="classdata__center_1_1_bbk_detail.html#a8b8aabcfcc5133a7b55bd21bb29f5f0a">data_center.BbkDetail.features</a></div><div class="ttdeci">ArrayList&lt; Feature &gt; features</div><div class="ttdef"><b>Definition:</b> <a href="_bbk_detail_8java_source.html#l00013">BbkDetail.java:13</a></div></div>
+<div class="ttc" id="classdata__center_1_1_sketch_project_html_a531254d9138dafa18ee69d3d85026427"><div class="ttname"><a href="classdata__center_1_1_sketch_project.html#a531254d9138dafa18ee69d3d85026427">data_center.SketchProject.loadFromFile</a></div><div class="ttdeci">void loadFromFile(String filePath)</div><div class="ttdef"><b>Definition:</b> <a href="_sketch_project_8java_source.html#l00343">SketchProject.java:343</a></div></div>
 <div class="ttc" id="classdata__center_1_1_bbk_upload_html"><div class="ttname"><a href="classdata__center_1_1_bbk_upload.html">data_center.BbkUpload</a></div><div class="ttdef"><b>Definition:</b> <a href="_bbk_upload_8java_source.html#l00009">BbkUpload.java:9</a></div></div>
 <div class="ttc" id="classdata__center_1_1_sketch_center_html_abc667454703ae74b08653ee633abb071"><div class="ttname"><a href="classdata__center_1_1_sketch_center.html#abc667454703ae74b08653ee633abb071">data_center.SketchCenter.closeProject</a></div><div class="ttdeci">void closeProject(String projectName)</div><div class="ttdef"><b>Definition:</b> <a href="_sketch_center_8java_source.html#l00040">SketchCenter.java:40</a></div></div>
-<div class="ttc" id="classdata__center_1_1_sketch_project_html"><div class="ttname"><a href="classdata__center_1_1_sketch_project.html">data_center.SketchProject</a></div><div class="ttdef"><b>Definition:</b> <a href="_sketch_project_8java_source.html#l00036">SketchProject.java:36</a></div></div>
+<div class="ttc" id="classdata__center_1_1_sketch_project_html"><div class="ttname"><a href="classdata__center_1_1_sketch_project.html">data_center.SketchProject</a></div><div class="ttdef"><b>Definition:</b> <a href="_sketch_project_8java_source.html#l00033">SketchProject.java:33</a></div></div>
+<div class="ttc" id="classdata__center_1_1_bbk_upload_html_a586f5b653e34a6ff9bb7770cb90add1b"><div class="ttname"><a href="classdata__center_1_1_bbk_upload.html#a586f5b653e34a6ff9bb7770cb90add1b">data_center.BbkUpload.setSequence</a></div><div class="ttdeci">void setSequence(boolean useDefaultScar, boolean findTwins)</div><div class="ttdef"><b>Definition:</b> <a href="_bbk_upload_8java_source.html#l00083">BbkUpload.java:83</a></div></div>
 <div class="ttc" id="classdata__center_1_1_bbk_detail_html"><div class="ttname"><a href="classdata__center_1_1_bbk_detail.html">data_center.BbkDetail</a></div><div class="ttdef"><b>Definition:</b> <a href="_bbk_detail_8java_source.html#l00009">BbkDetail.java:9</a></div></div>
 <div class="ttc" id="namespacedata__center_html"><div class="ttname"><a href="namespacedata__center.html">data_center</a></div><div class="ttdef"><b>Definition:</b> <a href="_bbk_detail_8java_source.html#l00001">BbkDetail.java:1</a></div></div>
 <div class="ttc" id="classdata__center_1_1_sketch_center_html_a42925241a56f33b11c6a9869fe410d15"><div class="ttname"><a href="classdata__center_1_1_sketch_center.html#a42925241a56f33b11c6a9869fe410d15">data_center.SketchCenter.switchCurrentProjectTo</a></div><div class="ttdeci">SketchProject switchCurrentProjectTo(String projectName)</div><div class="ttdef"><b>Definition:</b> <a href="_sketch_center_8java_source.html#l00020">SketchCenter.java:20</a></div></div>
 <div class="ttc" id="classdata__center_1_1_sketch_center_html_a451b9792776367b79d459c16fb580b90"><div class="ttname"><a href="classdata__center_1_1_sketch_center.html#a451b9792776367b79d459c16fb580b90">data_center.SketchCenter.saveProject</a></div><div class="ttdeci">void saveProject(String filePath)</div><div class="ttdef"><b>Definition:</b> <a href="_sketch_center_8java_source.html#l00056">SketchCenter.java:56</a></div></div>
-<div class="ttc" id="classdata__center_1_1_sketch_component_1_1_bio_brick_html_afabea69c26df621eeef112640fdf9620"><div class="ttname"><a href="classdata__center_1_1_sketch_component_1_1_bio_brick.html#afabea69c26df621eeef112640fdf9620">data_center.SketchComponent.BioBrick.setString</a></div><div class="ttdeci">void setString(String bbkName)</div><div class="ttdef"><b>Definition:</b> <a href="_sketch_component_8java_source.html#l00212">SketchComponent.java:212</a></div></div>
+<div class="ttc" id="classdata__center_1_1_sketch_component_1_1_bio_brick_html_afabea69c26df621eeef112640fdf9620"><div class="ttname"><a href="classdata__center_1_1_sketch_component_1_1_bio_brick.html#afabea69c26df621eeef112640fdf9620">data_center.SketchComponent.BioBrick.setString</a></div><div class="ttdeci">void setString(String bbkName)</div><div class="ttdef"><b>Definition:</b> <a href="_sketch_component_8java_source.html#l00221">SketchComponent.java:221</a></div></div>
 <div class="ttc" id="classdata__center_1_1_sketch_center_html_a8048886766d8a26a7a39fd953f4376ba"><div class="ttname"><a href="classdata__center_1_1_sketch_center.html#a8048886766d8a26a7a39fd953f4376ba">data_center.SketchCenter.newProject</a></div><div class="ttdeci">SketchProject newProject()</div><div class="ttdef"><b>Definition:</b> <a href="_sketch_center_8java_source.html#l00031">SketchCenter.java:31</a></div></div>
-<div class="ttc" id="classdata__center_1_1_sketch_component_1_1_bio_brick_html_a85a98ecc265cbe4ede6d8e10f222dbe8"><div class="ttname"><a href="classdata__center_1_1_sketch_component_1_1_bio_brick.html#a85a98ecc265cbe4ede6d8e10f222dbe8">data_center.SketchComponent.BioBrick.bbkOutline</a></div><div class="ttdeci">BbkOutline bbkOutline</div><div class="ttdef"><b>Definition:</b> <a href="_sketch_component_8java_source.html#l00166">SketchComponent.java:166</a></div></div>
+<div class="ttc" id="classdata__center_1_1_bbk_outline_html_ad62bb94b6f00f9f3ebc021cb7ed20f51"><div class="ttname"><a href="classdata__center_1_1_bbk_outline.html#ad62bb94b6f00f9f3ebc021cb7ed20f51">data_center.BbkOutline.type</a></div><div class="ttdeci">String type</div><div class="ttdef"><b>Definition:</b> <a href="_bbk_outline_8java_source.html#l00013">BbkOutline.java:13</a></div></div>
+<div class="ttc" id="classdata__center_1_1_bbk_upload_html_a2b25968e846bbedc37000d794eb46c25"><div class="ttname"><a href="classdata__center_1_1_bbk_upload.html#a2b25968e846bbedc37000d794eb46c25">data_center.BbkUpload.features</a></div><div class="ttdeci">ArrayList&lt; Feature &gt; features</div><div class="ttdef"><b>Definition:</b> <a href="_bbk_upload_8java_source.html#l00030">BbkUpload.java:30</a></div></div>
+<div class="ttc" id="classdata__center_1_1_sketch_component_1_1_bio_brick_html_a85a98ecc265cbe4ede6d8e10f222dbe8"><div class="ttname"><a href="classdata__center_1_1_sketch_component_1_1_bio_brick.html#a85a98ecc265cbe4ede6d8e10f222dbe8">data_center.SketchComponent.BioBrick.bbkOutline</a></div><div class="ttdeci">BbkOutline bbkOutline</div><div class="ttdef"><b>Definition:</b> <a href="_sketch_component_8java_source.html#l00174">SketchComponent.java:174</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Oct 5 2014 13:31:48 for EasyBbk by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Oct 15 2014 02:00:00 for EasyBbk by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

@@ -166,13 +166,25 @@ public class Child_Upload extends JPanel {
 					requestFocus();
 			}
 		});
-		
-		setBounds(0, 0, 1366, 670);
+		if(mainpage.small == false){
+			setBounds(0, 0, 1366, 670);
+		}
+		else if(mainpage.small == true){
+			setBounds(0, 0, 1280, 670);
+		}
 		setBackground(new Color(255, 255, 255));
 		setLayout(null);
 		setVisible(true);
 		
 		UploadContainer = new JPanel();
+		if(mainpage.small == false){
+			UploadContainer.setBounds(0, 0, 1348, 2000);
+			UploadContainer.setPreferredSize(new Dimension(1348, 2000));
+		}
+		else if(mainpage.small == true){
+			UploadContainer.setBounds(0, 0, 1262, 2000);
+			UploadContainer.setPreferredSize(new Dimension(1262, 2000));
+		}
 		UploadContainer.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -180,8 +192,6 @@ public class Child_Upload extends JPanel {
 					UploadContainer.requestFocus();
 			}
 		});
-		UploadContainer.setBounds(0, 0, 1348, 2000);
-		UploadContainer.setPreferredSize(new Dimension(1348, 2000));
 		UploadContainer.setBackground(new Color(255, 255, 255));
 		UploadContainer.setLayout(null);
 		
@@ -917,10 +927,15 @@ public class Child_Upload extends JPanel {
 		UploadContainer.add(BackGround);
 		
 		JScrollBar scrollbar = new JScrollBar();
+		if(mainpage.small == false){
+			scrollpanel.setBounds(0, 0, 1366, 670);
+		}
+		else if(mainpage.small == true){
+			scrollpanel.setBounds(0, 0, 1280, 670);
+		}
 		scrollbar.setUnitIncrement(100);
 		scrollpanel.setVerticalScrollBar(scrollbar);
 		scrollpanel.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-		scrollpanel.setBounds(0, 0, 1366, 670);
 		scrollpanel.validate();
 		add(scrollpanel);
 	}

@@ -21,9 +21,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="Logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">EasyBbk
-   &#160;<span id="projectnumber">1.0</span>
+   &#160;<span id="projectnumber">1.0.0</span>
    </div>
    <div id="projectbrief">&quot;Easy BBK&quot; is a trial to provide a standardized, visualized and user friendly access to bio-brick system by simplify and interassociate the searching, comparing, designing and uploading of bio-bricks. These four main functions constitute the &quot;Easy BBK&quot; client-side which is realized by pure java and supported by a remote server through the internet. We hope that you will have better experiences when exploring the biobrick world using &quot;Easy BBK&quot;.</div>
   </td>
@@ -41,7 +42,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="namespaces.html"><span>Packages</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
-      <li><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -105,7 +105,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -130,11 +130,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>sampleStatus
 : <a class="el" href="classdata__center_1_1_bbk_outline.html#a2c3abdd36b8bc232cde665add03b2d96">data_center.BbkOutline</a>
 </li>
-<li>scale
-: <a class="el" href="classdata__center_1_1_sketch_component_1_1_bio_vector.html#aed9a13444373975e2a723ee5d9af3b2c">data_center.SketchComponent.BioVector</a>
-</li>
 <li>score
-: <a class="el" href="classdata__center_1_1_bbk_outline_1_1_blasting.html#a78079d38c9b61081107afc83fb360abe">data_center.BbkOutline.Blasting</a>
+: <a class="el" href="classdata__center_1_1_bbk_outline_1_1_blasting.html#a19ae378d7af4e8fb31dcdcf607c089d7">data_center.BbkOutline.Blasting</a>
 </li>
 <li>searchCenter
 : <a class="el" href="classdata__center_1_1_data_center.html#a30b65aa6dc222c2865daa77908a9cd92">data_center.DataCenter</a>
@@ -152,6 +149,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>SEQUENCE
 : <a class="el" href="classdata__center_1_1_d_b_consts_1_1_header_1_1_main.html#ae70c6511619bcd0c7ed408d6840c82f2">data_center.DBConsts.Header.Main</a>
 , <a class="el" href="classdata__center_1_1_d_b_consts_1_1_header_1_1_spec_scar.html#abf8068f6787a6e6815f55069d7074ab9">data_center.DBConsts.Header.SpecScar</a>
+</li>
+<li>sequenceTokens
+: <a class="el" href="classdata__center_1_1_bbk_upload.html#a3a1549832980d217b11558692e462f1e">data_center.BbkUpload</a>
 </li>
 <li>SHORT_DESC
 : <a class="el" href="classdata__center_1_1_d_b_consts_1_1_header_1_1_deep_sub.html#a85fabe484ff3d9eda501bd12ebcf37e6">data_center.DBConsts.Header.DeepSub</a>
@@ -175,6 +175,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </li>
 <li>sketchCenter
 : <a class="el" href="classdata__center_1_1_data_center.html#a14ddc15b8b5bd8284c9c63d6544b07ee">data_center.DataCenter</a>
+</li>
+<li>source
+: <a class="el" href="classdata__center_1_1_bbk_upload.html#a9d2093671868cc1048c5402e2b3a1100">data_center.BbkUpload</a>
 </li>
 <li>SPECIFIED_SUBPARTS
 : <a class="el" href="classdata__center_1_1_d_b_consts_1_1_table.html#ad26225e048e930f98da02330d3fa201d">data_center.DBConsts.Table</a>
@@ -273,7 +276,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Oct 5 2014 13:31:49 for EasyBbk by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Oct 15 2014 02:00:02 for EasyBbk by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>
