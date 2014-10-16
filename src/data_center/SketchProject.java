@@ -49,6 +49,15 @@ public class SketchProject
     }
     
 
+    public int getMaxID()
+    {	
+    	int max = -1;
+    	for (Component comp : componentList)
+    		if (comp.ID > max)
+    			max = comp.ID;
+    	return max;
+    }
+    
 	public Component findComponentByID(int ID)
 	{
 		for (Component comp : componentList)
