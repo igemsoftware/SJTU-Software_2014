@@ -24,17 +24,18 @@ public class Testing
 	
 	public static void main(String[] args) throws Exception
 	{	
-		//searchKeywordAndGetDetail();
-		//searchFilterAndSort();
-		//searchBlasting();
-		//searchHistory();
-		//compareAssignDetail();
-		//sketchProjectOperation();
-		//sketchXMLReadWrite();
-		//sketchOperationHistory();
-		//uploadUploadAndReappearBbkUpload();
-		//uploadPartNameSequenceTokenValidationCheck();
-		//uploadSubpartSubscarValidationCheck();
+		searchKeywordAndGetDetail();
+		searchFilterAndSort();
+		searchBlasting();
+		searchHistory();
+		compareAssignDetail();
+		sketchProjectOperation();
+		sketchXMLReadWrite();
+		sketchOperationHistory();
+		uploadUploadAndReappearBbkUpload();
+		uploadPartNameSequenceTokenValidationCheck();
+		uploadSubpartSubscarValidationCheck();
+		uploadOfficialUploadPost();
 	}
 	
 	
@@ -51,7 +52,7 @@ public class Testing
 		System.out.println("Network time: " + (endTime - startTime) + "ms");
 		System.out.println("List size: " + list.size());
 		
-		for (int i = 0; i < list.size(); i += 10)
+		for (int i = 0; i < list.size(); i += 50)
 		{	BbkDetail detail = dataCenter.searchCenter.getDetail(list.get(i).name);
 			detail.display();
 		}
@@ -134,7 +135,8 @@ public class Testing
 	private static void compareAssignDetail()
 	{	
 		int startTime = getTimeInMs();
-		dataCenter.compareCenter.assignDetail("BBa_I13545", 2).display();
+		dataCenter.compareCenter.assignDetail("BBa_I13545", 2);
+		dataCenter.compareCenter.getDetail(2).display();
 		int endTime = getTimeInMs();
 		
 		System.out.println("Network time: " + (endTime - startTime) + "ms");
@@ -257,6 +259,23 @@ public class Testing
 		System.out.println("Subpart validation(RFC[1000]): " + 
 			(dataCenter.uploadCenter.getSubscarForSequenceToken("RFC[1000]") != null));
 	}
+	
+	private static void uploadOfficialUploadPost()
+	{	
+		BbkUpload bbkUpload = new BbkUpload();
+		bbkUpload.sequenceTokens.add(dataCenter.uploadCenter.getSubpartForSequenceToken("BBa_B0034"));
+		bbkUpload.sequenceTokens.add(dataCenter.uploadCenter.getSubscarForSequenceToken("RFC[10]"));
+		bbkUpload.setSequence(true, false);
+		try {
+			System.out.println("Login... Succeed: " + OfficialUploadPoster.login
+				(Server.iGemChyb.USER_NAME, Server.iGemChyb.PASSWORD));
+			System.out.println("Next avaliable part name: " + 
+				OfficialUploadPoster.getNextAvailablePartName());
+			String[] region = OfficialUploadPoster.getAvailablePartNameRegion();
+			System.out.println("Avaliable region: " + region[0] + " to " + region[1]);
+		} catch (Exception e) {e.printStackTrace();}
+	}
+	
 	
 	static int getTimeInMs()
 	{	
