@@ -31,6 +31,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.event.MouseInputListener;
 import javax.swing.filechooser.FileFilter;
@@ -185,6 +186,7 @@ public class Child_Design extends JLayeredPane {
 		ImageIcon image_eraser = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Eraser.png"));
 		eraser.setIcon(image_eraser);
 		eraser.setBounds(119, 112, 40, 42);
+		eraser.setBorder(new LineBorder(Color.GRAY));
 		eraser.setName("eraser");
 		eraser.setToolTipText("Remove components.");
 		eraser.setType(2);

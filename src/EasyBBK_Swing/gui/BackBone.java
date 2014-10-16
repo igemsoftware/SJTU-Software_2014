@@ -157,7 +157,7 @@ class BackBone extends JLabelWithID implements MouseListener, MouseMotionListene
 				
 				//test
 				ImageIcon image = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/backbone_move.png"));
-				image.setImage(image.getImage().getScaledInstance(this.getWidth(),50,Image.SCALE_DEFAULT));
+				image.setImage(image.getImage().getScaledInstance(this.getWidth(),60,Image.SCALE_DEFAULT));
 				this.setIcon(image);
 			}
 		}
