@@ -78,15 +78,11 @@ public class Child_Upload extends JPanel {
 	public JTextArea DesignConsideration;
 	public JScrollPane DCscrollpanel;
 	public int parameternumber = 0;
-	public Parameter_item[] parameter_item = new Parameter_item[4];
 	public int categorynumber = 0;
-	public Category_item[] category_item = new Category_item[4];
 	public int featurenumber = 0;
-	public Feature_item[] feature_item = new Feature_item[4];
 	public JTextField UserName;
 	public JPasswordField Password;
 	public SubpartDialog subpartdialog;
-	//public JPanel showinfopanel;
 	public JLabel showinfo;
 	public JLabel BackGround;
 	public JButton Clearall;
@@ -792,7 +788,7 @@ public class Child_Upload extends JPanel {
 			}
 		});
 		SubmitToDatabase.setFont(new Font("Arial", Font.PLAIN, 24));
-		SubmitToDatabase.setBounds(403, 1870, 180, 55);
+		SubmitToDatabase.setBounds(403, 1870, 200, 55);
 		UploadContainer.add(SubmitToDatabase);
 		
 		SubmitToWebsite = new JButton("<html>" + "Submit to" + "<br>" + " official website" + "</html>");
