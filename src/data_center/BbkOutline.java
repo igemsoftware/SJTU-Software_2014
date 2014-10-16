@@ -62,7 +62,7 @@ public class BbkOutline
 				   + Double.parseDouble(rating.feedbacks) / DBConsts.Rating.FEEDBACKS_DEFAULT_WEIGHT * feedbacks_weight
 				   + Double.parseDouble(rating.publication) / DBConsts.Rating.PUBLICATION_DEFAULT_WEIGHT * publication_weight;
 		} catch (Exception e) {points = 0;}
-		double score = points / totalPoints * 100;
+		double score = points / totalPoints * 100 + 15;
 		return score;
     }
     
