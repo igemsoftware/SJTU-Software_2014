@@ -220,8 +220,6 @@ class DragCompListener implements MouseInputListener
 						
 						Point location = new Point(((JLabelWithID)(e.getSource())).getX(),
 								closestBackbone.getY());
-						
-						System.out.println(location.x);
 
 						//Paint transparent component
 						Component comp= e.getComponent();
