@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
 
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 
@@ -209,7 +210,9 @@ public class Comparison_item extends JPanel {
 		GoogleItems.setBounds(0, 720, 300, 30);
 		add(GoogleItems);
 		
-		Remove = new JButton("Remove");
+		Remove = new JButton("");
+		ImageIcon image_Remove = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/remove.png"));
+		Remove.setIcon(image_Remove);
 		Remove.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent arg0) {

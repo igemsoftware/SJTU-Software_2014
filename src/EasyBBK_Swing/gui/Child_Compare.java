@@ -123,7 +123,7 @@ public class Child_Compare extends JPanel {
 				attention.setBounds(265, 150, 800, 50);
 			}
 			attention.setOpaque(false);
-			attention.setForeground(Color.red);
+			attention.setForeground(new Color(255,230,0));
 			attention.setFont(new Font("Arial", Font.BOLD, 30));
 			attention.setBackground(new Color(255, 255, 255));
 			
