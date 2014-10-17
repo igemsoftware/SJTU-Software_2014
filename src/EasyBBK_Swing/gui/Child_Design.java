@@ -180,7 +180,7 @@ public class Child_Design extends JLayeredPane {
         fontButton.setBounds(56,49,35,35);
 		ImageIcon image_font = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Font.png"));
 		fontButton.setIcon(image_font);
-		fontButton.setToolTipText("Choose the font of the test label.");
+		fontButton.setToolTipText("Choose the font of the text label.");
         background.add(fontButton);
         
         ImageIcon image_text = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/Text_design.png"));
@@ -513,7 +513,7 @@ public class Child_Design extends JLayeredPane {
 		ImageIcon image_background = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/design_background.png"));
 		background.setIcon(image_background);
 		
-		//backout by keyboard
+		//Undo by keyboard
 		Toolkit.getDefaultToolkit().addAWTEventListener( 
 				new AWTEventListener(){
 					 public void eventDispatched(AWTEvent e) {
@@ -523,12 +523,12 @@ public class Child_Design extends JLayeredPane {
 	                        			&& ek.getID() == KeyEvent.KEY_RELEASED)
 	                        	{
 	                        		SketchOperation operation = sketchCenter.currentProject.ctrlZ();
-	                    			//test
+
 	                    			if (operation == null)
 	                    			{
 	                    				return;
 	                    			}
-	                    			// else... 
+
 	                    			SketchComponent.Component component;
 	                    			if (operation.operationType == SketchOperation.ADD)
 	                    			{
@@ -555,7 +555,7 @@ public class Child_Design extends JLayeredPane {
 					 }
 				},  AWTEvent.KEY_EVENT_MASK);		
 				
-		//forward by keyboard
+		//Redo by keyboard
 		Toolkit.getDefaultToolkit().addAWTEventListener( 
 				new AWTEventListener(){
 					 public void eventDispatched(AWTEvent e) {
@@ -565,10 +565,10 @@ public class Child_Design extends JLayeredPane {
 	                        			&& ek.getID() == KeyEvent.KEY_RELEASED)
 	                        	{
 	                        		SketchOperation operation = sketchCenter.currentProject.ctrlY();
-	                    			//test
+
 	                    			if (operation == null)
 	                    				return;
-	                    			// else... 
+ 
 	                    			SketchComponent.Component component;
 	                    			if (operation.operationType == SketchOperation.ADD)
 	                    			{
@@ -685,13 +685,13 @@ public class Child_Design extends JLayeredPane {
 							sketchCenter.currentProject.addComponent(new SketchComponent.Relation
 									(newLine.ID, lineType, bounds, points, lineColor, lineStroke));
 							
-							//ÒÆ¶¯
+							//imply move
 							DragLineListener dragListener = new DragLineListener();
 							newLine.addMouseListener(dragListener);
 							newLine.addMouseMotionListener(dragListener);
 							linePanel.endLine();
 							
-							//É¾³ý
+							//Delete
 							DeleteListener deleteLine = new DeleteListener();
 							newLine.addMouseListener(deleteLine);
 							newLine.addMouseMotionListener(deleteLine);
@@ -781,13 +781,13 @@ public class Child_Design extends JLayeredPane {
 						sketchCenter.currentProject.addComponent(new SketchComponent.Relation
 								(newLine.ID, lineType, bounds, points, lineColor, lineStroke));
 						
-						//ÒÆ¶¯
+						//imply move
 						DragLineListener dragListener = new DragLineListener();
 						newLine.addMouseListener(dragListener);
 						newLine.addMouseMotionListener(dragListener);
 						linePanel.endLine();
 						
-						//É¾³ý
+						//Delete
 						DeleteListener deleteLine = new DeleteListener();
 						newLine.addMouseListener(deleteLine);
 						newLine.addMouseMotionListener(deleteLine);
@@ -870,13 +870,13 @@ public class Child_Design extends JLayeredPane {
 						sketchCenter.currentProject.addComponent(new SketchComponent.Relation
 								(newLine.ID, lineType, bounds, points, lineColor, lineStroke));
 						
-						//ÒÆ¶¯
+						//imply move
 						DragLineListener dragListener = new DragLineListener();
 						newLine.addMouseListener(dragListener);
 						newLine.addMouseMotionListener(dragListener);
 						linePanel.endLine();
 						
-						//É¾³ý
+						//Delete
 						DeleteListener deleteLine = new DeleteListener();
 						newLine.addMouseListener(deleteLine);
 						newLine.addMouseMotionListener(deleteLine);
@@ -974,13 +974,13 @@ public class Child_Design extends JLayeredPane {
 						sketchCenter.currentProject.addComponent(new SketchComponent.Relation
 								(newLine.ID, lineType, bounds, points, lineColor, lineStroke));
 						
-						//ÒÆ¶¯
+						//imply move
 						DragLineListener dragListener = new DragLineListener();
 						newLine.addMouseListener(dragListener);
 						newLine.addMouseMotionListener(dragListener);
 						linePanel.endLine();
 						
-						//É¾³ý
+						//Delete
 						DeleteListener deleteLine = new DeleteListener();
 						newLine.addMouseListener(deleteLine);
 						newLine.addMouseMotionListener(deleteLine);
@@ -1060,7 +1060,7 @@ public class Child_Design extends JLayeredPane {
 					newBackBone.addMouseListener(listener);
 					newBackBone.addMouseMotionListener(listener);
 					
-					//É¾³ý
+					//Delete
 					DeleteListener deleteBackbone = new DeleteListener();
 					newBackBone.addMouseListener(deleteBackbone);
 					newBackBone.addMouseMotionListener(deleteBackbone);
@@ -1153,7 +1153,7 @@ public class Child_Design extends JLayeredPane {
 					newLabel.addMouseListener(setNameListener);
 					newLabel.addMouseMotionListener(setNameListener);
 					
-					//É¾³ý
+					//Delete
 					DeleteListener deleteLabel = new DeleteListener();
 					newLabel.addMouseListener(deleteLabel);
 					newLabel.addMouseMotionListener(deleteLabel);
@@ -1199,13 +1199,13 @@ public class Child_Design extends JLayeredPane {
 	    		Rectangle bounds = new Rectangle(newText.getBounds());
 	    		sketchCenter.currentProject.addComponent
 	    			(new SketchComponent.Label(newText.ID, newText.getText(),
-	    					bounds, new Font("Time New Roman", Font.PLAIN, 16), Color.BLACK));
+	    					bounds, new Font("Arial", Font.PLAIN, 16), Color.BLACK));
 	    		
 	    		DragTextListener dragListener = new DragTextListener();
 	    		newText.addMouseListener(dragListener);
 	    		newText.addMouseMotionListener(dragListener);
 	    		
-	    		//É¾³ý
+	    		//Delete
 				DeleteListener deleteText = new DeleteListener();
 				newText.addMouseListener(deleteText);
 				newText.addMouseMotionListener(deleteText);
@@ -1290,13 +1290,13 @@ public class Child_Design extends JLayeredPane {
 						sketchCenter.currentProject.addComponent(new SketchComponent.Relation
 								(newLine.ID, lineType, bounds, points, lineColor, lineStroke));
 						
-						//ÒÆ¶¯
+						//imply move
 						DragLineListener dragListener = new DragLineListener();
 						newLine.addMouseListener(dragListener);
 						newLine.addMouseMotionListener(dragListener);
 						linePanel.endLine();
 						
-						//É¾³ý
+						//Delete
 						DeleteListener deleteLine = new DeleteListener();
 						newLine.addMouseListener(deleteLine);
 						newLine.addMouseMotionListener(deleteLine);
@@ -1472,13 +1472,13 @@ public class Child_Design extends JLayeredPane {
 						sketchCenter.currentProject.addComponent(new SketchComponent.Relation
 								(newLine.ID, lineType, bounds, points, lineColor, lineStroke));
 						
-						//ÒÆ¶¯
+						//imply move
 						DragLineListener dragListener = new DragLineListener();
 						newLine.addMouseListener(dragListener);
 						newLine.addMouseMotionListener(dragListener);
 						linePanel.endLine();
 						
-						//É¾³ý
+						//Delete
 						DeleteListener deleteLine = new DeleteListener();
 						newLine.addMouseListener(deleteLine);
 						newLine.addMouseMotionListener(deleteLine);
@@ -1931,7 +1931,7 @@ public class Child_Design extends JLayeredPane {
 	}
 	
 	/**
-	 * Backout
+	 * Undo
 	 */
 	class BackoutListener implements MouseInputListener
 	{		
@@ -1939,12 +1939,12 @@ public class Child_Design extends JLayeredPane {
 		{
 			stopDrawLine();
 			SketchOperation operation = sketchCenter.currentProject.ctrlZ();
-			//test
+
 			if (operation == null)
 			{
 				return;
 			}
-			// else... 
+
 			SketchComponent.Component component;
 			if (operation.operationType == SketchOperation.ADD)
 			{
@@ -1982,7 +1982,7 @@ public class Child_Design extends JLayeredPane {
 	}
 	
 	/**
-	 * Forward
+	 * Redo
 	 */
 	class ForwardListener implements MouseInputListener
 	{		
@@ -1990,10 +1990,10 @@ public class Child_Design extends JLayeredPane {
 		{
 			stopDrawLine();
 			SketchOperation operation = sketchCenter.currentProject.ctrlY();
-			//test
+
 			if (operation == null)
 				return;
-			// else... 
+
 			SketchComponent.Component component;
 			if (operation.operationType == SketchOperation.ADD)
 			{
@@ -2412,7 +2412,7 @@ public class Child_Design extends JLayeredPane {
     		newText.addMouseListener(dragListener);
     		newText.addMouseMotionListener(dragListener);
     		
-    		//É¾³ý
+    		//Delete
 			DeleteListener deleteText = new DeleteListener();
 			newText.addMouseListener(deleteText);
 			newText.addMouseMotionListener(deleteText);
@@ -2482,7 +2482,7 @@ public class Child_Design extends JLayeredPane {
 			newLabel.addMouseListener(setNameListener);
 			newLabel.addMouseMotionListener(setNameListener);
 			
-			//É¾³ý
+			//Delete
 			DeleteListener deleteLabel = new DeleteListener();
 			newLabel.addMouseListener(deleteLabel);
 			newLabel.addMouseMotionListener(deleteLabel);
@@ -2552,7 +2552,7 @@ public class Child_Design extends JLayeredPane {
 			newLabel.addMouseListener(setNameListener);
 			newLabel.addMouseMotionListener(setNameListener);
 			
-			//É¾³ý
+			//Delete
 			DeleteListener deleteLabel = new DeleteListener();
 			newLabel.addMouseListener(deleteLabel);
 			newLabel.addMouseMotionListener(deleteLabel);
@@ -2609,7 +2609,7 @@ public class Child_Design extends JLayeredPane {
 			newBackBone.addMouseListener(listener);
 			newBackBone.addMouseMotionListener(listener);
 			
-			//É¾³ý
+			//Delete
 			DeleteListener deleteBackbone = new DeleteListener();
 			newBackBone.addMouseListener(deleteBackbone);
 			newBackBone.addMouseMotionListener(deleteBackbone);
@@ -2699,13 +2699,13 @@ public class Child_Design extends JLayeredPane {
 			linePanel.color = new Color(previousColor.getRGB());
 			linePanel.stroke = previousStroke;
 			
-			//ÒÆ¶¯
+			//imply move
 			DragLineListener dragListener = new DragLineListener();
 			newLine.addMouseListener(dragListener);
 			newLine.addMouseMotionListener(dragListener);
 			linePanel.endLine();
 			
-			//É¾³ý
+			//Delete
 			DeleteListener deleteLine = new DeleteListener();
 			newLine.addMouseListener(deleteLine);
 			newLine.addMouseMotionListener(deleteLine);
@@ -2769,7 +2769,7 @@ public class Child_Design extends JLayeredPane {
 			newLabel.addMouseListener(setNameListener);
 			newLabel.addMouseMotionListener(setNameListener);
 			
-			//É¾³ý
+			//Delete
 			DeleteListener deleteLabel = new DeleteListener();
 			newLabel.addMouseListener(deleteLabel);
 			newLabel.addMouseMotionListener(deleteLabel);
@@ -2994,13 +2994,13 @@ public class Child_Design extends JLayeredPane {
 						sketchCenter.currentProject.addComponent(new SketchComponent.Relation
 								(newLine.ID, lineType, bounds, points, lineColor, lineStroke));
 						
-						//ÒÆ¶¯
+						//imply move
 						DragLineListener dragListener = new DragLineListener();
 						newLine.addMouseListener(dragListener);
 						newLine.addMouseMotionListener(dragListener);
 						linePanel.endLine();
 						
-						//É¾³ý
+						//Delete
 						DeleteListener deleteLine = new DeleteListener();
 						newLine.addMouseListener(deleteLine);
 						newLine.addMouseMotionListener(deleteLine);

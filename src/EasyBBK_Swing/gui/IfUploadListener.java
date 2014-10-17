@@ -131,7 +131,6 @@ public class IfUploadListener implements MouseInputListener
 	            		return;	
 	            	}
 	            	
-	            	@SuppressWarnings("unused")
 					BbkUpload bbkUpload = sketchCenter.generateBbkUploadFromBackBone(backbone, false);
 	            	
 	            	//to upload interface
