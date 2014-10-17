@@ -783,8 +783,9 @@ public class Child_Upload extends JPanel {
 //						bbkupload.features.add(feature);
 //					}
 					bbkupload.longDesc = LongDescription.getText();
-					//UploadCenter uploadcenter = new UploadCenter();
-					//uploadcenter.getBbkUploadByNameAndOddNum(name, oddNum);
+					UploadCenter uploadcenter = new UploadCenter();
+					String oddNum = uploadcenter.uploadAndGetOddNum(bbkupload);
+					showinfo.setText("Add to EasyBBK Database. The ID is "+oddNum);
 				}
 			}
 		});
@@ -847,9 +848,31 @@ public class Child_Upload extends JPanel {
 //						Feature feature = new Feature(null, feature_item[i].Label.getText(), feature_item[i].content1, feature_item[i].content2, feature_item[i].Start.getText(), feature_item[i].End.getText());
 //						bbkupload.features.add(feature);
 //					}
+					bbkupload.longDesc = LongDescription.getText();
 					bbkupload.source = Source.getText();
 					bbkupload.notes = DesignConsideration.getText();
 					
+					if (bbkupload.shortDesc.equals(""))
+					{
+						showinfo.setText("No Short Description information provide.");
+						return;
+					}
+					else if (bbkupload.longDesc.equals(""))
+					{
+						showinfo.setText("No Long Description information provide.");
+						return;
+					}
+					else if (bbkupload.source.equals(""))
+					{
+						showinfo.setText("No Source information provide.");
+						return;
+					}
+					else if (bbkupload.notes.equals(""))
+					{
+						showinfo.setText("No Design Considerations information provide.");
+						return;
+					}
+						
 					WriteTxt rt = new WriteTxt();
 					Thread demo1 = new Thread(rt);
 					demo1.start();

@@ -2038,7 +2038,7 @@ public class Child_Design extends JLayeredPane {
 		public void mouseClicked(MouseEvent e) 
 		{
 			stopDrawLine();
-			IfSaveDialog one = new IfSaveDialog();
+			IfSaveDialog one = new IfSaveDialog(sketchCenter);
 			if (sketchCenter.currentProject.modified)
 			{
 				//Open Dialog
@@ -2115,7 +2115,7 @@ public class Child_Design extends JLayeredPane {
 			if (sketchCenter.currentProject.modified)
 			{
 				//Open Dialog
-				IfSaveDialog one = new IfSaveDialog();
+				IfSaveDialog one = new IfSaveDialog(sketchCenter);
 				one.showDialog((JFrame)panel.getRootPane().getParent(),500,200);
 			}
 			//Show open dialog
