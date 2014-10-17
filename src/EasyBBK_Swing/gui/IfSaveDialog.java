@@ -31,9 +31,10 @@ public class IfSaveDialog extends JPanel
 	SketchCenter sketchCenter;
 	boolean ifOperate = false;
 	
-	IfSaveDialog(SketchCenter sketchCenter)
+	 public IfSaveDialog(SketchCenter sketchCenter)
 	{
 		this.sketchCenter = sketchCenter;
+		init();
 	}
 	
 	{  
@@ -42,11 +43,6 @@ public class IfSaveDialog extends JPanel
         } catch (Exception e) {  
             e.printStackTrace();  
         }  
-    }  
-
-    public IfSaveDialog()
-    {     
-        init();    
     }  
   
     //可供外部调用的方法  
@@ -130,7 +126,6 @@ public class IfSaveDialog extends JPanel
         			{
         				oFile = new File(oFile.getAbsolutePath() + extension);
         			}
-        			
         			sketchCenter.saveProject(oFile.toString());
         		}
             	
