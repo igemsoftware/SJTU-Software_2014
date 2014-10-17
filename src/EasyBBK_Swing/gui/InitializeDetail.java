@@ -89,13 +89,19 @@ public class InitializeDetail extends Thread{
 		
 		String categories = "";
 		for(int i = 0; i < bbkdetail.categories.size(); i++){
-			categories = categories + bbkdetail.categories.get(i).category + "  ";
+			if(i != bbkdetail.categories.size()-1)
+				categories = categories + bbkdetail.categories.get(i).category + "\n";
+			else if(i == bbkdetail.categories.size()-1)
+				categories = categories + bbkdetail.categories.get(i).category;
 		}
 		detailsofresults.Categories_Content.setText(categories);
 		
 		String twins = "";
 		for(int i = 0; i < bbkdetail.twins.size(); i++){
-			twins = twins + bbkdetail.twins.get(i).twin + "  ";
+			if(i != bbkdetail.twins.size()-1)
+				twins = twins + bbkdetail.twins.get(i).twin + "\n";
+			else if (i == bbkdetail.twins.size()-1)
+				twins = twins + bbkdetail.twins.get(i).twin;
 		}
 		detailsofresults.Twins_Content.setText(twins);
 		
