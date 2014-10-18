@@ -190,6 +190,7 @@ public class Child_Upload extends JPanel {
 		});
 		UploadContainer.setBackground(new Color(255, 255, 255));
 		UploadContainer.setLayout(null);
+		UploadContainer.setBorder(null);
 		
 		scrollpanel = new JScrollPane(UploadContainer);
 		
@@ -953,6 +954,7 @@ public class Child_Upload extends JPanel {
 			scrollpanel.setBounds(0, 0, 1280, 670);
 		}
 		scrollbar.setUnitIncrement(100);
+		scrollpanel.setBorder(null);
 		scrollpanel.setVerticalScrollBar(scrollbar);
 		scrollpanel.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		scrollpanel.validate();

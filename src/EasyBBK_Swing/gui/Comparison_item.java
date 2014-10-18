@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
 
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 
@@ -64,7 +65,7 @@ public class Comparison_item extends JPanel {
 		ShortDescription = new JLabel("", SwingConstants.CENTER);
 		ShortDescription.setOpaque(false);
 		//ShortDescription.setBorder(BorderFactory.createLineBorder(Color.black));
-		ShortDescription.setFont(new Font("Arial", Font.PLAIN, 20));
+		ShortDescription.setFont(new Font("Arial", Font.PLAIN, 18));
 		ShortDescription.setBounds(0, 170, 300, 60);
 		add(ShortDescription);
 		
@@ -209,7 +210,9 @@ public class Comparison_item extends JPanel {
 		GoogleItems.setBounds(0, 720, 300, 30);
 		add(GoogleItems);
 		
-		Remove = new JButton("Remove");
+		Remove = new JButton("");
+		ImageIcon remove = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/remove.png"));
+		Remove.setIcon(remove);
 		Remove.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent arg0) {
