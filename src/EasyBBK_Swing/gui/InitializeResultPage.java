@@ -160,7 +160,7 @@ public class InitializeResultPage extends Thread{
 				filteredlist = filteredlist.filterByStarNum(starNumList);
 			}
 			
-			if(child_search.information.preferences.status != 0 ||  child_search.information.preferences.quality != 0 || child_search.information.preferences.feedbacks != 0 || child_search.information.preferences.publication != 0){
+			if(child_search.information.preferences.status + child_search.information.preferences.quality + child_search.information.preferences.feedbacks + child_search.information.preferences.publication == 100){
 				filteredlist.sortByTotalScore(true, child_search.information.preferences.status, child_search.information.preferences.quality, child_search.information.preferences.feedbacks, child_search.information.preferences.publication);
 			}
 		}
