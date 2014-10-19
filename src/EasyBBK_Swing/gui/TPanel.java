@@ -9,7 +9,10 @@ import java.awt.image.BufferedImage;
 import javax.swing.JLayeredPane;
 
 /**
- * Create a transparent panel
+ * Create a transparent panel to show the visible result of the distribution of components,
+ * when biobricks move close to the backbone.
+ * @author LC
+ *
  */
 class TPanel extends JLayeredPane
 {

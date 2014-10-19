@@ -18,7 +18,10 @@ import data_center.SketchCenter;
 import data_center.SketchOperation;
 
 /**
- * Make JLabel contain more information
+ * Provide programmers with a new component which behaves like a backbone;
+ * It is resizeable in width.
+ * @author LC
+ *
  */
 @SuppressWarnings("serial")
 class BackBone extends JLabelWithID implements MouseListener, MouseMotionListener

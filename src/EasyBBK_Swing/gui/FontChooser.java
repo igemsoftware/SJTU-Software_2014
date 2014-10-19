@@ -27,7 +27,11 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;  
 import javax.swing.event.ListSelectionEvent;  
 import javax.swing.event.ListSelectionListener;
- 
+/**
+ * Show a dialog in which you can choose font and color of the word show on the text label.
+ * @author LC
+ *
+ */
 @SuppressWarnings("serial")
 public class FontChooser extends JPanel 
 {  
@@ -142,7 +146,7 @@ public class FontChooser extends JPanel
         //Style 
         lstStyle = new JList(new String[]{"Normal", "Bold" ,"Italic", "BoldItalic"});  
           
-        //×ÖºÅ.  
+        //Size  
         String[] sizeStr = new String[]{  
             "8", "9", "10", "11", "12", "14", "16", "18", "20", "22", "24", "26", "28", "36", "48", "72"};  
         int sizeVal[] = {8, 9, 10, 11, 12, 14, 16, 18, 20, 22, 24, 26, 28, 36, 48, 72};  

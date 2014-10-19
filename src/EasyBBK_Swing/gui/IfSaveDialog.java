@@ -24,6 +24,11 @@ import javax.swing.filechooser.FileFilter;
 
 import data_center.SketchCenter;
 
+/**
+ * Ask users if to upload the modifications when they click New button or Open button.
+ * @author LC
+ *
+ */
 public class IfSaveDialog extends JPanel
 {
 	private static final long serialVersionUID = 1L;

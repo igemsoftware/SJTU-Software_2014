@@ -3,9 +3,10 @@ package EasyBBK_Swing.gui;
 import javax.swing.JLabel;
 
 /**
- * Draw line in this panel
+ * User can choose to draw lines in three types or remove component when given buttons are clicked.
+ * @author LC
+ *
  */
-
 class Pen extends JLabel
 {
 	private static final long serialVersionUID = 1L;
@@ -36,7 +37,7 @@ class Pen extends JLabel
 		return inUse;
 	}
 	
-	// -1=arrow1; 0=arrow2; 1=arrow3; 5=text; 2=eraser;
+	// -1=line_inhibit; 0=line_enhance; 1=line_other; 2=eraser;
 	public void setType(int type)
 	{
 		this.type=type;
