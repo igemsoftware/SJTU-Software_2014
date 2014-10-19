@@ -122,6 +122,7 @@ public class Child_Compare extends JPanel {
 			else if(mainpage.small == true){
 				attention.setBounds(265, 150, 800, 50);
 			}
+			
 			attention.setOpaque(false);
 			attention.setForeground(new Color(255,230,0));
 			attention.setFont(new Font("Arial", Font.BOLD, 30));
