@@ -38,6 +38,10 @@ class LinePanel extends JLayeredPane
 	public float stroke=3.0f;
 	public Color color = Color.black;
 	
+	/**
+	 * LinPanel constructor
+	 * @param p Pen type
+	 */
 	public LinePanel(Pen p) 
 	{
 		lineList= new ArrayList<Point>();
@@ -52,6 +56,10 @@ class LinePanel extends JLayeredPane
         repaint();
     }  
 	
+	/**
+	 * setPen
+	 * @param p
+	 */
 	public void setPen(Pen p)
 	{
 		this.p = p;
@@ -63,14 +71,15 @@ class LinePanel extends JLayeredPane
 		p.setType(value);
 	}
 	
-  
+	/**
+	 * paintComponent
+	 */
     public void paintComponent(Graphics g)
     {
     	super.repaint();
     	if (p != null)
     	{
-    		lineType = p.getType();
-    		
+    		lineType = p.getType();    		
     		GraphicsCurve graCurve= new GraphicsCurve((Graphics2D)g);
     		graCurve.myGraphics.setPaint(color);
     		graCurve.myGraphics.setStroke(new BasicStroke(stroke));
@@ -99,44 +108,72 @@ class LinePanel extends JLayeredPane
     	}   	
     } 
     
-    //获得点的list
+    /**
+     * Get lineList
+     * @param lineList
+     */
     public void drawGivenLine(ArrayList<Point> lineList)
     {
     	this.lineList=lineList;
     }
     
+    /**
+     * Add Point to lineList
+     * @param point
+     */
     public void addPoint(Point point)
     {
     	lineList.add(point);
     }
     
+    /**
+     * Get border
+     * @return border
+     */
     public int[] getLineBorder()
     {
     	return (new int[]{left,right,top,bottom});
     }
     
+    /**
+     * Get lineList
+     * @return lineList
+     */
     public ArrayList<Point> getPointArrayList()
     {
     	return lineList;
     }
     
+    /**
+     * endline function
+     */
     public void endLine()
     {
     	p=null;
     	lineList.clear();
     }
     
+    /**
+     * set line color
+     * @param color
+     */
     public void setColor(Color color)
     {
     	this.color = color;
     }
     
+    /**
+     * set line stroke
+     * @param stroke
+     */
     public void setStoke(float stroke)
     {
     	this.stroke = stroke;
     }    
     
-    //Draw Line
+    /**
+     * Draw Line
+     */
     class GraphicsCurve 
     {
     	private int left = 10000;
@@ -195,7 +232,13 @@ class LinePanel extends JLayeredPane
     		return bottom;
     	}
     	
-    	//贝塞尔曲线参数计算
+    	/**
+    	 * Calculate parameters of Bezier curve. 
+    	 * @param i
+    	 * @param n
+    	 * @param t
+    	 * @return parameter
+    	 */
     	private double calcBezierParam(int i,int n,double t)
     	{
     		double tt = Math.pow(t, i) * Math.pow(1-t, n-i);
@@ -209,7 +252,14 @@ class LinePanel extends JLayeredPane
     		return nCi * tt;
     	}
     	
-    	//
+    	/**
+    	 * Draw orthogonal end line from (x1,y1) to (x2,y2)
+    	 * @param x1 
+    	 * @param y1
+    	 * @param x2
+    	 * @param y2
+    	 * @param length
+    	 */
     	private void DrawEndLine(int x1, int y1, int x2, int y2, int length)
     	{
 			double x3,y3,x4,y4;
@@ -229,22 +279,30 @@ class LinePanel extends JLayeredPane
 			if ((int)y4 > bottom) bottom = (int)y4; 
     	}
     	
+    	/**
+    	 * Draw end arrow according to last two point ((sx,sy) and (ex,ey)) of the line.
+    	 * @param sx
+    	 * @param sy
+    	 * @param ex
+    	 * @param ey
+    	 * @param fill true for solid.
+    	 */
     	private void DrawEndArrow(int sx, int sy, int ex, int ey, boolean fill)  
         {  
       
-            double H = 10 ; // 箭头高度  
-            double L = 7.07; // 底边的一半  
+            double H = 10 ; //height of the arrow
+            double L = 7.07; 
             int x3 = 0;  
             int y3 = 0;  
             int x4 = 0;  
             int y4 = 0;  
-            double awrad = Math.atan(L / H); // 箭头角度  
-            double arraow_len = Math.sqrt(L * L + H * H); // 箭头的长度  
+            double awrad = Math.atan(L / H); //angle of arrow
+            double arraow_len = Math.sqrt(L * L + H * H); //length of arrow
             double[] arrXY_1 = rotateVec(ex - sx, ey - sy, awrad, true, arraow_len);  
             double[] arrXY_2 = rotateVec(ex - sx, ey - sy, -awrad, true, arraow_len);  
-            double x_3 = ex - arrXY_1[0]; // (x3,y3)是第一端点  
+            double x_3 = ex - arrXY_1[0];
             double y_3 = ey - arrXY_1[1];  
-            double x_4 = ex - arrXY_2[0]; // (x4,y4)是第二端点  
+            double x_4 = ex - arrXY_2[0];
             double y_4 = ey - arrXY_2[1];  
       
             Double X3 = new Double(x_3);  
@@ -255,20 +313,19 @@ class LinePanel extends JLayeredPane
             x4 = X4.intValue();  
             Double Y4 = new Double(y_4);  
             y4 = Y4.intValue();  
-            // 画线    
+            //Draw line
             GeneralPath triangle = new GeneralPath();  
             triangle.moveTo(x3, y3);  
             triangle.lineTo(ex, ey);  
             triangle.lineTo(x4, y4);
             
-            //实心箭头  
+            //true for solid arrow
             if (fill)
             { 
             	triangle.closePath();
             	myGraphics.draw(triangle);
             	myGraphics.fill(triangle);  
             }
-            //非实心箭头  
             else
             {             
             	myGraphics.draw(triangle);
@@ -283,12 +340,11 @@ class LinePanel extends JLayeredPane
 			if (y4 > bottom) bottom = y4; 
         }  
       
-        // 计算  
+        //Calculate the angle
         private double[] rotateVec(int px, int py, double ang,  
                 boolean isChLen, double newLen) {  
       
             double mathstr[] = new double[2];  
-            // 矢量旋转函数，参数含义分别是x分量、y分量、旋转角、是否改变长度、新长度  
             double vx = px * Math.cos(ang) - py * Math.sin(ang);  
             double vy = px * Math.sin(ang) + py * Math.cos(ang);  
             if (isChLen) {  
@@ -301,7 +357,11 @@ class LinePanel extends JLayeredPane
             return mathstr;  
         }  
         
-        
+        /**
+         * Draw Bezier curve end with arrow.
+         * @param List
+         * @param fill true for solid arrow
+         */
         public void DrawBezierWithArrow(ArrayList<Point> List, boolean fill)
     	{
     		double t;
@@ -364,12 +424,15 @@ class LinePanel extends JLayeredPane
     			{
     				myGraphics.drawLine(xB[i-1], yB[i-1], xB[i], yB[i]);
     			}
-    			//绘制箭头
     			this.DrawEndArrow((int)xB[idx-2], (int)yB[idx-2], (int)xB[idx-1], (int)yB[idx-1],fill);
     		}
     		
     	}
         
+        /**
+         * Draw Bezier curve end with line.
+         * @param List
+         */
         public void DrawBezierWithLine(ArrayList<Point> List)
     	{
     		double t;
@@ -432,7 +495,6 @@ class LinePanel extends JLayeredPane
     			{
     				myGraphics.drawLine(xB[i-1], yB[i-1], xB[i], yB[i]);
     			}
-    			//绘制垂直横线
     			this.DrawEndLine((int)xB[idx-2], (int)yB[idx-2], (int)xB[idx-1], (int)yB[idx-1], 100);
     		}
     		

@@ -65,7 +65,6 @@ public class DetailsofResults extends JPanel {
 		}
 		
 		setBackground(new Color(255, 255, 255));
-		//setBorder(BorderFactory.createLineBorder(Color.black));
 		setLayout(null);
 		
 		ID_Content = new JLabel("");
@@ -171,8 +170,14 @@ public class DetailsofResults extends JPanel {
 		add(Categories);
 		
 		JLabel Twins = new JLabel("Twins:");
+		if(small == false){
+			Twins.setBounds(415, 978, 70, 24);
+		}
+		else if(small == true){
+			Twins.setBounds(415, 978, 70, 24);
+		}
 		Twins.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		Twins.setBounds(10, 1078, 70, 24);
+		
 		add(Twins);
 		
 		Sequences_Content = new JTextArea();
@@ -201,10 +206,10 @@ public class DetailsofResults extends JPanel {
 		
 		Categories_Content = new JTextArea();
 		if(small == false){
-			Categories_Content.setBounds(0, 0, 627, 500);
+			Categories_Content.setBounds(0, 0, 362, 500);
 		}
 		else if(small == true){
-			Categories_Content.setBounds(0, 0, 584, 500);
+			Categories_Content.setBounds(0, 0, 352, 500);
 		}
 		Categories_Content.setEditable(false);
 		Categories_Content.setLineWrap(true);
@@ -214,10 +219,10 @@ public class DetailsofResults extends JPanel {
 		
 		JScrollPane categories_scrollPane = new JScrollPane(Categories_Content);
 		if(small == false){
-			categories_scrollPane.setBounds(10, 1002, 645, 72);
+			categories_scrollPane.setBounds(10, 1012, 380, 172);
 		}
 		else if(small == true){
-			categories_scrollPane.setBounds(10, 1002, 602, 72);
+			categories_scrollPane.setBounds(10, 1012, 370, 172);
 		}
 		categories_scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		
@@ -225,10 +230,10 @@ public class DetailsofResults extends JPanel {
 		
 		Twins_Content = new JTextArea();
 		if(small == false){
-			Twins_Content.setBounds(0, 0, 627, 500);
+			Twins_Content.setBounds(0, 0, 142, 500);
 		}
 		else if(small == true){
-			Twins_Content.setBounds(0, 0, 584, 500);
+			Twins_Content.setBounds(0, 0, 142, 500);
 		}
 		Twins_Content.setEditable(false);
 		Twins_Content.setLineWrap(true);
@@ -238,10 +243,10 @@ public class DetailsofResults extends JPanel {
 		
 		JScrollPane twins_scrollPane = new JScrollPane(Twins_Content);
 		if(small == false){
-			twins_scrollPane.setBounds(10, 1102, 645, 72);
+			twins_scrollPane.setBounds(415, 1012, 160, 172);
 		}
 		else if(small == true){
-			twins_scrollPane.setBounds(10, 1102, 602, 72);
+			twins_scrollPane.setBounds(415, 1012, 160, 172);
 		}
 		twins_scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		

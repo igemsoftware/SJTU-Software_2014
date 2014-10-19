@@ -21,7 +21,7 @@ public class Child_Main extends JPanel {
 	public MainPage mainpage;
 	public JLabel BackGround;
 	/**
-	 * Create the panel.
+	 * Create the Child_Main panel.
 	 */
 	public Child_Main(MainPage mainpage1) {
 		mainpage = mainpage1;

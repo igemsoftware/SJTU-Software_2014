@@ -46,12 +46,10 @@ public class InitializeDetail extends Thread{
  
                 if(jCheckBox.isSelected()) {
                 	if(child_search.comparisonlist.size() >= 3){
-                		//jCheckBox.setSelected(false);
                 		JOptionPane.showMessageDialog(null, "The comparison list is full!", "Attention",JOptionPane.PLAIN_MESSAGE);
                 		return;
                 	}
                 	child_search.comparisonlist.add(bbkdetail);
-                	//JOptionPane.showMessageDialog(null, "Successfully add for comparison", null, JOptionPane.PLAIN_MESSAGE);
                 }else {
                 	int j = 10;
                 	for(int i = 0; i < child_search.comparisonlist.size(); i++){
@@ -60,7 +58,6 @@ public class InitializeDetail extends Thread{
             		}
                 	if(j != 10)
                 		child_search.comparisonlist.remove(j);
-                	//JOptionPane.showMessageDialog(null, "Successfully remove from comparison", null, JOptionPane.PLAIN_MESSAGE);
                 }
             }
         };
@@ -89,13 +86,19 @@ public class InitializeDetail extends Thread{
 		
 		String categories = "";
 		for(int i = 0; i < bbkdetail.categories.size(); i++){
-			categories = categories + bbkdetail.categories.get(i).category + "  ";
+			if(i != bbkdetail.categories.size()-1)
+				categories = categories + bbkdetail.categories.get(i).category + "\n";
+			else if(i == bbkdetail.categories.size()-1)
+				categories = categories + bbkdetail.categories.get(i).category;
 		}
 		detailsofresults.Categories_Content.setText(categories);
 		
 		String twins = "";
 		for(int i = 0; i < bbkdetail.twins.size(); i++){
-			twins = twins + bbkdetail.twins.get(i).twin + "  ";
+			if(i != bbkdetail.twins.size()-1)
+				twins = twins + bbkdetail.twins.get(i).twin + "\n";
+			else if (i == bbkdetail.twins.size()-1)
+				twins = twins + bbkdetail.twins.get(i).twin;
 		}
 		detailsofresults.Twins_Content.setText(twins);
 		
