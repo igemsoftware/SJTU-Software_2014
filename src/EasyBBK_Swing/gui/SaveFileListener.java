@@ -16,6 +16,11 @@ import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.event.MouseInputListener;
 import javax.swing.filechooser.FileFilter;
 
+/**
+ * Show a dialog in which you can save your job as a picture file.
+ * @author LC
+ *
+ */
 public class SaveFileListener implements MouseInputListener
 {
 	private JLayeredPane panel = new JLayeredPane();

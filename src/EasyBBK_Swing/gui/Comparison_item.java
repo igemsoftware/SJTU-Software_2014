@@ -190,8 +190,8 @@ public class Comparison_item extends JPanel {
 		add(GoogleItems);
 		
 		Remove = new JButton("");
-		ImageIcon remove = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/remove.png"));
-		Remove.setIcon(remove);
+		ImageIcon image_Remove = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/remove.png"));
+		Remove.setIcon(image_Remove);
 		Remove.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent arg0) {

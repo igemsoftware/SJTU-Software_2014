@@ -6,6 +6,7 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -531,7 +532,9 @@ public class Choicepanel extends JPanel {
 		
 		information = new Information();
 		
-		Confirm = new JButton("Confirm");
+		Confirm = new JButton("");
+		ImageIcon image_Confirm = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/confirm.png"));
+		Confirm.setIcon(image_Confirm);
 		Confirm.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {

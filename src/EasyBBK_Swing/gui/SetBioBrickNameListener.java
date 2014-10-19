@@ -19,6 +19,12 @@ import data_center.BbkOutline;
 import data_center.SketchCenter;
 import data_center.SketchComponent;
 
+/**
+ * Show a dialog in which you can assign the chosen component as a specific biobrick which has 
+ * been included in database.
+ * @author LC
+ *
+ */
 public class SetBioBrickNameListener implements MouseInputListener
 {
 	SketchCenter sketchCenter;

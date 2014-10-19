@@ -21,6 +21,11 @@ import data_center.SketchCenter;
 import data_center.SketchOperation;
 
 @SuppressWarnings("serial")
+/**
+ * Text label which can change its size freely.
+ * @author LC
+ *
+ */
 class TextLabel extends JTextPane implements MouseListener, MouseMotionListener
 {
 	Point newPoint =new Point(0,0);

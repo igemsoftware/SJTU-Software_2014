@@ -28,7 +28,11 @@ import javax.swing.JTextField;
 import javax.swing.event.ListSelectionEvent;  
 import javax.swing.event.ListSelectionListener;
  
-
+/**
+ * Show a dialog in which you can choose thickness and color of the line.
+ * @author LC
+ *
+ */
 public class LineStyleChooser extends JPanel 
 {  
 	private static final long serialVersionUID = 1L;
