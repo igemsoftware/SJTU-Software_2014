@@ -110,6 +110,18 @@ public class SketchCenter
 		return bbkUpload;
 	}
 	
+	/** Check if the sequence string is only consist if base group, not other chars.  */
+	public boolean isSequanceValid(String sequenceToken)
+	{	
+		sequenceToken = sequenceToken.toLowerCase();
+		for (int i = 0; i < sequenceToken.length(); ++i)
+		{	char ch = sequenceToken.charAt(i);
+			if (ch != 'a' && ch != 't' && ch != 'c' && ch != 'g')
+				return false;
+		}
+		return true;
+	}
+	
 	
 	
 	
