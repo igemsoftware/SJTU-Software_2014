@@ -31,9 +31,10 @@ public class IfSaveDialog extends JPanel
 	SketchCenter sketchCenter;
 	boolean ifOperate = false;
 	
-	IfSaveDialog(SketchCenter sketchCenter)
+	 public IfSaveDialog(SketchCenter sketchCenter)
 	{
 		this.sketchCenter = sketchCenter;
+		init();
 	}
 	
 	{  
@@ -43,23 +44,14 @@ public class IfSaveDialog extends JPanel
             e.printStackTrace();  
         }  
     }  
-
-    public IfSaveDialog()
-    {     
-        init();    
-    }  
   
-    //可供外部调用的方法  
     private JDialog dialog; 
     
     JButton ok = new JButton();
     JButton cancel = new JButton();
     JLabel showField1 = new JLabel();
     JLabel showField2 = new JLabel();
-    //	    
-    
-    
-    //
+
 	private void init() 
     {
     	//layout
@@ -91,15 +83,14 @@ public class IfSaveDialog extends JPanel
     	cancel.setFont(new Font("Arial",Font.PLAIN,15));
     	this.add(cancel);
     	cancel.setMargin(new Insets(0,0,0,0));
-
-    	/*用户确定*/  
+ 
         ok.addActionListener(new ActionListener() {  
             @SuppressWarnings("unused")
 			public void actionPerformed(ActionEvent e) 
             {
             	ifOperate=true;
             	//Open save dialog
-            	JFileChooser chooser=new JFileChooser();//文件保存对话框
+            	JFileChooser chooser=new JFileChooser();//Save dialog
         		chooser.setLocale(Locale.ENGLISH);
         		chooser.setAcceptAllFileFilterUsed(true);
         		chooser.addChoosableFileFilter(new MyFileFilter("xml","XML"));
@@ -130,7 +121,6 @@ public class IfSaveDialog extends JPanel
         			{
         				oFile = new File(oFile.getAbsolutePath() + extension);
         			}
-        			
         			sketchCenter.saveProject(oFile.toString());
         		}
             	
@@ -138,8 +128,7 @@ public class IfSaveDialog extends JPanel
                 dialog = null;  
             }  
         });  
-  
-        /*用户取消*/  
+
         cancel.addActionListener(new ActionListener() {  
             public void actionPerformed(ActionEvent e) { 
             	ifOperate=true;
@@ -256,8 +245,6 @@ public class IfSaveDialog extends JPanel
 	    }    
 	}
 	
-      
-    /*显示字体选择器对话框(x,y表示窗体的启动位置)*/  
     public void showDialog(Frame parent,int x,int y) 
     {  
     	ifOperate=false;
@@ -266,11 +253,11 @@ public class IfSaveDialog extends JPanel
         dialog.add(this);  
         dialog.setResizable(false);  
         dialog.setSize(350, 150);  
-      //设置接界面的启动位置  
+        //location of dialog in screen 
         dialog.setLocation(x,y);  
         dialog.addWindowListener(new WindowAdapter() {  
   
-            /*窗体关闭时调用*/  
+        	//windows close event  
             public void windowClosing(WindowEvent e) 
             {  
                 dialog.removeAll();  

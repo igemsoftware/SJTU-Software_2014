@@ -4,6 +4,7 @@ import java.awt.Component;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.EventQueue;
+import java.awt.Image;
 import java.awt.Point;
 import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
@@ -14,6 +15,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 import data_center.*;
 import data_center.BbkUpload.SpecifiedSubscar;
@@ -69,6 +72,7 @@ public class MainPage extends JFrame{
 	 */
 	public MainPage() {
 		mainpage = this;
+		
 		initialize();
 	}
 
@@ -84,6 +88,24 @@ public class MainPage extends JFrame{
 			small = true;
 		}
 		
+		try {
+			//UIManager.setLookAndFeel("com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
+			//UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFell");
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		} catch (ClassNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (InstantiationException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (IllegalAccessException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (UnsupportedLookAndFeelException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
 		frame = new JFrame();
 		if(small == false){
 			frame.setSize(new Dimension(1366, 728));
@@ -94,9 +116,10 @@ public class MainPage extends JFrame{
 		frame.setResizable(false);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-		
 		frame.setLocationRelativeTo(null);
 		frame.setUndecorated(true);
+		Image img = Toolkit.getDefaultToolkit().createImage(MainPage.class.getResource("/EasyBBK_Swing/image/sjtu.png"));
+		frame.setIconImage(img);
 		
 		Mainpanel = new JPanel();
 		if(small == false){
