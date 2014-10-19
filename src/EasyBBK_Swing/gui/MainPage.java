@@ -15,8 +15,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
 
 import data_center.*;
 import data_center.BbkUpload.SpecifiedSubscar;
@@ -42,7 +40,6 @@ public class MainPage extends JFrame{
 	public Child_Search child_search_current = null;
 	public Child_Design child_design_current = null;
 	public Child_Upload child_upload_current = null;
-	//public Child_Compare child_compare_current = null;
 	public int CurrentPage = 0;
 	public String sequencestring = "";
 	public String subpartstring = "";
@@ -86,24 +83,6 @@ public class MainPage extends JFrame{
 		}
 		else if(screensize.width < 1366){
 			small = true;
-		}
-		
-		try {
-			//UIManager.setLookAndFeel("com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
-			//UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFell");
-			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-		} catch (ClassNotFoundException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		} catch (InstantiationException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		} catch (IllegalAccessException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		} catch (UnsupportedLookAndFeelException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
 		}
 		
 		frame = new JFrame();

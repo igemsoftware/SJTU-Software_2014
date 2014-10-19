@@ -36,7 +36,7 @@ public class Child_Search_Main extends JPanel {
 	public JLabel AdvancedSearch;
 	public JLabel BackGround;
 	/**
-	 * Create the panel.
+	 * Create the Child_Search_Main panel.
 	 */
 	public Child_Search_Main(MainPage mainpage1) {
 		addMouseListener(new MouseAdapter() {
