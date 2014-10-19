@@ -36,7 +36,6 @@ public class SequenceDialog extends JDialog {
 		this.getContentPane().setLayout(null);
 		this.setSize(new Dimension(300, 200));
 		this.setResizable(false);
-		//this.setLocation(533, 264);
 		this.setLocationRelativeTo(null);
 		
 		final JTextArea SequenceInformation = new JTextArea(4, 15);
@@ -70,7 +69,6 @@ public class SequenceDialog extends JDialog {
 						final JDialog jd = new JDialog(sd, true);
 						jd.getContentPane().setLayout(new BorderLayout());
 						jd.setSize(new Dimension(200, 100));
-						//jd.setLocation(608, 294);
 						jd.setLocationRelativeTo(null);
 						
 						JLabel text = new JLabel("Input Error.", JLabel.CENTER);

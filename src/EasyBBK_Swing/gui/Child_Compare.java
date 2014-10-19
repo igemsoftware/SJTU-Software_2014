@@ -27,8 +27,7 @@ public class Child_Compare extends JPanel {
 	public JLabel BackGround;
 	public Child_Compare child_compare;
 	/**
-	 * Create the panel.
-	 * @wbp.parser.constructor
+	 * Create the Child_Compare panel.
 	 */
 	public Child_Compare(MainPage mainpage1) {
 		mainpage = mainpage1;
@@ -36,7 +35,9 @@ public class Child_Compare extends JPanel {
 		comparisonlist = mainpage.child_search_current.comparisonlist;
 		initialize();
 	}
-	
+	/**
+	 * Create the Child_Compare panel.
+	 */
 	public Child_Compare(MainPage mainpage1, ArrayList<BbkDetail> comparisonlist1) {
 		mainpage = mainpage1;
 		child_compare = this;
