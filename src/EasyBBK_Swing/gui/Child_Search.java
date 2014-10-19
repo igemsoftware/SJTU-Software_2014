@@ -5,6 +5,7 @@ import java.awt.Component;
 import java.awt.Cursor;
 
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JScrollBar;
@@ -317,6 +318,13 @@ public class Child_Search extends JPanel {
 						}
 						return;
 					}
+					
+					UploadCenter uploadcenter = new UploadCenter();
+					if(!uploadcenter.isSequanceValid(textField.getText())){
+						JOptionPane.showMessageDialog(null, "The input is not sequence!", "Attention",JOptionPane.PLAIN_MESSAGE);
+						return;
+					}
+					
 					else{
 						if(threadlist.size() != 0){
 							for(int i = 0; i < threadlist.size(); i++){
