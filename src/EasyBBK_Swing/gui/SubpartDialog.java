@@ -33,7 +33,6 @@ public class SubpartDialog extends JDialog {
 		this.getContentPane().setLayout(null);
 		this.setSize(new Dimension(300, 200));
 		this.setResizable(false);
-		//this.setLocation(533, 264);
 		this.setLocationRelativeTo(null);
 		
 		final JTextField inputtext = new JTextField();
@@ -60,7 +59,6 @@ public class SubpartDialog extends JDialog {
 						final JDialog jd = new JDialog(sd, true);
 						jd.getContentPane().setLayout(new BorderLayout());
 						jd.setSize(new Dimension(300, 100));
-						//jd.setLocation(563, 294);
 						jd.setLocationRelativeTo(null);
 						
 						JLabel text = new JLabel("This subpart doesn't exist.", JLabel.CENTER);

@@ -18,7 +18,10 @@ import data_center.SketchCenter;
 import data_center.SketchOperation;
 
 /**
- * Make JLabel contain more information
+ * Provide programmers with a new component which behaves like a backbone;
+ * It is resizeable in width.
+ * @author LC
+ *
  */
 @SuppressWarnings("serial")
 class BackBone extends JLabelWithID implements MouseListener, MouseMotionListener
@@ -157,7 +160,7 @@ class BackBone extends JLabelWithID implements MouseListener, MouseMotionListene
 				
 				//test
 				ImageIcon image = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/backbone_move.png"));
-				image.setImage(image.getImage().getScaledInstance(this.getWidth(),50,Image.SCALE_DEFAULT));
+				image.setImage(image.getImage().getScaledInstance(this.getWidth(),60,Image.SCALE_DEFAULT));
 				this.setIcon(image);
 			}
 		}

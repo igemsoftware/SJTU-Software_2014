@@ -17,15 +17,17 @@ import data_center.*;
 public class InitializeDetail extends Thread{
 	public Child_Search child_search;
 	public BbkOutline bbkoutline;
+	public boolean small;
 	
-	public InitializeDetail(Child_Search child_search1, BbkOutline bbkoutline1){
+	public InitializeDetail(Child_Search child_search1, BbkOutline bbkoutline1, boolean small1){
 		child_search = child_search1;
 		bbkoutline = bbkoutline1;
+		small = small1;
 	}
 	
 	public void run(){
 		final BbkDetail bbkdetail = child_search.searchcenter.getDetail(bbkoutline.name);
-		DetailsofResults detailsofresults = new DetailsofResults();
+		DetailsofResults detailsofresults = new DetailsofResults(small);
 		
 		boolean addflag = false;
 		for(int i = 0; i < child_search.comparisonlist.size(); i++){
@@ -44,12 +46,10 @@ public class InitializeDetail extends Thread{
  
                 if(jCheckBox.isSelected()) {
                 	if(child_search.comparisonlist.size() >= 3){
-                		//jCheckBox.setSelected(false);
                 		JOptionPane.showMessageDialog(null, "The comparison list is full!", "Attention",JOptionPane.PLAIN_MESSAGE);
                 		return;
                 	}
                 	child_search.comparisonlist.add(bbkdetail);
-                	//JOptionPane.showMessageDialog(null, "Successfully add for comparison", null, JOptionPane.PLAIN_MESSAGE);
                 }else {
                 	int j = 10;
                 	for(int i = 0; i < child_search.comparisonlist.size(); i++){
@@ -58,7 +58,6 @@ public class InitializeDetail extends Thread{
             		}
                 	if(j != 10)
                 		child_search.comparisonlist.remove(j);
-                	//JOptionPane.showMessageDialog(null, "Successfully remove from comparison", null, JOptionPane.PLAIN_MESSAGE);
                 }
             }
         };
@@ -87,30 +86,38 @@ public class InitializeDetail extends Thread{
 		
 		String categories = "";
 		for(int i = 0; i < bbkdetail.categories.size(); i++){
-			categories = categories + bbkdetail.categories.get(i).category + "  ";
+			if(i != bbkdetail.categories.size()-1)
+				categories = categories + bbkdetail.categories.get(i).category + "\n";
+			else if(i == bbkdetail.categories.size()-1)
+				categories = categories + bbkdetail.categories.get(i).category;
 		}
 		detailsofresults.Categories_Content.setText(categories);
 		
 		String twins = "";
 		for(int i = 0; i < bbkdetail.twins.size(); i++){
-			twins = twins + bbkdetail.twins.get(i).twin + "  ";
+			if(i != bbkdetail.twins.size()-1)
+				twins = twins + bbkdetail.twins.get(i).twin + "\n";
+			else if (i == bbkdetail.twins.size()-1)
+				twins = twins + bbkdetail.twins.get(i).twin;
 		}
 		detailsofresults.Twins_Content.setText(twins);
 		
 		detailsofresults.related_URL.setText("<html><u>" + bbkdetail.rating.first_url + "</u></html>");
-		detailsofresults.related_URL.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				if(e.getButton() == MouseEvent.BUTTON1){
-					try{
-						Runtime.getRuntime().exec("explorer " + bbkdetail.rating.first_url);
-					}
-					catch(Exception ex){
-						ex.printStackTrace();
+		if(!detailsofresults.related_URL.getText().equals("")){
+			detailsofresults.related_URL.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					if(e.getButton() == MouseEvent.BUTTON1){
+						try{
+							Runtime.getRuntime().exec("explorer " + bbkdetail.rating.first_url);
+						}
+						catch(Exception ex){
+							ex.printStackTrace();
+						}
 					}
 				}
-			}
-		});
+			});
+		}
 		detailsofresults.ReleasedStatus_Content.setText(bbkdetail.releaseStatus);
 		detailsofresults.SampleStatus_Content.setText(bbkdetail.sampleStatus);
 		detailsofresults.DNAStatus_Content.setText(bbkdetail.DNA_status);
@@ -134,14 +141,7 @@ public class InitializeDetail extends Thread{
 		
 		detailsofresults.ResultsInGoogle_Content.setText(bbkdetail.rating.google_items);
 		String shortdescription = bbkdetail.shortDesc;
-		if(shortdescription.length()<=40){
-			detailsofresults.Description1.setText(shortdescription);
-			detailsofresults.Description2.setText(null);
-		}
-		else{
-			detailsofresults.Description1.setText(shortdescription.substring(0, 40));
-			detailsofresults.Description2.setText(shortdescription.substring(40));
-		}
+		detailsofresults.Description.setText(shortdescription);
 		
 		String score = "" + bbkdetail.getScore();
 		char c = '.';
@@ -151,15 +151,26 @@ public class InitializeDetail extends Thread{
 		else if(score.charAt(2) == c){
 			score = score.substring(0, 5);
 		}
-		//detailsofresults.Score.setText(score);
+		detailsofresults.Score.setText(score);
 		
-		detailsofresults.setPreferredSize(new Dimension(665, 1200));
+		if(small == false){
+			detailsofresults.setPreferredSize(new Dimension(665, 1200));
+		}
+		else if(small == true){
+			detailsofresults.setPreferredSize(new Dimension(622, 1200));
+		}
+		
 		child_search.scrollPane1 = new JScrollPane(detailsofresults);
+		if(small == false){
+			child_search.scrollPane1.setBounds(0, 0, 683, 670);
+		}
+		else if(small == true){
+			child_search.scrollPane1.setBounds(0, 0, 640, 670);
+		}
 		child_search.scrollbar1 = new JScrollBar();
 		child_search.scrollbar1.setUnitIncrement(100);
 		child_search.scrollPane1.setVerticalScrollBar(child_search.scrollbar1);
 		child_search.scrollPane1.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-		child_search.scrollPane1.setBounds(0, 0, 683, 670);
 		child_search.scrollPane1.validate();
 		
 		child_search.Details.removeAll();;

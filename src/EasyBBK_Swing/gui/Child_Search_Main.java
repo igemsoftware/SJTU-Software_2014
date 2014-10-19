@@ -9,12 +9,16 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
+
+import data_center.SearchCenter;
+import data_center.UploadCenter;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -36,7 +40,7 @@ public class Child_Search_Main extends JPanel {
 	public JLabel AdvancedSearch;
 	public JLabel BackGround;
 	/**
-	 * Create the panel.
+	 * Create the Child_Search_Main panel.
 	 */
 	public Child_Search_Main(MainPage mainpage1) {
 		addMouseListener(new MouseAdapter() {
@@ -47,17 +51,34 @@ public class Child_Search_Main extends JPanel {
 			}
 		});
 		mainpage = mainpage1;
-		setBounds(0, 0, 1366, 670);
+		if(mainpage.small == false){
+			setBounds(0, 0, 1366, 670);
+		}
+		else if(mainpage.small == true){
+			setBounds(0, 0, 1280, 670);
+		}
 		setBackground(new Color(255, 255, 255));
 		setLayout(null);
 		setVisible(true);
 		
 		LogoBox = new JLabel("");
-		LogoBox.setBounds(486, 35, 410, 187);
+		if(mainpage.small == false){
+			LogoBox.setBounds(486, 35, 410, 187);
+		}
+		else if(mainpage.small == true){
+			LogoBox.setBounds(455, 35, 410, 187);
+		}
 		LogoBox.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/Logo.png")));
 		add(LogoBox);
 		
 		SearchText = new JTextField();
+		if(mainpage.small == false){
+			SearchText.setBounds(373, 237, 426, 53);
+		}
+		else if(mainpage.small == true){
+			SearchText.setBounds(349, 237, 426, 53);
+		}
+		SearchText.setBackground(new Color(254, 254, 254));
 		SearchText.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent arg0) {
@@ -80,11 +101,16 @@ public class Child_Search_Main extends JPanel {
 		SearchText.setBorder(null);
 		SearchText.setFont(new Font("Arial", Font.PLAIN, 40));
 		SearchText.setVisible(true);
-		SearchText.setBounds(373, 237, 426, 65);
 		add(SearchText);
 		SearchText.setColumns(20);
 		
 		goBox = new JLabel("");
+		if(mainpage.small == false){
+			goBox.setBounds(799, 237, 105, 53);
+		}
+		else if(mainpage.small == true){
+			goBox.setBounds(775, 237, 105, 53);
+		}
 		goBox.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -115,7 +141,6 @@ public class Child_Search_Main extends JPanel {
 				goBox.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/SearchBox_searchButton.png")));
 			}
 		});
-		goBox.setBounds(799, 237, 105, 64);
 		goBox.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/SearchBox_searchButton.png")));
 		add(goBox);
 		
@@ -123,21 +148,39 @@ public class Child_Search_Main extends JPanel {
 		choicepanel.setPreferredSize(new Dimension(623, 489));
 		
 		scrollpane = new JScrollPane(choicepanel);
+		if(mainpage.small == false){
+			scrollpane.setBounds(358, 360, 641, 289);
+		}
+		else if(mainpage.small == true){
+			scrollpane.setBounds(335, 360, 641, 289);
+		}
 		scrollbar = new JScrollBar();
 		scrollbar.setUnitIncrement(50);
 		scrollpane.setVerticalScrollBar(scrollbar);
 		scrollpane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-		scrollpane.setBounds(358, 360, 641, 289);
 		scrollpane.validate();
 		scrollpane.setVisible(false);
 		add(scrollpane);
 		
 		Blast = new JLabel("");
+		if(mainpage.small == false){
+			Blast.setBounds(908, 237, 92, 53);
+		}
+		else if(mainpage.small == true){
+			Blast.setBounds(885, 237, 92, 53);
+		}
 		Blast.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if(e.getButton() == MouseEvent.BUTTON1){
 					if(SearchText.getText().equals("")) return;
+					
+					UploadCenter uploadcenter = new UploadCenter();
+					if(!uploadcenter.isSequanceValid(SearchText.getText())){
+						JOptionPane.showMessageDialog(null, "The input is not sequence!", "Attention",JOptionPane.PLAIN_MESSAGE);
+						return;
+					}
+					
 					requestFocus();
 					Component component = mainpage.Mainpanel.getComponent(0);
 					if(component instanceof Child_Search_Main){
@@ -164,11 +207,16 @@ public class Child_Search_Main extends JPanel {
 				Blast.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/blast.png")));
 			}
 		});
-		Blast.setBounds(906, 237, 84, 64);
 		Blast.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/blast.png")));
 		add(Blast);
 		
 		AdvancedSearch = new JLabel();
+		if(mainpage.small == false){
+			AdvancedSearch.setBounds(367, 308, 194, 34);
+		}
+		else if(mainpage.small == true){
+			AdvancedSearch.setBounds(343, 308, 194, 34);
+		}
 		AdvancedSearch.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/advancedsearch.png")));
 		AdvancedSearch.addMouseListener(new MouseAdapter() {
 			@Override
@@ -195,12 +243,16 @@ public class Child_Search_Main extends JPanel {
 				AdvancedSearch.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/advancedsearch.png")));
 			}
 		});
-		AdvancedSearch.setBounds(367, 308, 194, 34);
 		add(AdvancedSearch);
 		
 		BackGround = new JLabel("");
+		if(mainpage.small == false){
+			BackGround.setBounds(0, 0, 1366, 670);
+		}
+		else if(mainpage.small == true){
+			BackGround.setBounds(0, 0, 1280, 670);
+		}
 		BackGround.setVisible(true);
-		BackGround.setBounds(0, 0, 1366, 670);
 		BackGround.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/BackGround.png")));
 		add(BackGround);
 	}

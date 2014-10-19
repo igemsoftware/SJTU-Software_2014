@@ -23,6 +23,11 @@ import data_center.BbkUpload;
 import data_center.SketchCenter;
 import data_center.SketchComponent;
 
+/**
+ * Ask users if to upload the biobrick drawn before, when users double-click the backbone of the biobrick.
+ * @author LC
+ *
+ */
 public class IfUploadListener implements MouseInputListener
 {
 	SketchCenter sketchCenter;
@@ -77,17 +82,13 @@ public class IfUploadListener implements MouseInputListener
 	        init(ID);    
 	    }  
 	  
-	    //可供外部调用的方法  
 	    private JDialog dialog; 
 	    
 	    JButton ok = new JButton();
 	    JButton cancel = new JButton();
 	    JLabel showField1 = new JLabel();
 	    JLabel showField2 = new JLabel();
-	    //	    
-	    
-	    
-	    //
+
 		private void init(final int ID) 
 	    {
 	    	//layout
@@ -119,8 +120,10 @@ public class IfUploadListener implements MouseInputListener
 	    	cancel.setFont(new Font("Arial",Font.PLAIN,15));
 	    	this.add(cancel);
 	    	cancel.setMargin(new Insets(0,0,0,0));
-
-	    	/*用户确定*/  
+	    	
+	    	/**
+	    	 * Create a new dialog in which you can choose a file to save your modifications.
+	    	 */
 	        ok.addActionListener(new ActionListener() {  
 	            public void actionPerformed(ActionEvent e) 
 	            {  
@@ -131,7 +134,6 @@ public class IfUploadListener implements MouseInputListener
 	            		return;	
 	            	}
 	            	
-	            	@SuppressWarnings("unused")
 					BbkUpload bbkUpload = sketchCenter.generateBbkUploadFromBackBone(backbone, false);
 	            	
 	            	//to upload interface
@@ -150,7 +152,7 @@ public class IfUploadListener implements MouseInputListener
 					}
 					
 					
-					Child_Upload child_upload = new Child_Upload(mainpage);
+					Child_Upload child_upload = new Child_Upload(mainpage,bbkUpload);
 					mainpage.Mainpanel.removeAll();
 					mainpage.Mainpanel.add(child_upload);
 					mainpage.Mainpanel.updateUI();
@@ -162,8 +164,7 @@ public class IfUploadListener implements MouseInputListener
 	                dialog = null;  
 	            }  
 	        });  
-	  
-	        /*用户取消*/  
+	   
 	        cancel.addActionListener(new ActionListener() {  
 	            public void actionPerformed(ActionEvent e) {  
 	                dialog.dispose();  
@@ -171,8 +172,7 @@ public class IfUploadListener implements MouseInputListener
 	            }  
 	        }); 
 	    }  
-	      
-	    /*显示字体选择器对话框(x,y表示窗体的启动位置)*/  
+	       
 	    public void showDialog(Frame parent,int x,int y) 
 	    {  
 	        String  title = "Upload";  
@@ -180,11 +180,9 @@ public class IfUploadListener implements MouseInputListener
 	        dialog.add(this);  
 	        dialog.setResizable(false);  
 	        dialog.setSize(350, 150);  
-	      //设置接界面的启动位置  
 	        dialog.setLocation(x,y);  
 	        dialog.addWindowListener(new WindowAdapter() {  
-	  
-	            /*窗体关闭时调用*/  
+	   
 	            public void windowClosing(WindowEvent e) 
 	            {  
 	                dialog.removeAll();  

@@ -7,16 +7,24 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.event.MouseInputListener;
+
 import data_center.BbkOutline;
 import data_center.SketchCenter;
 import data_center.SketchComponent;
 
+/**
+ * Show a dialog in which you can assign the chosen component as a specific biobrick which has 
+ * been included in database.
+ * @author LC
+ *
+ */
 public class SetBioBrickNameListener implements MouseInputListener
 {
 	SketchCenter sketchCenter;
@@ -127,17 +135,17 @@ public class SetBioBrickNameListener implements MouseInputListener
 	    	set.setText("Set");
 	    	this.add(set);
 	    	
-	    	ok.setBounds(430,310,60,30);
+	    	ok.setBounds(430,252,60,30);
 	    	ok.setText("OK");
 	    	this.add(ok);
 	    	
-	    	cancel.setBounds(500,310,60,30);
+	    	cancel.setBounds(500,252,60,30);
 	    	cancel.setText("Cancel");
 	    	this.add(cancel);
 	    	cancel.setMargin(new Insets(0,0,0,0));
 	    	
 	    	this.add(searchingresult);
-	    	searchingresult.setBounds(21, 50, 558, 250);
+	    	searchingresult.setBounds(15, 50, 569, 192);
 	    	
 	        /*用户确定*/  
 	    	set.addActionListener(new ActionListener() {  
@@ -181,16 +189,17 @@ public class SetBioBrickNameListener implements MouseInputListener
 		        		searchingresult.ResultsInGoogle_Content.setText(bbkoutline.rating.google_items);
 		        		
 		        		String shortdescription = bbkoutline.shortDesc;
-		        		if(shortdescription.length()<=29)
-		        		{
-		        			searchingresult.Description1.setText(shortdescription);
-		        			searchingresult.Description2.setText(null);
+		        		searchingresult.Description.setText(shortdescription);
+		        		
+		        		String score = "" + bbkoutline.getScore();
+		        		char c = '.';
+		        		if(score.charAt(1) == c){
+		        			score = score.substring(0, 4);
 		        		}
-		        		else
-		        		{
-		        			searchingresult.Description1.setText(shortdescription.substring(0, 29));
-		        			searchingresult.Description2.setText(shortdescription.substring(29));
+		        		else if(score.charAt(2) == c){
+		        			score = score.substring(0, 5);
 		        		}
+		        		searchingresult.Score.setText(score);
 		        		
 		        		searchingresult.Evalue.setVisible(false);
                 
@@ -232,7 +241,7 @@ public class SetBioBrickNameListener implements MouseInputListener
 	        dialog = new JDialog(parent, title,true);  
 	        dialog.add(this);  
 	        dialog.setResizable(false);  
-	        dialog.setSize(600, 385);  
+	        dialog.setSize(600, 327);  
 	        setDone=false;
 	        
 	        if (selectedName !=null)
@@ -262,16 +271,17 @@ public class SetBioBrickNameListener implements MouseInputListener
         		searchingresult.ResultsInGoogle_Content.setText(bbkoutline.rating.google_items);
         		
         		String shortdescription = bbkoutline.shortDesc;
-        		if(shortdescription.length()<=29)
-        		{
-        			searchingresult.Description1.setText(shortdescription);
-        			searchingresult.Description2.setText(null);
+        		searchingresult.Description.setText(shortdescription);
+        		
+        		String score = "" + bbkoutline.getScore();
+        		char c = '.';
+        		if(score.charAt(1) == c){
+        			score = score.substring(0, 4);
         		}
-        		else
-        		{
-        			searchingresult.Description1.setText(shortdescription.substring(0, 29));
-        			searchingresult.Description2.setText(shortdescription.substring(29));
+        		else if(score.charAt(2) == c){
+        			score = score.substring(0, 5);
         		}
+        		searchingresult.Score.setText(score);
         		
         		searchingresult.Evalue.setVisible(false);
         

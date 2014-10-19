@@ -27,8 +27,7 @@ public class Child_Compare extends JPanel {
 	public JLabel BackGround;
 	public Child_Compare child_compare;
 	/**
-	 * Create the panel.
-	 * @wbp.parser.constructor
+	 * Create the Child_Compare panel.
 	 */
 	public Child_Compare(MainPage mainpage1) {
 		mainpage = mainpage1;
@@ -36,7 +35,9 @@ public class Child_Compare extends JPanel {
 		comparisonlist = mainpage.child_search_current.comparisonlist;
 		initialize();
 	}
-	
+	/**
+	 * Create the Child_Compare panel.
+	 */
 	public Child_Compare(MainPage mainpage1, ArrayList<BbkDetail> comparisonlist1) {
 		mainpage = mainpage1;
 		child_compare = this;
@@ -45,30 +46,53 @@ public class Child_Compare extends JPanel {
 	}
 	
 	public void initialize(){
-		setBounds(0, 0, 1366, 670);
+		if(mainpage.small == false){
+			setBounds(0, 0, 1366, 670);
+		}
+		else if(mainpage.small == true){
+			setBounds(0, 0, 1280, 670);
+		}
 		setBackground(new Color(255, 255, 255));
 		setLayout(null);
 		
 		Containerpanel = new JPanel();
-		Containerpanel.setBounds(0, 1000, 1348, 1000);
-		Containerpanel.setPreferredSize(new Dimension(1348, 1000));
+		if(mainpage.small == false){
+			Containerpanel.setBounds(0, 0, 1348, 1000);
+			Containerpanel.setPreferredSize(new Dimension(1348, 1000));
+		}
+		else if(mainpage.small == true){
+			Containerpanel.setBounds(0, 0, 1262, 1000);
+			Containerpanel.setPreferredSize(new Dimension(1262, 1000));
+		}
 		Containerpanel.setBackground(new Color(255, 255, 255));
 		Containerpanel.setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane(Containerpanel);
+		if(mainpage.small == false){
+			scrollPane.setBounds(0, 0, 1366, 670);
+		}
+		else if(mainpage.small == true){
+			scrollPane.setBounds(0, 0, 1280, 670);
+		}
 		JScrollBar scrollbar = new JScrollBar();
 		scrollbar.setUnitIncrement(50);
+		scrollPane.setBorder(null);
 		scrollPane.setVerticalScrollBar(scrollbar);
 		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-		scrollPane.setBounds(0, 0, 1366, 670);
 		scrollPane.validate();
 		add(scrollPane);
 		
 		JTextField comparison = new JTextField("The Comparison for Biobricks");
+		if(mainpage.small == false){
+			comparison.setBounds(383, 50, 600, 50);
+		}
+		else if(mainpage.small == true){
+			comparison.setBounds(358, 50, 600, 50);
+		}
 		comparison.setOpaque(false);
 		comparison.setFont(new Font("Arial", Font.BOLD, 40));
 		comparison.setBackground(new Color(255, 255, 255));
-		comparison.setBounds(383, 50, 600, 50);
+		
 		comparison.setEditable(false);
 		comparison.setBorder(new EmptyBorder(0,0,0,0));
 		Containerpanel.add(comparison);
@@ -77,8 +101,14 @@ public class Child_Compare extends JPanel {
 		initialpage();
 		
 		BackGround = new JLabel("");
+		if(mainpage.small == false){
+			BackGround.setBounds(0, 0, 1366, 1000);
+		}
+		else if(mainpage.small == true){
+			BackGround.setBounds(0, 0, 1280, 1000);
+		}
 		BackGround.setVisible(true);
-		BackGround.setBounds(0, 0, 1366, 1000);
+		
 		BackGround.setIcon(new ImageIcon(MainPage.class.getResource("/EasyBBK_Swing/image/BackGround1.png")));
 		Containerpanel.add(BackGround);
 		
@@ -88,11 +118,16 @@ public class Child_Compare extends JPanel {
 	public void initialpage(){
 		if(comparisonlist == null || comparisonlist.size() == 0){
 			JTextField attention = new JTextField("Parts being compared should be added from Search");
+			if(mainpage.small == false){
+				attention.setBounds(283, 150, 800, 50);
+			}
+			else if(mainpage.small == true){
+				attention.setBounds(265, 150, 800, 50);
+			}
 			attention.setOpaque(false);
-			attention.setForeground(Color.red);
+			attention.setForeground(new Color(255,230,0));
 			attention.setFont(new Font("Arial", Font.BOLD, 30));
 			attention.setBackground(new Color(255, 255, 255));
-			attention.setBounds(283, 150, 800, 50);
 			attention.setEditable(false);
 			attention.setBorder(new EmptyBorder(0,0,0,0));
 			Containerpanel.add(attention);
@@ -101,23 +136,29 @@ public class Child_Compare extends JPanel {
 		
 		else if(comparisonlist.size() != 0){
 			Comparison_info comparison_info = new Comparison_info();
-			comparison_info.setBounds(123, 210, 220, 690);
+			if(mainpage.small == false){
+				comparison_info.setBounds(100, 210, 220, 690);
+			}
+			else if(mainpage.small == true){
+				comparison_info.setBounds(70, 210, 220, 690);
+			}
+			
 			Containerpanel.add(comparison_info);
 			
 			int num = comparisonlist.size();
 			
 			for(int i = 0; i < num; i++){
 				Comparison_item comparison_item = new Comparison_item();
-				comparison_item.setBounds(343 + i*310, 150, 300, 750);
+				if(mainpage.small == false){
+					comparison_item.setBounds(343 + i*310, 150, 300, 750);
+				}
+				else if(mainpage.small == true){
+					comparison_item.setBounds(300 + i*310, 150, 300, 750);
+				}
 				final BbkDetail bbkdetail = comparisonlist.get(i);
 				comparison_item.PartName.setText(bbkdetail.name);
 				comparison_item.Type.setText(bbkdetail.type);
-				if(bbkdetail.shortDesc.length() <= 30){
-					comparison_item.ShortDescription.setText(bbkdetail.shortDesc);
-				}
-				else if(bbkdetail.shortDesc.length() > 30){
-					comparison_item.ShortDescription.setText("<html>" + bbkdetail.shortDesc.substring(0, 30) + "<br>" + bbkdetail.shortDesc.substring(30) + "</html>");
-				}
+				comparison_item.ShortDescription.setText("<html>" + bbkdetail.shortDesc + "</html>");
 				comparison_item.PartStatus.setText(bbkdetail.releaseStatus);
 				comparison_item.SampleStatus.setText(bbkdetail.sampleStatus);
 				comparison_item.Url.setText(bbkdetail.url);

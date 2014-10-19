@@ -13,13 +13,19 @@ import java.awt.event.MouseMotionListener;
 import javax.swing.JLayeredPane;
 import javax.swing.JTextPane;
 import javax.swing.SwingUtilities;
-import javax.swing.border.TitledBorder;
+import javax.swing.border.LineBorder;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
+
 import data_center.SketchCenter;
 import data_center.SketchOperation;
 
 @SuppressWarnings("serial")
+/**
+ * Text label which can change its size freely.
+ * @author LC
+ *
+ */
 class TextLabel extends JTextPane implements MouseListener, MouseMotionListener
 {
 	Point newPoint =new Point(0,0);
@@ -173,8 +179,7 @@ class TextLabel extends JTextPane implements MouseListener, MouseMotionListener
 	{
 		if (outer_rect.contains(e.getPoint()))
 		{
-			TitledBorder border = new TitledBorder("");
-			this.setBorder(border);
+			this.setBorder(new LineBorder(Color.gray));
 		}
 		
 		if (rect_right.contains(e.getPoint())) 

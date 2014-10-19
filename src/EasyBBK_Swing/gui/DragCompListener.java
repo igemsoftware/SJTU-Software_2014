@@ -20,7 +20,9 @@ import data_center.SketchOperation;
 import data_center.SketchProject;
 
 /**
- * Imply movement in board
+ * Imply movement of components in board
+ * @author LC
+ *
  */
 class DragCompListener implements MouseInputListener
 {

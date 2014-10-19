@@ -4,6 +4,7 @@ import java.awt.Component;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.EventQueue;
+import java.awt.Image;
 import java.awt.Point;
 import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
@@ -39,7 +40,6 @@ public class MainPage extends JFrame{
 	public Child_Search child_search_current = null;
 	public Child_Design child_design_current = null;
 	public Child_Upload child_upload_current = null;
-	//public Child_Compare child_compare_current = null;
 	public int CurrentPage = 0;
 	public String sequencestring = "";
 	public String subpartstring = "";
@@ -69,6 +69,7 @@ public class MainPage extends JFrame{
 	 */
 	public MainPage() {
 		mainpage = this;
+		
 		initialize();
 	}
 
@@ -84,7 +85,7 @@ public class MainPage extends JFrame{
 			small = true;
 		}
 		
-		frame = new JFrame();
+		frame = new JFrame("Easy BBK");
 		if(small == false){
 			frame.setSize(new Dimension(1366, 728));
 		}
@@ -94,12 +95,10 @@ public class MainPage extends JFrame{
 		frame.setResizable(false);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-		//Dimension scrSize = Toolkit.getDefaultToolkit().getScreenSize();   
-		//Insets scrInsets=Toolkit.getDefaultToolkit().getScreenInsets(GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDefaultConfiguration());
-		//frame.setBounds(scrInsets.left,scrInsets.top,scrSize.width-scrInsets.left-scrInsets.right,scrSize.height-scrInsets.top-scrInsets.bottom);
-		
 		frame.setLocationRelativeTo(null);
 		frame.setUndecorated(true);
+		Image img = Toolkit.getDefaultToolkit().createImage(MainPage.class.getResource("/EasyBBK_Swing/image/sjtu.png"));
+		frame.setIconImage(img);
 		
 		Mainpanel = new JPanel();
 		if(small == false){

@@ -17,6 +17,11 @@ import EasyBBK_Swing.gui.SaveListener.MyFileFilter;
 import data_center.SketchCenter;
 
 @SuppressWarnings("unused")
+/**
+ * Show a dialog in which you can save your job in detail as a XML file.
+ * @author LC
+ *
+ */
 public class SaveListener implements MouseInputListener
 {
 	SketchCenter sketchCenter;
@@ -30,7 +35,7 @@ public class SaveListener implements MouseInputListener
 	{
 		if (sketchCenter.currentProject.filePath==null)
 		{
-			JFileChooser chooser=new JFileChooser();//文件保存对话框
+			JFileChooser chooser=new JFileChooser();
 			chooser.setLocale(Locale.ENGLISH);
 			chooser.setAcceptAllFileFilterUsed(true);
 			chooser.addChoosableFileFilter(new MyFileFilter("xml","XML"));
