@@ -14,15 +14,15 @@ For tutorial and more details, please visit our [wiki page](http://2014.igem.org
 * Mac OS
 
 ##Client Installation
-The runnable file "EasyBbk.jar" under "/Executeable/", which is the client of our sofrware, can be execute under all of the OS mentioned above with jre6 or higher. You may install the [java enviroment](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) to execute it. 
+The runnable file "EasyBbk.jar" under "/Executable/", which is the client of our sofrware, can be execute under all of the OS mentioned above with jre6 or higher. You may install the [java enviroment](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) to execute it. 
 
 If you prefer not to install java environment, other ways to run the client is also provided: 
 
-* For Windows users, download the file "/Executeable/EasyBbk-Windows.zip", extract into any directory and double click the file "EasyBbk.bat" in the root directory of the decompressed file folder. 
+* For Windows users, download the file "/Executable/EasyBbk-Windows.zip", extract into any directory and double click the file "EasyBbk.bat" in the root directory of the decompressed file folder. 
 
-* For Linux users, download the file "/Executeable/EasyBbk-Linux.tar.gz"， extract into any directory. Then open a terminal, cd to the root directory of the decompressed file folder, and execute "bash EasyBbk". 
+* For Linux users, download the file "/Executable/EasyBbk-Linux.tar.gz"， extract into any directory. Then open a terminal, cd to the root directory of the decompressed file folder, and execute "bash EasyBbk". 
 
-* For Mac OS users, download the file "/Executeable/EasyBbk-MacOS.tar.gz", extract into any directory, the rest will be the same as that under linux. 
+* For Mac OS users, download the file "/Executable/EasyBbk-MacOS.tar.gz", extract into any directory, the rest will be the same as that under linux. 
 
 ##Further Development
 Having new ideas? We also provide the source code and the document of the project. For further development, these might help: 
