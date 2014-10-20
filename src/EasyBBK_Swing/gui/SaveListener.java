@@ -8,6 +8,7 @@ import java.util.Locale;
 
 import javax.swing.JFileChooser;
 import javax.swing.JLayeredPane;
+import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.event.MouseInputListener;
@@ -25,10 +26,12 @@ import data_center.SketchCenter;
 public class SaveListener implements MouseInputListener
 {
 	SketchCenter sketchCenter;
+	JTextField statusBar;
 	
-	public SaveListener(SketchCenter sketchCenter,JLayeredPane panel,TPanel Tpanel)
+	public SaveListener(SketchCenter sketchCenter,JLayeredPane panel,TPanel Tpanel,JTextField statusBar)
 	{	
 		this.sketchCenter = sketchCenter;
+		this.statusBar=statusBar;
 	}
 	
 	public void mouseClicked(MouseEvent e) 
@@ -73,6 +76,7 @@ public class SaveListener implements MouseInputListener
 		else
 		{
 			sketchCenter.currentProject.saveIntoFile();
+			statusBar.setText("   Saving completed");
 		}
 				
 	}
