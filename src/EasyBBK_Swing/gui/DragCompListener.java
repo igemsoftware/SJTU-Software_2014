@@ -284,6 +284,7 @@ class DragCompListener implements MouseInputListener
 	{
 		Tpanel.setImage(null);
 		Tpanel.repaint();
+		boolean inAccident = false;
 		
 		JLabelWithID compMoved = (JLabelWithID)e.getComponent();
 		
@@ -376,7 +377,48 @@ class DragCompListener implements MouseInputListener
 								sketchCenter.currentProject.onDesorb
 									(previousBackbone.ID, compMoved.ID);
 						}
-					}	
+					}
+					else //avoid biobrickes to attach to backbone by mistake
+					{
+						//search components on the backbone
+						int pCount = partList.size();
+						
+						for (int i=0; i<pCount; i++)
+						{
+							if (	//component is in the range of backbone in x axis
+									(((BackBone)e.getSource()).getX()<(partList.get(i)).getX())
+									& ((((BackBone)e.getSource()).getX()+
+											((BackBone)e.getSource()).getWidth())> ((partList.get(i)).getX()
+													+(partList.get(i)).getWidth()))
+									//component is close to backbone in Y axis
+									& (Math.abs(((BackBone)e.getSource()).getY()-(partList.get(i)).getY())==0))		
+							{
+								if (!onBackbone.contains(i))
+								{
+									inAccident=true;
+								}
+							}
+						}
+						
+						if (inAccident)
+						{
+							((BackBone)e.getSource()).setLocation(
+									((BackBone)e.getSource()).getX(),
+									((BackBone)e.getSource()).getY()-1);
+							
+							//Move together
+							int numOn = onBackbone.size();
+							if (numOn>0)
+							{
+								for (int i=0; i<numOn; i++)
+								{
+									(partList.get(onBackbone.get(i))).setLocation(
+											(partList.get(onBackbone.get(i))).getX(),
+											(partList.get(onBackbone.get(i))).getY()-1);
+								}
+							}
+						}
+					}
 				}
 				// register the move action
 				Rectangle folBounds = new Rectangle(compMoved.getBounds());

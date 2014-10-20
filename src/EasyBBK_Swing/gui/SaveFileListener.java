@@ -50,7 +50,7 @@ public class SaveFileListener implements MouseInputListener
 		Graphics2D g = (Graphics2D)savedImage.getGraphics();
 		panel.paint(g);
 		
-		JFileChooser chooser=new JFileChooser();//文件保存对话框
+		JFileChooser chooser=new JFileChooser();
 		chooser.setLocale(Locale.ENGLISH);
 		
 		chooser.setAcceptAllFileFilterUsed(true);
