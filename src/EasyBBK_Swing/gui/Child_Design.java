@@ -3116,7 +3116,7 @@ public class Child_Design extends JLayeredPane {
 	{	
 		Rectangle preBounds = (Rectangle) previous;
 		Rectangle folBounds = (Rectangle) following;
-		return !(preBounds.width - folBounds.width == 0 && 
-				 preBounds.height - folBounds.height == 0);
+		return (preBounds.width - folBounds.width == 0 && 
+				preBounds.height - folBounds.height == 0);
 	}
 }
