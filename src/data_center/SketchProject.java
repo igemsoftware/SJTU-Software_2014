@@ -265,8 +265,8 @@ public class SketchProject
 	{	
 		Rectangle preBounds = (Rectangle) previous;
 		Rectangle folBounds = (Rectangle) following;
-		return !(preBounds.width - folBounds.width == 0 && 
-				 preBounds.height - folBounds.height == 0);
+		return preBounds.width - folBounds.width == 0 && 
+			   preBounds.height - folBounds.height == 0;
 	}
 	
 	/** Áª¶¯ in Chinese, move the biobricks on the same backbone together if the 
