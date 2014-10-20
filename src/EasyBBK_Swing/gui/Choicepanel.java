@@ -67,7 +67,7 @@ public class Choicepanel extends JPanel {
 	public Information information;
 	public boolean confirmed_clicked = false;
 	/**
-	 * Create the panel.
+	 * Create the Choicepanel.
 	 */
 	public Choicepanel() {
 		addMouseListener(new MouseAdapter() {

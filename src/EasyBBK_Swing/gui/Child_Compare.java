@@ -27,8 +27,7 @@ public class Child_Compare extends JPanel {
 	public JLabel BackGround;
 	public Child_Compare child_compare;
 	/**
-	 * Create the panel.
-	 * @wbp.parser.constructor
+	 * Create the Child_Compare panel.
 	 */
 	public Child_Compare(MainPage mainpage1) {
 		mainpage = mainpage1;
@@ -36,7 +35,9 @@ public class Child_Compare extends JPanel {
 		comparisonlist = mainpage.child_search_current.comparisonlist;
 		initialize();
 	}
-	
+	/**
+	 * Create the Child_Compare panel.
+	 */
 	public Child_Compare(MainPage mainpage1, ArrayList<BbkDetail> comparisonlist1) {
 		mainpage = mainpage1;
 		child_compare = this;
@@ -75,6 +76,7 @@ public class Child_Compare extends JPanel {
 		}
 		JScrollBar scrollbar = new JScrollBar();
 		scrollbar.setUnitIncrement(50);
+		scrollPane.setBorder(null);
 		scrollPane.setVerticalScrollBar(scrollbar);
 		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		scrollPane.validate();
@@ -126,7 +128,6 @@ public class Child_Compare extends JPanel {
 			attention.setForeground(new Color(255,230,0));
 			attention.setFont(new Font("Arial", Font.BOLD, 30));
 			attention.setBackground(new Color(255, 255, 255));
-			
 			attention.setEditable(false);
 			attention.setBorder(new EmptyBorder(0,0,0,0));
 			Containerpanel.add(attention);
@@ -157,12 +158,7 @@ public class Child_Compare extends JPanel {
 				final BbkDetail bbkdetail = comparisonlist.get(i);
 				comparison_item.PartName.setText(bbkdetail.name);
 				comparison_item.Type.setText(bbkdetail.type);
-				if(bbkdetail.shortDesc.length() <= 30){
-					comparison_item.ShortDescription.setText(bbkdetail.shortDesc);
-				}
-				else if(bbkdetail.shortDesc.length() > 30){
-					comparison_item.ShortDescription.setText("<html>" + bbkdetail.shortDesc.substring(0, 30) + "<br>" + bbkdetail.shortDesc.substring(30) + "</html>");
-				}
+				comparison_item.ShortDescription.setText("<html>" + bbkdetail.shortDesc + "</html>");
 				comparison_item.PartStatus.setText(bbkdetail.releaseStatus);
 				comparison_item.SampleStatus.setText(bbkdetail.sampleStatus);
 				comparison_item.Url.setText(bbkdetail.url);

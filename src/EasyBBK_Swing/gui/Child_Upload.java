@@ -110,6 +110,11 @@ public class Child_Upload extends JPanel {
 		initialize();
 	}
 	
+	/**
+	 * This Child_Upload function calls by Present part.
+	 * @param mainpage1 
+	 * @param bbkupload1 BbkUpload type create by Present part
+	 */
 	public Child_Upload(MainPage mainpage1, BbkUpload bbkupload1){
 		mainpage = mainpage1;
 		bbkupload = bbkupload1;
@@ -126,34 +131,12 @@ public class Child_Upload extends JPanel {
 			String []addnew = {bbkupload.features.get(i).type,bbkupload.features.get(i).title,bbkupload.features.get(i).startPos,
 					bbkupload.features.get(i).endPos,bbkupload.features.get(i).direction};
 			((DefaultTableModel) featureTable.getModel()).addRow(addnew);
-		}
-//Feature fearture = new Feature(ID, title, type, direction, startPos, endPos)				
-//		for(int i = 0; i < featurenumber; i++){
-//			feature_item[i] = new Feature_item();
-//			int j;
-//			for(j = 0; j < feature_item[i].feature.length; j++){
-//				if(bbkupload.features.get(i).type.equals(feature_item[i].feature[j]))
-//					break;
-//			}
-//			feature_item[i].Choice.setSelectedIndex(j);
-//			
-//			for(j = 0; j < feature_item[i].direction.length; j++){
-//				if(bbkupload.features.get(i).direction.equals(feature_item[i].direction[j]))
-//					break;
-//			}
-//			feature_item[i].Direction.setSelectedIndex(j);
-//			
-//			feature_item[i].Start.setText(bbkupload.features.get(i).startPos);
-//			feature_item[i].End.setText(bbkupload.features.get(i).endPos);
-//			feature_item[i].Label.setText(bbkupload.features.get(i).title);
-//			
-//			feature_item[i].setLocation(0, featurenumber*31);
-//			featurepanel.add(feature_item[i]);
-//		}
-		
-		
+		}		
 	}
 	
+	/**
+	 * initialize function : Display all parts of the page.
+	 */
 	public void initialize(){
 		addMouseListener(new MouseAdapter() {
 			@Override
@@ -190,6 +173,7 @@ public class Child_Upload extends JPanel {
 		});
 		UploadContainer.setBackground(new Color(255, 255, 255));
 		UploadContainer.setLayout(null);
+		UploadContainer.setBorder(null);
 		
 		scrollpanel = new JScrollPane(UploadContainer);
 		
@@ -341,15 +325,11 @@ public class Child_Upload extends JPanel {
 		UploadContainer.add(AddSubscar);
 		
 		UseDefaultScar = new JCheckBox("Use default scar");
-		//UseDefaultScar.setBackground(new Color(0, 255, 255));
 		UseDefaultScar.setOpaque(false);
 		UseDefaultScar.setFont(new Font("Arial", Font.PLAIN, 20));
 		UseDefaultScar.setBounds(373, 513, 169, 30);
 		UploadContainer.add(UseDefaultScar);
-			
-		
-		
-		
+				
 		
 		//Parameters
 		JLabel Parameter = new JLabel("Parameters:");
@@ -404,40 +384,30 @@ public class Child_Upload extends JPanel {
 		paramTable.putClientProperty("terminateEditOnFocusLost", Boolean.TRUE);
 		JTableHeader header=paramTable.getTableHeader();
 		header.setPreferredSize(new Dimension(header.getWidth(),0));
-		//header.setFont(new Font("Arial", Font.PLAIN, 20));
 		header.setVisible(false);
-		//table.setPreferredSize(new Dimension(header.getWidth(),30));
 		paramTable.setRowHeight(30);
 		paramTable.setAutoCreateRowSorter(true);
 		TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(paramTable.getModel());  
 		paramTable.setRowSorter(sorter);  
 		paramTable.getColumnModel().getColumn(0).setPreferredWidth(200);
 		paramTable.getColumnModel().getColumn(0).setCellEditor(new DefaultCellEditor(paramComboBox));
-		//paramTable.setBackground(new Color(155, 255, 255));
 		JScrollPane paramJsp=new JScrollPane(paramTable);
 		paramJsp.setBounds(373, 593, 486, 182);
 		paramJsp.setPreferredSize(new Dimension(468, 500));
 		paramJsp.setBackground(new Color(155, 255, 255));
 		UploadContainer.add(paramJsp);
 				
-		
-		
-		
+				
 		//Category
 		JLabel Category = new JLabel("Categories:");
 		Category.setFont(new Font("Arial", Font.PLAIN, 24));
 		Category.setBounds(373, 780, 150, 30);
 		UploadContainer.add(Category);
-		
-//		categorypanel = new JPanel();
-//		categorypanel.setBounds(373, 780, 486, 124);
-//		categorypanel.setBackground(new Color(155, 255, 255));
-//		categorypanel.setLayout(null);
-//		UploadContainer.add(categorypanel);
-		
+				
 		AddCategory = new JButton("");
 		ImageIcon image_AddCategory = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/add.png"));
 		AddCategory.setIcon(image_AddCategory);
+
 		AddCategory.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -552,20 +522,14 @@ public class Child_Upload extends JPanel {
 		categoryTable.putClientProperty("terminateEditOnFocusLost", Boolean.TRUE);
 		JTableHeader categoryHeader=categoryTable.getTableHeader();
 		categoryHeader.setPreferredSize(new Dimension(categoryHeader.getWidth(),0));
-		//header.setFont(new Font("Arial", Font.PLAIN, 20));
 		categoryHeader.setVisible(false);
-		//table.setPreferredSize(new Dimension(header.getWidth(),30));
 		categoryTable.setRowHeight(30); 
-		//categoryTable.getColumnModel().getColumn(0).setPreferredWidth(200);
 		categoryTable.getColumnModel().getColumn(0).setCellEditor(new DefaultCellEditor(categoryComboBox));
-		//paramTable.setBackground(new Color(155, 255, 255));
 		JScrollPane categoryJsp=new JScrollPane(categoryTable);
 		categoryJsp.setBounds(373, 815, 486, 182);
 		categoryJsp.setPreferredSize(new Dimension(468, 500));
 		categoryJsp.setBackground(new Color(155, 255, 255));
 		UploadContainer.add(categoryJsp);
-		
-		
 		
 		
 		//Features
@@ -630,13 +594,11 @@ public class Child_Upload extends JPanel {
 		featureTable.getColumnModel().getColumn(4).setPreferredWidth(50);		
 		featureTable.getColumnModel().getColumn(0).setCellEditor(new DefaultCellEditor(featureComboBox));
 		featureTable.getColumnModel().getColumn(4).setCellEditor(new DefaultCellEditor(directionComboBox));
-		//paramTable.setBackground(new Color(155, 255, 255));
 		JScrollPane featureJsp=new JScrollPane(featureTable);
 		featureJsp.setBounds(373, 1040, 486, 213);
 		featureJsp.setPreferredSize(new Dimension(468, 500));
 		featureJsp.setBackground(new Color(155, 255, 255));
 		UploadContainer.add(featureJsp);
-		
 		
 		
 		JLabel LongDescription_text = new JLabel("Long Description:");
@@ -755,7 +717,6 @@ public class Child_Upload extends JPanel {
 			public void mouseClicked(MouseEvent e) {
 				if(e.getButton() == MouseEvent.BUTTON1){
 					showinfo.setText("Uploading your biobrick...");;
-					//showinfopanel.updateUI();
 					
 					bbkupload.shortDesc = ShortDescription.getText();
 					bbkupload.type = typestring;
@@ -767,22 +728,31 @@ public class Child_Upload extends JPanel {
 					else if(!UseDefaultScar.isSelected()){
 						bbkupload.setSequence(false, false);
 					}
+					
 					bbkupload.parameters = new ArrayList<Parameter>();
 					for (int i = 0; i < paramTable.getRowCount();i++)
 					{
+						if (((DefaultTableModel) paramTable.getModel()).getValueAt(i, 0).toString().equals("--Add Another Parameter--"))
+							continue;
 						Parameter parameter = new Parameter(((DefaultTableModel) paramTable.getModel()).getValueAt(i, 0).toString(),
 								((DefaultTableModel) paramTable.getModel()).getValueAt(i, 1).toString(), null, null, null, null);
 						bbkupload.parameters.add(parameter);
 					}
+					
 					bbkupload.categories = new ArrayList<Category>();
 					for (int i = 0; i < categoryTable.getRowCount();i++)
 					{
+						if (((DefaultTableModel) categoryTable.getModel()).getValueAt(i, 0).toString().equals("--Add Another Category--"))
+							continue;
 						Category category = new Category(((DefaultTableModel) categoryTable.getModel()).getValueAt(i, 0).toString());
 						bbkupload.categories.add(category);
 					}
+					
 					bbkupload.features = new ArrayList<Feature>();
 					for (int i = 0; i < featureTable.getRowCount();i++)
 					{
+						if (((DefaultTableModel) featureTable.getModel()).getValueAt(i, 0).toString().equals("--New--"))
+							continue;
 						Feature feature = new Feature("",((DefaultTableModel) featureTable.getModel()).getValueAt(i, 1).toString(),
 								((DefaultTableModel) featureTable.getModel()).getValueAt(i, 0).toString(),
 								((DefaultTableModel) featureTable.getModel()).getValueAt(i, 4).toString(),
@@ -790,20 +760,7 @@ public class Child_Upload extends JPanel {
 								((DefaultTableModel) featureTable.getModel()).getValueAt(i, 3).toString());
 						bbkupload.features.add(feature);
 					}
-//					for(int i = 0; i < parameternumber; i++){
-//						Parameter parameter = new Parameter(parameter_item[i].content, parameter_item[i].textField.getText(), null, null, null, null);
-//						bbkupload.parameters.add(parameter);
-//					}
-//					
-//					for(int i = 0; i < categorynumber; i++){
-//						Category category = new Category(category_item[i].content);
-//						bbkupload.categories.add(category);
-//					}
-//					
-//					for(int i = 0; i < featurenumber; i++){
-//						Feature feature = new Feature(null, feature_item[i].Label.getText(), feature_item[i].content1, feature_item[i].content2, feature_item[i].Start.getText(), feature_item[i].End.getText());
-//						bbkupload.features.add(feature);
-//					}
+					
 					bbkupload.longDesc = LongDescription.getText();
 					UploadCenter uploadcenter = new UploadCenter();
 					String oddNum = uploadcenter.uploadAndGetOddNum(bbkupload);
@@ -836,6 +793,8 @@ public class Child_Upload extends JPanel {
 					bbkupload.parameters = new ArrayList<Parameter>();
 					for (int i = 0; i < paramTable.getRowCount();i++)
 					{
+						if (((DefaultTableModel) paramTable.getModel()).getValueAt(i, 0).toString().equals("--Add Another Parameter--"))
+							continue;
 						Parameter parameter = new Parameter(((DefaultTableModel) paramTable.getModel()).getValueAt(i, 0).toString(),
 								((DefaultTableModel) paramTable.getModel()).getValueAt(i, 1).toString(), null, null, null, null);
 						bbkupload.parameters.add(parameter);
@@ -844,12 +803,17 @@ public class Child_Upload extends JPanel {
 					bbkupload.categories = new ArrayList<Category>();
 					for (int i = 0; i < categoryTable.getRowCount();i++)
 					{
+						if (((DefaultTableModel) categoryTable.getModel()).getValueAt(i, 0).toString().equals("--Add Another Category--"))
+							continue;
 						Category category = new Category(((DefaultTableModel) categoryTable.getModel()).getValueAt(i, 0).toString());
 						bbkupload.categories.add(category);
 					}
+					
 					bbkupload.features = new ArrayList<Feature>();
 					for (int i = 0; i < featureTable.getRowCount();i++)
 					{
+						if (((DefaultTableModel) featureTable.getModel()).getValueAt(i, 0).toString().equals("--New--"))
+							continue;
 						Feature feature = new Feature("",((DefaultTableModel) featureTable.getModel()).getValueAt(i, 1).toString(),
 								((DefaultTableModel) featureTable.getModel()).getValueAt(i, 0).toString(),
 								((DefaultTableModel) featureTable.getModel()).getValueAt(i, 4).toString(),
@@ -858,20 +822,6 @@ public class Child_Upload extends JPanel {
 						bbkupload.features.add(feature);
 					}
 					
-//					for(int i = 0; i < parameternumber; i++){
-//						Parameter parameter = new Parameter(parameter_item[i].content, parameter_item[i].textField.getText(), null, null, null, null);
-//						bbkupload.parameters.add(parameter);
-//					}
-//					
-//					for(int i = 0; i < categorynumber; i++){
-//						Category category = new Category(category_item[i].content);
-//						bbkupload.categories.add(category);
-//					}
-//					
-//					for(int i = 0; i < featurenumber; i++){
-//						Feature feature = new Feature(null, feature_item[i].Label.getText(), feature_item[i].content1, feature_item[i].content2, feature_item[i].Start.getText(), feature_item[i].End.getText());
-//						bbkupload.features.add(feature);
-//					}
 					bbkupload.longDesc = LongDescription.getText();
 					bbkupload.source = Source.getText();
 					bbkupload.notes = DesignConsideration.getText();
@@ -907,17 +857,6 @@ public class Child_Upload extends JPanel {
 		SubmitToWebsite.setBounds(649, 1870, 200, 65);
 		UploadContainer.add(SubmitToWebsite);
 		
-//		JLabel information = new JLabel("Information", SwingConstants.CENTER);
-//		information.setBounds(1040, 1450, 120, 30);
-//		information.setFont(new Font("Arial", Font.PLAIN, 24));
-//		UploadContainer.add(information);
-		
-//		showinfopanel = new JPanel();
-//		showinfopanel.setBounds(630, 1780, 360, 240);
-//		showinfopanel.setOpaque(false);
-//		//showinfopanel.setBackground(new Color(255, 255, 255));
-//		UploadContainer.add(showinfopanel);
-		
 		showinfo = new JLabel("");
 		showinfo.setOpaque(false);
 		showinfo.setVisible(true);
@@ -944,17 +883,10 @@ public class Child_Upload extends JPanel {
 		    		 ((DefaultTableModel) categoryTable.getModel()).removeRow(i);
 				for (int i = featureTable.getRowCount()-1;i>=0;i--)
 		    		 ((DefaultTableModel) featureTable.getModel()).removeRow(i);
-				//paramTable = null;
-				//categoryTable = null;
-				//featureTable = null;
-				//parameterpanel.removeAll();
-				//categorypanel.removeAll();
-				//featurepanel.removeAll();
 				LongDescription.setText(null);
 				Source.setText(null);
 				DesignConsideration.setText(null);
 				showinfo.setText("");
-				//showinfopanel.removeAll();
 			}
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -979,12 +911,16 @@ public class Child_Upload extends JPanel {
 			scrollpanel.setBounds(0, 0, 1280, 670);
 		}
 		scrollbar.setUnitIncrement(100);
+		scrollpanel.setBorder(null);
 		scrollpanel.setVerticalScrollBar(scrollbar);
 		scrollpanel.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		scrollpanel.validate();
 		add(scrollpanel);
 	}
 	
+	/**
+	 * Add parameters call
+	 */
 	private void paramAddClicked(){
 		String[] addnew = {"--Add Another Parameter--",""};
 		if (paramTable.getRowCount()>0)
@@ -993,6 +929,9 @@ public class Child_Upload extends JPanel {
 		((DefaultTableModel) paramTable.getModel()).addRow(addnew);
     }
 	
+	/**
+	 * Delete parameters call
+	 */
 	private void paramDeleteClicked(){
     	int row=paramTable.getSelectedRow();
     	if(row>-1){
@@ -1000,6 +939,9 @@ public class Child_Upload extends JPanel {
     	}
     }
 	
+	/**
+	 * Add categories call
+	 */
 	private void categoryAddClicked(){
 		String []addnew = {"--Add Another Category--"};
 		if (categoryTable.getRowCount()>0)
@@ -1008,6 +950,9 @@ public class Child_Upload extends JPanel {
 		((DefaultTableModel) categoryTable.getModel()).addRow(addnew);
     }
 	
+	/**
+	 * Delete categories call
+	 */
 	private void categoryDeleteClicked(){
     	int row=categoryTable.getSelectedRow();
     	if(row>-1){
@@ -1015,6 +960,9 @@ public class Child_Upload extends JPanel {
     	}
     }
 	
+	/**
+	 * Add features call
+	 */
 	private void featureAddClicked(){
 		String []addnew = {"--New--","","","","Fwd"};
 		if (featureTable.getRowCount()>0)
@@ -1023,6 +971,9 @@ public class Child_Upload extends JPanel {
 		((DefaultTableModel) featureTable.getModel()).addRow(addnew);
     }
 	
+	/**
+	 * Delete features call
+	 */
 	private void featureDeleteClicked(){
     	int row = featureTable.getSelectedRow();
     	if(row>-1){
@@ -1030,20 +981,23 @@ public class Child_Upload extends JPanel {
     	}
     }
 	
+	/**
+	 * Upload Biobrick to Register.
+	 * @author SJTU-Software
+	 */
 	class WriteTxt implements Runnable {
 		public void run() {
-			try {
-				showinfo.setText("Uploading your biobrick...");;
-				//showinfopanel.updateUI();				
+			try {			
 				boolean login = OfficialUploadPoster.login(UserName.getText(), String.valueOf(Password.getPassword()));
 				if (!login)
 				{
 					showinfo.setText("Username or password is wrong.");
 					return;
 				}
+				
+				showinfo.setText("Uploading your biobrick...");
 				showinfo.setText("<html>Uploading your biobrick...<br>10% Complete</html>");
 				String newBbk = OfficialUploadPoster.getNextAvailablePartName();
-				//newBbk = "BBa_K1479016";
 				showinfo.setText("<html>Uploading your biobrick...<br>21% Complete<br>New BioBrick is "+newBbk+"</html>");
 				String newId = OfficialUploadPoster.createNewPart(newBbk, bbkupload);
 				bbkupload.setName(newBbk);

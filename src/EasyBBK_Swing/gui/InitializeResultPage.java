@@ -58,15 +58,10 @@ public class InitializeResultPage extends Thread{
 			else if(child_search.blast == 2){
 				searchresultlist = child_search.searchcenter.blast(keyword, BlastingSearcher.MODE_INPUT_SEQUENCE);
 			}
-			else if(child_search.blast == 3){
-				searchresultlist = child_search.searchcenter.blast(keyword, BlastingSearcher.MODE_INPUT_FILE_PATH);
-			}
 		}
 		
 		filteredlist = searchresultlist;
 		int number = filteredlist.size();
-		
-		//System.out.println(1);
 		
 		if(number == 0){
 			JLabel noresults = new JLabel("Sorry, no results found.");
@@ -160,14 +155,12 @@ public class InitializeResultPage extends Thread{
 				filteredlist = filteredlist.filterByStarNum(starNumList);
 			}
 			
-			if(child_search.information.preferences.status != 0 ||  child_search.information.preferences.quality != 0 || child_search.information.preferences.feedbacks != 0 || child_search.information.preferences.publication != 0){
+			if(child_search.information.preferences.status + child_search.information.preferences.quality + child_search.information.preferences.feedbacks + child_search.information.preferences.publication == 100){
 				filteredlist.sortByTotalScore(true, child_search.information.preferences.status, child_search.information.preferences.quality, child_search.information.preferences.feedbacks, child_search.information.preferences.publication);
 			}
 		}
 		
 		final int numberofresults = filteredlist.size();
-		
-		//System.out.println(2);
 		
 		if(numberofresults == 0){
 			JLabel noresults = new JLabel("Sorry, no results found.");
@@ -415,7 +408,6 @@ public class InitializeResultPage extends Thread{
 			}
 		};
 		
-		
 		showdetaillist.add(i, showdetailpage);;
 		
 		child_search.searchingresultpage.searchingresult.get(i).ID_Content.addMouseListener(showdetailpage);
@@ -431,11 +423,6 @@ public class InitializeResultPage extends Thread{
 			public void mouseClicked(MouseEvent e) {
 				if(e.getButton() == MouseEvent.BUTTON1){
 					try{
-						//URL url=new URL(child_search.searchingresultpage.searchingresult.get(i).URL_Content.getText().trim());
-						//getAppletContext().showDocument(url);
-						//Runtime.getRuntime().exec("cmd.exe /c start iexplore " + child_search.searchingresultpage.searchingresult.get(i).URL_Content.getText());
-						//URI uri=new java.net.URI(child_search.searchingresultpage.searchingresult.get(i).URL_Content.getText().trim());
-						//Desktop.getDesktop().browse(uri);
 						Runtime.getRuntime().exec("explorer " + bbkoutline.url);
 					}
 					catch(Exception ex){

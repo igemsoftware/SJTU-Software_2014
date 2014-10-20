@@ -40,7 +40,6 @@ public class MainPage extends JFrame{
 	public Child_Search child_search_current = null;
 	public Child_Design child_design_current = null;
 	public Child_Upload child_upload_current = null;
-	//public Child_Compare child_compare_current = null;
 	public int CurrentPage = 0;
 	public String sequencestring = "";
 	public String subpartstring = "";
@@ -86,7 +85,7 @@ public class MainPage extends JFrame{
 			small = true;
 		}
 		
-		frame = new JFrame();
+		frame = new JFrame("Easy BBK");
 		if(small == false){
 			frame.setSize(new Dimension(1366, 728));
 		}
