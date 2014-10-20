@@ -22,7 +22,7 @@ If you prefer not to install java environment, other ways to run the client is a
 
 * For Linux users, download the file "/Executable/EasyBBK-Linux.tar.gz"， extract into any directory. Then open a terminal, cd to the root directory of the decompressed file folder, and execute "bash EasyBBK". 
 
-* For Mac OS users, download the file "/Executable/EasyBBK-MacOS.tar.gz", extract into any directory, the rest will be the same as that under linux. 
+* For Mac OS users, download the file "/Executable/EasyBBK-MacOS.zip", extract into any directory. Then open a command line window, cd to the root directory of the decompressed file folder, and execute "bash EasyBBK". 
 
 ##Further Development
 Having new ideas? We also provide the source code and the document of the project. For further development, these might help: 
