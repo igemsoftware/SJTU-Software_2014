@@ -85,7 +85,7 @@ public class MainPage extends JFrame{
 			small = true;
 		}
 		
-		frame = new JFrame();
+		frame = new JFrame("Easy BBK");
 		if(small == false){
 			frame.setSize(new Dimension(1366, 728));
 		}
