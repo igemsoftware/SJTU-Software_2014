@@ -141,8 +141,12 @@ public class SketchProject
 		Component comp = findComponentByID(backBoneID);
 		if (comp == null || !comp.primaryType.equals(BackBone.class.getSimpleName()))
 			return;
-		// else
-		comp.toBackBone().bbkChildren.add(index, bbkID);
+		BackBone backBone = comp.toBackBone();
+		// delete if the previous ID exists, in case of repeatedly register onAbsorb event
+		for (Integer IDInList : backBone.bbkChildren)
+			if (IDInList == bbkID)
+			{	backBone.bbkChildren.remove(IDInList);	break;	}
+		backBone.bbkChildren.add(index, bbkID);
 	}
 	
 	/** Registration function, receive the user operation and remember it in the 
