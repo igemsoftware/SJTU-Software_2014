@@ -366,7 +366,7 @@ class DragCompListener implements MouseInputListener
 									order=order+1;
 								}					
 							}
-							
+
 							sketchCenter.currentProject.onAbsorb
 								(closestBackbone.ID, compMoved.ID, order);
 						}
