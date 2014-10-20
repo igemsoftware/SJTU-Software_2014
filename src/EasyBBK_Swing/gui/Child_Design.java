@@ -484,7 +484,7 @@ public class Child_Design extends JLayeredPane {
 		exportButton.addMouseListener(exportStop);
 		exportButton.addMouseMotionListener(exportStop);
 		
-		SaveListener save = new SaveListener(sketchCenter,panel,Tpanel);
+		SaveListener save = new SaveListener(sketchCenter,panel,Tpanel,statusBar);
 		saveButton.addMouseListener(save);
 		saveButton.addMouseMotionListener(save);
 		
@@ -1124,11 +1124,16 @@ public class Child_Design extends JLayeredPane {
 		    			newLabel.setBounds(point.x-25, point.y-30, 50,60);
 		    			newLabel.setName(((JLabelWithID)source).getName());
 		    		}
+		    		else if(((JLabelWithID)source).getName()=="factor")
+		    		{
+		    			newLabel.setBounds(point.x-25, point.y-30, 40,40);
+		    			newLabel.setName(((JLabelWithID)source).getName());
+		    		}
 		    		else
 		    		{
 		    			newLabel.setBounds(point.x-41, point.y-30, 83,60);
 			    		newLabel.setName(((JLabelWithID)source).getName());
-		    		}		    		
+		    		}
 
 					panel.add(newLabel);
 					
