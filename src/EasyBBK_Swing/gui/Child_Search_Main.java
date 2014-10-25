@@ -9,12 +9,16 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
+
+import data_center.SearchCenter;
+import data_center.UploadCenter;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -36,7 +40,7 @@ public class Child_Search_Main extends JPanel {
 	public JLabel AdvancedSearch;
 	public JLabel BackGround;
 	/**
-	 * Create the panel.
+	 * Create the Child_Search_Main panel.
 	 */
 	public Child_Search_Main(MainPage mainpage1) {
 		addMouseListener(new MouseAdapter() {
@@ -170,6 +174,13 @@ public class Child_Search_Main extends JPanel {
 			public void mouseClicked(MouseEvent e) {
 				if(e.getButton() == MouseEvent.BUTTON1){
 					if(SearchText.getText().equals("")) return;
+					
+					UploadCenter uploadcenter = new UploadCenter();
+					if(!uploadcenter.isSequanceValid(SearchText.getText())){
+						JOptionPane.showMessageDialog(null, "The input is not sequence!", "Attention",JOptionPane.PLAIN_MESSAGE);
+						return;
+					}
+					
 					requestFocus();
 					Component component = mainpage.Mainpanel.getComponent(0);
 					if(component instanceof Child_Search_Main){

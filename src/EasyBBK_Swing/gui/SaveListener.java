@@ -8,6 +8,7 @@ import java.util.Locale;
 
 import javax.swing.JFileChooser;
 import javax.swing.JLayeredPane;
+import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.event.MouseInputListener;
@@ -17,20 +18,27 @@ import EasyBBK_Swing.gui.SaveListener.MyFileFilter;
 import data_center.SketchCenter;
 
 @SuppressWarnings("unused")
+/**
+ * Show a dialog in which you can save your job in detail as a XML file.
+ * @author LC
+ *
+ */
 public class SaveListener implements MouseInputListener
 {
 	SketchCenter sketchCenter;
+	JTextField statusBar;
 	
-	public SaveListener(SketchCenter sketchCenter,JLayeredPane panel,TPanel Tpanel)
+	public SaveListener(SketchCenter sketchCenter,JLayeredPane panel,TPanel Tpanel,JTextField statusBar)
 	{	
 		this.sketchCenter = sketchCenter;
+		this.statusBar=statusBar;
 	}
 	
 	public void mouseClicked(MouseEvent e) 
 	{
 		if (sketchCenter.currentProject.filePath==null)
 		{
-			JFileChooser chooser=new JFileChooser();//文件保存对话框
+			JFileChooser chooser=new JFileChooser();
 			chooser.setLocale(Locale.ENGLISH);
 			chooser.setAcceptAllFileFilterUsed(true);
 			chooser.addChoosableFileFilter(new MyFileFilter("xml","XML"));
@@ -68,6 +76,7 @@ public class SaveListener implements MouseInputListener
 		else
 		{
 			sketchCenter.currentProject.saveIntoFile();
+			statusBar.setText("   Saving completed");
 		}
 				
 	}

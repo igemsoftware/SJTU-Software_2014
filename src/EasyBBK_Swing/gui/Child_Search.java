@@ -5,6 +5,7 @@ import java.awt.Component;
 import java.awt.Cursor;
 
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JScrollBar;
@@ -56,7 +57,7 @@ public class Child_Search extends JPanel {
 	public ArrayList<BbkDetail> comparisonlist = new ArrayList<BbkDetail>();
 	public ArrayList<InitializeResultPage> threadlist = new ArrayList<InitializeResultPage>();
 	/**
-	 * Create the panel.
+	 * Create the Child_Search panel.
 	 */
 	public Child_Search(MainPage mainpage1, String searchcontent, Information information1, int blast1, boolean confirmed_clicked1) {
 		child_search = this;
@@ -91,7 +92,6 @@ public class Child_Search extends JPanel {
 			}
 		});
 		Result.setBackground(new Color(255, 255, 255));
-		//Result.setBorder(BorderFactory.createLineBorder(Color.black));
 		add(Result);
 		Result.setLayout(null);
 		
@@ -318,6 +318,13 @@ public class Child_Search extends JPanel {
 						}
 						return;
 					}
+					
+					UploadCenter uploadcenter = new UploadCenter();
+					if(!uploadcenter.isSequanceValid(textField.getText())){
+						JOptionPane.showMessageDialog(null, "The input is not sequence!", "Attention",JOptionPane.PLAIN_MESSAGE);
+						return;
+					}
+					
 					else{
 						if(threadlist.size() != 0){
 							for(int i = 0; i < threadlist.size(); i++){
@@ -365,7 +372,6 @@ public class Child_Search extends JPanel {
 		});
 		
 		Details.setBackground(new Color(255, 255, 255));
-		//Details.setBorder(BorderFactory.createLineBorder(Color.black));
 		add(Details);
 		Details.setLayout(null);
 		updateUI();

@@ -3,7 +3,9 @@ package EasyBBK_Swing.gui;
 import javax.swing.JLabel;
 
 /**
- * Make JLabel contain more information
+ * Make JLabel contain more information, such as ID and biobrick name.
+ * @author LC
+ *
  */
 class JLabelWithID extends JLabel
 {	

@@ -190,7 +190,7 @@ public class Child_Upload extends JPanel {
 		ShortDescription = new JTextField();
 		ShortDescription.setFont(new Font("Arial", Font.PLAIN, 24));
 		ShortDescription.setColumns(10);
-		ShortDescription.setBounds(373, 125, 536, 30);
+		ShortDescription.setBounds(373, 125, 536, 36);
 		UploadContainer.add(ShortDescription);
 		
 		JLabel ChooseType = new JLabel("Type:");
@@ -221,7 +221,7 @@ public class Child_Upload extends JPanel {
 		Nickname = new JTextField();
 		Nickname.setFont(new Font("Arial", Font.PLAIN, 24));
 		Nickname.setColumns(10);
-		Nickname.setBounds(496, 205, 205, 30);
+		Nickname.setBounds(496, 205, 205, 36);
 		UploadContainer.add(Nickname);
 		
 		JLabel ChooseDesigners = new JLabel("Designer(s):");
@@ -232,7 +232,7 @@ public class Child_Upload extends JPanel {
 		Designers = new JTextField();
 		Designers.setFont(new Font("Arial", Font.PLAIN, 24));
 		Designers.setColumns(10);
-		Designers.setBounds(522, 245, 205, 30);
+		Designers.setBounds(522, 245, 205, 36);
 		UploadContainer.add(Designers);
 		
 		JLabel Sequence = new JLabel("Sequence Information:");
@@ -256,7 +256,9 @@ public class Child_Upload extends JPanel {
 		textscrollpanel.validate();
 		UploadContainer.add(textscrollpanel);
 		
-		AddSequence = new JButton("Add sequence");
+		AddSequence = new JButton("");
+		ImageIcon image_AddSequence = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/addSequence.png"));
+		AddSequence.setIcon(image_AddSequence);
 		AddSequence.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -277,7 +279,9 @@ public class Child_Upload extends JPanel {
 		AddSequence.setBounds(373, 465, 166, 30);
 		UploadContainer.add(AddSequence);
 		
-		AddSubpart = new JButton("Add subpart");
+		AddSubpart = new JButton("");
+		ImageIcon image_AddSubpart = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/addSubpart.png"));
+		AddSubpart.setIcon(image_AddSubpart);
 		AddSubpart.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -297,7 +301,9 @@ public class Child_Upload extends JPanel {
 		AddSubpart.setBounds(549, 465, 146, 30);
 		UploadContainer.add(AddSubpart);
 		
-		AddSubscar = new JButton("Add subscar");
+		AddSubscar = new JButton("");
+		ImageIcon image_AddSubscar = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/addSubscar.png"));
+		AddSubscar.setIcon(image_AddSubscar);		
 		AddSubscar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -313,6 +319,7 @@ public class Child_Upload extends JPanel {
 				}
 			}
 		});
+		
 		AddSubscar.setFont(new Font("Arial", Font.PLAIN, 20));
 		AddSubscar.setBounds(705, 465, 156, 30);
 		UploadContainer.add(AddSubscar);
@@ -330,7 +337,9 @@ public class Child_Upload extends JPanel {
 		Parameter.setBounds(373, 553, 200, 30);		
 		UploadContainer.add(Parameter);
 		
-		AddParameter = new JButton("Add");
+		AddParameter = new JButton("");
+		ImageIcon image_AddParameter = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/add.png"));
+		AddParameter.setIcon(image_AddParameter);
 		AddParameter.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
 				paramAddClicked();
@@ -340,7 +349,9 @@ public class Child_Upload extends JPanel {
 		AddParameter.setBounds(618, 553, 75, 30);
 		UploadContainer.add(AddParameter);
 		
-		RemoveParameter = new JButton("Remove");
+		RemoveParameter = new JButton("");
+		ImageIcon image_RemoveParameter = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/remove.png"));
+		RemoveParameter.setIcon(image_RemoveParameter);
 		RemoveParameter.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -392,8 +403,11 @@ public class Child_Upload extends JPanel {
 		Category.setFont(new Font("Arial", Font.PLAIN, 24));
 		Category.setBounds(373, 780, 150, 30);
 		UploadContainer.add(Category);
-		
-		AddCategory = new JButton("Add");
+				
+		AddCategory = new JButton("");
+		ImageIcon image_AddCategory = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/add.png"));
+		AddCategory.setIcon(image_AddCategory);
+
 		AddCategory.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -406,7 +420,9 @@ public class Child_Upload extends JPanel {
 		AddCategory.setBounds(618, 780, 75, 30);
 		UploadContainer.add(AddCategory);
 		
-		RemoveCategory = new JButton("Remove");
+		RemoveCategory = new JButton("");
+		ImageIcon image_RemoveCategory = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/remove.png"));
+		RemoveCategory.setIcon(image_RemoveCategory);
 		RemoveCategory.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -522,7 +538,9 @@ public class Child_Upload extends JPanel {
 		Features.setBounds(373, 1005, 113, 30);
 		UploadContainer.add(Features);
 		
-		AddFeature = new JButton("Add");
+		AddFeature = new JButton("");
+		ImageIcon image_AddFeature = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/add.png"));
+		AddFeature.setIcon(image_AddFeature);
 		AddFeature.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -535,7 +553,9 @@ public class Child_Upload extends JPanel {
 		AddFeature.setBounds(618, 1005, 75, 30);
 		UploadContainer.add(AddFeature);
 		
-		RemoveFeature = new JButton("Remove");
+		RemoveFeature = new JButton("");
+		ImageIcon image_RemoveFeature = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/remove.png"));
+		RemoveFeature.setIcon(image_RemoveFeature);
 		RemoveFeature.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -608,7 +628,7 @@ public class Child_Upload extends JPanel {
 		UploadContainer.add(LDscrollpanel);
 		
 		JLabel Claim = new JLabel("Contents below only can be uploaded to Registry!");
-		Claim.setForeground(Color.red);
+		Claim.setForeground(new Color(255,230,0));
 		Claim.setFont(new Font("Arial", Font.PLAIN, 24));
 		Claim.setBounds(373, 1425, 620, 30);
 		UploadContainer.add(Claim);
@@ -678,17 +698,20 @@ public class Child_Upload extends JPanel {
 		
 		UserName = new JTextField();
 		UserName.setFont(new Font("Arial", Font.PLAIN, 20));
-		UserName.setBounds(550, 1790, 146, 30);
+		UserName.setBounds(550, 1790, 146, 32);
 		UploadContainer.add(UserName);
 		UserName.setColumns(10);
 		
 		Password = new JPasswordField();
 		Password.setFont(new Font("Arial", Font.PLAIN, 20));
 		Password.setColumns(10);
-		Password.setBounds(550, 1830, 146, 30);
+		Password.setBounds(550, 1830, 146, 32);
 		UploadContainer.add(Password);
 		
-		SubmitToDatabase = new JButton("<html>" + "Submit to" + "<br>" + " EasyBBK" + "</html>");
+		SubmitToDatabase = new JButton("");
+		ImageIcon image_SubmitToDatabase = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/submitToEasyBBK.png"));
+		SubmitToDatabase.setIcon(image_SubmitToDatabase);
+		
 		SubmitToDatabase.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -749,7 +772,9 @@ public class Child_Upload extends JPanel {
 		SubmitToDatabase.setBounds(403, 1870, 200, 65);
 		UploadContainer.add(SubmitToDatabase);
 		
-		SubmitToWebsite = new JButton("<html>" + "Submit to" + "<br>" + "Registry" + "</html>");
+		SubmitToWebsite = new JButton("");
+		ImageIcon image_SubmitToWebsite = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/submitToRegistry.png"));
+		SubmitToWebsite.setIcon(image_SubmitToWebsite);
 		SubmitToWebsite.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -839,7 +864,9 @@ public class Child_Upload extends JPanel {
 		showinfo.setFont(new Font("Arial", Font.PLAIN, 20));
 		UploadContainer.add(showinfo);
 		
-		Clearall = new JButton("Clear All");
+		Clearall = new JButton("");
+		ImageIcon image_Clearall = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/clearAll.png"));
+		Clearall.setIcon(image_Clearall);
 		Clearall.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
@@ -960,7 +987,8 @@ public class Child_Upload extends JPanel {
 	 */
 	class WriteTxt implements Runnable {
 		public void run() {
-			try {			
+			try {
+				showinfo.setText("Logging to Registry...");
 				boolean login = OfficialUploadPoster.login(UserName.getText(), String.valueOf(Password.getPassword()));
 				if (!login)
 				{

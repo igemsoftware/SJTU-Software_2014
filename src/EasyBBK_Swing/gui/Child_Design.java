@@ -60,6 +60,11 @@ import java.util.Hashtable;
 import java.util.Locale;
 
 @SuppressWarnings("serial")
+/**
+ * Present page of EasyBBK
+ * @author LC
+ *
+ */
 public class Child_Design extends JLayeredPane {
 	public MainPage mainpage;
 	JLabel background = new JLabel();
@@ -84,7 +89,9 @@ public class Child_Design extends JLayeredPane {
 	SketchCenter sketchCenter = new SketchCenter();
 	
 	/**
-	 * Create the panel.
+	 * Create the panel which contains all the components.
+	 * @author LC
+	 *
 	 */
 	public Child_Design(MainPage mainpage1) 
 	{		
@@ -101,6 +108,8 @@ public class Child_Design extends JLayeredPane {
 	
 	/**
 	 * Initialize the contents of the frame.
+	 * @author LC
+	 *
 	 */
 	private void initialize() 
 	{	
@@ -475,7 +484,7 @@ public class Child_Design extends JLayeredPane {
 		exportButton.addMouseListener(exportStop);
 		exportButton.addMouseMotionListener(exportStop);
 		
-		SaveListener save = new SaveListener(sketchCenter,panel,Tpanel);
+		SaveListener save = new SaveListener(sketchCenter,panel,Tpanel,statusBar);
 		saveButton.addMouseListener(save);
 		saveButton.addMouseMotionListener(save);
 		
@@ -513,7 +522,11 @@ public class Child_Design extends JLayeredPane {
 		ImageIcon image_background = new ImageIcon(Child_Design.class.getResource("/EasyBBK_Swing/image/design_background.png"));
 		background.setIcon(image_background);
 		
-		//Undo by keyboard
+		/**
+		 * make it available to undo and redo by keyboard
+		 * @author LC
+		 *
+		 */
 		Toolkit.getDefaultToolkit().addAWTEventListener( 
 				new AWTEventListener(){
 					 public void eventDispatched(AWTEvent e) {
@@ -555,7 +568,6 @@ public class Child_Design extends JLayeredPane {
 					 }
 				},  AWTEvent.KEY_EVENT_MASK);		
 				
-		//Redo by keyboard
 		Toolkit.getDefaultToolkit().addAWTEventListener( 
 				new AWTEventListener(){
 					 public void eventDispatched(AWTEvent e) {
@@ -597,7 +609,9 @@ public class Child_Design extends JLayeredPane {
 	}
 	
 	/**
-	 * Decide to use which component
+	 * Decide to add which component in the board on the right.
+	 * @author LC
+	 *
 	 */
 	class GetCompListener implements MouseInputListener
 	{
@@ -639,7 +653,7 @@ public class Child_Design extends JLayeredPane {
     				((BackBone)source).setEnabled(false);
     			}
 	    		
-	    		if (pen != null)
+	    		if (pen != null)//End the operation of drawing line.
 	    		{
 	    			pen.noUse();
 	    			if (pen.getType()==-1 | pen.getType()==0 | pen.getType()==1)
@@ -685,13 +699,13 @@ public class Child_Design extends JLayeredPane {
 							sketchCenter.currentProject.addComponent(new SketchComponent.Relation
 									(newLine.ID, lineType, bounds, points, lineColor, lineStroke));
 							
-							//imply move
+							//Move component
 							DragLineListener dragListener = new DragLineListener();
 							newLine.addMouseListener(dragListener);
 							newLine.addMouseMotionListener(dragListener);
 							linePanel.endLine();
 							
-							//Delete
+							//Delete component
 							DeleteListener deleteLine = new DeleteListener();
 							newLine.addMouseListener(deleteLine);
 							newLine.addMouseMotionListener(deleteLine);
@@ -728,7 +742,9 @@ public class Child_Design extends JLayeredPane {
 	}
 	
 	/**
-	 * Decide to use which component
+	 * Decide if draw line in the board.
+	 * @author LC
+	 *
 	 */
 	class IfDrawLineListener implements MouseInputListener
 	{
@@ -909,7 +925,9 @@ public class Child_Design extends JLayeredPane {
 	}
 	
 	/**
-	 * If add text
+	 * Decide if to add text.
+	 * @author LC
+	 *
 	 */
 	public class IfaddTextListener implements MouseInputListener
 	{	
@@ -1013,7 +1031,9 @@ public class Child_Design extends JLayeredPane {
 	}
 	
 	/**
-	 * Draw components
+	 * Draw components on the paint board.
+	 * @author LC
+	 *
 	 */
 	class DrawCompListener implements MouseInputListener
 	{
@@ -1104,11 +1124,16 @@ public class Child_Design extends JLayeredPane {
 		    			newLabel.setBounds(point.x-25, point.y-30, 50,60);
 		    			newLabel.setName(((JLabelWithID)source).getName());
 		    		}
+		    		else if(((JLabelWithID)source).getName()=="factor")
+		    		{
+		    			newLabel.setBounds(point.x-25, point.y-30, 40,40);
+		    			newLabel.setName(((JLabelWithID)source).getName());
+		    		}
 		    		else
 		    		{
 		    			newLabel.setBounds(point.x-41, point.y-30, 83,60);
 			    		newLabel.setName(((JLabelWithID)source).getName());
-		    		}		    		
+		    		}
 
 					panel.add(newLabel);
 					
@@ -1175,6 +1200,11 @@ public class Child_Design extends JLayeredPane {
 	    public void mouseMoved(MouseEvent e){}
 	}
 	
+	/**
+	 * Add text label on the paint board.
+	 * @author LC
+	 *
+	 */
 	public class addTextListener implements MouseInputListener
 	{	
 		Point point = new Point(0,0);
@@ -1236,7 +1266,9 @@ public class Child_Design extends JLayeredPane {
 	}
 	
 	/**
-	 * Draw line
+	 * Draw line on the paint board.
+	 * @author LC
+	 *
 	 */
 	public class DrawLineListener implements MouseInputListener
 	{		
@@ -1332,7 +1364,10 @@ public class Child_Design extends JLayeredPane {
 	}
 	
 	/**
-	 * Show FontChooser
+	 * Show a dialog in which users can choose font and color of the words in text labels,
+	 * if users click the given button.
+	 * @author LC
+	 *
 	 */
 	class ShowFontChooser implements MouseInputListener
 	{
@@ -1412,7 +1447,10 @@ public class Child_Design extends JLayeredPane {
 	}
 	
 	/**
-	 * Show LineStyleChooserChooser
+	 * Create a dialog in which you can modify the thickness and color of the line you drew,
+	 * When users click the given button.
+	 * @author LC
+	 *
 	 */
 	class ShowLineStyleChooser implements MouseInputListener
 	{
@@ -1507,6 +1545,11 @@ public class Child_Design extends JLayeredPane {
 		public void mouseExited(MouseEvent e) {}
 	}
 	
+	/**
+	 * Make it available to drag the lines that users drew before.
+	 * @author LC
+	 *
+	 */
 	class DragLineListener implements MouseInputListener
 	{
 		Point point = new Point(0,0);
@@ -1579,7 +1622,9 @@ public class Child_Design extends JLayeredPane {
 	}
 	
 	/**
-	 * Drag text
+	 * Make it available to drag the text labels that users added before.
+	 * @author LC
+	 *
 	 */
 	class DragTextListener implements MouseInputListener
 	{
@@ -1648,7 +1693,10 @@ public class Child_Design extends JLayeredPane {
 	}
 	
 	/**
-	 * Choose current listener
+	 * When users click the text label, it will gain the focus.
+	 * Users can input information and modify the location of the text label if it is in focus.
+	 * @author LC
+	 *
 	 */
 	class ChooseCurrentText implements FocusListener
 	{		
@@ -1671,6 +1719,13 @@ public class Child_Design extends JLayeredPane {
 		}
 	}
 	
+	/**
+	 * When users click the panel, the paint board will gain the focus.
+	 * This Design aims to avoid users modify components by mistake.
+	 * What's more, this listener also make the cursor in default style when it move in paint board.
+	 * @author LC
+	 *
+	 */
 	class PanelFocusListener implements MouseInputListener
 	{		
 		public void mouseClicked(MouseEvent e) 
@@ -1696,7 +1751,9 @@ public class Child_Design extends JLayeredPane {
 	}
 	
 	/**
-	 * Show information in status bar
+	 * Show some information about the chosen component in status bar
+	 * @author LC
+	 *
 	 */
 	class ShowFocusListener implements MouseInputListener
 	{		
@@ -1829,7 +1886,10 @@ public class Child_Design extends JLayeredPane {
 	}
 	
 	/**
-	 * Show border
+	 * When the cursor move into a component, there will be a border added to the component.
+	 * This design aims to make the field of each component clear.
+	 * @author LC
+	 *
 	 */
 	class ShowBorderListener implements MouseInputListener
 	{		
@@ -1855,7 +1915,9 @@ public class Child_Design extends JLayeredPane {
 	}
 	
 	/**
-	 * Delete components
+	 * The components will be removed when you click it, if the eraser label is chosen.
+	 * @author LC
+	 *
 	 */
 	class DeleteListener implements MouseInputListener
 	{		
@@ -1898,7 +1960,9 @@ public class Child_Design extends JLayeredPane {
 	}
 	
 	/**
-	 * Delete component by keyboard
+	 * Delete component press the delete button on keyboard
+	 * @author LC
+	 *
 	 */
 	class KeyDeleteListener implements KeyListener
 	{
@@ -1931,7 +1995,7 @@ public class Child_Design extends JLayeredPane {
 	}
 	
 	/**
-	 * Undo
+	 * Undo by click undo button.
 	 */
 	class BackoutListener implements MouseInputListener
 	{		
@@ -1982,7 +2046,7 @@ public class Child_Design extends JLayeredPane {
 	}
 	
 	/**
-	 * Redo
+	 * Redo by click redo button.
 	 */
 	class ForwardListener implements MouseInputListener
 	{		
@@ -2031,7 +2095,9 @@ public class Child_Design extends JLayeredPane {
 	}
 	
 	/**
-	 * New (or clear)
+	 * Clear all the components on the paint board, and create a new file.
+	 * @author LC
+	 *
 	 */
 	class NewListener implements MouseInputListener
 	{		
@@ -2084,7 +2150,12 @@ public class Child_Design extends JLayeredPane {
 		public void mouseExited(MouseEvent e) {}
 	}
 	
-	//Open file listener
+	/**
+	 * Show a dialog in order to open a XML file chosen by users.
+	 * EasyBBK will repaint the sketch map saved in this XML file on paint board.
+	 * @author LC
+	 *
+	 */
 	public class OpenFileListener implements MouseInputListener
 	{
 		public File path;
@@ -2342,6 +2413,11 @@ public class Child_Design extends JLayeredPane {
 	}
 	
 	@SuppressWarnings("unchecked")
+	/**
+	 * This function aims to add components on paint board.
+	 * It will be called when users redo, undo or open a XML files.
+	 * @author LC
+	 */
 	public void addComponent(SketchComponent.Component component)
 	{
 		String primaryType = component.primaryType;
@@ -2789,13 +2865,23 @@ public class Child_Design extends JLayeredPane {
 			return;		
 	}
 	
+	
+	/**
+	 * This function will be called when users redo, undo or delete components.
+	 * @author LC
+	 */
 	public void removeComponent(SketchComponent.Component component)
 	{	
 		int ID = component.ID;
 		Component comp = totalCompList.get(ID);
 		(comp.getParent()).remove(comp);
-	}
+	}	
 	
+	/**
+	 * This function aims to modify the status of components on paint board.
+	 * It will be called when users redo, undo or open a XML files.
+	 * @author LC
+	 */
 	public void modifyComponent(SketchComponent.Component component, int attributeType, Object previous, Object following)
 	{
 		String primaryType = component.primaryType;
@@ -2946,6 +3032,10 @@ public class Child_Design extends JLayeredPane {
 			return;
 	}
 	
+	/**
+	 * Stop draw line and create a picture of this line on paint board.
+	 * @author LC
+	 */
 	public void stopDrawLine()
 	{
 		 if (pen != null)
@@ -3026,7 +3116,7 @@ public class Child_Design extends JLayeredPane {
 	{	
 		Rectangle preBounds = (Rectangle) previous;
 		Rectangle folBounds = (Rectangle) following;
-		return !(preBounds.width - folBounds.width == 0 && 
-				 preBounds.height - folBounds.height == 0);
+		return (preBounds.width - folBounds.width == 0 && 
+				preBounds.height - folBounds.height == 0);
 	}
 }
