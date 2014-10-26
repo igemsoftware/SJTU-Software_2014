@@ -190,7 +190,7 @@ public class Child_Upload extends JPanel {
 		ShortDescription = new JTextField();
 		ShortDescription.setFont(new Font("Arial", Font.PLAIN, 24));
 		ShortDescription.setColumns(10);
-		ShortDescription.setBounds(373, 125, 536, 30);
+		ShortDescription.setBounds(373, 125, 536, 36);
 		UploadContainer.add(ShortDescription);
 		
 		JLabel ChooseType = new JLabel("Type:");
@@ -221,7 +221,7 @@ public class Child_Upload extends JPanel {
 		Nickname = new JTextField();
 		Nickname.setFont(new Font("Arial", Font.PLAIN, 24));
 		Nickname.setColumns(10);
-		Nickname.setBounds(496, 205, 205, 30);
+		Nickname.setBounds(496, 205, 205, 36);
 		UploadContainer.add(Nickname);
 		
 		JLabel ChooseDesigners = new JLabel("Designer(s):");
@@ -232,7 +232,7 @@ public class Child_Upload extends JPanel {
 		Designers = new JTextField();
 		Designers.setFont(new Font("Arial", Font.PLAIN, 24));
 		Designers.setColumns(10);
-		Designers.setBounds(522, 245, 205, 30);
+		Designers.setBounds(522, 245, 205, 36);
 		UploadContainer.add(Designers);
 		
 		JLabel Sequence = new JLabel("Sequence Information:");
@@ -698,14 +698,14 @@ public class Child_Upload extends JPanel {
 		
 		UserName = new JTextField();
 		UserName.setFont(new Font("Arial", Font.PLAIN, 20));
-		UserName.setBounds(550, 1790, 146, 30);
+		UserName.setBounds(550, 1790, 146, 32);
 		UploadContainer.add(UserName);
 		UserName.setColumns(10);
 		
 		Password = new JPasswordField();
 		Password.setFont(new Font("Arial", Font.PLAIN, 20));
 		Password.setColumns(10);
-		Password.setBounds(550, 1830, 146, 30);
+		Password.setBounds(550, 1830, 146, 32);
 		UploadContainer.add(Password);
 		
 		SubmitToDatabase = new JButton("");
@@ -987,7 +987,8 @@ public class Child_Upload extends JPanel {
 	 */
 	class WriteTxt implements Runnable {
 		public void run() {
-			try {			
+			try {
+				showinfo.setText("Logging to Registry...");
 				boolean login = OfficialUploadPoster.login(UserName.getText(), String.valueOf(Password.getPassword()));
 				if (!login)
 				{

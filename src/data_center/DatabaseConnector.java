@@ -82,6 +82,9 @@ public class DatabaseConnector
      * to reduce query time. Change the input list in situ.  */
     public static void fillOutlineIntoHalfFilledList(SearchResultList list)
     {	
+    	if (list == null || list.size() == 0)
+    		return;
+    	
     	checkConnection();
     	String cmdStr = " select * from " + DBConsts.Table.MAIN + 
         	" where " + DBConsts.Header.Main.NAME + " = " + "'" + list.get(0).name + "'";

@@ -90,8 +90,7 @@ public class SetBioBrickNameListener implements MouseInputListener
 	    {     
 	        init(ID);    
 	    }  
-	  
-	    //可供外部调用的方法  
+	   
 	    public String getSelectedName() 
 	    {  
 	        return selectedName;  
@@ -109,10 +108,7 @@ public class SetBioBrickNameListener implements MouseInputListener
 	    JButton ok = new JButton();
 	    JButton cancel = new JButton();
 	    SearchingResult searchingresult = new SearchingResult();
-	    //
-	    
-	    
-	    //
+
 		private void init(final int ID) 
 	    {
 	    	String biobrickName;
@@ -147,7 +143,6 @@ public class SetBioBrickNameListener implements MouseInputListener
 	    	this.add(searchingresult);
 	    	searchingresult.setBounds(15, 50, 569, 192);
 	    	
-	        /*用户确定*/  
 	    	set.addActionListener(new ActionListener() {  
 	            public void actionPerformed(ActionEvent e)
 	            {  
@@ -170,7 +165,8 @@ public class SetBioBrickNameListener implements MouseInputListener
 	            	}
 	            	
 	            	
-	            	if(bbkoutline != null){
+	            	if(bbkoutline != null)
+	            	{
 		            	searchingresult.ID_Content.setText(bbkoutline.name);
 		            	searchingresult.Type_Content.setText(bbkoutline.type);
 		            	searchingresult.Author_Content.setText(bbkoutline.author);
@@ -205,11 +201,14 @@ public class SetBioBrickNameListener implements MouseInputListener
                 
 		        		searchingresult.updateUI();
 	            	}
+	            	else
+	            	{
+	    	        	searchingresult.ID_Content.setText("No result");
+	    	        }
 	            	
 	            }  
 	        });  
-	    	
-	    	/*用户确定*/  
+	    	 
 	        ok.addActionListener(new ActionListener() {  
 	            public void actionPerformed(ActionEvent e) {  
 	            	if (setDone)
@@ -225,7 +224,6 @@ public class SetBioBrickNameListener implements MouseInputListener
 	            }  
 	        });  
 	  
-	        /*用户取消*/  
 	        cancel.addActionListener(new ActionListener() {  
 	            public void actionPerformed(ActionEvent e) {  
 	                dialog.dispose();  
@@ -234,7 +232,6 @@ public class SetBioBrickNameListener implements MouseInputListener
 	        }); 
 	    }  
 	      
-	    /*显示字体选择器对话框(x,y表示窗体的启动位置)*/  
 	    public void showDialog(Frame parent,int x,int y) 
 	    {  
 	        String  title = "Set_Biobrick_Name";  
@@ -287,12 +284,14 @@ public class SetBioBrickNameListener implements MouseInputListener
         
         		searchingresult.updateUI();
 	        }
+	        else
+	        {
+	        	searchingresult.ID_Content.setText("No information");
+	        }
 	        
-	      //设置接界面的启动位置  
 	        dialog.setLocation(x,y);  
-	        dialog.addWindowListener(new WindowAdapter() {  
-	  
-	            /*窗体关闭时调用*/  
+	        dialog.addWindowListener(new WindowAdapter() 
+	        {  
 	            public void windowClosing(WindowEvent e) 
 	            {  
 	                dialog.removeAll();

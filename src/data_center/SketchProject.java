@@ -141,8 +141,12 @@ public class SketchProject
 		Component comp = findComponentByID(backBoneID);
 		if (comp == null || !comp.primaryType.equals(BackBone.class.getSimpleName()))
 			return;
-		// else
-		comp.toBackBone().bbkChildren.add(index, bbkID);
+		BackBone backBone = comp.toBackBone();
+		// delete if the previous ID exists, in case of repeatedly register onAbsorb event
+		for (Integer IDInList : backBone.bbkChildren)
+			if (IDInList == bbkID)
+			{	backBone.bbkChildren.remove(IDInList);	break;	}
+		backBone.bbkChildren.add(index, bbkID);
 	}
 	
 	/** Registration function, receive the user operation and remember it in the 
@@ -261,8 +265,8 @@ public class SketchProject
 	{	
 		Rectangle preBounds = (Rectangle) previous;
 		Rectangle folBounds = (Rectangle) following;
-		return !(preBounds.width - folBounds.width == 0 && 
-				 preBounds.height - folBounds.height == 0);
+		return preBounds.width - folBounds.width == 0 && 
+			   preBounds.height - folBounds.height == 0;
 	}
 	
 	/** Áª¶¯ in Chinese, move the biobricks on the same backbone together if the 
