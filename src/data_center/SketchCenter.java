@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import data_center.SketchComponent.BackBone;
 import data_center.SketchComponent.BioBrick;
+import data_center.SketchComponent.Label;
 
 /** This class contains all of the operations of the sketch project. Further operation
  * inside a project can be accessed by the reference of a SketchProject instance. 
@@ -73,6 +74,15 @@ public class SketchCenter
 		for (int i = 0; i < projectList.size(); ++i)
 			names[i] = projectList.get(i).name;
 		return names;
+	}
+	
+	/** In such situation that user sketch the circuit at first to briefly state
+	 * the idea, he may use SketchComponent.Label to write down the function of 
+	 * the required biobrick. Other note may be taken as the label components. 
+	 * Providing label searching may be useful and efficient.  */
+	public SearchResultList searchLabeledText(SearchCenter searchCenter, Label label)
+	{	
+		return searchCenter.search(label.text);
 	}
 	
 	/** Assign a BbkOutline to a SketchComponent.BioBrick, specified by part_name. 

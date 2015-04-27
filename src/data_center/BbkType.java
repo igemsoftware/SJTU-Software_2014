@@ -88,7 +88,24 @@ public class BbkType
 			public final static int PLANT_CELL = 3;
 			public final static int ANIMAL_CELL = 4;
 		}
-		
+	}
+	
+	public static int bbkTypeToSketchBbkType(String bbkType)
+	{	
+		if (bbkType.equals(strOf_PROMOTER))
+			return Sketch.BioBrick.PROMOTER;
+		else if (bbkType.equals(strOf_RBS))
+			return Sketch.BioBrick.RBS;
+		else if (bbkType.equals(strOf_PROTEIN_CODING_SEQUENCE))
+			return Sketch.BioBrick.PROTEIN_CODING_SEQUENCE;
+		else if (bbkType.equals(strOf_TERMINATOR))
+			return Sketch.BioBrick.TERMINATOR;
+		else if (bbkType.equals(strOf_PRIMER))
+			return Sketch.BioBrick.PRIMER;
+		else if (bbkType.equals(strOf_REPORTER))
+			return Sketch.BioBrick.REPORTER;
+		else 
+			return Sketch.BioBrick.OTHER;
 	}
 	
 

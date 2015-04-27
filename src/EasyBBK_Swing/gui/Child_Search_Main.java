@@ -17,7 +17,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
 
-import data_center.SearchCenter;
 import data_center.UploadCenter;
 
 import java.awt.event.KeyAdapter;
