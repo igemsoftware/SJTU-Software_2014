@@ -102,14 +102,14 @@ public class InitializeDetail extends Thread{
 		}
 		detailsofresults.Twins_Content.setText(twins);
 		
-		detailsofresults.related_URL.setText("<html><u>" + bbkdetail.rating.first_url + "</u></html>");
+		detailsofresults.related_URL.setText("<html><u>" + bbkdetail.rating.google_query_link + "</u></html>");
 		if(!detailsofresults.related_URL.getText().equals("")){
 			detailsofresults.related_URL.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent e) {
 					if(e.getButton() == MouseEvent.BUTTON1){
 						try{
-							Runtime.getRuntime().exec("explorer " + bbkdetail.rating.first_url);
+							Runtime.getRuntime().exec("explorer " + bbkdetail.rating.google_query_link);
 						}
 						catch(Exception ex){
 							ex.printStackTrace();
@@ -123,7 +123,7 @@ public class InitializeDetail extends Thread{
 		detailsofresults.DNAStatus_Content.setText(bbkdetail.DNA_status);
 		detailsofresults.Deletethispart_Content.setText(bbkdetail.rating.delete_this_part);
 		detailsofresults.ConfirmedTimes_Content.setText(bbkdetail.rating.tot_confirmed);
-		detailsofresults.LengthofDocumentation_Content.setText(bbkdetail.rating.documentation);
+		//detailsofresults.LengthofDocumentation_Content.setText(bbkdetail.rating.documentation);
 		detailsofresults.PartResults_Content.setText(bbkdetail.results);
 		detailsofresults.GroupFavorite_Content.setText(bbkdetail.groupFavorite);
 		detailsofresults.UsedTimes_Content.setText(bbkdetail.rating.used_times);

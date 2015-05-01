@@ -5,7 +5,7 @@ import java.util.Calendar;
 /** Used to generate time tag for BlastingSearcher(used to distinguish a blast request
  * from another) and BbkUpload(used to record the enter date of the part into the database
  * by SJTU-software) */
-public class TimeTagGenerator
+class TimeTagGenerator
 {
 	/** @return Year/Month/Date */
 	public static String generateYearMonthDateStr()

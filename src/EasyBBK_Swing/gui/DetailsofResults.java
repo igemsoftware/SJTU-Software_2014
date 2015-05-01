@@ -36,7 +36,7 @@ public class DetailsofResults extends JPanel {
 	public JLabel DNAStatus_Content;
 	public JLabel Deletethispart_Content;
 	public JLabel ConfirmedTimes_Content;
-	public JLabel LengthofDocumentation_Content;
+	//public JLabel LengthofDocumentation_Content;
 	public JLabel PartResults_Content;
 	public JLabel GroupFavorite_Content;
 	public JLabel UsedTimes_Content;
@@ -252,7 +252,7 @@ public class DetailsofResults extends JPanel {
 		
 		add(twins_scrollPane);
 		
-		JLabel UrlOfGoogle = new JLabel("URL of the most related publication:");
+		JLabel UrlOfGoogle = new JLabel("Query this part on google scholar:");
 		UrlOfGoogle.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		UrlOfGoogle.setBounds(10, 328, 317, 24);
 		add(UrlOfGoogle);
@@ -323,10 +323,12 @@ public class DetailsofResults extends JPanel {
 		LengthofDocumentation.setBounds(10, 580, 240, 24);
 		add(LengthofDocumentation);
 		
+		/*
 		LengthofDocumentation_Content = new JLabel("");
 		LengthofDocumentation_Content.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		LengthofDocumentation_Content.setBounds(250, 580, 278, 24);
 		add(LengthofDocumentation_Content);
+		*/
 		
 		JLabel Reliability = new JLabel("Reliability");
 		Reliability.setFont(new Font("Times New Roman", Font.BOLD, 24));

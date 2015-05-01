@@ -18,7 +18,7 @@ import ch.ethz.ssh2.StreamGobbler;
  * a blast compare between the sequence provided and the sequence in the current 
  * biobrick database. The class depends on the class DatabaseConnector to get the
  * BbkOutline instances.  */
-public class BlastingSearcher
+class BlastingSearcher
 {
 	// about server
 	private static final String SERVER_ADDRESS = Server.Blasting_old.SERVER_ADDRESS;
@@ -37,8 +37,6 @@ public class BlastingSearcher
 	
 	private static final String RESULT_LINE_PREFIX = "lcl|";
 	
-	public static final int MODE_INPUT_SEQUENCE = 0;
-	public static final int MODE_INPUT_FILE_PATH = 1;
 	
 	private static Connection connection = null;
 	
@@ -51,7 +49,8 @@ public class BlastingSearcher
 	 * @return SearchResultList instance just the same as keyword searching.  */
 	public static SearchResultList blast(String input, int mode)
 	{	
-		if (mode != MODE_INPUT_SEQUENCE && mode != MODE_INPUT_FILE_PATH)
+		if (mode != SearchCenter.BLAST_MODE_INPUT_SEQUENCE 
+				&& mode != SearchCenter.BLAST_MODE_INPUT_FILE_PATH)
 			return null;
 		
 		// else
@@ -152,7 +151,7 @@ public class BlastingSearcher
 	
 	private static void prepareInfile(String input, int mode, String infilePath) throws IOException
 	{	
-		if (mode == MODE_INPUT_SEQUENCE)	// copy input into file "input"
+		if (mode == SearchCenter.BLAST_MODE_INPUT_SEQUENCE)	// copy input into file "input"
 		{	BufferedWriter writer 
 				= new BufferedWriter(new FileWriter(infilePath, false));
 			writer.write(input);

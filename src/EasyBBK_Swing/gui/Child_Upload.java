@@ -989,7 +989,7 @@ public class Child_Upload extends JPanel {
 		public void run() {
 			try {
 				showinfo.setText("Logging to Registry...");
-				boolean login = OfficialUploadPoster.login(UserName.getText(), String.valueOf(Password.getPassword()));
+				boolean login = RegistryUploader.login(UserName.getText(), String.valueOf(Password.getPassword()));
 				if (!login)
 				{
 					showinfo.setText("Username or password is wrong.");
@@ -998,21 +998,21 @@ public class Child_Upload extends JPanel {
 				
 				showinfo.setText("Uploading your biobrick...");
 				showinfo.setText("<html>Uploading your biobrick...<br>10% Complete</html>");
-				String newBbk = OfficialUploadPoster.getNextAvailablePartName();
+				String newBbk = RegistryUploader.getNextAvailablePartName();
 				showinfo.setText("<html>Uploading your biobrick...<br>21% Complete<br>New BioBrick is "+newBbk+"</html>");
-				String newId = OfficialUploadPoster.createNewPart(newBbk, bbkupload);
+				String newId = RegistryUploader.createNewPart(newBbk, bbkupload);
 				bbkupload.setName(newBbk);
 				bbkupload.setID(newId);
 				showinfo.setText("<html>Uploading your biobrick...<br>33% Complete<br>New BioBrick is "+newBbk+"</html>");
-				OfficialUploadPoster.modifyPrimaryInfo(bbkupload);
+				RegistryUploader.modifyPrimaryInfo(bbkupload);
 				showinfo.setText("<html>Uploading your biobrick...<br>45% Complete<br>New BioBrick is "+newBbk+"</html>");
-				OfficialUploadPoster.modifyParameters(bbkupload);
+				RegistryUploader.modifyParameters(bbkupload);
 				showinfo.setText("<html>Uploading your biobrick...<br>58% Complete<br>New BioBrick is "+newBbk+"</html>");
-				OfficialUploadPoster.modifyCategories(bbkupload);
+				RegistryUploader.modifyCategories(bbkupload);
 				showinfo.setText("<html>Uploading your biobrick...<br>72% Complete<br>New BioBrick is "+newBbk+"</html>");
-				OfficialUploadPoster.modifySequence(bbkupload);
+				RegistryUploader.modifySequence(bbkupload);
 				showinfo.setText("<html>Uploading your biobrick...<br>87% Complete<br>New BioBrick is "+newBbk+"</html>");
-				OfficialUploadPoster.modifyFeatures(bbkupload);
+				RegistryUploader.modifyFeatures(bbkupload);
 				showinfo.setText("<html>Uploading your biobrick...<br>100% Complete<br>New BioBrick is "+newBbk+"</html>");
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();

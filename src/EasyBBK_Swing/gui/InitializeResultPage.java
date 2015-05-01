@@ -56,7 +56,8 @@ public class InitializeResultPage extends Thread{
 				searchresultlist = child_search.searchcenter.search(keyword);
 			}
 			else if(child_search.blast == 2){
-				searchresultlist = child_search.searchcenter.blast(keyword, BlastingSearcher.MODE_INPUT_SEQUENCE);
+				searchresultlist = child_search.searchcenter.blast
+						(keyword, SearchCenter.BLAST_MODE_INPUT_SEQUENCE);
 			}
 		}
 		

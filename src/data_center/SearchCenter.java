@@ -7,6 +7,9 @@ import java.awt.Rectangle;
  * blast by sequence, get detail by name.  */
 public class SearchCenter
 {
+	public static final int BLAST_MODE_INPUT_SEQUENCE = 0;
+	public static final int BLAST_MODE_INPUT_FILE_PATH = 1;
+	
 	public SearchHistory historyList;
     
     public SearchCenter()

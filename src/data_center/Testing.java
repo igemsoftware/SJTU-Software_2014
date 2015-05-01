@@ -18,12 +18,16 @@ import data_center.SketchComponent.*;
 /** The class used to test the data_center. Each private function tests a function in
  * data_center. You may modify this file directly to perform a customized testing.  */
 @SuppressWarnings("unused")
-public class Testing
+class Testing
 {	
 	static DataCenter dataCenter = new DataCenter();
 	
 	public static void main(String[] args) throws Exception
 	{	
+		
+		
+		
+		/*
 		searchKeywordAndGetDetail();
 		searchFilterAndSort();
 		searchBlasting();
@@ -36,6 +40,7 @@ public class Testing
 		uploadPartNameSequenceTokenValidationCheck();
 		uploadSubpartSubscarValidationCheck();
 		uploadOfficialUploadPost();
+		*/
 	}
 	
 	
@@ -87,13 +92,13 @@ public class Testing
 	{	
 		SearchResultList list; 
 		list = dataCenter.searchCenter.blast
-			("blastInput", BlastingSearcher.MODE_INPUT_FILE_PATH);
+			("blastInput", SearchCenter.BLAST_MODE_INPUT_FILE_PATH);
 		list.sortByBlastResult(true);	list.displaySortingConditions();
 		System.out.println("Item num: " + list.size());
 		
 		list = dataCenter.searchCenter.blast
 			("tcaaataaaacgaaaggctcagtcg", 
-			 BlastingSearcher.MODE_INPUT_SEQUENCE);
+			 SearchCenter.BLAST_MODE_INPUT_SEQUENCE);
 		list.sortByBlastResult(true);	list.displaySortingConditions();
 		System.out.println("Item num: " + list.size());
 		BlastingSearcher.deleteLocalCacheFiles();
@@ -231,7 +236,7 @@ public class Testing
 		bbkUpload.setName("K1479001");
 		bbkUpload.setID();
 		dataCenter.uploadCenter.uploadAndGetOddNum(bbkUpload);
-		DatabaseConnector.displayTable(DBConsts.Table.MAIN_UPLOAD, 2);
+		DatabaseConnector.displayTable(Consts_DB.Table.MAIN_UPLOAD, 2);
 		dataCenter.uploadCenter.getBbkUploadByNameAndOddNum
 			("BBa_K1479001_EasyBbk", "201410115566901").display();
 	}
@@ -267,11 +272,11 @@ public class Testing
 		bbkUpload.sequenceTokens.add(dataCenter.uploadCenter.getSubscarForSequenceToken("RFC[10]"));
 		bbkUpload.setSequence(true, false);
 		try {
-			System.out.println("Login... Succeed: " + OfficialUploadPoster.login
+			System.out.println("Login... Succeed: " + RegistryUploader.login
 				(Server.iGemChyb.USER_NAME, Server.iGemChyb.PASSWORD));
 			System.out.println("Next avaliable part name: " + 
-				OfficialUploadPoster.getNextAvailablePartName());
-			String[] region = OfficialUploadPoster.getAvailablePartNameRegion();
+				RegistryUploader.getNextAvailablePartName());
+			String[] region = RegistryUploader.getAvailablePartNameRegion();
 			System.out.println("Avaliable region: " + region[0] + " to " + region[1]);
 		} catch (Exception e) {e.printStackTrace();}
 	}

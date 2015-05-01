@@ -5,7 +5,7 @@ import java.util.Stack;
 /** The class implements a history list contains roll back and go forward function. 
  * Different from the SearchHistory, the OperationHistory aims the pointer at the
  * nick between data, not the data, like [H H H¡ýF F] (history, pointer,  future) */
-public class OperationHistory
+class OperationHistory
 {
 	Stack<SketchOperation> history = new Stack<SketchOperation>();
 	Stack<SketchOperation> future = new Stack<SketchOperation>();

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /** The class implements a history list contains roll back and go forward function. 
  * Different from the OperationHistory, the SearchHistory aims the pointer at the
  * data, not the nick between data, like [H H H C F] (history, current,  future) */
-public class SearchHistory
+class SearchHistory
 {
 	private int currentItemNo = -1;
 	private ArrayList<SearchResultList> dataList = new ArrayList<SearchResultList>();
