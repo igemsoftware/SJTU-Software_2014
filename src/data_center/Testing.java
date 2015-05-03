@@ -24,8 +24,10 @@ class Testing
 	
 	public static void main(String[] args) throws Exception
 	{	
-		
-		
+		RegistrySearcher searcher = new RegistrySearcher();
+		searcher.search("BBa_B0034").display();
+		//BbkDetail bbkDetail = new BbkDetail();
+		//bbkDetail
 		
 		/*
 		searchKeywordAndGetDetail();

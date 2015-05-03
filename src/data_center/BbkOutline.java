@@ -146,12 +146,15 @@ public class BbkOutline
      	public String average_stars = "0";
      	public String tot_commets = "0";
      	public String google_items = "0";
+     	public String NCBI_quoteNum = "0";
      	public String google_query_link = "";
      	public String used_times = "0";
      	
      	//public String detail_not_confirmed;
      	//public String documentation;
     	
+     	public Rating() {}
+     	
     	public Rating(ResultSet resultSet) throws SQLException
     	{	
     		//rating = resultSet.getString(Consts_DB.Header.Main.RATING);

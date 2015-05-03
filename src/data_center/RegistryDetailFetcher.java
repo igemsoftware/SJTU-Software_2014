@@ -15,9 +15,18 @@ class RegistryDetailFetcher
 	{	
 		Document doc = null;
 		for (int i = 0; i < 3; ++i)
-			try {doc = Jsoup.connect(url).get();} 
-			catch (IOException e) {continue;}
+			try {doc = Jsoup.connect(url).timeout(100000).get();} 
+			catch (IOException e) {System.out.println(url + "Timeout" + i);continue;}
 		return doc;
+	}
+	
+	private static void allQueriedCheck(RegistrySearcher searcher)
+	{	
+		synchronized (searcher)
+		{	--searcher.queryRemains;
+			if (searcher.queryRemains == 0)
+				searcher.notify();
+		}
 	}
 	
 	static class XMLFetcher extends Thread
@@ -25,40 +34,43 @@ class RegistryDetailFetcher
 		public static final String URL_PREFIX = "http://parts.igem.org/cgi/xml/part.cgi?part=";
 		
 		public BbkDetail bbkDetail;
+		public RegistrySearcher searcher;
 		
-		public XMLFetcher(BbkDetail bbkDetail)
+		public XMLFetcher(BbkDetail bbkDetail, RegistrySearcher searcher)
 		{	
 			this.bbkDetail = bbkDetail;
+			this.searcher = searcher;
 		}
 		
 		public void run()
 		{	
-			if (bbkDetail.name == null || bbkDetail.name.equals(""))
-				return;
-			String url = URL_PREFIX + bbkDetail.name;
-			Document doc = getDoc(url);
+			Document doc = null;
+			if (bbkDetail.name != null && !bbkDetail.name.equals("")) 
+			{	String url = URL_PREFIX + bbkDetail.name;
+				doc = getDoc(url);
+			}
 			if (doc == null)
-				return;
+			{	allQueriedCheck(searcher);	return;	}
 			
 			Elements elements = null;
 			// filling main
-			bbkDetail.name = doc.getElementsByTag(Consts_Registry.NAME).text();
-			bbkDetail.type = doc.getElementsByTag(Consts_Registry.TYPE).text();
-			bbkDetail.author = doc.getElementsByTag(Consts_Registry.AUTHOR).text();
-			bbkDetail.enterDate = doc.getElementsByTag(Consts_Registry.ENTER_DATE).text();
-			bbkDetail.shortDesc = doc.getElementsByTag(Consts_Registry.SHORT_DESC).text();
-			bbkDetail.url = doc.getElementsByTag(Consts_Registry.URL).text();
-			bbkDetail.ID = doc.getElementsByTag(Consts_Registry.ID).text();
-			bbkDetail.shortName = doc.getElementsByTag(Consts_Registry.SHORT_NAME).text();
-			bbkDetail.releaseStatus = doc.getElementsByTag(Consts_Registry.RELEASE_STATUS).text();
-			bbkDetail.sampleStatus = doc.getElementsByTag(Consts_Registry.SAMPLE_STATUS).text();
-			bbkDetail.results = doc.getElementsByTag(Consts_Registry.RESULTS).text();
-			bbkDetail.nickname = doc.getElementsByTag(Consts_Registry.NICKNAME).text();
-			bbkDetail.part_rating = doc.getElementsByTag(Consts_Registry.PART_RATING).text();
-			bbkDetail.sequence = doc.getElementsByTag(Consts_Registry.SEQUENCE).text();
-			bbkDetail.samples = doc.getElementsByTag(Consts_Registry.SAMPLES).text();
-			bbkDetail.references = doc.getElementsByTag(Consts_Registry.REFERENCES).text();
-			bbkDetail.groups = doc.getElementsByTag(Consts_Registry.GROUPS).text();
+			bbkDetail.name = doc.getElementsByTag(Consts_Registry.NAME).get(0).text();
+			bbkDetail.type = doc.getElementsByTag(Consts_Registry.TYPE).get(0).text();
+			bbkDetail.author = doc.getElementsByTag(Consts_Registry.AUTHOR).get(0).text();
+			bbkDetail.enterDate = doc.getElementsByTag(Consts_Registry.ENTER_DATE).get(0).text();
+			bbkDetail.shortDesc = doc.getElementsByTag(Consts_Registry.SHORT_DESC).get(0).text();
+			bbkDetail.url = doc.getElementsByTag(Consts_Registry.URL).get(0).text();
+			bbkDetail.ID = doc.getElementsByTag(Consts_Registry.ID).get(0).text();
+			bbkDetail.shortName = doc.getElementsByTag(Consts_Registry.SHORT_NAME).get(0).text();
+			bbkDetail.releaseStatus = doc.getElementsByTag(Consts_Registry.RELEASE_STATUS).get(0).text();
+			bbkDetail.sampleStatus = doc.getElementsByTag(Consts_Registry.SAMPLE_STATUS).get(0).text();
+			bbkDetail.results = doc.getElementsByTag(Consts_Registry.RESULTS).get(0).text();
+			bbkDetail.nickname = doc.getElementsByTag(Consts_Registry.NICKNAME).get(0).text();
+			bbkDetail.part_rating = doc.getElementsByTag(Consts_Registry.PART_RATING).get(0).text();
+			bbkDetail.sequence = doc.getElementsByTag(Consts_Registry.SEQUENCE).get(0).text();
+			bbkDetail.samples = doc.getElementsByTag(Consts_Registry.SAMPLES).get(0).text();
+			bbkDetail.references = doc.getElementsByTag(Consts_Registry.REFERENCES).get(0).text();
+			bbkDetail.groups = doc.getElementsByTag(Consts_Registry.GROUPS).get(0).text();
 			// filling categories
 			elements = doc.getElementsByTag(Consts_Registry.Category.CATEGORY);
 			for (Element element : elements)
@@ -66,6 +78,7 @@ class RegistryDetailFetcher
 				category.category = element.text();
 				bbkDetail.categories.add(category);
 			}
+			
 			// filling deep_subparts
 			elements = doc.getElementsByTag(Consts_Registry.DeepSub.DEEP_SUBPARTS)
 					.get(0).children();	// deepSub & specSub both use "subpart" as child
@@ -136,6 +149,7 @@ class RegistryDetailFetcher
 				twin.twin = element.text();
 				bbkDetail.twins.add(twin);
 			}
+			allQueriedCheck(searcher);
 		}
 	}
 	
@@ -150,39 +164,151 @@ class RegistryDetailFetcher
 		public static final String DELETE_THIS_PART = "Delete This Part";
 		
 		public BbkDetail bbkDetail;
+		public RegistrySearcher searcher;
 		
-		public PartInfoFetcher(BbkDetail bbkDetail)
+		public PartInfoFetcher(BbkDetail bbkDetail, RegistrySearcher searcher)
 		{	
 			this.bbkDetail = bbkDetail;
+			this.searcher = searcher;
 		}
 		
 		public void run()
 		{	
-			if (bbkDetail.name == null || bbkDetail.name.equals(""))
-				return;
-			String url = URL_PREFIX + bbkDetail.name;
-			Document doc = getDoc(url);
+			Document doc = null;
+			if (bbkDetail.name != null && !bbkDetail.name.equals("")) 
+			{	String url = URL_PREFIX + bbkDetail.name;
+				doc = getDoc(url);
+			}
 			if (doc == null)
-				return;
+			{	allQueriedCheck(searcher);	return;	}
 			
 			Elements elements = null;
 			elements = doc.getElementsByAttributeValue(QUERY_KEY, QUERY_VALUE);
 			for (Element element : elements)
 			{	if (element.text().equals(DNA_STATUS))
-					bbkDetail.DNA_status = element.parent().children().get(1).text();
+					bbkDetail.DNA_status = element.parent().child(1).text();
 				else if (element.text().equals(GROUPE_FAVOURITE))
-					bbkDetail.groupFavorite = element.parent().children().get(1).text();
+					bbkDetail.groupFavorite = element.parent().child(1).text();
 				else if (element.text().equals(DELETE_THIS_PART))
-					bbkDetail.rating.delete_this_part = element.parent().children().get(1).text();
+					bbkDetail.rating.delete_this_part = element.parent().child(1).text();
 			}
+			
 			String USED_TIMES_KEY = "href";
 			String USED_TIMES_VALUE = "http://parts.igem.org/partsdb/uses.cgi?part=" + bbkDetail.name;
 			elements = doc.getElementsByAttributeValue(USED_TIMES_KEY, USED_TIMES_VALUE);
 			String rawUsedTimes = elements.text();	// "" if elements.size() == 0
-			if (rawUsedTimes.contains(" Uses"))
-				bbkDetail.rating.used_times = rawUsedTimes.replace(" Uses", "");
-			else
-				bbkDetail.rating.used_times = "0";
+			int usedTimes = 0;
+			try	{usedTimes = Integer.parseInt(rawUsedTimes.replace(" Uses", ""));}
+			catch (NumberFormatException e) {}
+			bbkDetail.rating.used_times = String.valueOf(usedTimes);
+			allQueriedCheck(searcher);
+		}
+	}
+	
+	static class PartConfirmFetcher extends Thread
+	{	
+		public static final String URL_PREFIX = "http://parts.igem.org/partsdb/get_part.cgi?part=";
+		public static final String URL_SUFFIX = "&show=1";
+		public static final String QUERY_KEY = "style";
+		public static final String QUERY_VALUE = "width:50px;color:#00aa00;;";
+		
+		public BbkDetail bbkDetail;
+		public RegistrySearcher searcher;
+		
+		public PartConfirmFetcher(BbkDetail bbkDetail, RegistrySearcher searcher)
+		{	
+			this.bbkDetail = bbkDetail;
+			this.searcher = searcher;
+		}
+		
+		public void run()
+		{	
+			Document doc = null;
+			if (bbkDetail.name != null && !bbkDetail.name.equals("")) 
+			{	String url = URL_PREFIX + bbkDetail.name + URL_SUFFIX;
+				doc = getDoc(url);
+			}
+			if (doc == null)
+			{	allQueriedCheck(searcher);	return;	}
+			
+			int confirmedTimes = 
+					doc.getElementsByAttributeValue(QUERY_KEY, QUERY_VALUE).size();
+			bbkDetail.rating.tot_confirmed = String.valueOf(confirmedTimes);
+			allQueriedCheck(searcher);
+		}	
+	}
+	
+	static class AvgStarTotCommentFetcher extends Thread
+	{	
+		public static final String URL_PREFIX = "http://parts.igem.org/Part:";
+		public static final String URL_SUFFIX = ":Experience";
+		public static final String QUERY_KEY = "style";
+		public static final String QUERY_VALUE = "width:75px;height: 15px;border: solid 1px gray;color: green;font-size:300%; line-height:40%;";
+		
+		public BbkDetail bbkDetail;
+		public RegistrySearcher searcher;
+		
+		public AvgStarTotCommentFetcher(BbkDetail bbkDetail, RegistrySearcher searcher)
+		{	
+			this.bbkDetail = bbkDetail;
+			this.searcher = searcher;
+		}
+		
+		public void run()
+		{	
+			Document doc = null;
+			if (bbkDetail.name != null && !bbkDetail.name.equals("")) 
+			{	String url = URL_PREFIX + bbkDetail.name + URL_SUFFIX;
+				doc = getDoc(url);
+			}
+			if (doc == null)
+			{	allQueriedCheck(searcher);	return;	}
+			
+			Elements comments = doc.getElementsByAttributeValue(QUERY_KEY, QUERY_VALUE);
+			int commentNum = comments.size();
+			int totalStarNum = 0;
+			for (Element comment : comments)
+				totalStarNum += comment.text().length();	// each star num
+			double averageStarNum = 
+					commentNum != 0 ? (1.0 * totalStarNum / commentNum) : 0;
+			bbkDetail.rating.tot_commets = String.valueOf(commentNum);
+			bbkDetail.rating.average_stars = String.valueOf(averageStarNum);
+			allQueriedCheck(searcher);
+		}
+	}
+	
+	static class NCBIQuoteNumFetcher extends Thread
+	{	
+		public static final String URL_PREFIX = "http://www.ncbi.nlm.nih.gov/gquery/?term=";
+		public static final String[] ID_QUERY = 
+			{ "books", "mesh", "nlmcatalog", "pubmed", "pmc"};
+		
+		public BbkDetail bbkDetail;
+		public RegistrySearcher searcher;
+		
+		public NCBIQuoteNumFetcher(BbkDetail bbkDetail, RegistrySearcher searcher)
+		{	
+			this.bbkDetail = bbkDetail;
+			this.searcher = searcher;
+		}
+		
+		public void run()
+		{	
+			Document doc = null;
+			if (bbkDetail.name != null && !bbkDetail.name.equals("")) 
+			{	String url = URL_PREFIX + bbkDetail.name;
+				doc = getDoc(url);
+			}
+			if (doc == null)
+			{	allQueriedCheck(searcher);	return;	}
+			
+			int totalQuoteNum = 0;
+			for (String ID : ID_QUERY)
+			{	String quoteNumStr = doc.getElementById(ID).parent().parent().child(1).text();
+				totalQuoteNum += Integer.parseInt(quoteNumStr);
+			}
+			bbkDetail.rating.NCBI_quoteNum = String.valueOf(totalQuoteNum);
+			allQueriedCheck(searcher);
 		}
 	}
 	
