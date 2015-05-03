@@ -125,11 +125,11 @@ public class BbkUpload
 	 * @throws SQLException */
 	public void fillPrivateData(ResultSet resultSet) throws SQLException
 	{
-		name = resultSet.getString(DBConsts.Header.Main.NAME);
-		enterDate = resultSet.getString(DBConsts.Header.Main.ENTER_DATE);
-		ID = resultSet.getString(DBConsts.Header.Main.ID);
-		shortName = resultSet.getString(DBConsts.Header.Main.SHORT_NAME);
-		sequence = resultSet.getString(DBConsts.Header.Main.SEQUENCE);
+		name = resultSet.getString(Consts_DB.Header.Main.NAME);
+		enterDate = resultSet.getString(Consts_DB.Header.Main.ENTER_DATE);
+		ID = resultSet.getString(Consts_DB.Header.Main.ID);
+		shortName = resultSet.getString(Consts_DB.Header.Main.SHORT_NAME);
+		sequence = resultSet.getString(Consts_DB.Header.Main.SEQUENCE);
 	}
 	
 	

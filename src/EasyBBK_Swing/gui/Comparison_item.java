@@ -29,7 +29,7 @@ public class Comparison_item extends JPanel {
 	public JLabel DNAStatus;
 	public JLabel DeleteThisPart;
 	public JLabel ConfirmedTimes;
-	public JLabel LengthofDocumentation;
+	//public JLabel LengthofDocumentation;
 	public JLabel PartResults;
 	public JLabel GroupFavorite;
 	public JLabel UsedTimes;
@@ -129,11 +129,13 @@ public class Comparison_item extends JPanel {
 		ConfirmedTimes.setBounds(0, 390, 300, 30);
 		add(ConfirmedTimes);
 		
+		/*
 		LengthofDocumentation = new JLabel("", SwingConstants.CENTER);
 		LengthofDocumentation.setOpaque(false);
 		LengthofDocumentation.setFont(new Font("Arial", Font.PLAIN, 20));
 		LengthofDocumentation.setBounds(0, 420, 300, 30);
 		add(LengthofDocumentation);
+		*/
 		
 		JLabel Reliability = new JLabel("", SwingConstants.CENTER);
 		Reliability.setOpaque(false);

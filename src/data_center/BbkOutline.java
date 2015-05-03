@@ -8,30 +8,44 @@ import java.sql.SQLException;
  * the getScore() method to get the score evaluated by SJTU-software team.  */
 public class BbkOutline
 {
-	// all from table main
-	public String name;
-    public String type;
-    public String author;
-    public String enterDate;
-    public String shortDesc;   // short description
-    public String url;
-    
+	/*	Attributes below are shown in
+		search result page and design BBK property panel:
+	
+		BBa_XXXXXX - name
+		Type - type
+		Entered Date - enterDate
+		Short Description - shortDesc
+		Author - author
+		Main Page of This Part - url
+		Part Status - releasedStatus
+		Used times - rating.usedTimes
+		Average Rating - rating.averageStars
+		Number of Related Results on Google Scholar - rating.google_items
+	*/
+	
+	public String name = "";
+    public String type = "";
+    public String author = "";
+    public String enterDate = "";
+    public String shortDesc = "";   // short description
+    public String url = "";
+    public String releaseStatus = "";
+ 	
     public Rating rating = null;
     public Blasting blasting = null;	// not new here cause not always blasting
     
- 	public String ID;
- 	public String shortName;
- 	public String releaseStatus;
- 	public String sampleStatus;
- 	public String results;
- 	public String nickname;
- 	public String part_rating;
- 	public String sequence;
- 	public String samples;
- 	public String references;
- 	public String groups;
- 	public String DNA_status;
- 	public String groupFavorite;
+ 	public String ID = "";
+ 	public String shortName = "";
+ 	public String sampleStatus = "";
+ 	public String results = "";
+ 	public String nickname = "";
+ 	public String part_rating = "";
+ 	public String sequence = "";
+ 	public String samples = "";
+ 	public String references = "";
+ 	public String groups = "";
+ 	public String DNA_status = "";
+ 	public String groupFavorite = "";
 
     public BbkOutline()
     { }
@@ -44,23 +58,23 @@ public class BbkOutline
     /** Score at default weight.  */
     public double getScore()
     {	
-    	return getScore(DBConsts.Rating.STATUS_DEFAULT_WEIGHT, 
-				DBConsts.Rating.QUALITY_DEFAULT_WEIGHT,
-				DBConsts.Rating.FEEDBACKS_DEFAULT_WEIGHT,
-				DBConsts.Rating.PUBLICATION_DEFAULT_WEIGHT);
+    	return getScore(Consts_DB.Rating.STATUS_DEFAULT_WEIGHT, 
+				Consts_DB.Rating.QUALITY_DEFAULT_WEIGHT,
+				Consts_DB.Rating.FEEDBACKS_DEFAULT_WEIGHT,
+				Consts_DB.Rating.PUBLICATION_DEFAULT_WEIGHT);
     }
     
     /** Score at custom weight.  */
     public double getScore(double status_weight, double quality_weight, 
 						double feedbacks_weight, double publication_weight)
     {	
-    	double totalPoints = DBConsts.Rating.TOTAL_POINTS;
+    	double totalPoints = Consts_DB.Rating.TOTAL_POINTS;
 		double points = 0;
 		try
-		{	points = Double.parseDouble(rating.status) / DBConsts.Rating.STATUS_DEFAULT_WEIGHT * status_weight
-				   + Double.parseDouble(rating.quality) / DBConsts.Rating.QUALITY_DEFAULT_WEIGHT * quality_weight
-				   + Double.parseDouble(rating.feedbacks) / DBConsts.Rating.FEEDBACKS_DEFAULT_WEIGHT * feedbacks_weight
-				   + Double.parseDouble(rating.publication) / DBConsts.Rating.PUBLICATION_DEFAULT_WEIGHT * publication_weight;
+		{	points = Double.parseDouble(rating.status) / Consts_DB.Rating.STATUS_DEFAULT_WEIGHT * status_weight
+				   + Double.parseDouble(rating.quality) / Consts_DB.Rating.QUALITY_DEFAULT_WEIGHT * quality_weight
+				   + Double.parseDouble(rating.feedbacks) / Consts_DB.Rating.FEEDBACKS_DEFAULT_WEIGHT * feedbacks_weight
+				   + Double.parseDouble(rating.publication) / Consts_DB.Rating.PUBLICATION_DEFAULT_WEIGHT * publication_weight;
 		} catch (Exception e) {points = 0;}
 		double score = points / totalPoints * 100 + 15;
 		return score;
@@ -121,46 +135,49 @@ public class BbkOutline
      * and criteria by SJTU-software.  */
     public static class Rating
     {	
-    	public String rating;
-    	public String status;
-    	public String quality;
-    	public String feedbacks;
-    	public String publication;
+    	//public String rating;
+    	public String status = "0";
+    	public String quality = "0";
+    	public String feedbacks = "0";
+    	public String publication = "0";
     	// rating details
-    	public String delete_this_part;
-     	public String tot_confirmed;
-     	public String detail_not_confirmed;
-     	public String average_stars;
-     	public String tot_commets;
-     	public String google_items;
-     	public String first_url;
-     	public String documentation;
-     	public String used_times;
+    	public String delete_this_part = "Deleted";
+     	public String tot_confirmed = "0";
+     	public String average_stars = "0";
+     	public String tot_commets = "0";
+     	public String google_items = "0";
+     	public String NCBI_quoteNum = "0";
+     	public String google_query_link = "";
+     	public String used_times = "0";
+     	
+     	//public String detail_not_confirmed;
+     	//public String documentation;
     	
+     	public Rating() {}
+     	
     	public Rating(ResultSet resultSet) throws SQLException
     	{	
-    		rating = resultSet.getString(DBConsts.Header.Main.RATING);
-    		status = resultSet.getString(DBConsts.Header.Main.STATUS);
-    		quality = resultSet.getString(DBConsts.Header.Main.QUALITY);
-    		feedbacks = resultSet.getString(DBConsts.Header.Main.FEEDBACKS);
-    		publication = resultSet.getString(DBConsts.Header.Main.PUBLICATION);
+    		//rating = resultSet.getString(Consts_DB.Header.Main.RATING);
+    		status = resultSet.getString(Consts_DB.Header.Main.STATUS);
+    		quality = resultSet.getString(Consts_DB.Header.Main.QUALITY);
+    		feedbacks = resultSet.getString(Consts_DB.Header.Main.FEEDBACKS);
+    		publication = resultSet.getString(Consts_DB.Header.Main.PUBLICATION);
     		// rating details
-    		delete_this_part = resultSet.getString(DBConsts.Header.Main.DELETE_THIS_PART);
-    		tot_confirmed = resultSet.getString(DBConsts.Header.Main.TOT_CONFIRMED);
-    		detail_not_confirmed = resultSet.getString(DBConsts.Header.Main.DETAIL_NOT_CONFIRMED);
-    		average_stars = resultSet.getString(DBConsts.Header.Main.AVERAGE_STARS);
-    		tot_commets = resultSet.getString(DBConsts.Header.Main.TOT_COMMENTS);
-    		google_items = resultSet.getString(DBConsts.Header.Main.GOOGLE_ITEMS);
-    		first_url = resultSet.getString(DBConsts.Header.Main.FIRST_URL);
-    		documentation = resultSet.getString(DBConsts.Header.Main.DOCUMENTATION);
-    		used_times = resultSet.getString(DBConsts.Header.Main.USED_TIMES);
+    		delete_this_part = resultSet.getString(Consts_DB.Header.Main.DELETE_THIS_PART);
+    		tot_confirmed = resultSet.getString(Consts_DB.Header.Main.TOT_CONFIRMED);
+    		average_stars = resultSet.getString(Consts_DB.Header.Main.AVERAGE_STARS);
+    		tot_commets = resultSet.getString(Consts_DB.Header.Main.TOT_COMMENTS);
+    		google_items = resultSet.getString(Consts_DB.Header.Main.GOOGLE_ITEMS);
+    		google_query_link = resultSet.getString(Consts_DB.Header.Main.FIRST_URL);
+    		//detail_not_confirmed = resultSet.getString(Consts_DB.Header.Main.DETAIL_NOT_CONFIRMED);
+    		//documentation = resultSet.getString(Consts_DB.Header.Main.DOCUMENTATION);
+    		used_times = resultSet.getString(Consts_DB.Header.Main.USED_TIMES);
     	}
     	
     	/** Print main attributes in cmd for testing.  */
     	public void display()
     	{	
-    		System.out.println("Rating: "+ rating + "\n" + 
-    						   "Status: " + status + "\n" + 
+    		System.out.println("Status: " + status + "\n" + 
     						   "Quality: " + quality + "\n" + 
     						   "Feedbacks: " + feedbacks + "\n" +
     						   "Publication: " + publication);

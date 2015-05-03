@@ -165,7 +165,7 @@ public class Child_Compare extends JPanel {
 				comparison_item.DNAStatus.setText(bbkdetail.DNA_status);
 				comparison_item.DeleteThisPart.setText(bbkdetail.rating.delete_this_part);
 				comparison_item.ConfirmedTimes.setText(bbkdetail.rating.tot_confirmed);
-				comparison_item.LengthofDocumentation.setText(bbkdetail.rating.documentation);
+				//comparison_item.LengthofDocumentation.setText(bbkdetail.rating.documentation);
 				comparison_item.PartResults.setText(bbkdetail.results);
 				comparison_item.GroupFavorite.setText(bbkdetail.groupFavorite);
 				comparison_item.UsedTimes.setText(bbkdetail.rating.used_times);

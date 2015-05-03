@@ -1,5 +1,8 @@
 package data_center;
 
+import java.awt.Color;
+import java.awt.Rectangle;
+
 /** Provide a comparison between up to 3 bbkDetails, pos == 0, 1, 2 */
 public class CompareCenter
 {
@@ -31,5 +34,21 @@ public class CompareCenter
 		}
 		// else... 
 		return compareList[pos];
+	}
+	
+	public SketchComponent.BioBrick addSearchedBbkToSketch
+		(int pos, SketchCenter sketchCenter)
+	{	
+		BbkOutline bbkOutline = getDetail(pos);
+		if (bbkOutline == null || sketchCenter.currentProject == null)
+			return null;
+		
+		int ID = sketchCenter.currentProject.getMaxID() + 1;
+		SketchComponent.BioBrick bbkInSketch = new SketchComponent.BioBrick
+				(ID, BbkType.bbkTypeToSketchBbkType(bbkOutline.type), 
+						new Rectangle(10, 10, 10, 10), Color.BLUE);
+		bbkInSketch.bbkOutline = bbkOutline;
+		sketchCenter.currentProject.addComponent(bbkInSketch);
+		return bbkInSketch;
 	}
 }

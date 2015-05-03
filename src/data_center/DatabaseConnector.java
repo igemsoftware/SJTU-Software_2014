@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import data_center.BbkUpload.Twin;
 
 /** The class to connect the EasyBbk and the database by SJTU-software.  */
-public class DatabaseConnector
+class DatabaseConnector
 {
 	@SuppressWarnings("unused")
 	private final static String DRIVER = "com.mysql.jdbc.Driver";
@@ -64,8 +64,8 @@ public class DatabaseConnector
     	checkConnection();
     	
     	String cmdStr = 
-    			" select * from " + DBConsts.Table.MAIN + 
-        		" where " + DBConsts.Header.Main.NAME + " = " + "'" + name + "'";
+    			" select * from " + Consts_DB.Table.MAIN + 
+        		" where " + Consts_DB.Header.Main.NAME + " = " + "'" + name + "'";
         BbkOutline bbkOutline = null;
         try 
 		{	Statement statement = connection.createStatement();
@@ -86,12 +86,12 @@ public class DatabaseConnector
     		return;
     	
     	checkConnection();
-    	String cmdStr = " select * from " + DBConsts.Table.MAIN + 
-        	" where " + DBConsts.Header.Main.NAME + " = " + "'" + list.get(0).name + "'";
+    	String cmdStr = " select * from " + Consts_DB.Table.MAIN + 
+        	" where " + Consts_DB.Header.Main.NAME + " = " + "'" + list.get(0).name + "'";
     	for (int i = 1; i < list.size(); ++i)
     	{	String bbkName = list.get(i).name;
     		cmdStr += 
-    			" OR " + DBConsts.Header.Main.NAME + " = " + "'" + bbkName + "'";
+    			" OR " + Consts_DB.Header.Main.NAME + " = " + "'" + bbkName + "'";
     	}
     	try 
 		{	Statement statement = connection.createStatement();
@@ -110,39 +110,39 @@ public class DatabaseConnector
 		{	Statement statement = connection.createStatement();
 			ResultSet resultSet;
 			// main
-			resultSet = statement.executeQuery("select * from " + DBConsts.Table.MAIN + 
-					" where " + DBConsts.Header.Main.NAME + " = " + "'" + name + "'");
+			resultSet = statement.executeQuery("select * from " + Consts_DB.Table.MAIN + 
+					" where " + Consts_DB.Header.Main.NAME + " = " + "'" + name + "'");
 			if (resultSet.next())
 				DBDataFiller.dbIntoMain(resultSet, bbkDetail);
 			else
 				return null;	// if don't have it in main, make it a null
 			// category
-			resultSet = statement.executeQuery("select * from " + DBConsts.Table.CATEGORIES + 
-	        		" where " + DBConsts.Header.Main.NAME + " = " + "'" + name + "'");
+			resultSet = statement.executeQuery("select * from " + Consts_DB.Table.CATEGORIES + 
+	        		" where " + Consts_DB.Header.Main.NAME + " = " + "'" + name + "'");
 			DBDataFiller.dbIntoCategories(resultSet, bbkDetail);
 			// deep_subparts
-			resultSet = statement.executeQuery("select * from " + DBConsts.Table.DEEP_SUBPARTS + 
-	        		" where " + DBConsts.Header.Main.NAME + " = " + "'" + name + "'");
+			resultSet = statement.executeQuery("select * from " + Consts_DB.Table.DEEP_SUBPARTS + 
+	        		" where " + Consts_DB.Header.Main.NAME + " = " + "'" + name + "'");
 			DBDataFiller.dbIntoDeepSubparts(resultSet, bbkDetail);
 			// features
-			resultSet = statement.executeQuery("select * from " + DBConsts.Table.FEATURES + 
-	        		" where " + DBConsts.Header.Main.NAME + " = " + "'" + name + "'");
+			resultSet = statement.executeQuery("select * from " + Consts_DB.Table.FEATURES + 
+	        		" where " + Consts_DB.Header.Main.NAME + " = " + "'" + name + "'");
 			DBDataFiller.dbIntoFeatures(resultSet, bbkDetail);
 			// parameters
-			resultSet = statement.executeQuery("select * from " + DBConsts.Table.PARAMETERS + 
-	        		" where " + DBConsts.Header.Main.NAME + " = " + "'" + name + "'");
+			resultSet = statement.executeQuery("select * from " + Consts_DB.Table.PARAMETERS + 
+	        		" where " + Consts_DB.Header.Main.NAME + " = " + "'" + name + "'");
 			DBDataFiller.dbIntoParameters(resultSet, bbkDetail);
 			// specified_subparts
-			resultSet = statement.executeQuery("select * from " + DBConsts.Table.SPECIFIED_SUBPARTS + 
-	        		" where " + DBConsts.Header.Main.NAME + " = " + "'" + name + "'");
+			resultSet = statement.executeQuery("select * from " + Consts_DB.Table.SPECIFIED_SUBPARTS + 
+	        		" where " + Consts_DB.Header.Main.NAME + " = " + "'" + name + "'");
 			DBDataFiller.dbIntoSpecifiedSubparts(resultSet, bbkDetail);
 			// specified_subscars
-			resultSet = statement.executeQuery("select * from " + DBConsts.Table.SPECIFIED_SUBSCARS + 
-	        		" where " + DBConsts.Header.Main.NAME + " = " + "'" + name + "'");
+			resultSet = statement.executeQuery("select * from " + Consts_DB.Table.SPECIFIED_SUBSCARS + 
+	        		" where " + Consts_DB.Header.Main.NAME + " = " + "'" + name + "'");
 			DBDataFiller.dbIntoSpecifiedSubscars(resultSet, bbkDetail);
 			// twins
-			resultSet = statement.executeQuery("select * from " + DBConsts.Table.TWINS + 
-	        		" where " + DBConsts.Header.Main.NAME + " = " + "'" + name + "'");
+			resultSet = statement.executeQuery("select * from " + Consts_DB.Table.TWINS + 
+	        		" where " + Consts_DB.Header.Main.NAME + " = " + "'" + name + "'");
 			DBDataFiller.dbIntoTwins(resultSet, bbkDetail);
 			
 			resultSet.close();
@@ -160,8 +160,8 @@ public class DatabaseConnector
         try 
 		{	Statement statement = connection.createStatement();
 			ResultSet resultSet;
-			resultSet = statement.executeQuery("select * from " + DBConsts.Table.SPECIFIED_SUBSCARS + 
-					" where " + DBConsts.Header.SpecScar.NAME + " = " + "'" + name + "'");
+			resultSet = statement.executeQuery("select * from " + Consts_DB.Table.SPECIFIED_SUBSCARS + 
+					" where " + Consts_DB.Header.SpecScar.NAME + " = " + "'" + name + "'");
 			if (resultSet.next())	// just need one
 				subscar = new BbkUpload.SpecifiedSubscar(resultSet);
 		} catch (SQLException e) {e.printStackTrace();}
@@ -179,11 +179,11 @@ public class DatabaseConnector
     	try
     	{	Statement statement = connection.createStatement();
 			ResultSet resultSet;
-			resultSet = statement.executeQuery("select * from " + DBConsts.Table.MAIN + 
-				" where " + DBConsts.Header.Main.SEQUENCE + " = " + "'" + sequence + "'");
+			resultSet = statement.executeQuery("select * from " + Consts_DB.Table.MAIN + 
+				" where " + Consts_DB.Header.Main.SEQUENCE + " = " + "'" + sequence + "'");
     		while (resultSet.next())
     		{	BbkUpload.Twin twin = new Twin();
-    			twin.twin = resultSet.getString(DBConsts.Header.Main.NAME);
+    			twin.twin = resultSet.getString(Consts_DB.Header.Main.NAME);
     			twins.add(twin);
     		}
     	} catch (SQLException e) {e.printStackTrace();}
@@ -211,12 +211,12 @@ public class DatabaseConnector
         	{	if (token.equals(""))
         			continue;	// skip the ""s
 	        	resultSet = statement.executeQuery(
-	        		"select * from " + DBConsts.Table.MAIN + " where "
-	        			   + DBConsts.Header.Main.NAME + " like " + "'%" + token + "%'" +
-					" OR " + DBConsts.Header.Main.SHORT_DESC + " like " + "'%" + token + "%'" +
-					" OR " + DBConsts.Header.Main.TYPE + " like " + "'%" + token + "%'" + 
+	        		"select * from " + Consts_DB.Table.MAIN + " where "
+	        			   + Consts_DB.Header.Main.NAME + " like " + "'%" + token + "%'" +
+					" OR " + Consts_DB.Header.Main.SHORT_DESC + " like " + "'%" + token + "%'" +
+					" OR " + Consts_DB.Header.Main.TYPE + " like " + "'%" + token + "%'" + 
 					//" OR " + DBConsts.Header.Main.AUTHOR + " like " + "'%" + token + "%'" + 
-					" OR " + DBConsts.Header.Main.NICKNAME + " like " + "'%" + token + "%'");
+					" OR " + Consts_DB.Header.Main.NICKNAME + " like " + "'%" + token + "%'");
 				while (resultSet.next())
 				{	BbkOutline bbkOutline = new BbkOutline(resultSet);
 					if (firstToken)	// 第一个关键词，只需将outline都加进列表即可
@@ -246,12 +246,12 @@ public class DatabaseConnector
 		{	Statement statement = connection.createStatement();
 			ResultSet resultSet_org, resultSet_EasyBbk;
 			// main
-			resultSet_org = statement.executeQuery("select * from " + DBConsts.Table.MAIN + 
-					" where " + DBConsts.Header.Main.NAME + " = " + "'" + nameByIgemOrg + "'");
+			resultSet_org = statement.executeQuery("select * from " + Consts_DB.Table.MAIN + 
+					" where " + Consts_DB.Header.Main.NAME + " = " + "'" + nameByIgemOrg + "'");
 			occupied = resultSet_org.next();
 			resultSet_org.close();
-			resultSet_EasyBbk = statement.executeQuery("select * from " + DBConsts.Table.MAIN_UPLOAD + 
-					" where " + DBConsts.Header.Main.NAME + " = " + "'" + nameByEasyBbk + "'");
+			resultSet_EasyBbk = statement.executeQuery("select * from " + Consts_DB.Table.MAIN_UPLOAD + 
+					" where " + Consts_DB.Header.Main.NAME + " = " + "'" + nameByEasyBbk + "'");
 			occupied =  (occupied || resultSet_EasyBbk.next());
 			resultSet_EasyBbk.close();
 		} catch (Exception e) {e.printStackTrace();}
@@ -300,47 +300,47 @@ public class DatabaseConnector
 			ResultSet resultSet;
 			// main
 			resultSet = statement.executeQuery("select *" + 
-					" from " + DBConsts.Table.MAIN_UPLOAD + 
-					" where " + DBConsts.Header.Main.NAME + " = " + "'" + name + "'" + 
-					" AND " + DBConsts.Header.Main.ID + " = " + "'" + oddNum + "'");
+					" from " + Consts_DB.Table.MAIN_UPLOAD + 
+					" where " + Consts_DB.Header.Main.NAME + " = " + "'" + name + "'" + 
+					" AND " + Consts_DB.Header.Main.ID + " = " + "'" + oddNum + "'");
 			if (resultSet.next())
 				DBDataFiller.dbIntoMain(resultSet, bbkUpload);
 			else
 				return null;	// if don't have it in main, make it a null
 			// category
 			resultSet = statement.executeQuery("select *" + 
-					" from " + DBConsts.Table.CATEGORIES_UPLOAD + 
-	        		" where " + DBConsts.Header.Main.NAME + " = " + "'" + name + "'");
+					" from " + Consts_DB.Table.CATEGORIES_UPLOAD + 
+	        		" where " + Consts_DB.Header.Main.NAME + " = " + "'" + name + "'");
 			DBDataFiller.dbIntoCategories(resultSet, bbkUpload);
 			// deep_subparts
 			resultSet = statement.executeQuery("select *" + 
-					" from " + DBConsts.Table.DEEP_SUBPARTS_UPLOAD + 
-	        		" where " + DBConsts.Header.Main.NAME + " = " + "'" + name + "'");
+					" from " + Consts_DB.Table.DEEP_SUBPARTS_UPLOAD + 
+	        		" where " + Consts_DB.Header.Main.NAME + " = " + "'" + name + "'");
 			DBDataFiller.dbIntoDeepSubparts(resultSet, bbkUpload);
 			// features
 			resultSet = statement.executeQuery("select *" + 
-					" from " + DBConsts.Table.FEATURES_UPLOAD + 
-	        		" where " + DBConsts.Header.Main.NAME + " = " + "'" + name + "'");
+					" from " + Consts_DB.Table.FEATURES_UPLOAD + 
+	        		" where " + Consts_DB.Header.Main.NAME + " = " + "'" + name + "'");
 			DBDataFiller.dbIntoFeatures(resultSet, bbkUpload);
 			// parameters
 			resultSet = statement.executeQuery("select *" + 
-					" from " + DBConsts.Table.PARAMETERS_UPLOAD + 
-	        		" where " + DBConsts.Header.Main.NAME + " = " + "'" + name + "'");
+					" from " + Consts_DB.Table.PARAMETERS_UPLOAD + 
+	        		" where " + Consts_DB.Header.Main.NAME + " = " + "'" + name + "'");
 			DBDataFiller.dbIntoParameters(resultSet, bbkUpload);
 			// specified_subparts
 			resultSet = statement.executeQuery("select *" + 
-					" from " + DBConsts.Table.SPECIFIED_SUBPARTS_UPLOAD + 
-	        		" where " + DBConsts.Header.Main.NAME + " = " + "'" + name + "'");
+					" from " + Consts_DB.Table.SPECIFIED_SUBPARTS_UPLOAD + 
+	        		" where " + Consts_DB.Header.Main.NAME + " = " + "'" + name + "'");
 			DBDataFiller.dbIntoSpecifiedSubparts(resultSet, bbkUpload);
 			// specified_subscars
 			resultSet = statement.executeQuery("select *" + 
-					" from " + DBConsts.Table.SPECIFIED_SUBSCARS_UPLOAD + 
-	        		" where " + DBConsts.Header.Main.NAME + " = " + "'" + name + "'");
+					" from " + Consts_DB.Table.SPECIFIED_SUBSCARS_UPLOAD + 
+	        		" where " + Consts_DB.Header.Main.NAME + " = " + "'" + name + "'");
 			DBDataFiller.dbIntoSpecifiedSubscars(resultSet, bbkUpload);
 			// twins
 			resultSet = statement.executeQuery("select *" + 
-					" from " + DBConsts.Table.TWINS_UPLOAD + 
-	        		" where " + DBConsts.Header.Main.NAME + " = " + "'" + name + "'");
+					" from " + Consts_DB.Table.TWINS_UPLOAD + 
+	        		" where " + Consts_DB.Header.Main.NAME + " = " + "'" + name + "'");
 			DBDataFiller.dbIntoTwins(resultSet, bbkUpload);
 			
 			resultSet.close();
