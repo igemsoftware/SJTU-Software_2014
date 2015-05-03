@@ -55,6 +55,8 @@ class Consts_Registry
     /** DeepSubpart.ID != ID */
 	public static class DeepSub	// deep_subpart
 	{	
+		public final static String DEEP_SUBPARTS = "deep_subparts";
+		
 		public final static String ID = "subpart_id";
 		public final static String NAME = "subpart_name";
 		public final static String SHORT_DESC = "subpart_short_desc";
@@ -64,6 +66,8 @@ class Consts_Registry
 	
 	public static class Feature
 	{	
+		public final static String FEATURE = "feature";
+		
 		public final static String ID = "id";
 		public final static String TITLE = "title";
 		public final static String TYPE = "type";
@@ -74,6 +78,8 @@ class Consts_Registry
 	
 	public static class Parameter
 	{	
+		public final static String PARAMENER = "parameter";
+		
 		public final static String NAME = "name";
 		public final static String VALUE = "value";
 		public final static String UNITS = "units";
@@ -86,6 +92,8 @@ class Consts_Registry
 	
 	public static class SpecScar	// specified_scar
 	{	
+		public final static String SCAR = "scar";
+		
 		public final static String ID = "scar_id";
 		public final static String STANDARD = "scar_standard";
 		public final static String TYPE = "scar_type";
@@ -97,6 +105,8 @@ class Consts_Registry
 	
 	public static class SpecSub	// specified_subpart
 	{	
+		public final static String SPECFIED_SUBPARTS = "specified_subparts";
+		
 		public final static String ID = "subpart_id";
 		public final static String NAME = "subpart_name";
 		public final static String SHORT_DESC = "subpart_short_desc";
