@@ -1,10 +1,13 @@
 package EasyBBK_Swing.gui;
 
+import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
+import java.net.URI;
 
 import javax.swing.JCheckBox;
 import javax.swing.JOptionPane;
@@ -108,12 +111,10 @@ public class InitializeDetail extends Thread{
 				@Override
 				public void mouseClicked(MouseEvent e) {
 					if(e.getButton() == MouseEvent.BUTTON1){
-						try{
-							Runtime.getRuntime().exec("explorer " + bbkdetail.rating.google_query_link);
-						}
-						catch(Exception ex){
-							ex.printStackTrace();
-						}
+						Desktop desktop = Desktop.getDesktop();
+						URI uri = URI.create(bbkdetail.rating.google_query_link);
+						try {desktop.browse(uri);}
+						catch (IOException e1) {e1.printStackTrace();}
 					}
 				}
 			});
@@ -139,11 +140,14 @@ public class InitializeDetail extends Thread{
 		}
 		detailsofresults.NumberofComments_Content.setText(bbkdetail.rating.tot_commets);
 		
-		detailsofresults.ResultsInGoogle_Content.setText(bbkdetail.rating.google_items);
+		detailsofresults.ResultsInGoogle_Content.setText(bbkdetail.rating.NCBI_quoteNum);
 		String shortdescription = bbkdetail.shortDesc;
 		detailsofresults.Description.setText(shortdescription);
 		
 		String score = "" + bbkdetail.getScore();
+		if (score.length() > 5)
+			score = score.substring(0, 5);
+		/*
 		char c = '.';
 		if(score.charAt(1) == c){
 			score = score.substring(0, 4);
@@ -151,6 +155,8 @@ public class InitializeDetail extends Thread{
 		else if(score.charAt(2) == c){
 			score = score.substring(0, 5);
 		}
+		*/
+		
 		detailsofresults.Score.setText(score);
 		
 		if(small == false){

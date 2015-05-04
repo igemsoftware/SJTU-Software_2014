@@ -56,6 +56,31 @@ class RegistrySearcher
 		return searchResultList;
 	}
 	
+	public BbkDetail searchDetailByName(String bbkName)
+	{	
+		queryRemains = 5;
+		BbkDetail bbkDetail = new BbkDetail();
+		bbkDetail.name = bbkName;
+		new XMLFetcher(bbkDetail, this).start();
+		new PartInfoFetcher(bbkDetail, this).start();
+		new PartConfirmFetcher(bbkDetail, this).start();
+		new AvgStarTotCommentFetcher(bbkDetail, this).start();
+		new NCBIQuoteNumFetcher(bbkDetail, this).start();
+		if (queryRemains > 0)
+			try {wait();}
+			catch (InterruptedException e) {e.printStackTrace();}
+		return bbkDetail;
+	}
+	
+	public static BbkDetail getDetailFromSearchResultList
+		(String bbkName, SearchResultList list)
+	{	
+		for (BbkOutline bbkOutline : list)
+			if (bbkOutline.name.equals(bbkName))
+				return (BbkDetail) bbkOutline;
+		return null;
+	}
+	
 	private static Document getDoc(String url)
 	{	
 		Document doc = null;

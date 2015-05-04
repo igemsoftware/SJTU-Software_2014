@@ -1,10 +1,12 @@
 package data_center;
 
 import java.awt.Color;
+import java.awt.Desktop;
 import java.awt.Font;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.io.IOException;
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
@@ -24,10 +26,9 @@ class Testing
 	
 	public static void main(String[] args) throws Exception
 	{	
-		RegistrySearcher searcher = new RegistrySearcher();
-		searcher.search("BBa_B0034").display();
-		//BbkDetail bbkDetail = new BbkDetail();
-		//bbkDetail
+		
+		
+
 		
 		/*
 		searchKeywordAndGetDetail();

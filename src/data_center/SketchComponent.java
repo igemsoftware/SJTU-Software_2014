@@ -219,7 +219,7 @@ public class SketchComponent
          * bbkName in the database, bbkOutline will be a null */
 		@Override
 		public void setString(String bbkName)
-		{	bbkOutline = DatabaseConnector.getOutlineByName(bbkName);	}
+		{	bbkOutline = new RegistrySearcher().searchDetailByName(bbkName);	}
         
 		@Override
 		public Rectangle getBounds()

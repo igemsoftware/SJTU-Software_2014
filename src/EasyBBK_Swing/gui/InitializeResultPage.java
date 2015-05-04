@@ -446,12 +446,15 @@ public class InitializeResultPage extends Thread{
 		else if(bbkoutline.rating.average_stars.length() >= 3){
 			child_search.searchingresultpage.searchingresult.get(i).AverageStar_Content.setText(bbkoutline.rating.average_stars.substring(0,3));
 		}
-		child_search.searchingresultpage.searchingresult.get(i).ResultsInGoogle_Content.setText(bbkoutline.rating.google_items);
+		child_search.searchingresultpage.searchingresult.get(i).ResultsInGoogle_Content.setText(bbkoutline.rating.NCBI_quoteNum);
 		
 		String shortdescription = bbkoutline.shortDesc;
 		child_search.searchingresultpage.searchingresult.get(i).Description.setText(shortdescription);
 		
 		String score = "" + bbkoutline.getScore();
+		if (score.length() > 5)
+			score = score.substring(0, 5);
+		/*
 		char c = '.';
 		if(score.charAt(1) == c){
 			score = score.substring(0, 4);
@@ -459,6 +462,7 @@ public class InitializeResultPage extends Thread{
 		else if(score.charAt(2) == c){
 			score = score.substring(0, 5);
 		}
+		*/
 		
 		child_search.searchingresultpage.searchingresult.get(i).Score.setText(score);
 		

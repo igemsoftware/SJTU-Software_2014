@@ -395,7 +395,7 @@ public class DetailsofResults extends JPanel {
 		Publication.setBounds(10, 874, 140, 28);
 		add(Publication);
 		
-		JLabel ResultsInGoogle = new JLabel("Number of Related Results on Google Scholar:");
+		JLabel ResultsInGoogle = new JLabel("Number of Related Results on NCBI:");
 		ResultsInGoogle.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		ResultsInGoogle.setBounds(10, 902, 415, 24);
 		add(ResultsInGoogle);
