@@ -509,7 +509,7 @@ public class Choicepanel extends JPanel {
 		ConfirmedTimes.setBounds(88, 58, 146, 23);
 		add(ConfirmedTimes);
 		
-		GoogleQouteNumber = new JCheckBox("Number of Results Related on Google Scholar");
+		GoogleQouteNumber = new JCheckBox("Number of Results Related on NCBI: ");
 		GoogleQouteNumber.addItemListener(itemListener_sort);
 		GoogleQouteNumber.setFont(new Font("Arial", Font.PLAIN, 16));
 		GoogleQouteNumber.setBackground(Color.WHITE);

@@ -37,8 +37,7 @@ class RegistrySearcher
 				}
 		}
 		
-		searchResultList.display();
-		System.out.println("#########################################");
+		System.out.println("Registry searching finished, fetching details... ");
 		
 		queryRemains = searchResultList.size() * 5;
 		for (BbkOutline bbkOutline : searchResultList)
@@ -53,6 +52,7 @@ class RegistrySearcher
 		if (queryRemains > 0)
 			try {wait();}
 			catch (InterruptedException e) {e.printStackTrace();}
+		System.out.println("Detail fetching finished~! ");
 		return searchResultList;
 	}
 	
