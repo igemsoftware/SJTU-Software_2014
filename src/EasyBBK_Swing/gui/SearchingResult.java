@@ -152,7 +152,7 @@ public class SearchingResult extends JPanel{
 		AverageStar_Content.setBounds(435, 130, 79, 24);
 		add(AverageStar_Content);
 		
-		JLabel ResultsInGoogle = new JLabel("Number of Related Results on Google Scholar:");
+		JLabel ResultsInGoogle = new JLabel("Number of Related Results on NCBI:");
 		ResultsInGoogle.setFont(new Font("Times New Roman", Font.PLAIN, 17));
 		ResultsInGoogle.setBounds(10, 149, 322, 24);
 		add(ResultsInGoogle);

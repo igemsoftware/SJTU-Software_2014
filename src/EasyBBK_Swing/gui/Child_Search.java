@@ -22,6 +22,7 @@ import javax.swing.JScrollPane;
 
 import data_center.*;
 
+@SuppressWarnings("unused")
 public class Child_Search extends JPanel {
 	private static final long serialVersionUID = 1L;
 	
@@ -305,6 +306,8 @@ public class Child_Search extends JPanel {
 		Blast.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				// Temporarily disable because the server is closed
+				/*
 				if(e.getButton() == MouseEvent.BUTTON1){
 					if(textField.getText().equals("")){
 						Component component = mainpage.Mainpanel.getComponent(0);
@@ -343,6 +346,7 @@ public class Child_Search extends JPanel {
 						threadlist.add(initializeresultpage);
 					}
 				}
+				*/
 			}
 			@Override
 			public void mouseEntered(MouseEvent e) {

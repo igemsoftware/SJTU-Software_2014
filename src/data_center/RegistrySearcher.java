@@ -37,8 +37,7 @@ class RegistrySearcher
 				}
 		}
 		
-		searchResultList.display();
-		System.out.println("#########################################");
+		System.out.println("Registry searching finished, fetching details... ");
 		
 		queryRemains = searchResultList.size() * 5;
 		for (BbkOutline bbkOutline : searchResultList)
@@ -53,15 +52,54 @@ class RegistrySearcher
 		if (queryRemains > 0)
 			try {wait();}
 			catch (InterruptedException e) {e.printStackTrace();}
+		System.out.println("Detail fetching finished~! ");
 		return searchResultList;
+	}
+	
+	public synchronized BbkDetail searchDetailByName(String bbkName)
+	{	
+		if (!isBbkNameValid(bbkName))
+		{	System.out.println("Name not valid");
+			return null;
+		}
+		queryRemains = 5;
+		BbkDetail bbkDetail = new BbkDetail();
+		bbkDetail.name = bbkName;
+		new XMLFetcher(bbkDetail, this).start();
+		new PartInfoFetcher(bbkDetail, this).start();
+		new PartConfirmFetcher(bbkDetail, this).start();
+		new AvgStarTotCommentFetcher(bbkDetail, this).start();
+		new NCBIQuoteNumFetcher(bbkDetail, this).start();
+		if (queryRemains > 0)
+			try {wait();}
+			catch (InterruptedException e) {e.printStackTrace();}
+		return bbkDetail;
+	}
+	
+	private boolean isBbkNameValid(String bbkName)
+	{
+		if (!bbkName.toLowerCase().startsWith("bba_"))
+			return false;
+		final String URL_PREFIX = "http://parts.igem.org/cgi/xml/part.cgi?part=";
+		final String PARTNAME_NOT_FOUND = "Part name not found";
+		Document doc = getDoc(URL_PREFIX + bbkName);
+		return !(doc == null || doc.toString().contains(PARTNAME_NOT_FOUND));
+	}
+
+	public static BbkDetail getDetailFromSearchResultList
+		(String bbkName, SearchResultList list)
+	{	
+		for (BbkOutline bbkOutline : list)
+			if (bbkOutline.name.equals(bbkName))
+				return (BbkDetail) bbkOutline;
+		return null;
 	}
 	
 	private static Document getDoc(String url)
 	{	
-		Document doc = null;
 		for (int i = 0; i < 3; ++i)
-			try {doc = Jsoup.connect(url).get();} 
+			try {return Jsoup.connect(url).get();} 
 			catch (IOException e) {continue;}
-		return doc;
+		return null;
 	}
 }

@@ -716,8 +716,8 @@ public class Child_Upload extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if(e.getButton() == MouseEvent.BUTTON1){
-					showinfo.setText("Uploading your biobrick...");;
-					
+					showinfo.setText("<html>EasyBBK DB is temporarily closed, please submit to registry ^.^</html>");
+					/*
 					bbkupload.shortDesc = ShortDescription.getText();
 					bbkupload.type = typestring;
 					bbkupload.nickname = Nickname.getText();
@@ -765,6 +765,7 @@ public class Child_Upload extends JPanel {
 					UploadCenter uploadcenter = new UploadCenter();
 					String oddNum = uploadcenter.uploadAndGetOddNum(bbkupload);
 					showinfo.setText("Add to EasyBBK Database. The ID is "+oddNum);
+					*/
 				}
 			}
 		});

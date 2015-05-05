@@ -194,7 +194,7 @@ public class SketchComponent
         	super(theID, BioBrick.class.getSimpleName());
         	this.secondaryType = secondaryType;
         	if (bbkName != null)
-        		this.bbkOutline = DatabaseConnector.getOutlineByName(bbkName);
+        		this.bbkOutline = new RegistrySearcher().searchDetailByName(bbkName);
 			this.bounds = bounds;
 			this.color = color;
         }
@@ -219,7 +219,7 @@ public class SketchComponent
          * bbkName in the database, bbkOutline will be a null */
 		@Override
 		public void setString(String bbkName)
-		{	bbkOutline = DatabaseConnector.getOutlineByName(bbkName);	}
+		{	bbkOutline = new RegistrySearcher().searchDetailByName(bbkName);	}
         
 		@Override
 		public Rectangle getBounds()

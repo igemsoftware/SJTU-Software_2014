@@ -182,7 +182,7 @@ public class SetBioBrickNameListener implements MouseInputListener
 		        		else if(bbkoutline.rating.average_stars.length() >= 3){
 		        			searchingresult.AverageStar_Content.setText(bbkoutline.rating.average_stars.substring(0,3));
 		        		}
-		        		searchingresult.ResultsInGoogle_Content.setText(bbkoutline.rating.google_items);
+		        		searchingresult.ResultsInGoogle_Content.setText(bbkoutline.rating.NCBI_quoteNum);
 		        		
 		        		String shortdescription = bbkoutline.shortDesc;
 		        		searchingresult.Description.setText(shortdescription);
@@ -265,7 +265,7 @@ public class SetBioBrickNameListener implements MouseInputListener
         		else if(bbkoutline.rating.average_stars.length() >= 3){
         			searchingresult.AverageStar_Content.setText(bbkoutline.rating.average_stars.substring(0,3));
         		}
-        		searchingresult.ResultsInGoogle_Content.setText(bbkoutline.rating.google_items);
+        		searchingresult.ResultsInGoogle_Content.setText(bbkoutline.rating.NCBI_quoteNum);
         		
         		String shortdescription = bbkoutline.shortDesc;
         		searchingresult.Description.setText(shortdescription);

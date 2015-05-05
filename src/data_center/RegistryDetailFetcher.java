@@ -13,11 +13,10 @@ class RegistryDetailFetcher
 {
 	private static Document getDoc(String url)
 	{	
-		Document doc = null;
 		for (int i = 0; i < 3; ++i)
-			try {doc = Jsoup.connect(url).timeout(100000).get();} 
-			catch (IOException e) {System.out.println(url + "Timeout" + i);continue;}
-		return doc;
+			try {return Jsoup.connect(url).timeout(100000).get();} 
+			catch (IOException e) {continue;}
+		return null;
 	}
 	
 	private static void allQueriedCheck(RegistrySearcher searcher)
@@ -32,6 +31,7 @@ class RegistryDetailFetcher
 	static class XMLFetcher extends Thread
 	{	
 		public static final String URL_PREFIX = "http://parts.igem.org/cgi/xml/part.cgi?part=";
+		public static final String GOOGLE_QUERY_URL_PREFIX = "http://scholar.google.com/scholar?q=";
 		
 		public BbkDetail bbkDetail;
 		public RegistrySearcher searcher;
@@ -71,6 +71,7 @@ class RegistryDetailFetcher
 			bbkDetail.samples = doc.getElementsByTag(Consts_Registry.SAMPLES).get(0).text();
 			bbkDetail.references = doc.getElementsByTag(Consts_Registry.REFERENCES).get(0).text();
 			bbkDetail.groups = doc.getElementsByTag(Consts_Registry.GROUPS).get(0).text();
+			bbkDetail.rating.google_query_link = GOOGLE_QUERY_URL_PREFIX + bbkDetail.name;
 			// filling categories
 			elements = doc.getElementsByTag(Consts_Registry.Category.CATEGORY);
 			for (Element element : elements)

@@ -31,7 +31,7 @@ public class BbkOutline
     public String url = "";
     public String releaseStatus = "";
  	
-    public Rating rating = null;
+    public Rating rating = new Rating();
     public Blasting blasting = null;	// not new here cause not always blasting
     
  	public String ID = "";
@@ -68,6 +68,7 @@ public class BbkOutline
     public double getScore(double status_weight, double quality_weight, 
 						double feedbacks_weight, double publication_weight)
     {	
+    	gatherScoreComponents();
     	double totalPoints = Consts_DB.Rating.TOTAL_POINTS;
 		double points = 0;
 		try
@@ -77,7 +78,47 @@ public class BbkOutline
 				   + Double.parseDouble(rating.publication) / Consts_DB.Rating.PUBLICATION_DEFAULT_WEIGHT * publication_weight;
 		} catch (Exception e) {points = 0;}
 		double score = points / totalPoints * 100 + 15;
-		return score;
+		return score <= 100 ? score : 100;
+    }
+    
+    private void gatherScoreComponents()
+    {	
+    	double status = 0, quality = 0, feedbacks = 0, publication = 0;
+    	if (releaseStatus.equals("Released HQ 2013"))
+    		status += 1.6 / 100;
+    	if (sampleStatus.equals("In stock"))
+    		status += 6.9 / 100;
+    	if (DNA_status.equals("Available"))
+    		status += 8.3 / 100;
+    	else if (DNA_status.equals("Informational") || DNA_status.equals("Planning"))
+    		status += 0.5 * 8.3 / 100;
+    	if (rating.delete_this_part.equals("Not Deleted"))
+    		status += 6.6 / 100;
+    	status += getValue_underRoof(rating.tot_confirmed, 20) / 20 * 11.4 / 100;
+    	rating.status = Double.toString(status);
+    	
+    	if (results.equals("Works"))
+    		quality += 11.9 / 100;
+    	quality += getValue_underRoof(rating.average_stars, 5) / 5 * 10.2 / 100;
+    	if (groupFavorite.equals("Yes"))
+    		quality += 1.2 / 100;
+    	rating.quality = Double.toString(quality);
+    	
+    	feedbacks += getValue_underRoof(rating.used_times, 100) / 100 * 11.5 / 100;
+    	feedbacks += getValue_underRoof(part_rating, 5) / 5 * 2.2 / 100;
+    	feedbacks += getValue_underRoof(rating.tot_commets, 10) / 10 * 10.9 / 100;
+    	rating.feedbacks = Double.toString(feedbacks);
+    	
+    	publication += (getValue_underRoof(rating.google_items, 10) + getValue_underRoof(rating.NCBI_quoteNum, 10)) / 20 * 11.7 / 100;
+    	rating.publication = Double.toString(publication);
+    }
+    
+    private static Double getValue_underRoof(String input, int max)
+    {	
+    	try {
+    		Double value = Double.parseDouble(input);
+    		return value <= max ? value : max;}
+    	catch (Exception e) {return 0.0;}
     }
     
     /** Print main attributes in cmd for testing.  */

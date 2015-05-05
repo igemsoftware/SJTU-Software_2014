@@ -36,7 +36,9 @@ public class SearchCenter
 
     public SearchResultList search(String keyword)
     {
-        SearchResultList currentList = DatabaseConnector.search(keyword);
+        //SearchResultList currentList = DatabaseConnector.search(keyword);
+    	RegistrySearcher searcher = new RegistrySearcher();
+    	SearchResultList currentList = searcher.search(keyword);
 		historyList.putInItem(currentList);
         return historyList.getCurrentItem();
     }
@@ -50,7 +52,9 @@ public class SearchCenter
     
     public BbkDetail getDetail(String bbkName)
     {	
-    	return DatabaseConnector.getDetailByName(bbkName);
+    	//return DatabaseConnector.getDetailByName(bbkName);
+    	return RegistrySearcher.getDetailFromSearchResultList
+    			(bbkName, getCurrentRawSearchResultList());
     }
 
     /** Also can add bbkDetail to Sketch */
