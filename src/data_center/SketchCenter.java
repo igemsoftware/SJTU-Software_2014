@@ -108,7 +108,7 @@ public class SketchCenter
 			// else... 
 			startPos = endPos + 1;
 			BbkDetail bbkDetail = 
-					DatabaseConnector.getDetailByName(bbk.bbkOutline.name);
+					new RegistrySearcher().searchDetailByName(bbk.bbkOutline.name);
 			endPos = startPos + bbkDetail.sequence.length() - 1;
 			bbkUpload.sequenceTokens.add(bbkDetail);
 			bbkUpload.features.add(new BbkUpload.Feature

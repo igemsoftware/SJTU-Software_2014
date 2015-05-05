@@ -31,7 +31,7 @@ public class BbkOutline
     public String url = "";
     public String releaseStatus = "";
  	
-    public Rating rating = null;
+    public Rating rating = new Rating();
     public Blasting blasting = null;	// not new here cause not always blasting
     
  	public String ID = "";

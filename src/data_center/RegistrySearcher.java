@@ -56,8 +56,12 @@ class RegistrySearcher
 		return searchResultList;
 	}
 	
-	public BbkDetail searchDetailByName(String bbkName)
+	public synchronized BbkDetail searchDetailByName(String bbkName)
 	{	
+		if (!isBbkNameValid(bbkName))
+		{	System.out.println("Name not valid");
+			return null;
+		}
 		queryRemains = 5;
 		BbkDetail bbkDetail = new BbkDetail();
 		bbkDetail.name = bbkName;
@@ -72,6 +76,16 @@ class RegistrySearcher
 		return bbkDetail;
 	}
 	
+	private boolean isBbkNameValid(String bbkName)
+	{
+		if (!bbkName.toLowerCase().startsWith("bba_"))
+			return false;
+		final String URL_PREFIX = "http://parts.igem.org/cgi/xml/part.cgi?part=";
+		final String PARTNAME_NOT_FOUND = "Part name not found";
+		Document doc = getDoc(URL_PREFIX + bbkName);
+		return !(doc == null || doc.toString().contains(PARTNAME_NOT_FOUND));
+	}
+
 	public static BbkDetail getDetailFromSearchResultList
 		(String bbkName, SearchResultList list)
 	{	
@@ -83,10 +97,9 @@ class RegistrySearcher
 	
 	private static Document getDoc(String url)
 	{	
-		Document doc = null;
 		for (int i = 0; i < 3; ++i)
-			try {doc = Jsoup.connect(url).get();} 
+			try {return Jsoup.connect(url).get();} 
 			catch (IOException e) {continue;}
-		return doc;
+		return null;
 	}
 }

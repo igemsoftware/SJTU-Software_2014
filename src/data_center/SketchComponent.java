@@ -194,7 +194,7 @@ public class SketchComponent
         	super(theID, BioBrick.class.getSimpleName());
         	this.secondaryType = secondaryType;
         	if (bbkName != null)
-        		this.bbkOutline = DatabaseConnector.getOutlineByName(bbkName);
+        		this.bbkOutline = new RegistrySearcher().searchDetailByName(bbkName);
 			this.bounds = bounds;
 			this.color = color;
         }

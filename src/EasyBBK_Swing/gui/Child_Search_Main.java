@@ -22,6 +22,7 @@ import data_center.UploadCenter;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
+@SuppressWarnings("unused")
 public class Child_Search_Main extends JPanel {
 	private static final long serialVersionUID = 1L;
 	
@@ -171,6 +172,8 @@ public class Child_Search_Main extends JPanel {
 		Blast.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				// Temporarily disable because the server is closed
+				/*
 				if(e.getButton() == MouseEvent.BUTTON1){
 					if(SearchText.getText().equals("")) return;
 					
@@ -195,6 +198,7 @@ public class Child_Search_Main extends JPanel {
 					
 					mainpage.CurrentPage = 11;
 				}
+				*/
 			}
 			@Override
 			public void mouseEntered(MouseEvent e) {
